@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/ReadShadowMap.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,a,r,o,d,s,l,t){"use strict";const n=255,i=1/n;function c(e){const c=new t.ShaderBuilder;c.fragment.include(s.RgbaFloatEncoding),c.fragment.include(r.ReadLinearDepth),c.include(d.CameraSpace),c.include(a.ScreenSpacePass);const{pass:h}=e;if(1===h){const{visualization:a,bandsEnabled:r}=e;c.fragment.constants.add("inverseSampleValue","float",n),c.fragment.uniforms.add("shadowCastMap","sampler2D"),c.fragment.uniforms.add("sampleScale","float"),c.fragment.uniforms.add("opacityFromElevation","float");const o=0===a,d=1===a;c.fragment.uniforms.add("color","vec4"),o?r&&c.fragment.uniforms.add("bandSize","float"):d&&c.fragment.uniforms.add("threshold","float"),c.fragment.code.add(l.glsl`
+define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/ReadShadowMap.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(a,e,s,t,o,r,d,i){"use strict";var l,n;a.ShadowCastPass=void 0,(l=a.ShadowCastPass||(a.ShadowCastPass={}))[l.Accumulate=0]="Accumulate",l[l.Visualize=1]="Visualize",l[l.VisualizeCurrent=2]="VisualizeCurrent",l[l.COUNT=3]="COUNT",a.ShadowCastVisualization=void 0,(n=a.ShadowCastVisualization||(a.ShadowCastVisualization={}))[n.Gradient=0]="Gradient",n[n.Threshold=1]="Threshold";const c=255,h=1/c;function u(l){const n=new i.ShaderBuilder;n.fragment.include(r.RgbaFloatEncoding),n.fragment.include(s.ReadLinearDepth),n.include(o.CameraSpace),n.include(e.ScreenSpacePass);const{pass:u}=l;if(u===a.ShadowCastPass.Visualize){const{visualization:e,bandsEnabled:s}=l;n.fragment.constants.add("inverseSampleValue","float",c),n.fragment.uniforms.add("shadowCastMap","sampler2D"),n.fragment.uniforms.add("sampleScale","float"),n.fragment.uniforms.add("opacityFromElevation","float");const t=e===a.ShadowCastVisualization.Gradient,o=e===a.ShadowCastVisualization.Threshold;n.fragment.uniforms.add("uColor","vec4"),t?s&&n.fragment.uniforms.add("bandSize","float"):o&&n.fragment.uniforms.add("threshold","float"),n.fragment.code.add(d.glsl`
       void main(void) {
         vec4 record = texture2D(shadowCastMap, uv);
         float pixelSamples = record.r * inverseSampleValue;
@@ -13,16 +13,16 @@ define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass",
 
         float strength = pixelSamples * sampleScale;
 
-        ${d?l.glsl`
+        ${o?d.glsl`
             if (strength <= threshold) {
               discard;
             }`:""}
 
-        ${o&&r?l.glsl`strength = ceil(strength / bandSize) * bandSize;`:""}
+        ${t&&s?d.glsl`strength = ceil(strength / bandSize) * bandSize;`:""}
 
-        gl_FragColor = vec4(color.xyz, color.a * opacityFromElevation ${o?l.glsl`* strength`:""});
+        gl_FragColor = vec4(uColor.xyz, uColor.a * opacityFromElevation ${t?d.glsl`* strength`:""});
       }
-    `)}else 0!==h&&2!==h||(c.include(o.ReadShadowMap),c.fragment.uniforms.add("depthMap","sampler2D"),c.fragment.uniforms.add("inverseView","mat4"),c.fragment.uniforms.add("nearFar","vec2"),0===h?c.fragment.constants.add("sampleValue","float",i):c.fragment.constants.add("shadowColor","vec4",[0,0,0,.8]),c.fragment.code.add(l.glsl`
+    `)}else u!==a.ShadowCastPass.Accumulate&&u!==a.ShadowCastPass.VisualizeCurrent||(n.include(t.ReadShadowMap),n.fragment.uniforms.add("depthMap","sampler2D"),n.fragment.uniforms.add("inverseViewMatrix","mat4"),n.fragment.uniforms.add("nearFar","vec2"),u===a.ShadowCastPass.Accumulate?n.fragment.constants.add("sampleValue","float",h):n.fragment.constants.add("shadowColor","vec4",[0,0,0,.8]),n.fragment.code.add(d.glsl`
       void main(void) {
 
         float depth = rgba2float(texture2D(depthMap, uv));
@@ -38,13 +38,13 @@ define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass",
         }
 
         vec4 currentPixelPos = vec4(reconstructPosition(gl_FragCoord.xy, currentPixelDepth), 1.0);
-        vec4 worldSpacePos = inverseView * currentPixelPos;
+        vec4 worldSpacePos = inverseViewMatrix * currentPixelPos;
 
         mat4 shadowMatrix;
         float linearDepth = -currentPixelDepth;
         int i = chooseCascade(linearDepth, shadowMatrix);
 
-        if (i >= uShadowMapNum) {
+        if (i >= numCascades) {
           discard;
         }
 
@@ -57,13 +57,13 @@ define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass",
 
         vec2 uvShadow = cascadeCoordinates(i, lvpos);
 
-        float depthShadow = readShadowMapDepth(uvShadow, uShadowMapTex);
+        float depthShadow = readShadowMapDepth(uvShadow, shadowMapTex);
         bool shadow = depthShadow < lvpos.z;
 
         if (!shadow) {
           discard;
         }
 
-        gl_FragColor = ${0===h?l.glsl`vec4(sampleValue)`:l.glsl`shadowColor`};
+        gl_FragColor = ${u===a.ShadowCastPass.Accumulate?d.glsl`vec4(sampleValue)`:d.glsl`shadowColor`};
       }
-    `));return c}const h=Object.freeze({__proto__:null,shadowCastMaxSamples:n,build:c});e.ShadowCast=h,e.build=c,e.shadowCastMaxSamples=n}));
+    `));return n}const p=Object.freeze(Object.defineProperty({__proto__:null,get ShadowCastPass(){return a.ShadowCastPass},get ShadowCastVisualization(){return a.ShadowCastVisualization},shadowCastMaxSamples:c,build:u},Symbol.toStringTag,{value:"Module"}));a.ShadowCast=p,a.build=u,a.shadowCastMaxSamples=c}));

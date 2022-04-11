@@ -1,4 +1,5 @@
 @mixin layerList() {
+  $message-warning-border-color: $Calcite_Yellow_a150;
   .esri-layer-list {
     color: $font-color;
     background-color: $background-color--offset;
@@ -81,8 +82,10 @@
     width: $side-spacing; // Matches side padding on items that don't have this toggle.
     cursor: pointer;
   }
-  .esri-layer-list__child-toggle [class*="esri-icon"] {
-    line-height: 1.2em;
+  .esri-layer-list__child-toggle {
+    @include icomoonIconSelector() {
+      line-height: 1.2em;
+    }
   }
   .esri-layer-list__child-toggle .esri-layer-list__child-toggle-icon--opened,
   .esri-layer-list__child-toggle .esri-layer-list__child-toggle-icon--closed-rtl,
@@ -129,28 +132,32 @@
     overflow-wrap: break-word;
     transition: color 125ms ease-in-out;
   }
-  .esri-layer-list__item-error-message {
+  .esri-layer-list__item-message {
     display: flex;
     align-items: center;
     visibility: hidden;
     height: 0;
     margin-top: -1px;
-    padding: $cap-spacing--quarter $side-spacing--half;
+    padding: $cap-spacing--half $side-spacing--half;
     overflow: hidden;
-    background-color: $background-color--error;
-    color: $font-color--error;
     font-size: $font-size--small;
     transition: transform 250ms ease-in-out;
     transform: scale(1, 0);
     animation: esri-fade-in-down 250ms ease-in-out;
     transform-origin: center top;
+    background-color: $background-color--offset-subtle;
+    margin-inline-start: 3rem;
+    border-inline-start: $border-size--active solid $message-warning-border-color;
+    margin-block-end: 0.25rem;
+    margin-inline-end: 0.25rem;
   }
-  .esri-layer-list__item-error-message [class^="esri-icon-"],
-  .esri-layer-list__item-error-message [class*="esri-icon-"] {
-    margin-right: 0.3rem;
+  .esri-layer-list__item-message {
+    @include icomoonIconSelector() {
+      margin-right: 0.3rem;
+    }
   }
-  .esri-layer-list__item--error {
-    .esri-layer-list__item-error-message {
+  .esri-layer-list__item--has-message {
+    .esri-layer-list__item-message {
       visibility: visible;
       height: auto;
       transform: scale(1, 1);
@@ -167,12 +174,12 @@
   }
   .esri-layer-list__item-actions-menu-item {
     display: flex;
-    flex: 1 0 floor($font-size * 1.5);
+    flex: 1 0 auto;
     justify-content: center;
     align-items: center;
     color: $interactive-font-color;
     cursor: pointer;
-    padding: 0 $side-spacing--quarter;
+    padding: 0 $side-spacing--half;
     transition: border-color 250ms ease-in-out;
   }
   .esri-layer-list__item-actions-menu-item:first-of-type {
@@ -226,6 +233,7 @@
   .esri-layer-list__action-toggle {
     border: 1px solid transparent;
     display: flex;
+    box-sizing: border-box;
     justify-content: flex-start;
     align-items: flex-start;
     cursor: pointer;
@@ -353,10 +361,11 @@
     .esri-layer-list__item:after {
       animation: looping-progresss-bar-ani $looping-progress-bar-params reverse;
     }
-    .esri-layer-list__item-error-message [class^="esri-icon-"],
-    .esri-layer-list__item-error-message [class*="esri-icon-"] {
-      margin-right: 0;
-      margin-left: 0.3rem;
+    .esri-layer-list__item-message {
+      @include icomoonIconSelector() {
+        margin-right: 0;
+        margin-left: 0.3rem;
+      }
     }
     .esri-layer-list__item-container {
       border-left: none;

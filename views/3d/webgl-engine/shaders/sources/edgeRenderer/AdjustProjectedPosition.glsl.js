@@ -1,19 +1,19 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","../../../core/shaderLibrary/attributes/VertexPosition.glsl","../../../core/shaderLibrary/util/IsNaN.glsl","../../../core/shaderModules/interfaces"],(function(o,e,r,a){"use strict";function t(o,t){o.vertex.include(r.IsNaN),o.include(e.VertexPosition,t);const s=o.vertex;s.uniforms.add("uDepthBias","vec2"),s.uniforms.add("uViewportDimInv","vec2"),t.legacy?(s.uniforms.add("uView","mat4"),s.uniforms.add("uProj","mat4")):s.uniforms.add("uTransformNormal_ViewFromGlobal","mat3"),t.legacy?s.code.add(a.glsl`vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {
-float offsetXY = uDepthBias.x;
-float offsetZ  = uDepthBias.y;
-vec4 projNormal = uProj * uView * vec4(globalNormal, 0.0);
-return offsetXY * projPos.w * 2.0 * uViewportDimInv * normalize(projNormal.xyz).xy;
+define(["exports","../../../core/shaderLibrary/attributes/VertexPosition.glsl","../../../core/shaderLibrary/util/IsNaN.glsl","../../../core/shaderModules/interfaces"],(function(o,e,r,a){"use strict";function t(o,t){o.vertex.include(r.IsNaN),o.include(e.VertexPosition,t);const s=o.vertex;s.uniforms.add("depthBias","vec2"),s.uniforms.add("inverseViewport","vec2"),t.legacy?(s.uniforms.add("view","mat4"),s.uniforms.add("proj","mat4")):s.uniforms.add("transformNormalViewFromGlobal","mat3"),t.legacy?s.code.add(a.glsl`vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {
+float offsetXY = depthBias.x;
+float offsetZ  = depthBias.y;
+vec4 projNormal = proj * view * vec4(globalNormal, 0.0);
+return offsetXY * projPos.w * 2.0 * inverseViewport * normalize(projNormal.xyz).xy;
 }`):s.code.add(a.glsl`vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {
-float offsetXY = uDepthBias.x;
-float offsetZ  = uDepthBias.y;
-vec4 projNormal = uTransform_ProjFromView * vec4(uTransformNormal_ViewFromGlobal * globalNormal, 0.0);
-return offsetXY * projPos.w * 2.0 * uViewportDimInv * normalize(projNormal.xyz).xy;
+float offsetXY = depthBias.x;
+float offsetZ  = depthBias.y;
+vec4 projNormal = transformProjFromView * vec4(transformNormalViewFromGlobal * globalNormal, 0.0);
+return offsetXY * projPos.w * 2.0 * inverseViewport * normalize(projNormal.xyz).xy;
 }`),s.code.add(a.glsl`float _calculateProjectedBiasZ(vec4 projPos) {
-float offsetZ = uDepthBias.y;
+float offsetZ = depthBias.y;
 return sqrt(max(projPos.z,0.0)) * offsetZ;
 }
 vec4 adjustProjectedPosition(vec4 projPos, vec3 worldNormal, float lineWidth) {
@@ -23,4 +23,4 @@ projPos.xy += offsetXY;
 }
 projPos.z += _calculateProjectedBiasZ(projPos);
 return projPos;
-}`)}o.AdjustProjectedPosition=t,Object.defineProperty(o,"__esModule",{value:!0})}));
+}`)}o.AdjustProjectedPosition=t,Object.defineProperties(o,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

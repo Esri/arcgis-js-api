@@ -1,0 +1,32 @@
+{
+  "default-calendar": "gregorian",
+  "separator": ".",
+  "unitOrder": "DD.MM.YYYY",
+  "weekStart": 1,
+  "placeholder": "DD.MM.YYYY",
+  "days": {
+    "abbreviated": ["So.", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa."],
+    "narrow": ["S", "M", "D", "M", "D", "F", "S"],
+    "short": ["So.", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa."],
+    "wide": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"]
+  },
+  "numerals": "0123456789",
+  "months": {
+    "abbreviated": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
+    "narrow": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    "wide": [
+      "Januar",
+      "Februar",
+      "März",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "Dezember"
+    ]
+  }
+}

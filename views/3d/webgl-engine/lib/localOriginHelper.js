@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function t(e,t){const o=t,n=-e[0],i=-e[1],c=-e[2],p=o[3],r=o[7],s=o[11],u=o[15];o[0]+=p*n,o[1]+=p*i,o[2]+=p*c,o[4]+=r*n,o[5]+=r*i,o[6]+=r*c,o[8]+=s*n,o[9]+=s*i,o[10]+=s*c,o[12]+=u*n,o[13]+=u*i,o[14]+=u*c}function o(e,t){const o=t,n=e[0],i=e[1],c=e[2];o[12]+=n*o[0]+i*o[4]+c*o[8],o[13]+=n*o[1]+i*o[5]+c*o[9],o[14]+=n*o[2]+i*o[6]+c*o[10],o[14]+=n*o[3]+i*o[7]+c*o[11]}e.applyToModelMatrix=t,e.applyToViewMatrix=o,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports"],(function(e){"use strict";function o(e,o){const t=o,i=-e[0],n=-e[1],l=-e[2],u=t[3],a=t[7],c=t[11],r=t[15];t[0]+=u*i,t[1]+=u*n,t[2]+=u*l,t[4]+=a*i,t[5]+=a*n,t[6]+=a*l,t[8]+=c*i,t[9]+=c*n,t[10]+=c*l,t[12]+=r*i,t[13]+=r*n,t[14]+=r*l}function t(e,o){const t=o,i=e[0],n=e[1],l=e[2];t[12]+=i*t[0]+n*t[4]+l*t[8],t[13]+=i*t[1]+n*t[5]+l*t[9],t[14]+=i*t[2]+n*t[6]+l*t[10],t[14]+=i*t[3]+n*t[7]+l*t[11]}e.applyToModelMatrix=o,e.applyToViewMatrix=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Accessor","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(e,t,o,r,s,a,c,i){"use strict";let n=function(t){function o(e){return t.call(this,e)||this}return e._inheritsLoose(o,t),e._createClass(o,[{key:"editedBookmark",get:function(){const{bookmark:e}=this;return e?this._get("editedBookmark")||e.clone():null}},{key:"state",get:function(){return this._get("state")},set:function(e){this.validationState=void 0,this.loading=void 0,this._set("state",e)}}]),o}(o);t.__decorate([r.property()],n.prototype,"bookmark",void 0),t.__decorate([r.property({readOnly:!0})],n.prototype,"editedBookmark",null),t.__decorate([r.property()],n.prototype,"state",null),t.__decorate([r.property()],n.prototype,"validationState",void 0),t.__decorate([r.property()],n.prototype,"loading",void 0),n=t.__decorate([i.subclass("esri.widgets.Bookmarks.UserState")],n);return n}));

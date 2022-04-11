@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","../core/shaderModules/interfaces","../core/shaderModules/ShaderBuilder","../../../../chunks/MeasurementArrow.glsl"],(function(e,r,s,d){"use strict";e.build=d.build,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../core/shaderModules/interfaces","../core/shaderModules/ShaderBuilder","../lib/VertexAttribute","../../../../chunks/MeasurementArrow.glsl"],(function(e,r,t,u,l){"use strict";e.build=l.build,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

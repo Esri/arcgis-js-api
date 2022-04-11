@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(e,r,o,t,p,s,c,u){"use strict";let a=function(r){function o(){var e;return(e=r.apply(this,arguments)||this).code=null,e.defaultValues={},e.domains={},e.name=null,e}return e._inheritsLoose(o,r),o}(o.JSONSupport);r.__decorate([t.property({type:Number,json:{write:!0}})],a.prototype,"code",void 0),r.__decorate([t.property({type:Object,json:{write:!0}})],a.prototype,"defaultValues",void 0),r.__decorate([t.property({type:Object,json:{write:!0}})],a.prototype,"domains",void 0),r.__decorate([t.property({type:String,json:{write:!0}})],a.prototype,"name",void 0),a=r.__decorate([u.subclass("esri.layers.support.Subtype")],a);return a}));

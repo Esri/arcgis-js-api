@@ -1,0 +1,41 @@
+@mixin weather() {
+  .esri-weather {
+    position: relative;
+    overflow: hidden;
+    padding: $cap-spacing $side-spacing;
+    width: fit-content;
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing;
+    }
+
+    &__selector {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: $side-spacing--half;
+    }
+
+    &__warning {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: $side-spacing--half;
+      font-size: $font-size--small;
+
+      calcite-icon {
+        color: var(--calcite-ui-warning);
+      }
+    }
+
+    &__coverage-slider calcite-slider {
+      margin: -7px; // Align slider to the buttons, header, etc
+    }
+  }
+}
+
+@if $include_Weather==true {
+  @include weather();
+}

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../core/Error","../../core/maybe","./support/utils","../support/adapters/support/layerUtils"],(function(e,r,t,a,i){"use strict";function n(e){return s.apply(this,arguments)}function s(){return(s=e._asyncToGenerator((function*(e){if(!(e&&e.layer&&e.view&&e.fields))throw new r("predominant-categories:missing-parameters","'layer', 'view' and 'fields' parameters are required");const{layer:n,...s}=e,o=i.createLayerAdapter(n,i.defaultSupportedLayerTypes),l={layerAdapter:o,...s};if(!o)throw new r("predominant-categories:invalid-parameters","'layer' must be one of these types: "+i.getLayerTypeLabels(i.defaultSupportedLayerTypes).join(", "));const p=t.isSome(l.signal)?{signal:l.signal}:null;yield Promise.all([l.view.when(),o.load(p)]);const u=a.verifyBasicFieldValidity(o,l.fields,"predominant-categories:invalid-parameters");if(u)throw u;return l}))).apply(this,arguments)}function o(e){return l.apply(this,arguments)}function l(){return(l=e._asyncToGenerator((function*(e){const{layerAdapter:r,...t}=yield n(e);return r.predominantCategories(t)}))).apply(this,arguments)}return o}));

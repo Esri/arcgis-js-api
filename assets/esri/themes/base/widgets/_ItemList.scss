@@ -15,6 +15,11 @@
     flex-grow: 1;
   }
 
+  .esri-item-list__filter-container--sticky {
+    position: sticky;
+    top: 0;
+  }
+
   .esri-item-list__filter-input {
     width: 100%;
     border: none;
@@ -48,21 +53,16 @@
   }
 
   .esri-item-list__group {
-    color: $interactive-font-color;
-    padding: 0 $side-spacing $cap-spacing;
-    margin: $cap-spacing--third $side-spacing--third $cap-spacing--half $side-spacing--third;
+    margin-top: 20px;
   }
 
   .esri-item-list__scroller {
     overflow-y: auto;
   }
 
-  .esri-item-list__group-header {
-    display: flex;
-    align-items: center;
-    margin: $cap-spacing 0;
-    padding: 0;
-    font-weight: $font-weight;
+  .esri-item-list__group__header {
+    color: var(--calcite-ui-text-2);
+    font-weight: var(--calcite-font-weight-medium);
   }
 
   .esri-item-list__list {
@@ -72,7 +72,6 @@
   }
 
   .esri-item-list__list-item-container {
-    background: $background-color;
     display: flex;
     margin: 0 $cap-spacing--eighth;
     width: 100%;
@@ -82,15 +81,14 @@
   }
 
   .esri-item-list__list-item {
-    box-shadow: 0 1px 0 $border-color;
-    padding: $cap-spacing--quarter $side-spacing--quarter;
-    background-color: $background-color;
+    box-shadow: 0 1px 0 var(--calcite-ui-border-2);
+    padding: 0 12px;
+    background-color: var(--calcite-ui-foreground-1);
     cursor: pointer;
-    border-radius: $border-radius;
+    border: 1px solid transparent;
+    border-radius: 3px;
     margin-bottom: $cap-spacing--half;
-    border: $border;
     min-height: $list-item-height;
-    border-color: transparent;
     transition: border 250ms ease-in-out;
 
     display: flex;
@@ -98,10 +96,11 @@
 
     &:hover,
     &:focus {
-      border-color: $font-color;
+      background-color: var(--calcite-ui-foreground-2);
+      border-color: var(--calcite-ui-brand);
     }
 
-    &[class^="esri-icon"] {
+    @include icomoonIconSelector("&") {
       padding-right: $font-size * 0.2;
     }
 

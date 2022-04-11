@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["../../../../chunks/_rollupPluginBabelHelpers","./basicInterfaces","./TextRenderer","./Texture","../../../webgl/enums"],(function(e,r,t,n,i){"use strict";let s=function(){function s(e,r,n){this._renderer=new t.TextRenderer(e,r,n)}return s.prototype.create=function(){const e=t.getTextHelperCanvas(d,this._renderer.renderedWidth,this._renderer.renderedHeight),s=e.getContext("2d");return s.save(),this._renderer.render(s,0,0),s.restore(),new n.Texture(e,{wrap:{s:i.TextureWrapMode.CLAMP_TO_EDGE,t:i.TextureWrapMode.CLAMP_TO_EDGE},noUnpackFlip:!1,mipmap:!0,preMultiplyAlpha:!0,powerOfTwoResizeMode:r.PowerOfTwoResizeMode.PAD})},e._createClass(s,[{key:"key",get:function(){return this._renderer.key}},{key:"baselineAnchorY",get:function(){return 1-this._renderer.firstRenderedBaselinePosition/this._renderer.renderedHeight}},{key:"displayWidth",get:function(){return this._renderer.displayWidth}},{key:"displayHeight",get:function(){return this._renderer.displayHeight}}]),s}();const d={canvas:null};return s}));

@@ -111,8 +111,8 @@ $relationship_column_size: 85px;
   }
 
   .esri-legend__symbol {
-    display: block;
-    margin: auto;
+    display: flex;
+    justify-content: center;
   }
 
   .esri-legend__layer-caption {
@@ -192,6 +192,11 @@ $relationship_column_size: 85px;
       margin-left: 0;
       margin-right: $side-spacing--half;
       overflow: auto;
+    }
+
+    .esri-legend__ramps {
+      margin-left: auto;
+      margin-right: $side-spacing--quarter;
     }
   }
 }
@@ -314,13 +319,14 @@ $relationship_column_size: 85px;
   }
 
   .esri-legend--stacked {
-    height: $carousel_min_height + $button-height;
     min-width: $carousel_min_width;
+    display: flex;
+    flex-direction: column;
 
     .esri-legend--card__section {
       border: none;
       overflow: auto;
-      height: $carousel_slide_side_length;
+      height: auto;
       width: $carousel_slide_side_length;
     }
     .esri-legend--card__size-ramp-row {
@@ -341,15 +347,12 @@ $relationship_column_size: 85px;
       text-align: center;
     }
     .esri-legend--card__carousel-indicator-container {
-      align-items: center;
-      bottom: 0;
       box-shadow: 0 -1px 0 $border-color;
       display: flex;
       height: $button-height;
+      width: $legend_min_width;
       justify-content: center;
-      left: 0;
-      position: absolute;
-      right: 0;
+      overflow: auto;
     }
     .esri-legend--card__carousel-indicator {
       cursor: pointer;

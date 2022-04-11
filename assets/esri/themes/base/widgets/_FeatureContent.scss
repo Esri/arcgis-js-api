@@ -42,7 +42,7 @@ $content-height--loading: 150px !default;
   .esri-feature-content h6 {
     font-size: 1em;
   }
-  .esri-feature-element-info__title {
+  .esri-widget__heading.esri-feature-element-info__title {
     color: $font-color;
     font-size: $font-size__h1;
     font-weight: $font-weight--regular;

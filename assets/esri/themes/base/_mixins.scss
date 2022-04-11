@@ -210,6 +210,8 @@
 
     .esri-slider {
       font-size: $font-size--small;
+      position: relative;
+      z-index: 1;
 
       .esri-slider__content {
         flex-direction: row;
@@ -313,9 +315,30 @@
 
       .esri-slider__max,
       .esri-slider__min {
-        flex: 0 0 $smartmapping-slider__range-input-height;
-        height: $smartmapping-slider__range-input-height;
-        padding: $cap-spacing--three-quarters 0;
+        flex: none;
+        margin: $cap-spacing--three-quarters auto;
+        padding: $cap-spacing--three-quarters $cap-spacing;
+        position: relative;
+        width: auto;
+        z-index: 0;
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 100%;
+          z-index: -1;
+        }
+
+        &.esri-slider__range--active {
+          background-color: $background-color;
+        }
+
+        .esri-slider__range-input {
+          margin: 0 auto;
+        }
       }
 
       .esri-slider__extra-content {
@@ -510,7 +533,10 @@
 
   appearance: none;
 
-  @extend [class^="esri-icon-"];
+  @each $icomoon-selector in $icomoon-selectors {
+    @extend #{$icomoon-selector};
+  }
+
   @extend .esri-icon-left;
 
   &:hover:not(:disabled) {

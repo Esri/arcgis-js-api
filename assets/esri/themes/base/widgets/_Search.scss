@@ -115,8 +115,10 @@ $search_width: 240px !default;
     height: 1px;
     width: 1px;
   }
-  .esri-search__suggestions-menu [class^="esri-icon"] {
-    vertical-align: middle;
+  .esri-search__suggestions-menu {
+    @include icomoonIconSelector() {
+      vertical-align: middle;
+    }
   }
   .esri-search__suggestions-menu .esri-menu__header:first-child,
   .esri-search__suggestions-menu ul:first-child {

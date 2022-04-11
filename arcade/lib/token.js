@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";const n={1:"Boolean",2:"<end>",3:"Identifier",4:"Keyword",5:"Null",6:"Numeric",7:"Punctuator",8:"String",9:"RegularExpression",10:"Template"};e.TokenName=n,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports"],(function(e){"use strict";var r;e.TokenType=void 0,(r=e.TokenType||(e.TokenType={}))[r.BooleanLiteral=1]="BooleanLiteral",r[r.EOF=2]="EOF",r[r.Identifier=3]="Identifier",r[r.Keyword=4]="Keyword",r[r.NullLiteral=5]="NullLiteral",r[r.NumericLiteral=6]="NumericLiteral",r[r.Punctuator=7]="Punctuator",r[r.StringLiteral=8]="StringLiteral",r[r.RegularExpression=9]="RegularExpression",r[r.Template=10]="Template";const o={};o[e.TokenType.BooleanLiteral]="Boolean",o[e.TokenType.EOF]="<end>",o[e.TokenType.Identifier]="Identifier",o[e.TokenType.Keyword]="Keyword",o[e.TokenType.NullLiteral]="Null",o[e.TokenType.NumericLiteral]="Numeric",o[e.TokenType.Punctuator]="Punctuator",o[e.TokenType.StringLiteral]="String",o[e.TokenType.RegularExpression]="RegularExpression",o[e.TokenType.Template]="Template",e.TokenName=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

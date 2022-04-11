@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../geometry","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass","../../geometry/SpatialReference"],(function(e,r,t,o,p,s,c,u,n,a){"use strict";let i=function(r){function t(){var e;return(e=r.apply(this,arguments)||this).north=null,e.up=null,e.spatialReference=null,e}return e._inheritsLoose(t,r),t}(o.JSONSupport);r.__decorate([p.property({type:Number,json:{write:!0}})],i.prototype,"north",void 0),r.__decorate([p.property({type:Number,json:{write:!0}})],i.prototype,"up",void 0),r.__decorate([p.property({type:a,json:{write:!0}})],i.prototype,"spatialReference",void 0),i=r.__decorate([n.subclass("esri.rest.support.ImageAngleResult")],i);return i}));

@@ -5,6 +5,15 @@
     margin-top: 0;
   }
 
+  .esri-snapping-controls__layer-list-block {
+    border-bottom: none;
+  }
+
+  .esri-snapping-controls__layer-list {
+    overflow: auto;
+    max-height: 220px;
+  }
+
   .esri-snapping-controls {
     display: flex;
     flex-flow: column wrap;

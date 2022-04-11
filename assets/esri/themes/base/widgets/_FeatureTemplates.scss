@@ -3,7 +3,7 @@
   $border: 1px solid $border-color;
 
   .esri-feature-templates {
-    background: $background-color--offset;
+    background: var(--calcite-ui-background);
   }
 
   .esri-feature-templates__list-item-icon {
@@ -26,8 +26,16 @@
     width: 32px;
     background: url(../base/images/loading-throb.gif) no-repeat center;
   }
-  .esri-ui .esri-feature-templates {
-    width: $panel_width;
+
+  .esri-ui {
+    & .esri-feature-templates {
+      width: $panel-width;
+    }
+
+    // If FeatureTemplates is used _inside_ another widget, then .esri-feature-templates should fit inside it
+    & .esri-widget .esri-feature-templates {
+      width: 100%;
+    }
   }
 }
 

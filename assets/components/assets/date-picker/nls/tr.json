@@ -1,0 +1,32 @@
+{
+  "default-calendar": "gregorian",
+  "separator": ".",
+  "unitOrder": "DD.MM.YYYY",
+  "weekStart": 1,
+  "placeholder": "DD.MM.YYYY",
+  "days": {
+    "abbreviated": ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"],
+    "narrow": ["P", "P", "S", "Ç", "P", "C", "C"],
+    "short": ["Pa", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+    "wide": ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"]
+  },
+  "numerals": "0123456789",
+  "months": {
+    "abbreviated": ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"],
+    "narrow": ["O", "Ş", "M", "N", "M", "H", "T", "A", "E", "E", "K", "A"],
+    "wide": [
+      "Ocak",
+      "Şubat",
+      "Mart",
+      "Nisan",
+      "Mayıs",
+      "Haziran",
+      "Temmuz",
+      "Ağustos",
+      "Eylül",
+      "Ekim",
+      "Kasım",
+      "Aralık"
+    ]
+  }
+}

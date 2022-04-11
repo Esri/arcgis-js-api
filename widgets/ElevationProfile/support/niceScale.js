@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports"],(function(t){"use strict";function e(t,e,o=10){const r=n(e-t,!1);if(0===r)return[t,e];const c=n(r/(o-1),!0);return[Math.floor(t/c)*c,Math.ceil(e/c)*c]}function n(t,e){const n=Math.floor(Math.log10(t)),o=t/10**n;let r;return r=e?o<1.5?1:o<3?2:o<5?2.5:o<7?5:10:o<=1?1:o<=2?2:o<=3?2.5:o<=5?5:10,r*10**n}t.niceScale=e,Object.defineProperty(t,"__esModule",{value:!0})}));
+define(["exports"],(function(e){"use strict";function t(e,t,n=10){const r=o(t-e,!1);if(0===r)return[e,t];const c=o(r/(n-1),!0);return[Math.floor(e/c)*c,Math.ceil(t/c)*c]}function o(e,t){const o=Math.floor(Math.log10(e)),n=e/10**o;let r;return r=t?n<1.5?1:n<3?2:n<5?2.5:n<7?5:10:n<=1?1:n<=2?2:n<=3?2.5:n<=5?5:10,r*10**o}e.niceScale=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -182,9 +182,11 @@
     }
   }
 
-  .esri-search__sources-button [class*="esri-icon"] {
-    position: relative;
-    left: 1px;
+  .esri-search__sources-button {
+    @include icomoonIconSelector() {
+      position: relative;
+      left: 1px;
+    }
   }
 
   .esri-directions__stop-input {
@@ -411,12 +413,6 @@
     .esri-directions__stop-handle:hover {
       cursor: move;
     }
-  }
-
-  .esri-directions__disclaimer {
-    font-size: $font-size--small;
-    color: $heading-color;
-    padding: 0 $side-spacing;
   }
 
   // search overrides

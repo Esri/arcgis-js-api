@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/ReadShadowMap.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,a,t,i,o,r,l,d,h){"use strict";function c(e){const c=new h.ShaderBuilder;return c.include(o.ReadShadowMap),c.fragment.include(l.RgbaFloatEncoding),c.fragment.include(i.ReadLinearDepth),c.include(r.CameraSpace),c.include(a.ScreenSpacePass),c.fragment.uniforms.add("defaultDepthTex","sampler2D").add("highlightDepthTex","sampler2D").add("depthMap","sampler2D").add("highlightMap","sampler2D").add("color","vec4").add("nearFar","vec2").add("opacity","float").add("occludedOpacity","float").add("terminationFactor","float").add("inverseView","mat4").add("lightingMainDirectionView","vec3").add("texelSize","vec2"),c.fragment.constants.add("unoccludedHighlightFlag","vec4",t.unoccludedHighlightFlag).add("highlightedThreshold","float",e.highlightedThreshold).add("selfShadowThreshold","float",e.selfShadowThreshold),c.fragment.code.add(d.glsl`vec3 normalFromDepth(vec3 pixelPos, vec2 fragCoord, vec2 uv, vec2 texelSize, sampler2D depthMap, vec2 nearFar) {
+define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/ReadShadowMap.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,a,t,i,o,r,l,d,h){"use strict";function c(e){const c=new h.ShaderBuilder;return c.include(o.ReadShadowMap),c.fragment.include(l.RgbaFloatEncoding),c.fragment.include(i.ReadLinearDepth),c.include(r.CameraSpace),c.include(a.ScreenSpacePass),c.fragment.uniforms.add("defaultDepthTex","sampler2D").add("highlightDepthTex","sampler2D").add("depthMap","sampler2D").add("highlightMap","sampler2D").add("uColor","vec4").add("nearFar","vec2").add("opacity","float").add("occludedOpacity","float").add("terminationFactor","float").add("inverseViewMatrix","mat4").add("lightingMainDirectionView","vec3").add("texelSize","vec2"),c.fragment.constants.add("unoccludedHighlightFlag","vec4",t.unoccludedHighlightFlag).add("highlightedThreshold","float",e.highlightedThreshold).add("selfShadowThreshold","float",e.selfShadowThreshold),c.fragment.code.add(d.glsl`vec3 normalFromDepth(vec3 pixelPos, vec2 fragCoord, vec2 uv, vec2 texelSize, sampler2D depthMap, vec2 nearFar) {
 float leftPixelDepth = linearDepthFromTexture(depthMap, uv + vec2(-1.0, 0.0) * texelSize, nearFar);
 float rightPixelDepth = linearDepthFromTexture(depthMap, uv + vec2(1.0, 0.0) * texelSize, nearFar);
 float bottomPixelDepth = linearDepthFromTexture(depthMap, uv + vec2(0.0, -1.0) * texelSize, nearFar);
@@ -34,11 +34,11 @@ if (-currentPixelDepth>nearFar.y || -currentPixelDepth<nearFar.x) {
 discard;
 }
 vec4 currentPixelPos = vec4(reconstructPosition(gl_FragCoord.xy, currentPixelDepth), 1.0);
-vec4 worldSpacePos = inverseView * currentPixelPos;
+vec4 worldSpacePos = inverseViewMatrix * currentPixelPos;
 mat4 shadowMatrix;
 float linearDepth = -currentPixelDepth;
 int i = chooseCascade(linearDepth, shadowMatrix);
-if (i >= uShadowMapNum) {
+if (i >= numCascades) {
 discard;
 }
 vec3 lvpos = lightSpacePosition(worldSpacePos.xyz, shadowMatrix);
@@ -58,5 +58,5 @@ bool shaded = dot(normal, lightingMainDirectionView) < selfShadowThreshold;
 float differenceOpacity = opacity;
 float bothOpacity = occludedOpacity;
 float fragOpacity = (shadowDefault || shaded) ? bothOpacity : differenceOpacity;
-gl_FragColor = vec4(color.rgb, color.a * fragOpacity * terminationFactor);
-}`),c}const n=Object.freeze({__proto__:null,build:c});e.ShadowHighlightShader=n,e.build=c}));
+gl_FragColor = vec4(uColor.rgb, uColor.a * fragOpacity * terminationFactor);
+}`),c}const n=Object.freeze(Object.defineProperty({__proto__:null,build:c},Symbol.toStringTag,{value:"Module"}));e.ShadowHighlightShader=n,e.build=c}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","../../../../webgl/BufferObject","../../../../webgl/FramebufferObject","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../core/has","../../../../webgl/checkWebGLError","../../../../webgl/enums","../../../../../chunks/builtins","../../../../webgl/programUtils","../../../../webgl/Texture","../../../../webgl/VertexArrayObject","./sources/resolver"],(function(e,r,a,t,n,s,i,l,g,u,c,o){"use strict";const b={shaders:{vertexShader:o.resolveIncludes("magnifier/magnifier.vert"),fragmentShader:o.resolveIncludes("magnifier/magnifier.frag")},attributes:new Map([["a_pos",0]])};function f(e){return g.createProgram(e,b)}e.createMagnifierProgram=f,e.magnifierProgramTemplate=b,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","./sources/resolver","../../../../webgl/ProgramTemplate"],(function(e,r,a){"use strict";const t={shaders:{vertexShader:r.resolveIncludes("magnifier/magnifier.vert"),fragmentShader:r.resolveIncludes("magnifier/magnifier.frag")},attributes:new Map([["a_pos",0]])};function i(e){return a.createProgram(e,t)}e.createMagnifierProgram=i,e.magnifierProgramTemplate=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

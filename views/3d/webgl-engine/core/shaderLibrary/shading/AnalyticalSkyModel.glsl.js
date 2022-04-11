@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";function a(e){const a=e.fragment.code;a.add(t.glsl`vec3 evaluateDiffuseIlluminationHemisphere(vec3 ambientGround, vec3 ambientSky, float NdotNG)
 {
@@ -15,4 +15,4 @@ float intRadTheta = integratedRadiance(cosTheta2, roughness);
 float ground = RdotNG < 0.0 ? 1.0 - intRadTheta : 1.0 + intRadTheta;
 float sky = 2.0 - ground;
 return (ground * ambientGround + sky * ambientSky) * 0.5;
-}`)}e.AnalyticalSkyModel=a,Object.defineProperty(e,"__esModule",{value:!0})}));
+}`)}e.AnalyticalSkyModel=a,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

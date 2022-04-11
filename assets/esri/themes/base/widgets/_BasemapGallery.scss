@@ -59,12 +59,6 @@
 
   @include loopingProgressBar(".esri-basemap-gallery__loader");
 
-  .esri-basemap-gallery__item--loading {
-    cursor: auto;
-    background-color: $background-color--offset;
-    border-color: $background-color;
-  }
-
   .esri-basemap-gallery__item--error {
     cursor: auto;
     opacity: $opacity--disabled;

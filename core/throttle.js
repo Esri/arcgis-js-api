@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function t(e,t,l,n){let u=null,o=1e3;"number"==typeof t?(o=t,n=l):(u=null!=t?t:null,o=l);let r,a=0;const i=()=>{a=0,e.apply(n,r)},p=(...e)=>{u&&u.apply(n,e),r=e,o?a||(a=setTimeout(i,o)):i()};return p.remove=()=>{a&&(clearTimeout(a),a=0)},p.forceUpdate=()=>{a&&(clearTimeout(a),i())},p.hasPendingUpdates=()=>!!a,p}e.default=t,e.throttle=t,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports"],(function(e){"use strict";function t(e,t,l,o){let n=null,u=1e3;"number"==typeof t?(u=t,o=l):(n=null!=t?t:null,u=l);let r,i=0;const a=()=>{i=0,e.apply(o,r)},p=(...e)=>{n&&n.apply(o,e),r=e,u?i||(i=setTimeout(a,u)):a()};return p.remove=()=>{i&&(clearTimeout(i),i=0)},p.forceUpdate=()=>{i&&(clearTimeout(i),a())},p.hasPendingUpdates=()=>!!i,p}e.throttle=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

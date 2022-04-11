@@ -180,8 +180,10 @@
       background-color: $background-color--active;
       border-left-color: $border-color--active;
     }
-    &__list-item [class^="esri-icon"] {
-      padding-right: $font-size * 0.2;
+    &__list-item {
+      @include icomoonIconSelector() {
+        padding-right: $font-size * 0.2;
+      }
     }
   }
 
@@ -331,12 +333,12 @@
       font-size: $font-size;
       font-family: $font-family;
     }
-    [class*="esri-icon"] {
+    @include icomoonIconSelector() {
       padding: 0 $side-spacing--half;
     }
   }
 
-  [class*="esri-icon"] {
+  @include icomoonIconSelector() {
     font-size: $icon-size;
     display: inline-block;
   }
@@ -389,6 +391,10 @@
     border-radius: 0;
     padding: 0 0.5em;
     background: url($select_caret) no-repeat right center $background-color;
+
+    &[disabled] {
+      cursor: auto;
+    }
   }
 
   .esri-select::-ms-expand {
@@ -397,10 +403,15 @@
 
   // Disabled
   .esri-disabled a,
-  .esri-disabled [class*="esri-icon"],
   .esri-disabled [role="menu"],
   .esri-disabled [role="checkbox"] {
     color: $interactive-font-color--disabled;
+  }
+
+  .esri-disabled {
+    @include icomoonIconSelector() {
+      color: $interactive-font-color--disabled;
+    }
   }
 
   .keynav-mode {
@@ -548,9 +559,11 @@
     .esri-select {
       background-position: left 50%;
     }
-    .esri-menu__list-item [class^="esri-icon"] {
-      padding-right: 0;
-      padding-left: floor($font-size * 0.2);
+    .esri-menu__list-item {
+      @include icomoonIconSelector() {
+        padding-right: 0;
+        padding-left: floor($font-size * 0.2);
+      }
     }
     .esri-menu__list-item {
       border-left: none;
@@ -573,7 +586,7 @@
     width: 1px;
   }
 
-  [class^="esri-icon"] {
+  @include icomoonIconSelector() {
     // fixes IE11 bug where animation will continue after animation class is removed
     // https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/4784
     animation: none;

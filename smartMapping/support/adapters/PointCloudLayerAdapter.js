@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
 define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/arrayUtils","../../../core/has","../../../core/accessorSupport/set","../../../core/accessorSupport/decorators/subclass","./SceneLayerAdapter"],(function(e,t,s,r,o,n,i,u,a){"use strict";let p=function(t){function s(e){return t.call(this,e)||this}e._inheritsLoose(s,t);var r=s.prototype;return r.getField=function(e=""){return this.layer.fieldsIndex.get(e)},r.getFieldUsageInfo=function(e){const t=this.getField(e);if(!t)return null;const s=this._hasCachedStatistics(t.name);return{supportsLabelingInfo:s,supportsPopupTemplate:s,supportsRenderer:s,supportsLayerQuery:!1,supportsStatistics:s}},r.getFieldDomain=function(){return null},r.load=function(e){const t=this.layer.load(e).then((()=>{this.geometryType="point",this.objectIdField=null,this.supportsSQLExpression=!1,this.hasQueryEngine=!1}));return this.addResolvingPromise(t),Promise.resolve(this)},s}(a);p=t.__decorate([u.subclass("esri.smartMapping.support.adapters.PointCloudLayerAdapter")],p);return p}));

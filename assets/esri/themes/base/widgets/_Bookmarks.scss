@@ -74,7 +74,7 @@
   }
 
   .esri-bookmarks__list--sortable .esri-bookmarks__bookmark-button {
-    padding-inline-start: 0
+    padding-inline-start: 0;
   }
 
   .esri-bookmarks_bookmark-drag-handle {
@@ -120,7 +120,7 @@
     display: flex;
     flex-flow: column;
     flex: 1 1 auto;
-    padding: $cap-spacing $side-spacing--three-quarters; 
+    padding: $cap-spacing $side-spacing--three-quarters;
   }
 
   .esri-bookmarks__bookmark-name {

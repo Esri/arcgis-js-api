@@ -1,0 +1,1 @@
+{"widgetLabel":"天气","widgetLabelAccessible":"天气微件","weatherType":"天气类型","error":{"unsupported":"仅 SceneView 支持天气。","localScene":"仅适用于全球场景。","notVisible":"仅在低海拔区域可见。"},"sunny":{"label":"晴","cloudCover":"云量"},"cloudy":{"label":"多云","cloudCover":"云量"},"rainy":{"label":"雨","cloudCover":"云量"},"snowy":{"label":"雪","sliderLabel":"云量"},"foggy":{"label":"雾","fogStrength":"雾密度"}}

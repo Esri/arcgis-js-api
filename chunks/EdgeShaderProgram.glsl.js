@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/shaders/sources/edgeRenderer/AdjustProjectedPosition.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/DiscardByCoverage.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/DiscardNonSilhouetteEdges.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/DiscardShortEdges.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/EdgeUtil.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/LineAmplitude.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/LineOffset.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/UnpackAttributes.glsl"],(function(e,i,s,o,n,d,t,a,l,r,c,u,P,p){"use strict";function g(e){const g=new d.ShaderBuilder,v=g.vertex,x=g.fragment;return e.legacy&&v.uniforms.add("uModel","mat4"),e.antialiasing&&(v.code.add(n.glsl`#define ANTIALIASING 1`),x.code.add(n.glsl`#define ANTIALIASING 1`)),g.include(t.AdjustProjectedPosition,e),g.include(u.LineAmplitude,e),g.include(c.EdgeUtil,e),g.include(p.UnpackAttributes,e),g.include(P.LineOffset,e),g.include(i.Slice,e),g.include(l.DiscardNonSilhouetteEdges,e),g.include(a.DiscardByCoverage,e),g.include(r.DiscardShortEdges,e),g.varyings.add("vColor","vec4"),g.varyings.add("vRadius","float"),g.varyings.add("vPosition","vec3"),g.varyings.add("vWorldPosition","vec3"),g.varyings.add("vViewPos","vec3"),g.varyings.add("vLineLengthPixels","float"),g.varyings.add("vSizeFalloffFactor","float"),v.uniforms.add("uPixelToNDC","vec2"),v.uniforms.add("uNDCToPixel","vec2"),v.uniforms.add("uPixelRatio","float"),g.attributes.add("position0","vec3"),g.attributes.add("position1","vec3"),g.attributes.add("variantOffset","float"),g.attributes.add("variantStroke","float"),g.attributes.add("variantExtension","float"),v.code.add(n.glsl`const float opaqueCutoff = 1.0 / 255.0;
+define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute","../views/3d/webgl-engine/shaders/sources/edgeRenderer/AdjustProjectedPosition.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/DiscardByCoverage.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/DiscardNonSilhouetteEdges.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/DiscardShortEdges.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/EdgeUtil.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/LineAmplitude.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/LineOffset.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/UnpackAttributes.glsl"],(function(e,i,s,o,t,d,n,a,l,r,c,u,P,p,g){"use strict";function v(e){const v=new d.ShaderBuilder,x=v.vertex,f=v.fragment;return e.legacy&&x.uniforms.add("model","mat4"),e.antialiasing&&(x.code.add(t.glsl`#define ANTIALIASING 1`),f.code.add(t.glsl`#define ANTIALIASING 1`)),v.include(a.AdjustProjectedPosition,e),v.include(P.LineAmplitude,e),v.include(u.EdgeUtil,e),v.include(g.UnpackAttributes,e),v.include(p.LineOffset,e),v.include(i.Slice,e),v.include(r.DiscardNonSilhouetteEdges,e),v.include(l.DiscardByCoverage,e),v.include(c.DiscardShortEdges,e),v.varyings.add("vColor","vec4"),v.varyings.add("vRadius","float"),v.varyings.add("vPosition","vec3"),v.varyings.add("vWorldPosition","vec3"),v.varyings.add("vViewPos","vec3"),v.varyings.add("vLineLengthPixels","float"),v.varyings.add("vSizeFalloffFactor","float"),x.uniforms.add("pixelToNDC","vec2"),x.uniforms.add("ndcToPixel","vec2"),x.uniforms.add("pixelRatio","float"),v.attributes.add(n.VertexAttribute.POSITION0,"vec3"),v.attributes.add(n.VertexAttribute.POSITION1,"vec3"),v.attributes.add(n.VertexAttribute.VARIANTOFFSET,"float"),v.attributes.add(n.VertexAttribute.VARIANTSTROKE,"float"),v.attributes.add(n.VertexAttribute.VARIANTEXTENSION,"float"),x.code.add(t.glsl`const float opaqueCutoff = 1.0 / 255.0;
 void calculateGeometricOutputs(vec3 viewPosV0, vec3 viewPosV1, vec3 worldPosV0, vec3 worldPosV1, vec3 worldNormal, UnpackedAttributes unpackedAttributes) {
 vec2 sideness = unpackedAttributes.sideness;
 vec2 sidenessNorm = unpackedAttributes.sidenessNorm;
@@ -13,15 +13,15 @@ vec4 projPosV0 = projFromViewPosition(viewPosV0);
 vec4 projPosV1 = projFromViewPosition(viewPosV1);
 vec4 projPos = projFromViewPosition(viewPos);
 vec3 screenSpaceLineNDC = (projPosV1.xyz / projPosV1.w - projPosV0.xyz / projPosV0.w);
-vec2 screenSpaceLinePixels = screenSpaceLineNDC.xy * uNDCToPixel;
+vec2 screenSpaceLinePixels = screenSpaceLineNDC.xy * ndcToPixel;
 float lineLengthPixels = length(screenSpaceLinePixels);
 float dzPerPixel = screenSpaceLineNDC.z / lineLengthPixels;
 vec2 screenSpaceDirection = screenSpaceLinePixels / lineLengthPixels;
 vec2 perpendicularScreenSpaceDirection = vec2(screenSpaceDirection.y, -screenSpaceDirection.x) * sideness.x;
-float falloffFactor = distanceBasedPerspectiveFactor(-viewPos.z) * uPixelRatio;
+float falloffFactor = distanceBasedPerspectiveFactor(-viewPos.z) * pixelRatio;
 float lineWidthPixels = unpackedAttributes.lineWidthPixels * falloffFactor;
 float extensionLengthPixels = calculateExtensionLength(unpackedAttributes.extensionLengthPixels, lineLengthPixels) * falloffFactor;
-float lineAmplitudePixels = calculateLineAmplitude(unpackedAttributes) * uPixelRatio;
+float lineAmplitudePixels = calculateLineAmplitude(unpackedAttributes) * pixelRatio;
 vSizeFalloffFactor = falloffFactor;
 float lineWidthAndAmplitudePixels = lineWidthPixels + lineAmplitudePixels + lineAmplitudePixels;
 float extendedLineLengthPixels = lineLengthPixels + extensionLengthPixels + extensionLengthPixels;
@@ -33,9 +33,9 @@ float aaPaddedRoundedCapSizePixels = lineWidthPixels * 0.5 + aaPaddingPixels;
 float halfAAPaddedLineWidthAndAmplitudePixels = max(lineWidthAndAmplitudePixels, 1.0) * 0.5;
 float aaPaddedRoundedCapSizePixels = max(lineWidthPixels, 1.0) * 0.5;
 #endif
-vec2 halfAAPaddedLineWidthAndAmplitudeNDC = halfAAPaddedLineWidthAndAmplitudePixels * uPixelToNDC;
-vec2 aaPaddedRoundedCapSizeNDC = aaPaddedRoundedCapSizePixels * uPixelToNDC;
-vec2 extensionLengthNDC = extensionLengthPixels * uPixelToNDC;
+vec2 halfAAPaddedLineWidthAndAmplitudeNDC = halfAAPaddedLineWidthAndAmplitudePixels * pixelToNDC;
+vec2 aaPaddedRoundedCapSizeNDC = aaPaddedRoundedCapSizePixels * pixelToNDC;
+vec2 extensionLengthNDC = extensionLengthPixels * pixelToNDC;
 vec2 ndcOffset = (
 screenSpaceDirection * sideness.y * (aaPaddedRoundedCapSizeNDC + extensionLengthNDC)
 + perpendicularScreenSpaceDirection * halfAAPaddedLineWidthAndAmplitudeNDC
@@ -72,7 +72,7 @@ return;
 }
 calculateGeometricOutputs(viewPosV0, viewPosV1, worldPosV0, worldPosV1, worldNormal(), unpackedAttributes);
 calculateStyleOutputs(unpackedAttributes);
-}`),e.multipassTerrainEnabled&&(g.fragment.include(s.ReadLinearDepth),g.include(o.multipassTerrainTest,e)),g.fragment.code.add(n.glsl`
+}`),e.multipassTerrainEnabled&&(v.fragment.include(s.ReadLinearDepth),v.include(o.multipassTerrainTest,e)),v.fragment.code.add(t.glsl`
     vec2 lineWithCapsDistance(float radius, vec2 position, float lineLength) {
       float lineOffset = calculateLineOffset();
       float positionX = position.x - lineOffset;
@@ -114,4 +114,4 @@ calculateStyleOutputs(unpackedAttributes);
       gl_FragColor = vec4(vColor.rgb, alpha);
 
     }
-  `),g}const v=Object.freeze({__proto__:null,build:g});e.EdgeShaderProgram=v,e.build=g}));
+  `),v}const x=Object.freeze(Object.defineProperty({__proto__:null,build:v},Symbol.toStringTag,{value:"Module"}));e.EdgeShaderProgram=x,e.build=v}));

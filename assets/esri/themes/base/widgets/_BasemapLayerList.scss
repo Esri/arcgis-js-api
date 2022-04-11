@@ -144,8 +144,10 @@
     width: $side-spacing; // Matches side padding on items that don't have this toggle.
     cursor: pointer;
   }
-  .esri-basemap-layer-list__child-toggle [class*="esri-icon"] {
-    line-height: 1.2em;
+  .esri-basemap-layer-list__child-toggle {
+    @include icomoonIconSelector() {
+      line-height: 1.2em;
+    }
   }
   .esri-basemap-layer-list__child-toggle .esri-basemap-layer-list__child-toggle-icon--opened,
   .esri-basemap-layer-list__child-toggle .esri-basemap-layer-list__child-toggle-icon--closed-rtl,
@@ -210,9 +212,10 @@
     animation: esri-fade-in-down 250ms ease-in-out;
     transform-origin: center top;
   }
-  .esri-basemap-layer-list__item-error-message [class^="esri-icon-"],
-  .esri-basemap-layer-list__item-error-message [class*="esri-icon-"] {
-    margin-right: 0.3rem;
+  .esri-basemap-layer-list__item-error-message {
+    @include icomoonIconSelector() {
+      margin-right: 0.3rem;
+    }
   }
   .esri-basemap-layer-list__item--error {
     .esri-basemap-layer-list__item-error-message {
@@ -233,12 +236,12 @@
   }
   .esri-basemap-layer-list__item-actions-menu-item {
     display: flex;
-    flex: 1 0 floor($font-size * 1.5);
+    flex: 1 0 auto;
     justify-content: center;
     align-items: center;
     color: $interactive-font-color;
     cursor: pointer;
-    padding: 0 $side-spacing--quarter;
+    padding: 0 $side-spacing--half;
     transition: border-color 250ms ease-in-out;
   }
   .esri-basemap-layer-list__item-actions-menu-item:first-of-type {
@@ -297,6 +300,7 @@
     cursor: pointer;
     font-size: $font-size--small;
     width: 100%;
+    box-sizing: border-box;
     margin: 0;
     padding: $cap-spacing--half $side-spacing;
     opacity: 1;
@@ -427,12 +431,12 @@
     .esri-basemap-layer-list__item:after {
       animation: looping-progresss-bar-ani $looping-progress-bar-params reverse;
     }
-    .esri-basemap-layer-list__item-error-message [class^="esri-icon-"],
-    .esri-basemap-layer-list__item-error-message [class*="esri-icon-"] {
-      margin-right: 0;
-      margin-left: 0.3rem;
+    .esri-basemap-layer-list__item-error-message {
+      @include icomoonIconSelector() {
+        margin-right: 0;
+        margin-left: 0.3rem;
+      }
     }
-
     .esri-basemap-layer-list__item--selectable .esri-basemap-layer-list__item-container {
       border-left: none;
       border-right: $border-size--active solid transparent;

@@ -1,9 +1,9 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","./calcite-action2"],(function(e,t){"use strict";
+define(["exports","./action"],(function(e,t){"use strict";
 /*!
 	 * All material copyright ESRI, All Rights Reserved, unless otherwise specified.
 	 * See https://github.com/Esri/calcite-components/blob/master/LICENSE.md for details.
-	 */const i=t.CalciteAction,n=t.defineCustomElement;e.CalciteAction=i,e.defineCustomElement=n}));
+	 */const n=t.Action,o=t.defineCustomElement;e.CalciteAction=n,e.defineCustomElement=o,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

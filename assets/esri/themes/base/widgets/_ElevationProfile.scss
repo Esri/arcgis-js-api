@@ -249,6 +249,7 @@
       border: $popover-border;
       background-color: $popover-background-color;
       gap: $cap-spacing;
+      cursor: pointer;
     }
 
     &__select {
@@ -388,11 +389,13 @@
     }
 
     &__slope-value {
-      > [class^="esri-icon"] {
-        font-size: $statistics-font-size; // Keep the icon small.
+      > {
+        @include icomoonIconSelector() {
+          font-size: $statistics-font-size; // Keep the icon small.
 
-        &:not(:first-child) {
-          margin-inline-start: $statistics-slope-values-spacing;
+          &:not(:first-child) {
+            margin-inline-start: $statistics-slope-values-spacing;
+          }
         }
       }
     }

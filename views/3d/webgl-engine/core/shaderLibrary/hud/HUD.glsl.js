@@ -1,14 +1,14 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","../util/ScreenSizePerspective.glsl","../../shaderModules/interfaces"],(function(e,t,o){"use strict";function a(e,a){const i=e;i.include(t.ScreenSizePerspective),i.attributes.add("position","vec3"),i.attributes.add("normal","vec3"),i.attributes.add("auxpos1","vec4"),i.vertex.uniforms.add("proj","mat4"),i.vertex.uniforms.add("view","mat4"),i.vertex.uniforms.add("viewNormal","mat4"),i.vertex.uniforms.add("viewport","vec4"),i.vertex.uniforms.add("camPos","vec3"),i.vertex.uniforms.add("polygonOffset","float"),i.vertex.uniforms.add("cameraGroundRelative","float"),i.vertex.uniforms.add("pixelRatio","float"),i.vertex.uniforms.add("perDistancePixelRatio","float"),i.vertex.uniforms.add("uRenderTransparentlyOccludedHUD","float"),a.verticalOffsetEnabled&&i.vertex.uniforms.add("verticalOffset","vec4"),a.screenSizePerspectiveEnabled&&i.vertex.uniforms.add("screenSizePerspectiveAlignment","vec4"),i.vertex.uniforms.add("hudVisibilityTexture","sampler2D"),i.vertex.constants.add("smallOffsetAngle","float",.984807753012208),i.vertex.code.add(o.glsl`struct ProjectHUDAux {
+define(["exports","./HUDUniforms","../util/ScreenSizePerspective.glsl","../../shaderModules/interfaces","../../../lib/VertexAttribute"],(function(e,t,o,a,r){"use strict";var i;function n(t,i){const n=t;n.include(o.ScreenSizePerspective),n.attributes.add(r.VertexAttribute.POSITION,"vec3"),n.attributes.add(r.VertexAttribute.NORMAL,"vec3"),n.attributes.add(r.VertexAttribute.AUXPOS1,"vec4"),n.vertex.uniforms.add("proj","mat4"),n.vertex.uniforms.add("view","mat4"),n.vertex.uniforms.add("viewNormal","mat4"),n.vertex.uniforms.add("viewport","vec4"),n.vertex.uniforms.add("cameraPosition","vec3"),n.vertex.uniforms.add("polygonOffset","float"),n.vertex.uniforms.add("cameraGroundRelative","float"),n.vertex.uniforms.add("pixelRatio","float"),n.vertex.uniforms.add("perDistancePixelRatio","float"),n.vertex.uniforms.add("renderTransparentlyOccludedHUD","float"),i.verticalOffsetEnabled&&n.vertex.uniforms.add("verticalOffset","vec4"),i.screenSizePerspectiveEnabled&&n.vertex.uniforms.add("screenSizePerspectiveAlignment","vec4"),n.vertex.uniforms.add("hudVisibilityTexture","sampler2D"),n.vertex.constants.add("smallOffsetAngle","float",.984807753012208),n.vertex.code.add(a.glsl`struct ProjectHUDAux {
 vec3 posModel;
 vec3 posView;
 vec3 vnormal;
 float distanceToCamera;
 float absCosAngle;
-};`),i.vertex.code.add(o.glsl`float applyHUDViewDependentPolygonOffset(float pointGroundDistance, float absCosAngle, inout vec3 posView) {
+};`),n.vertex.code.add(a.glsl`float applyHUDViewDependentPolygonOffset(float pointGroundDistance, float absCosAngle, inout vec3 posView) {
 float pointGroundSign = sign(pointGroundDistance);
 if (pointGroundSign == 0.0) {
 pointGroundSign = cameraGroundRelative;
@@ -26,14 +26,14 @@ posView /= factor;
 }
 }
 return groundRelative;
-}`),a.isDraped||i.vertex.code.add(o.glsl`void applyHUDVerticalGroundOffset(vec3 normalModel, inout vec3 posModel, inout vec3 posView) {
+}`),i.isDraped||n.vertex.code.add(a.glsl`void applyHUDVerticalGroundOffset(vec3 normalModel, inout vec3 posModel, inout vec3 posView) {
 float distanceToCamera = length(posView);
 float pixelOffset = distanceToCamera * perDistancePixelRatio * 0.5;
 vec3 modelOffset = normalModel * cameraGroundRelative * pixelOffset;
 vec3 viewOffset = (viewNormal * vec4(modelOffset, 1.0)).xyz;
 posModel += modelOffset;
 posView += viewOffset;
-}`),i.vertex.code.add(o.glsl`
+}`),n.vertex.code.add(a.glsl`
     vec4 projectPositionHUD(out ProjectHUDAux aux) {
       // centerOffset is in view space and is used to implement world size offsetting
       // of labels with respect to objects. It also pulls the label towards the viewer
@@ -48,7 +48,7 @@ posView += viewOffset;
       aux.posModel = position;
       aux.posView = (view * vec4(aux.posModel, 1.0)).xyz;
       aux.vnormal = normal;
-      ${a.isDraped?"":"applyHUDVerticalGroundOffset(aux.vnormal, aux.posModel, aux.posView);"}
+      ${i.isDraped?"":"applyHUDVerticalGroundOffset(aux.vnormal, aux.posModel, aux.posView);"}
 
       // Screen sized offset in world space, used for example for line callouts
       // Note: keep this implementation in sync with the CPU implementation, see
@@ -57,16 +57,16 @@ posView += viewOffset;
 
       aux.distanceToCamera = length(aux.posView);
 
-      vec3 viewDirObjSpace = normalize(camPos - aux.posModel);
+      vec3 viewDirObjSpace = normalize(cameraPosition - aux.posModel);
       float cosAngle = dot(aux.vnormal, viewDirObjSpace);
 
       aux.absCosAngle = abs(cosAngle);
 
-      ${a.screenSizePerspectiveEnabled&&(a.verticalOffsetEnabled||1===a.screenCenterOffsetUnitsEnabled)?"vec4 perspectiveFactor = screenSizePerspectiveScaleFactor(aux.absCosAngle, aux.distanceToCamera, screenSizePerspectiveAlignment);":""}
+      ${i.screenSizePerspectiveEnabled&&(i.verticalOffsetEnabled||i.screenCenterOffsetUnitsEnabled===e.HUDSpace.Screen)?"vec4 perspectiveFactor = screenSizePerspectiveScaleFactor(aux.absCosAngle, aux.distanceToCamera, screenSizePerspectiveAlignment);":""}
 
-      ${a.verticalOffsetEnabled?a.screenSizePerspectiveEnabled?"float verticalOffsetScreenHeight = applyScreenSizePerspectiveScaleFactorFloat(verticalOffset.x, perspectiveFactor);":"float verticalOffsetScreenHeight = verticalOffset.x;":""}
+      ${i.verticalOffsetEnabled?i.screenSizePerspectiveEnabled?"float verticalOffsetScreenHeight = applyScreenSizePerspectiveScaleFactorFloat(verticalOffset.x, perspectiveFactor);":"float verticalOffsetScreenHeight = verticalOffset.x;":""}
 
-      ${a.verticalOffsetEnabled?o.glsl`
+      ${i.verticalOffsetEnabled?a.glsl`
             float worldOffset = clamp(verticalOffsetScreenHeight * verticalOffset.y * aux.distanceToCamera, verticalOffset.z, verticalOffset.w);
             vec3 modelOffset = aux.vnormal * worldOffset;
             aux.posModel += modelOffset;
@@ -78,7 +78,7 @@ posView += viewOffset;
 
       float groundRelative = applyHUDViewDependentPolygonOffset(pointGroundDistance, aux.absCosAngle, aux.posView);
 
-      ${1!==a.screenCenterOffsetUnitsEnabled?o.glsl`
+      ${i.screenCenterOffsetUnitsEnabled!==e.HUDSpace.Screen?a.glsl`
             // Apply x/y in view space, but z in screen space (i.e. along posView direction)
             aux.posView += vec3(centerOffset.x, centerOffset.y, 0.0);
 
@@ -91,19 +91,19 @@ posView += viewOffset;
 
       vec4 posProj = proj * vec4(aux.posView, 1.0);
 
-      ${1===a.screenCenterOffsetUnitsEnabled?a.screenSizePerspectiveEnabled?"float centerOffsetY = applyScreenSizePerspectiveScaleFactorFloat(centerOffset.y, perspectiveFactor);":"float centerOffsetY = centerOffset.y;":""}
+      ${i.screenCenterOffsetUnitsEnabled===e.HUDSpace.Screen?i.screenSizePerspectiveEnabled?"float centerOffsetY = applyScreenSizePerspectiveScaleFactorFloat(centerOffset.y, perspectiveFactor);":"float centerOffsetY = centerOffset.y;":""}
 
-      ${1===a.screenCenterOffsetUnitsEnabled?"posProj.xy += vec2(centerOffset.x, centerOffsetY) * pixelRatio * 2.0 / viewport.zw * posProj.w;":""}
+      ${i.screenCenterOffsetUnitsEnabled===e.HUDSpace.Screen?"posProj.xy += vec2(centerOffset.x, centerOffsetY) * pixelRatio * 2.0 / viewport.zw * posProj.w;":""}
 
       // constant part of polygon offset emulation
       posProj.z -= groundRelative * polygonOffset * posProj.w;
       return posProj;
     }
-  `),i.vertex.code.add(o.glsl`bool testVisibilityHUD(vec4 posProj) {
+  `),n.vertex.code.add(a.glsl`bool testVisibilityHUD(vec4 posProj) {
 vec4 posProjCenter = alignToPixelCenter(posProj, viewport.zw);
 vec4 occlusionPixel = texture2D(hudVisibilityTexture, .5 + .5 * posProjCenter.xy / posProjCenter.w);
-if (uRenderTransparentlyOccludedHUD > 0.5) {
-return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g * uRenderTransparentlyOccludedHUD < 1.0;
+if (renderTransparentlyOccludedHUD > 0.5) {
+return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g * renderTransparentlyOccludedHUD < 1.0;
 }
 return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g == 1.0;
-}`)}function i(e,t){e.setUniform1f("uRenderTransparentlyOccludedHUD",0===t.renderTransparentlyOccludedHUD?1:1===t.renderTransparentlyOccludedHUD?0:.75)}e.HUD=a,e.bindHUDUniforms=i,Object.defineProperty(e,"__esModule",{value:!0})}));
+}`)}function s(e,o){e.setUniform1f("renderTransparentlyOccludedHUD",o.renderTransparentlyOccludedHUD===t.HUDTransparentRenderStyle.OCCLUDED?1:o.renderTransparentlyOccludedHUD===t.HUDTransparentRenderStyle.NOTOCCLUDED?0:.75)}e.HUDSpace=void 0,(i=e.HUDSpace||(e.HUDSpace={}))[i.World=0]="World",i[i.Screen=1]="Screen",i[i.COUNT=2]="COUNT",e.HUD=n,e.bindHUDUniforms=s,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

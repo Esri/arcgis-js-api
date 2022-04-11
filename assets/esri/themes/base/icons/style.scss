@@ -1,5 +1,15 @@
 @import "variables";
 
+$icomoon-selectors: '[class^="esri-icon-"]', '[class*=" esri-icon-"]';
+
+@mixin icomoonIconSelector($selectorPrefix:"", $selectorSuffix:"") {
+  @each $icomoon-selector in $icomoon-selectors {
+    #{$selectorPrefix}#{$icomoon-selector}#{$selectorSuffix} {
+      @content;
+    }
+  }
+}
+
 @font-face {
   font-family: "#{$icomoon-font-family}";
   src: url("#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?#{$icomoon-font-version}")
@@ -12,8 +22,7 @@
   font-style: normal;
 }
 
-[class^="esri-icon-"],
-[class*=" esri-icon-"] {
+@include icomoonIconSelector() {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "#{$icomoon-font-family}" !important;
   speak: none;
@@ -1146,6 +1155,12 @@
 .esri-icon-measure-building-height-shadow {
   &:before {
     content: unicode($esri-icon-measure-building-height-shadow);
+    color: $fill-color;
+  }
+}
+.esri-icon-partly-cloudy {
+  &:before {
+    content: unicode($esri-icon-partly-cloudy);
     color: $fill-color;
   }
 }

@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["exports"],(function(t){"use strict";var o,s,e;t.EditableFlag=void 0,(o=t.EditableFlag||(t.EditableFlag={}))[o.USER=0]="USER",o[o.MANAGER=1]="MANAGER",t.ManipulatorStateFlags=void 0,(s=t.ManipulatorStateFlags||(t.ManipulatorStateFlags={}))[s.None=0]="None",s[s.Unfocused=1]="Unfocused",s[s.Focused=2]="Focused",s[s.Unselected=4]="Unselected",s[s.Selected=8]="Selected",s[s.All=15]="All",t.ManipulatorStateCustomFlags=void 0,(e=t.ManipulatorStateCustomFlags||(t.ManipulatorStateCustomFlags={}))[e.None=0]="None",e[e.Custom1=16]="Custom1",e[e.Custom2=32]="Custom2",e[e.Custom3=64]="Custom3",e[e.Custom4=128]="Custom4",e[e.Custom5=256]="Custom5",e[e.Custom6=512]="Custom6",e[e.Custom7=1024]="Custom7",e[e.Custom8=2048]="Custom8",e[e.Custom9=4096]="Custom9",e[e.Custom10=8192]="Custom10",e[e.Custom11=16384]="Custom11",e[e.Custom12=32768]="Custom12",e[e.All=65520]="All",Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
 define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometryTest.glsl","../util/RgbaFloatEncoding.glsl","../../shaderModules/interfaces"],(function(e,t,r,o,a){"use strict";function i(e,i){i.multipassGeometryEnabled&&e.vertex.include(r.multipassGeometryTest),i.multipassTerrainEnabled&&e.varyings.add("depth","float"),e.vertex.code.add(a.glsl`
   void main(void) {
@@ -33,7 +33,7 @@ define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometry
     gl_Position = posProjCenter;
     gl_PointSize = 1.0;
   }
-  `),i.multipassTerrainEnabled&&e.fragment.include(t.ReadLinearDepth),e.fragment.uniforms.add("terrainDepthTexture","sampler2D"),e.fragment.uniforms.add("cameraNearFar","vec2"),e.fragment.uniforms.add("inverseViewport","vec2"),e.fragment.include(o.RgbaFloatEncoding),e.fragment.code.add(a.glsl`
+  `),i.multipassTerrainEnabled&&e.fragment.include(t.ReadLinearDepth),e.fragment.uniforms.add("terrainDepthTexture","sampler2D"),e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("inverseViewport","vec2"),e.fragment.include(o.RgbaFloatEncoding),e.fragment.code.add(a.glsl`
   void main() {
     gl_FragColor = vec4(1, 1, 1, 1);
     ${i.multipassTerrainEnabled?a.glsl`
@@ -43,7 +43,7 @@ define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometry
           //Read the rgba data from the texture linear depth
           vec4 terrainDepthData = texture2D(terrainDepthTexture, uv);
 
-          float terrainDepth = linearDepthFromFloat(rgba2float(terrainDepthData), cameraNearFar);
+          float terrainDepth = linearDepthFromFloat(rgba2float(terrainDepthData), nearFar);
 
           //If HUD vertex is behind terrain and the terrain depth is not the initialize value (e.g. we are not looking at the sky)
           //Mark the HUD vertex as occluded by transparent terrain
@@ -51,4 +51,4 @@ define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometry
             gl_FragColor.g = 0.5;
           }`:""}
   }
-  `)}e.HUDOcclusionPass=i,Object.defineProperty(e,"__esModule",{value:!0})}));
+  `)}e.HUDOcclusionPass=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Accessor","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(e,t,r,o,s,c,i,n){"use strict";let a=function(t){function r(){return t.apply(this,arguments)||this}return e._inheritsLoose(r,t),e._createClass(r,[{key:"canZoomIn",get:function(){if(!this.get("view.ready"))return!1;const e=this.get("view.animation.target.scale")||this.get("view.scale"),t=this.get("view.constraints.effectiveMaxScale");return 0===t||e>t}},{key:"canZoomOut",get:function(){if(!this.get("view.ready"))return!1;const e=this.get("view.animation.target.scale")||this.get("view.scale"),t=this.get("view.constraints.effectiveMinScale");return 0===t||e<t}}]),r}(r);t.__decorate([o.property({readOnly:!0})],a.prototype,"canZoomIn",null),t.__decorate([o.property({readOnly:!0})],a.prototype,"canZoomOut",null),t.__decorate([o.property()],a.prototype,"view",void 0),a=t.__decorate([n.subclass("esri.widgets.Zoom.ZoomConditions2D")],a);return a}));

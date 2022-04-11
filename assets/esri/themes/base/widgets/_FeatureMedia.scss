@@ -50,6 +50,10 @@
     img {
       max-width: 100%;
     }
+    img[src$=".SVG"],
+    img[src$=".svg"] {
+      width: 100%;
+    }
   }
   .esri-feature-media__chart {
     background-color: $background-color;

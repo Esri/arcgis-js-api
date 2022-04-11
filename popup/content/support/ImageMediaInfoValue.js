@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
 define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/JSONSupport","../../../core/accessorSupport/decorators/property","../../../core/arrayUtils","../../../core/has","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/subclass"],(function(r,e,o,t,s,c,n,p){"use strict";var u;let i=u=function(e){function o(r){var o;return(o=e.call(this,r)||this).linkURL=null,o.sourceURL=null,o}return r._inheritsLoose(o,e),o.prototype.clone=function(){return new u({linkURL:this.linkURL,sourceURL:this.sourceURL})},o}(o.JSONSupport);e.__decorate([t.property({type:String,json:{write:!0}})],i.prototype,"linkURL",void 0),e.__decorate([t.property({type:String,json:{write:!0}})],i.prototype,"sourceURL",void 0),i=u=e.__decorate([p.subclass("esri.popup.content.support.ImageMediaInfoValue")],i);return i}));

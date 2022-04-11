@@ -1,21 +1,21 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","./ColorConversion.glsl","../../shaderModules/interfaces"],(function(e,t,i){"use strict";function r(e){e.include(t.ColorConversion),e.code.add(i.glsl`
+define(["exports","../../../../layers/support/symbolColorUtils","./ColorConversion.glsl","../../shaderModules/interfaces"],(function(e,t,i,l){"use strict";function r(e){e.include(i.ColorConversion),e.code.add(l.glsl`
     vec3 mixExternalColor(vec3 internalColor, vec3 textureColor, vec3 externalColor, int mode) {
       // workaround for artifacts in OSX using Intel Iris Pro
       // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/10475
       vec3 internalMixed = internalColor * textureColor;
       vec3 allMixed = internalMixed * externalColor;
 
-      if (mode == ${i.glsl.int(1)}) {
+      if (mode == ${l.glsl.int(t.ColorMixModeEnum.Multiply)}) {
         return allMixed;
       }
-      else if (mode == ${i.glsl.int(2)}) {
+      else if (mode == ${l.glsl.int(t.ColorMixModeEnum.Ignore)}) {
         return internalMixed;
       }
-      else if (mode == ${i.glsl.int(3)}) {
+      else if (mode == ${l.glsl.int(t.ColorMixModeEnum.Replace)}) {
         return externalColor;
       }
       else {
@@ -33,10 +33,10 @@ define(["exports","./ColorConversion.glsl","../../shaderModules/interfaces"],(fu
       float internalMixed = internalOpacity * textureOpacity;
       float allMixed = internalMixed * externalOpacity;
 
-      if (mode == ${i.glsl.int(2)}) {
+      if (mode == ${l.glsl.int(t.ColorMixModeEnum.Ignore)}) {
         return internalMixed;
       }
-      else if (mode == ${i.glsl.int(3)}) {
+      else if (mode == ${l.glsl.int(t.ColorMixModeEnum.Replace)}) {
         return externalOpacity;
       }
       else {
@@ -44,4 +44,4 @@ define(["exports","./ColorConversion.glsl","../../shaderModules/interfaces"],(fu
         return allMixed;
       }
     }
-  `)}e.MixExternalColor=r,Object.defineProperty(e,"__esModule",{value:!0})}));
+  `)}e.MixExternalColor=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

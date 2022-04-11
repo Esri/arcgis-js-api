@@ -1,14 +1,14 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderLibrary/attributes/TextureCoordinateAttribute.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/Gamma.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,t,a,r,i,l){"use strict";function o(e){const o=new l.ShaderBuilder;return o.attributes.add("position","vec2"),o.include(t.TextureCoordinateAttribute,{attributeTextureCoordinates:1}),o.varyings.add("worldRay","vec3"),o.varyings.add("eyeDir","vec3"),o.vertex.uniforms.add("projectionInverse","mat4"),o.vertex.uniforms.add("viewInverse","mat4"),o.vertex.code.add(i.glsl`void main(void) {
-vec3 posViewNear = (projectionInverse * vec4(position, -1, 1)).xyz;
+define(["exports","../views/3d/webgl-engine/core/shaderLibrary/attributes/TextureCoordinateAttribute.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/Gamma.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,t,a,r,i,l,o){"use strict";function n(e){const n=new l.ShaderBuilder;return n.attributes.add(o.VertexAttribute.POSITION,"vec2"),n.include(t.TextureCoordinateAttribute,{attributeTextureCoordinates:t.TextureCoordinateAttributeType.Default}),n.varyings.add("worldRay","vec3"),n.varyings.add("eyeDir","vec3"),n.vertex.uniforms.add("inverseProjectionMatrix","mat4"),n.vertex.uniforms.add("inverseViewMatrix","mat4"),n.vertex.code.add(i.glsl`void main(void) {
+vec3 posViewNear = (inverseProjectionMatrix * vec4(position, -1, 1)).xyz;
 eyeDir = posViewNear;
-worldRay = (viewInverse * vec4(posViewNear, 0)).xyz;
+worldRay = (inverseViewMatrix * vec4(posViewNear, 0)).xyz;
 forwardTextureCoordinates();
 gl_Position = vec4(position, 1, 1);
-}`),o.fragment.uniforms.add("lightingMainDirection","vec3").add("radii","vec2").add("scaleHeight","float").add("cameraPosition","vec3").add("nearFar","vec2").add("heightParameters","vec4").add("innerFadeDistance","float").add("altitudeFade","float").add("depthTex","sampler2D").add("betaRayleigh","vec3").add("betaCombined","vec3").add("betaMie","float").add("hazeStrength","float"),o.include(r.Gamma),e.haze&&o.fragment.include(a.ReadLinearDepth),o.fragment.code.add(i.glsl`vec2 sphereIntersect(vec3 start, vec3 dir, float radius, bool planet) {
+}`),n.fragment.uniforms.add("lightingMainDirection","vec3").add("radii","vec2").add("scaleHeight","float").add("cameraPosition","vec3").add("nearFar","vec2").add("heightParameters","vec4").add("innerFadeDistance","float").add("altitudeFade","float").add("depthTex","sampler2D").add("betaRayleigh","vec3").add("betaCombined","vec3").add("betaMie","float").add("hazeStrength","float"),n.include(r.Gamma),e.haze&&n.fragment.include(a.ReadLinearDepth),n.fragment.code.add(i.glsl`vec2 sphereIntersect(vec3 start, vec3 dir, float radius, bool planet) {
 float a = dot(dir, dir);
 float b = 2.0 * dot(dir, start);
 float c = planet ? heightParameters[1] - radius * radius : heightParameters[2];
@@ -17,7 +17,7 @@ if (d < 0.0) {
 return vec2(1e5, -1e5);
 }
 return vec2((-b - sqrt(d)) / (2.0 * a), (-b + sqrt(d)) / (2.0 * a));
-}`),o.fragment.code.add(i.glsl`float chapmanApproximation(float X, float h, float cosZenith) {
+}`),n.fragment.code.add(i.glsl`float chapmanApproximation(float X, float h, float cosZenith) {
 float c = sqrt(X + h);
 float cExpH = c * exp(-h);
 if (cosZenith >= 0.0) {
@@ -27,9 +27,9 @@ float x0 = sqrt(1.0 - cosZenith * cosZenith) * (X + h);
 float c0 = sqrt(x0);
 return 2.0 * c0 * exp(X - x0) - cExpH / (1.0 - c * cosZenith);
 }
-}`),o.fragment.code.add(i.glsl`float getOpticalDepth(vec3 position, vec3 dir, float h) {
+}`),n.fragment.code.add(i.glsl`float getOpticalDepth(vec3 position, vec3 dir, float h) {
 return scaleHeight * chapmanApproximation(radii[0] / scaleHeight, h, dot(normalize(position), dir));
-}`),o.fragment.code.add(i.glsl`
+}`),n.fragment.code.add(i.glsl`
     const int STEPS = 6;
 
     float getGlow(float dist, float radius, float intensity) {
@@ -161,4 +161,4 @@ return scaleHeight * chapmanApproximation(radii[0] / scaleHeight, h, dot(normali
             gl_FragColor = applyUndergroundAtmosphere(rayDir, lightingMainDirection, gl_FragColor);
           }`}
     }
-  `),o}const s=Object.freeze({__proto__:null,build:o});e.ChapmanAtmosphereShader=s,e.build=o}));
+  `),n}const s=Object.freeze(Object.defineProperty({__proto__:null,build:n},Symbol.toStringTag,{value:"Module"}));e.ChapmanAtmosphereShader=s,e.build=n}));

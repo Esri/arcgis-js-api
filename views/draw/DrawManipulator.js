@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","../../core/Evented"],(function(t,e){"use strict";let n=function(){function t({grabbableForEvent:t}){this.events=new e,this.interactive=!0,this.selectable=!1,this.cursor=null,this.grabbable=!0,this.grabbableForEvent=t}var n=t.prototype;return n.intersectionDistance=function(t,e){return 0},n.attach=function(){},n.detach=function(){},t}();t.DrawManipulator=n,Object.defineProperty(t,"__esModule",{value:!0})}));
+define(["exports","../../core/Evented"],(function(e,t){"use strict";let n=function(){function e({grabbableForEvent:e}){this.events=new t,this.interactive=!0,this.selectable=!1,this.cursor=null,this.grabbable=!0,this.grabbableForEvent=e}var n=e.prototype;return n.intersectionDistance=function(e,t){return 0},n.attach=function(){},n.detach=function(){},e}();e.DrawManipulator=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

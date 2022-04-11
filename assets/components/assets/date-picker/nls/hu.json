@@ -1,0 +1,32 @@
+{
+  "default-calendar": "gregorian",
+  "separator": ".",
+  "unitOrder": "YYYY. MM. DD.",
+  "weekStart": 1,
+  "placeholder": "YYYY. MM. DD.",
+  "days": {
+    "abbreviated": ["V", "H", "K", "Sze", "Cs", "P", "Szo"],
+    "narrow": ["V", "H", "K", "Sz", "Cs", "P", "Sz"],
+    "short": ["V", "H", "K", "Sze", "Cs", "P", "Szo"],
+    "wide": ["vasárnap", "hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat"]
+  },
+  "numerals": "0123456789",
+  "months": {
+    "abbreviated": ["jan.", "febr.", "márc.", "ápr.", "máj.", "jún.", "júl.", "aug.", "szept.", "okt.", "nov.", "dec."],
+    "narrow": ["J", "F", "M", "Á", "M", "J", "J", "A", "Sz", "O", "N", "D"],
+    "wide": [
+      "január",
+      "február",
+      "március",
+      "április",
+      "május",
+      "június",
+      "július",
+      "augusztus",
+      "szeptember",
+      "október",
+      "november",
+      "december"
+    ]
+  }
+}

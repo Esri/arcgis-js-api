@@ -302,8 +302,10 @@
     > .esri-popup__action-toggle {
       flex: 0 1 auto;
     }
-    .esri-popup__icon,
-    [class*="esri-icon"] {
+    .esri-popup__icon {
+      margin: 0 $side-spacing--quarter;
+    }
+    @include icomoonIconSelector() {
       margin: 0 $side-spacing--quarter;
     }
   }

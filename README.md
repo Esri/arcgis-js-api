@@ -2,9 +2,11 @@
 
 A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) AMD modules.
 
+If you are starting a new project, we recommend using [@arcgis/core](https://www.npmjs.com/package/@arcgis/core) ES modules. 
+
 ## Features
 
-You can install these modules via [npm](https://npmjs.org/) and create your own custom builds, for example, with [Webpack](https://webpackjs.org), [RequireJS](https://requirejs.org/) or the [Dojo Toolkit](https://dojotoolkit.org/).
+You can install these modules via [npm](https://npmjs.org/) and create your own custom builds, for example you can use [RequireJS](https://requirejs.org/) or the [Dojo Toolkit](https://dojotoolkit.org/).
 
 ## Instructions
 

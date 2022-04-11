@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","../../Color","../../core/lang","./support/colors","./support/symbologyUtils","./support/utils","../../chunks/relationship"],(function(e,t,o,s,c,l,r){"use strict";e.cloneScheme=r.cloneScheme,e.flatten2DArray=r.flatten2DArray,e.flipColors=r.flipColors,e.getColors=r.getColors,e.getMatchingSchemes=r.getMatchingSchemes,e.getSchemeByName=r.getSchemeByName,e.getSchemes=r.getSchemes,e.getSchemesByTag=r.getSchemesByTag,e.getThemes=r.getThemes,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../Color","../../core/lang","./support/colors","./support/symbologyUtils","./support/utils","../../chunks/relationship"],(function(e,t,o,s,l,c,g){"use strict";e.cloneScheme=g.cloneScheme,e.flatten2DArray=g.flatten2DArray,e.flipColors=g.flipColors,e.getColors=g.getColors,e.getMatchingSchemes=g.getMatchingSchemes,e.getSchemeByName=g.getSchemeByName,e.getSchemes=g.getSchemes,e.getSchemesByTag=g.getSchemesByTag,e.getThemes=g.getThemes,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

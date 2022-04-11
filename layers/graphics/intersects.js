@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","./contains"],(function(n,t){"use strict";function o(n,o,e,r){return t.polygonContainsPoint(n,o,e,r)}function e(n,o,e,i,s,u){const c=r(s,u),{coords:l,lengths:f}=i;for(let r=0,p=0;r<f.length;r++,p+=c)if(t.polygonContainsCoords(n,o,e,l[p],l[p+1]))return!0;return!1}function r(n,t){return n?t?4:3:t?3:2}n.polygonIntersectsMultipoint=e,n.polygonIntersectsPoint=o,Object.defineProperty(n,"__esModule",{value:!0})}));
+define(["exports","./contains"],(function(n,o){"use strict";function t(n,t,e,r){return o.polygonContainsPoint(n,t,e,r)}function e(n,t,e,i,s,u){const l=r(s,u),{coords:c,lengths:f}=i;for(let r=0,g=0;r<f.length;r++,g+=l)if(o.polygonContainsCoords(n,t,e,c[g],c[g+1]))return!0;return!1}function r(n,o){return n?o?4:3:o?3:2}n.polygonIntersectsMultipoint=e,n.polygonIntersectsPoint=t,Object.defineProperties(n,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

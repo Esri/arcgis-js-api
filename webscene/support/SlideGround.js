@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../Ground","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass","../../webdoc/support/opacityUtils"],(function(r,e,t,o,c,n,p,s,a,i){"use strict";var u;let y=u=function(e){function o(){var r;return(r=e.apply(this,arguments)||this).opacity=null,r}r._inheritsLoose(o,e);var c=o.prototype;return c.clone=function(){return new u({opacity:this.opacity})},c.cloneAndApplyTo=function(r){return null==this.opacity||((r=null!=r?r.clone():new t).opacity=this.opacity),r},o.fromGround=function(r){return new u({opacity:r.opacity})},o}(o.JSONSupport);e.__decorate([c.property({type:Number,json:{type:s.Integer,read:{reader:i.transparencyToOpacity,source:"transparency"},write:{writer:(r,e)=>{e.transparency=i.opacityToTransparency(r)},target:"transparency"}}})],y.prototype,"opacity",void 0),y=u=e.__decorate([a.subclass("esri.webscene.support.SlideGround")],y);return y}));

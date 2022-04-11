@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
-*/
-define(["../../../../../chunks/_rollupPluginBabelHelpers","../../../../../core/unitUtils"],(function(e,t){"use strict";return function(){function i(e=null){this.spatialReference=e}var r=i.prototype;return r.normalizeDistance=function(e){return e*this._metersPerDistanceUnit},r.normalizeElevation=function(e){return e*this._metersPerElevationUnit},r.normalizeArea=function(e){return e*this._squareMetersPerAreaUnit},r._updateNormalizationFactors=function(){this._metersPerDistanceUnit=t.getMetersPerUnitForSR(this._spatialReference,1),this._metersPerElevationUnit=t.getMetersPerUnitForSR(this._spatialReference,1),this._squareMetersPerAreaUnit=this._metersPerDistanceUnit*this._metersPerDistanceUnit},e._createClass(i,[{key:"spatialReference",get:function(){return this._spatialReference},set:function(e){e!==this._spatialReference&&(this._spatialReference=e,this._updateNormalizationFactors())}}]),i}()}));

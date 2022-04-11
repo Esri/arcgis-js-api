@@ -1,0 +1,32 @@
+{
+  "default-calendar": "gregorian",
+  "separator": ".",
+  "unitOrder": "DD.MM.YYYY",
+  "weekStart": 1,
+  "placeholder": "DD.MM.YYYY",
+  "days": {
+    "abbreviated": ["P", "E", "T", "K", "N", "R", "L"],
+    "narrow": ["P", "E", "T", "K", "N", "R", "L"],
+    "short": ["P", "E", "T", "K", "N", "R", "L"],
+    "wide": ["pühapäev", "esmaspäev", "teisipäev", "kolmapäev", "neljapäev", "reede", "laupäev"]
+  },
+  "numerals": "0123456789",
+  "months": {
+    "abbreviated": ["jaan", "veebr", "märts", "apr", "mai", "juuni", "juuli", "aug", "sept", "okt", "nov", "dets"],
+    "narrow": ["J", "V", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    "wide": [
+      "jaanuar",
+      "veebruar",
+      "märts",
+      "aprill",
+      "mai",
+      "juuni",
+      "juuli",
+      "august",
+      "september",
+      "oktoober",
+      "november",
+      "detsember"
+    ]
+  }
+}

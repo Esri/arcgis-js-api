@@ -13,6 +13,12 @@
       padding: 0;
     }
 
+    .esri-grid--no-column-menu {
+      .esri-column__menu-container {
+        display: none;
+      }
+    }
+
     .esri-grid__grid {
       height: 100%;
       width: 100%;

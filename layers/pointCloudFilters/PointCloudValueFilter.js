@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/lang","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","./PointCloudFilter"],(function(e,o,r,t,s,u,i,l){"use strict";var c;let n=c=function(o){function t(e){var r;return(r=o.call(this,e)||this).mode="exclude",r.type="value",r.values=[],r}return e._inheritsLoose(t,o),t.prototype.clone=function(){return new c({field:this.field,mode:this.mode,values:r.clone(this.values)})},t}(l);o.__decorate([t.property({type:["exclude","include"],json:{write:{enabled:!0,isRequired:!0}}})],n.prototype,"mode",void 0),o.__decorate([u.enumeration({pointCloudValueFilter:"value"})],n.prototype,"type",void 0),o.__decorate([t.property({type:[Number],json:{write:{enabled:!0,isRequired:!0}}})],n.prototype,"values",void 0),n=c=o.__decorate([i.subclass("esri.layers.pointCloudFilters.PointCloudValueFilter")],n);return n}));

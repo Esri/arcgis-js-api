@@ -1,0 +1,32 @@
+{
+  "default-calendar": "gregorian",
+  "separator": ".",
+  "unitOrder": "DD.MM.YYYY",
+  "weekStart": 1,
+  "placeholder": "DD.MM.YYYY",
+  "days": {
+    "abbreviated": ["søn.", "man.", "tir.", "ons.", "tor.", "fre.", "lør."],
+    "narrow": ["S", "M", "T", "O", "T", "F", "L"],
+    "short": ["sø.", "ma.", "ti.", "on.", "to.", "fr.", "lø."],
+    "wide": ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"]
+  },
+  "numerals": "0123456789",
+  "months": {
+    "abbreviated": ["jan", "feb", "mar", "apr", "mai", "jun", "jul", "aug", "sep", "okt", "nov", "des"],
+    "narrow": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    "wide": [
+      "januar",
+      "februar",
+      "mars",
+      "april",
+      "mai",
+      "juni",
+      "juli",
+      "august",
+      "september",
+      "oktober",
+      "november",
+      "desember"
+    ]
+  }
+}

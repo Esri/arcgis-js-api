@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["require","exports","../../chunks/_rollupPluginBabelHelpers","../../core/promiseUtils","../../geometry/projection"],(function(e,t,r,n,o){"use strict";let i,l=null;function u(e){return c.apply(this,arguments)}function c(){return(c=r._asyncToGenerator((function*(t){l||(l=new Promise(((t,r)=>e(["../../portal/support/geometryServiceUtils"],t,r))).then((e=>i=e))),yield l,n.throwIfAborted(t)}))).apply(this,arguments)}function s(e,t,r,n){return p.apply(this,arguments)}function p(){return(p=r._asyncToGenerator((function*(e,t,r,n){if(!e)return null;const l=e.spatialReference;return o.isLoaded()||o.canProjectWithoutEngine(l,t)?o.project(e,t):i?i.projectGeometry(e,t,r,n):(yield Promise.race([u(n),o.load(n)]),s(e,t,r,n))}))).apply(this,arguments)}t.projectWithEngineOrService=s,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,8 +1,9 @@
 @mixin featureForm() {
   $group-border-width: 3px;
+  $panel-background-color: var(--calcite-ui-background);
 
   .esri-feature-form {
-    background-color: $background-color--offset;
+    background-color: $panel-background-color;
     padding: $cap-spacing $side-spacing;
   }
 
@@ -61,7 +62,7 @@
     top: 28px;
     inset-inline-end: 4px;
     color: $font-color--error;
-    background-color: $background-color;
+    background-color: $panel-background-color;
   }
 
   .esri-feature-form__input:focus + .esri-feature-form__input-icon--invalid {

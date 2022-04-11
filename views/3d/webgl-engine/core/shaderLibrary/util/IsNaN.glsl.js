@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(e,a){"use strict";function l(e){const l=a.glsl`bool isNaN( float val )
+define(["exports","../../shaderModules/interfaces"],(function(e,l){"use strict";function a(e){const a=l.glsl`bool isNaN( float val )
 {
 return ( val < 0.0 || 0.0 < val || val == 0.0 ) ? false : true;
-}`;e.code.add(l)}e.IsNaN=l,Object.defineProperty(e,"__esModule",{value:!0})}));
+}`;e.code.add(a)}e.IsNaN=a,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
