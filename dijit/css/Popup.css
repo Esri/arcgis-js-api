@@ -346,6 +346,10 @@
 .esriViewPopup .header {
   font-weight: bold;
 }
+.esriViewPopup figure {
+  margin: 0;
+  padding: 0;
+}
 
 .esriViewPopup .esriNumericValue {
   direction: ltr;

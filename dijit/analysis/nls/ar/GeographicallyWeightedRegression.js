@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({chooseLayer:"اختر طبقة لتحليلها",chooseField:"اختيار حقل لنمذجته",chooseExplanatoryField:"اختيار الحقول التوضيحية",chooseNeighborhood:"اختيار كيفية تحديد الجوار",distanceBand:"نطاق المسافة",numNeighbors:"عدد الجوار",chooseWeighted:"اختيار كيفية ترجيح معالم الجوار",bisquare:"بايسكوير",gaussian:"غاوسي",resultLayerName:"اسم طبقة النتيجة",outputLayerName:"GWR ${inputLayerName}",distanceBandWarning:"يجب أن تكون قيمة نطاق المسافة بين ${min} و${max}",numNeighborsWarning:"يجب أن يكون عدد الجوار بين ${min} و${max}",explanatoryFieldsWarning:"اختر حقلاً توضيحيًا على الأقل",explanatoryLayerWarning:"لا تحتوي الطبقة المحددة على أي حقول توضيحية صالحة، يرجى اختيار طبقة مختلفة",inputLayerWarning:"لا تحتوي الطبقة المحددة على أي حقول رقمية لنمذجتها، يرجى اختيار طبقة مختلفة",itemDescription:'طبقة المعالم المُنشأة من تشغيل حلول "الانحدار المرجح جغرافيًا".',itemTags:"نتيجة التحليل، الانحدار المرجح جغرافيًا، ${inputLayerName}، يلائم",itemSnippet:'طبقة المعالم المُنشأة من أداة "الانحدار المرجح جغرافيًا"'});

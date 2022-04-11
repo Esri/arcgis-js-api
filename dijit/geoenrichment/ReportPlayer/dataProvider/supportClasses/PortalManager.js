@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define(["dojo/Deferred","dojo/on","esri/dijit/geoenrichment/when","esri/arcgis/Portal","../../../utils/CacheUtil"],(function(e,r,o,n,t){return{getSignedInPortal:function(a){var i=t.get("PortalManager.portal");if(!i[a]){var s=new e;i[a]=s.promise;var l=new n.Portal(a);r(l,"load",(function(){l.user?s.resolve({user:new n.PortalUser({portal:l,credential:{userId:l.user.username,server:l.url,token:"",expires:9999999999999,creationTime:9999999999999,scope:"portal",resources:[l.portalUrl]}}),portal:l}):o(l.signIn()).then((function(e){s.resolve({user:e,portal:l})}))}))}return i[a]}}}));

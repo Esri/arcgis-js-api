@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({modifiedTitle:"Regressão Linear Generalizada - ${goal}",fit:"Ajustar",fitAndPredict:"Ajustar e Prever",selectGoal:"O que você gostaria de fazer?",fitGoal:"Ajustar um modelo para avaliar o desempenho do modelo",fitAndPredictGoal:"Ajustar um modelo e prever valores",inputLayerLabel:"Escolha uma camada da qual gerar um modelo",chooseDependentField:"Escolha o campo para modelo",chooseDataType:"Escolha o tipo de dados que você está modelando",continuousData:"Contínuo",binaryData:"Binário",countData:"Contagem",chooseExplanatoryField:"Escolha os campos explanatórios",chooseFeaturesToPredict:"Escolha uma camada para prever valores para",chooseExplainMatch:"Escolha como os campos explanatórios são correspondidos",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Camada de feição gerada a partir da execução das soluções ${goal} de Regressão Linear Generalizada.",itemTags:"Resultado da Análise, Regressão Linear Generalizada, ${inputLayerName}, ${goal}",itemSnippet:"Camada de feição gerada a partir da Regressão Linear Generalizada (${goal})"});

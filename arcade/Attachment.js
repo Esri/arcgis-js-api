@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 var __extends=this&&this.__extends||function(){var t=function(e,n){return(t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n])})(e,n)};return function(e,n){if("function"!=typeof n&&null!==n)throw new TypeError("Class extends value "+String(n)+" is not a constructor or null");function r(){this.constructor=e}t(e,n),e.prototype=null===n?Object.create(n):(r.prototype=n.prototype,new r)}}();define(["require","exports","./Dictionary"],(function(t,e,n){"use strict";return function(t){function e(e,n,r,o,i,s){var c=t.call(this)||this;return c.attachmentUrl=i,c.immutable=!1,c.setField("id",e),c.setField("name",n),c.setField("contenttype",r),c.setField("size",o),c.setField("exifinfo",s),c.immutable=!0,c}return __extends(e,t),e}(n)}));

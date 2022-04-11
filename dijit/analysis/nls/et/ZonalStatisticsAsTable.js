@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Valige tsooni raster või objektid",outputTableName:"Tulemtabeli nimi",zoneField:"Tsooni väli",inputValueRaster:"Valige väärtusraster",ignoreNodata:"Eira arvutustes väärtust NoData (valikuline)",ignore:"Eira",statisticType:"Statistika tüüp (valikuline)",percentileValues:"Protsentiili väärtused (valikuline)",percentileInterpolationType:"Protsentiili interpoleerimise tüüp (valikuline)",processAsMultidimensional:"Töötle mitmemõõtmelisena (valikuline)",allSlices:"Kõik lõigud",outputZonalStatsName:"Tsoonipõhine statistika ${valuelayername} kohta kihi ${layername} piires",itemDescription:"Analüüsi objektitabel, mis on genereeritud tsoonipõhisest statistikast tabelina",itemTags:"Rasteranalüüsi tulemus, tsoonipõhine statistika tabelina, ${layername}, ${valuelayername}",autoDetect:"Automaatne tuvastamine",nearest:"Lähim",linear:"Lineaarne"});

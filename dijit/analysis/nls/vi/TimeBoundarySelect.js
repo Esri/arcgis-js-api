@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({timeInterval:"Khoảng thời gian",timeAlign:"Thời gian để hiệu chỉnh khoảng thời gian để"});

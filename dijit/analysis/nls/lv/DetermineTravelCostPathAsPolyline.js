@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Izvēlēties rastra vai elementu avota slāni, no kura noteikt ceļus",inputCostRasterLabel:"Izvēlieties pārvietošanos izmaksu rastra slāni",inputDestinationLayerLabel:"Izvēlieties rastru vai elementu galamērķa slāni, lai noteiktu ceļus uz",pathTypeLabel:"Izvēlieties nosakāmo ceļu veidu (pēc izvēles)",bestSingle:"Viens labākais",eachCell:"Uz katru šūnu",eachZone:"Uz katru zonu",destinationField:"Izvēlieties lauku, lai saņemtu galamērķa vērtības",outputPolylineName:"Rezultāta līnijas nosaukums",outputLayerName:"Labākās slāņa ${layername} pārvietošanas izmaksas (līnija)",drawDestinationPointLayerName:"Galamērķa punkti",drawSourcePointLayerName:"Avota punkti",itemDescription:"Elementu slānis, kas ģenerēts no pašreiz noteiktā pārvietošanas izmaksu ceļa slānī ${layername} (polilīnija). ",itemTags:"Analīzes rezultāts, noteikt pārvietošanas izmaksu ceļu kā līniju, ${layername} ${fieldname}",itemSnippet:"Elementu slānis, kas ģenerēts no noteiktā pārvietošanas izmaksu ceļa kā polilīnija.",missingMessage:"Galamērķa slānim jāatšķiras no avota slāņa",noValueMessage:"Šī vērtība ir obligāta",placeHolder:"--Izvēlieties slāni--"});

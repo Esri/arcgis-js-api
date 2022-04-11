@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({binsLabel:"Pasirinkite daugiakampių, kurie bus naudojami kurti kelių kintamųjų tinklelį, tipą",layersAttrLabel:"Pasirinkite įvesties sluoksnius ir kintamuosius, kuriuos norite įtraukti į tinklelį",itemDescription:"Elementų sluoksnis sukurtas paleidus Kurti kelių kintamųjų tinklelį",itemTags:"Analizės rezultatas, Kurti kelių kintamųjų tinklelį",itemSnippet:"Elementų sluoksnis sukurtas naudojant Kurti kelių kintamųjų tinklelį",addVariables:"Pridėti kintamųjų"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Analyse-Layer des Living Atlas auswählen",customAnalysisLayerTitle:"Analyse-Layer auswählen",searchPlaceholderText:"Analyse-Layer des Living Atlas durchsuchen",searchCustomPlaceholderText:"Analyse-Layer durchsuchen",mainActionTitle:"Auswählen",customActionName:"Auswählen und zur Karte hinzufügen",customeSectionName:"Analyse-Layer des Living Atlas",Categories:"Kategorien",boundaries:"Grenzen",places:"Orte",boundariesAndPlaces:"Grenzen und Orte",hexbins:"Hexbins",transportation:"Verkehrswesen",point:"Punkt-Layer",line:"Polylinien-Layer",polygon:"Polygon-Layer",pointFilterName:"Punkt",lineFilterName:"Polylinie",polygonFilterName:"Polygon",multiPointFilterName:"Multipoints",geometryFilterName:"Geometrie",featureLayerName:"Feature-Layer",tableLayerName:"Tabelle",itemTypeFilterName:"Elementtyp",instantFilterName:"Sofort",intervalFilterName:"Intervall",timeFilterName:"Zeit",edit:"Bearbeiten",boundaryLayers:"Grenz-Layer von Esri",customAnalysisGroupName:"Analysegruppe der Organisation"});

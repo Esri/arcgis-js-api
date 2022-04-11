@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Обединяване на слоеве</h2><p/>
+        <h2><img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" alt="Обединяване на слоеве"></h2>
+        <hr/>
+    <p>Този инструмент копира обекти от два слоя в нов слой. Всички слоеве, които трябва да бъдат обединени, трябва да съдържат едни и същи типове обекти (точки, линии или области). Можете да контролирате начина на обединяване и копиране на полетата от входните слоеве, например:
+        <ul>
+            <li>Имате слой с държавни училища и слой с частни училища и искате един слой, който да показва всички училища.
+            </li>
+            <li>Имам 2 слоя и всеки от тях съдържа информация за парцели в съседни градове. Искате да ги обедините в един слой, като запазите само полетата с еднакво име и тип данни за двата входни слоя.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ако е поставена отметка върху  <b>Използване на текущия обхват на картата</b>, ще се обединят само обекти, които са видими в рамките на текущия обхват на картата. Ако не е поставена отметка, двата слоя ще бъдат обединени, дори ако са извън текущия обхват на картата.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Изберете слой</h2></div>
+        <hr/>
+        <div>
+            <p>Точковите, линейните или областните обекти, които трябва да се слеят със слоя, посочен по-долу.
+            </p>
+        </div>
+    </div>
+    <div id="MergeLayer">
+        <div><h2>Изберете слой за обединяване</h2></div>
+        <hr/>
+        <div>
+            <p>Изберете слой за обединяване с първия слой.
+            </p>
+        </div>
+    </div>
+    <div id="MergingAttributes">
+        <div><h2>Промяна на обединяващите полета</h2></div>
+        <hr/>
+        <div>
+            <p>По подразбиране, всички полета от двата набора входни данни се пренасят на изходните данни. Можете да промените начина, по който полетата се пренасят в изходните данни, както следва:
+                <ul>
+                    <li> <b>Преименуване </b>&mdash; Полето ще бъде преименувано в изходните данни.
+                    </li>
+                    <li> <b>Премахване</b>&mdash; Полето ще бъде премахнато от изходните данни.
+                    </li>
+                    <li> <b>Съвпадение</b>&mdash; Имената на полето се уеднаквяват. Стойностите на полето от слоя, който трябва да се обедини, ще бъдат копирани в съответното изходно поле.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ако и двата слоя съдържат поле с идентично име и тип данни, съдържанието на двете полета ще бъде обединено в едно поле с това име. Това не се прилага за полета, в които се използва  <b>съвпадение</b> в параметъра за <b>модифициране на обединяващи полета</b>.
+            </p>
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Име на резултатен слой</h2></div>
+        <hr/>
+        <div>
+            <p>Името на слоя, който ще бъде създаден в  <b>Моето съдържание</b> и добавен към картата. Името по подразбиране се основава на името на инструмента и името на входния слой. Ако името на слоя вече съществува, ще бъдете подканени да посочите друго име.
+            </p>
+            <p>С помощта на падащото меню  <b>Запазване на резултатите в</b>, можете да зададете името на папка в <b>Моето съдържание</b>, където резултатите ще бъдат запазени.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

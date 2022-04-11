@@ -1299,6 +1299,14 @@
     {
       "key": 75,
       "label": "${rasterFunctions.enumLabels.localCellStatisticsVarietyIgnoreND}"
+    },
+    {
+      "key": 93,
+      "label": "${rasterFunctions.enumLabels.percentile}"
+    },
+    {
+      "key": 94,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsTypePercentileIgnoreND}"
     }
   ],
 
@@ -2107,6 +2115,60 @@
       {
         "key": "UNKNOWN",
         "label": "${rasterFunctions.enumLabels.unknown}"
+      }
+    ],
+    "esriGANoDataHandling": [
+      {
+        "key": -1,
+        "label": "${rasterFunctions.enumLabels.dimensionalMovingIgnoreNoData}"
+      },
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.dimensionalMovingPropagateNoData}"
+      },
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.dimensionalMovingFillOnlyNoData}"
+      }
+    ],
+    "esriGADimensionalMovingStatisticsTypes": [
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.mean}"
+      },
+      {
+        "key": 13,
+        "label": "${rasterFunctions.enumLabels.circularMean}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.majority}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.maximum}"
+      },
+      {
+        "key": 4,
+        "label": "${rasterFunctions.enumLabels.median}"
+      },
+      {
+        "key": 5,
+        "label": "${rasterFunctions.enumLabels.minimum}"
+      },
+      {
+        "key": 12,
+        "label": "${rasterFunctions.enumLabels.percentile}"
+      }
+    ],
+    "esriInterpolateByDimMethods": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.factorFunctionLinear}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.interpolateIrregularDataNearest}"
       }
     ]
   },

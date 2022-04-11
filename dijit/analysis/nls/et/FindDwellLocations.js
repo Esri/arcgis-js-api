@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Valige kiht, kust peatuskohti otsida",selectTracksLabel:"Valige radade tuvastamiseks vähemalt üks väli",defineDistanceLabel:"Määratlege ruumiline otsinguvahemaa",distMethodLabel:"Valige vahemaa arvutamiseks kasutatav meetod",temporalSearchLabel:"Määratlege ajaline otsinguvahemik",outputDwellLabel:"Peatuskohtade väljund on",outputLayerName:"Otsi peatuskohti kihis ${inputLayerName}",meanCenters:"Tsentraalpunktid",convexHulls:"Kumerad katted",dwellFeatures:"Peatusobjektid",allFeatures:"Kõik objektid",itemDescription:"Objektikiht loodi kihi ${inputLayerName} peatuskohtade otsingu põhjal.",itemTags:"Analüüsitulemused, peatuskohtade otsing, ${inputLayerName}",itemSnippet:"Objektikiht loodi peatuskohtade otsingu põhjal",timeIntervalSplit:"Analüüsi andmeid ajaintervallidega (valikuline)",timeBoundaryValidationMsg:"Ajaintervall peab olema pikem kui ajaline otsinguvahemik."});

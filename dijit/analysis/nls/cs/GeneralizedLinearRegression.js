@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({modifiedTitle:"Generalizovaná lineární regrese – ${goal}",fit:"Přizpůsobit",fitAndPredict:"Přizpůsobit a předpovědět",selectGoal:"Co chcete udělat?",fitGoal:"Přizpůsobit model pro vyhodnocení výkonnosti modelu",fitAndPredictGoal:"Přizpůsobit model a předpovědět hodnoty",inputLayerLabel:"Vybrat vrstvu pro vygenerování modelu z",chooseDependentField:"Vybrat pole pro modelování",chooseDataType:"Vyberte typ dat, která modelujete",continuousData:"Průběžný",binaryData:"Binární",countData:"Počet",chooseExplanatoryField:"Vybrat vysvětlující pole",chooseFeaturesToPredict:"Vybrat vrstvu, pro kterou se mají předpovídat hodnoty",chooseExplainMatch:"Vybrat, jak budou přiřazena vysvětlující pole",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Vrstva prvků vygenerovaná spuštěním řešení Generalizovaná lineární regrese ${goal}.",itemTags:"Výsledek analýzy, Generalizovaná lineární regrese, ${inputLayerName}, ${goal}",itemSnippet:"Vrstva prvků vygenerovaná nástrojem Generalizovaná lineární regrese (${goal})"});

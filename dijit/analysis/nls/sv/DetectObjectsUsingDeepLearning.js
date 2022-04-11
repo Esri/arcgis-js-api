@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({toolDefine:"Definiera objekt med djupinlärning",outputLayerName:"${layername}_detected",modelLabel:"Välj den djupinlärningsmodell som används för att identifiera objekt",modelArgsLabel:"Ange modellargument för djupinlärning",nameLabel:"Namn",valueLabel:"Värde",removeDuplicatesLable:"Ta bort dubblerade geoobjekt från utdata (valfritt)",queryModelArgsMsg:"Söker modellargument ...",queryModelArgsErrMsg:"Det gick inte att söka efter modellargument.",nonMaxSuppressionLabel:"Ej maximal nedhållning",options:"Alternativ",confidenceLabel:"Fält för konfidensnivå",classValueLabel:"Klassvärdefält",maxOverlapLabel:"Maximalt överlappningsförhållande",numberOnlyMsg:"Endast numeriska värden är tillåtna.",processingModeLabel:"Bearbetningsläge",processAsMosaicLabel:"Bearbeta som mosaikbearbetad bild",processAsItemsLabel:"Bearbeta alla rasterobjekt separat",analysisLayerLabel:"Välj bild som används för att identifiera objekt",itemDescription:"Analysbildtjänst skapad från Identifiera objekt med djupinlärning",itemTags:"Rasteranalysresultat, identifiera objekt med djupinlärning, ${layername}",itemSnippet:"Analysbildtjänst skapad från Identifiera objekt med djupinlärning"});

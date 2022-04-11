@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Izvēlieties rastru vai elementu novietojuma slāni, lai noteiktu pārvietošanos ceļu starp",inputCostRasterLabel:"Izvēlieties pārvietošanos izmaksu rastra slāni",outputOptimumNetworkName:"Rezultātā iegūtā optimālo ceļu līnijas slāņa nosaukums",outputNeighborNetworkName:"Rezultātā iegūtā blakus esošo ceļu līnijas slāņa nosaukums (pēc izvēles)",outputLayerName:"Noteikt optimālas slāņa ${layername} pārvietošanas izmaksas",itemDescription:"Elementu slānis, kas ģenerēts no pašreiz noteiktā optimālā pārvietošanas izmaksu tīkla slānī ${layerName}. ",itemTags:"Analīzes rezultāts, noteikt optimālo pārvietošanas izmaksu tīklu, ${layername} ${fieldname}",itemSnippet:"Elementu slānis, kas ģenerēts no noteiktā optimālā pārvietošanas izmaksu tīkla."});

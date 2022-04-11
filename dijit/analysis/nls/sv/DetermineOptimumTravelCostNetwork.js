@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Välj raster eller geoobjektplatslager för att fastställa resvägar mellan",inputCostRasterLabel:"Välj resekostnadsrasterlager",outputOptimumNetworkName:"Resultat för optimala vägar i polylinjelagernamn",outputNeighborNetworkName:"Resultat för grannvägar i polylinjelagernamn (valfritt)",outputLayerName:"Fastställ optimal resekostnad för ${layername}",itemDescription:"Geoobjektlager som genererats vid körning av Fastställ optimalt nätverk för resekostnad på ${layerName}. ",itemTags:"Analysresultat, Fastställ optimalt nätverk för resekostnad, ${layername} ${fieldname}",itemSnippet:"Geoobjektlager som genererats vid körning av Fastställ optimalt nätverk för resekostnad."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define([],(function(){var e={provideMultiFeatureSettings:function(e){var t=e.viewModel.dynamicReportInfo.isMultiFeature&&e.canSwitchFeatures&&e.canSwitchFeatures();return t&&{canSelectFeatures:t}}};return e}));

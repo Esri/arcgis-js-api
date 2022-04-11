@@ -41,21 +41,22 @@
               </td>
             </tr>
             <tr>
-              <td class="esri-rfx-args-editor__tr--arg-name">${_i18n.iterationStart}</td>
+              <td class="esri-rfx-args-editor__tr--arg-name" data-dojo-attach-point="_iterationStartLabel">${_i18n.iterationStart}</td>
             </tr>
             <tr>
               <td>
-                <div data-dojo-type="dijit/form/Select"
-                  data-dojo-attach-point="_iterationFormStartOfFirstIterationSelect"
+                <div
+                  data-dojo-attach-point="_startOfFirstIterationSelectContainer"
                   data-dojo-attach-props="labelAttr: 'label'"></div>
               </td>
             </tr>
             <tr>
-              <td class="esri-rfx-args-editor__tr--arg-name">${_i18n.iterationEnd}</td>
+              <td class="esri-rfx-args-editor__tr--arg-name" data-dojo-attach-point="_iterationEndLabel">${_i18n.iterationEnd}</td>
             </tr>
             <tr>
               <td>
-                <div data-dojo-type="dijit/form/Select" data-dojo-attach-point="_iterationFormEndOfFirstIterationSelect"
+                <div
+                  data-dojo-attach-point="_endOfFirstIterationSelectContainer"
                   data-dojo-attach-props="labelAttr: 'label'"></div>
               </td>
             </tr>
@@ -67,16 +68,27 @@
                 <div data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-point="_iterationFormStepTextbox"></div>
               </td>
             </tr>
-            <tr>
-              <td>
-                <div data-dojo-attach-point="_iterationFormTimeUnitsContainer" class="hidden">
-                  <p class="esri-rfx-args-editor__tr--arg-name">${_i18n.dimensionUnit}</p>
-                </div>
-              </td>
-            </tr>
+            <tbody data-dojo-attach-point="_iterationFormTimeUnitsContainer" class="hidden">
+              <tr>
+                <td class="esri-rfx-args-editor__tr--arg-name">${_i18n.dimensionUnit}</td>
+              </tr>
+              <tr data-dojo-attach-point="_iterationFormTimeUnitsDropdown"></tr>
+            </tbody>
           </table>
         </div>
       </td>
     </tr>
+    <tbody class="esri-rfx-mdimdef-byTargetRaster-form hidden" data-dojo-attach-point="_byTargetRasterDivContainer">
+      <tr>
+        <td class="esri-rfx-args-editor__tr--arg-name" data-dojo-attach-point="_targetRasterLabel">
+          ${_i18n.targetRasterName}</td>
+      </tr>
+      <tr>
+        <td>
+          <div data-dojo-type="esri/dijit/RasterFunctionEditor/RFxRasterInput"
+            data-dojo-attach-point="_layerSelect"></div>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>

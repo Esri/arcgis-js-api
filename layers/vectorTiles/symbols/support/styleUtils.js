@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define(["require","exports","../../core/promiseUtils","../../core/Error"],(function(e,r,t,s){Object.defineProperty(r,"__esModule",{value:!0}),r.fetchStyle=function(e,r){return t.reject(new s("symbolstyleutils:style-url-and-name-missing","Either styleUrl or styleName is required to resolve a style"))}}));

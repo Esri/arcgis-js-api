@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({addBarriers:"Velg hindringslag",pointBarrier:"Punkthindringer",lineBarrier:"Linjehindringer",polygonBarrier:"Polygonhindringer",choosePointBarrier:"Velg lag med punkthindringer",chooseLineBarrier:"Velg lag med linjehindringer",choosePolygonBarrier:"Velg lag med polygonhindringer",selectPointBarrier:"Velg punkthindringer",selectLineBarrier:"Velg linjehindringer",selectPolygonBarrier:"Velg polygonhindringer"});

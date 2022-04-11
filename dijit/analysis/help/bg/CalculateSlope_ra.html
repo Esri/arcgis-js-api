@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Изчисление на наклон</h2><p/>
+        <h2><img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" alt="Инструмент за изчисление на наклон за портал"></h2>
+        <hr/>
+    <p>Този инструмент създава повърхност, която показва наклона на въведените данни за релефа. Наклонът представлява скоростта на промяна на височината за всяка клетка от цифровия височинен модел (DEM).
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Избор на входни данни за изчисляване на наклона</h2></div>
+        <hr/>
+        <div>
+            <p>Котата на слоя, от която ще се изчислява наклонът.
+            </p>
+        </div>
+    </div>
+    <div id="zFactor">
+        <div><h2>Посочете коефициент на мащабиране за височина</h2></div>
+        <hr/>
+        <div>
+            <p>Въведете z фактор.
+            </p>
+            <p>Z-факторът е коефициент на мащабиране, използван за преобразуване на стойностите на котата за две цели:
+                <ul>
+                    <li>За преобразуване на мерните единици за височина (като метри или футове) в хоризонталните координатни единици от слоя, които могат да бъдат футове, метри или градуси
+                        
+  
+                    </li>
+                    <li>За да добавите вертикално преувеличение за визуален ефект
+                        
+ 
+                    </li>
+                </ul>
+                
+            </p>
+            <table border="1">
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <p>От фут
+                    </p>
+                </td>
+                <td>
+                    <p>От метри
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>От фут
+                    </p>
+                </td>
+                <td>
+                    <p>1
+                    </p>
+                </td>
+                <td>
+                    <p>0,3048
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>От метри
+                    </p>
+                </td>
+                <td>
+                    <p>3,28084
+                    </p>
+                </td>
+                <td>
+                    <p>1
+                    </p>
+                </td>
+            </tr>
+            </table>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>Име на резултатен слой</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Името на слоя, който ще бъде създаден в  <b>Моето съдържание</b> и добавен към картата. Името по подразбиране се основава на името на инструмента и името на входния слой. Ако слоят вече съществува, ще бъдете подканени да посочите друго име.
+            </p>
+            <p>Можете да посочите името на слоя в  <b>Моето съдържание</b>, където резултатът ще бъде запазен с помощта на падащото меню <b>Запазване на резултат в</b>. Ако имате права за създаване на слоеве с плочки и динамични изображения, можете да посочите кой тип слой да се генерира в изходните данни, като използвате падащото поле Запазване като. </p>
+        </div>
+    </div>
+</div>
+</html>

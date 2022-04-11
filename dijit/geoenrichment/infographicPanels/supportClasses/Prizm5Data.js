@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define(["./Prizm5Data_2016","./Prizm5Data_2020"],(function(t,e){return{DATA_COLLECTION_ID:"PRIZM5HouseholdCount",getDataManagerByAttributes:function(a){return a&&null!=a[t.getTotalFieldName(a)]?t:e}}}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
-define(["dojo/_base/kernel","dojo/_base/config","dojo/has"],(function(t,s,i){var n=function(){return this}(),o=n.location,e=o.pathname,r=o.protocol,a={version:"3.38",_appBaseUrl:r+"//"+o.host+e.substring(0,e.lastIndexOf(e.split("/")[e.split("/").length-1]))};s.noGlobals||(n.esri=a),t.isAsync||i.add("extend-esri",1);var l="http:"===r||"https:"===r?r:"http:";return(a.dijit=a.dijit||{})._arcgisUrl=l+"//www.arcgis.com/sharing/rest",a}));
+define(["dojo/_base/kernel","dojo/_base/config","dojo/has"],(function(t,s,i){var n=function(){return this}(),o=n.location,e=o.pathname,r=o.protocol,a={version:"3.40",_appBaseUrl:r+"//"+o.host+e.substring(0,e.lastIndexOf(e.split("/")[e.split("/").length-1]))};s.noGlobals||(n.esri=a),t.isAsync||i.add("extend-esri",1);var l="http:"===r||"https:"===r?r:"http:";return(a.dijit=a.dijit||{})._arcgisUrl=l+"//www.arcgis.com/sharing/rest",a}));

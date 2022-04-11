@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({modifiedTitle:"Generaliserad linjär regression - ${goal}",fit:"Anpassa",fitAndPredict:"Anpassa och förutsäg",selectGoal:"Vad vill du göra?",fitGoal:"Anpassa en modell att utvärdera modellprestanda",fitAndPredictGoal:"Anpassa en modell och förutsäg värden",inputLayerLabel:"Välj ett lager att skapa en modell från",chooseDependentField:"Välj vilket fält som ska modelleras",chooseDataType:"Välj vilken typ av data du modellerar",continuousData:"Kontinuerlig",binaryData:"Binär",countData:"Antal",chooseExplanatoryField:"Välj förklarande fält",chooseFeaturesToPredict:"Välj ett lager att förutsäga värden för",chooseExplainMatch:"Välj hur förklarande fält matchas",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Geoobjektlager som skapas av att köra Generaliserad linjär regression ${goal}-lösningarna.",itemTags:"Analysresultat, Generaliserad linjär regression, ${inputLayerName}, ${goal}",itemSnippet:"Geoobjektlager som skapas av Generaliserad linjär regression (${goal})"});

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Намиране на клъстерна точка</h2><p/>
+        <h2><img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" alt="Намиране на клъстерна точка"></h2>
+        <hr/>
+    <p>Този инструмент намира клъстери от точкови обекти в заобикалящия ги шум въз основа на пространственото им разпределение.
+    </p>
+    <p>Ако е поставена отметка върху  <b>Използване на текущия обхват на картата</b>, ще бъдат анализирани само обектите от входния точков слой в рамките на текущия обхват на картата. Ако не е поставена отметка, всички обекти във входния точков слой ще бъдат анализирани, дори ако са извън текущия обхват на картата.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Изберете слоя, за който ще бъдат намерени клъстери</h2></div>
+        <hr/>
+        <div>
+            <p>Точковият слой, където ще бъде намерен точковия клъстер.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Минимален брой точки, които да се считат за клъстер</h2></div>
+        <hr/>
+        <div>
+            <p>Минималният брой обекти, които да се считат за клъстер. Всеки клъстер с по-малко обекти от предвидените ще се счита за шум.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Ограничете диапазона на търсене до (по избор)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Максималното разстояние, при което обектите се считат за част от един и същ клъстер. Ако бъде оставено празно, инструментът ще стартира HDBSCAN, който използва различни разстояния, за да отдели клъстери с различна плътност от по-рядък шум. Ако е зададена стойност, инструментът ще стартира DBSCAN, който използва зададено разстояние, за да отдели плътните клъстери от по-редкия шум.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Име на резултатен слой</h2></div>
+        <hr/>
+        <div>
+            <p>Името на слоя, който ще бъде създаден в  <b>Моето съдържание</b> и добавен към картата. Името по подразбиране се основава на името на инструмента и името на входния слой. Ако името на слоя вече съществува, ще бъдете подканени да посочите друго име.
+            </p>
+            <p>С помощта на падащото меню  <b>Запазване на резултатите в</b>, можете да зададете името на папка в <b>Моето съдържание</b>, където резултатите ще бъдат запазени.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

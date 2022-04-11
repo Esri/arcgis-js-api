@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({fields:"Mező",categorical:"Kategorikus",requiredMessage:"Legalább 1 magyarázó változót ki kell választani."});

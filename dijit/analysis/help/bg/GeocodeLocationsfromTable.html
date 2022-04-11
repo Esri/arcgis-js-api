@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Геокодирани местоположения от таблица</h2><p/>
+        <h2><img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Геокодирани местоположения от таблица"></h2>
+        <hr/>
+    <p>Геокодирането е начин за преобразуване на адресите в координати. Този инструмент преобразува адреси от таблица, CSV файл или Excel файл в обектен слой или изходен файл с координати като допълнителни колони.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputTable">
+        <div><h2>Избиране на входна таблица</h2></div>
+        <hr/>
+        <div>
+            <p>Входната таблица с адресите ще бъде геокодирана. Входните данни трябва да бъдат таблица CSV файл или Excel файл.
+            </p>
+        </div>
+    </div>
+    <div id="geocodeServiceURL">
+        <div><h2>Избиране на локатор</h2></div>
+        <hr/>
+        <div>
+            <p>Изберете услуга за локализиране, която да използвате за геокодиране. Ако услугата за локализиране, която искате да използвате, не е в падащото меню, свържете се с администратора си, за да конфигурира услугата за локализиране за групово геокодиране.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCountry">
+        <div><h2>Държава</h2></div>
+        <hr/>
+        <div>
+            <p>Ако всичките Ви адреси са от една държава, изберете тази държава, за да получите най-точни резултати. В противен случай, оставете полето на този параметър празно.
+            </p>
+        </div>
+    </div>
+    <div id="geocodeParameters">
+        <div><h2>Избиране на полета с данни</h2></div>
+        <hr/>
+        <div>
+            <p>Услугата за локализиране очаква определени полета в данните, като например адрес, град, държава и пощенски код. Съпоставете полетата за данни във Вашия входен файл или таблица с полетата, които се очакват от локатора, като използвате падащите полета. Колкото повече полета картографирате, толкова по-точни ще бъдат резултатите. Ако всички данни във входната таблица са в една колона, изберете  <b>Единично поле</b> и изберете полето за данни от падащото меню. В противен случай, изберете <b>Много полета</b> и съпоставете подходящите полета на локатора с многобройните колони на полетата във Вашата таблица.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Изберете изходен формат</h2></div>
+        <hr/>
+        <div>
+            <p>Формат за изходните резултати. Ако изберете да създадете услуга за обекти, адресите от входната таблица ще бъдат добавени към картата като слой от точкови обекти. Опциите CSV и XLS добавят файлове с резултатите от задачата за геокодиране към  <b>Моето съдържание</b>, когато задачата е завършена.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Име на изходен резултат</h2></div>
+        <hr/>
+        <div>
+            <p>Името на слоя, който ще бъде създаден в  <b>Моето съдържание</b> и добавен към картата. Името по подразбиране се основава на името на инструмента и името на входния слой. Ако името на слоя вече съществува, ще бъдете подканени да посочите друго име.
+            </p>
+            <p>С помощта на падащото меню  <b>Запазване на резултатите в</b>, можете да зададете името на папка в <b>Моето съдържание</b>, където резултатите ще бъдат запазени.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

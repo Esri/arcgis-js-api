@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Célraszter vagy vektoros elemek kiválasztása",destinationField:"Célállomás mező (opcionális)",inputDistanceAccumulationRaster:"Távolságakkumulációs raszter kiválasztása",inputBackDirectionRaster:"Visszirányú vagy áramlásiirány-raszter kiválasztása",pathType:"Útvonaltípus (opcionális)",bestSingle:"Legjobb egyedülálló",eachCell:"Minden cella",eachZone:"Minden zóna",outputFeatureName:"Eredmény vektoroselem-réteg neve",outputLayerName:"Optimális útvonal vonalként: ${layername}",drawSourcePointLayerName:"Kiindulási pontok",itemDescription:"Az optimális útvonal vonalként: ${layername} megoldás futtatásából létrehozott vektoros réteg. ",itemTags:"Vizsgálati eredmény, Optimális útvonal vonalként, ${layername} ${fieldname}",itemSnippet:"Az optimális útvonal futtatásából létrehozott vonalas vektoroselem-réteg."});

@@ -195,7 +195,7 @@
             "toolDescription": "120001588"
         },
         "ForestBasedClassificationAndRegression_bd": {
-            "toolDescription": "120001603" 
+            "toolDescription": "120001603"
         },
         "GeographicallyWeightedRegression_bd": {
             "toolDescription": "120001799"
@@ -286,6 +286,9 @@
         },
         "PredictUsingTrendRaster_ra": {
             "toolDescription": "120002784"
+        },
+        "OptimalRegionConnections_ra": {
+            "toolDescription": "120002766"
         }
     }
 }

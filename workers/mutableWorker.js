@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 !function(a){var s=a;s.__mutable||s.addEventListener("message",(function(a){var e,t,r,c=a.data;if(c.action){switch(c.action){case"import-script":try{Array.isArray(c.url)||(c.url=[c.url]),s.importScripts.apply(s,c.url),t=!0}catch(a){e=a,postMessage({msgId:c.msgId,urls:c.url,status:"debug",message:"import failed - "+a.message})}break;case"add-callback":try{s.importScripts(c.url);var i=s[c.cbName||"main"];if(!i){e={message:(c.cbName||"main")+" was not found in "+c.url};break}s.postMessage=(r=s.postMessage,function(a,s){!1!==i(a)&&(s?r(a,s):r(a))}),t=!0}catch(a){e=a}}if(t){var m={msgId:c.msgId,success:!0,action:c.action,actionUrl:c.url};"add-callback"==c.action&&(m.cbName=c.cbName||"main"),postMessage(m)}else e&&postMessage({status:"error",msgId:c.msgId,message:e.message,action:c.action})}}),!1),s.__mutable=!0}(self);

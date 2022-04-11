@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({clustersLabel:"Pre vrstvu ${inputLayerName} nájsť zhluky.",chooseLayerLabel:"Vybrať vrstvu, v rámci ktorej budú nájdené zhluky",minClusterPtsLabel:"Minimálny počet bodov, ktoré možno považovať za zhluk",minClustersPtsGAXLbl:"Minimálny počet bodov pre založenie zhluku",limitSearchLabel:"Obmedziť rozsah vyhľadávania na (voliteľné)",limitSearchReqLabel:"Obmedziť rozsah vyhľadávania na",outputLayerName:"Nájsť zhluky pre ${inputLayerName}",itemDescription:"Vrstvy prvkov generované nástrojom Nájsť riešenie zhluku bodov pre ${inputLayerName}.",itemTags:"Výsledok analýzy, Nájsť zhluky bodov, ${inputLayerName}",itemSnippet:"Vrstva prvkov generovaná nástrojom Nájsť zhluky bodov",chooseClusteringMethod:"Vybrať použitú metódu zhlukovania",dbscanLabel:"Definovaná vzdialenosť (DBSCAN)",hdbscanLabel:"Samoregulačné (HDBSCAN)",useTimeToFindCLusters:"Použiť čas pre hľadanie zhlukov",limitSearchDurLabel:"Obmedziť trvanie vyhľadávania na"});

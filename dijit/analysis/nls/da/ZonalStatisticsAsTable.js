@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Vælg zoneraster eller -objekter",outputTableName:"Navn på resultattabel",zoneField:"Zonefelt",inputValueRaster:"Vælg værdiraster",ignoreNodata:"Tilsidesæt NoData i beregninger (valgfrit)",ignore:"Ignorér",statisticType:"Statistiktype (valgfrit)",percentileValues:"Percentil-værdier (valgfrit)",percentileInterpolationType:"Percentilinterpolationstype (valgfrit)",processAsMultidimensional:"Behandl som flerdimensional (valgfrit)",allSlices:"Alle udsnit",outputZonalStatsName:"Zonestatistik for ${valuelayername} inden for ${layername}",itemDescription:"Analyseobjekttabel genereret ud fra zonestatistik som tabel",itemTags:"Rasteranalyseresultat, zonestatistik som tabel, ${layername}, ${valuelayername}",autoDetect:"Auto-registrering",nearest:"Nærmest",linear:"Lineær"});

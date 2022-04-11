@@ -44,7 +44,7 @@
         <h2>Agreguj raster wielowymiarowy</h2><p/>
         <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agreguj raster wielowymiarowy"></h2>
         <hr/>
-    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    <p>Generuje zestaw danych rastra wielowymiarowego, łącząc istniejące zmienne rastra wielowymiarowego wzdłuż wymiaru.
     </p>
     <p>Jeśli masz dane o temperaturze powierzchni morza z 30 lat, zbierane co miesiąc i co 5 metr&oacute;w do głębokości 100 metr&oacute;w, ich przykładowe zastosowania są następujące:
         <ul>
@@ -104,6 +104,8 @@
                     <li> <b>Mniejszość</b> &mdash; oblicza wartość, kt&oacute;ra występowała najrzadziej w przypadku pikseli znajdujących się na wszystkich przekrojach w tym przedziale.
                     </li>
                     <li> <b>Mediana</b> &mdash; oblicza wartość mediany pikseli znajdujących się na wszystkich przekrojach w tym przedziale.
+                    </li>
+                    <li> <b>Percentyl</b> &ndash; percentyl wartości piksela zostanie obliczony na podstawie wszystkich przekroj&oacute;w w tym przedziale. Domyślnie jest obliczany 90. percentyl. Inne wartości (od 0 do 100) można określić za pomocą parametru <b>Wartość percentylowa</b>.
                     </li>
                     <li> <b>Zakres</b> &mdash; oblicza zakres wartości dla pikseli znajdujących się na wszystkich przekrojach w tym przedziale.
                     </li>
@@ -246,6 +248,24 @@
             <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
             </p>
             <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik. Jeśli masz uprawnienia do tworzenia zarówno kafelkowych, jak i dynamicznych warstw zobrazowań, możesz zdecydować, który typ warstwy ma być używany go generowania danych wynikowych, używając pola rozwijanego Zapisz wyniki jako. </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Wartość percentylowa</h2></div>
+        <hr/>
+        <div>
+            <p>Percentyl do obliczenia. Wartość domyślna to 90. Oznacza ona 90. percentyl.
+            </p>
+            <p>Wartości należą do zakresu od 0 do 100. Zerowy percentyl jest właściwie r&oacute;wnoważny statystyce Minimum, a setny percentyl odpowiada statystyce Maksimum. Wartość 50 da praktycznie taki sam wynik jak statystyka Mediana.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Typ interpolacji percentylowej</h2></div>
+        <hr/>
+        <div>
+            <p>Wskazuje metodę interpolacji percentylowej, kt&oacute;ra będzie używana w przypadku parzystej liczby wartości z rastra wejściowego do obliczenia.
+            </p>
         </div>
     </div>
 </div>

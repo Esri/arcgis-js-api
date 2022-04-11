@@ -109,6 +109,7 @@
 
 .esriRFxArgsEditor .dgrid-content .dgrid-cell {
   height: 24px;
+  overflow: auto;
 }
 
 .esriRFxArgsEditor .dgrid {
@@ -138,6 +139,13 @@
 .esriRFxArgsEditor td.dgrid-cell.field-idNum {
   vertical-align: middle;
   text-align: center;
+}
+
+.esriRFxArgsEditor .esri-rfx-aggregationdef-editor td.dgrid-cell.field-idNum,
+.esriRFxArgsEditor .esri-rfx-aggregationdef-editor th.dgrid-cell.field-idNum,
+.esriRFxArgsEditor .esri-rfx-multidimensionalDefinition-editor td.dgrid-cell.field-idNum,
+.esriRFxArgsEditor .esri-rfx-multidimensionalDefinition-editor th.dgrid-cell.field-idNum {
+  width: 60px;
 }
 
 .esriRFxPropertySet .field-idNum {

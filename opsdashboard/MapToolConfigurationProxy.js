@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","./core/ExtensionConfigurationBase"],(function(e,i,n){return e([n],{_initializeResponseReceived:function(e){this.inherited(arguments).then(i.hitch(this,(function(){return this.getMapWidgetProxy(this.config.mapWidgetId).then((function(e){this.mapWidgetProxy=e}))})))}})}));

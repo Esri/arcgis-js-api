@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({relationalDS:"Σχεσιακό",spatialDS:"Χωροχρονικό",agsDataStore:"ArcGIS Data Store",bdfsTemplates:"Πρότυπα εξόδου κοινοποίησης αρχείων Big Data"});

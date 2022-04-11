@@ -1355,11 +1355,6 @@ div[id$="_directionsDepartAtDate_popup_mddb_mdd"]{
     border: 0;
     width: 100%;
 }
-.simpleDirections .esriPrintFooter {
-    font-size: 0.75em;
-    color: #a0a0a0;
-    padding: 10px 2px;
-}
 
 .simpleDirections .esriDirectionsDDLArrow{
     display: inline-block;

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputLayerLabel:"설명할 데이터셋 선택",describeDataLabel:"다음을 생성하여 데이터 파악(선택)",sampleLayer:"샘플 레이어",extentLayer:"범위 레이어",noOfFeaturesLabel:"포함할 피처 수",outputLayerName:"결과 레이어 이름",resultName:"${layerName} 데이터 설명",itemDescription:"${layerName}에 대해 데이터셋 설명을 실행하여 생성된 피처 레이어입니다. ",itemTags:"분석 결과, 데이터셋 설명, ${layerName}",itemSnippet:"데이터셋 설명에서 생성된 피처 레이어입니다."});

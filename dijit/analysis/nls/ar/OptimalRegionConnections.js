@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"اختيار المنطقة النقطية أو المعلم",inputCostRaster:"اختيار التكلفة النقطية (اختياري)",inputBarrierRasterOrFeatures:"اختيار حاجز نقطي أو معلم (اختياري)",distanceMethod:"طريقة المسافة (اختياري)",connectionsWithinRegions:"الاتصالات داخل المناطق (اختياري)",generateConnections:"إنشاء اتصالات",noConnections:"لا توجد اتصالات",planar:"مسطح",geoDesic:"جيوديسي",outputOptimalLinesName:"اسم طبقة معلم خطوط الاتصال المثلى للنتيجة",outputNeighborConnectionsName:"اسم طبقة معالم الاتصالات المجاورة للنتيجة (اختياري)",outputLayerName:"اتصالات المنطقة المثلى لـ ${layername}",drawSourcePointLayerName:"نقاط المصدر",itemDescription:"تم إنشاء طبقة المعالم من تشغيل اتصالات المنطقة المثلى في ${layername}. ",itemTags:"نتيجة التحليل، اتصالات المنطقة المثلى، ${layername} ${fieldname}",itemSnippet:"تم إنشاء طبقة المعالم من اتصالات المنطقة المثلى.",noValueMessage:"يتطلب وجود هذه القيمة"});

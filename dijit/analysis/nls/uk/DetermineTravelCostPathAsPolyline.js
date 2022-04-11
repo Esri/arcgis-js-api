@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Вибрати растр або шар джерела об'єкту, на основі якого треба визначити шляхи",inputCostRasterLabel:"Вибрати растровий шар вартості подорожі",inputDestinationLayerLabel:"Вибрати растр або шар призначення об'єкту, на основі якого треба визначити шляхи",pathTypeLabel:"Вибрати тип шляхів, які треба визначити (опціонально)",bestSingle:"Найкращий одиночний",eachCell:"До кожного осередку",eachZone:"До кожної зони",destinationField:"Виберіть поле для отримання значення для пункту призначення",outputPolylineName:"Ім'я полілінії результатів",outputLayerName:"Оптимальна вартість подорожі як полілінія ${layername}",drawDestinationPointLayerName:"Точки призначення",drawSourcePointLayerName:"Точки джерела",itemDescription:"Векторний шар, згенерований в результаті виконання визначення шляху вартості подорожі як полілінії для ${layername}. ",itemTags:"Результат аналізу, Визначати шлях вартості подорожі як полілінію, ${layername} ${fieldname}",itemSnippet:"Векторний шар, згенерований в результаті визначення шляху вартості подорожі як полілінії.",missingMessage:"Шар призначення повинен відрізнятися від шару джерела.",noValueMessage:"Це значення є обов'язковим",placeHolder:"--Вибрати шар--"});

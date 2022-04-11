@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({toolDefine:"Klasifikuoti pikselius naudojant gilų mokymąsi",outputLayerName:"${layername}_classified",modelLabel:"Pasirinkite, kokį gilaus mokymosi modelį naudoti klasifikuojant pikselius",modelArgsLabel:"Nurodykite gilaus mokymosi modelio argumentus",nameLabel:"Pavadinimas",valueLabel:"Reikšmė",queryModelArgsMsg:"Teikiama užklausa dėl modelio argumentų...",queryModelArgsErrMsg:"Nepavyko pateikti modelio argumentų užklausos.",processingModeLabel:"Apdorojimo režimas",processAsMosaicLabel:"Apdoroti kaip mozaikinį vaizdą",processAsItemsLabel:"Visus rastro elementus apdoroti atskirai",analysisLayerLabel:"Pasirinkite, kuris vaizdas bus naudojamas klasifikuoti pikselius",itemDescription:"Vaizdų analizės paslauga, sugeneruota naudojant Klasifikuoti pikselius naudojant gilų mokymąsi",itemTags:"Rastro analizės rezultatas, Klasifikuoti pikselius naudojant gilų mokymąsi, ${layername}",itemSnippet:"Vaizdų analizės paslauga, sugeneruota naudojant Klasifikuoti pikselius naudojant gilų mokymąsi"});

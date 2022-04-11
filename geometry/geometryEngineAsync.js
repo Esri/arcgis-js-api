@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define("require exports esri/kernel module esri/geometry/Geometry esri/geometry/Polygon esri/geometry/Polyline esri/geometry/Point esri/geometry/Extent esri/geometry/Multipoint esri/workers/WorkerClient esri/arcade/polyfill/promiseUtils".split(" "),function(F,T,N,O,z,G,H,E,I,J,P,p){function Q(b){if(void 0===E.fromJson){if(void 0!==b.x&&void 0!==b.y)return new E(b);if(void 0!==b.paths)return new H(b);if(void 0!==b.rings)return new G(b);if(void 0!==b.points)return new J(b);if(void 0!==b.xmin&&void 0!==
 b.ymin&&void 0!==b.xmax&&void 0!==b.ymax)return new I(b)}else{if(void 0!==b.x&&void 0!==b.y)return E.fromJson(b);if(void 0!==b.paths)return H.fromJson(b);if(void 0!==b.rings)return G.fromJson(b);if(void 0!==b.points)return J.fromJson(b);if(void 0!==b.xmin&&void 0!==b.ymin&&void 0!==b.xmax&&void 0!==b.ymax)return I.fromJson(b)}}function v(b,a){if(null==b||void 0===b||"number"===typeof b)return b;var c=b.toString();if(""===c)return null;if(2==a){var e=R[c];if(void 0!==e)return e}else if(0==a){e=K[c];

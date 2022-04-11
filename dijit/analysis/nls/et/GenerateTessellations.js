@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({chooseShape:"Vali kujund",defineExtent:"Määratle ulatus",defineBin:"Määratlege salve suurus, kirjeldades selleks:",area:"Piirkond",distance:"Vahemaa",resultLayerName:"Tulemkihi nimi",hexagon:"Kuusnurk",transverseHexagon:"Põiki kuusnurk",square:"Ruut",triangle:"Kolmnurk",diamond:"Romb",sameAsDisplay:"Sama, mis kuvatakse",emptyBinSize:"Salve suurus ei tohi olla tühi",currentExtent:"Praegune ulatus",intersectExtent:"Hoidke alles ainult lõikuvad tesselatsioonid",outputLayerName:"Koostage tesselatsioonid kihile ${extentLayerName}",itemDescription:"Kasutati ulatust kihist ${extentLayerName}.",itemTags:"Analüüsitulemus, Koosta tesselatsioonid, ${extentLayerName}",itemSnippet:"Objektikiht genereeriti tesselatsioonide koostamise algoritmi kaudu."});

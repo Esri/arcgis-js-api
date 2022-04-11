@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({toolDefine:"חיזוי באמצעות רסטר קו מגמה",outputLayerName:"${layername}_predict",variablesLabel:"בחר את המשתנה/ים לחיזוי",variablesListLabel:"משתנים [Dimension Info] (תיאור)",dimensionDefinitionLabel:"בחר את השיטה שבה נעשה שימוש לצורך חיזוי ערכי ממד",dimensionValuesLabel:"ציין ערך/י ממד לחיזוי",dimensionIntervalLabel:"ציין מרווח ממד לחיזוי",intervalValueLabel:"ציין את מספר הצעדים בין ערכי ההתחלה והסיום",intervalUnitLabel:"בחר את היחידה שבה יעשה שימוש עבור מרווח ערך הזמן",startLabel:"ערך התחלה",endLabel:"ערך סיום",byValueLabel:"לפי ערך",byIntervalLabel:"לפי מרווח",hours:"שעות",days:"ימים",weeks:"שבועות",months:"חודשים",years:"שנים",custom:"מותאם",itemDescription:"ניתוח שירות התמונה שנוצר מחיזוי תוך שימוש ברסטר קו מגמה",itemTags:"תוצאת ניתוח רסטר, חיזוי תוך שימוש ברסטר קו מגמה, ${layername}",itemSnippet:"ניתוח שירות התמונה שנוצר מחיזוי תוך שימוש ברסטר קו מגמה"});

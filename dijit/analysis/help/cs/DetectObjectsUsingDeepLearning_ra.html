@@ -46,7 +46,7 @@
         <hr/>
     <p>Tento n&aacute;stroj spust&iacute; model učen&iacute; deep learningu na vstupn&iacute;m rastru pro vytvořen&iacute; tř&iacute;dy prvků obsahuj&iacute;c&iacute; objekty, kter&eacute; nalezne. Prvky mohou b&yacute;t ohraničuj&iacute;c&iacute; v&yacute;řezy nebo polygony kolem nalezen&yacute;ch objektů, nebo body ve středech objektů.
     </p>
-    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t aktu&aacute;ln&iacute; rozsah mapy</b> , budou analyzov&aacute;ny pouze rastrov&eacute; oblasti viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole za&scaron;krtnuto nen&iacute;, bude analyzov&aacute;n cel&yacute; rastr, i když se nach&aacute;z&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t rozsah aktu&aacute;ln&iacute; mapy</b>, budou analyzov&aacute;ny pouze rastrov&eacute; oblasti viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole za&scaron;krtnuto nen&iacute;, bude analyzov&aacute;n cel&yacute; rastr, i když se nach&aacute;z&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -54,7 +54,7 @@
         <div><h2>Vyberte snímek, který bude použit k detekování objektů</h2></div>
         <hr/>
         <div>
-            <p>Vstupn&iacute; sn&iacute;mek, kter&yacute; bude použit k detekov&aacute;n&iacute; objektů
+            <p>Vstupn&iacute; sn&iacute;mek, kter&yacute; bude použit k detekov&aacute;n&iacute; objektů.
             </p> 
         </div>
     </div>
@@ -132,6 +132,26 @@
             </p>
             <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
             </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Režim zpracování</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, jak budou zpracov&aacute;ny v&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo image služba. Tento parametr se použ&iacute;v&aacute;, když je vstupn&iacute; rastr mozaikov&aacute; datov&aacute; sada nebo image služba.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+V&scaron;echny položky rastru v&nbsp;mozaikov&eacute; datov&eacute; sadě nebo v obrazov&eacute;&nbsp;image službě budou spojeny do mozaiky a&nbsp;zpracov&aacute;ny. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+V&scaron;echny položky rastru v&nbsp;mozaikov&eacute; datov&eacute; sadě nebo v&nbsp;image službě budou zpracov&aacute;ny jako jednotliv&eacute; sn&iacute;mky.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
         </div>
     </div>
 </div>

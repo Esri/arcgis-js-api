@@ -214,6 +214,9 @@
         },
         "PredictUsingTrendRaster_ra": {
             "toolDescription": "predict-using-trend-raster.htm"
-        }
+        },
+        "OptimalRegionConnections_ra": {
+            "toolDescription": "optimal-region-connections-portal-tool-reference.htm"
+      }
     }
 }

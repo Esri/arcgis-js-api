@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Επιλογή raster ή feature περιοχής",inputCostRaster:"Επιλογή raster κόστους (προαιρετικό)",inputBarrierRasterOrFeatures:"Επιλογή raster ή στοιχείων εμποδίων (προαιρετικό)",distanceMethod:"Μέθοδος απόστασης (προαιρετικό)",connectionsWithinRegions:"Συνδέσεις εντός περιοχών (προαιρετικό)",generateConnections:"Δημιουργία συνδέσεων",noConnections:"Δεν υπάρχουν συνδέσεις",planar:"Μετρικό",geoDesic:"Γεωδαιτικό",outputOptimalLinesName:"Όνομα feature layer βέλτιστων γραμμών συνδεσιμότητας αποτελεσμάτων",outputNeighborConnectionsName:"Όνομα εξαγόμενου feature layer γειτονικών συνδέσεων (προαιρετικά)",outputLayerName:"Βέλτιστες συνδέσεις περιοχής για το ${layername}",drawSourcePointLayerName:"Σημεία προέλευσης",itemDescription:"Δημιουργία feature layer από την εκτέλεση των Βέλτιστων συνδέσεων περιοχής στο ${layername}. ",itemTags:"Αποτέλεσμα ανάλυσης, Βέλτιστες συνδέσεις περιοχής, ${layername} ${fieldname}",itemSnippet:"Δημιουργία feature layer από την εκτέλεση των Βέλτιστων συνδέσεων περιοχής.",noValueMessage:"Αυτή η τιμή είναι απαιτούμενη."});

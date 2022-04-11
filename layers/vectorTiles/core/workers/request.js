@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define(["require","exports","../tsSupport/assignHelper","../Error","../global"],(function(e,r,t,s,o){var n;Object.defineProperty(r,"__esModule",{value:!0}),r.execute=function(e,r){void 0===r&&(r={});var a=r.responseType;return a?"json"!==a&&"text"!==a&&"blob"!==a&&"array-buffer"!==a&&(a="text"):a="json",o.invokeStaticMessage("request",{url:e,options:r}).then((function(o){var u,l,i,b,c=o.data;if(c&&!("json"!==a&&"text"!==a&&"blob"!==a||(u=new Blob([c]),"json"!==a&&"text"!==a||(n||(n=new FileReaderSync),l=n.readAsText(u),"json"!==a)))){try{i=JSON.parse(l||null)}catch(o){var p=t({},o,{url:e,requestOptions:r});throw new s("request:server",o.message,p)}if(i.error){p=t({},i.error,{url:e,requestOptions:r});throw new s("request:server",i.error.message,p)}}switch(a){case"json":b=i;break;case"text":b=l;break;case"blob":b=u;break;default:b=c}return{data:b,requestOptions:r,ssl:o.ssl,url:e}}))}}));

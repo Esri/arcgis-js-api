@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Trieu el ràster o l'entitat de regió",inputCostRaster:"Trieu el ràster de costos (opcional)",inputBarrierRasterOrFeatures:"Trieu el ràster o l'entitat de barrera (opcional)",distanceMethod:"Mètode de distància (opcional)",connectionsWithinRegions:"Connexions dins de regions (opcional)",generateConnections:"Genera connexions",noConnections:"No hi ha connexions",planar:"Pla",geoDesic:"Geodèsic",outputOptimalLinesName:"Nom de la capa d'entitats de línies de connectivitat òptima de resultats",outputNeighborConnectionsName:"Nom de la capa d'entitats de connexions veïnes de resultats (opcional)",outputLayerName:"Connexions de regió òptimes de ${layername}",drawSourcePointLayerName:"Punts d'origen",itemDescription:"Capa d'entitats generada en executar Connexions de regió òptimes a ${layername}. ",itemTags:"Resultat de l'anàlisi, connexions de regió òptimes, ${layername} ${fieldname}",itemSnippet:"Capa d'entitats generada a partir de Connexions de regió òptimes.",noValueMessage:"Aquest valor és obligatori"});

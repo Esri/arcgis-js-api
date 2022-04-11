@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Генериране на теселации</h2><p/>
+        <h2><img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" alt="Генериране на теселации"></h2>
+        <hr/>
+    <p>Този инструмент генерира теселации върху област на изследване, въз основа на зададени форма и размер.
+    </p>
+    <p>Полето за отметка върху  <b>Използване на текущия обхват на картата</b> е деактивирано за този инструмент, тъй като използваният обхват за генериране на тесалациите се управлява от параметъра <b>Определяне на обхват</b>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="binType">
+        <div><h2>Изберете форма</h2></div>
+        <hr/>
+        <div>
+            <p>Формата или геометрията на тесалациите, които искате да създадете. Наличните форми са  <code>квадрат</code>, <code>шестоъгълник</code>, <code>напречен шестоъгълник</code>, <code>триъгълник</code> или <code>диамант</code>.
+            </p>
+        </div>
+    </div>
+    <div id="extentLayer">
+        <div><h2>Определяне на област на изследване</h2></div>
+        <hr/>
+        <div>
+            <p>Обхват или областта, където ще се случват тесалациите. Обхватът може да се определи, като се използва текущият обхват на картата, обхват на съществуващ слой или чрез интерактивно рисуване на област, която да се използва като обхват.
+            </p>
+            <p>Ако за определяне на обхват е избран обектен слой, ще бъде активирана опцията за запазване само на пресичащите се теселации. Ако е поставена отметка, в получения слой за теселиране ще бъдат генерирани само тези теселации, които покриват или се пресичат с обекти в посочения слой на ограничаващия правоъгълник.
+            </p>
+            <p>
+                <table border="1">
+                <tr>
+                    <td>
+                        <p>Немаркирано
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-141880D1-A748-4F7B-B700-0036CA9ACCE1-web.png" alt="Покритие на цял обхват">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Маркирано
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-F43D993E-5881-4A35-A4AE-4221EDD48374-web.png" alt="Пълно покритие">
+                        </p>
+                    </td>
+                </tr>
+                </table>
+            </p>
+        </div>
+    </div>
+    <div id="binSize">
+        <div><h2>Определете размера на кошчето, като посочите</h2></div>
+        <hr/>
+        <div>
+            <p>Размера на всяка клетка. Размерът на клетката може да се определи чрез посочване на квадратни единици или чрез посочване на разстояние, което се изчислява чрез следните измервания, където d = Разстояние:
+                <table border="1">
+                <tr>
+                    <td>
+                        <p>Квадрат
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-4DCDA345-EA0F-46AA-975D-27455F13AAA7-web.png" alt="Тесалации на квадрат">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Шестоъгълник
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-5A685C3F-B984-4B5E-8E8A-1EE7AB7FC434-web.png" alt="Тесалации на шестоъгълник">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Напречен шестоъгълник
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-61A8B883-A581-4A8D-9D77-57CEA96D9598-web.png" alt="Тесалации на напречен шестоъгълник">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Триъгълник
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-08AB7A29-A0E7-4210-8462-7550DC99A2F2-web.png" alt="Тесалации на триъгълник">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Диамант
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-165A71F1-381F-4699-97FA-F83C30AC96E7-web.png" alt="Тесалации на диамант">
+                        </p>
+                    </td>
+                </tr>
+                </table>
+            </p>
+        </div>
+    </div>
+    <div id="tessellationPolygonLayer">
+        <div><h2>Име на резултатен слой</h2></div>
+        <hr/>
+        <div>
+            <p>Това е името на слоя, който ще бъде създаден в  <b>Моето съдържание</b> и добавен към картата. Ако слоят вече съществува, ще бъдете подканени да посочите друго име.
+            </p>
+            <p>С помощта на падащото меню  <b>Запазване на резултатите в</b>, можете да зададете името на папка в <b>Моето съдържание</b>, където резултатите ще бъдат запазени.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

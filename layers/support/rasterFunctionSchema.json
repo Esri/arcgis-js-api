@@ -885,7 +885,7 @@
         "hidden": false
       },
       "Raster2": {
-        "required": true,
+        "required": false,
         "dataType": "raster",
         "displayName": "${rasterFunctions.rfxArgs.raster2Name}",
         "hidden": false
@@ -1531,6 +1531,13 @@
         "displayName": "${rasterFunctions.rfxArgs.boundariesOnlyName}",
         "hidden": false,
         "defaultValue": false
+      },
+      "MaxNumPixelsPerSegment": {
+        "required": false,
+        "dataType": "long",
+        "displayName": "${rasterFunctions.rfxArgs.maxNumPixelsPerSegment}",
+        "hidden": false,
+        "defaultValue": -1
       }
     }
   },
@@ -2143,7 +2150,8 @@
       "AllowUnmatched": {
         "required": true,
         "dataType": "boolean",
-        "displayName": "${rasterFunctions.rfxArgs.allowUnmatchedName}",
+        "displayName": "${rasterFunctions.rfxArgs.changeMissingValuesToNoDataName}",
+        "reverseDisplayValue": true,
         "defaultValue": true,
         "hidden": false
       }
@@ -4141,13 +4149,13 @@
             {
               "values": ["PERCENTILE"],
               "active": ["percentile_value"],
-              "inactive": [""],
+              "inactive": [],
               "autoRevert": true
             },
             {
               "values": ["PERCENTILE", "MEDIAN"],
               "active": ["percentile_interpolation_type"],
-              "inactive": [""],
+              "inactive": [],
               "autoRevert": true
             }
           ]
@@ -4648,9 +4656,51 @@
         "dataType": "long",
         "displayName": "${rasterFunctions.rfxArgs.operationName}",
         "hidden": false,
+        "defaultValue": 40,
         "domain": {
           "type": "list",
           "enum": "cellStatisticsTypes"
+        },
+        "editorStateTrigger": {
+          "active": true,
+          "triggers": [
+            {
+              "values": [93, 94],
+              "active": ["PercentileValue"],
+              "inactive": [],
+              "autoRevert": true
+            },
+            {
+              "values": [93, 94, 41, 69],
+              "active": ["PercentileInterpolationType"],
+              "inactive": [],
+              "autoRevert": true
+            }
+          ]
+        }
+      },
+      "ProcessAsMultiband": {
+        "required": true,
+        "dataType": "boolean",
+        "displayName": "${rasterFunctions.rfxArgs.processAsMultiband}",
+        "hidden": false
+      },
+      "PercentileValue": {
+        "required": false,
+        "dataType": "double",
+        "displayName": "${rasterFunctions.rfxArgs.percentileValue}",
+        "hidden": false,
+        "defaultValue": 90
+      },
+      "PercentileInterpolationType": {
+        "required": false,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.percentileInterpolationType}",
+        "hidden": false,
+        "defaultValue": "AUTO_DETECT",
+        "domain": {
+          "type": "list",
+          "enum": "gpsaZonalPercentileInterpolationTypes"
         }
       },
       "CellsizeType": {
@@ -4674,12 +4724,6 @@
           "type": "list",
           "enum": "esriExtentTypes"
         }
-      },
-      "ProcessAsMultiband": {
-        "required": true,
-        "dataType": "boolean",
-        "displayName": "${rasterFunctions.rfxArgs.processAsMultiband}",
-        "hidden": false
       }
     }
   },
@@ -7879,7 +7923,8 @@
           "triggers": [
             {
               "values": [2],
-              "active": ["FromClassValues","ToClassValues","KeepMethod","UseColorMethod"],
+              "active": ["FromClassValues","ToClassValues","FromClassNameFieldName",
+                "ToClassNameFieldName", "KeepMethod","UseColorMethod"],
               "inactive": [""],
               "autoRevert": true
             }
@@ -7897,6 +7942,18 @@
         "dataType": "longarray",
         "hidden": false,
         "displayName": "${rasterFunctions.rfxArgs.toClassValues}"
+      },
+      "FromClassNameFieldName": {
+        "required": false,
+        "dataType": "string",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.fromClassNameFieldName}"
+      },
+      "ToClassNameFieldName": {
+        "required": false,
+        "dataType": "string",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.toClassNameFieldName}"
       },
       "KeepMethod": {
         "required": false,
@@ -8235,6 +8292,164 @@
         "fileExtSupported": ["ecd"],
         "displayName": "${rasterFunctions.rfxArgs.inputDefinitionFileName}",
         "hidden": false
+      }
+    }
+  },
+  "DimensionalMovingStatisticsFunction": {
+    "category": "statistical",
+    "rasterFunctionArguments": {
+      "Raster": {
+        "required": true,
+        "dataType": "raster",
+        "displayName": "${rasterFunctions.rfxArgs.rasterName}",
+        "hidden": false
+      },
+      "Dimension": {
+        "required": true,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.dimensionName}",
+        "hidden": false,
+        "domain": {
+          "type": "rasterDimensions",
+          "argumentName": "Raster"
+        }
+      },
+      "BackwardWindow": {
+        "required": true,
+        "dataType": "long",
+        "displayName": "${rasterFunctions.rfxArgs.backwardWindowName}",
+        "defaultValue": 1,
+        "hidden": false
+      },
+      "ForwardWindow": {
+        "required": true,
+        "dataType": "long",
+        "displayName": "${rasterFunctions.rfxArgs.forwardWindowName}",
+        "defaultValue": 1,
+        "hidden": false
+      },
+      "NoDataHandling": {
+        "required": true,
+        "dataType": "long",
+        "displayName": "${rasterFunctions.rfxArgs.noDataHandlingName}",
+        "defaultValue": -1,
+        "hidden": false,
+        "domain": {
+          "type": "list",
+          "enum": "esriGANoDataHandling"
+        }
+      },
+      "StatisticsType": {
+        "required": true,
+        "dataType": "long",
+        "displayName": "${rasterFunctions.rfxArgs.statisticsTypeName}",
+        "defaultValue": 3,
+        "hidden": false,
+        "domain": {
+          "type": "list",
+          "enum": "esriGADimensionalMovingStatisticsTypes"
+        },
+        "editorStateTrigger": {
+          "active": true,
+          "triggers": [
+            {
+              "values": [12],
+              "active": ["PercentileValue"],
+              "inactive": [],
+              "autoRevert": true
+            },
+            {
+              "values": [4, 12],
+              "active": ["PercentileInterpolationType"],
+              "inactive": [],
+              "autoRevert": true
+            },
+            {
+              "values": [13],
+              "active": ["CircularWrapValue"],
+              "inactive": [],
+              "autoRevert": true
+            }
+          ]
+        }
+      },
+      "PercentileValue": {
+        "required": false,
+        "dataType": "double",
+        "displayName": "${rasterFunctions.rfxArgs.percentileValue}",
+        "hidden": false,
+        "defaultValue": 90
+      },
+      "PercentileInterpolationType": {
+        "required": false,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.percentileInterpolationType}",
+        "hidden": false,
+        "defaultValue": "AUTO_DETECT",
+        "domain": {
+          "type": "list",
+          "enum": "gpsaZonalPercentileInterpolationTypes"
+        }
+      },
+      "CircularWrapValue": {
+        "required": false,
+        "dataType": "double",
+        "displayName": "${rasterFunctions.rfxArgs.circularWrapValueName}",
+        "defaultValue": 360.0,
+        "hidden": false
+      }
+    },
+    "editorArgumentOverride": {
+      "active": true,
+      "overrides": [
+        {
+          "argumentNames": ["Percentile"],
+          "triggerAttributes": "minValue:0;maxValue:100",
+          "widget": {
+            "path": "widgets/ToolModeler/RasterFunctionEditor/ArgumentEditors/RFxRangedValueEditor"
+          }
+        }
+      ]
+    }
+  },
+  "InterpolateRasterByDimensionFunction": {
+    "category": "dataManagement",
+    "icon": "interpolateRasterByDimensionFunction.png",
+    "rasterFunctionArguments": {
+      "Raster": {
+        "required": true,
+        "dataType": "raster",
+        "displayName": "${rasterFunctions.rfxArgs.rasterName}",
+        "hidden": false
+      },
+      "DimensionDefinition": {
+        "required": true,
+        "dataType": "string",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.variableName}",
+        "domain": {
+          "type": "mdimdef",
+          "attributes": "interpolateByDim",
+          "argumentName": "Raster"
+        }
+      },
+      "InterpolationMethod": {
+        "required": true,
+        "dataType": "long",
+        "displayName": "${rasterFunctions.rfxArgs.interpolationMethodName}",
+        "hidden": false,
+        "defaultValue": 0,
+        "domain": {
+          "type": "list",
+          "enum": "esriInterpolateByDimMethods"
+        }
+      },
+      "IgnoreNoData": {
+        "required": true,
+        "dataType": "boolean",
+        "displayName": "${rasterFunctions.rfxArgs.ignoreNoDataName}",
+        "hidden": false,
+        "defaultValue": false
       }
     }
   }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define([],(function(){var o={};return o.studyAreaToJson=function(e){var t=e.toJson();return t.geometry&&(t.geometry.points?o._processPoints(t.geometry.points):t.geometry.paths?t.geometry.paths.forEach(o._processPoints):t.geometry.rings&&t.geometry.rings.forEach(o._processPoints)),t},o._processPoints=function(o){o.forEach((function(o){o[0]=parseFloat(o[0].toFixed(10)),o[1]=parseFloat(o[1].toFixed(10))}))},o}));

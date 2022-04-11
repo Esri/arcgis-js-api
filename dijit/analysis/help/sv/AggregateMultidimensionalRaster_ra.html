@@ -44,7 +44,7 @@
         <h2>Aggregera flerdimensionellt raster</h2><p/>
         <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Aggregera flerdimensionellt raster"></h2>
         <hr/>
-    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    <p>Genererar ett flerdimensionellt rasterdataset genom att kombinera befintliga flerdimensionella rastervariabler l&auml;ngs en dimension.
     </p>
     <p>Om du har 30 &aring;rs data &ouml;ver havsytans temperatur, insamlad varje m&aring;nad och p&aring; var femte meters djup &auml;nda ned till 100 meter, skulle du till exempel kunna till&auml;mpa dem p&aring; f&ouml;ljande s&auml;tt:
         <ul>
@@ -104,6 +104,8 @@
                     <li> <b>Minoritet</b> &ndash; Ber&auml;knar det v&auml;rde som intr&auml;ffade minst frekvent f&ouml;r en pixel &ouml;ver alla sektorer i intervallet.
                     </li>
                     <li> <b>Median</b> &ndash; Ber&auml;knar medianv&auml;rdet f&ouml;r en pixel &ouml;ver alla sektorer i intervallet.
+                    </li>
+                    <li> <b>Percentil</b> &mdash;Percentilen av v&auml;rden f&ouml;r en pixel ber&auml;knas &ouml;ver alla sektorer i intervallet. Den 90:e percentilen ber&auml;knas som standard. Du kan ange andra v&auml;rden (fr&aring;n 0 till 100) med parametern <b>Percentilv&auml;rde</b>.
                     </li>
                     <li> <b>Intervall</b> &ndash; Ber&auml;knar v&auml;rdeintervallet f&ouml;r en pixel &ouml;ver alla sektorer i intervallet.
                     </li>
@@ -246,6 +248,24 @@
             <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
             </p>
             <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>. Om du har behörigheter att skapa både tilelager och dynamiska bildlager kan du ange vilken lagertyp som ska genereras i utdata med hjälp av listrutan Spara resultat som. </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Percentilvärde</h2></div>
+        <hr/>
+        <div>
+            <p>Percentil att ber&auml;kna. Standard &auml;r 90, som anger den nittionde percentilen.
+            </p>
+            <p>V&auml;rdena kan vara fr&aring;n 0 till 100. Percentilen 0 motsvarar i huvudsak statistikkategorin Minimum, och den 100:e percentilen motsvarar Maximum. V&auml;rdet 50 ger i huvudsak samma resultat som statistikkategorin Median.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Interpoleringstyp för percentil</h2></div>
+        <hr/>
+        <div>
+            <p>Anger vilken metod f&ouml;r interpolering av percentil som ska anv&auml;ndas n&auml;r antalet v&auml;rden fr&aring;n indatarastret som ska ber&auml;knas &auml;r j&auml;mnt.
+            </p>
         </div>
     </div>
 </div>

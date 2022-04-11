@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({fields:"ฟิลด์",categorical:"จัดกลุ่ม",requiredMessage:"ต้องเลือกตัวแปรอธิบายอย่างน้อย 1 ตัว"});

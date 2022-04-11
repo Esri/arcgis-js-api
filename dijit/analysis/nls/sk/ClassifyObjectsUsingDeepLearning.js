@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({toolDefine:"Klasifikovať objekty použitím hĺbkového strojového učenia (Deep Learning)",inputFeaturesLabel:"Vybrať vrstvy pvkov pre objekty (voliteľné)",outputLayerName:"${layername}_klasifikovanéObjekty",modelLabel:"Vyberte model hĺbkového strojového učenia (Deep Learning) použitý pre klasifikáciu objektov",modelArgsLabel:"Zadajte parametre modelu hĺbkového strojového učenia (Deep Learning)",classLabelFieldLabel:"Definujte názov poľa označujúceho triedu (voliteľné)",processingModeLabel:"Režim spracovania",processAsMosaicLabel:"Spracovať ako mozaikový obraz",processAsItemsLabel:"Spracovať všetky rasterové položky oddelene",queryModelArgsMsg:"Dopytujú sa parametre modelu...",queryModelArgsErrMsg:"Dopytovanie parametrov modelu zlyhalo.",valueLabel:"Hodnota",nameLabel:"Meno",analysisLayerLabel:"Vyberte obraz použitý pre klasifikáciu objektov",itemDescription:"Analýza obrazovej služby generovaná nástrojom Klasifikovať objekty s použitím hĺbkového strojového učenia (Deep Learning)",itemTags:"Výsledok rastrovej analýzy, Klasifikovať objekty používaním hĺbkového strojového učenia (Deep Learning), ${layername}",itemSnippet:"Analýza obrazovej služby generovaná nástrojom Klasifikovať objekty používaním hĺbkového strojového učenia (Deep Learning)"});

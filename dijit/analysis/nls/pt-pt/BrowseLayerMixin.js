@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Escolher Camada de Análise Living Atlas",customAnalysisLayerTitle:"Selecionar Camada de Análise",searchPlaceholderText:"Pesquisar camadas de análise do Living Atlas",searchCustomPlaceholderText:"Pesquisar camadas de análise",mainActionTitle:"Seleccionar",customActionName:"Selecionar e adicionar ao mapa",customeSectionName:"Camada de análise do Living Atlas",Categories:"Categorias",boundaries:"Fronteiras",places:"Locais",boundariesAndPlaces:"Limites e Locais",hexbins:"Hexbins",transportation:"Transportes",point:"Camadas de Pontos",line:"Camadas de Polilinhas",polygon:"Camadas de Polígonos",pointFilterName:"Ponto",lineFilterName:"Polilinha",polygonFilterName:"Polígono",multiPointFilterName:"Multipontos",geometryFilterName:"Geometria",featureLayerName:"Camada de Elementos",tableLayerName:"Tabela",itemTypeFilterName:"Tipo do item",instantFilterName:"Instantâneo",intervalFilterName:"Intervalo",timeFilterName:"Tempo",edit:"Editar",boundaryLayers:"Camadas de Limites Esri",customAnalysisGroupName:"Grupo de análise da organização"});

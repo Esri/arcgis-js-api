@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/dom-construct","./coreUtils/chart/ChartViewBuilder","./coreUtils/chart/GridChartUtil","esri/dijit/geoenrichment/utils/DomUtil"],(function(t,e,i,h,r){return t(null,{noChartView:!1,_chartViewInfo:null,_chartNode:null,_chartViewBuilder:null,getChartViewOptions:function(){var t=h.getSupportedChartTypes(this),e=h.getTableRowsColumnsInfos(this);return t&&t.length&&e&&{chartType:this._chartViewInfo&&this._chartViewInfo.chartType,chartTypes:t,supportsAltOrientation:this.columns.length>2,columnInfos:e.columnInfos,rowInfos:e.rowInfos,sourceId:this._chartViewInfo&&this._chartViewInfo.sourceId,takeSeriesFromRows:!1}},tableToChart:function(t){return this._removeChart(),this._chartViewInfo=t,this._chartNode=e.create("div",{class:"esriGEAbsoluteStretched"},this.domNode),r.hide(this.mainNode),this._chartViewBuilder=new i({viewModel:this.viewModel,theme:this.theme,grid:this,chartNode:this._chartNode,width:this._width,height:this._height}),this._chartViewBuilder.renderChart(t)},chartToTable:function(){this._removeChart()},_removeChart:function(){this._chartViewInfo&&(this._chartViewInfo=null,this._chartViewBuilder.destroy(),this._chartViewBuilder=null,e.destroy(this._chartNode),this._chartNode=null,r.show(this.mainNode))}})}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","esri/dijit/geoenrichment/when","esri/dijit/geoenrichment/utils/DomUtil","esri/dijit/geoenrichment/utils/FitUtil","./supportClasses/imageUtils/ImageReplacer","./supportClasses/imageUtils/ImageOptimizer","./supportClasses/NodeProcessor","./supportClasses/SVGBuilder","./supportClasses/text/TextMeasurer"],(function(e,t,i,r,s,n,o,a,l){var m=e(null,{htmlToSvg:function(e,l){(l=l||{}).definitions=l.definitions||[],l.fitParams=l.fitParams||{};var m={x:i.getStyle(e,"left")||0,y:i.getStyle(e,"top")||0,w:e.offsetWidth,h:e.offsetHeight};return l.fitScale=r.fitBox(m,{w:l.fitParams&&l.fitParams.w||m.w,h:l.fitParams&&l.fitParams.h||m.h}).ratio,t(s.replaceImagesWithDataURL(e,{convertUrlImages:l.convertUrlImages,hideUrlImages:l.hideUrlImages,getItemResourceUrl:l.getItemResourceUrl}),(function(){return t(o.processNode(e,l),(function(i){var r=a.buildSVG(i,e,l);return t(n.optimizeSize([r],l.sizeLimit),(function(e){return e[0]}))}))}))}}),u={_numRunningTasks:0,htmlToSvg:function(e,t){var i=(new Date).getTime();return u._numRunningTasks++,(new m).htmlToSvg(e,t).then((function(e){return console.log("HTMLtoSVGConverter: conversion time: "+Number(((new Date).getTime()-i)/1e3).toFixed(3)+" s."),--u._numRunningTasks||l.cleanUp(),e}))}};return u}));

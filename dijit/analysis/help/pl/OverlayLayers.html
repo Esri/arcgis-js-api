@@ -44,7 +44,7 @@
         <h2>Nałóż warstwy</h2><p/>
         <h2><img src="../images/GUID-CE1E0E84-F3B5-446B-9FDE-4DA057F106CC-web.png" alt="Nał&oacute;ż warstwy"></h2>
         <hr/>
-    <p>Nakładanie służy do łączenia dw&oacute;ch warstw w jedną. Nakładanie można postrzegać jako tworzenie z&nbsp;zestawu nakładających się map pojedynczej mapy zawierającej wszystkie informacje w&nbsp;nich zawarte. Nakładanie to znacznie więcej niż połączenie ze sobą rysunk&oacute;w. Wszystkie atrybuty obiekt&oacute;w biorące udział w operacji nakładania są przenoszone do wynikowego produktu. Nakładanie służy do uzyskania odpowiedzi na jedno z najbardziej podstawowych pytań z dziedziny geografii: &bdquo;Jaka jest kolejność poszczeg&oacute;lnych warstw?&rdquo;. Na przykład:
+    <p>Nakładanie służy do łączenia dw&oacute;ch warstw w jedną. Nakładanie można postrzegać jako tworzenie z&nbsp;zestawu nakładających się map pojedynczej mapy zawierającej wszystkie informacje w&nbsp;nich zawarte. Nakładanie to więcej niż połączenie ze sobą rysunk&oacute;w. Wszystkie atrybuty obiekt&oacute;w w operacji nakładania są przenoszone do ostatecznego wyniku. Nakładanie służy do uzyskania odpowiedzi na jedno z najbardziej podstawowych pytań z dziedziny geografii: &bdquo;Jaka jest kolejność poszczeg&oacute;lnych warstw?&rdquo;. Przykłady:
         <ul>
             <li>Kt&oacute;re działki znajdują się na obszarze zalewania przez powodzie 100-letnie? (Gdy coś znajduje się &bdquo;w obrębie&rdquo; czegoś to znaczy r&oacute;wnież, że leży na obszarze czegoś.)
                   
@@ -87,9 +87,9 @@
         <div><h2>Wybierz metodę nakładania</h2></div>
         <hr/>
         <div>
-            <p>Metoda nakładania określa spos&oacute;b połączenia warstwy wejściowej z warstwą nakładaną.
+            <p>Decyduje o metodzie nakładania, kt&oacute;ra będzie używana do definiowania sposobu, w jaki warstwa wejściowa i warstwa nakładania zostaną przeniesione do ostatecznego wyniku.
                 <ul>
-                    <li> <b>Przetnij</b> &mdash; Uzyskana mapa będzie zawierać tylko te obiekty z&nbsp;warstwy nakładanej lub ich części pokrywające się z&nbsp;obiektami w&nbsp;warstwie wejściowej. Przy przecinaniu obiekt&oacute;w liniowych lub poligonowych możesz określić typ obiekt&oacute;w wynikowych.
+                    <li> <b>Przetnij</b> &mdash; uzyskana mapa będzie zawierać tylko te obiekty z&nbsp;warstwy wejściowej lub ich części, kt&oacute;re pokrywają się z&nbsp;obiektami w&nbsp;warstwie nakładanej. Przy przecinaniu obiekt&oacute;w liniowych lub powierzchniowych możesz określić typ obiekt&oacute;w wynikowych.
                         <table border="1">
                         <tr>
                             <td>
@@ -125,10 +125,10 @@
                                 </p>
                             </td>
                             <td>
-                                <p> <img src="../images/GUID-5EE90BD6-CC3D-4E2F-A5D0-DC57298E8416-web.png" alt="Punkty i obszary jako dane wejście">
+                                <p> <img src="../images/GUID-5EE90BD6-CC3D-4E2F-A5D0-DC57298E8416-web.png" alt="Punkty i obszary jako dane wejściowe">
                                 </p>
                             </td>
-                            <td> <img src="../images/GUID-5CCA360F-D4C9-43AB-8FB2-E6E62DE93BD4-web.png" alt="Punkty i obszary z wynikiem danych punktowych">
+                            <td> <img src="../images/GUID-5CCA360F-D4C9-43AB-8FB2-E6E62DE93BD4-web.png" alt="Punkty i obszary z wynikiem w postaci danych punktowych">
                             </td>
                         </tr>
                         <tr>
@@ -183,9 +183,9 @@
                         </tr>
                         </table>
                     </li>
-                    <li> <b>Sumuj</b> &mdash; Wynik będzie obejmować obiekty z&nbsp;warstwy wejściowej i&nbsp;warstwy nakładanej. Z opcji Sumuj można skorzystać tylko wtedy, gdy warstwa wejściowa i warstwa nakładana zawierają obiekty powierzchniowe.
+                    <li> <b>Sumuj</b> &mdash; Wynik będzie obejmować obiekty z&nbsp;warstwy wejściowej i&nbsp;warstwy nakładanej. Ta opcja jest dostępna tylko wtedy, gdy warstwa wejściowa i warstwa nakładania zawierają obiekty powierzchniowe.
                     </li>
-                    <li> <b>Usuń</b> &mdash; uzyskana mapa będzie zawierać obiekty z warstwy wejściowej lub ich części niepokrywające się z obszarami w warstwie nakładanej. W&nbsp;warstwie nakładanej mogą znajdować się obiekty poligonowe, liniowe i&nbsp;punktowe.
+                    <li> <b>Usuń</b> &mdash; uzyskana mapa będzie zawierać obiekty z warstwy wejściowej lub ich części niepokrywające się z obszarami w warstwie nakładanej. Ta opcja jest dostępna, gdy obiekty wejściowe mają typ takiego samego lub niższego rzędu co warstwa nakładania.
                     </li>
                 </ul>
                 
@@ -198,7 +198,7 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
-            <p> Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona na karcie <b>Moje zasoby</b> i&nbsp;zostanie dodana do mapy. Będzie zawierać te same typy obiekt&oacute;w (obszary, linie lub punkty), kt&oacute;re znajdowały się w warstwie nakładanej. Nazwa domyślna jest tworzona w oparciu o metodę nakładania i&nbsp;nazwy warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy.
+            <p> Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze <b>Moje zasoby</b> i dodana do mapy. Będzie zawierać te same typy obiekt&oacute;w (obszary, linie lub punkty), kt&oacute;re znajdowały się w warstwie nakładanej. Nazwa domyślna jest tworzona w oparciu o metodę nakładania i&nbsp;nazwy warstwy wejściowej. Jeśli taka warstwa już istnieje, wyświetlona zostanie prośba o podanie inne nazwy.
             </p>
             <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
             </p> 

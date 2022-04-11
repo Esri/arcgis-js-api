@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({chooseLayer:"Analiz edilecek bir katman seçin",chooseField:"Model oluşturulacak alanı seçin",chooseExplanatoryField:"Açıklayıcı alanları seçin",chooseNeighborhood:"Komşuluğun nasıl belirleneceğini seçin",distanceBand:"Mesafe Bandı",numNeighbors:"Komşu sayısı",chooseWeighted:"Komşuluk detaylarının nasıl ağırlıklandırılacağını seçin",bisquare:"Çift kare",gaussian:"Gauss",resultLayerName:"Sonuç katmanı adı",outputLayerName:"GWR ${inputLayerName}",distanceBandWarning:"Mesafe bandının değeri ${min} ile ${max} arasında olmalıdır",numNeighborsWarning:"Komşuluk sayısı ${min} ile ${max} arasında olmalıdır",explanatoryFieldsWarning:"En az 1 açıklayıcı alan seçin",explanatoryLayerWarning:"Seçilen katman geçerli bir açıklayıcı alan içermiyor, lütfen farklı bir katman seçin",inputLayerWarning:"Seçilen katman, modellenecek sayısal bir alan içermiyor, lütfen farklı bir katman seçin",itemDescription:"Coğrafi Olarak Ağırlıklı Regresyon çözümlerinin çalıştırılmasıyla oluşturulan detay katmanı.",itemTags:"Analiz Sonucu, Coğrafi Olarak Ağırlıklı Regresyon, ${inputLayerName}, uygun",itemSnippet:"Coğrafi Olarak Ağırlıklı Regresyon aracı ile oluşturulan detay katmanı"});

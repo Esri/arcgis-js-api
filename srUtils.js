@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define(["./SpatialReference","./ImageSpatialReference","./kernel","./sniff","dojo/_base/lang"],(function(e,n,i,r,a){function t(e){var n=!1;return e&&(e.ics||e.icsid)&&(n=!0),n}var c={isICS:t,createSpatialReference:function(i){var r=null;return i&&(r=t(i)?new n(i):new e(i)),r}};return r("extend-esri")&&a.mixin(i,c),c}));

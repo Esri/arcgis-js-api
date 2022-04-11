@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Επιλογή raster ή στοιχείων προορισμού",destinationField:"Πεδίο προορισμού (προαιρετικό)",inputDistanceAccumulationRaster:"Επιλογή συγκεντρωτικής απόστασης raster",inputBackDirectionRaster:"Επιλογή επιστροφής ή κατεύθυνσης ροής raster",pathType:"Τύπος διαδρομής (προαιρετικό)",bestSingle:"Καλύτερο μονό",eachCell:"Κάθε πεδίο",eachZone:"Κάθε ζώνη",outputRasterName:"Όνομα raster επιπέδου αποτελέσματος",outputLayerName:"Βέλτιστο μονοπάτι ως επίπεδο raster ${layername}",drawSourcePointLayerName:"Σημεία προέλευσης",itemDescription:"Feature layer που δημιουργείται από την εκτέλεση του εργαλείου βέλτιστου μονοπατιού ως raster σε ${layername}. ",itemTags:"Αποτέλεσμα Ανάλυσης, Βέλτιστο μονοπάτι ως raster, ${layername} ${fieldname}",itemSnippet:"Feature layer που δημιουργείται από το εργαλείο βέλτιστo μονοπάτι ως raster"});

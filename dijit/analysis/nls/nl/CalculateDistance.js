@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Kies het raster of de locatie van de objectlaag voor de berekening van de afstand naar",inputRaster:"Kies raster- of objectlaag om barrières weer te geven (optioneel)",maxDistanceLabel:"Maximumafstand voor de berekening (optioneel)",outputCellSize:"Output celgrootte (optioneel)",distanceMethod:"Afstandmethode",resultDistLayerName:"Resultaat afstandslaagnaam",resultDirectionLayerName:"Resultaat richtingslaagnaam (optioneel)",resultAllocationLayerName:"Resultaat allocatielaagnaam (optioneel)",outputBackDirectionName:"Resultaat richtingslaagnaam (optioneel)",outputLayerName:"Berekende afstand van ${layername}",allocationFieldLabel:"Kies een allocatieveld (optioneel)",itemDescription:"Objectlaag gegenereerd via de functie Afstand berekenen op ${layerName}. ",itemTags:"Analyseresultaat, afstand berekenen, ${layername} ${fieldname}",itemSnippet:"Objectlaag gegenereerd via de functie Afstand berekenen.",planar:"Planair",geodesic:"Geodetisch",selectDistance:"-- selecteren --"});

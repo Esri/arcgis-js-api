@@ -105,6 +105,8 @@
                     </li>
                     <li> <b>Median</b>&mdash;Beregner medianv&aelig;rdien af en pixel p&aring; tv&aelig;rs af alle udsnit i intervallet.
                     </li>
+                    <li> <b>Percentil</b>&mdash;Percentilen af v&aelig;rdier for en pixel vil blive beregnet p&aring; tv&aelig;rs af alle udsnit i intervallet. Den 90. percentil beregnes som standard. Du kan angive andre v&aelig;rdier (fra 0 til 100) ved hj&aelig;lp af parameteren <b>Percentilv&aelig;rdi</b>.
+                    </li>
                     <li> <b>Interval</b>&mdash;Beregner v&aelig;rdi-intervallet for en pixel p&aring; tv&aelig;rs af alle udsnit i intervallet.
                     </li>
                     <li> <b>Standardafvigelse</b>&mdash;Beregner standardafvigelsen af en pixels v&aelig;rdier p&aring; tv&aelig;rs af alle udsnit i intervallet.
@@ -246,6 +248,24 @@
             <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
             </p>
             <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>. Hvis du har rettigheder til at oprette både tile-billedlag og dynamiske billedlag, kan du angive, hvilken type lag der skal genereres i outputtet ved hjælp af Gem resultat som-rullelisten. </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Percentilværdi</h2></div>
+        <hr/>
+        <div>
+            <p>Percentil, der skal beregnes. Standardv&aelig;rdien er 90, hvilket angiver den 90. percentil.
+            </p>
+            <p>V&aelig;rdierne kan v&aelig;re fra 0 til 100. Den 0. percentil svarer stort set til minimum-statistikken, og den 100. percentil svarer til maksimum. En v&aelig;rdi p&aring; 50 vil stort set give det samme resultat som median-statistikken.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Percentilinterpolationstype</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver metoden for percentilinterpolation, der skal anvendes, n&aring;r antallet af v&aelig;rdier fra input-rasteren, der skal beregnes, er lige.
+            </p>
         </div>
     </div>
 </div>

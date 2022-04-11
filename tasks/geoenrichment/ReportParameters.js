@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define(["../../declare","./EnrichParametersBase"],(function(r,t){return r("esri.tasks.geoenrichment.ReportParameters",[t],{reportID:null,format:"pdf",fields:null,constructor:function(r){r&&(this.reportID=r.report||r.reportID||null,this.format=r.format,this.fields=r.reportFields||r.fields||null)},toJson:function(){var r=this.inherited(arguments);return this.reportID&&(r.report=this.reportID),this.format&&(r.format=this.format),this.fields&&(r.reportFields=this.fields),r}})}));

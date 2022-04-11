@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({chooseLayer:"Elemezni kívánt réteg kiválasztása",chooseField:"Modellezni kívánt mező kiválasztása",chooseExplanatoryField:"Magyarázó mezők kiválasztása",chooseNeighborhood:"A szomszédság meghatározási módszerének kiválasztása",distanceBand:"Távolságsáv",numNeighbors:"Szomszédok száma",chooseWeighted:"Szomszédos vektoros elemek súlyozásának kiválasztása",bisquare:"Duplanégyzet",gaussian:"Gauss",resultLayerName:"Eredmény réteg neve",outputLayerName:"GWR ${inputLayerName}",distanceBandWarning:"A távolságsáv értékének ${min} és ${max} között kell lennie.",numNeighborsWarning:"A szomszédok számának ${min} és ${max} között kell lennie.",explanatoryFieldsWarning:"Válasszon legalább 1 magyarázó mezőt.",explanatoryLayerWarning:"A kiválasztott réteg nem tartalmaz egyetlen érvényes magyarázó mezőt sem, válasszon másik réteget.",inputLayerWarning:"A kiválasztott réteg nem tartalmaz egyetlen modellezhető numerikus mezőt sem, válasszon másik réteget.",itemDescription:"A Földrajzilag súlyozott regressziós megoldások futtatásával létrehozott vektoros réteg.",itemTags:"Elemzés végeredménye, Földrajzilag súlyozott regresszió, ${inputLayerName}, illesztés",itemSnippet:"A Földrajzilag súlyozott regressziós eszközből létrehozott vektoros réteg"});

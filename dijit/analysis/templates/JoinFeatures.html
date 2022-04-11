@@ -1,7 +1,7 @@
 <div class="esriAnalysis">
 	<div data-dojo-type="dijit/layout/ContentPane" style="margin-top:0.5em; margin-bottom: 0.5em;">
       <div data-dojo-attach-point="_joinFeaturesToolContentTitle" class="analysisTitle">
-        <table class="esriFormTable" > 
+        <table class="esriFormTable" >
           <tr>
             <td class="esriToolIconTd"><div class="joinFeaturesIcon"></div></td>
             <td class="esriAlignLeading esriAnalysisTitle" data-dojo-attach-point="_toolTitle">
@@ -9,7 +9,7 @@
 							<nav class="breadcrumbs"  data-dojo-attach-point="_analysisModeLblNode" style="display:none;">
 								<a href="#" class="crumb breadcrumbs__modelabel" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
 								<a href="#" class="crumb is-active" data-dojo-attach-point="_analysisTitleCrumb" style="font-size:16px;">${i18n.joinFeaturesTitle}</a>
-							</nav> 							
+							</nav>
 						</td>
             <td>
               <div class="esriFloatTrailing" style="padding:0;">
@@ -18,8 +18,8 @@
                   </div>
                   <div class="esriFloatTrailing">
                     <a href="#" data-dojo-attach-point="_closeBtn" title="${i18n.close}" class="esriAnalysisCloseIcon"></a>
-                  </div>              
-              </div>                
+                  </div>
+              </div>
             </td>
           </tr>
         </table>
@@ -27,7 +27,7 @@
       <div style="clear:both; border-bottom: #CCC thin solid; height:1px;width:100%;"></div>
     </div>
 	<div data-dojo-type="dijit/form/Form" data-dojo-attach-point="_form" readOnly="true">
-	    <table class="esriFormTable" style="border-collapse:collapse;border-spacing:5px;margin-top:15px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_targetLayerTable"> 
+	    <table class="esriFormTable" style="border-collapse:collapse;border-spacing:5px;margin-top:15px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_targetLayerTable">
 	        <tbody>
 	        	<tr data-dojo-attach-point="_targetLayerLabelRow" style="display: table-row;">
 		            <td colspan="3" style="padding-bottom:1em;">
@@ -46,7 +46,7 @@
 	          	</tr>
 	        </tbody>
 	    </table>
-	    <table class="esriFormTable" style="border-collapse:collapse;border-spacing:5px;margin-top:5px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_joinLayerTable"> 
+	    <table class="esriFormTable" style="border-collapse:collapse;border-spacing:5px;margin-top:5px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_joinLayerTable">
 	        <tbody>
 	        	<tr data-dojo-attach-point="_joinLayerLabelRow" style="display: table-row;">
 		            <td colspan="3" style="padding-bottom:1em;">
@@ -64,7 +64,7 @@
 	          	</tr>
 	        </tbody>
 	    </table>
-	    <table class="esriFormTable" style="border-collapse:collapse;border-spacing:5px;margin-top:5px;" cellpadding="5px" cellspacing="5px"> 
+	    <table class="esriFormTable" style="border-collapse:collapse;border-spacing:5px;margin-top:5px;" cellpadding="5px" cellspacing="5px">
 	        <tbody>
 	        	<tr data-dojo-attach-point="_JoinOptionsLabelRow">
 		            <td colspan="3" style="padding-bottom:1em;">
@@ -77,7 +77,7 @@
 	          	</tr>
 	        </tbody>
 	    </table>
-	    <table class="esriFormTable" data-dojo-attach-point="_spatialJoinNode" style="border-collapse:collapse;border-spacing:5px;margin-top:5px;" cellpadding="5px" cellspacing="5px"> 
+	    <table class="esriFormTable" data-dojo-attach-point="_spatialJoinNode" style="border-collapse:collapse;border-spacing:5px;margin-top:5px;" cellpadding="5px" cellspacing="5px">
 	        <tbody>
 	          	<tr>
 		            <td colspan="3" style="padding-top: 0px;">
@@ -112,7 +112,7 @@
 			      	</tr>
 	    	</tbody>
 	    </table>
-	    <table class="esriFormTable" data-dojo-attach-point="_temporalJoinNode" style="border-collapse:collapse;border-spacing:5px;margin-top:5px;" cellpadding="5px" cellspacing="5px"> 
+	    <table class="esriFormTable" data-dojo-attach-point="_temporalJoinNode" style="border-collapse:collapse;border-spacing:5px;margin-top:5px;" cellpadding="5px" cellspacing="5px">
 	        <tbody>
 	          	<tr>
 		            <td colspan="3" style="padding-top: 0px;">
@@ -146,7 +146,7 @@
 			        </td>
 	    	</tbody>
 	    </table>
-	    <table class="esriFormTable" data-dojo-attach-point="_attributeJoinNode" style="border-collapse:collapse;border-spacing:5px;margin-top:5px;" cellpadding="5px" cellspacing="5px"> 
+	    <table class="esriFormTable" data-dojo-attach-point="_attributeJoinNode" style="border-collapse:collapse;border-spacing:5px;margin-top:5px;" cellpadding="5px" cellspacing="5px">
 	        <tbody>
 	          	<tr>
 								<td colspan="3" style="padding-top: 0px;">
@@ -168,14 +168,14 @@
 	          	</tr>
 	    	</tbody>
 	    </table>
-	    <table class="esriFormTable esriLeadingMargin1 attributeJoin" style="border-collapse:collapse;border-spacing:5px;margin-top:10px;" cellpadding="5px" cellspacing="5px"> 
+	    <table class="esriFormTable esriLeadingMargin1 attributeJoin" style="border-collapse:collapse;border-spacing:5px;margin-top:10px;" cellpadding="5px" cellspacing="5px">
 	        <tbody>
 		      	<tr data-dojo-attach-point="_attributeRelationshipRow" class="hide longInput">
-		          	
+
 		        </tr>
 	        </tbody>
 	    </table>
-	    <table class="esriFormTable" style="border-collapse:collapse;border-spacing:5px; margin-top:10px;margin-bottom:5px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_summaryStatisticTable"> 
+	    <table class="esriFormTable" style="border-collapse:collapse;border-spacing:5px; margin-top:10px;margin-bottom:5px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_summaryStatisticTable">
 	        <tbody>
 	        	<tr data-dojo-attach-point="_summaryStatisticLabelRow" style="display: table-row;">
 		            <td colspan="3">
@@ -217,7 +217,7 @@
                     </label>
                     <br/>
                     <label class="esriSelectLabel">
-                      <input type="radio" data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="_exprRadioBtn" data-dojo-attach-event="onChange:_handleExprRadioChange" data-dojo-props="'class':'esriSelectLabel'" name="chooserecord"/> 
+                      <input type="radio" data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="_exprRadioBtn" data-dojo-attach-event="onChange:_handleExprRadioChange" data-dojo-props="'class':'esriSelectLabel'" name="chooserecord"/>
                       ${i18n.orderByField}
                     </label>
                     <br/>
@@ -236,12 +236,12 @@
 		              <a href="#" class="esriFloatTrailing helpIcon" esrihelptopic="summaryFields"></a>
 		            </td>
               </tr>
-	          	<tr data-dojo-type="esri/dijit/analysis/components/AddSummaryFields" data-dojo-attach-point="_summaryWidget" 
+	          	<tr data-dojo-type="esri/dijit/analysis/components/AddSummaryFields" data-dojo-attach-point="_summaryWidget"
 								data-dojo-props="layer:'', showGeoAnalyticsParams:${showGeoAnalyticsParams}, addAsRow:true, allowDateType:true, isGPStringObjType: true">
 							</tr>
               <tr data-dojo-attach-point="_keepTargetFeaturesRow" style="display: table-row;">
                 <td colspan="3">
-				   <label class="esriLeadingMargin1 esriSelectLabel esriExtentLabel">
+				   <label data-dojo-attach-point="_keepTargetFeaturesCheckLabel" class="esriLeadingMargin1 esriSelectLabel esriExtentLabel">
 					 <input type="radio" data-dojo-attach-point="_keepTargetFeaturesCheck" data-dojo-type="dijit/form/CheckBox" name="keepAllTargetFeatures"/>
 						${i18n.keepAllTargetFeatures}
 				   </label>
@@ -252,7 +252,7 @@
               </tr>
 	        </tbody>
 	    </table>
-			<table data-dojo-attach-point="_joinConditionNode" class="esriFormTable" style="border-collapse:collapse;border-spacing:5px; margin-top:10px;margin-bottom:5px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_joinOperationTable"> 
+			<table data-dojo-attach-point="_joinConditionNode" class="esriFormTable" style="border-collapse:collapse;border-spacing:5px; margin-top:10px;margin-bottom:5px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_joinOperationTable">
 			  <tr data-dojo-attach-point="">
             <td colspan="3" style="padding-bottom:1em;">
 							<label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.fiveLabel}</label>
@@ -277,7 +277,7 @@
           </td>
         </tr>
 			</table>
-	    <table class="esriFormTable" style="border-collapse:collapse;border-spacing:5px;margin-top:15px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_outputNameTable"> 
+	    <table class="esriFormTable" style="border-collapse:collapse;border-spacing:5px;margin-top:15px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_outputNameTable">
 	        <tbody>
 	          	<tr>
 		            <td colspan="3" style="border-collapse:collapse;border-spacing:5px;">
@@ -285,26 +285,26 @@
 		              <label class="longTextInput esriAnalysisStepsLabel">${i18n.resultLabel}</label>
 		            </td>
 		            <td class="shortTextInput">
-		              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="outputName"></a> 
-		            </td>             
+		              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="outputName"></a>
+		            </td>
 	            </tr>
 	          	<tr>
 			        <td colspan="3" style="border-collapse:collapse;border-spacing:5px;">
 			          <input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="required:true,trim:true" class="esriOutputText esriLeadingMargin1 longInput" data-dojo-attach-point="_outputName"></input>
-			        </td>                
+			        </td>
 		        </tr>
 	        </tbody>
 	    </table>
-	    <table class="esriFormTable" style="border-collapse:collapse;border-spacing:5px;margin-top:15px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_outputNameTable"> 
+	    <table class="esriFormTable" style="border-collapse:collapse;border-spacing:5px;margin-top:15px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_outputNameTable">
 	        <tbody>
 	          	<tr>
 		            <td colspan="3" style="border-collapse:collapse;border-spacing:5px;">
 		              <div class="esriLeadingMargin1 attrSelect" data-dojo-attach-point="_chooseFolderRow">
 		                <label style="width:9px;font-size:smaller;">${i18n.saveResultIn}</label>
 		                <input class="longInput esriFolderSelect" data-dojo-attach-point="_webMapFolderSelect" dojotype="dijit/form/FilteringSelect" trim="true"></input>
-		              </div>              
+		              </div>
 		            </td>
-	          	</tr>   
+	          	</tr>
 	        </tbody>
 	    </table>
 	</div>
@@ -346,6 +346,6 @@
     </div>
     <div data-dojo-type="dijit/Dialog" title="${i18n.creditTitle}" data-dojo-attach-point="_usageDialog" style="width:40em;">
       <div data-dojo-type="esri/dijit/analysis/CreditEstimator"  data-dojo-attach-point="_usageForm"></div>
-    </div>    
-  	
+    </div>
+
 </div>

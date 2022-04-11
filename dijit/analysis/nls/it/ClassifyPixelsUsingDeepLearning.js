@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({toolDefine:"Classifica pixel usando apprendimento profondo",outputLayerName:"${layername}_classificato",modelLabel:"Scegli il modello di apprendimento profondo usato per classificare i pixel",modelArgsLabel:"Specifica gli argomenti del modello di apprendimento profondo",nameLabel:"Nome",valueLabel:"Valore",queryModelArgsMsg:"Interrogazione argomenti modello in corso...",queryModelArgsErrMsg:"Impossibile interrogare argomenti modello.",processingModeLabel:"Modalità di elaborazione",processAsMosaicLabel:"Elabora come immagine a mosaico",processAsItemsLabel:"Elabora tutti gli elementi raster separatamente",analysisLayerLabel:"Scegli l’immagine usata per classificare i pixel",itemDescription:"Image service di analisi generato da Classifica pixel usando apprendimento profondo",itemTags:"Risultato dell'analisi raster, Classifica pixel usando apprendimento profondo, ${layername}",itemSnippet:"Image service di analisi generato da Classifica pixel usando apprendimento profondo"});

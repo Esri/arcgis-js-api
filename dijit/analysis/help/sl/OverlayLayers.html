@@ -44,7 +44,7 @@
         <h2>Prekrij sloje</h2><p/>
         <h2><img src="../images/GUID-CE1E0E84-F3B5-446B-9FDE-4DA057F106CC-web.png" alt="Prekrij sloje"></h2>
         <hr/>
-    <p>Prekrivanje združuje dva sloja v en posamezni sloj. Prekrivanje si lahko predstavljate kot gledanje skozi skupek kart in ustvarjanje enojne karte, ki vsebuje vse informacije, ki se nahajajo v skupku. Prekrivanje je več kot združevanje elementov; vsi atributi geoobjektov, ki sodelujejo pri prekrivanju, so preneseni na končni izdelek. Prekrivanje se uporablja za odgovor na enega izmed najosnovnej&scaron;ih geografskih vpra&scaron;anj: &raquo;Kaj se nahaja nad nečem?&laquo; Na primer:
+    <p>Prekrivanje združuje dva sloja v en posamezni sloj. Prekrivanje si lahko predstavljate kot gledanje skozi skupek kart in ustvarjanje enojne karte, ki vsebuje vse informacije iz skupka. Prekrivanje je več kot združevanje elementov; vsi atributi geoobjektov v prekrivanju, so preneseni na končni rezultat. Prekrivanje se uporablja za odgovor na enega izmed najosnovnej&scaron;ih geografskih vpra&scaron;anj: &raquo;Kaj se nahaja nad nečem?&laquo; Primeri:
         <ul>
             <li>Katere parcele se nahajajo znotraj poplavnega območja s 100-letno povratno dobo poplav? (Znotraj je samo drug način, da se pove na nečem.)
                   
@@ -87,9 +87,9 @@
         <div><h2>Izberi metodo za prekrivanje</h2></div>
         <hr/>
         <div>
-            <p>Metoda za prekrivanje določa, kako sta združena vhodni sloj in sloj za prekrivanje.
+            <p>Določa metodo prekrivanja, ki bo uporabljena za določanje, kako bosta združena vhodni sloj in sloj za prekrivanje.
                 <ul>
-                    <li> <b>Presek</b> &ndash; Rezultat bo vseboval samo tiste geoobjekte ali dele geoobjekta v sloju za prekrivanje, ki se prekrivajo z geoobjekti v vhodnem sloju. Pri preseku linijskih ali poligonskih geoobjektov imate možnost navesti tip geoobjektov, ki jih želite kot izhodne.
+                    <li> <b>Presek</b> &ndash; Rezultat bo vseboval samo tiste geoobjekte ali dele geoobjekta v vhodnem sloju, ki se prekrivajo z geoobjekti v prekrivnem sloju. Pri preseku linijskih ali poligonskih geoobjektov lahko navedete tip geoobjektov za izhod.
                         <table border="1">
                         <tr>
                             <td>
@@ -183,9 +183,9 @@
                         </tr>
                         </table>
                     </li>
-                    <li> <b>Unija</b> &ndash; Rezultat bo vseboval geoobjekte iz vhodnega sloja in sloja za prekrivanje. Možnost Unija je na voljo samo, če vhodni sloj in sloj za prekrivanje vsebujeta poligonske geoobjekte.
+                    <li> <b>Unija</b> &ndash; Rezultat bo vseboval geoobjekte iz vhodnega sloja in sloja za prekrivanje. Ta možnost je na voljo samo, če vhodni sloj in sloj za prekrivanje vsebujeta poligonske geoobjekte.
                     </li>
-                    <li> <b>Izbri&scaron;i</b> &ndash; Rezultat bo vseboval geoobjekte ali dele geoobjektov v vhodnem sloju, ki se ne prekrivajo s poligoni v sloju za prekrivanje. Sloj za prekrivanje lahko vsebuje poligonske, linijske ali točkovne geoobjekte.
+                    <li> <b>Izbri&scaron;i</b> &ndash; Rezultat bo vseboval geoobjekte ali dele geoobjektov v vhodnem sloju, ki se ne prekrivajo s poligoni v sloju za prekrivanje. Ta možnost je na voljo, ko so vhodni geoobjekti za prekrivni sloj enake ali nižje vrste.
                     </li>
                 </ul>
                 
@@ -198,7 +198,7 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
-            <p> To je ime sloja, ki bo ustvarjen v <b>Moja vsebina</b> in dodan na karto. Imel bo enak tip geoobjekta (poligone, linije ali točke) kot sloj za prekrivanje. Privzeto ime temelji na metodi prekrivanja in imenu vhodnega sloja. Če sloj že obstaja, boste morali navesti drugo ime.
+            <p> Ime sloja, ki bo ustvarjen v odseku <b>Moja vsebina</b> in dodan na karto. Imel bo enak tip geoobjekta (poligone, linije ali točke) kot sloj za prekrivanje. Privzeto ime temelji na metodi prekrivanja in imenu vhodnega sloja. Če gre za obstoječi sloj, boste morali vnesti drugo ime.
             </p>
             <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moji vsebini</b>, kjer bo shranjen rezultat.
             </p> 

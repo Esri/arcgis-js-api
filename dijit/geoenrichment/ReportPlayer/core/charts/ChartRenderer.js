@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define(["require","esri/dijit/geoenrichment/Deferred","dojo/dom-construct"],(function(e,r,n){var t,i,a,o={isAsync:!0,loadModules:function(){var n=new r;return e(["./ChartContainer","./utils/ThemeCalculator","./utils/ChartJsonUtil"],(function(e,r,c){t=e,i=r,a=c,o.isAsync=!1,n.resolve()})),n.promise},createChartPage:function(e,r){var o,c=e.creationParams.json,s=e.creationParams;a.provideDefaultValueForMissing(c);var d=s.viewModel.isBenchmarkedArea&&s.viewModel.isBenchmarkedArea(s.currentFeatureIndex);c=a.cleanUpJson(c,s.viewModel.isGraphicStyle(),{isBenchmarked:d});var u=s.viewModel.getChartDefaultStyles(s.theme);return s.chartTheme=i.getThemeForSettings(c,u,{isEditMode:s.isEditMode,isBenchmarked:d}),o=new(r=r||t)(s,e.node?n.create("div",null,e.node):void 0),"function"==typeof e.placeFunc&&e.placeFunc(o),o.updateChart(c),o}};return o}));

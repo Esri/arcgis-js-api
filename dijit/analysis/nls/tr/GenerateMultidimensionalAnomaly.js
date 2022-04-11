@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({toolDefine:"Çok Boyutlu Anormallik Oluştur",outputLayerName:"${layername}_anomaly",variablesLabel:"Anormalliklerin oluşturulacağı değişkenleri seçin",variablesListLabel:"Değişkenler [Boyut Bilgisi] (Açıklama)",methodLabel:"Anormalliğin oluşturulacağı yöntemi seçin",calculationIntervalLabel:"Ortalamayı hesaplamak için geçici aralığı seçin",differenceFromMean:"Ortalamadan Farkı",percentDifferenceFromMean:"Ortalamadan Yüzde Farkı",percentOfMean:"Ortalama Yüzdesi",zScore:"Z Skoru",differenceFromMedian:"Ortancadan Farkı",percentDifferenceFromMedian:"Ortancadan Yüzde Farkı",percentOfMedian:"Ortanca Yüzdesi",all:"Tümü",yearly:"Yıllık",recurringMonthly:"Ayda bir tekrarlanır",recurringWeekly:"Haftada bir tekrarlanır",recurringDaily:"Her gün tekrarlanır",hourly:"Saatlik",externalRaster:"Harici Raster",meanRaster:"Ortalama görüntü katmanını bir referans olarak seç",ignoreNodataLabel:"Hesaplamadaki eksik değerleri yoksay",ignore:"Yoksay",analysisLayerLabel:"Anormallik oluşturmak için çok boyutlu görüntü katmanını seçin",itemDescription:"Çok Boyutlu Anormallik Oluştur ile oluşturulan Analiz Görüntü Servisi",itemTags:"Raster Analizi Sonucu, Çok Boyutlu Anormallik Oluştur, ${layername}",itemSnippet:"Çok Boyutlu Anormallik Oluştur ile oluşturulan Analiz Görüntü Servisi"});

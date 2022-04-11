@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Odaberite odredišni raster ili geoobjekte",destinationField:"Polje dredišta (nije obavezno)",inputDistanceAccumulationRaster:"Odaberite raster akumulacije udaljenosti",inputBackDirectionRaster:"Odaberite raster pobratnog smjera ili smjera strujanja",pathType:"Vrsta putanje (izborno)",bestSingle:"Najbolja jedna",eachCell:"Svaka ćelija",eachZone:"Svaka zona",outputFeatureName:"Naziv sloja geoobjekta rezultata",outputLayerName:"Optimalni put kao linija od ${layername}",drawSourcePointLayerName:"Točke izvora",itemDescription:"Sloj geoobjekata koji je generiran pokretanjem optimalnog puta kao linije na ${layername}. ",itemTags:"Analiza rezultata, Optimalni put kao linija, ${layername} ${fieldname}",itemSnippet:"Sloj geoobjekata koji je generiran iz optimalnog puta kao linije."});

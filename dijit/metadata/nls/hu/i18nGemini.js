@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({documentTypes:{data:{caption:"GEMINI (adatok)",description:""},service:{caption:"GEMINI (szolgáltatás)",description:""}},LanguageCode:{eng:"angol",cym:"walesi",gle:"gael (ír)",gla:"gael (skót)",cor:"cornwalli",sco:"ulsteri skót"},verticalCRS:{reference:"Referencia (pl. urn:ogc:def:crs:EPSG::5701 )"}});

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Вододел</h2><p/>
+        <h2><img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" alt="Задача за вододел"></h2>
+        <hr/>
+    <p>Този инструмент определя площта над набор от клетки в растер.
+    </p>
+    <p> Входна точка на река Мисисипи в Луизиана ще създаде функция на водосборния басейн, включваща области от Ню Йорк до Монтана и Канада.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputFlowDirectionRaster">
+        <div><h2>Избор на слой за посока на поток</h2></div>
+        <hr/>
+        <div>
+            <p>Входният растер, който показва посоката на потока от всяка клетка.
+            </p>
+            <p>Растерът на посоката на потока може да бъде създаден с помощта на функцията за растер на посоката на потока, с тип на посоката на потока по подразбиране  <b>D8</b>.
+            </p>
+        </div>
+    </div>
+    <div id="inPourPointRasterOrFeatures">
+        <div><h2>Определяне на входните данни на местоположението на точката на изливане</h2></div>
+        <hr/>
+        <div>
+            <p>Входните данни на местоположението на точката на изливане.
+            </p>
+            <p>Това може да бъде растерен или точков обект. За растер, това представлява клетки, над които ще бъде определена допринасящата област или водосборен район. Всички клетки, които не са NoData, ще се използват като изходни клетки. За входни данни за точка, това представлява местоположенията, над които ще бъде определена допринасящата област или водосборен район.
+            </p>
+        </div>
+    </div>
+    <div id="pourPointField">
+        <div><h2>Избор на поле с точка на изливане</h2></div>
+        <hr/>
+        <div>
+            <p>Полето, използвано за присвояване на стойности на местата на точката на изливане.
+            </p>
+            <p>Ако слоят с входни данни за точката на изливане е растерно изображение, се използва  <i>Value</i>. Ако това е обект, се използва цифрово поле. Ако полето съдържа стойности с плаваща запетая, те ще бъдат съкратени в цели числа.
+            </p>
+        </div>
+    </div>
+    <div id="resultLayer">
+        <div><h2>Име на резултатен слой</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Името на слоя, който ще бъде създаден в  <b>Моето съдържание</b> и добавен към картата. Името по подразбиране се основава на името на инструмента и името на входния слой. Ако слоят вече съществува, ще бъдете подканени да посочите друго име.
+            </p>
+            <p>Можете да посочите името на слоя в  <b>Моето съдържание</b>, където резултатът ще бъде запазен с помощта на падащото меню <b>Запазване на резултат в</b>. Ако имате права за създаване на слоеве с плочки и динамични изображения, можете да посочите кой тип слой да се генерира в изходните данни, като използвате падащото поле Запазване като. </p>
+        </div>
+    </div>
+</div>
+</html>

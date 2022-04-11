@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Извличане на растер</h2><p/>
+        <h2><img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" alt="Инструмент за извличане на растер за портал"></h2>
+        <hr/>
+    <p>Този инструмент може да привързва растер към граница или към правоъгълна област, или към форма, която сте определили интерактивно на екрана. Можете да се придържате към обхвата на областта, която в момента е изобразена на картата, или към областта на изследване, определена с полигон.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Изберете входни данни за извличане</h2></div>
+        <hr/>
+        <div>
+            <p>Входният слой, използван за изрязване.
+            </p>
+        </div>
+    </div>
+    <div id="clippingGeometry">
+        <div><h2>Посочете геометрията на изрязване</h2></div>
+        <hr/>
+        <div>
+            <p>Изберете типа на обхвата, който да се използва при изрязването на геометрията от слоя.
+                <ul>
+                    <li>Употреба на текущ обхват &ndash;Текущият обхват на картата ще се използва за изрязване на резултатния слой. Това е настройка по подразбиране.
+                        
+
+                    </li>
+                    <li>Избор на област на изследване &ndash; Позволява Ви да дефинирате геометрия на изрязване с помощта на инструмента за изчертаване.
+                        
+
+                    </li>
+                    <li>Избор на слой &ndash; Изберете обектен слой или слой с изображения, за да определите обхвата, или изберете слой с полигонови обекти, за да определите геометрията на изрязване. Когато е избран слой с полигонови обекти, се показва поле за отметка, за да се укаже дали да се използват входните данни за геометрията на изрязване. По подразбиране, няма отметка. Това означава, че входният обектен слой се използва за определяне на обхват. Ако е поставена отметка, това означава, че входните данни се използват за изрязване на геометрията.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Посочете типа изрязване</h2></div>
+        <hr/>
+        <div>
+            <p>Посочете дали искате да запазите областта вътре или извън геометрията на изрязване:
+                <ul>
+                    <li>Данни вътре в геометрията &ndash; Ще бъдат извлечени изображения, намиращи се в обхвата на клипа. Това е настройка по подразбиране.
+                        
+
+                    </li>
+                    <li>Данни извън геометрията &ndash; Ще бъдат извлечени изображения, извън обхвата на изрязването.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>Име на резултатен слой</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Името на слоя, който ще бъде създаден в  <b>Моето съдържание</b> и добавен към картата. Името по подразбиране се основава на името на инструмента и името на входния слой. Ако слоят вече съществува, ще бъдете подканени да посочите друго име.
+            </p>
+            <p>Можете да посочите името на слоя в  <b>Моето съдържание</b>, където резултатът ще бъде запазен с помощта на падащото меню <b>Запазване на резултат в</b>. Ако имате права за създаване на слоеве с плочки и динамични изображения, можете да посочите кой тип слой да се генерира в изходните данни, като използвате падащото поле Запазване като. </p>
+        </div>
+    </div>
+</div>
+</html>

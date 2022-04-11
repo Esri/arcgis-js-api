@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Вибрати растр зони або об'єкти",outputTableName:"Назва таблиці результатів",zoneField:"Поле зони",inputValueRaster:"Вибрати растр значень",ignoreNodata:"Ігнорувати NoData в обчисленнях (необов’язково)",ignore:"Ігнорувати",statisticType:"Тип статистики (необов’язково)",percentileValues:"Значення процентилю (необов’язково)",percentileInterpolationType:"Тип інтерполяції процентилю (необов’язково)",processAsMultidimensional:"Обробити як багатовимірний (необов’язково)",allSlices:"Всі фрагменти",outputZonalStatsName:"Зональна статистика для ${valuelayername} в межах ${layername}",itemDescription:"Таблиця аналізу об’єктів, створена на основі зональної статистики як таблиці",itemTags:"Результат растрового аналізу, зональна статистики як таблиця, ${layername}, ${valuelayername}",autoDetect:"Автоматичне визначення",nearest:"Найближчий",linear:"Лінійний"});

@@ -105,6 +105,8 @@
                     </li>
                     <li> <b>Srednja vrednost</b>&mdash;Izračunava srednju vrednost piksela na svim presecima u intervalu.
                     </li>
+                    <li> <b>Procenat</b>&mdash;Procenat vrednosti za piksel će se izračunati na svim isečcima u intervalu. Devedeseti procenat se proračunava podrazumevano. Pomoću parametra <b>Procenat vrednosti</b> možete navesti druge vrednosti (od 0 do 100).
+                    </li>
                     <li> <b>Opseg</b>&mdash;Izračunava raspon vrednosti za piksel na svim isečcima u intervalu.
                     </li>
                     <li> <b>Standardna devijacija</b>&mdash;Izračunava raspon vrednosti za piksel na svim isečcima u intervalu.
@@ -246,6 +248,24 @@
             <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
             </p>
             <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>. Ako imate privilegije za kreiranje pločastih i dinamičkih slojeva snimaka, mozete da odredite koji tip sloja želite da generišete za izlaz pomoću Sačuvaj rezultat kao padajući okvir. </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Percentilna vrednost</h2></div>
+        <hr/>
+        <div>
+            <p>Percentili za kalkulaciju. Podrazumevano je 90 &scaron;to označava 90-i procenat.
+            </p>
+            <p>Opseg se kreće od 0 do 100. Procenat 0 je su&scaron;tinski ekvivalentan minimalnoj statistici, a procenat 100 je ekvivalent maksimumu. Vrednost od 50 proizve&scaron;će u su&scaron;tini iste rezultate kao srednja statistika.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Tip procentne interpolacije</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje metod za procentnu interpolaciju koja će se koristiti kada je paran broj vrednosti iz ulaznog rastera koji se proračunava.
+            </p>
         </div>
     </div>
 </div>

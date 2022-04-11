@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({documentTypes:{data:{caption:"GEMINI (aineisto)",description:""},service:{caption:"GEMINI (palvelu)",description:""}},LanguageCode:{eng:"englanti",cym:"kymri",gle:"gaeli (iiri)",gla:"gaeli (skotti)",cor:"korni",sco:"ulster, Skotlannin murre"},verticalCRS:{reference:"Viite (esim. urn:ogc:def:crs:EPSG::5701 )"}});

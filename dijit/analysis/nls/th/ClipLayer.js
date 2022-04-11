@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputLayerLabel:"เลือกฟีเจอร์ที่จะตัด",filterSelectLabel:"ตัดฟีเจอร์ทั้งหมดหรือกำหนดซับเซ็ต (ทางเลือก)",targetArea:"เลือกพื้นที่ที่จะตัด",outputLayerName:"ตัด ${inputLayerName} เป็น ${clipLayerName}",itemDescription:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากการเรียกใช้งานโซลูชันการตัด ฟีเจอร์จาก ${inputLayerName} ถูกตัดเป็น ${clipLayerName}",itemTags:"ผลการวิเคราะห์, ชั้นข้อมูลที่ตัด, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากชั้นข้อมูลที่ตัด"});

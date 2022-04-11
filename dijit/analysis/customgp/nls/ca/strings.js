@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({_widgetLabel:"Geoprocessament",_featureAction_ReceiveFeatureSet:"Defineix com a entrada de ",requiredInfo:"és necessari.",drawnOnMap:"El resultat es dibuixa al mapa.",noToolConfig:"No hi ha cap tasca de geoprocessament configurada prèviament.",useUrlForGPInput:"URL",useUploadForGPInput:"Puja el fitxer",useImageServiceLayer:"Capa del servei d'imatges",useBrowseLayerPortal:"Navegueu o seleccioneu una opció del portal",selectFileToUpload:"Selecciona el fitxer...",rasterFormat:"Format de dades ràster",noFileSelected:"No s'ha seleccionat cap fitxer.",uploadSuccess:"El fitxer s'ha pujat correctament.",showLayerContent:"Mostra el contingut de la capa",invalidUrl:"URL del servei d'entitats no vàlida",urlPlaceholder:"URL del conjunt d'entitats",addShapefile:"Afegeix un fitxer shapefile",generateShapefileError:"Error de generació del fitxer shapefile. Comproveu el següent: ",cleared:"S'ha esborrat el resultat.",enlargeView:"Amplia la visualització",exportOutput:"Exporta",emptyResult:"El resultat està buit.",useSelectedFeatureset:"Utilitzeu les entitats resultants.",closeSelectedFeatureset:"Esborreu i utilitzeu l'opció d'entrada configurada."});

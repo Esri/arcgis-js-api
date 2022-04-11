@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define(["./WebGLRenderer","../OnDemandDrillMode"],(function(e,n){return{WebGLRenderer:e,OnDemandDrillMode:n}}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({toolDefine:"Πρόβλεψη Με Χρήση Raster Τάσεων",outputLayerName:"${layername}_predict",variablesLabel:"Επιλέξτε τις μεταβλητές που θα προβλέπονται.",variablesListLabel:"Μεταβλητές [Πληροφορίες για τις διαστάσεις] (Περιγραφή)",dimensionDefinitionLabel:"Επιλέξτε τη μέθοδο που θα χρησιμοποιείται για την παροχή τιμών διαστάσεων πρόβλεψης.",dimensionValuesLabel:"Καθορίστε τις τιμές των διαστάσεων για πρόβλεψη.",dimensionIntervalLabel:"Καθορίστε το διάστημα των διαστάσεων για πρόβλεψη.",intervalValueLabel:"Καθορίστε τον αριθμό των βημάτων μεταξύ των τιμών έναρξης και τέλους.",intervalUnitLabel:"Καθορίστε τη μονάδα που θα χρησιμοποιείται το διάστημα των χρονικών τιμών.",startLabel:"Τιμή έναρξης",endLabel:"Τιμή τέλους",byValueLabel:"Κατά τιμή",byIntervalLabel:"Κατά διάστημα",hours:"Ώρες",days:"Ημέρες",weeks:"Εβδομάδες",months:"Μήνες",years:"Έτη",custom:"Προσαρμοσμένη",itemDescription:"Image service ανάλυσης που δημιουργήθηκε από το εργαλείο «Πρόβλεψη Μέσω Raster Τάσεων»",itemTags:"Αποτέλεσμα ανάλυσης raster, Πρόβλεψη μέσω Raster Τάσεων, ${layername}",itemSnippet:"Image service ανάλυσης που δημιουργήθηκε από το εργαλείο «Πρόβλεψη Μέσω Raster Τάσεων»"});

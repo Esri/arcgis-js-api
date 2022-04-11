@@ -44,7 +44,7 @@
         <h2>Layer Overlay</h2><p/>
         <h2><img src="../images/GUID-CE1E0E84-F3B5-446B-9FDE-4DA057F106CC-web.png" alt="Layer Overlay"></h2>
         <hr/>
-    <p>Overlay menggabungkan dua layer menjadi satu layer. Anda dapat membayangkan overlay seperti melihat tumpukan peta sebagai peta tunggal yang berisi semua informasi yang ditemukan dalam tumpukan tersebut. Overlay lebih dari sekadar menggabungkan garis-garis; semua atribut fitur yang berperan dalam overlay akan ada di produk akhir. Overlay digunakan untuk menjawab salah satu dari pertanyaan paling mendasar dalam geografi, &quot;Apa berada di atas apa?&quot; Contoh:
+    <p>Overlay menggabungkan dua layer menjadi satu layer. Anda dapat membayangkan overlay seperti melihat tumpukan peta sebagai peta tunggal yang berisi semua informasi dari tumpukan tersebut. Overlay lebih dari sekadar menggabungkan garis-garis; semua atribut fitur di dalam overlay akan dipertahankan di hasil akhir. Overlay digunakan untuk menjawab salah satu dari pertanyaan paling mendasar dalam geografi, &quot;Apa berada di atas apa?&quot; Berikut ini adalah contohnya:
         <ul>
             <li>Persil mana yang berada di dalam dataran banjir berusia 100 tahun? (&quot;yang berada di dalam&quot; merupakan kata pengganti untuk &quot;di atas.&quot;)
                   
@@ -87,9 +87,9 @@
         <div><h2>Pilih metode overlay</h2></div>
         <hr/>
         <div>
-            <p>Metode overlay akan menentukan cara bagaimana layer input dan layer overlay akan digabungkan.
+            <p>Menentukan metode overlay yang akan digunakan untuk menentukan cara penggabungan layer input dan layer overlay.
                 <ul>
-                    <li> <b>Berpotongan</b>&mdash;Hasilnya hanya akan berisi fitur atau bagian fitur di layer overlay yang tumpang tindih dengan fitur di layer input. Saat memotong fitur garis atau area, Anda memiliki opsi untuk menentukan tipe fitur yang Anda inginkan sebagai output.
+                    <li> <b>Perpotongan</b>&mdash;Hasilnya hanya akan berisi fitur atau bagian fitur di layer input yang tumpang tindih dengan fitur di layer overlay. Pada saat memotong fitur garis atau area, Anda dapat menentukan jenis fiturnya untuk output.
                         <table border="1">
                         <tr>
                             <td>
@@ -125,10 +125,10 @@
                                 </p>
                             </td>
                             <td>
-                                <p> <img src="../images/GUID-5EE90BD6-CC3D-4E2F-A5D0-DC57298E8416-web.png" alt="input titik dan area">
+                                <p> <img src="../images/GUID-5EE90BD6-CC3D-4E2F-A5D0-DC57298E8416-web.png" alt="Input titik dan area">
                                 </p>
                             </td>
-                            <td> <img src="../images/GUID-5CCA360F-D4C9-43AB-8FB2-E6E62DE93BD4-web.png" alt="titik dan area dengan output titik">
+                            <td> <img src="../images/GUID-5CCA360F-D4C9-43AB-8FB2-E6E62DE93BD4-web.png" alt="Titik dan area dengan output titik">
                             </td>
                         </tr>
                         <tr>
@@ -183,9 +183,9 @@
                         </tr>
                         </table>
                     </li>
-                    <li> <b>Penyatuan</b>&mdash;Hasilnya akan berisi fitur dari layer input dan layer overlay. Opsi Penyatuan (Union) hanya tersedia jika layer input dan layer overlay berisi fitur area.
+                    <li> <b>Penyatuan</b>&mdash;Hasilnya akan berisi fitur dari layer input dan layer overlay. Opsi ini hanya tersedia jika layer input dan layer overlay berisi fitur area.
                     </li>
-                    <li> <b>Hapus</b>&mdash;Hasilnya akan berisi fitur atau bagian fitur di layer input yang tidak tumpang tindih dengan area di layer overlay. Layer overlay dapat berisi fitur area, garis, atau titik.
+                    <li> <b>Hapus</b>&mdash;Hasilnya akan berisi fitur atau bagian fitur di layer input yang tidak tumpang tindih dengan area di layer overlay. Opsi ini tersedia ketika fitur input sama seperti jenis fitur layer overlay atau yang tingkatnya lebih rendah.
                     </li>
                 </ul>
                 
@@ -198,7 +198,7 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
-            <p> Ini adalah nama layer yang akan dibuat di <b>Konten Saya</b> dan ditambahkan ke peta. Layer ini akan memiliki tipe fitur yang sama (area, garis, atau titik) dengan layer overlay. Nama default berdasarkan pada metode overlay dan nama layer input. Jika layer sudah ada, Anda akan diminta untuk memberi nama lain.
+            <p> Nama layer yang akan dibuat di <b>Konten Saya</b> dan ditambahkan ke peta. Layer ini akan memiliki tipe fitur yang sama (area, garis, atau titik) dengan layer overlay. Nama default berdasarkan pada metode overlay dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
             <p>Dengan menggunakan kotak drop-down  <b>Simpan hasil</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
             </p> 

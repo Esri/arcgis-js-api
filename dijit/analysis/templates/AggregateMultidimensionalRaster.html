@@ -119,6 +119,30 @@
             <select class="longInput esriLongLabel esriLeadingMargin1" style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_aggregationFunctionSelect" data-dojo-attach-event="onChange:_handleAggregationFunctionChange"></select>
           </td>
         </tr>
+        <tr data-dojo-attach-point="_percentileValueRow" class="esriLeadingMargin1" style="display:none;">
+          <td>
+            <label>${i18n.percentileValueLabel}</label>
+          </td>
+          <td>
+            <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="longInput esriLeadingMargin1" data-dojo-props="trim:true" data-dojo-attach-point="_percentileValue" value=""></input>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="percentileValue"></a>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_percentileInterpolationTypeLabelRow" style="display:none;">
+          <td colspan="2">
+            <label class="esriLeadingMargin1" data-dojo-attach-point="_interpolationTypeLabelRow">${i18n.percentileInterpolationTypeLabel}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="percentilInterpolationType"></a>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_percentileInterpolationTypeSelectRow" style="display:none;">
+          <td colspan="3" style="padding-top:0;">
+            <select class="longInput esriLongLabel esriLeadingMargin1" style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_percentileInterpolationTypeSelect" ></select>
+          </td>
+        </tr>
         <tr>
           <td colspan="3" class="clear"></td>
         </tr>

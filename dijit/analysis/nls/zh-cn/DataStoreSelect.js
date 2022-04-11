@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({relationalDS:"关系",spatialDS:"时空",agsDataStore:"ArcGIS Data Store",bdfsTemplates:"大数据文件共享输出模板"});

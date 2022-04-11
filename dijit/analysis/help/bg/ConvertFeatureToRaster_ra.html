@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Преобразуване на обект към растер</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Инструмент за преобразуване на обект към растер"></h2>
+        <hr/>
+    <p>Този инструмент преобразува обектите в растерен набор от данни.
+    </p>
+    <p>Всеки клас обекти, съдържащ точкови, линейни или полигонови обекти, може да бъде преобразуван в растерен набор от данни.
+    </p>
+    <p>Центърът на клетката се използва за определяне на стойността на изходния растерен пиксел.
+    </p>
+    <p>Типът на входното поле определя типа на изходния растер. Ако полето е целочислено, изходният растер ще бъде целочислен; ако е с плаваща запетая, изходът ще бъде с плаваща запетая.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Избор на обектен слой за конвертиране</h2></div>
+        <hr/>
+        <div>
+            <p>Входният слой от обекти, който трябва да се преобразува в растерна съвкупност от данни.
+            </p>
+        </div>
+    </div>
+    <div id="field">
+        <div><h2>Избор на поле</h2></div>
+        <hr/>
+        <div>
+            <p>Изберете полето, което ще се използва за присвояване на стойности към изходния растер.
+            </p> 
+        </div>
+    </div>
+    <div id="outputCellSize">
+        <div><h2>Размер на изходната клетка</h2></div>
+        <hr/>
+        <div>
+            <p>Размерът на клетката и мерната единица за изходните растери.
+            </p>
+            <p>Наличните единици са мили, футове, километри и метри. По подразбиране е фут.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Име на резултатен слой</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Името на слоя, който ще бъде създаден в  <b>Моето съдържание</b> и добавен към картата. Името по подразбиране се основава на името на инструмента и името на входния слой. Ако слоят вече съществува, ще бъдете подканени да посочите друго име.
+            </p>
+            <p>Можете да посочите името на слоя в  <b>Моето съдържание</b>, където резултатът ще бъде запазен с помощта на падащото меню <b>Запазване на резултат в</b>. Ако имате права за създаване на слоеве с плочки и динамични изображения, можете да посочите кой тип слой да се генерира в изходните данни, като използвате падащото поле Запазване като. </p>
+        </div>
+    </div>
+</div>
+</html>

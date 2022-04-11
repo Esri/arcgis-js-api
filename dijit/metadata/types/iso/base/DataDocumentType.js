@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","./IsoDocumentType","./DataRoot","dojo/i18n!../../../nls/i18nIso","../../../../../kernel"],(function(e,a,t,o,n,d,s){var i=e(o,{caption:d.documentTypes.data.caption,description:d.documentTypes.data.description,key:"iso-19115",isService:!1,metadataStandardName:"ISO 19139/19115 Metadata for Datasets",metadataStandardVersion:"2003",newRootDescriptor:function(){return new n}});return t("extend-esri")&&a.setObject("dijit.metadata.types.iso.base.DataDocumentType",i,s),i}));

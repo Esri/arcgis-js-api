@@ -44,7 +44,7 @@
         <h2>Koosta moniulotteinen rasteri</h2><p/>
         <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Koosta moniulotteinen rasteri"></h2>
         <hr/>
-    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    <p>Luo moniulotteisen rasteriaineistoryhm&auml;n yhdist&auml;m&auml;ll&auml; aiemmin luodut moniulotteiset rasterimuuttujat ulottuvuudessa.
     </p>
     <p>Jos k&auml;yt&ouml;ss&auml;si on 30 vuoden ajalta merenpinnan l&auml;mp&ouml;tila-aineistoa, joka on ker&auml;tty kuukausittain viiden metrin v&auml;lien aina 100 metrin syvyyteen, seuraavassa on joitakin esimerkkisovelluksia:
         <ul>
@@ -104,6 +104,8 @@
                     <li> <b>V&auml;hemmist&ouml;</b> &ndash; laskee arvon, joka esiintyi v&auml;hiten toistuvasti pikselin osalta v&auml;lin kaikissa viipaleissa.
                     </li>
                     <li> <b>Mediaani</b> &ndash; laskee pikselin mediaaniarvon v&auml;lin kaikissa viipaleissa.
+                    </li>
+                    <li> <b>Prosenttipiste</b> &ndash; pikselin arvojen prosenttipiste lasketaan v&auml;lin kaikissa viipaleissa. 90. prosenttipiste lasketaan oletusarvoisesti. Voit m&auml;&auml;ritt&auml;&auml; muita arvoja (v&auml;lilt&auml; 0&ndash;100) k&auml;ytt&auml;m&auml;ll&auml; <b>Prosenttiarvo</b>-parametria.
                     </li>
                     <li> <b>Arvov&auml;li</b> &ndash; laskee pikselin arvojen vaihteluv&auml;lin v&auml;lin kaikissa viipaleissa.
                     </li>
@@ -246,6 +248,24 @@
             <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
             </p>
             <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla. Jos sinulla on käyttöoikeudet, jotka sallivat sekä tiilitettyjen että dynaamisten kuva-aineistokarttatasojen luonnin, voit määrittää tulosaineiston karttatasotyypin avattavan Tallenna tulos nimellä -ruudun avulla. </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Prosenttiarvo</h2></div>
+        <hr/>
+        <div>
+            <p>Laskettava prosenttipiste. Oletusarvo on 90, joka tarkoittaa 90. prosenttiarvoa.
+            </p>
+            <p>Arvot voivat olla 0&ndash;100. 0. prosenttipiste vastaa periaatteessa Minimi-tilastotietoa, ja 100. prosenttipiste Maksimi-tilastotietoa. Arvo 50 tuottaa saman tuloksen kuin Mediaani-tilastotieto.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Prosenttipisteen interpolaatiotyyppi</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; k&auml;ytett&auml;v&auml;n prosenttipisteen interpolointimenetelm&auml;n, kun l&auml;ht&ouml;rasterin laskettavien arvojen m&auml;&auml;r&auml; on parillinen.
+            </p>
         </div>
     </div>
 </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Chọn lớp hướng dòng chảy",pourPointLayerLabel:"Chọn raster điểm chảy hoặc lớp đối tượng",pourPointField:"Chọn trường điểm chảy",resultLayerName:"Tên lớp kết quả",outputLayerName:"Lưu vực sông của ${layername}",itemDescription:"Lớp đối tượng được tạo ra từ việc chạy chức năng Tổng Hợp độ tập trung và phân tán trên ${layerName}. ",itemTags:"Phân tích Kết quả, Lưu vực sông, ${layername} ${fieldname}",itemSnippet:"Lớp đối tượng được tạo ra từ Lưu vực sông."});

@@ -44,7 +44,7 @@
         <h2>Agregar Raster Multidimensional</h2><p/>
         <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agregar Raster Multidimensional"></h2>
         <hr/>
-    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    <p>Gera um conjunto de dados raster multidimensional combinando vari&aacute;veis de raster multidimensional existentes ao longo de uma dimens&atilde;o.
     </p>
     <p>Se voc&ecirc; tiver 30 anos de dados de temperatura de superf&iacute;cie do mar, coletada mensalmente e em cada 5 metros de profundidade at&eacute; 100 metros, alguns aplicativos de exemplo s&atilde;o os seguintes:
         <ul>
@@ -104,6 +104,8 @@
                     <li> <b>Minoria</b>&mdash;Calcula o valor que ocorreu com menos frequ&ecirc;ncia para um pixel atrav&eacute;s de todas as divis&otilde;es no intervalo.
                     </li>
                     <li> <b>Mediano</b>&mdash;Calcula o valor mediano de um pixel atrav&eacute;s de todas as divis&otilde;es no intervalo.
+                    </li>
+                    <li> <b>Percentil</b>&mdash;O percentil de valores de um pixel ser&aacute; calculado em todas as divis&otilde;es do intervalo. O 90&ordm; percentil &eacute; calculado por padr&atilde;o. Voc&ecirc; pode especificar outros valores (de 0 a 100) usando o par&acirc;metro de <b>Valor percentil</b>.
                     </li>
                     <li> <b>Faixa</b>&mdash;Calcula as faixas de valores de um pixel atrav&eacute;s de todas as divis&otilde;es no intervalo.
                     </li>
@@ -246,6 +248,24 @@
             <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
             <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> . Se você tiver os privilégios para criar camadas de imagens de mosaico e dinâmicas, será possível especificar qual tipo de camada gerar na saída usando a caixa suspensa Salvar resultado como. </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Valor de percentil</h2></div>
+        <hr/>
+        <div>
+            <p>O percentil para calcular. O padr&atilde;o &eacute; 90, indicando o 90&ordm; percentil.
+            </p>
+            <p>Os valores podem variar de 0 at&eacute; 100. O 0&ordm; percentil &eacute; essencialmente equivalente &agrave; estat&iacute;stica m&iacute;nima e o 100&ordm; percentil &eacute; equivalente &agrave; m&aacute;xima. Um valor de 50 produzir&aacute; essencialmente o mesmo resultado que a estat&iacute;stica mediana.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Tipo de interpolação de percentil</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica o m&eacute;todo de interpola&ccedil;&atilde;o de percentil que ser&aacute; usado quando houver um n&uacute;mero par de valores do raster de entrada a ser calculado.
+            </p>
         </div>
     </div>
 </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"בחר את הישויות הנקודתיות שברצונך להעשיר",chooseMVgridLyrLabel:"בחר את הגריד מרובה-המשתנים שלפיו ברצונך לבצע את ההעשרה",chooseVariables:"בחר את המשתנים להוספה",outputLayerName:"Enriched ${inputFeatures} מ- ${gridLayer}",itemDescription:"שכבת ישויות שנוצרה מהרצה של 'העשרה מפתרון של גריד מרובה-משתנים' עבור ${inputFeatures}.",itemTags:"תוצאת הניתוח, העשרה מגריד מרובה-משתנים, ${inputFeatures}, ${gridLayer}",itemSnippet:"שכבת הישויות שנוצרה באמצעות 'העשרה מגריד מרובה-משתנים'."});

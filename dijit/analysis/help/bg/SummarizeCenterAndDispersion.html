@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Обобщение на центъра и дисперсията</h2><p/>
+        <h2><img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" alt="Обобщение на центъра и дисперсията"></h2>
+        <hr/>
+    <p>Този инструмент открива централни обекти и разпределения на посоките. Може да се използва, за да се отговори на въпроси като:
+        <ul>
+            <li>Къде е центърът?
+            </li>
+            <li>Кой обект е най-достъпен от всички останали обекти?
+            </li>
+            <li>Доколко разпръснати, компактни или интегрирани са обектите?
+            </li>
+            <li>Те насочени трендове ли са?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ако е поставена отметка върху  <b>Използване на текущия обхват на картата</b>, ще бъдат анализирани само елементите от входния слой, видими в рамките на текущия обхват на картата. Ако не е поставена отметка, всички обекти във входния слой ще бъдат анализирани, дори ако са извън текущия обхват на картата.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Избор на слой, който да бъде описан</h2></div>
+        <hr/>
+        <div>
+            <p>Точковият, линейният или площният слой, който ще се използва за намиране на централни обекти и разпределения на посоките.
+            </p>
+        </div>
+    </div>
+    <div id="summarizeTypes">
+        <div><h2>Обобщени типове</h2></div>
+        <hr/>
+        <div>
+            <p>Методът на обобщение на центъра и дисперсията.
+            </p>
+            <ul>
+                <li>Централен елемент &ndash; Идентифицира най-централно разположения обект в набор от данни.
+                </li>
+                <li>Среден център &ndash; Идентифицира географския център (или центъра на концентрация) за набор от обекти.
+                </li>
+                <li>Медиана на центъра &ndash; Идентифицира местоположението, което свежда до минимум общото евклидово разстояние до обектите в набор от данни.
+                </li>
+                <li>Елипса &ndash; Създава елипси със стандартно отклонение за обобщаване на пространствените обекти на географските обекти: централна тенденция, дисперсия и тенденции в посока. Размерът на елипсите може да бъде 1, 2 или 3 стандартни отклонения.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="weightBy">
+        <div><h2>Тегло по (по избор)</h2></div>
+        <hr/>
+        <div>
+            <p>Полето, използвано за претегляне на местоположението според относителната му важност.
+            </p>
+        </div>
+    </div>
+    <div id="groupBy">
+        <div><h2>Групиране по (незадължително)</h2></div>
+        <hr/>
+        <div>
+            <p>Полето, използвано за групиране на обекти за отделни изчисления на централните обекти или дисперсията.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Име на резултатен слой</h2></div>
+        <hr/>
+        <div>
+            <p>Името на слоя, който ще бъде създаден в  <b>Моето съдържание</b> и добавен към картата. Името по подразбиране се основава на името на инструмента и името на входния слой. Ако името на слоя вече съществува, ще бъдете подканени да посочите друго име.
+            </p>
+            <p>С помощта на падащото меню  <b>Запазване на резултатите в</b>, можете да зададете името на папка в <b>Моето съдържание</b>, където резултатите ще бъдат запазени.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

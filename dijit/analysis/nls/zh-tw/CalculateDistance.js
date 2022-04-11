@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({inputLayerLabel:"選擇點陣或圖徵位置圖層以計算距離",inputRaster:"選擇點陣或圖徵圖層以表示屏障",maxDistanceLabel:"要計算的最長距離 (選用)",outputCellSize:"輸出儲存格大小 (選用)",distanceMethod:"距離方法",resultDistLayerName:"結果距離圖層名稱",resultDirectionLayerName:"結果方向圖層名稱 (選用)",resultAllocationLayerName:"結果分配圖層名稱 (選用)",outputBackDirectionName:"結果返回方向圖層名稱 (選用)",outputLayerName:"${layername} 的計算距離",allocationFieldLabel:"選擇分配欄位 (選用)",itemDescription:"在 ${layerName} 上執行「計算距離」所產生的圖徵圖層。 ",itemTags:"分析結果，CalculateDistance，${layername}，${fieldname}",itemSnippet:"從 CalculateDistance 產生的圖徵圖層。",planar:"平面",geodesic:"測地線",selectDistance:"-- 選擇 --"});

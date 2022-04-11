@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({distToNearest:"Udaljenost do najbližeg",attrOfInterest:"Atribut najbližeg",summaryNearby:"Sažetak obližnjeg",summaryIntersecting:"Sažetak presijecajućeg",distToNearestLabel:"Udaljenost od središta ćelije do najbližeg geoobjekta na ulaznom sloju",attrOfInterestLabel:"Vrijednost određenog polja od najbližeg geoobjekta na ulaznom sloju",summaryNearbyLabel:"Statistika izračunata za sve geoobjekte pronađene na određenoj udaljenosti od središta ćelije",summaryIntersectingLabel:"Statistika izračunata za sve geoobjekte koji presijecaju ćeliju",maxDistancefromCtr:"Maksimalna udaljenost od središta ćelije",fieldToIncude:"Polje koje treba uključiti",statstoCalculate:"Statistika koju treba izračunati",summFeatuesWithin:"Sažmi geoobjekte unutar",smallMaxDistErrorMsg:"Maksimalna udaljenost od središta ćelije mora biti veća od veličine ćelije.",smallSumFeaturesErrorMsg:"Maksimalna udaljenost od središta ćelije mora biti veća od veličine ćelije."});

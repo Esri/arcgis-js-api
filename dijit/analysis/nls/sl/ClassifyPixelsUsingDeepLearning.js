@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
 
 define({toolDefine:"Slikovne pike klasificiraj s pomočjo globokega učenja",outputLayerName:"${layername}_klasificiran",modelLabel:"Za klasifikacijo slikovnih pik uporabi globoko učenje",modelArgsLabel:"Opredeli argumente modela globokega učenja",nameLabel:"Ime",valueLabel:"Vrednost",queryModelArgsMsg:"Poizvedovanje po argumentih modela ...",queryModelArgsErrMsg:"Poizvedovanje po argumentih modela neuspešno.",processingModeLabel:"Način obdelovanja",processAsMosaicLabel:"Obdelaj kot mozaično sliko",processAsItemsLabel:"Obdelaj vse rastrske elemente ločeno",analysisLayerLabel:"Izberite sliko za klasifikacijo slikovnih pik",itemDescription:"Storitev analize slike, ki je ustvarjena s pomočjo orodja Klasifikacija slikovnih pik s pomočjo globokega učenja",itemTags:"Rezultati rastrske analize, Klasifikacija slikovnih pik s pomočjo globokega učenja, ${layername}",itemSnippet:"Storitev analize slike, ki je ustvarjena s pomočjo orodja Klasificiraj slikovne pike s pomočjo globokega učenja"});
