@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass","./ImageSample"],(function(e,r,s,o,t,p,c,u,a){"use strict";let l=function(r){function s(){var e;return(e=r.apply(this,arguments)||this).samples=null,e}return e._inheritsLoose(s,r),s}(s.JSONSupport);r.__decorate([o.property({type:[a],json:{write:!0}})],l.prototype,"samples",void 0),l=r.__decorate([u.subclass("esri.rest.support.ImageSampleResult")],l);return l}));
+import{_ as r}from"../../chunks/tslib.es6.js";import{JSONSupport as s}from"../../core/JSONSupport.js";import{property as o}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as e}from"../../core/accessorSupport/decorators/subclass.js";import t from"./ImageSample.js";let p=class extends s{constructor(){super(...arguments),this.samples=null}};r([o({type:[t],json:{write:!0}})],p.prototype,"samples",void 0),p=r([e("esri.rest.support.ImageSampleResult")],p);const c=p;export{c as default};

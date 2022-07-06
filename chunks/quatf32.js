@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function t(){const e=new Float32Array(4);return e[3]=1,e}function r(e){const t=new Float32Array(4);return t[0]=e[0],t[1]=e[1],t[2]=e[2],t[3]=e[3],t}function n(e,t,r,n){const o=new Float32Array(4);return o[0]=e,o[1]=t,o[2]=r,o[3]=n,o}function o(e,t){return new Float32Array(e,t,4)}const c=Object.freeze(Object.defineProperty({__proto__:null,create:t,clone:r,fromValues:n,createView:o},Symbol.toStringTag,{value:"Module"}));e.clone=r,e.create=t,e.createView=o,e.fromValues=n,e.quatf32=c}));
+function e(){const e=new Float32Array(4);return e[3]=1,e}function r(e){const r=new Float32Array(4);return r[0]=e[0],r[1]=e[1],r[2]=e[2],r[3]=e[3],r}function t(e,r,t,n){const o=new Float32Array(4);return o[0]=e,o[1]=r,o[2]=t,o[3]=n,o}function n(e,r){return new Float32Array(e,r,4)}const o=Object.freeze(Object.defineProperty({__proto__:null,create:e,clone:r,fromValues:t,createView:n},Symbol.toStringTag,{value:"Module"}));export{r as a,n as b,e as c,t as f,o as q};

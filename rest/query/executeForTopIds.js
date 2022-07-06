@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../chunks/_rollupPluginBabelHelpers","../utils","./operations/queryTopFeatures","../support/TopFeaturesQuery"],(function(e,r,t,o,u){"use strict";function n(e,r,t){return s.apply(this,arguments)}function s(){return(s=r._asyncToGenerator((function*(e,r,n){const s=t.parseUrl(e);return(yield o.executeQueryForTopIds(s,u.from(r),{...n})).data.objectIds}))).apply(this,arguments)}e.executeForTopIds=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{parseUrl as o}from"../utils.js";import{executeQueryForTopIds as r}from"./operations/queryTopFeatures.js";import t from"../support/TopFeaturesQuery.js";async function s(s,e,p){const a=o(s);return(await r(a,t.from(e),{...p})).data.objectIds}export{s as executeForTopIds};

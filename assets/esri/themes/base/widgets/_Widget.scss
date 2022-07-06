@@ -17,19 +17,23 @@
       box-sizing: inherit;
     }
 
-    // Apply focus ring matching calcite components, for consistency.
-    &:focus-visible,
-    &:focus,
-    *:focus-visible,
-    *:focus {
-      outline: 2px solid var(--calcite-ui-brand);
-    }
-
     &#{&}--disabled {
       & > * {
         pointer-events: none;
         opacity: $opacity--disabled;
       }
+    }
+
+    /*
+     * Padding/spacing - should be respected by each widget
+     */
+    --esri-widget-padding-v: #{$cap-spacing};
+    --esri-widget-padding-h: #{$side-spacing};
+    --esri-widget-padding: var(--esri-widget-padding-v) var(--esri-widget-padding-h);
+
+    &.esri-widget--compact {
+      --esri-widget-padding-v: 0;
+      --esri-widget-padding-h: 0;
     }
   }
 

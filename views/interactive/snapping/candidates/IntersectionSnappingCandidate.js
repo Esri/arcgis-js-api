@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../SnappingConstraint","./SnappingCandidate","../hints/IntersectionSnappingHint"],(function(t,n,i,e,s){"use strict";let r=function(t){function e(n,e,s,r){var a;return(a=t.call(this,n,e,new i.IntersectionConstraint(n,e,s.constraint,r.constraint))||this).first=s,a.second=r,a}return n._inheritsLoose(e,t),n._createClass(e,[{key:"hints",get:function(){return this.first.targetPoint=this.targetPoint,this.second.targetPoint=this.targetPoint,[...this.first.hints,...this.second.hints,new s.IntersectionSnappingHint(this.targetPoint)]}}]),e}(e.SnappingCandidate);t.IntersectionSnappingCandidate=r,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{IntersectionConstraint as t}from"../SnappingConstraint.js";import{SnappingCandidate as i}from"./SnappingCandidate.js";import{IntersectionSnappingHint as n}from"../hints/IntersectionSnappingHint.js";class s extends i{constructor(i,n,s,r,o){super(i,n,new t(i,n,s.constraint,r.constraint),o),this.first=s,this.second=r}get hints(){return this.first.targetPoint=this.targetPoint,this.second.targetPoint=this.targetPoint,[...this.first.hints,...this.second.hints,new n(this.targetPoint,this.elevationInfo)]}}export{s as IntersectionSnappingCandidate};

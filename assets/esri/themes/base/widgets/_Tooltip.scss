@@ -1,0 +1,55 @@
+@use "sass:color";
+
+@mixin tooltip() {
+  .esri-tooltip {
+    position: absolute;
+    overflow: visible;
+    width: fit-content;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    &-content {
+      position: relative;
+      display: table;
+      padding: $cap-spacing--half $side-spacing--half;
+      background: color.change($background-color, $alpha: 0.8);
+      backdrop-filter: blur(3px);
+      box-shadow: 0 1px 2px rgb(0, 0, 0, 0.1);
+      font-family: $font-family;
+      font-size: $font-size--small;
+      color: $font-color;
+    }
+
+    &-field {
+      display: table-row;
+
+      &__title,
+      &__value {
+        display: table-cell;
+        padding: $cap-spacing--eighth 0;
+        white-space: nowrap;
+      }
+
+      &__title {
+        padding-inline-end: $side-spacing;
+      }
+
+      &__value {
+        // Make numbers look nice as they change. See https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric
+        font-variant-numeric: tabular-nums;
+      }
+    }
+
+    &-value-by-value {
+      // Add some space between the left/right (e.g. width/height) values.
+      span:nth-child(2) {
+        margin-inline: $side-spacing--half;
+      }
+    }
+  }
+}
+
+@if $include_Tooltip==true {
+  @include tooltip();
+}

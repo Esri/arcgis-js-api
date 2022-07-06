@@ -1,38 +1,38 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../core/shaderLibrary/util/RgbaFloatEncoding.glsl","../../../core/shaderModules/interfaces","./EdgeUtil.glsl","./UnpackAttributes.glsl"],(function(e,t,a,l,s){"use strict";function r(e,r){const c=e.vertex;e.include(s.UnpackAttributes,r);const u=e.fragment;switch(l.usesSketchLogic(r)&&(c.uniforms.add("strokesTextureScale","vec2"),c.uniforms.add("strokesLog2Resolution","float"),c.uniforms.add("strokeVariants","float"),e.varyings.add("vStrokeUV","vec2"),u.uniforms.add("strokesTexture","sampler2D"),u.uniforms.add("strokesNormalizationScale","float"),c.code.add(a.glsl`void calculateStyleOutputsSketch(float lineLength, UnpackedAttributes unpackedAttributes) {
+import{RgbaFloatEncoding as e}from"../../../core/shaderLibrary/util/RgbaFloatEncoding.glsl.js";import{Float2Uniform as t}from"../../../core/shaderModules/Float2Uniform.js";import{FloatUniform as r}from"../../../core/shaderModules/FloatUniform.js";import{glsl as a}from"../../../core/shaderModules/interfaces.js";import{Texture2DUniform as s}from"../../../core/shaderModules/Texture2DUniform.js";import{usesSketchLogic as o,EdgeUtilMode as c}from"./EdgeUtil.glsl.js";import{UnpackAttributes as l}from"./UnpackAttributes.glsl.js";function u(u,n){const i=u.vertex;u.include(l,n);const d=u.fragment;switch(o(n)&&(i.uniforms.add(new t("strokesTextureScale")),i.uniforms.add(new r("strokesLog2Resolution")),i.uniforms.add(new r("strokeVariants")),u.varyings.add("vStrokeUV","vec2"),d.uniforms.add(new s("strokesTexture")),d.uniforms.add(new r("strokesNormalizationScale")),i.code.add(a`void calculateStyleOutputsSketch(float lineLength, UnpackedAttributes unpackedAttributes) {
 vec2 sidenessNorm = unpackedAttributes.sidenessNorm;
 float lineIndex = clamp(ceil(log2(lineLength)), 0.0, strokesLog2Resolution);
 vStrokeUV = vec2(exp2(lineIndex) * sidenessNorm.y, lineIndex * strokeVariants + variantStroke + 0.5) * strokesTextureScale;
 vStrokeUV.x += variantOffset;
-}`),e.fragment.include(t.RgbaFloatEncoding),u.code.add(a.glsl`float calculateLineOffsetSketch() {
+}`),u.fragment.include(e),d.code.add(a`float calculateLineOffsetSketch() {
 float offsetNorm = rgba2float(texture2D(strokesTexture, vStrokeUV));
 return (offsetNorm - 0.5) * strokesNormalizationScale;
 }
 float calculateLinePressureSketch() {
 return rgba2float(texture2D(strokesTexture, vStrokeUV + vec2(0.0, 0.5)));
-}`)),r.mode){case l.EdgeUtilMode.SOLID:c.code.add(a.glsl`void calculateStyleOutputs(UnpackedAttributes unpackedAttributes) {}`),u.code.add(a.glsl`float calculateLineOffset() {
+}`)),n.mode){case c.SOLID:i.code.add(a`void calculateStyleOutputs(UnpackedAttributes unpackedAttributes) {}`),d.code.add(a`float calculateLineOffset() {
 return 0.0;
 }
 float calculateLinePressure() {
 return 1.0;
-}`);break;case l.EdgeUtilMode.SKETCH:c.code.add(a.glsl`void calculateStyleOutputs(UnpackedAttributes unpackedAttributes)
+}`);break;case c.SKETCH:i.code.add(a`void calculateStyleOutputs(UnpackedAttributes unpackedAttributes)
 {
 calculateStyleOutputsSketch(vLineLengthPixels, unpackedAttributes);
-}`),u.code.add(a.glsl`float calculateLineOffset() {
+}`),d.code.add(a`float calculateLineOffset() {
 return calculateLineOffsetSketch();
 }
 float calculateLinePressure() {
 return calculateLinePressureSketch();
-}`);break;case l.EdgeUtilMode.MIXED:e.varyings.add("vType","float"),c.code.add(a.glsl`void calculateStyleOutputs(UnpackedAttributes unpackedAttributes)
+}`);break;case c.MIXED:u.varyings.add("vType","float"),i.code.add(a`void calculateStyleOutputs(UnpackedAttributes unpackedAttributes)
 {
 vType = unpackedAttributes.type;
 if (unpackedAttributes.type <= 0.0) {
 calculateStyleOutputsSketch(vLineLengthPixels, unpackedAttributes);
 }
-}`),u.code.add(a.glsl`float calculateLineOffset() {
+}`),d.code.add(a`float calculateLineOffset() {
 if (vType <= 0.0) {
 return calculateLineOffsetSketch();
 }
@@ -47,4 +47,4 @@ return calculateLinePressureSketch();
 else {
 return 1.0;
 }
-}`)}}e.LineOffset=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}}export{u as LineOffset};

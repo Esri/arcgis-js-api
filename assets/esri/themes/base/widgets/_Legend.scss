@@ -289,6 +289,10 @@ $relationship_column_size: 85px;
     white-space: nowrap;
     margin: 0 0.5em;
   }
+  .esri-legend--card__pie-chart-ramp-preview {
+    display: flex;
+    justify-content: center;
+  }
   .esri-legend--card__interval-separator {
     text-align: center;
     font-size: 0.5em;

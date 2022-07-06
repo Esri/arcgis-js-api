@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(r,e,t,o,s,n,p,u){"use strict";var c;let i=c=function(e){function t(){var r;return(r=e.apply(this,arguments)||this).unit=null,r}return r._inheritsLoose(t,e),t.prototype.clone=function(){return new c({unit:this.unit})},t}(t.JSONSupport);e.__decorate([o.property({type:String,json:{write:!0}})],i.prototype,"unit",void 0),i=c=e.__decorate([u.subclass("esri.renderers.support.DotDensityLegendOptions")],i);return i}));
+import{_ as r}from"../../chunks/tslib.es6.js";import{JSONSupport as o}from"../../core/JSONSupport.js";import{property as s}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as t}from"../../core/accessorSupport/decorators/subclass.js";var e;let p=e=class extends o{constructor(){super(...arguments),this.unit=null}clone(){return new e({unit:this.unit})}};r([s({type:String,json:{write:!0}})],p.prototype,"unit",void 0),p=e=r([t("esri.renderers.support.DotDensityLegendOptions")],p);const c=p;export{c as default};

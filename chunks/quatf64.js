@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function t(){return[0,0,0,1]}function r(e){return[e[0],e[1],e[2],e[3]]}function n(e,t,r,n){return[e,t,r,n]}function o(e,t){return new Float64Array(e,t,4)}const u=t(),c=Object.freeze(Object.defineProperty({__proto__:null,create:t,clone:r,fromValues:n,createView:o,IDENTITY:u},Symbol.toStringTag,{value:"Module"}));e.IDENTITY=u,e.clone=r,e.create=t,e.createView=o,e.fromValues=n,e.quatf64=c}));
+function e(){return[0,0,0,1]}function r(e){return[e[0],e[1],e[2],e[3]]}function t(e,r,t,n){return[e,r,t,n]}function n(e,r){return new Float64Array(e,r,4)}const o=e(),a=Object.freeze(Object.defineProperty({__proto__:null,create:e,clone:r,fromValues:t,createView:n,IDENTITY:o},Symbol.toStringTag,{value:"Module"}));export{o as I,e as a,r as b,n as c,t as f,a as q};

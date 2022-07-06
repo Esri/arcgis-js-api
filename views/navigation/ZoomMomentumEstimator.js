@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../chunks/_rollupPluginBabelHelpers","./Momentum","./MomentumEstimator"],(function(t,e,o,n){"use strict";let u=function(t){function o(e,o,n){return t.call(this,e,o,n)||this}e._inheritsLoose(o,t);var n=o.prototype;return n.value=function(e){const o=t.prototype.value.call(this,e);return Math.exp(o)},n.valueDelta=function(e,o){const n=t.prototype.value.call(this,e),u=t.prototype.value.call(this,e+o)-n;return Math.exp(u)},o}(o.Momentum),r=function(t){function o(e=2.5,o=.01,n=.95,u=12){return t.call(this,e,o,n,u)||this}e._inheritsLoose(o,t);var n=o.prototype;return n.add=function(e,o){t.prototype.add.call(this,Math.log(e),o)},n.createMomentum=function(t,e,o){return new u(t,e,o)},o}(n.MomentumEstimator);t.ZoomMomentum=u,t.ZoomMomentumEstimator=r,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{Momentum as e}from"./Momentum.js";import{MomentumEstimator as t}from"./MomentumEstimator.js";class r extends e{constructor(e,t,r){super(e,t,r)}value(e){const t=super.value(e);return Math.exp(t)}valueDelta(e,t){const r=super.value(e),s=super.value(e+t)-r;return Math.exp(s)}}class s extends t{constructor(e=2.5,t=.01,r=.95,s=12){super(e,t,r,s)}add(e,t){super.add(Math.log(e),t)}createMomentum(e,t,s){return new r(e,t,s)}}export{r as ZoomMomentum,s as ZoomMomentumEstimator};

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../chunks/_rollupPluginBabelHelpers","./Dictionary"],(function(e,i){"use strict";return function(i){function t(e){var t;return(t=i.call(this)||this).immutable=!1,t.setField("url",e),t.immutable=!0,t}return e._inheritsLoose(t,i),t}(i)}));
+import t from"./Dictionary.js";class s extends t{constructor(t){super(),this.immutable=!1,this.setField("url",t),this.immutable=!0}}export{s as default};

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/tslib.es6","../../../../core/Evented","../../../../core/HandleOwner","../../../../core/Logger","../../../../core/accessorSupport/ensureType","../../../../core/arrayUtils","../../../../core/has","../../../../core/accessorSupport/set","../../../../core/accessorSupport/decorators/subclass"],(function(e,r,s,o,t,n,c,i,u,a){"use strict";let l=function(r){function s(){return r.apply(this,arguments)||this}return e._inheritsLoose(s,r),s.prototype.onFeature=function(e){this.emit("feature",e)},s}(s.EventedMixin(o.HandleOwner));l=r.__decorate([a.subclass("esri.layers.graphics.sources.connections.StreamConnection")],l);return l}));
+import{_ as r}from"../../../../chunks/tslib.es6.js";import e from"../../../../core/Evented.js";import{HandleOwner as s}from"../../../../core/HandleOwner.js";import"../../../../core/Logger.js";import"../../../../core/accessorSupport/ensureType.js";import"../../../../core/arrayUtils.js";import"../../../../core/has.js";import"../../../../core/accessorSupport/set.js";import{subclass as o}from"../../../../core/accessorSupport/decorators/subclass.js";let t=class extends(e.EventedMixin(s)){onFeature(r){this.emit("feature",r)}};t=r([o("esri.layers.graphics.sources.connections.StreamConnection")],t);const c=t;export{c as default};

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../core/mathUtils","../../chunks/vec3","../../chunks/vec3f64"],(function(e,t,n,o){"use strict";function c(e,t,o){const c=n.dot(e,t)/n.dot(e,e);return n.scale(o,e,c)}function r(e,t){return n.dot(e,t)/n.length(e)}function s(e,o){const c=n.dot(e,o)/(n.length(e)*n.length(o));return-t.acosClamped(c)}function i(e,o,c){n.normalize(u,e),n.normalize(a,o);const r=n.dot(u,a),s=t.acosClamped(r),i=n.cross(u,u,a);return n.dot(i,c)<0?2*Math.PI-s:s}const u=o.create(),a=o.create();e.angle=s,e.angleAroundAxis=i,e.projectPoint=c,e.projectPointSignedLength=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{acosClamped as n}from"../../core/mathUtils.js";import{e as t,g as o,l as r,n as s,f as c}from"../../chunks/vec3.js";import{c as u}from"../../chunks/vec3f64.js";function e(n,r,s){const c=t(n,r)/t(n,n);return o(s,n,c)}function f(n,o){return t(n,o)/r(n)}function a(o,s){const c=t(o,s)/(r(o)*r(s));return-n(c)}function i(o,r,u){s(m,o),s(h,r);const e=t(m,h),f=n(e),a=c(m,m,h);return t(a,u)<0?2*Math.PI-f:f}const m=u(),h=u();export{a as angle,i as angleAroundAxis,e as projectPoint,f as projectPointSignedLength};

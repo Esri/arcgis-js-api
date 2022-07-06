@@ -1,8 +1,10 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../../../core/maybe","../../../../../chunks/mat4","../../../../../chunks/mat4f64","../../../../../chunks/vec3","../../../../../chunks/vec3f64","../shaderModules/interfaces"],(function(e,s,i,a,o,l,c){"use strict";function t(e,s){if(s.slicePlaneEnabled){e.extensions.add("GL_OES_standard_derivatives"),s.sliceEnabledForVertexPrograms&&(e.vertex.uniforms.add("slicePlaneOrigin","vec3"),e.vertex.uniforms.add("slicePlaneBasis1","vec3"),e.vertex.uniforms.add("slicePlaneBasis2","vec3")),e.fragment.uniforms.add("slicePlaneOrigin","vec3"),e.fragment.uniforms.add("slicePlaneBasis1","vec3"),e.fragment.uniforms.add("slicePlaneBasis2","vec3");const i=c.glsl`struct SliceFactors {
+import{unwrap as e,isNone as s,isSome as i}from"../../../../../core/maybe.js";import{j as a}from"../../../../../chunks/mat4.js";import{c as o}from"../../../../../chunks/mat4f64.js";import{s as c,b as r,m as l,a as t}from"../../../../../chunks/vec3.js";import{Z as n,c as f}from"../../../../../chunks/vec3f64.js";import{Float3DrawUniform as d}from"../shaderModules/Float3DrawUniform.js";import{Float3PassUniform as _}from"../shaderModules/Float3PassUniform.js";import{NoParameters as P,glsl as h}from"../shaderModules/interfaces.js";class m extends P{constructor(e){super(),this.slicePlaneLocalOrigin=e}}function p(s,i){H(s,i,[new _("slicePlaneOrigin",((e,s)=>v(i,e,s))),new _("slicePlaneBasis1",((s,a)=>B(i,s,a,e(a.slicePlane)?.basis1))),new _("slicePlaneBasis2",((s,a)=>B(i,s,a,e(a.slicePlane)?.basis2)))])}function u(s,i){H(s,i,[new d("slicePlaneOrigin",((e,s)=>v(i,e,s))),new d("slicePlaneBasis1",((s,a)=>B(i,s,a,e(a.slicePlane)?.basis1))),new d("slicePlaneBasis2",((s,a)=>B(i,s,a,e(a.slicePlane)?.basis2)))])}function H(e,s,i){if(!s.hasSlicePlane){const i=h`#define rejectBySlice(_pos_) false
+#define discardBySlice(_pos_) {}
+#define highlightSlice(_color_, _pos_) (_color_)`;return s.hasSliceInVertexProgram&&e.vertex.code.add(i),void e.fragment.code.add(i)}e.extensions.add("GL_OES_standard_derivatives"),s.hasSliceInVertexProgram&&e.vertex.uniforms.add(i),e.fragment.uniforms.add(i);const a=h`struct SliceFactors {
 float front;
 float side0;
 float side1;
@@ -39,7 +41,7 @@ bool sliceByPlane(vec3 pos) {
 return sliceEnabled() && sliceByFactors(calculateSliceFactors(pos));
 }
 #define rejectBySlice(_pos_) sliceByPlane(_pos_)
-#define discardBySlice(_pos_) { if (sliceByPlane(_pos_)) discard; }`,a=c.glsl`vec4 applySliceHighlight(vec4 color, vec3 pos) {
+#define discardBySlice(_pos_) { if (sliceByPlane(_pos_)) discard; }`,o=h`vec4 applySliceHighlight(vec4 color, vec3 pos) {
 SliceFactors factors = calculateSliceFactors(pos);
 const float HIGHLIGHT_WIDTH = 1.0;
 const vec4 HIGHLIGHT_COLOR = vec4(0.0, 0.0, 0.0, 0.3);
@@ -57,9 +59,7 @@ float highlightFactor = (1.0 - step(0.5, factors.front))
 * (1.0 - step(0.5, factors.side2))
 * (1.0 - step(0.5, factors.side3));
 return mix(color, vec4(HIGHLIGHT_COLOR.rgb, color.a), highlightFactor * HIGHLIGHT_COLOR.a);
-}`,o=s.sliceHighlightDisabled?c.glsl`#define highlightSlice(_color_, _pos_) (_color_)`:c.glsl`
-        ${a}
+}`,c=s.hasSliceHighlight?h`
+        ${o}
         #define highlightSlice(_color_, _pos_) (sliceEnabled() ? applySliceHighlight(_color_, _pos_) : (_color_))
-      `;s.sliceEnabledForVertexPrograms&&e.vertex.code.add(i),e.fragment.code.add(i),e.fragment.code.add(o)}else{const i=c.glsl`#define rejectBySlice(_pos_) false
-#define discardBySlice(_pos_) {}
-#define highlightSlice(_color_, _pos_) (_color_)`;s.sliceEnabledForVertexPrograms&&e.vertex.code.add(i),e.fragment.code.add(i)}}function r(e,s,i){n(e,s,i.slicePlane,{origin:i.origin})}function n(e,a,c,t){if(a.slicePlaneEnabled)if(s.isSome(c)){if(o.copy(d,c.origin),o.copy(f,c.basis1),o.copy(g,c.basis2),s.isSome(t)&&s.isSome(t.origin)&&o.subtract(d,c.origin,t.origin),s.isSome(t)&&s.isSome(t.view)){const e=s.isSome(t.origin)?i.translate(_,t.view,t.origin):t.view;o.add(f,f,d),o.add(g,g,d),o.transformMat4(d,d,e),o.transformMat4(f,f,e),o.transformMat4(g,g,e),o.subtract(f,f,d),o.subtract(g,g,d)}e.setUniform3fv("slicePlaneOrigin",d),e.setUniform3fv("slicePlaneBasis1",f),e.setUniform3fv("slicePlaneBasis2",g)}else e.setUniform3fv("slicePlaneBasis1",l.ZEROS),e.setUniform3fv("slicePlaneBasis2",l.ZEROS),e.setUniform3fv("slicePlaneOrigin",l.ZEROS)}const d=l.create(),f=l.create(),g=l.create(),_=a.create();e.Slice=t,e.bindSliceUniforms=n,e.bindSliceUniformsWithOrigin=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+      `:h`#define highlightSlice(_color_, _pos_) (_color_)`;s.hasSliceInVertexProgram&&e.vertex.code.add(a),e.fragment.code.add(a),e.fragment.code.add(c)}function g(e,s,i){return e.instancedDoublePrecision?c(S,i.camera.viewInverseTransposeMatrix[3],i.camera.viewInverseTransposeMatrix[7],i.camera.viewInverseTransposeMatrix[11]):s.slicePlaneLocalOrigin}function I(e,s){return i(e)?r(L,s.origin,e):s.origin}function b(e,s,o){return e.hasSliceTranslatedView?i(s)?a(T,o.camera.viewMatrix,s):o.camera.viewMatrix:null}function v(e,a,o){if(s(o.slicePlane))return n;const c=g(e,a,o),r=I(c,o.slicePlane),t=b(e,c,o);return i(t)?l(L,r,t):r}function B(e,a,o,c){if(s(c)||s(o.slicePlane))return n;const f=g(e,a,o),d=I(f,o.slicePlane),_=b(e,f,o);return i(_)?(t(G,c,d),l(L,d,_),l(G,G,_),r(G,G,L)):c}const S=f(),L=f(),G=f(),T=o();export{u as SliceDraw,p as SlicePass,m as SlicePlaneParameters};

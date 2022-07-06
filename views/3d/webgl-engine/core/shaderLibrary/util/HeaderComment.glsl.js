@@ -1,10 +1,10 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../ShaderOutputOptions","../../shaderModules/interfaces","../../../../../webgl/checkWebGLError"],(function(e,t,u,d){"use strict";function r(e,r){const o=u.glsl`
+import{ShaderOutput as t}from"../ShaderOutputOptions.js";import{glsl as e}from"../../shaderModules/interfaces.js";import{webglValidateShadersEnabled as o}from"../../../../../webgl/checkWebGLError.js";function r(r,u){const p=e`
   /*
-  *  ${r.name}
-  *  ${r.output===t.ShaderOutput.Color?"RenderOutput: Color":r.output===t.ShaderOutput.Depth?"RenderOutput: Depth":r.output===t.ShaderOutput.Shadow?"RenderOutput: Shadow":r.output===t.ShaderOutput.Normal?"RenderOutput: Normal":r.output===t.ShaderOutput.Highlight?"RenderOutput: Highlight":""}
+  *  ${u.name}
+  *  ${u.output===t.Color?"RenderOutput: Color":u.output===t.Depth?"RenderOutput: Depth":u.output===t.Shadow?"RenderOutput: Shadow":u.output===t.Normal?"RenderOutput: Normal":u.output===t.Highlight?"RenderOutput: Highlight":""}
   */
-  `;d.webglValidateShadersEnabled()&&(e.fragment.code.add(o),e.vertex.code.add(o))}e.HeaderComment=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+  `;o()&&(r.fragment.code.add(p),r.vertex.code.add(p))}export{r as HeaderComment};

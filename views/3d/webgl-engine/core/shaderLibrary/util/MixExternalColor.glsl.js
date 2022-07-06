@@ -1,30 +1,29 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../../layers/support/symbolColorUtils","./ColorConversion.glsl","../../shaderModules/interfaces"],(function(e,t,i,l){"use strict";function r(e){e.include(i.ColorConversion),e.code.add(l.glsl`
+import{ColorMixModeEnum as e}from"../../../../layers/support/symbolColorUtils.js";import{ColorConversion as t}from"./ColorConversion.glsl.js";import{glsl as r}from"../../shaderModules/interfaces.js";function i(i){i.include(t),i.code.add(r`
     vec3 mixExternalColor(vec3 internalColor, vec3 textureColor, vec3 externalColor, int mode) {
       // workaround for artifacts in OSX using Intel Iris Pro
       // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/10475
       vec3 internalMixed = internalColor * textureColor;
       vec3 allMixed = internalMixed * externalColor;
 
-      if (mode == ${l.glsl.int(t.ColorMixModeEnum.Multiply)}) {
+      if (mode == ${r.int(e.Multiply)}) {
         return allMixed;
       }
-      else if (mode == ${l.glsl.int(t.ColorMixModeEnum.Ignore)}) {
+      if (mode == ${r.int(e.Ignore)}) {
         return internalMixed;
       }
-      else if (mode == ${l.glsl.int(t.ColorMixModeEnum.Replace)}) {
+      if (mode == ${r.int(e.Replace)}) {
         return externalColor;
       }
-      else {
-        // tint (or something invalid)
-        float vIn = rgb2v(internalMixed);
-        vec3 hsvTint = rgb2hsv(externalColor);
-        vec3 hsvOut = vec3(hsvTint.x, hsvTint.y, vIn * hsvTint.z);
-        return hsv2rgb(hsvOut);
-      }
+
+      // tint (or something invalid)
+      float vIn = rgb2v(internalMixed);
+      vec3 hsvTint = rgb2hsv(externalColor);
+      vec3 hsvOut = vec3(hsvTint.x, hsvTint.y, vIn * hsvTint.z);
+      return hsv2rgb(hsvOut);
     }
 
     float mixExternalOpacity(float internalOpacity, float textureOpacity, float externalOpacity, int mode) {
@@ -33,15 +32,14 @@ define(["exports","../../../../layers/support/symbolColorUtils","./ColorConversi
       float internalMixed = internalOpacity * textureOpacity;
       float allMixed = internalMixed * externalOpacity;
 
-      if (mode == ${l.glsl.int(t.ColorMixModeEnum.Ignore)}) {
+      if (mode == ${r.int(e.Ignore)}) {
         return internalMixed;
       }
-      else if (mode == ${l.glsl.int(t.ColorMixModeEnum.Replace)}) {
+      if (mode == ${r.int(e.Replace)}) {
         return externalOpacity;
       }
-      else {
-        // multiply or tint (or something invalid)
-        return allMixed;
-      }
+
+      // multiply or tint (or something invalid)
+      return allMixed;
     }
-  `)}e.MixExternalColor=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+  `)}export{i as MixExternalColor};

@@ -1,14 +1,9 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../attributes/TextureCoordinateAttribute.glsl","../attributes/VertexTextureCoordinates.glsl","../util/TextureAtlasLookup.glsl","../../shaderModules/interfaces"],(function(e,t,r,o,u){"use strict";function a(e,a){const s=e.fragment;a.baseColorTexture?(e.include(r.VertexTextureCoordinates,a),s.uniforms.add("baseColorTexture","sampler2D"),s.uniforms.add("baseColorTextureSize","vec2"),a.attributeTextureCoordinates===t.TextureCoordinateAttributeType.Atlas?(e.include(o.TextureAtlasLookup),s.code.add(u.glsl`vec4 readBaseColorTexture() {
-return textureAtlasLookup(
-baseColorTexture,
-baseColorTextureSize,
-vuv0,
-vuvRegion
-);
-}`)):s.code.add(u.glsl`vec4 readBaseColorTexture() {
+import{TextureCoordinateAttributeType as e}from"../attributes/TextureCoordinateAttribute.glsl.js";import{VertexTextureCoordinates as r}from"../attributes/VertexTextureCoordinates.glsl.js";import{TextureAtlasLookup as t}from"../util/TextureAtlasLookup.glsl.js";import{glsl as o}from"../../shaderModules/interfaces.js";import{createTexture2DDrawSizeUniforms as u}from"../../shaderModules/Texture2DDrawUniform.js";function s(s,a){const d=s.fragment;if(a.hasBaseColorTexture){s.include(r,a);const l=a.textureCoordinateType===e.Atlas;d.uniforms.add(u("baseColorTexture",(e=>e.texture),l)),l?(s.include(t),d.code.add(o`vec4 readBaseColorTexture() {
+return textureAtlasLookup(baseColorTexture, baseColorTextureSize, vuv0, vuvRegion);
+}`)):d.code.add(o`vec4 readBaseColorTexture() {
 return texture2D(baseColorTexture, vuv0);
-}`)):s.code.add(u.glsl`vec4 readBaseColorTexture() { return vec4(1.0); }`)}e.ReadBaseColorTexture=a,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}else d.code.add(o`vec4 readBaseColorTexture() { return vec4(1.0); }`)}export{s as ReadBaseColorTexture};

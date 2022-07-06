@@ -262,6 +262,7 @@
     .esri-bookmarks__authoring-label {
       padding-top: 0;
       padding-bottom: 0;
+      width: calc(100% - #{$bookmarks-thumbnail-size}); // Firefox fix
     }
   }
 
@@ -269,7 +270,8 @@
     display: flex;
     flex-flow: column;
     flex: 1 0 auto;
-    padding: $cap-spacing $side-spacing;
+    padding-block: $cap-spacing;
+    padding-inline-start: $side-spacing;
   }
 
   .esri-bookmarks__authoring-actions {

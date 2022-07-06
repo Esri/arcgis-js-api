@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import t from"../../../../../core/Error.js";import{isNone as e}from"../../../../../core/maybe.js";import{isAbortError as r}from"../../../../../core/promiseUtils.js";import{SPRITE_PADDING as a}from"../definitions.js";import{play as i}from"./utils.js";class s{constructor(t){this._requestRender=t,this._frameData=null}destroy(){this._playHandle.remove()}bindFrame(t,r,i){t.bindTexture(r,i),e(this._frameData)||(r.updateData(0,a,a,this._frameData.width,this._frameData.height,this._frameData),this._frameData=null)}async _load(e,a,s,o){try{const t=t=>{this._frameData=t,this._requestRender.requestRender()},r=await this._loadAnimation(e,t,o);this.frameCount=r.frameDurations.length,this.width=r.width,this.height=r.height,this._playHandle=i(r,a,s)}catch(h){if(!r(h))return new t("invalid-resource","Could not parse animated resource.")}}}export{s as BaseAnimatableTextureResource};

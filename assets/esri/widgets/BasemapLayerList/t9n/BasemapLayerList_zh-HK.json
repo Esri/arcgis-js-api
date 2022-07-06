@@ -1,1 +1,1 @@
-{"widgetLabel":"底圖圖層清單","baseHeading":"基本","basemapTitle":"底圖標題","referenceHeading":"參考","noReferenceLayers":"無參考圖層","noBaseLayers":"無基本圖層","layerInvisibleAtScale":"無法以目前的比例顯示","layerError":"載入此圖層時發生錯誤","untitledLayer":"未命名的圖層"}
+{"widgetLabel":"底圖圖層清單","baseHeading":"基本","basemapTitle":"底圖標題","referenceHeading":"參考","noReferenceLayers":"無參考圖層","noBaseLayers":"無基本圖層","showLayer":"顯示圖層","hideLayer":"隱藏圖層","layerInvisibleAtScale":"無法以目前的比例顯示","layerError":"載入此圖層時發生錯誤","untitledLayer":"未命名的圖層","layerIncompatible":"與底圖不相容","layerIncompatibleTooltip":"此圖層的空間參考與底圖的空間參考不相容。"}

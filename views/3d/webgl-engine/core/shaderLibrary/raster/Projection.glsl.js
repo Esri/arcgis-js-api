@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(r,o){"use strict";function e(r){r.fragment.uniforms.add("u_transformGrid","sampler2D"),r.fragment.uniforms.add("u_transformSpacing","vec2"),r.fragment.uniforms.add("u_transformGridSize","vec2"),r.fragment.uniforms.add("u_targetImageSize","vec2"),r.fragment.code.add(o.glsl`vec2 projectPixelLocation(vec2 coords) {
+import{Float2PassUniform as r}from"../../shaderModules/Float2PassUniform.js";import{glsl as o}from"../../shaderModules/interfaces.js";import{Texture2DPassUniform as e}from"../../shaderModules/Texture2DPassUniform.js";function t(t){t.fragment.uniforms.add(new e("u_transformGrid",(r=>r.u_transformGrid))),t.fragment.uniforms.add(new r("u_transformSpacing",(r=>r.common.u_transformSpacing))),t.fragment.uniforms.add(new r("u_transformGridSize",(r=>r.common.u_transformGridSize))),t.fragment.uniforms.add(new r("u_targetImageSize",(r=>r.common.u_targetImageSize))),t.fragment.code.add(o`vec2 projectPixelLocation(vec2 coords) {
 vec2 index_image = floor(coords * u_targetImageSize);
 vec2 oneTransformPixel = vec2(0.25 / u_transformGridSize.s, 1.0 / u_transformGridSize.t);
 vec2 index_transform = floor(index_image / u_transformSpacing) / u_transformGridSize;
@@ -21,4 +21,4 @@ srcLocation.s = dot(ur_abc.rgb, vec3(pos, 1.0));
 srcLocation.t = dot(ur_def.rgb, vec3(pos, 1.0));
 }
 return srcLocation;;
-}`)}r.Projection=e,Object.defineProperties(r,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}export{t as Projection};

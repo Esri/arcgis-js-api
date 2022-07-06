@@ -1,20 +1,20 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","../../../lib/VertexAttribute"],(function(e,v,o){"use strict";function r(e,r){r.vvInstancingEnabled&&(r.vvSize||r.vvColor)&&e.attributes.add(o.VertexAttribute.INSTANCEFEATUREATTRIBUTE,"vec4"),r.vvSize?(e.vertex.uniforms.add("vvSizeMinSize","vec3"),e.vertex.uniforms.add("vvSizeMaxSize","vec3"),e.vertex.uniforms.add("vvSizeOffset","vec3"),e.vertex.uniforms.add("vvSizeFactor","vec3"),e.vertex.uniforms.add("vvSymbolRotationMatrix","mat3"),e.vertex.uniforms.add("vvSymbolAnchor","vec3"),e.vertex.code.add(v.glsl`vec3 vvScale(vec4 _featureAttribute) {
+import{Float3PassUniform as e}from"../../shaderModules/Float3PassUniform.js";import{Float4sPassUniform as o}from"../../shaderModules/Float4sPassUniform.js";import{FloatsPassUniform as r}from"../../shaderModules/FloatsPassUniform.js";import{glsl as v}from"../../shaderModules/interfaces.js";import{Matrix3PassUniform as t}from"../../shaderModules/Matrix3PassUniform.js";import{VertexAttribute as a}from"../../../lib/VertexAttribute.js";import{vvColorNumber as i}from"../../../materials/VisualVariablePassParameters.js";function s(s,n){n.hasVvInstancing&&(n.vvSize||n.vvColor)&&s.attributes.add(a.INSTANCEFEATUREATTRIBUTE,"vec4");const l=s.vertex;n.vvSize?(l.uniforms.add(new e("vvSizeMinSize",(e=>e.vvSizeMinSize))),l.uniforms.add(new e("vvSizeMaxSize",(e=>e.vvSizeMaxSize))),l.uniforms.add(new e("vvSizeOffset",(e=>e.vvSizeOffset))),l.uniforms.add(new e("vvSizeFactor",(e=>e.vvSizeFactor))),l.uniforms.add(new t("vvSymbolRotationMatrix",(e=>e.vvSymbolRotationMatrix))),l.uniforms.add(new e("vvSymbolAnchor",(e=>e.vvSymbolAnchor))),l.code.add(v`vec3 vvScale(vec4 _featureAttribute) {
 return clamp(vvSizeOffset + _featureAttribute.x * vvSizeFactor, vvSizeMinSize, vvSizeMaxSize);
 }
 vec4 vvTransformPosition(vec3 position, vec4 _featureAttribute) {
 return vec4(vvSymbolRotationMatrix * ( vvScale(_featureAttribute) * (position + vvSymbolAnchor)), 1.0);
-}`),e.vertex.code.add(v.glsl`
+}`),l.code.add(v`
       const float eps = 1.192092896e-07;
       vec4 vvTransformNormal(vec3 _normal, vec4 _featureAttribute) {
         vec3 vvScale = clamp(vvSizeOffset + _featureAttribute.x * vvSizeFactor, vvSizeMinSize + eps, vvSizeMaxSize);
         return vec4(vvSymbolRotationMatrix * _normal / vvScale, 1.0);
       }
 
-      ${r.vvInstancingEnabled?v.glsl`
+      ${n.hasVvInstancing?v`
       vec4 vvLocalNormal(vec3 _normal) {
         return vvTransformNormal(_normal, instanceFeatureAttribute);
       }
@@ -22,11 +22,8 @@ return vec4(vvSymbolRotationMatrix * ( vvScale(_featureAttribute) * (position + 
       vec4 localPosition() {
         return vvTransformPosition(position, instanceFeatureAttribute);
       }`:""}
-    `)):e.vertex.code.add(v.glsl`vec4 localPosition() { return vec4(position, 1.0); }
-vec4 vvLocalNormal(vec3 _normal) { return vec4(_normal, 1.0); }`),r.vvColor?(e.vertex.constants.add("vvColorNumber","int",8),e.vertex.code.add(v.glsl`
-      uniform float vvColorValues[vvColorNumber];
-      uniform vec4 vvColorColors[vvColorNumber];
-
+    `)):l.code.add(v`vec4 localPosition() { return vec4(position, 1.0); }
+vec4 vvLocalNormal(vec3 _normal) { return vec4(_normal, 1.0); }`),n.vvColor?(l.constants.add("vvColorNumber","int",i),n.hasVvInstancing&&l.uniforms.add([new r("vvColorValues",(e=>e.vvColorValues),i),new o("vvColorColors",(e=>e.vvColorColors),i)]),l.code.add(v`
       vec4 vvGetColor(vec4 featureAttribute, float values[vvColorNumber], vec4 colors[vvColorNumber]) {
         float value = featureAttribute.y;
         if (value <= values[0]) {
@@ -42,8 +39,8 @@ vec4 vvLocalNormal(vec3 _normal) { return vec4(_normal, 1.0); }`),r.vvColor?(e.v
         return colors[vvColorNumber - 1];
       }
 
-      ${r.vvInstancingEnabled?v.glsl`
+      ${n.hasVvInstancing?v`
       vec4 vvColor() {
         return vvGetColor(instanceFeatureAttribute, vvColorValues, vvColorColors);
       }`:""}
-    `)):e.vertex.code.add(v.glsl`vec4 vvColor() { return vec4(1.0); }`)}function t(e,v){v.vvSizeEnabled&&(e.setUniform3fv("vvSizeMinSize",v.vvSizeMinSize),e.setUniform3fv("vvSizeMaxSize",v.vvSizeMaxSize),e.setUniform3fv("vvSizeOffset",v.vvSizeOffset),e.setUniform3fv("vvSizeFactor",v.vvSizeFactor)),v.vvColorEnabled&&(e.setUniform1fv("vvColorValues",v.vvColorValues),e.setUniform4fv("vvColorColors",v.vvColorColors))}function i(e,v){t(e,v),v.vvOpacityEnabled&&(e.setUniform1fv("vvOpacityValues",v.vvOpacityValues),e.setUniform1fv("vvOpacityOpacities",v.vvOpacityOpacities))}function a(e,v){t(e,v),v.vvSizeEnabled&&(e.setUniform3fv("vvSymbolAnchor",v.vvSymbolAnchor),e.setUniformMatrix3fv("vvSymbolRotationMatrix",v.vvSymbolRotationMatrix))}e.VisualVariables=r,e.bindVisualVariablesUniforms=t,e.bindVisualVariablesUniformsForSymbols=a,e.bindVisualVariablesUniformsWithOpacity=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+    `)):l.code.add(v`vec4 vvColor() { return vec4(1.0); }`)}export{s as VisualVariables};

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","./sources/resolver"],(function(e,t){"use strict";const o={shaders:{vertexShader:t.resolveIncludes("tileInfo/tileInfo.vert"),fragmentShader:t.resolveIncludes("tileInfo/tileInfo.frag")},attributes:new Map([["a_pos",0]])};e.tileInfo=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{resolveIncludes as e}from"./sources/resolver.js";const r={shaders:{vertexShader:e("tileInfo/tileInfo.vert"),fragmentShader:e("tileInfo/tileInfo.frag")},attributes:new Map([["a_pos",0]])};export{r as tileInfo};

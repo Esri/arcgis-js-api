@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../../chunks/vec3f64"],(function(e,n){"use strict";let t=function(e,n){this.vec3=e,this.id=n};function o(e,o){return new t(n.clone(e),o)}function i(e,o,i,r){return new t(n.fromValues(e,o,i),r)}e.LocalOrigin=t,e.fromValues=i,e.fromVector=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{a as n,f as t}from"../../../../chunks/vec3f64.js";class r{constructor(n,t){this.vec3=n,this.id=t}}function s(t,s){return new r(n(t),s)}function c(n,s,c,e){return new r(t(n,s,c),e)}export{r as LocalOrigin,c as fromValues,s as fromVector};

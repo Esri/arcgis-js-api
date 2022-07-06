@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/has","../../../../core/Logger","../snappingUtils","./SnappingHint"],(function(e,t,n,i,r,o){"use strict";i.getLogger("esri.views.interactive.snapping.hints.RightAngleSnappingHint");let s=function(e){function n(t,n,i){var r;return(r=e.call(this)||this).previousVertex=t,r.centerVertex=n,r.nextVertex=i,r}return t._inheritsLoose(n,e),n.prototype.equals=function(e){return e instanceof n&&(r.objectEqual(this.previousVertex,e.previousVertex)&&r.objectEqual(this.centerVertex,e.centerVertex)&&r.objectEqual(this.nextVertex,e.nextVertex))},n}(o.SnappingHint);e.RightAngleSnappingHint=s,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import"../../../../core/has.js";import e from"../../../../core/Logger.js";import{objectEqual as t}from"../snappingUtils.js";import{SnappingHint as r}from"./SnappingHint.js";e.getLogger("esri.views.interactive.snapping.hints.RightAngleSnappingHint");class i extends r{constructor(e,t,r,i){super(i),this.previousVertex=e,this.centerVertex=t,this.nextVertex=r}equals(e){return e instanceof i&&(t(this.previousVertex,e.previousVertex)&&t(this.centerVertex,e.centerVertex)&&t(this.nextVertex,e.nextVertex))}}export{i as RightAngleSnappingHint};

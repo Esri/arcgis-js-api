@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,o,t,r){"use strict";var d;function s(d){const s=new t.ShaderBuilder;return d.output===e.SMAAOutput.EdgeDetector&&(s.attributes.add(r.VertexAttribute.POSITION,"vec2"),s.vertex.uniforms.add("resolution","vec4"),s.varyings.add("fTexCoord","vec2"),s.varyings.add("fOffset[3]","vec4"),s.vertex.code.add(o.glsl`void SMAAEdgeDetectionVS( vec2 texcoord ) {
+import{Float4Uniform as e}from"../views/3d/webgl-engine/core/shaderModules/Float4Uniform.js";import{glsl as o}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{ShaderBuilder as t}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{Texture2DUniform as r}from"../views/3d/webgl-engine/core/shaderModules/Texture2DUniform.js";import{SMAAOutput as s}from"../views/3d/webgl-engine/lib/SMAATechniqueConfiguration.js";import{VertexAttribute as d}from"../views/3d/webgl-engine/lib/VertexAttribute.js";const a={threshold:.05,localConstrastAdaption:2,maxSearchSteps:8,maxDistanceAreaTex:16};function x(x){const c=new t;return x.output===s.EdgeDetector&&(c.attributes.add(d.POSITION,"vec2"),c.vertex.uniforms.add(new e("resolution")),c.varyings.add("fTexCoord","vec2"),c.varyings.add("fOffset[3]","vec4"),c.vertex.code.add(o`void SMAAEdgeDetectionVS( vec2 texcoord ) {
 fOffset[0] = texcoord.xyxy + resolution.xyxy * vec4( -1.0, 0.0, 0.0,  1.0 );
 fOffset[1] = texcoord.xyxy + resolution.xyxy * vec4(  1.0, 0.0, 0.0, -1.0 );
 fOffset[2] = texcoord.xyxy + resolution.xyxy * vec4( -2.0, 0.0, 0.0,  2.0 );
@@ -11,9 +11,9 @@ void main() {
 fTexCoord = (position + 1.0 ) * 0.5;
 gl_Position = vec4(position, 0, 1);
 SMAAEdgeDetectionVS( fTexCoord );
-}`),s.fragment.uniforms.add("tColor","sampler2D"),s.fragment.code.add(o.glsl`
+}`),c.fragment.uniforms.add(new r("tColor")),c.fragment.code.add(o`
       vec4 SMAAColorEdgeDetectionPS( vec2 texcoord, vec4 offset[3], sampler2D colorTex ) {
-        vec2 threshold = vec2( ${o.glsl.float(d.threshold)} );
+        vec2 threshold = vec2( ${o.float(a.threshold)} );
 
         // Calculate color deltas:
         vec4 delta;
@@ -59,7 +59,7 @@ SMAAEdgeDetectionVS( fTexCoord );
         maxDelta = max( max( maxDelta, delta.z ), delta.w );
 
         // Local contrast adaptation in action:
-        edges.xy *= step( maxDelta, float(${o.glsl.float(d.localConstrastAdaption)}) * delta.xy );
+        edges.xy *= step( maxDelta, float(${o.float(a.localConstrastAdaption)}) * delta.xy );
 
         return vec4( edges, 0.0, 0.0 );
       }
@@ -67,12 +67,12 @@ SMAAEdgeDetectionVS( fTexCoord );
       void main() {
         gl_FragColor = SMAAColorEdgeDetectionPS( fTexCoord, fOffset, tColor );
       }
-    `)),d.output===e.SMAAOutput.BlendWeight&&(s.attributes.add(r.VertexAttribute.POSITION,"vec2"),s.vertex.uniforms.add("resolution","vec4"),s.varyings.add("fTexCoord","vec2"),s.varyings.add("fOffset[3]","vec4"),s.varyings.add("fPixCoord","vec2"),s.vertex.code.add(o.glsl`
+    `)),x.output===s.BlendWeight&&(c.attributes.add(d.POSITION,"vec2"),c.vertex.uniforms.add(new e("resolution")),c.varyings.add("fTexCoord","vec2"),c.varyings.add("fOffset[3]","vec4"),c.varyings.add("fPixCoord","vec2"),c.vertex.code.add(o`
       void SMAABlendingWeightCalculationVS( vec2 texcoord ) {
         fPixCoord = texcoord * resolution.zw;
         fOffset[0] = texcoord.xyxy + resolution.xyxy * vec4( -0.25, 0.125, 1.25, 0.125 );
         fOffset[1] = texcoord.xyxy + resolution.xyxy * vec4( -0.125, 0.25, -0.125, -1.25 );
-        fOffset[2] = vec4( fOffset[0].xz, fOffset[1].yw ) + vec4( -2.0, 2.0, -2.0, 2.0 ) * resolution.xxyy * float( ${o.glsl.int(d.maxSearchSteps)} );
+        fOffset[2] = vec4( fOffset[0].xz, fOffset[1].yw ) + vec4( -2.0, 2.0, -2.0, 2.0 ) * resolution.xxyy * float( ${o.int(a.maxSearchSteps)} );
       }
 
       void main() {
@@ -80,12 +80,12 @@ SMAAEdgeDetectionVS( fTexCoord );
         gl_Position = vec4(position, 0, 1);
         SMAABlendingWeightCalculationVS( fTexCoord );
       }
-    `),s.fragment.uniforms.add("tEdges","sampler2D").add("tArea","sampler2D").add("tSearch","sampler2D").add("tColor","sampler2D").add("resolution","vec4"),s.fragment.code.add(o.glsl`
+    `),c.fragment.uniforms.add(new r("tEdges")),c.fragment.uniforms.add(new r("tArea")),c.fragment.uniforms.add(new r("tSearch")),c.fragment.uniforms.add(new r("tColor")),c.fragment.uniforms.add(new e("resolution")),c.fragment.code.add(o`
       #define SMAA_AREATEX_PIXEL_SIZE ( 1.0 / vec2( 160.0, 560.0 ) )
       #define SMAA_AREATEX_SUBTEX_SIZE ( 1.0 / 7.0 )
 
-      vec4 SMAASampleLevelZeroOffset(sampler2D tex, vec2 coord, vec2 offset) {
-        return texture2D( tex, coord + offset.x * resolution.xy, 0.0 );
+      vec4 SMAASampleLevelZeroOffset(sampler2D texture, vec2 coord, vec2 offset) {
+        return texture2D(texture, coord + offset.x * resolution.xy, 0.0);
       }
 
       vec2 round( vec2 x ) {
@@ -99,7 +99,7 @@ SMAAEdgeDetectionVS( fTexCoord );
 
       float SMAASearchXLeft( sampler2D edgesTex, sampler2D searchTex, vec2 texcoord, float end ) {
         vec2 e = vec2( 0.0, 1.0 );
-        for ( int i = 0; i < ${o.glsl.int(d.maxSearchSteps)}; i ++ ) {
+        for ( int i = 0; i < ${o.int(a.maxSearchSteps)}; i ++ ) {
           e = texture2D( edgesTex, texcoord, 0.0 ).rg;
           texcoord -= vec2( 2.0, 0.0 ) * resolution.xy;
           if ( ! ( texcoord.x > end && e.g > 0.8281 && e.r == 0.0 ) ) break;
@@ -113,7 +113,7 @@ SMAAEdgeDetectionVS( fTexCoord );
 
       float SMAASearchXRight( sampler2D edgesTex, sampler2D searchTex, vec2 texcoord, float end ) {
         vec2 e = vec2( 0.0, 1.0 );
-        for ( int i = 0; i < ${o.glsl.int(d.maxSearchSteps)}; i ++ ) {
+        for ( int i = 0; i < ${o.int(a.maxSearchSteps)}; i ++ ) {
           e = texture2D( edgesTex, texcoord, 0.0 ).rg;
           texcoord += vec2( 2.0, 0.0 ) * resolution.xy;
           if ( ! ( texcoord.x < end && e.g > 0.8281 && e.r == 0.0 ) ) break;
@@ -127,7 +127,7 @@ SMAAEdgeDetectionVS( fTexCoord );
 
       float SMAASearchYUp( sampler2D edgesTex, sampler2D searchTex, vec2 texcoord, float end ) {
         vec2 e = vec2( 1.0, 0.0 );
-        for ( int i = 0; i < ${o.glsl.int(d.maxSearchSteps)}; i ++ ) {
+        for ( int i = 0; i < ${o.int(a.maxSearchSteps)}; i ++ ) {
           e = texture2D( edgesTex, texcoord, 0.0 ).rg;
           texcoord += vec2( 0.0, 2.0 ) * resolution.xy;
           if ( ! ( texcoord.y > end && e.r > 0.8281 && e.g == 0.0 ) ) break;
@@ -141,7 +141,7 @@ SMAAEdgeDetectionVS( fTexCoord );
 
       float SMAASearchYDown( sampler2D edgesTex, sampler2D searchTex, vec2 texcoord, float end ) {
         vec2 e = vec2( 1.0, 0.0 );
-        for ( int i = 0; i < ${o.glsl.int(d.maxSearchSteps)}; i ++ ) {
+        for ( int i = 0; i < ${o.int(a.maxSearchSteps)}; i ++ ) {
           e = texture2D( edgesTex, texcoord, 0.0 ).rg;
           texcoord -= vec2( 0.0, 2.0 ) * resolution.xy;
           if ( ! ( texcoord.y < end && e.r > 0.8281 && e.g == 0.0 ) ) break;
@@ -154,7 +154,7 @@ SMAAEdgeDetectionVS( fTexCoord );
       }
 
       vec2 SMAAArea( sampler2D areaTex, vec2 dist, float e1, float e2, float offset ) {
-        vec2 texcoord = float( ${o.glsl.int(d.maxDistanceAreaTex)} ) * round( 4.0 * vec2( e1, e2 ) ) + dist;
+        vec2 texcoord = float( ${o.int(a.maxDistanceAreaTex)} ) * round( 4.0 * vec2( e1, e2 ) ) + dist;
         texcoord = SMAA_AREATEX_PIXEL_SIZE * texcoord + ( 0.5 * SMAA_AREATEX_PIXEL_SIZE );
         texcoord.y += SMAA_AREATEX_SUBTEX_SIZE * offset;
         return texture2D( areaTex, texcoord, 0.0 ).rg;
@@ -205,7 +205,7 @@ SMAAEdgeDetectionVS( fTexCoord );
       void main() {
         gl_FragColor = SMAABlendingWeightCalculationPS( fTexCoord, fPixCoord, fOffset, tEdges, tArea, tSearch, ivec4( 0.0 ) );
       }
-    `)),d.output===e.SMAAOutput.Blur&&(s.attributes.add(r.VertexAttribute.POSITION,"vec2"),s.vertex.uniforms.add("resolution","vec4"),s.varyings.add("fTexCoord","vec2"),s.varyings.add("fOffset[2]","vec4"),s.vertex.code.add(o.glsl`void SMAANeighborhoodBlendingVS( vec2 texcoord ) {
+    `)),x.output===s.Blur&&(c.attributes.add(d.POSITION,"vec2"),c.vertex.uniforms.add(new e("resolution")),c.varyings.add("fTexCoord","vec2"),c.varyings.add("fOffset[2]","vec4"),c.vertex.code.add(o`void SMAANeighborhoodBlendingVS( vec2 texcoord ) {
 fOffset[0] = texcoord.xyxy + resolution.xyxy * vec4( -1.0, 0.0, 0.0, 1.0 );
 fOffset[1] = texcoord.xyxy + resolution.xyxy * vec4( 1.0, 0.0, 0.0, -1.0 );
 }
@@ -213,7 +213,7 @@ void main() {
 fTexCoord = (position + 1.0 ) * 0.5;
 gl_Position = vec4(position, 0, 1);
 SMAANeighborhoodBlendingVS(fTexCoord);
-}`),s.fragment.uniforms.add("tBlendWeights","sampler2D"),s.fragment.uniforms.add("tColor","sampler2D"),s.fragment.uniforms.add("resolution","vec4"),s.fragment.code.add(o.glsl`vec4 SMAANeighborhoodBlendingPS( vec2 texcoord, vec4 offset[ 2 ], sampler2D colorTex, sampler2D blendTex ) {
+}`),c.fragment.uniforms.add(new r("tBlendWeights")),c.fragment.uniforms.add(new r("tColor")),c.fragment.uniforms.add(new e("resolution")),c.fragment.code.add(o`vec4 SMAANeighborhoodBlendingPS( vec2 texcoord, vec4 offset[ 2 ], sampler2D colorTex, sampler2D blendTex ) {
 vec4 a;
 a.xz = texture2D( blendTex, texcoord ).xz;
 a.y = texture2D( blendTex, offset[ 1 ].zw ).g;
@@ -239,4 +239,4 @@ return mixed;
 }
 void main() {
 gl_FragColor = SMAANeighborhoodBlendingPS( fTexCoord, fOffset, tColor, tBlendWeights );
-}`)),s}e.SMAAOutput=void 0,(d=e.SMAAOutput||(e.SMAAOutput={}))[d.EdgeDetector=0]="EdgeDetector",d[d.BlendWeight=1]="BlendWeight",d[d.Blur=2]="Blur",d[d.COUNT=3]="COUNT";const a=Object.freeze(Object.defineProperty({__proto__:null,get SMAAOutput(){return e.SMAAOutput},build:s},Symbol.toStringTag,{value:"Module"}));e.SMAAShader=a,e.build=s}));
+}`)),c}const c=Object.freeze(Object.defineProperty({__proto__:null,build:x},Symbol.toStringTag,{value:"Module"}));export{c as S,x as b};

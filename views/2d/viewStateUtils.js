@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports"],(function(t){"use strict";const n=Math.PI/180;function e(t){return t*n}function o(t,n,e){const{resolution:o,size:r}=e;return t[0]=o*(Math.round(n[0]/o)+r[0]%2*.5),t[1]=o*(Math.round(n[1]/o)+r[1]%2*.5),t}function r(t,n){const o=e(n.rotation),r=Math.abs(Math.cos(o)),u=Math.abs(Math.sin(o)),[s,i]=n.size;return t[0]=Math.round(i*u+s*r),t[1]=Math.round(i*r+s*u),t}function u(t,n,e,o){const[r,u]=n,[s,i]=o,a=.5*e;return t[0]=r-a*s,t[1]=u-a*i,t[2]=r+a*s,t[3]=u+a*i,t}function s(t,n){const[e,o,r,u]=t,[s,i,a,c]=n;return!(e>a||r<s||o>c||u<i)}t.bboxIntersects=s,t.getBBox=u,t.getOuterSize=r,t.snapToPixel=o,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+const t=Math.PI/180;function n(n){return n*t}function o(t,n,o){const{resolution:r,size:u}=o;return t[0]=r*(Math.round(n[0]/r)+u[0]%2*.5),t[1]=r*(Math.round(n[1]/r)+u[1]%2*.5),t}function r(t,o){const r=n(o.rotation),u=Math.abs(Math.cos(r)),a=Math.abs(Math.sin(r)),[s,c]=o.size;return t[0]=Math.round(c*a+s*u),t[1]=Math.round(c*u+s*a),t}function u(t,n,o,r){const[u,a]=n,[s,c]=r,i=.5*o;return t[0]=u-i*s,t[1]=a-i*c,t[2]=u+i*s,t[3]=a+i*c,t}function a(t,n){const[o,r,u,a]=t,[s,c,i,e]=n;return!(o>i||u<s||r>e||a<c)}export{a as bboxIntersects,u as getBBox,r as getOuterSize,o as snapToPixel};

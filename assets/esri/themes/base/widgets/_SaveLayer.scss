@@ -1,0 +1,40 @@
+@mixin saveLayer() {
+  .esri-save-layer {
+    width: 300px;
+    height: 250px;
+
+    &__error {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__error-icon {
+      color: var(--calcite-ui-danger);
+      margin-bottom: 0.3rem;
+      margin-top: 3rem;
+    }
+
+    &__process-loader {
+      padding-bottom: 2rem;
+      padding-top: 3rem;
+    }
+
+    &__process-label,
+    &__error-label {
+      margin-inline: 0.5rem;
+    }
+
+    &__layer-name-label {
+      margin: 0.5rem 0.5rem 0rem 0.5rem;
+    }
+
+    &__portal-folder-label {
+      margin: 0.5rem 0.5rem 0.25rem 0.5rem;
+    }
+  }
+}
+
+@if $include_SaveLayer==true {
+  @include saveLayer();
+}

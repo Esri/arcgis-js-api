@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{isSome as n}from"../../core/maybe.js";import{euclideanHorizontalLength as r,euclideanLength as t,euclideanHorizontalDistanceBetweenPoints as e,euclideanDirectDistanceBetweenPoints as o,euclideanHorizontalDistance as i,euclideanDirectDistance as u}from"./euclideanLengthMeasurementUtils.js";import{geodesicLength as c,geodesicDistanceBetweenPoints as f,geodesicDistance as p}from"./geodesicLengthMeasurementUtils.js";function m(n,e){return g(t,c,r,e,n)}function s(n,r,t){return g(o,f,e,t,n,r)}function a(n,r,t,e){return g(u,p,i,e,n,r,t)}function d(n,r,t){return g(e,f,e,t,n,r)}function l(n,r,t,e){return g(i,p,i,e,n,r,t)}function g(r,t,e,o,...i){if("on-the-ground"===o){const r=t.apply(void 0,i);return n(r)?r:e.apply(void 0,i)}return r.apply(void 0,i)}export{a as autoDirectDistanceByElevationMode,s as autoDirectDistanceByElevationModeBetweenPoints,l as autoHorizontalDistanceByElevationMode,d as autoHorizontalDistanceByElevationModeBetweenPoints,m as autoLengthByElevationMode};

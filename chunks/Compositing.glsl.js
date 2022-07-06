@@ -1,23 +1,23 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,r,a,o){"use strict";var n;function t(n){const t=new o.ShaderBuilder;return t.include(r.ScreenSpacePass),t.fragment.uniforms.add("tex","sampler2D"),n.function===e.CompositingFunction.Standard&&(n.hasOpacityFactor?(t.fragment.uniforms.add("opacity","float"),t.fragment.code.add(a.glsl`void main() {
+import{neverReached as e}from"../core/compilerUtils.js";import{ScreenSpacePass as r}from"../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass.js";import{FloatPassUniform as o}from"../views/3d/webgl-engine/core/shaderModules/FloatPassUniform.js";import{IntegerPassUniform as a}from"../views/3d/webgl-engine/core/shaderModules/IntegerPassUniform.js";import{NoParameters as t,glsl as s}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{ShaderBuilder as i}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{Texture2DPassUniform as n}from"../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform.js";import{CompositingFunction as c}from"../views/3d/webgl-engine/shaders/CompositingTechniqueConfiguration.js";class d extends t{constructor(){super(...arguments),this.overlayIndex=0,this.opacity=1}}function u(t){const d=new i;d.include(r);const u=d.fragment;switch(t.function){case c.Standard:u.uniforms.add(new n("tex",(e=>e.texture))),t.hasOpacityFactor?(u.uniforms.add(new o("opacity",(e=>e.opacity))),u.code.add(s`void main() {
 gl_FragColor = texture2D(tex, uv) * opacity;
-}`)):t.fragment.code.add(a.glsl`void main() {
+}`)):u.code.add(s`void main() {
 gl_FragColor = texture2D(tex, uv);
-}`)),n.function===e.CompositingFunction.OverlayWithTransparency&&(t.fragment.uniforms.add("overlayIdx","int"),n.hasOpacityFactor&&t.fragment.uniforms.add("opacity","float"),t.fragment.code.add(a.glsl`
-      void main() {
-        vec2 overlayUV = overlayIdx == 0 ? vec2(uv.x * 0.5, uv.y) : vec2(uv.x * 0.5 + 0.5, uv.y);
-        gl_FragColor = texture2D(tex, overlayUV) ${n.hasOpacityFactor?"* opacity":""};
-      }`)),n.function===e.CompositingFunction.TransparentToHUDVisibility&&t.fragment.code.add(a.glsl`void main() {
+}`);break;case c.OverlayWithTransparency:u.uniforms.add(new n("tex",(e=>e.texture))),u.uniforms.add(new a("overlayIdx",(e=>e.overlayIndex))),t.hasOpacityFactor&&u.uniforms.add(new o("opacity",(e=>e.opacity))),u.code.add(s`
+        void main() {
+          vec2 overlayUV = overlayIdx == 0 ? vec2(uv.x * 0.5, uv.y) : vec2(uv.x * 0.5 + 0.5, uv.y);
+          gl_FragColor = texture2D(tex, overlayUV) ${t.hasOpacityFactor?"* opacity":""};
+        }`);break;case c.TransparentToHUDVisibility:u.uniforms.add(new n("tex",(e=>e.texture))),u.code.add(s`void main() {
 gl_FragColor = vec4(1.0 - texture2D(tex, uv).a);
-}`),n.function===e.CompositingFunction.Transparency&&(t.fragment.uniforms.add("colorTexture","sampler2D"),t.fragment.uniforms.add("alphaTexture","sampler2D"),t.fragment.uniforms.add("frontFaceTexture","sampler2D"),t.fragment.code.add(a.glsl`void main() {
+}`);break;case c.Transparency:u.uniforms.add([new n("colorTexture",(e=>e.colorTexture)),new n("alphaTexture",(e=>e.alphaTexture)),new n("frontFaceTexture",(e=>e.frontFaceTexture))]),u.code.add(s`void main() {
 vec4 srcColor = texture2D(colorTexture, uv);
-float srcAlpha = texture2D(alphaTexture, uv).r;
-vec4 frontFace = texture2D(frontFaceTexture, uv);
 if(srcColor.a <= 1e-5){
 discard;
 }
+float srcAlpha = texture2D(alphaTexture, uv).r;
+vec4 frontFace = texture2D(frontFaceTexture, uv);
 gl_FragColor = vec4(mix(srcColor.rgb/srcColor.a, frontFace.rgb, frontFace.a), 1.0 - srcAlpha);
-}`)),t}e.CompositingFunction=void 0,(n=e.CompositingFunction||(e.CompositingFunction={}))[n.Standard=0]="Standard",n[n.TransparentToHUDVisibility=1]="TransparentToHUDVisibility",n[n.Transparency=2]="Transparency",n[n.OverlayWithTransparency=3]="OverlayWithTransparency",n[n.COUNT=4]="COUNT";const i=Object.freeze(Object.defineProperty({__proto__:null,get CompositingFunction(){return e.CompositingFunction},build:t},Symbol.toStringTag,{value:"Module"}));e.CompositingShader=i,e.build=t}));
+}`);break;case c.COUNT:break;default:e(t.function)}return d}const l=Object.freeze(Object.defineProperty({__proto__:null,CompositingPassParameters:d,build:u},Symbol.toStringTag,{value:"Module"}));export{d as C,l as a,u as b};

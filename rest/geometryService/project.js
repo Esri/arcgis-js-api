@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../../core/accessorSupport/ensureType","../../geometry/support/jsonUtils","../utils","./utils","../support/ProjectParameters"],(function(e,t,r,o,s,n,u,p){"use strict";const i=o.ensureType(p);function a(e,t,r){return c.apply(this,arguments)}function c(){return(c=t._asyncToGenerator((function*(e,t,o){t=i(t);const p=n.parseUrl(e),a={...p.query,f:"json",...t.toJSON()},c=t.outSpatialReference,l=s.getJsonType(t.geometries[0]),y=n.asValidOptions(a,o);return r(p.path+"/project",y).then((({data:{geometries:e}})=>u.decodeGeometries(e,l,c)))}))).apply(this,arguments)}e.project=a,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import r from"../../request.js";import{ensureType as o}from"../../core/accessorSupport/ensureType.js";import{getJsonType as t}from"../../geometry/support/jsonUtils.js";import{parseUrl as e,asValidOptions as s}from"../utils.js";import{decodeGeometries as p}from"./utils.js";import m from"../support/ProjectParameters.js";const i=o(m);async function n(o,m,n){m=i(m);const u=e(o),c={...u.query,f:"json",...m.toJSON()},j=m.outSpatialReference,a=t(m.geometries[0]),f=s(c,n);return r(u.path+"/project",f).then((({data:{geometries:r}})=>p(r,a,j)))}export{n as project};

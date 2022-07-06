@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../core/maybe"],(function(e,t){"use strict";function r(e,{profiles:r}){const n=e.title;if(t.isSome(n))return n;switch(e.type){case"ground":return r.ground;case"input":return r.input;case"query":return r.query;case"view":return r.view;default:return""}}e.getTranslatedLineTitle=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{isSome as e}from"../../../core/maybe.js";function r(r,{profiles:t}){const u=r.title;if(e(u))return u;switch(r.type){case"ground":return t.ground;case"input":return t.input;case"query":return t.query;case"view":return t.view;default:return""}}export{r as getTranslatedLineTitle};

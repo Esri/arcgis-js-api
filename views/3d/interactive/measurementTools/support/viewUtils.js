@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
-*/
-define(["exports","../../../../../core/lang","../../../../../core/screenUtils","../../../../../chunks/vec2","../../../../../chunks/vec3f64"],(function(e,r,n,t,c){"use strict";function o(e,n){return{...e,...r.clone(n)}}function a(e,r,n,t){for(;e.length<r;)e.push(n());if(t)for(;e.length>r;){t(e.pop())}else e.length=r}function i(e,r,n,c){c.projectToRenderScreen(e,S),c.projectToRenderScreen(r,p),t.subtract(n,y,f),t.normalize(n,n)}function s(e,r,n){const t=n.state.camera;n.renderCoordsHelper.toRenderCoords(e,d),t.projectToRenderScreen(d,l),n.state.camera.renderToScreen(l,r)}function u(e,r,n){return s(e,P,n),s(r,g,n),t.distance(P,g)}const d=c.create(),l=n.createRenderScreenPointArray3(),S=n.createRenderScreenPointArray3(),f=S,p=n.createRenderScreenPointArray3(),y=p,P=n.createScreenPointArray(),g=n.createScreenPointArray();e.copyParameter=o,e.pointToPointScreenDistance=u,e.resizeArray=a,e.screenSpaceTangent=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

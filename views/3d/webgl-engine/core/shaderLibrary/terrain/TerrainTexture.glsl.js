@@ -1,57 +1,31 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";function o(e,o){e.varyings.add("vtc","vec2"),e.vertex.uniforms.add("texOffsetAndScale","vec4"),e.fragment.uniforms.add("tex","sampler2D"),e.fragment.uniforms.add("textureOpacities","vec3"),o.textureFadingEnabled&&(e.vertex.uniforms.add("nextTexOffsetAndScale","vec4"),e.varyings.add("nvtc","vec2"),e.fragment.uniforms.add("texNext","sampler2D"),e.fragment.uniforms.add("nextTexOpacities","vec3"),e.fragment.uniforms.add("fadeFactor","float")),e.vertex.code.add(t.glsl`
+import{BackgroundGrid as e}from"./BackgroundGrid.glsl.js";import{TileBlendInput as t}from"./TileBlendInput.js";import{Float3Uniform as o}from"../../shaderModules/Float3Uniform.js";import{Float4Uniform as r}from"../../shaderModules/Float4Uniform.js";import{FloatUniform as a}from"../../shaderModules/FloatUniform.js";import{glsl as c}from"../../shaderModules/interfaces.js";import{Texture2DUniform as n}from"../../shaderModules/Texture2DUniform.js";function i(i,d){i.varyings.add("vtc","vec2"),i.vertex.uniforms.add(new r("texOffsetAndScale")),i.fragment.uniforms.add(new n("tex")),i.fragment.uniforms.add(new o("textureOpacities"));const s=d.textureFadingEnabled&&!d.renderOccluded;s&&(i.vertex.uniforms.add(new r("nextTexOffsetAndScale")),i.varyings.add("nvtc","vec2"),i.fragment.uniforms.add(new n("texNext")),i.fragment.uniforms.add(new o("nextTexOpacities")),i.fragment.uniforms.add(new a("fadeFactor")));const l=d.tileBlendInput===t.ColorComposite,f=d.tileBlendInput===t.GridComposite;f&&i.fragment.include(e),l&&i.fragment.uniforms.add(new o("backgroundColor")),i.vertex.code.add(c`
   void forwardTextureCoordinates(in vec2 uv) {
     vtc = uv * texOffsetAndScale.zw + texOffsetAndScale.xy;
-    ${o.textureFadingEnabled?t.glsl`nvtc = uv * nextTexOffsetAndScale.zw + nextTexOffsetAndScale.xy;`:t.glsl``}
-  }`),o.useGrid?(e.fragment.code.add(t.glsl`float lineFactorAtPosition(float value) {
-float pos = value * 129.0;
-if(pos < 0.5 || pos > 128.5) {
-return 1.0;
-}
-pos = pos + 0.5;
-float modulo = mod(pos, 16.0);
-return modulo <= 2.0 ?  1.0 - abs(modulo - 1.0) : 0.0;
-}
-float lineFactorAtUV(vec2 uv) {
-return max(lineFactorAtPosition(uv.x), lineFactorAtPosition(uv.y));
-}
-float lineFactor(vec2 uv) {
-vec2 offset = fwidth(uv) * 0.25;
-return (lineFactorAtUV(vec2(uv.x + offset.x, uv.y + offset.y)) +
-lineFactorAtUV(vec2(uv.x - offset.x, uv.y + offset.y)) +
-lineFactorAtUV(vec2(uv.x + offset.x, uv.y - offset.y)) +
-lineFactorAtUV(vec2(uv.x - offset.x, uv.y - offset.y))) / 4.0;
-}
-vec4 gridColor(vec2 uv) {
-float line = lineFactor(uv) * 0.1 + 0.9;
-float backgroundOpacity = textureOpacities.y;
-return vec4(1.0, 0.972, 0.918, 1.0) * line * backgroundOpacity;
-}`),e.fragment.code.add(t.glsl`vec4 getColor(vec4 color, vec2 uv, vec3 opacities) {
-if (opacities.y <= 0.0) {
-return color * opacities.z * opacities.x;
-}
-vec4 grid = gridColor(uv);
-float alpha = opacities.z * color.a;
-return mix(grid, color, alpha) * opacities.x;
-}`)):o.hasBackgroundColor?(e.fragment.uniforms.add("backgroundColor","vec3"),e.fragment.code.add(t.glsl`vec4 getColor(vec4 color, vec2 uv, vec3 opacities) {
-if (opacities.y <= 0.0) {
-return color * opacities.z * opacities.x;
-}
-float alpha = opacities.z * color.a;
-float backgroundOpacity = opacities.y;
-return mix(vec4(backgroundColor, 1.0) * backgroundOpacity, color, alpha) * opacities.x;
-}`)):e.fragment.code.add(t.glsl`vec4 getColor(vec4 color, vec2 uv, vec3 opacities) {
-return color;
-}`),o.textureFadingEnabled?e.fragment.code.add(t.glsl`vec4 getTileColor() {
+    ${s?c`nvtc = uv * nextTexOffsetAndScale.zw + nextTexOffsetAndScale.xy;`:c``}
+  }`),i.fragment.code.add(c`
+    vec4 applyBaseOpacity(vec4 _color, vec3 _opacities) {
+      return _opacities.z <= 0.0 ? _color : _color * _opacities.x;
+    }
+
+    vec4 getColor(vec4 color, vec2 uv, vec3 opacities) {
+      ${f||l?c`
+              if (opacities.y <= 0.0) {
+                return color * opacities.z * opacities.x;
+              }
+              vec4 bg = ${l?c`vec4(backgroundColor, 1.0)`:c`gridColor(uv)`} * opacities.y;
+              float alpha = opacities.z * color.a;
+              return mix(bg, color, alpha) * opacities.x;`:c`return color;`}
+    }`),s?i.fragment.code.add(c`vec4 getTileColor() {
 vec4 color = getColor(texture2D(tex, vtc), vtc, textureOpacities);
 if (fadeFactor >= 1.0) {
 return color;
 }
 vec4 nextColor = getColor(texture2D(texNext, nvtc), nvtc, nextTexOpacities);
 return mix(nextColor, color, fadeFactor);
-}`):e.fragment.code.add(t.glsl`vec4 getTileColor() {
+}`):i.fragment.code.add(c`vec4 getTileColor() {
 return getColor(texture2D(tex, vtc), vtc, textureOpacities);
-}`)}e.TerrainTexture=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}export{i as TerrainTexture};

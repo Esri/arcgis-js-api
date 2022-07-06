@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../widgetUtils"],(function(e,n){"use strict";function t(){return function(e,n){if(!e[n])throw new TypeError(`Cannot auto bind undefined function '${n}'`);return{value:o(e[n])}}}function i(e){const{type:n}=e;return e instanceof KeyboardEvent||"keyup"===n||"keydown"===n||"keypress"===n}function o(e){return function(t,...o){i(t)?n.isActivationKey(t.key)&&(t.preventDefault(),t.stopPropagation(),t.target.click()):e.call(this,t,...o)}}e.accessibleHandler=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{isActivationKey as n}from"../widgetUtils.js";function t(){return function(n,t){if(!n[t])throw new TypeError(`Cannot auto bind undefined function '${t}'`);return{value:o(n[t])}}}function e(n){const{type:t}=n;return n instanceof KeyboardEvent||"keyup"===t||"keydown"===t||"keypress"===t}function o(t){return function(o,...r){e(o)?n(o.key)&&(o.preventDefault(),o.stopPropagation(),o.target.click()):t.call(this,o,...r)}}export{t as accessibleHandler};

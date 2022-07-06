@@ -76,11 +76,19 @@
     background: url(../base/images/loading-throb.gif) no-repeat center;
   }
 
+  .esri-field-column__header-label {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    margin: 0 5px;
+    min-height: 28px;
+    overflow: auto;
+  }
+
   .esri-field-column__header-content {
     align-items: center;
     display: flex;
     flex-grow: 1;
-    min-width: 0px;
     overflow: visible;
   }
 

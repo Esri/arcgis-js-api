@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometryTest.glsl","../util/RgbaFloatEncoding.glsl","../../shaderModules/interfaces"],(function(e,t,r,o,a){"use strict";function i(e,i){i.multipassGeometryEnabled&&e.vertex.include(r.multipassGeometryTest),i.multipassTerrainEnabled&&e.varyings.add("depth","float"),e.vertex.code.add(a.glsl`
+import{ReadLinearDepth as e}from"../output/ReadLinearDepth.glsl.js";import{multipassGeometryTest as r}from"../shading/MultipassGeometryTest.glsl.js";import{RgbaFloatEncoding as t}from"../util/RgbaFloatEncoding.glsl.js";import{Float2PassUniform as o}from"../../shaderModules/Float2PassUniform.js";import{glsl as a}from"../../shaderModules/interfaces.js";import{Texture2DPassUniform as i}from"../../shaderModules/Texture2DPassUniform.js";function s(s,n){const{vertex:p,fragment:l}=s;n.hasMultipassGeometry&&p.include(r),n.hasMultipassTerrain&&s.varyings.add("depth","float"),p.code.add(a`
   void main(void) {
     vec4 posProjCenter;
     if (dot(position, position) > 0.0) {
@@ -12,13 +12,13 @@ define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometry
       vec4 posProj = projectPositionHUD(projectAux);
       posProjCenter = alignToPixelCenter(posProj, viewport.zw);
 
-      ${i.multipassGeometryEnabled?a.glsl`
+      ${n.hasMultipassGeometry?a`
         // Don't draw vertices behind geometry
         if(geometryDepthTest(.5 + .5 * posProjCenter.xy / posProjCenter.w, projectAux.posView.z)){
           posProjCenter = vec4(1e038, 1e038, 1e038, 1.0);
         }`:""}
 
-      ${i.multipassTerrainEnabled?"depth = projectAux.posView.z;":""}
+      ${n.hasMultipassTerrain?"depth = projectAux.posView.z;":""}
       vec3 vpos = projectAux.posModel;
       if (rejectBySlice(vpos)) {
         // Project out of clip space
@@ -33,11 +33,10 @@ define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometry
     gl_Position = posProjCenter;
     gl_PointSize = 1.0;
   }
-  `),i.multipassTerrainEnabled&&e.fragment.include(t.ReadLinearDepth),e.fragment.uniforms.add("terrainDepthTexture","sampler2D"),e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("inverseViewport","vec2"),e.fragment.include(o.RgbaFloatEncoding),e.fragment.code.add(a.glsl`
+  `),n.hasMultipassTerrain&&l.include(e),n.hasMultipassTerrain&&l.uniforms.add([new i("terrainDepthTexture",((e,r)=>r.multipassTerrain.linearDepthTexture)),new o("nearFar",((e,r)=>r.camera.nearFar)),new o("inverseViewport",((e,r)=>r.inverseViewport))]),l.include(t),l.code.add(a`
   void main() {
     gl_FragColor = vec4(1, 1, 1, 1);
-    ${i.multipassTerrainEnabled?a.glsl`
-
+    ${n.hasMultipassTerrain?a`
           vec2 uv = gl_FragCoord.xy * inverseViewport;
 
           //Read the rgba data from the texture linear depth
@@ -51,4 +50,4 @@ define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometry
             gl_FragColor.g = 0.5;
           }`:""}
   }
-  `)}e.HUDOcclusionPass=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+  `)}export{s as HUDOcclusionPass};

@@ -1,14 +1,14 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","./TextureCoordinateAttribute.glsl","../util/TextureAtlasLookup.glsl","../../shaderModules/interfaces"],(function(e,t,r,u){"use strict";function a(e,a){e.include(t.TextureCoordinateAttribute,a),e.fragment.code.add(u.glsl`
+import{neverReached as e}from"../../../../../../core/compilerUtils.js";import{TextureCoordinateAttribute as t,TextureCoordinateAttributeType as r}from"./TextureCoordinateAttribute.glsl.js";import{TextureAtlasLookup as u}from"../util/TextureAtlasLookup.glsl.js";import{glsl as o}from"../../shaderModules/interfaces.js";function a(a,s){switch(a.include(t,s),a.fragment.code.add(o`
   struct TextureLookupParameter {
     vec2 uv;
-    ${a.supportsTextureAtlas?"vec2 size;":""}
+    ${s.supportsTextureAtlas?"vec2 size;":""}
   } vtc;
-  `),a.attributeTextureCoordinates===t.TextureCoordinateAttributeType.Default&&e.fragment.code.add(u.glsl`vec4 textureLookup(sampler2D tex, TextureLookupParameter params) {
-return texture2D(tex, params.uv);
-}`),a.attributeTextureCoordinates===t.TextureCoordinateAttributeType.Atlas&&(e.include(r.TextureAtlasLookup),e.fragment.code.add(u.glsl`vec4 textureLookup(sampler2D tex, TextureLookupParameter params) {
-return textureAtlasLookup(tex, params.size, params.uv, vuvRegion);
-}`))}e.VertexTextureCoordinates=a,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+  `),s.textureCoordinateType){case r.Default:return void a.fragment.code.add(o`vec4 textureLookup(sampler2D texture, TextureLookupParameter params) {
+return texture2D(texture, params.uv);
+}`);case r.Atlas:return a.include(u),void a.fragment.code.add(o`vec4 textureLookup(sampler2D texture, TextureLookupParameter params) {
+return textureAtlasLookup(texture, params.size, params.uv, vuvRegion);
+}`);default:e(s.textureCoordinateType);case r.None:case r.COUNT:return}}export{a as VertexTextureCoordinates};

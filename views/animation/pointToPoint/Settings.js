@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../core/time"],(function(e,i){"use strict";const t={desiredScreenFlow:2,minDuration:i.Milliseconds(500),maxDuration:i.Milliseconds(8e3)};e.defaultSettings=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{Milliseconds as e}from"../../../core/time.js";const o={desiredScreenFlow:2,minDuration:e(500),maxDuration:e(8e3)};export{o as defaultSettings};

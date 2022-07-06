@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","../../shaderModules/ShaderBuilder","../../../lib/VertexAttribute","../../../../../../chunks/BlendLayers.glsl"],(function(e,l,d,r,s){"use strict";e.build=s.build,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import"../../../../../../core/maybe.js";import"../output/BlendOptions.js";import"../terrain/BackgroundGrid.glsl.js";import"../terrain/TileComposite.glsl.js";import"./BlendModes.glsl.js";import"../../shaderModules/Float3PassUniform.js";import"../../shaderModules/FloatPassUniform.js";import"../../shaderModules/interfaces.js";import"../../shaderModules/ShaderBuilder.js";import"../../shaderModules/Texture2DPassUniform.js";export{a as BaseOpacityMode,B as BlendLayersOutput,c as build}from"../../../../../../chunks/BlendLayers.glsl.js";

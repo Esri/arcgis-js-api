@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../../../../geometry/support/spatialReferenceUtils"],(function(o,e){"use strict";var i;function l(i){return i&&e.isMars(i)?o.EllipsoidMode.Mars:i&&e.isMoon(i)?o.EllipsoidMode.Moon:o.EllipsoidMode.Earth}o.EllipsoidMode=void 0,(i=o.EllipsoidMode||(o.EllipsoidMode={}))[i.Earth=1]="Earth",i[i.Mars=2]="Mars",i[i.Moon=3]="Moon",i[i.COUNT=4]="COUNT",o.getEllipsoidMode=l,Object.defineProperties(o,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{isMars as r,isMoon as o}from"../../../../../../geometry/support/spatialReferenceUtils.js";var t;function a(a){return a&&r(a)?t.Mars:a&&o(a)?t.Moon:t.Earth}!function(r){r[r.Earth=1]="Earth",r[r.Mars=2]="Mars",r[r.Moon=3]="Moon",r[r.COUNT=4]="COUNT"}(t||(t={}));export{t as EllipsoidMode,a as getEllipsoidMode};

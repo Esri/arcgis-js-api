@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function t(e){return e.split(",").map((e=>e.trim()))}function n(e,t){return e.map((e=>r(e,t)))}function r(e,t){return 0===e.indexOf(t)?e:`${t}.${e}`}e.normalizePropNames=n,e.splitProps=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+function n(n){return n.split(",").map((n=>n.trim()))}function t(n,t){return n.map((n=>r(n,t)))}function r(n,t){return 0===n.indexOf(t)?n:`${t}.${n}`}export{t as normalizePropNames,n as splitProps};

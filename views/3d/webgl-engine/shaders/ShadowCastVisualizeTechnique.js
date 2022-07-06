@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{ReloadableShaderModule as e}from"../core/shaderTechnique/ReloadableShaderModule.js";import{ShaderTechnique as r}from"../core/shaderTechnique/ShaderTechnique.js";import{Default3D as t}from"../lib/DefaultVertexAttributeLocations.js";import{blendingDefault as i}from"../lib/OrderIndependentTransparency.js";import{Program as o}from"../lib/Program.js";import{S as s}from"../../../../chunks/ShadowCastVisualize.glsl.js";import{PrimitiveType as n}from"../../../webgl/enums.js";import{makePipelineState as a,defaultColorWriteParams as l}from"../../../webgl/renderState.js";class m extends r{constructor(e,r){super(e,r,(()=>this.destroy()))}initializeProgram(e){const r=m.shader.get().build(this.configuration);return new o(e.rctx,r,t)}initializePipeline(){return a({blending:i,colorWrite:l,depthTest:null,depthWrite:null})}get primitiveType(){return n.TRIANGLE_STRIP}}m.shader=new e(s,(()=>import("./ShadowCastVisualize.glsl.js")));export{m as ShadowCastVisualizeTechnique};

@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import e from"../../../../../core/Error.js";import{WGLGeometryType as r,WGLSymbologyType as t}from"../enums.js";import{MaterialKeyBase as o}from"../materialKey/MaterialKey.js";import{Technique as i}from"./Technique.js";import{DotDensityTechnique as n}from"./dotDensity/TechniqueDotDensity.js";import{HeatmapTechnique as a}from"./heatmap/TechniqueHeatmap.js";import{PieChartTechnique as m}from"./pieChart/TechniquePieChart.js";function s(r,t){if(r.type!==t)throw new e("material-view-model:unexpected-renderer-schema",`expected to find renderer schema of type "${t}" but found type "${r.type}"`)}function c(e){switch(e.type){case"dot-density":return n;case"heatmap":return a;case"pie-chart":return m;default:return i}}function p(e){const{geometryType:s,symbologyType:c}=o.load(e);switch(s){case r.FILL:if(c===t.DOT_DENSITY)return n;break;case r.MARKER:switch(c){case t.HEATMAP:return a;case t.PIE_CHART:return m}}return i}export{s as assertRendererSchema,p as getTechniqueFromMaterialKey,c as getTechniqueFromRenderer};

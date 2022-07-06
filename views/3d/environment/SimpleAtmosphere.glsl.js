@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../webgl-engine/core/shaderLibrary/Transform.glsl","../webgl-engine/core/shaderModules/interfaces","../webgl-engine/core/shaderModules/ShaderBuilder","../webgl-engine/lib/VertexAttribute","../../../chunks/SimpleAtmosphere.glsl"],(function(e,r,l,i,t,o){"use strict";Object.defineProperty(e,"SimpleAtmosphereGeometry",{enumerable:!0,get:()=>o.SimpleAtmosphereGeometry}),e.build=o.build,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import"./SimpleAtmosphereTechniqueConfiguration.js";import"../webgl-engine/core/shaderLibrary/Transform.glsl.js";import"../webgl-engine/core/shaderModules/Float2Uniform.js";import"../webgl-engine/core/shaderModules/Float3PassUniform.js";import"../webgl-engine/core/shaderModules/Float3Uniform.js";import"../webgl-engine/core/shaderModules/FloatUniform.js";import"../webgl-engine/core/shaderModules/interfaces.js";import"../webgl-engine/core/shaderModules/Matrix4PassUniform.js";import"../webgl-engine/core/shaderModules/Matrix4Uniform.js";import"../webgl-engine/core/shaderModules/ShaderBuilder.js";import"../webgl-engine/core/shaderModules/Texture2DPassUniform.js";import"../webgl-engine/lib/VertexAttribute.js";export{S as SimpleAtmospherePassParameters,b as build}from"../../../chunks/SimpleAtmosphere.glsl.js";

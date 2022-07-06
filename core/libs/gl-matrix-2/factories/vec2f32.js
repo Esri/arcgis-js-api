@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../../chunks/vec2f32"],(function(e,t){"use strict";e.ONES=t.ONES,e.UNIT_X=t.UNIT_X,e.UNIT_Y=t.UNIT_Y,e.ZEROS=t.ZEROS,e.clone=t.clone,e.create=t.create,e.createView=t.createView,e.fromValues=t.fromValues,e.ones=t.ones,e.unitX=t.unitX,e.unitY=t.unitY,e.zeros=t.zeros,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+export{O as ONES,U as UNIT_X,e as UNIT_Y,Z as ZEROS,a as clone,c as create,b as createView,f as fromValues,o as ones,u as unitX,d as unitY,z as zeros}from"../../../../chunks/vec2f32.js";

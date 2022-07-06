@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports"],(function(E){"use strict";var T;E.TileUpdate=void 0,(T=E.TileUpdate||(E.TileUpdate={}))[T.NONE=0]="NONE",T[T.NONE_HIT_MAXLOD=1]="NONE_HIT_MAXLOD",T[T.SPLIT=2]="SPLIT",T[T.VSPLITMERGE=4]="VSPLITMERGE",T[T.MERGE=8]="MERGE",T[T.RENDERDATA=16]="RENDERDATA",T[T.GEOMETRY=32]="GEOMETRY",T[T.TEXTURE_NOFADING=64]="TEXTURE_NOFADING",T[T.TEXTURE_FADING=128]="TEXTURE_FADING",Object.defineProperties(E,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+var E;!function(E){E[E.NONE=0]="NONE",E[E.NONE_HIT_MAXLOD=1]="NONE_HIT_MAXLOD",E[E.SPLIT=2]="SPLIT",E[E.VSPLITMERGE=4]="VSPLITMERGE",E[E.MERGE=8]="MERGE",E[E.RENDERDATA=16]="RENDERDATA",E[E.GEOMETRY=32]="GEOMETRY",E[E.TEXTURE_NOFADING=64]="TEXTURE_NOFADING",E[E.TEXTURE_FADING=128]="TEXTURE_FADING"}(E||(E={}));export{E as TileUpdate};

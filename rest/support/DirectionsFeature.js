@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../Graphic","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(r,e,o,s,t,c,p,i){"use strict";let u=function(e){function o(){return e.apply(this,arguments)||this}return r._inheritsLoose(o,e),o}(o);e.__decorate([s.property()],u.prototype,"events",void 0),e.__decorate([s.property()],u.prototype,"strings",void 0),u=e.__decorate([i.subclass("esri.rest.support.DirectionsFeature")],u);return u}));
+import{_ as r}from"../../chunks/tslib.es6.js";import o from"../../Graphic.js";import{property as s}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as t}from"../../core/accessorSupport/decorators/subclass.js";let e=class extends o{};r([s()],e.prototype,"events",void 0),r([s()],e.prototype,"strings",void 0),e=r([t("esri.rest.support.DirectionsFeature")],e);const p=e;export{p as default};

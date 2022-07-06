@@ -1,11 +1,11 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../core/shaderModules/interfaces","../core/shaderModules/ShaderBuilder","../lib/VertexAttribute"],(function(e,r,t,a){"use strict";function o(){const e=new t.ShaderBuilder;return e.attributes.add(a.VertexAttribute.POSITION,"vec2"),e.vertex.uniforms.add("proj","mat4"),e.vertex.uniforms.add("drawPosition","vec4"),e.varyings.add("vUV","vec2"),e.vertex.code.add(r.glsl`void main(void) {
+import{BooleanPassUniform as e}from"../core/shaderModules/BooleanPassUniform.js";import{Float4Uniform as r}from"../core/shaderModules/Float4Uniform.js";import{NoParameters as o,glsl as t}from"../core/shaderModules/interfaces.js";import{ShaderBuilder as a}from"../core/shaderModules/ShaderBuilder.js";import{Texture2DUniform as n}from"../core/shaderModules/Texture2DUniform.js";import{VertexAttribute as s}from"../lib/VertexAttribute.js";class d extends o{constructor(){super(...arguments),this.maskEnabled=!1,this.overlayEnabled=!1}}function i(){const o=new a;return o.attributes.add(s.POSITION,"vec2"),o.vertex.uniforms.add(new r("drawPosition")),o.varyings.add("vUV","vec2"),o.vertex.code.add(t`void main(void) {
 vUV = position;
 gl_Position = vec4(drawPosition.xy + vec2(position - 0.5) * drawPosition.zw, 0.0, 1.0);
-}`),e.fragment.uniforms.add("textureInput","sampler2D"),e.fragment.uniforms.add("textureMask","sampler2D"),e.fragment.uniforms.add("textureOverlay","sampler2D"),e.fragment.uniforms.add("maskEnabled","bool"),e.fragment.uniforms.add("overlayEnabled","bool"),e.fragment.code.add(r.glsl`const float barrelFactor = 1.1;
+}`),o.fragment.uniforms.add(new n("textureInput")),o.fragment.uniforms.add(new n("textureMask")),o.fragment.uniforms.add(new n("textureOverlay")),o.fragment.uniforms.add(new e("maskEnabled",(e=>e.maskEnabled))),o.fragment.uniforms.add(new e("overlayEnabled",(e=>e.overlayEnabled))),o.fragment.code.add(t`const float barrelFactor = 1.1;
 vec2 barrel(vec2 uv) {
 vec2 uvn = uv * 2.0 - 1.0;
 if (uvn.x == 0.0 && uvn.y == 0.0) {
@@ -20,4 +20,4 @@ float mask = maskEnabled ? texture2D(textureMask, vUV).a : 1.0;
 vec4 inputColor = texture2D(textureInput, barrel(vUV)) * mask;
 vec4 overlayColor = overlayEnabled ? texture2D(textureOverlay, vUV) : vec4(0);
 gl_FragColor = overlayColor + (1.0 - overlayColor.a) * inputColor;
-}`),e}e.build=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`),o}export{d as MagnifierPassParameters,i as build};

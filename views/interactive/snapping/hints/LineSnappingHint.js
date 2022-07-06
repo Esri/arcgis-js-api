@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/has","../../../../core/Logger","../snappingUtils","./SnappingHint"],(function(e,t,n,i,a,r){"use strict";i.getLogger("esri.views.interactive.snapping.hints.LineSnappingHint");let s=function(e){function n(t,n,i,a=!0,r=!0){var s;return(s=e.call(this)||this).type=t,s.lineStart=n,s.lineEnd=i,s.fadeLeft=a,s.fadeRight=r,s}return t._inheritsLoose(n,e),n.prototype.equals=function(e){return e instanceof n&&(this.type===e.type&&a.objectEqual(this.lineStart,e.lineStart)&&a.objectEqual(this.lineEnd,e.lineEnd)&&this.fadeLeft===e.fadeLeft&&this.fadeRight===e.fadeRight)},n}(r.SnappingHint);e.LineSnappingHint=s,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import"../../../../core/has.js";import t from"../../../../core/Logger.js";import{objectEqual as i}from"../snappingUtils.js";import{SnappingHint as e}from"./SnappingHint.js";t.getLogger("esri.views.interactive.snapping.hints.LineSnappingHint");class s extends e{constructor(t,i,e,s,n=!0,r=!0){super(s),this.type=t,this.lineStart=i,this.lineEnd=e,this.fadeLeft=n,this.fadeRight=r}equals(t){return t instanceof s&&(this.type===t.type&&i(this.lineStart,t.lineStart)&&i(this.lineEnd,t.lineEnd)&&this.fadeLeft===t.fadeLeft&&this.fadeRight===t.fadeRight)}}export{s as LineSnappingHint};

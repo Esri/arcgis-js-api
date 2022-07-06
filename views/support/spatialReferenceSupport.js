@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../geometry/support/SupportedGCSWkids","../ViewingMode"],(function(e,i,S){"use strict";function d(e,d){return null!=e&&(null==d||(d===S.ViewingMode.Local?!e.isGeographic||(e.isWGS84||e.wkid===i.SupportedGCSWkids.CGCS2000):e.isWebMercator||e.isWGS84||e.wkid===i.SupportedGCSWkids.CGCS2000||e.wkid===i.SupportedGCSWkids.GCSMARS2000||e.wkid===i.SupportedGCSWkids.GCSMARS2000_SPHERE||e.wkid===i.SupportedGCSWkids.GCSMOON2000))}e.isSpatialReferenceSupported=d,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{SupportedGCSWkids as i}from"../../geometry/support/SupportedGCSWkids.js";import{ViewingMode as o}from"../ViewingMode.js";function r(r,S){return null!=r&&(null==S||(S===o.Local?!r.isGeographic||(r.isWGS84||r.wkid===i.CGCS2000):r.isWebMercator||r.isWGS84||r.wkid===i.CGCS2000||r.wkid===i.GCSMARS2000||r.wkid===i.GCSMARS2000_SPHERE||r.wkid===i.GCSMOON2000))}export{r as isSpatialReferenceSupported};

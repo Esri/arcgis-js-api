@@ -1,12 +1,12 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../core/shaderModules/interfaces","./EdgeUtil.glsl","./UnpackAttributes.glsl"],(function(e,t,d,l){"use strict";function u(e,u){const i=e.vertex;switch(e.include(l.UnpackAttributes,u),d.usesSketchLogic(u)&&i.uniforms.add("strokesAmplitude","float"),u.mode){case d.EdgeUtilMode.SOLID:i.code.add(t.glsl`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
+import{FloatUniform as e}from"../../../core/shaderModules/FloatUniform.js";import{glsl as t}from"../../../core/shaderModules/interfaces.js";import{usesSketchLogic as r,EdgeUtilMode as s}from"./EdgeUtil.glsl.js";import{UnpackAttributes as a}from"./UnpackAttributes.glsl.js";function d(d,u){const i=d.vertex;switch(d.include(a,u),r(u)&&i.uniforms.add(new e("strokesAmplitude")),u.mode){case s.SOLID:i.code.add(t`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
 return 0.0;
-}`);break;case d.EdgeUtilMode.SKETCH:i.code.add(t.glsl`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
+}`);break;case s.SKETCH:i.code.add(t`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
 return strokesAmplitude;
-}`);break;case d.EdgeUtilMode.MIXED:i.code.add(t.glsl`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
+}`);break;case s.MIXED:i.code.add(t`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
 float type = unpackedAttributes.type;
 if (type <= 0.0) {
 return strokesAmplitude;
@@ -14,4 +14,4 @@ return strokesAmplitude;
 else {
 return 0.0;
 }
-}`)}}e.LineAmplitude=u,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}}export{d as LineAmplitude};

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../../layers/support/fieldUtils"],(function(e,i){"use strict";function l(){return{requiredFields:{type:[String],readOnly:!0},availableFields:{type:[String],readOnly:!0,get:function(){const{layer:e,layer:{fieldsIndex:l},requiredFields:t}=this;return e.outFields?i.fixFields(l,[...i.unpackFieldNames(l,e.outFields),...t]):i.fixFields(l,t)}}}}e.defineFieldProperties=l,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{fixFields as e,unpackFieldNames as r}from"../../../../layers/support/fieldUtils.js";function i(){return{requiredFields:{type:[String],readOnly:!0},availableFields:{type:[String],readOnly:!0,get:function(){const{layer:i,layer:{fieldsIndex:t},requiredFields:l}=this;return i.outFields?e(t,[...r(t,i.outFields),...l]):e(t,l)}}}}export{i as defineFieldProperties};

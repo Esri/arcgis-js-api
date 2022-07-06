@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../../chunks/vec3f64"],(function(t,i){"use strict";let e=function(t=i.create()){this.intensity=t},n=function(t=i.create(),e=i.fromValues(.57735,.57735,.57735)){this.intensity=t,this.direction=e},s=function(t=i.create(),e=i.fromValues(.57735,.57735,.57735),n=!0,s=1,h=1){this.intensity=t,this.direction=e,this.castShadows=n,this.specularStrength=s,this.environmentStrength=h},h=function(){this.r=[0],this.g=[0],this.b=[0]};t.AmbientLight=e,t.FillLight=n,t.MainLight=s,t.SphericalHarmonicsAmbientLight=h,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{c as t,f as s}from"../../../../chunks/vec3f64.js";class i{constructor(s=t()){this.intensity=s}}class c{constructor(i=t(),c=s(.57735,.57735,.57735)){this.intensity=i,this.direction=c}}class n{constructor(i=t(),c=s(.57735,.57735,.57735),n=!0,r=1,h=1){this.intensity=i,this.direction=c,this.castShadows=n,this.specularStrength=r,this.environmentStrength=h}}class r{constructor(){this.r=[0],this.g=[0],this.b=[0]}}export{i as AmbientLight,c as FillLight,n as MainLight,r as SphericalHarmonicsAmbientLight};

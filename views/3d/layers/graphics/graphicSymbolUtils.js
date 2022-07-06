@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","./Graphics3DSymbol","./Graphics3DWebStyleSymbol"],(function(e,o,t){"use strict";function i(e){return e instanceof t?e.graphics3DSymbol:e instanceof o?e:null}e.getGraphics3DSymbol=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import o from"./Graphics3DSymbol.js";import r from"./Graphics3DWebStyleSymbol.js";function i(i){return i instanceof r?i.graphics3DSymbol:i instanceof o?i:null}export{i as getGraphics3DSymbol};

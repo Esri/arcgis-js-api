@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{_ as r}from"../../../../chunks/tslib.es6.js";import{property as s}from"../../../../core/accessorSupport/decorators/property.js";import"../../../../core/arrayUtils.js";import"../../../../core/has.js";import"../../../../core/accessorSupport/ensureType.js";import{subclass as t}from"../../../../core/accessorSupport/decorators/subclass.js";import{BASE as o}from"../css.js";import e from"../../../../widgets/Widget.js";import"../../../../widgets/support/widgetUtils.js";import{tsx as i}from"../../../../widgets/support/jsxFactory.js";const p={base:`${o}-value-by-value`};let a=class extends e{constructor(){super(...arguments),this.divider="×"}render(){return i("div",{class:p.base},i("span",null,this.left),i("span",null,this.divider),i("span",null,this.right))}};r([s()],a.prototype,"left",void 0),r([s()],a.prototype,"divider",void 0),r([s()],a.prototype,"right",void 0),a=r([t("esri.views.interactive.tooltip.support.ValueByValue")],a);export{a as ValueByValue};

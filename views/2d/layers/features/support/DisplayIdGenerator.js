@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../engine/webgl/DisplayId"],(function(e,t){"use strict";let r=function(){function e(){this._freeIds=[],this._idCounter=1}var r=e.prototype;return r.createId=function(e=!1){return t.createDisplayId(this._getFreeId(),e)},r.releaseId=function(e){this._freeIds.push(e)},r._getFreeId=function(){return this._freeIds.length?this._freeIds.pop():this._idCounter++},e}();e.DisplayIdGenerator=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{createDisplayId as e}from"../../../engine/webgl/DisplayId.js";class r{constructor(){this._freeIds=[],this._idCounter=1}createId(r=!1){return e(this._getFreeId(),r)}releaseId(e){this._freeIds.push(e)}_getFreeId(){return this._freeIds.length?this._freeIds.pop():this._idCounter++}}export{r as DisplayIdGenerator};

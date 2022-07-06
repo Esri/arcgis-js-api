@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["./ObjectPool"],(function(e){"use strict";let n=function(){function n(n=50,r=50){this._pool=new e(Map,void 0,(e=>e.clear()),r,n)}var t=n.prototype;return t.acquire=function(){return this._pool.acquire()},t.release=function(e){this._pool.release(e)},n.acquire=function(){return r.acquire()},n.release=function(e){return r.release(e)},n}();const r=new n(100);return n}));
+import e from"./ObjectPool.js";class r{constructor(r=50,t=50){this._pool=new e(Map,void 0,(e=>e.clear()),t,r)}acquire(){return this._pool.acquire()}release(e){this._pool.release(e)}static acquire(){return t.acquire()}static release(e){return t.release(e)}}const t=new r(100);export{r as default};

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass","./FeatureReduction"],(function(e,r,t,o,s,c,n,u){"use strict";var p;let a=p=function(r){function t(e){var t;return(t=r.call(this,e)||this).type="selection",t}return e._inheritsLoose(t,r),t.prototype.clone=function(){return new p},t}(u.default);r.__decorate([t.property({type:["selection"]})],a.prototype,"type",void 0),a=p=r.__decorate([n.subclass("esri.layers.support.FeatureReductionSelection")],a);return a}));
+import{_ as r}from"../../chunks/tslib.es6.js";import{property as e}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as o}from"../../core/accessorSupport/decorators/subclass.js";import{FeatureReduction as s}from"./FeatureReduction.js";var t;let c=t=class extends s{constructor(r){super(r),this.type="selection"}clone(){return new t}};r([e({type:["selection"]})],c.prototype,"type",void 0),c=t=r([o("esri.layers.support.FeatureReductionSelection")],c);const p=c;export{p as default};

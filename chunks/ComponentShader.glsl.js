@@ -1,13 +1,13 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../geometry/support/Ellipsoid","../views/ViewingMode","../views/3d/webgl-engine/collections/Component/Material/shader/ComponentData.glsl","../views/3d/webgl-engine/collections/Component/Material/shader/VertexDiscardByOpacity.glsl","../views/3d/webgl-engine/core/shaderLibrary/ForwardLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptions","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/NormalAttribute.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/TextureCoordinateAttribute.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexColor.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexNormal.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexPosition.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/ComputeMaterialColor.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/ComputeNormalTexture.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/ComputeShadingNormal.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/EvaluateSceneLighting.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/PhysicallyBasedRenderingParameters.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/ReadBaseColorTexture.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/ReadShadowMap.glsl","../views/3d/webgl-engine/core/shaderLibrary/terrain/Overlay.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaDiscard.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/EllipsoidMode","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,a,r,o,l,t,i,d,n,s,g,c,u,v,m,h,p,C,b,w,y,x,M,O,f,S,L,T,N,A){"use strict";const P=new Map([[A.VertexAttribute.POSITION,0],[A.VertexAttribute.NORMAL,1],[A.VertexAttribute.NORMALCOMPRESSED,1],[A.VertexAttribute.COLOR,2],[A.VertexAttribute.UV0,3],[A.VertexAttribute.UVREGION,4],[A.VertexAttribute.COMPONENTINDEX,5]]);function R(e){const A=new N.ShaderBuilder;A.include(u.VertexPosition,e),A.include(c.VertexNormal,e),A.include(g.VertexColor,e),A.include(s.TextureCoordinateAttribute,e),A.include(t.ForwardLinearDepth,e),A.include(o.ComponentData,e),A.include(S.DiscardOrAdjustAlpha,e),A.include(d.Slice,e),A.include(M.ReadBaseColorTexture,e),A.include(l.VertexDiscardByOpacity,e),A.fragment.uniforms.add("view","mat4"),e.pbrMode!==x.PBRMode.Normal&&e.pbrMode!==x.PBRMode.Schematic||(A.include(x.PhysicallyBasedRenderingParameters,e),e.hasNormalTexture&&A.include(C.ComputeNormalTexture,e)),e.output===i.ShaderOutput.Shadow&&e.componentData===o.ComponentDataType.Varying?A.vertex.code.add(T.glsl`#define discardShadows(castShadows) { if(!castShadows) { gl_Position = vec4(1e38, 1e38, 1e38, 1.0); return; } }`):A.vertex.code.add(T.glsl`#define discardShadows(castShadows) {}`);const P=e.overlayEnabled&&e.output===i.ShaderOutput.Color&&e.pbrMode===x.PBRMode.WaterOnIntegratedMesh;return e.overlayEnabled&&(A.include(w.EvaluateSceneLighting,e),A.include(f.Overlay,e),e.viewingMode===r.ViewingMode.Global?A.vertex.code.add(T.glsl`
-      const float invEllipsoidRadius = ${T.glsl.float(1/(e.ellipsoidMode===L.EllipsoidMode.Earth?a.earth.radius:e.ellipsoidMode===L.EllipsoidMode.Mars?a.mars.radius:a.moon.radius))};
+import{earth as e,mars as o,moon as r}from"../geometry/support/Ellipsoid.js";import{OverlayIndex as a,RenderTargetType as i}from"../views/3d/terrain/interfaces.js";import{IntegratedMeshMode as l}from"../views/3d/webgl-engine/collections/Component/Material/ComponentTechniqueConfiguration.js";import{ComponentData as t,ComponentDataType as d}from"../views/3d/webgl-engine/collections/Component/Material/shader/ComponentData.glsl.js";import{VertexDiscardByOpacity as n}from"../views/3d/webgl-engine/collections/Component/Material/shader/VertexDiscardByOpacity.glsl.js";import{ForwardLinearDepth as s}from"../views/3d/webgl-engine/core/shaderLibrary/ForwardLinearDepth.glsl.js";import{ShaderOutput as c}from"../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptions.js";import{SlicePass as m}from"../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl.js";import{NormalAttributeType as g}from"../views/3d/webgl-engine/core/shaderLibrary/attributes/NormalAttribute.glsl.js";import{TextureCoordinateAttribute as v}from"../views/3d/webgl-engine/core/shaderLibrary/attributes/TextureCoordinateAttribute.glsl.js";import{VertexColor as u}from"../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexColor.glsl.js";import{VertexNormal as h}from"../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexNormal.glsl.js";import{VertexPosition as p}from"../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexPosition.glsl.js";import{OutputDepth as C}from"../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl.js";import{OutputHighlight as w}from"../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl.js";import{ReadLinearDepth as b}from"../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl.js";import{ComputeMaterialColor as f}from"../views/3d/webgl-engine/core/shaderLibrary/shading/ComputeMaterialColor.glsl.js";import{ComputeNormalTexture as x}from"../views/3d/webgl-engine/core/shaderLibrary/shading/ComputeNormalTexture.glsl.js";import{ComputeShadingNormal as y}from"../views/3d/webgl-engine/core/shaderLibrary/shading/ComputeShadingNormal.glsl.js";import{EvaluateSceneLighting as M}from"../views/3d/webgl-engine/core/shaderLibrary/shading/EvaluateSceneLighting.glsl.js";import{multipassTerrainTest as L}from"../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl.js";import{PBRMode as N,PhysicallyBasedRenderingParameters as O}from"../views/3d/webgl-engine/core/shaderLibrary/shading/PhysicallyBasedRenderingParameters.glsl.js";import{ReadBaseColorTexture as j}from"../views/3d/webgl-engine/core/shaderLibrary/shading/ReadBaseColorTexture.glsl.js";import{ReadShadowMapPass as S}from"../views/3d/webgl-engine/core/shaderLibrary/shading/ReadShadowMap.glsl.js";import{OverlayIM as T,getColorTexture as P}from"../views/3d/webgl-engine/core/shaderLibrary/terrain/Overlay.glsl.js";import{symbolAlphaCutoff as W}from"../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff.js";import{DiscardOrAdjustAlphaDraw as A}from"../views/3d/webgl-engine/core/shaderLibrary/util/AlphaDiscard.glsl.js";import{EllipsoidMode as R}from"../views/3d/webgl-engine/core/shaderLibrary/util/EllipsoidMode.js";import{Float3PassUniform as D}from"../views/3d/webgl-engine/core/shaderModules/Float3PassUniform.js";import{FloatPassUniform as B}from"../views/3d/webgl-engine/core/shaderModules/FloatPassUniform.js";import{glsl as _}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{Matrix4Uniform as E}from"../views/3d/webgl-engine/core/shaderModules/Matrix4Uniform.js";import{ShaderBuilder as F}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{Texture2DPassUniform as $}from"../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform.js";import{TransparencyPassType as z}from"../views/3d/webgl-engine/lib/basicInterfaces.js";import{VertexAttribute as V}from"../views/3d/webgl-engine/lib/VertexAttribute.js";const I=new Map([[V.POSITION,0],[V.NORMAL,1],[V.NORMALCOMPRESSED,1],[V.COLOR,2],[V.UV0,3],[V.UVREGION,4],[V.COMPONENTINDEX,5]]);function G(a){const i=new F;i.include(p,a),i.include(h,a),i.include(u,a),i.include(v,a),i.include(s,a),i.include(t,a),i.include(A,a),i.include(m,a),i.include(j,a),i.include(n,a);const{vertex:V,fragment:I}=i;I.uniforms.add(new E("view")),a.pbrMode!==N.Normal&&a.pbrMode!==N.Schematic||(i.include(O,a),a.hasNormalTexture&&i.include(x,a)),a.output===c.Shadow&&a.componentData===d.Varying?V.code.add(_`#define discardShadows(castShadows) { if(!castShadows) { gl_Position = vec4(1e38, 1e38, 1e38, 1.0); return; } }`):V.code.add(_`#define discardShadows(castShadows) {}`);const G=a.integratedMeshMode===l.ColorOverlay||a.integratedMeshMode===l.ColorOverlayWithWater,k=G&&a.output===c.Color&&a.pbrMode===N.WaterOnIntegratedMesh;return G&&(i.include(M,a),i.include(T,a),a.spherical?V.code.add(_`
+      const float invEllipsoidRadius = ${_.float(1/(a.ellipsoidMode===R.Earth?e.radius:a.ellipsoidMode===R.Mars?o.radius:r.radius))};
       vec2 projectOverlay(vec3 pos) {
         return pos.xy / (1.0 + invEllipsoidRadius * pos.z);
       }
-      `):A.vertex.code.add(T.glsl`vec2 projectOverlay(vec3 pos) { return pos.xy; }`)),P&&(A.varyings.add("tbnTangent","vec3"),A.varyings.add("tbnBiTangent","vec3"),A.varyings.add("groundNormal","vec3"),A.varyings.add("positionView","vec3")),A.vertex.code.add(T.glsl`
+      `):V.code.add(_`vec2 projectOverlay(vec3 pos) { return pos.xy; }`)),k&&(i.varyings.add("tbnTangent","vec3"),i.varyings.add("tbnBiTangent","vec3"),i.varyings.add("groundNormal","vec3")),V.code.add(_`
     void main() {
       bool castShadows;
       vec4 externalColor = forwardExternalColor(castShadows);
@@ -15,33 +15,30 @@ define(["exports","../geometry/support/Ellipsoid","../views/ViewingMode","../vie
 
       vertexDiscardByOpacity(externalColor.a);
 
-      if (externalColor.a < ${T.glsl.float(S.symbolAlphaCutoff)}) {
+      if (externalColor.a < ${_.float(W)}) {
         // Discard this vertex
         gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
         return;
       }
-      forwardPosition();
-      forwardNormal();
-      ${P?T.glsl`
-        positionView = position_view();
-        ${e.viewingMode===r.ViewingMode.Global?T.glsl`
-        groundNormal = normalize(positionWorld());
-        tbnTangent = normalize(cross(vec3(0.0, 0.0, 1.0), groundNormal));
-        tbnBiTangent = normalize(cross(groundNormal, tbnTangent));`:T.glsl`
-        groundNormal = vec3(0.0, 0.0, 1.0);
-        tbnTangent = vec3(1.0, 0.0, 0.0);
-        tbnBiTangent = normalize(cross(groundNormal, tbnTangent));`}
-        `:""}
 
-      ${e.overlayEnabled?T.glsl`setOverlayVTC(projectOverlay(position));`:""}
+      forwardPosition(readElevationOffset());
+      forwardNormal();
       forwardTextureCoordinates();
       forwardVertexColor();
-      forwardLinearDepth(); // depends on forwardPosition()
+      forwardLinearDepth();
+      ${k?a.spherical?_`
+                groundNormal = normalize(positionWorld());
+                tbnTangent = normalize(cross(vec3(0.0, 0.0, 1.0), groundNormal));
+                tbnBiTangent = normalize(cross(groundNormal, tbnTangent));`:_`
+                groundNormal = vec3(0.0, 0.0, 1.0);
+                tbnTangent = vec3(1.0, 0.0, 0.0);
+                tbnBiTangent = vec3(0.0, 1.0, 0.0);`:""}
+      ${G?_`setOverlayVTC(projectOverlay(position));`:""}
     }
-  `),e.output===i.ShaderOutput.Alpha&&(A.fragment.include(h.ReadLinearDepth),e.multipassTerrainEnabled&&A.include(y.multipassTerrainTest,e),A.include(p.ComputeMaterialColor,e),A.fragment.code.add(T.glsl`
+  `),a.output===c.Alpha&&(I.include(b),i.include(L,a),i.include(f,a),G&&I.uniforms.add(new $("ovColorTex",((e,o)=>P(e,o)))),I.code.add(_`
       void main() {
         discardBySlice(vPositionWorldCameraRelative);
-        ${e.multipassTerrainEnabled?T.glsl`terrainDepthTest(gl_FragCoord, vPosition_view.z);`:""}
+        ${a.hasMultipassTerrain?_`terrainDepthTest(gl_FragCoord, vPosition_view.z);`:""}
 
         vec4 textureColor = readBaseColorTexture();
         discardOrAdjustAlpha(textureColor);
@@ -55,19 +52,18 @@ define(["exports","../geometry/support/Ellipsoid","../views/ViewingMode","../vie
           externalColor,
           externalColorMixMode
         );
-        ${e.overlayEnabled?T.glsl`
-        vec4 overlayColorOpaque = getOverlayColor(ovColorTex, vtcOverlay);
-        vec4 overlayColor = overlayOpacity * overlayColorOpaque;
-        materialColor = materialColor * (1.0 - overlayColor.a) + overlayColor;`:""}
+        ${G?_`
+                vec4 overlayColor = getOverlayColor(ovColorTex, vtcOverlay);
+                materialColor = materialColor * (1.0 - overlayColor.a) + overlayColor;`:""}
 
         gl_FragColor = vec4(materialColor.a);
       }
-    `)),e.output===i.ShaderOutput.Color&&(A.fragment.include(h.ReadLinearDepth),e.multipassTerrainEnabled&&A.include(y.multipassTerrainTest,e),A.include(p.ComputeMaterialColor,e),A.include(b.ComputeShadingNormal,e),A.include(w.EvaluateSceneLighting,e),P&&A.fragment.uniforms.add("ovNormalTex","sampler2D"),e.receiveShadows?(A.include(O.ReadShadowMap,e),A.fragment.code.add(T.glsl`float evaluateShadow() {
+    `)),a.output===c.Color&&(I.include(b),i.include(L,a),i.include(f,a),i.include(y,a),i.include(M,a),a.receiveShadows?(i.include(S,a),I.code.add(_`float evaluateShadow() {
 return readShadowMap(vPositionWorldCameraRelative, linearDepth);
-}`)):A.fragment.code.add(T.glsl`float evaluateShadow() { return 0.0; }`),A.fragment.code.add(T.glsl`
+}`)):I.code.add(_`float evaluateShadow() { return 0.0; }`),G&&I.uniforms.add(new $("ovColorTex",((e,o)=>P(e,o)))),I.code.add(_`
       void main() {
         discardBySlice(vPositionWorldCameraRelative);
-        ${e.multipassTerrainEnabled?T.glsl`terrainDepthTest(gl_FragCoord, vPosition_view.z);`:""}
+        ${a.hasMultipassTerrain?_`terrainDepthTest(gl_FragCoord, vPosition_view.z);`:""}
 
         vec4 textureColor = readBaseColorTexture();
         discardOrAdjustAlpha(textureColor);
@@ -81,50 +77,65 @@ return readShadowMap(vPositionWorldCameraRelative, linearDepth);
           externalColor,
           externalColorMixMode
         );
-        ${e.overlayEnabled?T.glsl`
-        vec4 overlayColorOpaque = getOverlayColor(ovColorTex, vtcOverlay);
-        vec4 overlayColor = overlayOpacity * overlayColorOpaque;
-        materialColor = materialColor * (1.0 - overlayColor.a) + overlayColor;`:""}
-    `),e.pbrMode===x.PBRMode.Normal||e.pbrMode===x.PBRMode.Schematic?(A.fragment.code.add(T.glsl`
-        ${e.pbrMode===x.PBRMode.Normal?T.glsl`
-        applyPBRFactors();
-        if (int(externalColorMixMode) == 3) {
-          mrr = vec3(0.0, 0.6, 0.2);
-        }`:""}
+        ${G?_`vec4 overlayColor = getOverlayColor(ovColorTex, vtcOverlay);`:""}
+    `),a.pbrMode===N.Normal||a.pbrMode===N.Schematic?(I.uniforms.add(new D("lightingMainIntensity",((e,o)=>o.lighting.mainLight.intensity))),I.code.add(_`
+        ${a.pbrMode===N.Normal?_`
+                applyPBRFactors();
+                if (int(externalColorMixMode) == 3) {
+                  mrr = vec3(0.0, 0.6, 0.2);
+                }`:""}
         vec3 normalVertex = shadingNormalWorld();
         float additionalIrradiance = 0.02 * lightingMainIntensity[2];
-      `),e.hasNormalTexture?A.fragment.code.add(T.glsl`mat3 tangentSpace = computeTangentSpace(normalVertex, vPositionWorldCameraRelative, vuv0);
-vec3 shadingNormal = computeTextureNormal(tangentSpace, vuv0);`):A.fragment.code.add(T.glsl`vec3 shadingNormal = normalVertex;`),A.fragment.code.add(T.glsl`${e.viewingMode===r.ViewingMode.Global?T.glsl`vec3 normalGround = normalize(positionWorld());`:T.glsl`vec3 normalGround = vec3(0.0, 0.0, 1.0);`}
-      `),A.fragment.code.add(T.glsl`vec3 viewDir = normalize(vPositionWorldCameraRelative);
-float ssao = 1.0 - occlusion * (1.0 - evaluateAmbientOcclusion());
-vec3 additionalLight = evaluateAdditionalLighting(ssao, positionWorld());
-vec4 shadedColor = vec4(evaluateSceneLightingPBR(shadingNormal, materialColor.rgb, evaluateShadow(), ssao, additionalLight, viewDir, normalGround, mrr, emission, additionalIrradiance), materialColor.a);`)):(e.receiveShadows?A.fragment.code.add(T.glsl`float shadow = evaluateShadow();`):e.viewingMode===r.ViewingMode.Global?A.fragment.code.add(T.glsl`float additionalAmbientScale = additionalDirectedAmbientLight(positionWorld());
-float shadow = lightingGlobalFactor * (1.0 - additionalAmbientScale);`):A.fragment.code.add(T.glsl`float shadow = 0.0;`),A.fragment.code.add(T.glsl`
-      float ambientOcclusion = evaluateAmbientOcclusion();
-      // At global scale we create some additional ambient light based on the main light to simulate global illumination
-      vec3 additionalLight = evaluateAdditionalLighting(ambientOcclusion, positionWorld());
-      vec4 shadedColor = vec4(evaluateSceneLighting(shadingNormalWorld(), materialColor.rgb, shadow, ambientOcclusion, additionalLight), materialColor.a);
-      ${P?T.glsl`
-          vec4 overlayWaterMask = getOverlayColor(ovNormalTex, vtcOverlay);
-          float waterNormalLength = length(overlayWaterMask);
-          if (waterNormalLength > 0.95) {
-            mat3 tbnMatrix = mat3(tbnTangent, tbnBiTangent, groundNormal);
-            vec4 waterOverlayColor = vec4(overlayColorOpaque.xyz, overlayColor.w);
-            vec4 waterColorLinear = getOverlayWaterColor(overlayWaterMask, waterOverlayColor, -normalize(vPositionWorldCameraRelative), shadow, groundNormal, tbnMatrix, positionView, positionWorld());
-            vec4 waterColorNonLinear = delinearizeGamma(vec4(waterColorLinear.xyz, 1.0));
-            // un-gamma the ground color to mix in linear space
-            shadedColor = mix(shadedColor, waterColorNonLinear, waterColorLinear.w);
-          }`:""}
-      `)),A.fragment.code.add(T.glsl`
+      `),a.hasNormalTexture?I.code.add(_`mat3 tangentSpace = computeTangentSpace(normalVertex, vPositionWorldCameraRelative, vuv0);
+vec3 shadingNormal = computeTextureNormal(tangentSpace, vuv0);`):I.code.add(_`vec3 shadingNormal = normalVertex;`),I.code.add(_`${a.spherical?_`vec3 normalGround = normalize(positionWorld());`:_`vec3 normalGround = vec3(0.0, 0.0, 1.0);`}
+      `),I.code.add(_`
+        vec3 viewDir = normalize(vPositionWorldCameraRelative);
+        float ssao = 1.0 - occlusion * (1.0 - evaluateAmbientOcclusion());
+
+        ${a.snowCover?_`
+                vec3 surfaceNormal = normalize(shadingNormalWorld());
+                float snow = smoothstep(0.5, 0.55, dot(surfaceNormal, normalize(positionWorld())));
+                materialColor.rgb = mix(materialColor.rgb, vec3(1), snow);
+
+                shadingNormal = mix(shadingNormal, surfaceNormal, snow);
+                ssao = mix(ssao, 0.0, snow);
+                mrr = mix(mrr, vec3(0.0, 1.0, 0.04), snow);
+                emission = mix(emission, vec3(0.0), snow);`:""}
+
+        ${G?_` materialColor = materialColor * (1.0 - overlayColor.a) + overlayColor;`:""}
+
+        vec3 additionalLight = evaluateAdditionalLighting(ssao, positionWorld());
+        vec4 shadedColor = vec4(evaluateSceneLightingPBR(shadingNormal, materialColor.rgb, evaluateShadow(), ssao, additionalLight, viewDir, normalGround, mrr, emission, additionalIrradiance), materialColor.a);
+        `)):(a.receiveShadows?I.code.add(_`float shadow = evaluateShadow();`):a.spherical?(I.uniforms.add(new B("lightingGlobalFactor",((e,o)=>o.lighting.globalFactor))),I.code.add(_`float additionalAmbientScale = additionalDirectedAmbientLight(positionWorld());
+float shadow = lightingGlobalFactor * (1.0 - additionalAmbientScale);`)):I.code.add(_`float shadow = 0.0;`),k&&I.uniforms.add(new $("ovNormalTex",((e,o)=>U(o)))),a.snowCover&&(i.extensions.add("GL_OES_standard_derivatives"),I.code.add(_`vec3 surfaceNormal = normalize(cross(dFdx(vPositionWorldCameraRelative), dFdy(vPositionWorldCameraRelative)));
+float snow = smoothstep(0.5, 0.55, dot(surfaceNormal, normalize(positionWorld())));
+materialColor.rgb = mix(materialColor.rgb, vec3(1), snow);`)),I.code.add(_`
+        float ambientOcclusion = evaluateAmbientOcclusion();
+        vec3 additionalLight = evaluateAdditionalLighting(ambientOcclusion, positionWorld());
+
+        ${G?_` materialColor = materialColor * (1.0 - overlayColor.a) + overlayColor;`:""}
+
+        vec4 shadedColor = vec4(evaluateSceneLighting(shadingNormalWorld(), materialColor.rgb, shadow, ambientOcclusion, additionalLight), materialColor.a);
+      ${k?_`
+              vec4 overlayWaterMask = getOverlayColor(ovNormalTex, vtcOverlay);
+              float waterNormalLength = length(overlayWaterMask);
+              if (waterNormalLength > 0.95) {
+                mat3 tbnMatrix = mat3(tbnTangent, tbnBiTangent, groundNormal);
+                vec4 waterColorLinear = getOverlayWaterColor(overlayWaterMask, overlayColor, -normalize(vPositionWorldCameraRelative), shadow, groundNormal, tbnMatrix, vPosition_view, positionWorld());
+                vec4 waterColorNonLinear = delinearizeGamma(vec4(waterColorLinear.xyz, 1.0));
+                // un-gamma the ground color to mix in linear space
+                shadedColor = mix(shadedColor, waterColorNonLinear, waterColorLinear.w);
+              }`:""}
+      `)),I.code.add(_`
         gl_FragColor = highlightSlice(shadedColor, vPositionWorldCameraRelative);
-        ${e.oitEnabled?"gl_FragColor = premultiplyAlpha(gl_FragColor);":""}
+        ${a.transparencyPassType===z.Color?"gl_FragColor = premultiplyAlpha(gl_FragColor);":""}
       }
-    `)),e.output!==i.ShaderOutput.Depth&&e.output!==i.ShaderOutput.Shadow||(A.include(v.OutputDepth,e),A.fragment.code.add(T.glsl`void main() {
+    `)),a.output!==c.Depth&&a.output!==c.Shadow||(i.include(C,a),I.code.add(_`void main() {
 discardBySlice(vPositionWorldCameraRelative);
 vec4 textureColor = readBaseColorTexture();
 discardOrAdjustAlpha(textureColor);
 outputDepth(linearDepth);
-}`)),e.output===i.ShaderOutput.Normal&&(A.include(b.ComputeShadingNormal,e),A.fragment.code.add(T.glsl`
+}`)),a.output===c.Normal&&(i.include(y,a),I.code.add(_`
       void main() {
         discardBySlice(vPositionWorldCameraRelative);
 
@@ -133,24 +144,23 @@ outputDepth(linearDepth);
 
         // note: the alpha component needs to be 1.0 in order for this material
         // to influence ambient occlusion, see the ssao fragment shader
-        float alpha = ${e.normalType===n.NormalAttributeType.Ground?"0.0":"1.0"};
+        float alpha = ${a.normalType===g.Ground?"0.0":"1.0"};
         gl_FragColor = vec4(vec3(.5) + .5 * shadingNormal_view(), alpha);
       }
-    `)),e.output===i.ShaderOutput.Highlight&&(A.include(m.OutputHighlight),A.fragment.code.add(T.glsl`
+    `)),a.output===c.Highlight&&(i.include(w),I.code.add(_`
       void main() {
         discardBySlice(vPositionWorldCameraRelative);
 
         vec4 textureColor = readBaseColorTexture();
         discardOrAdjustAlpha(textureColor);
 
-        ${e.overlayEnabled?T.glsl`
-        vec4 overlayColor = getCombinedOverlayColor();
-
-        if (overlayColor.a == 0.0) {
-          gl_FragColor = vec4(0.0);
-          return;
-        }`:""}
+        ${G?_`
+                vec4 overlayColor = getCombinedOverlayColor();
+                if (overlayColor.a == 0.0) {
+                  gl_FragColor = vec4(0.0);
+                  return;
+                }`:""}
 
         outputHighlight();
       }
-    `)),A}const V=Object.freeze(Object.defineProperty({__proto__:null,attributeLocations:P,build:R},Symbol.toStringTag,{value:"Module"}));e.ComponentShader=V,e.attributeLocations=P,e.build=R}));
+    `)),i}function U(e){return 0===e.overlays.length?null:e.overlays[a.INNER].getValidTexture(i.Water)}const k=Object.freeze(Object.defineProperty({__proto__:null,attributeLocations:I,build:G,getOverlayNormalTexture:U},Symbol.toStringTag,{value:"Module"}));export{k as C,I as a,G as b,U as g};

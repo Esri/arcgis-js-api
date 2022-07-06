@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports"],(function(t){"use strict";function e(t,e=5){let a=Math.round(t);if(a<=1)return 1;const r=a.toString().length;for(let n=r-1>=3?3:r-1;n>=0;n--){const r=10**n,o=Math.floor(t/r)*r,i=Math.ceil(t/r)*r,u=Math.round((o+i)/2),f=Math.abs(t-o)/t*100,l=Math.abs(t-i)/t*100,s=Math.abs(t-u)/t*100,M=Math.min(f,l,s);if(M<=e){if(M===f){a=o;break}if(M===l){a=i;break}if(M===s){a=u;break}}}return a}t.roundValue=e,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+function t(t,a=5){let r=Math.round(t);if(r<=1)return 1;const n=r.toString().length;for(let e=n-1>=3?3:n-1;e>=0;e--){const n=10**e,o=Math.floor(t/n)*n,h=Math.ceil(t/n)*n,i=Math.round((o+h)/2),f=Math.abs(t-o)/t*100,M=Math.abs(t-h)/t*100,b=Math.abs(t-i)/t*100,l=Math.min(f,M,b);if(l<=a){if(l===f){r=o;break}if(l===M){r=h;break}if(l===b){r=i;break}}}return r}export{t as roundValue};

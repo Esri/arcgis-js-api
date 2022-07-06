@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../core/has","./CodedValueDomain","./Domain","./InheritedDomain","./RangeDomain"],(function(e,n,a,o,r,t){"use strict";const i={key:"type",base:o,typeMap:{range:t,"coded-value":a,inherited:r}};function u(e){if(!e||!e.type)return null;switch(e.type){case"range":return t.fromJSON(e);case"codedValue":return a.fromJSON(e);case"inherited":return r.fromJSON(e)}return null}e.CodedValueDomain=a,e.DomainBase=o,e.InheritedDomain=r,e.RangeDomain=t,e.fromJSON=u,e.types=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import"../../core/has.js";import e from"./CodedValueDomain.js";export{default as CodedValueDomain}from"./CodedValueDomain.js";import o from"./Domain.js";export{default as DomainBase}from"./Domain.js";import r from"./InheritedDomain.js";export{default as InheritedDomain}from"./InheritedDomain.js";import a from"./RangeDomain.js";export{default as RangeDomain}from"./RangeDomain.js";const n={key:"type",base:o,typeMap:{range:a,"coded-value":e,inherited:r}};function t(o){if(!o||!o.type)return null;switch(o.type){case"range":return a.fromJSON(o);case"codedValue":return e.fromJSON(o);case"inherited":return r.fromJSON(o)}return null}export{t as fromJSON,n as types};

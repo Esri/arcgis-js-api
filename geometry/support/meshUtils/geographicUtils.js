@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function i(e,i){var o;return e.isGeographic||e.isWebMercator&&(null==(o=null==i?void 0:i.geographic)||o)}e.isGeographicMesh=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+function r(r,e){return r.isGeographic||r.isWebMercator&&(e?.geographic??!0)}export{r as isGeographicMesh};

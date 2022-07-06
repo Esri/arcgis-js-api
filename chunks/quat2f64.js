@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function t(){return[0,0,0,1,0,0,0,0]}function n(e){return[e[0],e[1],e[2],e[3],e[4],e[5],e[6],e[7]]}function r(e,t,n,r,o,u,a,c){return[e,t,n,r,o,u,a,c]}function o(e,t,n,r,o,u,a){const c=.5*o,i=.5*u,f=.5*a;return[e,t,n,r,c*r+i*n-f*t,i*r+f*e-c*n,f*r+c*t-i*e,-c*e-i*t-f*n]}function u(e,t){return new Float64Array(e,t,8)}const a=Object.freeze(Object.defineProperty({__proto__:null,create:t,clone:n,fromValues:r,fromRotationTranslationValues:o,createView:u},Symbol.toStringTag,{value:"Module"}));e.clone=n,e.create=t,e.createView=u,e.fromRotationTranslationValues=o,e.fromValues=r,e.quat2f64=a}));
+function e(){return[0,0,0,1,0,0,0,0]}function n(e){return[e[0],e[1],e[2],e[3],e[4],e[5],e[6],e[7]]}function t(e,n,t,r,o,a,u,c){return[e,n,t,r,o,a,u,c]}function r(e,n,t,r,o,a,u){const c=.5*o,s=.5*a,f=.5*u;return[e,n,t,r,c*r+s*t-f*n,s*r+f*e-c*t,f*r+c*n-s*e,-c*e-s*n-f*t]}function o(e,n){return new Float64Array(e,n,8)}const a=Object.freeze(Object.defineProperty({__proto__:null,create:e,clone:n,fromValues:t,fromRotationTranslationValues:r,createView:o},Symbol.toStringTag,{value:"Module"}));export{n as a,r as b,e as c,o as d,t as f,a as q};

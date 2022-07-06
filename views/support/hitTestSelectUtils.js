@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../chunks/_rollupPluginBabelHelpers"],(function(e,t){"use strict";function s(e,t){return n.apply(this,arguments)}function n(){return(n=t._asyncToGenerator((function*(e,t){if("2d"===e.type)return e.hitTest(t);const s=yield e.hitTest(t),n=s.results[0],i=s.results.findIndex((e=>e.distance!==n.distance));return-1!==i&&(s.results=s.results.slice(0,i)),s}))).apply(this,arguments)}e.hitTestSelectSameDistance=s,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{isSome as t}from"../../core/maybe.js";async function n(n,r){if("2d"===n.type)return n.hitTest(r);const s=await n.hitTest(r);if(0===s.results.length)return s;const i=s.results[0],u=t(i.distance)?i.distance*(1+e):i.distance,c=s.results.findIndex((t=>t.distance>u));return-1!==c&&(s.results=s.results.slice(0,c)),s}const e=.05;function r(n){return t(n)&&"graphic"===n.type}function s(t){return t.find(r)??null}function i(t){return t.filter(r)}export{i as filterGraphicHits,s as findFirstGraphicHit,n as hitTestSelectSimilarDistance};

@@ -42,15 +42,26 @@
       }
     }
 
-    .esri-column__sorter {
+    .esri-column__sorter,
+    .esri-column__header-label {
+      align-items: center;
+      display: flex;
       flex-grow: 1;
       margin: 0 5px;
+      min-height: 28px;
       overflow: auto;
     }
 
     .esri-column__menu-container {
       display: inline-block;
       margin: 0 5px;
+    }
+
+    .esri-column__header-content {
+      align-items: center;
+      display: flex;
+      flex-grow: 1;
+      overflow: visible;
     }
   }
 }

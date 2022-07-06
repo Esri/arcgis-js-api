@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../core/shaderModules/interfaces","../core/shaderModules/ShaderBuilder","../lib/VertexAttribute","../../../../chunks/SMAA.glsl"],(function(e,t,u,r,l){"use strict";Object.defineProperty(e,"SMAAOutput",{enumerable:!0,get:()=>l.SMAAOutput}),e.build=l.build,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import"../core/shaderModules/Float4Uniform.js";import"../core/shaderModules/interfaces.js";import"../core/shaderModules/ShaderBuilder.js";import"../core/shaderModules/Texture2DUniform.js";import"../lib/SMAATechniqueConfiguration.js";import"../lib/VertexAttribute.js";export{b as build}from"../../../../chunks/SMAA.glsl.js";

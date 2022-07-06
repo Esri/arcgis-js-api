@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../core/urlUtils"],(function(e,s){"use strict";const t=["elevation3d.arcgis.com","js.arcgis.com","jsdev.arcgis.com","jsqa.arcgis.com","static.arcgis.com"];function i(e){return e&&e.length>4&&e.startsWith("AAPK")}function r(e){const i=s.getOrigin(e,!0);return i&&i.endsWith(".arcgis.com")&&!t.includes(i)&&!e.endsWith("/sharing/rest/generateToken")}e.isApiKey=i,e.supportsApiKey=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{getOrigin as s}from"../core/urlUtils.js";const t=["elevation3d.arcgis.com","js.arcgis.com","jsdev.arcgis.com","jsqa.arcgis.com","static.arcgis.com"];function c(s){return s&&s.length>4&&s.startsWith("AAPK")}function r(c){const r=s(c,!0);return r&&r.endsWith(".arcgis.com")&&!t.includes(r)&&!c.endsWith("/sharing/rest/generateToken")}export{c as isApiKey,r as supportsApiKey};

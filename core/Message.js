@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["./object"],(function(t){"use strict";function e(e,n){return e.replace(/\$\{([^\s\:\}]*)(?:\:([^\s\:\}]+))?\}/g,(function(e,i){if(""===i)return"$";const r=t.getDeepValue(i,n),s=null==r?"":r;if(void 0===s)throw new Error(`could not find key "${i}" in template`);return s.toString()}))}return function(){function t(n,i,r){this.name=n,this.details=r,this.message=void 0,this instanceof t&&(this.message=i&&e(i,r)||"")}return t.prototype.toString=function(){return"["+this.name+"]: "+this.message},t}()}));
+import{getDeepValue as t}from"./object.js";function e(e,s){return e.replace(/\$\{([^\s\:\}]*)(?:\:([^\s\:\}]+))?\}/g,((e,r)=>{if(""===r)return"$";const i=t(r,s),n=null==i?"":i;if(void 0===n)throw new Error(`could not find key "${r}" in template`);return n.toString()}))}class s{constructor(t,r,i){this.name=t,this.details=i,this.message=void 0,this instanceof s&&(this.message=r&&e(r,i)||"")}toString(){return"["+this.name+"]: "+this.message}}export{s as default};

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","./maybe","./promiseUtils"],(function(e,r,t){"use strict";function o(e,r,o){return t.eachAlways(e.map(((e,t)=>r.apply(o,[e,t]))))}function n(e,r,o){return t.eachAlways(e.map(((e,t)=>r.apply(o,[e,t])))).then((e=>e.map((e=>e.value))))}function u(e){return r.isNone(e)?t.resolve():e.then((e=>({ok:!0,value:e}))).catch((e=>({ok:!1,error:e})))}function a(e){return e.then((e=>({ok:!0,value:e}))).catch((e=>(t.throwIfAbortError(e),{ok:!1,error:e})))}function l(e){if(!0===e.ok)return e.value;throw e.error}e.assertResult=l,e.forEach=o,e.map=n,e.result=u,e.resultOrAbort=a,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{isNone as r}from"./maybe.js";import{eachAlways as o,throwIfAbortError as t}from"./promiseUtils.js";function n(r,t,n){return o(r.map(((r,o)=>t.apply(n,[r,o]))))}async function e(r,t,n){return(await o(r.map(((r,o)=>t.apply(n,[r,o]))))).map((r=>r.value))}async function a(o){if(r(o))return{ok:!1,error:new Error("no promise provided")};try{return{ok:!0,value:await o}}catch(t){return{ok:!1,error:t}}}async function u(r){try{return{ok:!0,value:await r}}catch(o){return t(o),{ok:!1,error:o}}}function i(r){if(!0===r.ok)return r.value;throw r.error}export{i as assertResult,n as forEach,e as map,a as result,u as resultOrAbort};

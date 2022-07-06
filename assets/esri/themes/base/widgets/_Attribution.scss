@@ -50,12 +50,6 @@
   .esri-attribution__sources--open {
     white-space: normal;
   }
-
-  [dir="rtl"] {
-    .esri-attribution__powered-by {
-      text-align: left;
-    }
-  }
 }
 
 @if $include_Attribution == true {

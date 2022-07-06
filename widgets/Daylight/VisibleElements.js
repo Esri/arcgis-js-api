@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{_ as o}from"../../chunks/tslib.es6.js";import e from"../../core/Accessor.js";import{property as t}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as s}from"../../core/accessorSupport/decorators/subclass.js";let r=class extends e{constructor(){super(...arguments),this.header=!0,this.playButtons=!0,this.datePicker=!0,this.timezone=!0,this.sunLightingToggle=!0,this.shadowsToggle=!0}};o([t({type:Boolean,nonNullable:!0})],r.prototype,"header",void 0),o([t({type:Boolean,nonNullable:!0})],r.prototype,"playButtons",void 0),o([t({type:Boolean,nonNullable:!0})],r.prototype,"datePicker",void 0),o([t({type:Boolean,nonNullable:!0})],r.prototype,"timezone",void 0),o([t({type:Boolean,nonNullable:!0})],r.prototype,"sunLightingToggle",void 0),o([t({type:Boolean,nonNullable:!0})],r.prototype,"shadowsToggle",void 0),r=o([s("esri.widgets.Daylight.VisibleElements")],r);const l=r;export{l as default};

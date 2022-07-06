@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","./maybe"],(function(e,o){"use strict";function n(e,o){for(const n of e.entries())if(o(n[0]))return!0;return!1}function t(e,n){const t=new Set;return o.isSome(e)&&e.forEach((e=>t.add(e))),o.isSome(n)&&n.forEach((e=>t.add(e))),t}e.someSet=n,e.union=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{isSome as r}from"./maybe.js";function n(r,n){for(const o of r.entries())if(n(o[0]))return!0;return!1}function o(n,o){const t=new Set;return r(n)&&n.forEach((r=>t.add(r))),r(o)&&o.forEach((r=>t.add(r))),t}export{n as someSet,o as union};

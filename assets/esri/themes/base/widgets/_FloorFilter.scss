@@ -1,5 +1,5 @@
 $floor-filter-item-width--normal: 220px;
-$floor-filter-item-width--mobile: floor($floor-filter-item-width--normal * 3 * 0.25);
+$floor-filter-item-width--compact: floor($floor-filter-item-width--normal * 3 * 0.25);
 $floor-filter-scrollbar-thumb--color: #c1c1c1;
 $floor-filter-scrollbar-track--color: #fafafa;
 
@@ -337,6 +337,7 @@ $floor-filter-scrollbar-track--color: #fafafa;
           .esri-floor-filter__filter-menu-item-name--selected {
             font-weight: $font-weight--bold;
             font-size: $font-size;
+            font-family: $font-family;
           }
 
           .esri-floor-filter__filter-menu-item-name,
@@ -371,7 +372,7 @@ $floor-filter-scrollbar-track--color: #fafafa;
   }
 
   .esri-view-height-less-than-small .esri-floor-filter,
-  .esri-view-width-less-than-medium .esri-floor-filter {
+  .esri-view-width-less-than-small .esri-floor-filter {
     .esri-floor-filter__zoom-button,
     .esri-floor-filter__zoom-button--levels {
       display: none;
@@ -400,7 +401,7 @@ $floor-filter-scrollbar-track--color: #fafafa;
 
     .esri-floor-filter__filter-menu-item-name,
     .esri-floor-filter__filter-menu-item-name--selected {
-      max-width: $floor-filter-item-width--mobile !important;
+      max-width: $floor-filter-item-width--compact !important;
     }
   }
 

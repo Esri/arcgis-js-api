@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../jsonMap","./property"],(function(e,n,o){"use strict";function r(e,r={}){var l;const a=e instanceof n.JSONMap?e:new n.JSONMap(e,r),t={type:null==(l=null==r?void 0:r.ignoreUnknown)||l?a.apiValues:String,json:{type:a.jsonValues,read:(null==r||!r.readOnly)&&{reader:a.read},write:{writer:a.write}}};return void 0!==(null==r?void 0:r.readOnly)&&(t.readOnly=!!r.readOnly),void 0!==(null==r?void 0:r.default)&&(t.json.default=r.default),void 0!==(null==r?void 0:r.name)&&(t.json.name=r.name),o.property(t)}e.enumeration=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{JSONMap as e}from"../../jsonMap.js";import{property as n}from"./property.js";function r(r,o={}){const a=r instanceof e?r:new e(r,o),t={type:o?.ignoreUnknown??1?a.apiValues:String,json:{type:a.jsonValues,read:!o?.readOnly&&{reader:a.read},write:{writer:a.write}}};return void 0!==o?.readOnly&&(t.readOnly=!!o.readOnly),void 0!==o?.default&&(t.json.default=o.default),void 0!==o?.name&&(t.json.name=o.name),n(t)}export{r as enumeration};

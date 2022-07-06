@@ -1,10 +1,10 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","../../../lib/VertexAttribute"],(function(e,t,r){"use strict";function o(o,u){u.attributeTextureCoordinates===e.TextureCoordinateAttributeType.Default&&(o.attributes.add(r.VertexAttribute.UV0,"vec2"),o.varyings.add("vuv0","vec2"),o.vertex.code.add(t.glsl`void forwardTextureCoordinates() {
+import{neverReached as e}from"../../../../../../core/compilerUtils.js";import{glsl as t}from"../../shaderModules/interfaces.js";import{VertexAttribute as r}from"../../../lib/VertexAttribute.js";var o;function d(d,a){switch(a.textureCoordinateType){case o.Default:return d.attributes.add(r.UV0,"vec2"),d.varyings.add("vuv0","vec2"),void d.vertex.code.add(t`void forwardTextureCoordinates() {
 vuv0 = uv0;
-}`)),u.attributeTextureCoordinates===e.TextureCoordinateAttributeType.Atlas&&(o.attributes.add(r.VertexAttribute.UV0,"vec2"),o.varyings.add("vuv0","vec2"),o.attributes.add(r.VertexAttribute.UVREGION,"vec4"),o.varyings.add("vuvRegion","vec4"),o.vertex.code.add(t.glsl`void forwardTextureCoordinates() {
+}`);case o.Atlas:return d.attributes.add(r.UV0,"vec2"),d.varyings.add("vuv0","vec2"),d.attributes.add(r.UVREGION,"vec4"),d.varyings.add("vuvRegion","vec4"),void d.vertex.code.add(t`void forwardTextureCoordinates() {
 vuv0 = uv0;
 vuvRegion = uvRegion;
-}`)),u.attributeTextureCoordinates===e.TextureCoordinateAttributeType.None&&o.vertex.code.add(t.glsl`void forwardTextureCoordinates() {}`)}var u;e.TextureCoordinateAttributeType=void 0,(u=e.TextureCoordinateAttributeType||(e.TextureCoordinateAttributeType={}))[u.None=0]="None",u[u.Default=1]="Default",u[u.Atlas=2]="Atlas",u[u.COUNT=3]="COUNT",e.TextureCoordinateAttribute=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`);case o.None:return void d.vertex.code.add(t`void forwardTextureCoordinates() {}`);default:e(a.textureCoordinateType);case o.COUNT:return}}!function(e){e[e.None=0]="None",e[e.Default=1]="Default",e[e.Atlas=2]="Atlas",e[e.COUNT=3]="COUNT"}(o||(o={}));export{d as TextureCoordinateAttribute,o as TextureCoordinateAttributeType};

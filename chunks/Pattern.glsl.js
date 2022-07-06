@@ -1,18 +1,18 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptions","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexColor.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaDiscard.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute","../views/3d/webgl-engine/materials/PatternStyle"],(function(e,t,a,r,l,o,i,n,d,s,c,g,u,p,v){"use strict";const f=.70710678118,m=f,h=.08715574274;function w(e){const w=new u.ShaderBuilder;e.draped||w.extensions.add("GL_OES_standard_derivatives");const b=e.output===t.ShaderOutput.Depth;w.include(r.Transform,{linearDepth:b}),w.include(l.VertexColor,e),w.vertex.uniforms.add("proj","mat4"),w.vertex.uniforms.add("view","mat4"),b&&(w.include(o.OutputDepth,e),w.vertex.uniforms.add("nearFar","vec2"),w.varyings.add("linearDepth","float")),e.draped?w.vertex.uniforms.add("worldToScreenRatio","float"):(w.vertex.uniforms.add("worldToScreenPerDistanceRatio","float"),w.vertex.uniforms.add("cameraPosition","vec3"),w.attributes.add(p.VertexAttribute.BOUNDINGRECT,"mat3")),w.attributes.add(p.VertexAttribute.POSITION,"vec3"),w.attributes.add(p.VertexAttribute.UVMAPSPACE,"vec4"),w.varyings.add("vpos","vec3"),w.varyings.add("vuv","vec2"),e.multipassTerrainEnabled&&w.varyings.add("depth","float");const y=e.style===v.Style.ForwardDiagonal||e.style===v.Style.BackwardDiagonal||e.style===v.Style.DiagonalCross;return y&&w.vertex.code.add(g.glsl`
-      const mat2 rotate45 = mat2(${g.glsl.float(f)}, ${g.glsl.float(-m)},
-                                 ${g.glsl.float(m)}, ${g.glsl.float(f)});
-    `),e.draped||(w.vertex.code.add(g.glsl`vec3 projectPointToLineSegment(vec3 center, vec3 halfVector, vec3 point) {
+import{ShaderOutput as e}from"../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptions.js";import{SliceDraw as o}from"../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl.js";import{Transform as t}from"../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl.js";import{VertexColor as r}from"../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexColor.glsl.js";import{OutputDepth as a}from"../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl.js";import{OutputHighlight as i}from"../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl.js";import{multipassTerrainTest as n}from"../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl.js";import{symbolAlphaCutoff as l}from"../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff.js";import{ColorConversion as c}from"../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl.js";import{addProjViewLocalOrigin as d,addCameraPosition as s}from"../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl.js";import{Float2PassUniform as p}from"../views/3d/webgl-engine/core/shaderModules/Float2PassUniform.js";import{Float4PassUniform as g}from"../views/3d/webgl-engine/core/shaderModules/Float4PassUniform.js";import{FloatPassUniform as u}from"../views/3d/webgl-engine/core/shaderModules/FloatPassUniform.js";import{glsl as v}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{ShaderBuilder as m}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{TransparencyPassType as f}from"../views/3d/webgl-engine/lib/basicInterfaces.js";import{VertexAttribute as h}from"../views/3d/webgl-engine/lib/VertexAttribute.js";import{Style as w}from"../views/3d/webgl-engine/materials/PatternStyle.js";const b=.70710678118,y=b,S=.08715574274;function j(j){const P=new m,T=j.hasMultipassTerrain&&(j.output===e.Color||j.output===e.Alpha);j.draped||P.extensions.add("GL_OES_standard_derivatives");const C=j.output===e.Depth,{vertex:D,fragment:R}=P;d(P,j),P.include(t,{hasModelTransformation:!1,linearDepth:C}),P.include(r,j),C&&(P.include(a,j),D.uniforms.add(new p("nearFar",((e,o)=>o.camera.nearFar))),P.varyings.add("linearDepth","float")),j.draped?D.uniforms.add(new u("worldToScreenRatio",((e,o)=>1/o.screenToPCSRatio))):P.attributes.add(h.BOUNDINGRECT,"mat3"),P.attributes.add(h.POSITION,"vec3"),P.attributes.add(h.UVMAPSPACE,"vec4"),P.varyings.add("vpos","vec3"),P.varyings.add("vuv","vec2"),T&&P.varyings.add("depth","float");const $=j.style===w.ForwardDiagonal||j.style===w.BackwardDiagonal||j.style===w.DiagonalCross;return $&&D.code.add(v`
+      const mat2 rotate45 = mat2(${v.float(b)}, ${v.float(-y)},
+                                 ${v.float(y)}, ${v.float(b)});
+    `),j.draped||(s(D,j),D.uniforms.add(new u("worldToScreenPerDistanceRatio",((e,o)=>1/o.camera.perScreenPixelRatio))),D.code.add(v`vec3 projectPointToLineSegment(vec3 center, vec3 halfVector, vec3 point) {
 float projectedLength = dot(halfVector, point - center) / dot(halfVector, halfVector);
 return center + halfVector * clamp(projectedLength, -1.0, 1.0);
-}`),w.vertex.code.add(g.glsl`vec3 intersectRayPlane(vec3 rayDir, vec3 rayOrigin, vec3 planeNormal, vec3 planePoint) {
+}`),D.code.add(v`vec3 intersectRayPlane(vec3 rayDir, vec3 rayOrigin, vec3 planeNormal, vec3 planePoint) {
 float d = dot(planeNormal, planePoint);
 float t = (d - dot(planeNormal, rayOrigin)) / dot(planeNormal, rayDir);
 return rayOrigin + t * rayDir;
-}`),w.vertex.code.add(g.glsl`
+}`),D.code.add(v`
       float boundingRectDistanceToCamera() {
         vec3 center = vec3(boundingRect[0][0], boundingRect[0][1], boundingRect[0][2]);
         vec3 halfU = vec3(boundingRect[1][0], boundingRect[1][1], boundingRect[1][2]);
@@ -22,7 +22,7 @@ return rayOrigin + t * rayDir;
         vec3 viewDir = - vec3(view[0][2], view[1][2], view[2][2]);
 
         float viewAngle = dot(viewDir, n);
-        float minViewAngle = ${g.glsl.float(h)};
+        float minViewAngle = ${v.float(S)};
 
         if (abs(viewAngle) < minViewAngle) {
           // view direction is (almost) parallel to plane -> clamp it to min angle
@@ -42,12 +42,12 @@ return rayOrigin + t * rayDir;
 
         return length(closestPoint - cameraPosition);
       }
-    `)),w.vertex.code.add(g.glsl`
+    `)),D.code.add(v`
     vec2 scaledUV() {
-      vec2 uv = uvMapSpace.xy ${y?" * rotate45":""};
-      vec2 uvCellOrigin = uvMapSpace.zw ${y?" * rotate45":""};
+      vec2 uv = uvMapSpace.xy ${$?" * rotate45":""};
+      vec2 uvCellOrigin = uvMapSpace.zw ${$?" * rotate45":""};
 
-      ${e.draped?"":g.glsl`
+      ${j.draped?"":v`
             float distanceToCamera = boundingRectDistanceToCamera();
             float worldToScreenRatio = worldToScreenPerDistanceRatio / distanceToCamera;
           `}
@@ -58,21 +58,21 @@ return rayOrigin + t * rayDir;
       discreteWorldToScreenRatio = ceil(discreteWorldToScreenRatio / step) * step;
       discreteWorldToScreenRatio = exp(discreteWorldToScreenRatio);
 
-      vec2 uvOffset = mod(uvCellOrigin * discreteWorldToScreenRatio, ${g.glsl.float(e.patternSpacing)});
+      vec2 uvOffset = mod(uvCellOrigin * discreteWorldToScreenRatio, ${v.float(j.patternSpacing)});
       return uvOffset + (uv * discreteWorldToScreenRatio);
     }
-  `),w.vertex.code.add(g.glsl`
+  `),D.code.add(v`
     void main(void) {
       vuv = scaledUV();
       vpos = position;
-      ${e.multipassTerrainEnabled?"depth = (view * vec4(vpos, 1.0)).z;":""}
+      ${T?"depth = (view * vec4(vpos, 1.0)).z;":""}
       forwardNormalizedVertexColor();
-      gl_Position = ${b?g.glsl`transformPositionWithDepth(proj, view, vpos, nearFar, linearDepth);`:g.glsl`transformPosition(proj, view, vpos);`}
+      gl_Position = ${C?v`transformPositionWithDepth(proj, view, vpos, nearFar, linearDepth);`:v`transformPosition(proj, view, vpos);`}
     }
-  `),w.include(a.Slice,e),w.fragment.include(c.ColorConversion),w.fragment.uniforms.add("uColor","vec4"),e.draped&&w.fragment.uniforms.add("texelSize","float"),e.output===t.ShaderOutput.Highlight&&w.include(i.OutputHighlight),e.multipassTerrainEnabled&&(w.fragment.include(n.ReadLinearDepth),w.include(d.multipassTerrainTest,e)),e.output!==t.ShaderOutput.Highlight&&(w.fragment.code.add(g.glsl`
-      const float lineWidth = ${g.glsl.float(e.lineWidth)};
-      const float spacing = ${g.glsl.float(e.patternSpacing)};
-      const float spacingINV = ${g.glsl.float(1/e.patternSpacing)};
+  `),P.include(o,j),R.include(c),j.draped&&R.uniforms.add(new u("texelSize",((e,o)=>1/o.camera.pixelRatio))),j.output===e.Highlight&&P.include(i),T&&P.include(n,j),j.output!==e.Highlight&&(R.code.add(v`
+      const float lineWidth = ${v.float(j.lineWidth)};
+      const float spacing = ${v.float(j.patternSpacing)};
+      const float spacingINV = ${v.float(1/j.patternSpacing)};
 
       float coverage(float p, float txlSize) {
         p = mod(p, spacing);
@@ -88,7 +88,7 @@ return rayOrigin + t * rayDir;
 
         return coverage / txlSize;
       }
-    `),e.draped||w.fragment.code.add(g.glsl`const int maxSamples = 5;
+    `),j.draped||R.code.add(v`const int maxSamples = 5;
 float sample(float p) {
 vec2 dxdy = abs(vec2(dFdx(p), dFdy(p)));
 float fwidth = dxdy.x + dxdy.y;
@@ -109,25 +109,25 @@ accumulator += coverage(p + step.x * dxdy.x + step.y * dxdy.y, fwidth);
 }
 accumulator /= float(samples.x * samples.y);
 return accumulator;
-}`)),w.fragment.code.add(g.glsl`
+}`)),R.uniforms.add(new g("uColor",(e=>e.color))),R.code.add(v`
     void main() {
       discardBySlice(vpos);
-      ${e.multipassTerrainEnabled?"terrainDepthTest(gl_FragCoord, depth);":""}
-      vec4 color = ${e.attributeColor?"vColor * uColor;":"uColor;"}
+      ${T?"terrainDepthTest(gl_FragCoord, depth);":""}
+      vec4 color = ${j.hasVertexColors?"vColor * uColor;":"uColor;"}
       color = highlightSlice(color, vpos);
 
-      ${e.output!==t.ShaderOutput.Highlight?g.glsl`color.a *= ${S(e)};`:""}
+      ${j.output!==e.Highlight?v`color.a *= ${x(j)};`:""}
 
-      if (color.a < ${g.glsl.float(s.symbolAlphaCutoff)}) {
+      if (color.a < ${v.float(l)}) {
         discard;
       }
 
-      ${e.output===t.ShaderOutput.Alpha?g.glsl`gl_FragColor = vec4(color.a);`:""}
+      ${j.output===e.Alpha?v`gl_FragColor = vec4(color.a);`:""}
 
-      ${e.output===t.ShaderOutput.Color?g.glsl`gl_FragColor = color; ${e.oitEnabled?"gl_FragColor = premultiplyAlpha(gl_FragColor);":""}`:""}
-      ${e.output===t.ShaderOutput.Highlight?g.glsl`outputHighlight();`:""}
-      ${e.output===t.ShaderOutput.Depth?g.glsl`outputDepth(linearDepth);`:""};
+      ${j.output===e.Color?v`gl_FragColor = color; ${j.transparencyPassType===f.Color?"gl_FragColor = premultiplyAlpha(gl_FragColor);":""}`:""}
+      ${j.output===e.Highlight?v`outputHighlight();`:""}
+      ${j.output===e.Depth?v`outputDepth(linearDepth);`:""};
     }
-  `),w}function S(e){function t(t){return e.draped?g.glsl`coverage(vuv.${t}, texelSize)`:g.glsl`sample(vuv.${t})`}switch(e.style){case v.Style.ForwardDiagonal:case v.Style.Horizontal:return t("y");case v.Style.BackwardDiagonal:case v.Style.Vertical:return t("x");case v.Style.DiagonalCross:case v.Style.Cross:return g.glsl`
-        1.0 - (1.0 - ${t("x")}) * (1.0 - ${t("y")})
-      `;default:return"0.0"}}const b=Object.freeze(Object.defineProperty({__proto__:null,build:w},Symbol.toStringTag,{value:"Module"}));e.PatternShader=b,e.build=w}));
+  `),P}function x(e){function o(o){return e.draped?v`coverage(vuv.${o}, texelSize)`:v`sample(vuv.${o})`}switch(e.style){case w.ForwardDiagonal:case w.Horizontal:return o("y");case w.BackwardDiagonal:case w.Vertical:return o("x");case w.DiagonalCross:case w.Cross:return v`
+        1.0 - (1.0 - ${o("x")}) * (1.0 - ${o("y")})
+      `;default:return"0.0"}}const P=Object.freeze(Object.defineProperty({__proto__:null,build:j},Symbol.toStringTag,{value:"Module"}));export{P,j as b};

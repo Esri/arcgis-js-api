@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{_ as e}from"../../chunks/tslib.es6.js";import{NumericIdentifiableMixin as r}from"../../core/Identifiable.js";import o from"../../core/Loadable.js";import{property as t}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as s}from"../../core/accessorSupport/decorators/subclass.js";import p from"./CornersGeoreference.js";import c from"./ExtentAndRotationGeoreference.js";import a from"./GeoreferenceBase.js";const i={key:"type",base:a,typeMap:{corners:p,"extent-and-rotation":c}};let n=class extends(r(o)){constructor(){super(...arguments),this.georeference=null,this.opacity=1}};e([t({types:i})],n.prototype,"georeference",void 0),e([t()],n.prototype,"opacity",void 0),n=e([s("esri.layers.support.MediaElementBase")],n);const m=n;export{m as default};

@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{_ as s}from"../../../../chunks/tslib.es6.js";import"../../../../core/Logger.js";import"../../../../core/accessorSupport/ensureType.js";import"../../../../core/arrayUtils.js";import"../../../../core/has.js";import"../../../../core/accessorSupport/set.js";import{subclass as o}from"../../../../core/accessorSupport/decorators/subclass.js";import{CONTENT as t}from"../css.js";import{TooltipContent as r}from"./TooltipContent.js";import{TooltipField as e}from"../support/TooltipField.js";import"../../../../widgets/support/widgetUtils.js";import{tsx as i}from"../../../../widgets/support/jsxFactory.js";const p={base:`${t} ${`${t}--reshape-move-graphic`}`};let c=class extends r{render(){const{distance:s}=this.info,o=this._messagesTooltip?.sketch;return i("div",{class:p.base},i(e,{title:o?.distance,value:this._formatLength(s)}))}};c=s([o("esri.views.interactive.tooltip.content.TooltipContentReshapeMoveGraphic")],c);export{c as TooltipContentReshapeMoveGraphic};

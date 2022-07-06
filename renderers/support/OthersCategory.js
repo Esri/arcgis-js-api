@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{_ as r}from"../../chunks/tslib.es6.js";import o from"../../Color.js";import{ClonableMixin as e}from"../../core/Clonable.js";import{JSONSupport as s}from"../../core/JSONSupport.js";import{property as t}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as p}from"../../core/accessorSupport/decorators/subclass.js";let i=class extends(e(s)){constructor(){super(...arguments),this.color=new o([0,0,0,0]),this.label=null,this.threshold=0}};r([t({type:o,json:{write:!0}})],i.prototype,"color",void 0),r([t({type:String,json:{write:!0}})],i.prototype,"label",void 0),r([t({type:Number,range:{min:0,max:1},json:{write:!0}})],i.prototype,"threshold",void 0),i=r([p("esri.renderers.support.OthersCategory")],i);export{i as OthersCategory};

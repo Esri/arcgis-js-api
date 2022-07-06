@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function t(e,t,o){if(!o||null==t)return null;if(!e)return n(t,o);const r=e.get(o);return r?t[r.name]:null}function n(e,t){const n=t.toLowerCase();for(const o in e)if(o.toLowerCase()===n)return e[o];return null}e.attributeLookup=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+function n(n,t,e){if(!e||null==t)return null;if(!n)return r(t,e);const o=n.get(e);return o?t[o.name]:null}function r(n,r){const t=r.toLowerCase();for(const e in n)if(e.toLowerCase()===t)return n[e];return null}export{n as attributeLookup};

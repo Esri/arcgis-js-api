@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function n(e){let n="";for(const o in e){const t=e[o];if("boolean"==typeof t)t&&(n+=`#define ${o}\n`);else if("number"==typeof t)n+=`#define ${o} ${t.toFixed()}\n`;else if("object"==typeof t){const e=t.options;let i=0;for(const o in e)n+=`#define ${e[o]} ${(i++).toFixed()}\n`;n+=`#define ${o} ${e[t.value]}\n`}}return n}e.glslifyDefineMap=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+function e(e){const{options:n,value:o}=e;return"number"==typeof n[o]}function n(n){let o="";for(const t in n){const i=n[t];if("boolean"==typeof i)i&&(o+=`#define ${t}\n`);else if("number"==typeof i)o+=`#define ${t} ${i.toFixed()}\n`;else if("object"==typeof i)if(e(i)){const{value:e,options:n,namespace:f}=i,s=f?`${f}_`:"";for(const t in n)o+=`#define ${s}${t} ${n[t].toFixed()}\n`;o+=`#define ${t} ${s}${e}\n`}else{const e=i.options;let n=0;for(const t in e)o+=`#define ${e[t]} ${(n++).toFixed()}\n`;o+=`#define ${t} ${e[i.value]}\n`}}return o}export{n as glslifyDefineMap};

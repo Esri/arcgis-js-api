@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../geometry","../../core/Handles","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/arrayUtils","../../core/has","../../core/accessorSupport/set","../../core/accessorSupport/decorators/subclass","./DrawAction","./input/DrawEvents","../input/InputManager","../interactive/keybindings","../support/screenUtils","../../geometry/Point","../../chunks/MultipointDrawAction"],(function(e,r,t,o,s,n,c,i,u,a,p,l,g,b,d,y,M,m,w){"use strict";Object.defineProperty(e,"MultipointDrawAction",{enumerable:!0,get:()=>w.MultipointDrawAction}),Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import"../../chunks/tslib.es6.js";import"../../geometry.js";import"../../core/maybe.js";import"../../core/Logger.js";import"../../core/accessorSupport/ensureType.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/set.js";import"../../core/accessorSupport/decorators/subclass.js";import"./DrawAction.js";import"./input/DrawEvents.js";import"../input/InputManager.js";import"../interactive/keybindings.js";import"../support/screenUtils.js";import"../../geometry/Point.js";export{M as MultipointDrawAction}from"../../chunks/MultipointDrawAction.js";

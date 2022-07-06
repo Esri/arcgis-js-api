@@ -1,8 +1,9 @@
 @mixin tableList() {
+  $message-warning-border-color: $Calcite_Yellow_a150;
   .esri-table-list {
     color: $font-color;
     background-color: $background-color--offset;
-    padding: $cap-spacing--half $side-spacing--half;
+    padding: calc(var(--esri-widget-padding-v) * 0.5) calc(var(--esri-widget-padding-h) * 0.5);
     overflow-y: auto;
     display: flex;
     flex-flow: column;
@@ -61,29 +62,32 @@
     transition: color 125ms ease-in-out;
   }
 
-  .esri-table-list__item-error-message {
+  .esri-table-list__item-message {
     display: flex;
     align-items: center;
     visibility: hidden;
     height: 0;
     margin-top: -1px;
-    padding: $cap-spacing--quarter $side-spacing--half;
+    padding: $cap-spacing--half $side-spacing--half;
     overflow: hidden;
-    background-color: $background-color--error;
-    color: $font-color--error;
     font-size: $font-size--small;
     transition: transform 250ms ease-in-out;
     transform: scale(1, 0);
     animation: esri-fade-in-down 250ms ease-in-out;
     transform-origin: center top;
+    background-color: $background-color--offset-subtle;
+    margin-inline-start: 3rem;
+    border-inline-start: $border-size--active solid $message-warning-border-color;
+    margin-block-end: 0.25rem;
+    margin-inline-end: 0.25rem;
   }
-  .esri-table-list__item-error-message {
+  .esri-table-list__item-message {
     @include icomoonIconSelector() {
       margin-right: 0.3rem;
     }
   }
-  .esri-table-list__item--error {
-    .esri-table-list__item-error-message {
+  .esri-table-list__item--has-message {
+    .esri-table-list__item-message {
       visibility: visible;
       height: auto;
       transform: scale(1, 1);
@@ -268,7 +272,7 @@
     .esri-table-list__item:after {
       animation: looping-progresss-bar-ani $looping-progress-bar-params reverse;
     }
-    .esri-table-list__item-error-message {
+    .esri-table-list__item-message {
       @include icomoonIconSelector() {
         margin-right: 0;
         margin-left: 0.3rem;

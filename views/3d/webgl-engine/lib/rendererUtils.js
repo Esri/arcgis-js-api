@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","./ChangeSet"],(function(e,t){"use strict";function r(e){const r=new Map,n=e=>{let a=r.get(e);return a||(a=new t.MaterialChangeSet,r.set(e,a)),a};return e.removes.forAll((e=>{a(e)&&n(e.material).removes.push(e)})),e.adds.forAll((e=>{a(e)&&n(e.material).adds.push(e)})),e.updates.forAll((e=>{a(e.renderGeometry)&&n(e.renderGeometry.material).updates.push(e)})),r}function a(e){return e.data.indexCount>=1}e.splitRenderGeometryChangeSetByMaterial=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{MaterialChangeSet as e}from"./ChangeSet.js";function r(r){const n=new Map,a=r=>{let t=n.get(r);return t||(t=new e,n.set(r,t)),t};return r.removes.forAll((e=>{t(e)&&a(e.material).removes.push(e)})),r.adds.forAll((e=>{t(e)&&a(e.material).adds.push(e)})),r.updates.forAll((e=>{t(e.renderGeometry)&&a(e.renderGeometry.material).updates.push(e)})),n}function t(e){return e.data.indexCount>=1}export{r as splitRenderGeometryChangeSetByMaterial};

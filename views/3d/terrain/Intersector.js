@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../webgl-engine/lib/IntersectorInterfaces","../webgl-engine/lib/intersectorUtils"],(function(e,t,r){"use strict";function n(e){return r.isValidIntersectorResult(e)&&e.intersector===t.IntersectorType.TERRAIN&&!!e.target}function s(e){return r.isValidIntersectorResult(e)&&e.intersector===t.IntersectorType.OVERLAY&&!!e.target}e.isOverlayIntersectorResult=s,e.isTerrainIntersectorResult=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{IntersectorType as e}from"../webgl-engine/lib/IntersectorInterfaces.js";import{isValidIntersectorResult as t}from"../webgl-engine/lib/intersectorUtils.js";function r(r){return t(r)&&r.intersector===e.TERRAIN&&!!r.target}function n(r){return t(r)&&r.intersector===e.OVERLAY&&!!r.target}export{n as isOverlayIntersectorResult,r as isTerrainIntersectorResult};

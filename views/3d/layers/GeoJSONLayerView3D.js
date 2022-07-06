@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/arrayUtils","../../../core/has","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/subclass","./FeatureLayerViewBase3D"],(function(e,r,s,o,t,c,a,p){"use strict";let u=function(r){function s(){var e;return(e=r.apply(this,arguments)||this).type="geojson-3d",e}return e._inheritsLoose(s,r),s}(p);r.__decorate([s.property()],u.prototype,"layer",void 0),u=r.__decorate([a.subclass("esri.views.3d.layers.GeoJSONLayerView3D")],u);return u}));
+import{_ as r}from"../../../chunks/tslib.es6.js";import{property as s}from"../../../core/accessorSupport/decorators/property.js";import"../../../core/arrayUtils.js";import"../../../core/has.js";import"../../../core/accessorSupport/ensureType.js";import{subclass as o}from"../../../core/accessorSupport/decorators/subclass.js";import e from"./FeatureLayerViewBase3D.js";let t=class extends e{constructor(){super(...arguments),this.type="geojson-3d"}};r([s()],t.prototype,"layer",void 0),t=r([o("esri.views.3d.layers.GeoJSONLayerView3D")],t);const p=t;export{p as default};

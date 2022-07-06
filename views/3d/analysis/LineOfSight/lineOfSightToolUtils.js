@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import o from"../../../../Color.js";import{Manipulator3D as t}from"../../interactive/Manipulator3D.js";import{createManipulatorMaterial as e}from"../../interactive/manipulatorUtils.js";import{disableDisplayOnGrab as r}from"../../interactive/editingTools/manipulatorUtils.js";import i from"../../webgl-engine/lib/GeometryUtil.js";import{ManipulatorStateCustomFlags as s}from"../../../interactive/interfaces.js";function m(t,r,s){return{geometry:i.createSphereGeometry(t,32,32),material:e(o.toUnitRGBA(r)),stateMask:s}}function n(o){const t=[];return o.customColor1&&t.push(m(o.size,o.customColor1,s.Custom1)),o.customColor2&&t.push(m(o.size,o.customColor2,s.Custom2)),o.customColor3&&t.push(m(o.size,o.customColor3,s.Custom3)),o.color&&t.push(m(o.size,o.color)),t}function u(o,e){const i=n(e),s=new t({view:o,renderObjects:i,elevationInfo:{mode:"absolute-height",offset:0}});return r(s),s}export{u as createSphereManipulator,m as createSphereManipulatorRenderObject,n as createSphereManipulatorRenderObjects};

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define((function(){"use strict";return function(t,i,o){this.row=t,this.colFrom=i,this.colTo=o}}));
+class o{constructor(o,s,t){this.row=o,this.colFrom=s,this.colTo=t}}export{o as default};

@@ -7,8 +7,9 @@
 
   $slider-thumb-size: 16px !default;
   $slider-thumb-offset: ($slider-thumb-size * 0.5) - 1 !default;
-
   $slider-thumb-hover-scale: 1.2 !default;
+  $slider-thumb-size--hover: $slider-thumb-size * $slider-thumb-hover-scale !default;
+  $slider-thumb-offset--hover: ($slider-thumb-size--hover * 0.5) - 1 !default;
 
   .esri-slider {
     direction: ltr;
@@ -245,12 +246,16 @@
     top: -$slider-thumb-offset;
     touch-action: none;
     width: $slider-thumb-size;
-    transition: transform 125ms ease-in-out;
+    transition: all 125ms ease-in-out;
     z-index: $slider-ticks-z-index + 1; // Make sure the thumb goes on top of the ticks
 
     &:hover {
-      transform: scale($slider-thumb-hover-scale);
       border-color: $button-color--hover;
+      border-width: 3px;
+      height: $slider-thumb-size--hover;
+      left: -$slider-thumb-offset--hover;
+      top: -$slider-thumb-offset--hover;
+      width: $slider-thumb-size--hover;
       cursor: pointer; // Fallback for IE11
       cursor: grab;
     }

@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+const e="esri-daylight",i=`${e}__container`,s={base:e,widgetIcon:"esri-icon-environment-settings",widget:"esri-widget",select:"esri-select",pause:"esri-icon-pause",play:"esri-icon-play",shadowOff:"esri-slider--shadow-off",shadowOn:"esri-slider--shadow-on",sliderDateOn:"esri-slider--date-on",sliderDateOff:"esri-slider--date-off",sliderAmPmOn:"esri-slider--ampm-on",sliderAlignLeft:"esri-slider--align-left",sliderAlignRight:"esri-slider--align-right",primaryTick:"primary-tick",primaryTickAmPm:"primary-tick__ampm",primaryTickLabel:"primary-tick__label",secondaryTick:"secondary-tick",dayContainer:`${i} ${e}__day-container`,dateContainer:`${i} ${e}__date-container`,containerDisabled:`${i}--disabled`,playPauseButton:`${e}__play-pause-button`,seasonPicker:`${e}__season-picker`,seasonPickerDisabled:`${e}__season-picker--disabled`,panelError:`${e}__panel--error`,sunLightingCheckbox:`${e}__sun-lighting-checkbox`,shadowsCheckbox:`${e}__shadows-checkbox`};export{s as CSS};

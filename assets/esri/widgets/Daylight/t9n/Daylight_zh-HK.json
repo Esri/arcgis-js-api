@@ -1,1 +1,1 @@
-{"title":"日光","directShadow":"顯示陰影","notSupportedInHW":"此瀏覽器不支援此圖徵。","unsupported":"僅 SceneView 支援日光工具。","datePattern":"yyyy MMMM d","playDay":"模擬一天的日出和日落","playYear":"模擬一年的日出和日落","pause":"暫停","season":"季節","spring":"泉","summer":"夏季","winter":"冬季","fall":"秋季"}
+{"title":"日光","shadowsToggle":{"label":"陰影","tooltip":"顯示直接陰影"},"sunLightingToggle":{"label":"按日期和時間排列的太陽位置","tooltip":"使用日期和時間來判定太陽位置 (否則相對於相機)"},"unsupported":"僅 SceneView 支援日光工具。","playDay":"模擬一天的日出和日落","playYear":"模擬一年的日出和日落","pause":"暫停","season":"季節","spring":"泉","summer":"夏季","winter":"冬季","fall":"秋季"}

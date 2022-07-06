@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{_ as e}from"../../chunks/tslib.es6.js";import t from"../../core/Accessor.js";import{property as o}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as r}from"../../core/accessorSupport/decorators/subclass.js";let i=class extends t{constructor(e){super(e),this.nameField=null,this.titleField=null,this.urlField=null,this.textField=null,this.keywordsField=null,this.contentTypeField=null,this.metadataField=null,this.fileExtensionField=null}};e([o()],i.prototype,"nameField",void 0),e([o()],i.prototype,"titleField",void 0),e([o()],i.prototype,"urlField",void 0),e([o()],i.prototype,"textField",void 0),e([o()],i.prototype,"keywordsField",void 0),e([o()],i.prototype,"contentTypeField",void 0),e([o()],i.prototype,"metadataField",void 0),e([o()],i.prototype,"fileExtensionField",void 0),i=e([r("esri.rest.knowledgeGraph.DocumentEntityTypeInfo")],i);const s=i;export{s as default};

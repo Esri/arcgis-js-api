@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Accessor","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(e,r,o,s,t,c,n,u){"use strict";let p=function(r){function o(e){return r.call(this,e)||this}return e._inheritsLoose(o,r),o}(o);r.__decorate([s.property()],p.prototype,"contingentValuesAllGroups",void 0),r.__decorate([s.property()],p.prototype,"contingentValuesByFieldGroup",void 0),p=r.__decorate([u.subclass("esri.layers.support.ContingentValuesResult")],p);return p}));
+import{_ as o}from"../../chunks/tslib.es6.js";import r from"../../core/Accessor.js";import{property as s}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as e}from"../../core/accessorSupport/decorators/subclass.js";let t=class extends r{constructor(o){super(o)}};o([s()],t.prototype,"contingentValuesAllGroups",void 0),o([s()],t.prototype,"contingentValuesByFieldGroup",void 0),t=o([e("esri.layers.support.ContingentValuesResult")],t);const p=t;export{p as default};

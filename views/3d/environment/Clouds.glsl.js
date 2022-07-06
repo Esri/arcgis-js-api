@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","./NoiseTextureAtlas","../webgl-engine/core/shaderLibrary/ScreenSpacePass","../webgl-engine/core/shaderModules/interfaces","../webgl-engine/core/shaderModules/ShaderBuilder","../../../chunks/Clouds.glsl"],(function(e,r,s,i,l,n){"use strict";Object.defineProperty(e,"RayMarchingSteps",{enumerable:!0,get:()=>n.RayMarchingSteps}),e.build=n.build,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import"../../../chunks/mat3f64.js";import"./CloudsTechniqueConfiguration.js";import"./NoiseTextureAtlasDimensions.js";import"../webgl-engine/core/shaderLibrary/ScreenSpacePass.js";import"../webgl-engine/core/shaderModules/FloatUniform.js";import"../webgl-engine/core/shaderModules/interfaces.js";import"../webgl-engine/core/shaderModules/Matrix3DrawUniform.js";import"../webgl-engine/core/shaderModules/ShaderBuilder.js";import"../webgl-engine/core/shaderModules/Texture2DUniform.js";export{C as CloudsDrawParameters,b as build}from"../../../chunks/Clouds.glsl.js";

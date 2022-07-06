@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../lang","./PropertyOrigin"],(function(e,t,n){"use strict";let i=function(){function e(){this._values=new Map,this.multipleOriginsSupported=!1}var i=e.prototype;return i.clone=function(n){const i=new e;return this._values.forEach(((e,s)=>{n&&n.has(s)||i.set(s,t.clone(e))})),i},i.get=function(e){return this._values.get(e)},i.originOf=function(){return n.OriginId.USER},i.keys=function(){return[...this._values.keys()]},i.set=function(e,t){this._values.set(e,t)},i.delete=function(e){this._values.delete(e)},i.has=function(e){return this._values.has(e)},i.forEach=function(e){this._values.forEach(e)},e}();e.Store=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{clone as e}from"../lang.js";import{OriginId as s}from"./PropertyOrigin.js";class t{constructor(){this._values=new Map,this.multipleOriginsSupported=!1}clone(s){const r=new t;return this._values.forEach(((t,i)=>{s&&s.has(i)||r.set(i,e(t))})),r}get(e){return this._values.get(e)}originOf(){return s.USER}keys(){return[...this._values.keys()]}set(e,s){this._values.set(e,s)}delete(e){this._values.delete(e)}has(e){return this._values.has(e)}forEach(e){this._values.forEach(e)}}export{t as Store};

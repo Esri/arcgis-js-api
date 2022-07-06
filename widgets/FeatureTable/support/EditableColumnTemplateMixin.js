@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{_ as t}from"../../../chunks/tslib.es6.js";import{property as r}from"../../../core/accessorSupport/decorators/property.js";import"../../../core/arrayUtils.js";import"../../../core/has.js";import"../../../core/accessorSupport/ensureType.js";import{subclass as e}from"../../../core/accessorSupport/decorators/subclass.js";import{types as o}from"../../../form/elements/support/inputs.js";const s=s=>{let p=class extends s{constructor(){super(...arguments),this.editable=!0,this.hint=null,this.input=null,this.required=!1}};return t([r({type:Boolean,json:{write:!0}})],p.prototype,"editable",void 0),t([r({type:String,json:{write:!0}})],p.prototype,"hint",void 0),t([r({types:o,json:{read:{source:"inputType"},write:{target:"inputType"}}})],p.prototype,"input",void 0),t([r()],p.prototype,"required",void 0),p=t([e("esri.widgets.FeatureTable.support.EditableColumnTemplateMixin")],p),p};export{s as EditableColumnTemplateMixin};

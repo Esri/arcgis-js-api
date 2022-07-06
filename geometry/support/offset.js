@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function t(e,t,n,o){var u;(e.x=e.x+t,e.y=e.y+n,null!=o)&&(e.z=(null!=(u=e.z)?u:0)+o);return e}function n(e,t){return e[0]+=t,e}e.offsetCoordsX=n,e.offsetPoint=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+function n(n,r,t,u){return n.x=n.x+r,n.y=n.y+t,null!=u&&(n.z=(n.z??0)+u),n}function r(n,r){return n[0]+=r,n}export{r as offsetCoordsX,n as offsetPoint};

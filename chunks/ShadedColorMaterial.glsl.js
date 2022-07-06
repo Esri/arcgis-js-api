@@ -1,27 +1,27 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSizeScaling.glsl","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptions","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaDiscard.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,r,i,l,a,o,d,n,t,s,g,c){"use strict";function v(e){const v=new g.ShaderBuilder;return v.include(a.Transform,{linearDepth:!1}),v.include(r.ScreenSizeScaling,{}),v.include(l.Slice,e),v.fragment.include(t.ColorConversion),v.vertex.uniforms.add("proj","mat4").add("view","mat4"),v.fragment.uniforms.add("uColor","vec4"),v.attributes.add(c.VertexAttribute.POSITION,"vec3"),v.varyings.add("vWorldPosition","vec3"),e.multipassTerrainEnabled&&v.varyings.add("depth","float"),e.screenSizeEnabled&&v.attributes.add(c.VertexAttribute.OFFSET,"vec3"),e.shadingEnabled&&(v.vertex.uniforms.add("viewNormal","mat4"),v.fragment.uniforms.add("shadedColor","vec4").add("shadingDirection","vec3"),v.attributes.add(c.VertexAttribute.NORMAL,"vec3"),v.varyings.add("vViewNormal","vec3")),v.vertex.code.add(s.glsl`
+import{c as e}from"./vec4f64.js";import{ScreenSizeScaling as o}from"../views/3d/webgl-engine/core/shaderLibrary/ScreenSizeScaling.glsl.js";import{ShaderOutput as r}from"../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptions.js";import{SliceDraw as i}from"../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl.js";import{Transform as a}from"../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl.js";import{multipassTerrainTest as s}from"../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl.js";import{symbolAlphaCutoff as d}from"../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff.js";import{ColorConversion as l}from"../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl.js";import{addProjViewLocalOrigin as n}from"../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl.js";import{Float3PassUniform as t}from"../views/3d/webgl-engine/core/shaderModules/Float3PassUniform.js";import{Float4PassUniform as c}from"../views/3d/webgl-engine/core/shaderModules/Float4PassUniform.js";import{glsl as g}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{Matrix4PassUniform as m}from"../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform.js";import{ShaderBuilder as v}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{TransparencyPassType as w}from"../views/3d/webgl-engine/lib/basicInterfaces.js";import{VertexAttribute as u}from"../views/3d/webgl-engine/lib/VertexAttribute.js";function f(e){const f=new v,b=e.hasMultipassTerrain&&(e.output===r.Color||e.output===r.Alpha);f.include(a),f.include(o,e),f.include(i,e);const{vertex:h,fragment:C}=f;return C.include(l),n(f,e),C.uniforms.add(new c("uColor",(e=>e.color))),f.attributes.add(u.POSITION,"vec3"),f.varyings.add("vWorldPosition","vec3"),b&&f.varyings.add("depth","float"),e.screenSizeEnabled&&f.attributes.add(u.OFFSET,"vec3"),e.shadingEnabled&&(h.uniforms.add(new m("viewNormal",((e,o)=>o.camera.viewInverseTransposeMatrix))),f.attributes.add(u.NORMAL,"vec3"),f.varyings.add("vViewNormal","vec3")),h.code.add(g`
     void main(void) {
       vWorldPosition = ${e.screenSizeEnabled?"screenSizeScaling(offset, position)":"position"};
-  `),e.shadingEnabled&&v.vertex.code.add(s.glsl`vec3 worldNormal = normal;
-vViewNormal = (viewNormal * vec4(worldNormal, 1)).xyz;`),v.vertex.code.add(s.glsl`
-    ${e.multipassTerrainEnabled?"depth = (view * vec4(vWorldPosition, 1.0)).z;":""}
+  `),e.shadingEnabled&&h.code.add(g`vec3 worldNormal = normal;
+vViewNormal = (viewNormal * vec4(worldNormal, 1)).xyz;`),h.code.add(g`
+    ${b?"depth = (view * vec4(vWorldPosition, 1.0)).z;":""}
     gl_Position = transformPosition(proj, view, vWorldPosition);
   }
-  `),e.multipassTerrainEnabled&&(v.fragment.include(o.ReadLinearDepth),v.include(d.multipassTerrainTest,e)),v.fragment.code.add(s.glsl`
+  `),b&&f.include(s,e),C.code.add(g`
     void main() {
       discardBySlice(vWorldPosition);
-      ${e.multipassTerrainEnabled?"terrainDepthTest(gl_FragCoord, depth);":""}
-    `),e.shadingEnabled?v.fragment.code.add(s.glsl`vec3 viewNormalNorm = normalize(vViewNormal);
+      ${b?"terrainDepthTest(gl_FragCoord, depth);":""}
+    `),e.shadingEnabled?(C.uniforms.add(new t("shadingDirection",(e=>e.shadingDirection))),C.uniforms.add(new c("shadedColor",(e=>p(e.shadingTint,e.color)))),C.code.add(g`vec3 viewNormalNorm = normalize(vViewNormal);
 float shadingFactor = 1.0 - clamp(-dot(viewNormalNorm, shadingDirection), 0.0, 1.0);
-vec4 finalColor = mix(uColor, shadedColor, shadingFactor);`):v.fragment.code.add(s.glsl`vec4 finalColor = uColor;`),v.fragment.code.add(s.glsl`
-      if (finalColor.a < ${s.glsl.float(n.symbolAlphaCutoff)}) {
+vec4 finalColor = mix(uColor, shadedColor, shadingFactor);`)):C.code.add(g`vec4 finalColor = uColor;`),C.code.add(g`
+      if (finalColor.a < ${g.float(d)}) {
         discard;
       }
-      ${e.output===i.ShaderOutput.Alpha?s.glsl`gl_FragColor = vec4(finalColor.a);`:""}
+      ${e.output===r.Alpha?g`gl_FragColor = vec4(finalColor.a);`:""}
 
-      ${e.output===i.ShaderOutput.Color?s.glsl`gl_FragColor = highlightSlice(finalColor, vWorldPosition); ${e.oitEnabled?"gl_FragColor = premultiplyAlpha(gl_FragColor);":""}`:""}
+      ${e.output===r.Color?g`gl_FragColor = highlightSlice(finalColor, vWorldPosition); ${e.transparencyPassType===w.Color?"gl_FragColor = premultiplyAlpha(gl_FragColor);":""}`:""}
     }
-    `),v}const u=Object.freeze(Object.defineProperty({__proto__:null,build:v},Symbol.toStringTag,{value:"Module"}));e.ShadedColorMaterialShader=u,e.build=v}));
+    `),f}function p(e,o){const r=1-e[3],i=e[3]+o[3]*r;return 0===i?(b[3]=i,b):(b[0]=(e[0]*e[3]+o[0]*o[3]*r)/i,b[1]=(e[1]*e[3]+o[1]*o[3]*r)/i,b[2]=(e[2]*e[3]+o[2]*o[3]*r)/i,b[3]=o[3],b)}const b=e(),h=Object.freeze(Object.defineProperty({__proto__:null,build:f},Symbol.toStringTag,{value:"Module"}));export{h as S,f as b};

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../draw/Draw"],(function(r){"use strict";return r}));
+import r from"../../draw/Draw.js";export{default}from"../../draw/Draw.js";

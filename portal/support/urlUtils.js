@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+const a=/^https:\/\/([a-z\d-]+)(\.maps([^.]*))?\.arcgis\.com/i,e={devext:{customBaseUrl:"mapsdevext.arcgis.com",portalHostname:"devext.arcgis.com"},qaext:{customBaseUrl:"mapsqa.arcgis.com",portalHostname:"qaext.arcgis.com"},www:{customBaseUrl:"maps.arcgis.com",portalHostname:"www.arcgis.com"}};function t(t){const s=t?.match(a);if(!s)return null;const[,o,r,l]=s;if(!o)return null;let c=null,m=null,n=null;const{devext:u,qaext:i,www:p}=e;if(r)if(c=o,l)switch(l.toLowerCase()){case"devext":({customBaseUrl:m,portalHostname:n}=u);break;case"qa":({customBaseUrl:m,portalHostname:n}=i);break;default:return null}else({customBaseUrl:m,portalHostname:n}=p);else switch(o.toLowerCase()){case"devext":({customBaseUrl:m,portalHostname:n}=u);break;case"qaext":({customBaseUrl:m,portalHostname:n}=i);break;case"www":({customBaseUrl:m,portalHostname:n}=p);break;default:return null}return{customBaseUrl:m,isPortal:!1,portalHostname:n,urlKey:c}}export{t as parseKnownArcGISOnlineDomain};

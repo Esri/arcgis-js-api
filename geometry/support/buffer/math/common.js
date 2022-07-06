@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../../core/Logger"],(function(e,o){"use strict";const t=o.getLogger("esri.views.3d.support.buffer.math");e.mathLogger=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import r from"../../../../core/Logger.js";const e=r.getLogger("esri.views.3d.support.buffer.math");export{e as mathLogger};

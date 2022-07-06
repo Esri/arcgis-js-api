@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function t(e,t){const n=e.x-t.x,s=e.y-t.y,a=e.hasZ&&t.hasZ?e.z-t.z:0;return Math.sqrt(n*n+s*s+a*a)}function n(e,t){const n=e.x-t.x,s=e.y-t.y,a=e.hasZ&&t.hasZ?e.z-t.z:0;return n*n+s*s+a*a}e.distance=t,e.squareDistance=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+function t(t,n){const s=t.x-n.x,r=t.y-n.y,a=t.hasZ&&n.hasZ?t.z-n.z:0;return Math.sqrt(s*s+r*r+a*a)}function n(t,n){const s=t.x-n.x,r=t.y-n.y,a=t.hasZ&&n.hasZ?t.z-n.z:0;return s*s+r*r+a*a}export{t as distance,n as squareDistance};

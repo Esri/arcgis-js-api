@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{_ as s}from"../../chunks/tslib.es6.js";import{watch as e,syncAndInitial as t}from"../../core/reactiveUtils.js";import{property as r}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as o}from"../../core/accessorSupport/decorators/subclass.js";import{InteractiveToolBase as i}from"./InteractiveToolBase.js";let a=class extends i{constructor(s){super(s)}initialize(){this.own(e((()=>this.analysisViewData.visible),(s=>this.visible=s),t))}deactivate(){this.onDeactivate(),this.created||this.analysis.clear()}resetCreated(){this._set("created",!1)}};s([r({constructOnly:!0})],a.prototype,"analysis",void 0),s([r()],a.prototype,"analysisViewData",void 0),a=s([o("esri.views.interactive.AnalysisToolBase")],a);export{a as AnalysisToolBase};

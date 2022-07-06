@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{_ as s}from"../../../../chunks/tslib.es6.js";import{property as t}from"../../../../core/accessorSupport/decorators/property.js";import"../../../../core/arrayUtils.js";import"../../../../core/has.js";import"../../../../core/accessorSupport/ensureType.js";import{subclass as r}from"../../../../core/accessorSupport/decorators/subclass.js";import{BASE as o}from"../css.js";import e from"../../../../widgets/Widget.js";import"../../../../widgets/support/widgetUtils.js";import{tsx as i}from"../../../../widgets/support/jsxFactory.js";const p=`${o}-field`,a={base:p,title:`${p}__title`,value:`${p}__value`};let c=class extends e{render(){return i("div",{class:a.base},i("div",{class:a.title},this.title),i("div",{class:a.value},this.value))}};s([t()],c.prototype,"title",void 0),s([t()],c.prototype,"value",void 0),c=s([r("esri.views.interactive.tooltip.support.TooltipField")],c);export{c as TooltipField};

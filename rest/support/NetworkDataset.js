@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{_ as t}from"../../chunks/tslib.es6.js";import{JSONSupport as r}from"../../core/JSONSupport.js";import{property as o}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as e}from"../../core/accessorSupport/decorators/subclass.js";import s from"./NetworkAttribute.js";let p=class extends r{constructor(t){super(t),this.buildTime=null,this.name=null,this.networkAttributes=null,this.networkSources=null,this.state=null}};t([o({type:Number})],p.prototype,"buildTime",void 0),t([o({type:String})],p.prototype,"name",void 0),t([o({type:[s]})],p.prototype,"networkAttributes",void 0),t([o()],p.prototype,"networkSources",void 0),t([o({type:String})],p.prototype,"state",void 0),p=t([e("esri.rest.support.NetworkDataset")],p);const i=p;export{i as default};

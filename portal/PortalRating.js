@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/Accessor","../core/accessorSupport/decorators/property","../core/arrayUtils","../core/has","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/subclass"],(function(r,e,o,t,s,c,a,n){"use strict";let p=function(e){function o(r){var o;return(o=e.call(this,r)||this).created=null,o.rating=null,o}return r._inheritsLoose(o,e),o}(o);e.__decorate([t.property()],p.prototype,"created",void 0),e.__decorate([t.property()],p.prototype,"rating",void 0),p=e.__decorate([n.subclass("esri.portal.PortalRating")],p);return p}));
+import{_ as r}from"../chunks/tslib.es6.js";import o from"../core/Accessor.js";import{property as s}from"../core/accessorSupport/decorators/property.js";import"../core/arrayUtils.js";import"../core/has.js";import"../core/accessorSupport/ensureType.js";import{subclass as t}from"../core/accessorSupport/decorators/subclass.js";let e=class extends o{constructor(r){super(r),this.created=null,this.rating=null}};r([s()],e.prototype,"created",void 0),r([s()],e.prototype,"rating",void 0),e=r([t("esri.portal.PortalRating")],e);const c=e;export{c as default};

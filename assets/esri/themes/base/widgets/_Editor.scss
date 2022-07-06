@@ -65,22 +65,6 @@ $base-scrim-z-index: 50;
     position: relative;
   }
 
-  .esri-editor__header {
-    background-color: $background-color;
-    padding: 0 $side-spacing--three-quarters;
-    font-size: $font-size__header-text;
-    border-bottom: $border;
-    display: flex;
-    align-items: center;
-    height: $headerOrFooterHeight;
-  }
-
-  .esri-editor__title {
-    text-align: center;
-    flex: 1 1 auto;
-    overflow: hidden;
-  }
-
   .esri-editor__content {
     justify-content: center;
     align-items: flex-start;
@@ -138,22 +122,6 @@ $base-scrim-z-index: 50;
     flex-direction: column;
     flex: 1 1 auto;
   }
-
-  .esri-editor__back-button {
-    display: flex;
-    width: $button-width;
-    height: $button-height;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3px;
-    background-color: $background-color--offset-subtle;
-    transition: background-color 125ms ease-in-out;
-    &:hover {
-      background-color: $background-color--hover;
-      color: $interactive-font-color--hover;
-    }
-  }
-
   .esri-editor__controls {
     background-color: $background-color;
     border-top: $border;
@@ -165,63 +133,6 @@ $base-scrim-z-index: 50;
   .esri-editor__control-button {
     margin-bottom: 6px;
     min-height: $button-height;
-  }
-
-  .esri-editor__feature-list-item {
-    @include cardBoxShadow();
-    padding: $cap-spacing $side-spacing--quarter;
-    background-color: $background-color;
-    cursor: pointer;
-    margin: $cap-spacing--quarter 0;
-    border: $border;
-    border-color: transparent;
-    border-radius: $border-radius;
-
-    display: flex;
-    justify-content: space-between;
-
-    transition: border-color 125ms ease-in-out;
-  }
-  .esri-editor__feature-list-item:hover,
-  .esri-editor__feature-list-item:focus {
-    border-color: $border-color--hover;
-  }
-  .esri-editor__feature-list-item:active {
-    background-color: $background-color--active;
-    color: $interactive-font-color;
-  }
-
-  .esri-editor__feature-list-item {
-    @include icomoonIconSelector("&") {
-      padding-right: $font-size * 0.2;
-    }
-  }
-
-  .esri-editor__feature-list-item--disabled {
-    pointer-events: none;
-    opacity: $opacity--disabled;
-  }
-
-  .esri-editor__feature-list-icon {
-    flex: 0 0 auto;
-    padding: 0 $side-spacing--half;
-  }
-
-  .esri-editor__feature-list-index {
-    text-align: right;
-    flex-basis: 2ch;
-  }
-
-  .esri-editor__feature-list-name {
-    flex: 1 1 auto;
-    margin: 0 $side-spacing--half;
-  }
-
-  .esri-editor__feature-list {
-    width: 100%;
-    margin: 0;
-    padding: $cap-spacing--quarter $side-spacing--quarter;
-    list-style: none;
   }
 
   .esri-editor__prompt--info {
@@ -236,20 +147,6 @@ $base-scrim-z-index: 50;
     @include esri-editor__prompt(var(--calcite-ui-danger));
   }
 
-  .esri-editor__prompt-option {
-    margin: $cap-spacing--half 0;
-    cursor: pointer;
-    flex: 0 0 auto;
-  }
-
-  // .esri-editor__prompt-option--positive {
-  //   color: $button-color;
-  // }
-
-  // .esri-editor__prompt-option--negative {
-  //   color: $font-color--error;
-  // }
-
   .esri-editor__overlay {
     position: absolute;
     overflow: hidden;
@@ -259,22 +156,9 @@ $base-scrim-z-index: 50;
     top: 0;
     background-color: $background-color--overlay;
   }
-
   .esri-editor__progress-bar {
     position: absolute;
     width: 100%;
-  }
-
-  .esri-editor__mode-selection {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-  }
-
-  .esri-ui {
-    .esri-editor .esri-item-list__scroller {
-      max-height: ($panel-max-height--medium * 0.5) - 80px;
-    }
   }
 
   .esri-editor__panel-toolbar {
@@ -292,19 +176,38 @@ $base-scrim-z-index: 50;
 
   .esri-editor__panel-content {
     position: relative;
-    padding: 0 12px 12px 12px;
     height: 100%;
+    min-height: 20vh;
     display: flex;
     flex-direction: column;
+    padding-top: 0;
+    padding-bottom: 0;
 
-    &--section {
-      margin-top: 15px;
+    &__section {
+      padding: 15px 12px 12px 12px;
+      position: relative;
+
+      &__group {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 100%;
+      }
+    }
+
+    &__message {
+      display: flex;
+      flex-basis: 100%;
+      justify-content: center;
+      align-items: center;
+      font-size: var(--calcite-font-size-0);
+      padding: 0 15px;
+      text-align: center;
     }
   }
 
-  .esri-editor__scrim-overlay {
-    position: relative;
-    z-index: $base-scrim-z-index + 1;
+  .esri-editor__snapping-settings {
+    width: 100%;
+    border: 0;
   }
 
   .esri-editor__update-features-action-buttons {

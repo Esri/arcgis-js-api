@@ -1,84 +1,84 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../views/ViewingMode","../views/3d/webgl-engine/core/shaderLibrary/ForwardLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/Offset.glsl","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptions","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/InstancedDoublePrecision.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/NormalAttribute.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/PositionAttribute.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/SymbolColor.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/TextureCoordinateAttribute.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexColor.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/VerticalOffset.glsl","../views/3d/webgl-engine/core/shaderLibrary/default/DefaultMaterialAuxiliaryPasses.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/EvaluateAmbientOcclusion.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/EvaluateSceneLighting.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/PhysicallyBasedRendering.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/PhysicallyBasedRenderingParameters.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/ReadShadowMap.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/VisualVariables.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaDiscard.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/MixExternalColor.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,a,i,r,l,o,t,d,n,s,c,g,v,u,b,h,p,m,w,f,x,y,C,M,L,O,A,P){"use strict";function S(e){const S=new A.ShaderBuilder,E=S.vertex.code,T=S.fragment.code;return S.vertex.uniforms.add("proj","mat4").add("view","mat4").add("cameraPosition","vec3").add("localOrigin","vec3"),S.include(s.PositionAttribute),S.varyings.add("vpos","vec3"),S.include(C.VisualVariables,e),S.include(d.InstancedDoublePrecision,e),S.include(u.VerticalOffset,e),e.output!==l.ShaderOutput.Color&&e.output!==l.ShaderOutput.Alpha||(S.include(n.NormalAttribute,e),S.include(t.Transform,{linearDepth:!1}),e.offsetBackfaces&&S.include(r.Offset),e.instancedColor&&S.attributes.add(P.VertexAttribute.INSTANCECOLOR,"vec4"),S.varyings.add("vNormalWorld","vec3"),S.varyings.add("localvpos","vec3"),e.multipassTerrainEnabled&&S.varyings.add("depth","float"),S.include(g.TextureCoordinateAttribute,e),S.include(i.ForwardLinearDepth,e),S.include(c.SymbolColor,e),S.include(v.VertexColor,e),S.vertex.uniforms.add("externalColor","vec4"),S.varyings.add("vcolorExt","vec4"),E.add(O.glsl`
+import{ForwardLinearDepth as e}from"../views/3d/webgl-engine/core/shaderLibrary/ForwardLinearDepth.glsl.js";import{Offset as o}from"../views/3d/webgl-engine/core/shaderLibrary/Offset.glsl.js";import{ShaderOutput as r}from"../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptions.js";import{SliceDraw as i}from"../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl.js";import{Transform as a}from"../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl.js";import{InstancedDoublePrecision as t}from"../views/3d/webgl-engine/core/shaderLibrary/attributes/InstancedDoublePrecision.glsl.js";import{NormalAttribute as l}from"../views/3d/webgl-engine/core/shaderLibrary/attributes/NormalAttribute.glsl.js";import{PositionAttribute as s}from"../views/3d/webgl-engine/core/shaderLibrary/attributes/PositionAttribute.glsl.js";import{SymbolColor as n}from"../views/3d/webgl-engine/core/shaderLibrary/attributes/SymbolColor.glsl.js";import{TextureCoordinateAttribute as d}from"../views/3d/webgl-engine/core/shaderLibrary/attributes/TextureCoordinateAttribute.glsl.js";import{VertexColor as c}from"../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexColor.glsl.js";import{VerticalOffset as g}from"../views/3d/webgl-engine/core/shaderLibrary/attributes/VerticalOffset.glsl.js";import{DefaultMaterialAuxiliaryPasses as m}from"../views/3d/webgl-engine/core/shaderLibrary/default/DefaultMaterialAuxiliaryPasses.glsl.js";import{EvaluateAmbientOcclusion as v}from"../views/3d/webgl-engine/core/shaderLibrary/shading/EvaluateAmbientOcclusion.glsl.js";import{EvaluateSceneLighting as p}from"../views/3d/webgl-engine/core/shaderLibrary/shading/EvaluateSceneLighting.glsl.js";import{multipassTerrainTest as b}from"../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl.js";import{PhysicallyBasedRendering as h}from"../views/3d/webgl-engine/core/shaderLibrary/shading/PhysicallyBasedRendering.glsl.js";import{PhysicallyBasedRenderingParameters as u,PBRMode as w}from"../views/3d/webgl-engine/core/shaderLibrary/shading/PhysicallyBasedRenderingParameters.glsl.js";import{ReadShadowMapPass as f,ReadShadowMapDraw as x}from"../views/3d/webgl-engine/core/shaderLibrary/shading/ReadShadowMap.glsl.js";import{VisualVariables as y}from"../views/3d/webgl-engine/core/shaderLibrary/shading/VisualVariables.glsl.js";import{symbolAlphaCutoff as C}from"../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff.js";import{DiscardOrAdjustAlphaPass as L}from"../views/3d/webgl-engine/core/shaderLibrary/util/AlphaDiscard.glsl.js";import{MixExternalColor as M}from"../views/3d/webgl-engine/core/shaderLibrary/util/MixExternalColor.glsl.js";import{addProjViewLocalOrigin as j,addCameraPosition as O}from"../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl.js";import{Float3PassUniform as A}from"../views/3d/webgl-engine/core/shaderModules/Float3PassUniform.js";import{Float4PassUniform as P}from"../views/3d/webgl-engine/core/shaderModules/Float4PassUniform.js";import{FloatPassUniform as F}from"../views/3d/webgl-engine/core/shaderModules/FloatPassUniform.js";import{glsl as S}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{Matrix4Uniform as E}from"../views/3d/webgl-engine/core/shaderModules/Matrix4Uniform.js";import{ShaderBuilder as _}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{Texture2DPassUniform as $}from"../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform.js";import{TransparencyPassType as T}from"../views/3d/webgl-engine/lib/basicInterfaces.js";import{VertexAttribute as N}from"../views/3d/webgl-engine/lib/VertexAttribute.js";import{ambientBoost as D}from"../views/3d/webgl-engine/lighting/SceneLighting.js";function B(B){const V=new _,I=V.vertex.code,R=V.fragment.code,z=j(V,B);return V.include(s),V.varyings.add("vpos","vec3"),V.include(y,B),V.include(t,B),V.include(g,B),B.output!==r.Color&&B.output!==r.Alpha||(O(V.vertex,B),V.include(l,B),V.include(a),B.offsetBackfaces&&V.include(o),B.instancedColor&&V.attributes.add(N.INSTANCECOLOR,"vec4"),V.varyings.add("vNormalWorld","vec3"),V.varyings.add("localvpos","vec3"),B.hasMultipassTerrain&&V.varyings.add("depth","float"),V.include(d,B),V.include(e,B),V.include(n,B),V.include(c,B),V.vertex.uniforms.add(new P("externalColor",(e=>e.externalColor))),V.varyings.add("vcolorExt","vec4"),I.add(S`
         void main(void) {
           forwardNormalizedVertexColor();
           vcolorExt = externalColor;
-          ${e.instancedColor?"vcolorExt *= instanceColor;":""}
+          ${B.instancedColor?"vcolorExt *= instanceColor;":""}
           vcolorExt *= vvColor();
           vcolorExt *= getSymbolColor();
           forwardColorMixMode();
 
-          if (vcolorExt.a < ${O.glsl.float(M.symbolAlphaCutoff)}) {
+          if (vcolorExt.a < ${S.float(C)}) {
             gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
-          }
-          else {
+          } else {
             vpos = calculateVPos();
             localvpos = vpos - view[3].xyz;
             vpos = subtractOrigin(vpos);
             vNormalWorld = dpNormal(vvLocalNormal(normalModel()));
             vpos = addVerticalOffset(vpos, localOrigin);
             gl_Position = transformPosition(proj, view, vpos);
-            ${e.offsetBackfaces?"gl_Position = offsetBackfacingClipPosition(gl_Position, vpos, vNormalWorld, cameraPosition);":""}
+            ${B.offsetBackfaces?"gl_Position = offsetBackfacingClipPosition(gl_Position, vpos, vNormalWorld, cameraPosition);":""}
           }
-          ${e.multipassTerrainEnabled?O.glsl`depth = (view * vec4(vpos, 1.0)).z;`:""}
+          ${B.hasMultipassTerrain?S`depth = (view * vec4(vpos, 1.0)).z;`:""}
           forwardLinearDepth();
           forwardTextureCoordinates();
         }
-      `)),e.output===l.ShaderOutput.Alpha&&(S.include(o.Slice,e),S.include(M.DiscardOrAdjustAlpha,e),e.multipassTerrainEnabled&&(S.fragment.include(h.ReadLinearDepth),S.include(w.multipassTerrainTest,e)),S.fragment.uniforms.add("cameraPosition","vec3").add("localOrigin","vec3").add("opacity","float").add("layerOpacity","float"),S.fragment.uniforms.add("view","mat4"),e.hasColorTexture&&S.fragment.uniforms.add("tex","sampler2D"),S.fragment.include(L.MixExternalColor),T.add(O.glsl`
+      `)),B.output===r.Alpha&&(V.include(i,B),V.include(L,B),V.include(b,B),V.fragment.uniforms.add([new F("opacity",(e=>e.opacity)),new F("layerOpacity",(e=>e.layerOpacity)),new E("view")]),B.hasColorTexture&&V.fragment.uniforms.add(new $("tex",(e=>e.texture))),V.fragment.include(M),R.add(S`
       void main() {
         discardBySlice(vpos);
-        ${e.multipassTerrainEnabled?O.glsl`terrainDepthTest(gl_FragCoord, depth);`:""}
-        ${e.hasColorTexture?O.glsl`
-        vec4 texColor = texture2D(tex, vuv0);
-        ${e.textureAlphaPremultiplied?"texColor.rgb /= texColor.a;":""}
-        discardOrAdjustAlpha(texColor);`:O.glsl`vec4 texColor = vec4(1.0);`}
-        ${e.attributeColor?O.glsl`
-        float opacity_ = layerOpacity * mixExternalOpacity(vColor.a * opacity, texColor.a, vcolorExt.a, int(colorMixMode));`:O.glsl`
-        float opacity_ = layerOpacity * mixExternalOpacity(opacity, texColor.a, vcolorExt.a, int(colorMixMode));
-        `}
+        ${B.hasMultipassTerrain?S`terrainDepthTest(gl_FragCoord, depth);`:""}
+        ${B.hasColorTexture?S`
+                vec4 texColor = texture2D(tex, vuv0);
+                ${B.textureAlphaPremultiplied?"texColor.rgb /= texColor.a;":""}
+                discardOrAdjustAlpha(texColor);`:S`vec4 texColor = vec4(1.0);`}
+        ${B.hasVertexColors?S`float opacity_ = layerOpacity * mixExternalOpacity(vColor.a * opacity, texColor.a, vcolorExt.a, int(colorMixMode));`:S`float opacity_ = layerOpacity * mixExternalOpacity(opacity, texColor.a, vcolorExt.a, int(colorMixMode));`}
 
         gl_FragColor = vec4(opacity_);
       }
-    `)),e.output===l.ShaderOutput.Color&&(S.include(o.Slice,e),S.include(m.EvaluateSceneLighting,e),S.include(p.EvaluateAmbientOcclusion,e),S.include(M.DiscardOrAdjustAlpha,e),e.receiveShadows&&S.include(y.ReadShadowMap,e),e.multipassTerrainEnabled&&(S.fragment.include(h.ReadLinearDepth),S.include(w.multipassTerrainTest,e)),S.fragment.uniforms.add("cameraPosition","vec3").add("localOrigin","vec3").add("ambient","vec3").add("diffuse","vec3").add("opacity","float").add("layerOpacity","float"),S.fragment.uniforms.add("view","mat4"),e.hasColorTexture&&S.fragment.uniforms.add("tex","sampler2D"),S.include(x.PhysicallyBasedRenderingParameters,e),S.include(f.PhysicallyBasedRendering,e),S.fragment.include(L.MixExternalColor),T.add(O.glsl`
+    `)),B.output===r.Color&&(V.include(i,B),V.include(p,B),V.include(v,B),V.include(L,B),V.include(B.instancedDoublePrecision?f:x,B),V.include(b,B),O(V.fragment,B),V.fragment.uniforms.add([z,new A("ambient",(e=>e.ambient)),new A("diffuse",(e=>e.diffuse)),new F("opacity",(e=>e.opacity)),new F("layerOpacity",(e=>e.layerOpacity)),new E("view"),new F("lightingGlobalFactor",((e,o)=>o.lighting.globalFactor)),new A("lightingMainIntensity",((e,o)=>o.lighting.mainLight.intensity))]),V.fragment.constants.add("ambientBoostFactor","float",D),B.hasColorTexture&&V.fragment.uniforms.add(new $("tex",(e=>e.texture))),V.include(u,B),V.include(h,B),V.fragment.include(M),V.extensions.add("GL_OES_standard_derivatives"),R.add(S`
       void main() {
         discardBySlice(vpos);
-        ${e.multipassTerrainEnabled?O.glsl`terrainDepthTest(gl_FragCoord, depth);`:""}
-        ${e.hasColorTexture?O.glsl`
-        vec4 texColor = texture2D(tex, vuv0);
-        ${e.textureAlphaPremultiplied?"texColor.rgb /= texColor.a;":""}
-        discardOrAdjustAlpha(texColor);`:O.glsl`vec4 texColor = vec4(1.0);`}
+        ${B.hasMultipassTerrain?S`terrainDepthTest(gl_FragCoord, depth);`:""}
+        ${B.hasColorTexture?S`
+                vec4 texColor = texture2D(tex, vuv0);
+                ${B.textureAlphaPremultiplied?"texColor.rgb /= texColor.a;":""}
+                discardOrAdjustAlpha(texColor);`:S`vec4 texColor = vec4(1.0);`}
         vec3 viewDirection = normalize(vpos - cameraPosition);
-        ${e.pbrMode===x.PBRMode.Normal?"applyPBRFactors();":""}
+        ${B.pbrMode===w.Normal?"applyPBRFactors();":""}
         float ssao = evaluateAmbientOcclusionInverse();
         ssao *= getBakedOcclusion();
 
         float additionalAmbientScale = additionalDirectedAmbientLight(vpos + localOrigin);
         vec3 additionalLight = ssao * lightingMainIntensity * additionalAmbientScale * ambientBoostFactor * lightingGlobalFactor;
-        ${e.receiveShadows?"float shadow = readShadowMap(vpos, linearDepth);":e.viewingMode===a.ViewingMode.Global?"float shadow = lightingGlobalFactor * (1.0 - additionalAmbientScale);":"float shadow = 0.0;"}
+        ${B.receiveShadows?"float shadow = readShadowMap(vpos, linearDepth);":B.spherical?"float shadow = lightingGlobalFactor * (1.0 - additionalAmbientScale);":"float shadow = 0.0;"}
         vec3 matColor = max(ambient, diffuse);
-        ${e.attributeColor?O.glsl`
-        vec3 albedo_ = mixExternalColor(vColor.rgb * matColor, texColor.rgb, vcolorExt.rgb, int(colorMixMode));
-        float opacity_ = layerOpacity * mixExternalOpacity(vColor.a * opacity, texColor.a, vcolorExt.a, int(colorMixMode));`:O.glsl`
-        vec3 albedo_ = mixExternalColor(matColor, texColor.rgb, vcolorExt.rgb, int(colorMixMode));
-        float opacity_ = layerOpacity * mixExternalOpacity(opacity, texColor.a, vcolorExt.a, int(colorMixMode));
-        `}
-        ${O.glsl`
-        vec3 shadedNormal = normalize(vNormalWorld);
-        albedo_ *= 1.2;
-        vec3 viewForward = vec3(view[0][2], view[1][2], view[2][2]);
-        float alignmentLightView = clamp(dot(viewForward, -lightingMainDirection), 0.0, 1.0);
-        float transmittance = 1.0 - clamp(dot(viewForward, shadedNormal), 0.0, 1.0);
-        float treeRadialFalloff = vColor.r;
-        float backLightFactor = 0.5 * treeRadialFalloff * alignmentLightView * transmittance * (1.0 - shadow);
-        additionalLight += backLightFactor * lightingMainIntensity;`}
-        ${e.pbrMode===x.PBRMode.Normal||e.pbrMode===x.PBRMode.Schematic?e.viewingMode===a.ViewingMode.Global?O.glsl`vec3 normalGround = normalize(vpos + localOrigin);`:O.glsl`vec3 normalGround = vec3(0.0, 0.0, 1.0);`:O.glsl``}
-        ${e.pbrMode===x.PBRMode.Normal||e.pbrMode===x.PBRMode.Schematic?O.glsl`
-            float additionalAmbientIrradiance = additionalAmbientIrradianceFactor * lightingMainIntensity[2];
-            vec3 shadedColor = evaluateSceneLightingPBR(shadedNormal, albedo_, shadow, 1.0 - ssao, additionalLight, viewDirection, normalGround, mrr, emission, additionalAmbientIrradiance);`:"vec3 shadedColor = evaluateSceneLighting(shadedNormal, albedo_, shadow, 1.0 - ssao, additionalLight);"}
+        ${B.hasVertexColors?S`
+                vec3 albedo = mixExternalColor(vColor.rgb * matColor, texColor.rgb, vcolorExt.rgb, int(colorMixMode));
+                float opacity_ = layerOpacity * mixExternalOpacity(vColor.a * opacity, texColor.a, vcolorExt.a, int(colorMixMode));`:S`
+                vec3 albedo = mixExternalColor(matColor, texColor.rgb, vcolorExt.rgb, int(colorMixMode));
+                float opacity_ = layerOpacity * mixExternalOpacity(opacity, texColor.a, vcolorExt.a, int(colorMixMode));`}
+        ${B.snowCover?S`albedo = mix(albedo, vec3(1), 0.9);`:S``}
+        ${S`
+            vec3 shadingNormal = normalize(vNormalWorld);
+            albedo *= 1.2;
+            vec3 viewForward = vec3(view[0][2], view[1][2], view[2][2]);
+            float alignmentLightView = clamp(dot(viewForward, -lightingMainDirection), 0.0, 1.0);
+            float transmittance = 1.0 - clamp(dot(viewForward, shadingNormal), 0.0, 1.0);
+            float treeRadialFalloff = vColor.r;
+            float backLightFactor = 0.5 * treeRadialFalloff * alignmentLightView * transmittance * (1.0 - shadow);
+            additionalLight += backLightFactor * lightingMainIntensity;`}
+        ${B.pbrMode===w.Normal||B.pbrMode===w.Schematic?B.spherical?S`vec3 normalGround = normalize(vpos + localOrigin);`:S`vec3 normalGround = vec3(0.0, 0.0, 1.0);`:S``}
+        ${B.pbrMode===w.Normal||B.pbrMode===w.Schematic?S`
+                float additionalAmbientIrradiance = additionalAmbientIrradianceFactor * lightingMainIntensity[2];
+                ${B.snowCover?S`
+                        mrr = vec3(0.0, 1.0, 0.04);
+                        emission = vec3(0.0);`:""}
+
+                vec3 shadedColor = evaluateSceneLightingPBR(shadingNormal, albedo, shadow, 1.0 - ssao, additionalLight, viewDirection, normalGround, mrr, emission, additionalAmbientIrradiance);`:S`vec3 shadedColor = evaluateSceneLighting(shadingNormal, albedo, shadow, 1.0 - ssao, additionalLight);`}
         gl_FragColor = highlightSlice(vec4(shadedColor, opacity_), vpos);
-        ${e.oitEnabled?"gl_FragColor = premultiplyAlpha(gl_FragColor);":""}
+        ${B.transparencyPassType===T.Color?S`gl_FragColor = premultiplyAlpha(gl_FragColor);`:S``}
       }
-    `)),S.include(b.DefaultMaterialAuxiliaryPasses,e),S}const E=Object.freeze(Object.defineProperty({__proto__:null,build:S},Symbol.toStringTag,{value:"Module"}));e.RealisticTreeShader=E,e.build=S}));
+    `)),V.include(m,B),V}const V=Object.freeze(Object.defineProperty({__proto__:null,build:B},Symbol.toStringTag,{value:"Module"}));export{V as R,B as b};

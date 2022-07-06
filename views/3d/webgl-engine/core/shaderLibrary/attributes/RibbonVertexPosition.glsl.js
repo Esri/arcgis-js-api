@@ -1,14 +1,12 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","../../../lib/VertexAttribute"],(function(e,t,i){"use strict";function r(e,r){e.vertex.uniforms.add("intrinsicWidth","float"),r.vvSize?(e.attributes.add(i.VertexAttribute.SIZEFEATUREATTRIBUTE,"float"),e.vertex.uniforms.add("vvSizeMinSize","vec3"),e.vertex.uniforms.add("vvSizeMaxSize","vec3"),e.vertex.uniforms.add("vvSizeOffset","vec3"),e.vertex.uniforms.add("vvSizeFactor","vec3"),e.vertex.code.add(t.glsl`float getSize() {
+import{Float3PassUniform as e}from"../../shaderModules/Float3PassUniform.js";import{Float4sPassUniform as i}from"../../shaderModules/Float4sPassUniform.js";import{FloatPassUniform as t}from"../../shaderModules/FloatPassUniform.js";import{FloatsPassUniform as o}from"../../shaderModules/FloatsPassUniform.js";import{glsl as a}from"../../shaderModules/interfaces.js";import{VertexAttribute as r}from"../../../lib/VertexAttribute.js";import{vvColorNumber as v}from"../../../materials/VisualVariablePassParameters.js";const l=8;function s(s,u){const c=s.vertex;c.uniforms.add(new t("intrinsicWidth",(e=>e.width))),u.vvSize?(s.attributes.add(r.SIZEFEATUREATTRIBUTE,"float"),c.uniforms.add(new e("vvSizeMinSize",(e=>e.vvSizeMinSize))),c.uniforms.add(new e("vvSizeMaxSize",(e=>e.vvSizeMaxSize))),c.uniforms.add(new e("vvSizeOffset",(e=>e.vvSizeOffset))),c.uniforms.add(new e("vvSizeFactor",(e=>e.vvSizeFactor))),c.code.add(a`float getSize() {
 return intrinsicWidth * clamp(vvSizeOffset + sizeFeatureAttribute * vvSizeFactor, vvSizeMinSize, vvSizeMaxSize).x;
-}`)):(e.attributes.add(i.VertexAttribute.SIZE,"float"),e.vertex.code.add(t.glsl`float getSize(){
+}`)):(s.attributes.add(r.SIZE,"float"),c.code.add(a`float getSize(){
 return intrinsicWidth * size;
-}`)),r.vvOpacity?(e.attributes.add(i.VertexAttribute.OPACITYFEATUREATTRIBUTE,"float"),e.vertex.constants.add("vvOpacityNumber","int",8),e.vertex.code.add(t.glsl`uniform float vvOpacityValues[vvOpacityNumber];
-uniform float vvOpacityOpacities[vvOpacityNumber];
-float interpolateOpacity( float value ){
+}`)),u.vvOpacity?(s.attributes.add(r.OPACITYFEATUREATTRIBUTE,"float"),c.constants.add("vvOpacityNumber","int",8),c.uniforms.add([new o("vvOpacityValues",(e=>e.vvOpacityValues),l),new o("vvOpacityOpacities",(e=>e.vvOpacityOpacities),l)]),c.code.add(a`float interpolateOpacity( float value ){
 if (value <= vvOpacityValues[0]) {
 return vvOpacityOpacities[0];
 }
@@ -22,11 +20,9 @@ return vvOpacityOpacities[vvOpacityNumber - 1];
 }
 vec4 applyOpacity( vec4 color ){
 return vec4(color.xyz, interpolateOpacity(opacityFeatureAttribute));
-}`)):e.vertex.code.add(t.glsl`vec4 applyOpacity( vec4 color ){
+}`)):c.code.add(a`vec4 applyOpacity( vec4 color ){
 return color;
-}`),r.vvColor?(e.attributes.add(i.VertexAttribute.COLORFEATUREATTRIBUTE,"float"),e.vertex.constants.add("vvColorNumber","int",8),e.vertex.code.add(t.glsl`uniform float vvColorValues[vvColorNumber];
-uniform vec4 vvColorColors[vvColorNumber];
-vec4 interpolateColor( float value ) {
+}`),u.vvColor?(s.attributes.add(r.COLORFEATUREATTRIBUTE,"float"),c.constants.add("vvColorNumber","int",v),c.uniforms.add(new o("vvColorValues",(e=>e.vvColorValues),v)),c.uniforms.add(new i("vvColorColors",(e=>e.vvColorColors),v)),c.code.add(a`vec4 interpolateColor( float value ) {
 if (value <= vvColorValues[0]) {
 return vvColorColors[0];
 }
@@ -40,6 +36,6 @@ return vvColorColors[vvColorNumber - 1];
 }
 vec4 getColor(){
 return applyOpacity(interpolateColor(colorFeatureAttribute));
-}`)):(e.attributes.add(i.VertexAttribute.COLOR,"vec4"),e.vertex.code.add(t.glsl`vec4 getColor(){
+}`)):(s.attributes.add(r.COLOR,"vec4"),c.code.add(a`vec4 getColor(){
 return applyOpacity(color);
-}`))}e.RibbonVertexPosition=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`))}export{s as RibbonVertexPosition};

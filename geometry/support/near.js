@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../geometry","../../chunks/vec2","./coordsUtils","../Point"],(function(e,n,t,o,i){"use strict";function r(e,n){const{spatialReference:r}=n,s=[n.x,n.y];let c=Number.POSITIVE_INFINITY,a=0,m=0;const x=[0,0],l="extent"===e.type?[[[e.xmin,e.ymin],[e.xmin,e.ymax],[e.xmax,e.ymax],[e.xmax,e.ymin],[e.xmin,e.ymin]]]:e.rings;for(const i of l)for(let e=0;e<i.length-1;e++){o.projectPointOnLine(x,s,i,e);const n=t.distance(s,x);n<c&&(c=n,a=x[0],m=x[1])}return{coordinate:new i({x:a,y:m,spatialReference:r}),distance:c}}e.nearestCoordinate=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import"../../geometry.js";import{j as t}from"../../chunks/vec2.js";import{projectPointOnLine as e}from"./coordsUtils.js";import n from"../Point.js";function o(o,m){const{spatialReference:r}=m,i=[m.x,m.y];let s=Number.POSITIVE_INFINITY,x=0,c=0;const a=[0,0],f="extent"===o.type?[[[o.xmin,o.ymin],[o.xmin,o.ymax],[o.xmax,o.ymax],[o.xmax,o.ymin],[o.xmin,o.ymin]]]:o.rings;for(const n of f)for(let o=0;o<n.length-1;o++){e(a,i,n,o);const m=t(i,a);m<s&&(s=m,x=a[0],c=a[1])}return{coordinate:new n({x,y:c,spatialReference:r}),distance:s}}export{o as nearestCoordinate};

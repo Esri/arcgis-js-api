@@ -2,6 +2,8 @@
   $slider-track-thickness: 2px;
   $slider-bounds-offset: 9px;
   $scale-indicator-half-size: 4px;
+  $slider-dash-size: 5px;
+  $slider-dash-color: rgba(255, 255, 255, 0.75);
 
   .esri-scale-range-slider {
     background-color: transparent;
@@ -19,6 +21,21 @@
         // active scale range segment
         background-color: $button-color;
         height: 4px;
+      }
+
+      // out-of-bounds range segments
+      .esri-slider__effective-min-segment,
+      .esri-slider__effective-max-segment {
+        height: 100%;
+        display: block;
+        content: " ";
+        background: repeating-linear-gradient(
+          to right,
+          $slider-dash-color 0,
+          $slider-dash-color $slider-dash-size,
+          transparent $slider-dash-size,
+          transparent ($slider-dash-size * 2)
+        );
       }
     }
 
@@ -68,6 +85,13 @@
     white-space: nowrap;
     max-width: 48%;
     display: flex;
+
+    &[data-type="min"] {
+      margin-inline-end: auto;
+    }
+    &[data-type="max"] {
+      margin-inline-start: auto;
+    }
   }
 
   .esri-scale-range-slider__scale-menu-toggle--active {

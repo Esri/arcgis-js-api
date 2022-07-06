@@ -43,6 +43,9 @@ $border-color: rgba($interactive-font-color, 0.3) !default;
 $border-color--subtle: rgba($interactive-font-color, 0.15) !default;
 $border-color--contrast: rgba($interactive-font-color, 0.4) !default;
 
+$connection-connected: $Brand_Green_200;
+$connection-disconnected: $Brand_Orange_100;
+
 // Error
 $border-color--error: $Calcite_Vibrant_Red_200 !default;
 $font-color--error: $Calcite_Red_a250 !default;

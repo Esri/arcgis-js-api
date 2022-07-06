@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["require","exports","../../chunks/_rollupPluginBabelHelpers","../../core/promiseUtils","../../support/requestImageUtils"],(function(e,r,t,o,l){"use strict";const s=e=>Object.freeze(Object.defineProperty({__proto__:null,default:e},Symbol.toStringTag,{value:"Module"}));function i(e){return n.apply(this,arguments)}function n(){return(n=t._asyncToGenerator((function*(r){const t=new Promise(((r,t)=>e(["./mask-svg"],(e=>r(s(e))),t))),i=new Promise(((r,t)=>e(["./overlay-svg"],(e=>r(s(e))),t))),n=l.requestImage((yield t).default,{signal:r}),u=l.requestImage((yield i).default,{signal:r}),a={mask:yield n,overlay:yield u};return o.throwIfAborted(r),a}))).apply(this,arguments)}r.loadMagnifierResources=i,Object.defineProperties(r,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{throwIfAborted as a}from"../../core/promiseUtils.js";import{requestImage as t}from"../../support/requestImageUtils.js";async function s(s){const r=import("./mask-svg.js"),i=import("./overlay-svg.js"),o=t((await r).default,{signal:s}),e=t((await i).default,{signal:s}),m={mask:await o,overlay:await e};return a(s),m}export{s as loadMagnifierResources};

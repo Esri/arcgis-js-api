@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../core/maybe"],(function(e,n){"use strict";function t(e){return e&&"function"==typeof e.highlight}function c(e){return e&&"function"==typeof e.maskOccludee}function u(e,t,c){return n.isNone(e)||e>c&&(0===t||e<t)}function i(e,n){return e>0||n>0}function o(e){var n,t;const c=e.effectiveScaleRange;return{minScale:null!=(n=null==c?void 0:c.minScale)?n:0,maxScale:null!=(t=null==c?void 0:c.maxScale)?t:0}}e.extractSafeScaleBounds=o,e.highlightsSupported=t,e.isScaleRangeActive=i,e.occludeesSupported=c,e.scaleBoundsPredicate=u,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{isNone as n}from"../../core/maybe.js";function e(n){return n&&"function"==typeof n.highlight}function t(n){return n&&"function"==typeof n.maskOccludee}function c(e,t,c){return n(e)||e>c&&(0===t||e<t)}function o(n,e){return n>0||e>0}function r(n){const e=n.effectiveScaleRange;return{minScale:e?.minScale??0,maxScale:e?.maxScale??0}}export{r as extractSafeScaleBounds,e as highlightsSupported,o as isScaleRangeActive,t as occludeesSupported,c as scaleBoundsPredicate};

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../SnappingConstraint","./FeatureSnappingCandidate","../hints/PointSnappingHint"],(function(n,t,e,i,a){"use strict";let r=function(n){function i(t){return n.call(this,{...t,constraint:new e.PointConstraint(t.coordinateHelper,t.targetPoint)})||this}return t._inheritsLoose(i,n),t._createClass(i,[{key:"hints",get:function(){return[new a.PointSnappingHint(this.targetPoint)]}}]),i}(i.FeatureSnappingCandidate);n.VertexSnappingCandidate=r,Object.defineProperties(n,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{PointConstraint as t}from"../SnappingConstraint.js";import{FeatureSnappingCandidate as n}from"./FeatureSnappingCandidate.js";import{PointSnappingHint as i}from"../hints/PointSnappingHint.js";class r extends n{constructor(n){super({...n,constraint:new t(n.coordinateHelper,n.targetPoint)})}get hints(){return[new i(this.targetPoint,this.elevationInfo)]}}export{r as VertexSnappingCandidate};

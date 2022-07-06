@@ -4,7 +4,7 @@
 
   .esri-feature-form {
     background-color: $panel-background-color;
-    padding: $cap-spacing $side-spacing;
+    padding: var(--esri-widget-padding);
   }
 
   .esri-feature-form__form {

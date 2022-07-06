@@ -15,40 +15,13 @@
     &__time-range {
       display: flex;
       flex-direction: column;
-      font-size: $font-size--tiny-daylight;
+      font-size: $font-size--tiny-time-slider;
 
-      .esri-slider {
-        // Fit slider content since default API slider doesn't do it for us.
+      @include timeSlider();
+
+      .esri-slider.esri-slider--horizontal {
         padding-top: $slider-thumb-size;
-        padding-bottom: 48px;
-        padding-inline: $side-spacing;
-
-        .esri-slider__label,
-        .esri-slider__tick-label {
-          font-size: $font-size--tiny-daylight;
-        }
-
-        .esri-slider__tick {
-          width: 2px;
-        }
-
-        .esri-slider__segment--interactive {
-          background: $button-color;
-        }
-      }
-
-      .esri-slider .esri-slider__tick-label &__ampm {
-        font-size: $font-size--tinier-daylight;
-      }
-
-      .esri-slider--horizontal &__primary-tick.esri-slider__tick {
-        height: 8px;
-      }
-
-      .esri-slider--horizontal &__primary-tick-label {
-        line-height: 1;
-        margin-top: 14px;
-        text-align: center;
+        padding-bottom: 42px;
       }
 
       &__indicator {
@@ -101,7 +74,7 @@
     }
 
     &__date-picker-container:not(:first-of-type) {
-      margin-top: $cap-spacing--half;
+      margin-top: $cap-spacing;
     }
 
     &__date-picker-container .esri-date-picker {

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../FunctionWrapper","../ImmutableArray","../../chunks/languageUtils","../../core/promiseUtils","../../chunks/array"],(function(e,r,t,i,n,s){"use strict";e.registerFunctions=s.registerFunctions,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import"../FunctionWrapper.js";import"../ImmutableArray.js";import"../../chunks/languageUtils.js";import"../../core/promiseUtils.js";export{r as registerFunctions}from"../../chunks/array.js";

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","./AlgorithmicColorRamp","./ColorRamp","./MultipartColorRamp"],(function(t,e,o,r){"use strict";const l={key:"type",base:o,typeMap:{algorithmic:e,multipart:r}};function i(t){return t&&t.type?"algorithmic"===t.type?e.fromJSON(t):"multipart"===t.type?r.fromJSON(t):null:null}t.fromJSON=i,t.types=l,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import t from"./AlgorithmicColorRamp.js";import o from"./ColorRamp.js";import r from"./MultipartColorRamp.js";const m={key:"type",base:o,typeMap:{algorithmic:t,multipart:r}};function p(o){return o&&o.type?"algorithmic"===o.type?t.fromJSON(o):"multipart"===o.type?r.fromJSON(o):null:null}export{p as fromJSON,m as types};

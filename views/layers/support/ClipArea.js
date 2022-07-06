@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/JSONSupport","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/arrayUtils","../../../core/has","../../../core/accessorSupport/set","../../../core/accessorSupport/decorators/subclass"],(function(r,e,s,o,c,t,u,p,i){"use strict";let n=function(e){function s(){return e.apply(this,arguments)||this}return r._inheritsLoose(s,e),s}(s.JSONSupport);n=e.__decorate([i.subclass("esri.views.layers.support.ClipArea")],n);return n}));
+import{_ as r}from"../../../chunks/tslib.es6.js";import{JSONSupport as s}from"../../../core/JSONSupport.js";import"../../../core/Logger.js";import"../../../core/accessorSupport/ensureType.js";import"../../../core/arrayUtils.js";import"../../../core/has.js";import"../../../core/accessorSupport/set.js";import{subclass as o}from"../../../core/accessorSupport/decorators/subclass.js";let e=class extends s{};e=r([o("esri.views.layers.support.ClipArea")],e);const t=e;export{t as default};

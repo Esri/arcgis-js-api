@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../ScreenSpacePass","../../shaderModules/interfaces","../../shaderModules/ShaderBuilder","../../../../../../chunks/TextureOnly.glsl"],(function(e,s,l,u,d){"use strict";e.build=d.build,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import"../ScreenSpacePass.js";import"../../shaderModules/Float4Uniform.js";import"../../shaderModules/interfaces.js";import"../../shaderModules/ShaderBuilder.js";import"../../shaderModules/Texture2DUniform.js";export{b as build}from"../../../../../../chunks/TextureOnly.glsl.js";

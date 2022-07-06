@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/arrayUtils","../../../core/has","../../../core/accessorSupport/set","../../../core/accessorSupport/decorators/subclass","./DynamicLayerView3D"],(function(e,r,s,c,o,a,t,i,n){"use strict";let u=function(r){function s(){var e;return(e=r.apply(this,arguments)||this).type="base-dynamic-3d",e}return e._inheritsLoose(s,r),s}(n);u=r.__decorate([i.subclass("esri.views.3d.layers.BaseDynamicLayerView3D")],u);return u}));
+import{_ as s}from"../../../chunks/tslib.es6.js";import"../../../core/Logger.js";import"../../../core/accessorSupport/ensureType.js";import"../../../core/arrayUtils.js";import"../../../core/has.js";import"../../../core/accessorSupport/set.js";import{subclass as r}from"../../../core/accessorSupport/decorators/subclass.js";import e from"./DynamicLayerView3D.js";let o=class extends e{constructor(){super(...arguments),this.type="base-dynamic-3d"}};o=s([r("esri.views.3d.layers.BaseDynamicLayerView3D")],o);const t=o;export{t as default};

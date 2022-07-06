@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/arrayUtils","../../../core/has","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/subclass","../DefaultUI"],(function(e,r,o,s,t,c,u,n){"use strict";let a=function(r){function o(e){var o;return(o=r.call(this,e)||this).components=["attribution","zoom"],o}return e._inheritsLoose(o,r),o}(n);r.__decorate([o.property()],a.prototype,"components",void 0),a=r.__decorate([u.subclass("esri.views.ui.2d.DefaultUI2D")],a);return a}));
+import{_ as o}from"../../../chunks/tslib.es6.js";import{property as r}from"../../../core/accessorSupport/decorators/property.js";import"../../../core/arrayUtils.js";import"../../../core/has.js";import"../../../core/accessorSupport/ensureType.js";import{subclass as s}from"../../../core/accessorSupport/decorators/subclass.js";import t from"../DefaultUI.js";let e=class extends t{constructor(o){super(o),this.components=["attribution","zoom"]}};o([r()],e.prototype,"components",void 0),e=o([s("esri.views.ui.2d.DefaultUI2D")],e);const p=e;export{p as default};

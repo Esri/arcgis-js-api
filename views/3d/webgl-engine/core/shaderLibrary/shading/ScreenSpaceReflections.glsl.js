@@ -1,9 +1,17 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../output/ReadLinearDepth.glsl","./Reprojection.glsl","../../shaderModules/interfaces"],(function(e,t,o,r){"use strict";function a(e,a){e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("depthMapView","sampler2D"),e.fragment.uniforms.add("view","mat4"),e.fragment.uniforms.add("invResolutionHeight","float"),e.fragment.include(t.ReadLinearDepth),e.include(o.Reprojection),e.fragment.code.add(r.glsl`
-  const int maxSteps = ${a.highStepCount?"150;":"75;"}
+import{c as e}from"../../../../../../chunks/mat4f64.js";import{ReadLinearDepth as o}from"../output/ReadLinearDepth.glsl.js";import{Float2PassUniform as t}from"../../shaderModules/Float2PassUniform.js";import{FloatPassUniform as r}from"../../shaderModules/FloatPassUniform.js";import{glsl as a}from"../../shaderModules/interfaces.js";import{Matrix4PassUniform as i}from"../../shaderModules/Matrix4PassUniform.js";import{Texture2DPassUniform as d}from"../../shaderModules/Texture2DPassUniform.js";function n(e,n){const c=e.fragment.uniforms;c.add(new t("nearFar",((e,o)=>o.camera.nearFar))),c.add(new d("depthMap",((e,o)=>o.linearDepthTexture))),c.add(new i("view",((e,o)=>o.ssr.camera.viewMatrix))),c.add(new i("proj",((e,o)=>o.ssr.camera.projectionMatrix))),c.add(new r("invResolutionHeight",((e,o)=>1/o.ssr.camera.height))),c.add(new d("lastFrameColorMap",((e,o)=>o.ssr.lastFrameColorTexture))),c.add(new i("reprojectionMatrix",((e,o)=>o.ssr.reprojectionMatrix))),e.fragment.include(o),e.fragment.code.add(a`
+  vec2 reprojectionCoordinate(vec3 projectionCoordinate)
+  {
+    vec4 zw = proj * vec4(0.0, 0.0, -projectionCoordinate.z, 1.0);
+    vec4 reprojectedCoord = reprojectionMatrix * vec4(zw.w * (projectionCoordinate.xy * 2.0 - 1.0), zw.z, zw.w);
+    reprojectedCoord.xy /= reprojectedCoord.w;
+    return reprojectedCoord.xy * 0.5 + 0.5;
+  }
+
+  const int maxSteps = ${n.highStepCount?"150;":"75;"}
 
   vec4 applyProjectionMat(mat4 projectionMat, vec3 x)
   {
@@ -68,7 +76,7 @@ define(["exports","../output/ReadLinearDepth.glsl","./Reprojection.glsl","../../
 
     for(int i = 0; i < maxSteps-1; i++)
     {
-      depth = -linearDepthFromTexture(depthMapView, P, nearFar); // get linear depth from the depth buffer
+      depth = -linearDepthFromTexture(depthMap, P, nearFar); // get linear depth from the depth buffer
 
       // estimate depth of the marching ray
       rayStartZ = prevEstimateZ;
@@ -90,7 +98,7 @@ define(["exports","../output/ReadLinearDepth.glsl","./Reprojection.glsl","../../
 
       if((dDepth) < 0.025/abs(k) + abs(rayDiffZ) && dDepth > 0.0 && depth > nearFar[0] && depth < nearFar[1] && abs(P.y - projectedCoordStart.y) > invResolutionHeight)
       {
-          return vec3(P, depth);
+        return vec3(P, depth);
       }
 
       // continue with ray marching
@@ -101,4 +109,4 @@ define(["exports","../output/ReadLinearDepth.glsl","./Reprojection.glsl","../../
     }
     return vec3(P, 0.0);
   }
-  `)}function i(e,t){t.ssrEnabled&&(e.bindTexture(t.linearDepthTexture,"depthMapView"),e.setUniform2fv("nearFar",t.camera.nearFar),e.setUniformMatrix4fv("view",t.camera.viewMatrix),e.setUniform1f("invResolutionHeight",1/t.camera.height),o.bindReprojectionUniforms(e,t))}e.ScreenSpaceReflections=a,e.bindSSRUniforms=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+  `)}class c{constructor(){this.reprojectionMatrix=e()}}export{c as SSRUniforms,n as ScreenSpaceReflections};

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";var r,t;e.RasterColorizerType=void 0,(r=e.RasterColorizerType||(e.RasterColorizerType={}))[r.Stretch=0]="Stretch",r[r.Lut=1]="Lut",r[r.Hillshade=2]="Hillshade",r[r.COUNT=3]="COUNT",e.RasterColorizerStretchType=void 0,(t=e.RasterColorizerStretchType||(e.RasterColorizerStretchType={}))[t.Noop=0]="Noop",t[t.PerBand=1]="PerBand",t[t.COUNT=2]="COUNT",Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+var t,e;!function(t){t[t.Stretch=0]="Stretch",t[t.Lut=1]="Lut",t[t.Hillshade=2]="Hillshade",t[t.COUNT=3]="COUNT"}(t||(t={})),function(t){t[t.Noop=0]="Noop",t[t.PerBand=1]="PerBand",t[t.COUNT=2]="COUNT"}(e||(e={}));export{e as RasterColorizerStretchType,t as RasterColorizerType};

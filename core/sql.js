@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["require","exports","../chunks/_rollupPluginBabelHelpers"],(function(e,r,n){"use strict";function t(e,r){return u.apply(this,arguments)}function u(){return(u=n._asyncToGenerator((function*(r,n){const{WhereClause:t}=yield new Promise(((r,n)=>e(["./sql/WhereClause"],r,n)));return t.create(r,n)}))).apply(this,arguments)}r.parseWhereClause=t,Object.defineProperties(r,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{isSome as e}from"./maybe.js";async function r(e,r){const{WhereClause:t}=await import("./sql/WhereClause.js");return t.create(e,r)}function t(r,t){return e(r)?e(t)?`(${r}) AND (${t})`:r:t}export{r as parseWhereClause,t as sqlAnd};

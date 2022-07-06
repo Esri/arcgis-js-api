@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../chunks/vec3","../../../../../chunks/vec3f32","../../../../../chunks/vec3f64"],(function(t,e,n,s,i){"use strict";let o=function(){function t(t){this._low=s.create(),this._high=s.create(),t&&this.set(t)}var i=t.prototype;return i.set=function(t){const e=this._low,s=this._high;n.copy(e,t),n.sub(s,t,e)},i.setElements=function(t,e,s){n.set(c,t,e,s),this.set(c)},i.get=function(t){return n.add(t,this._low,this._high)},i.getLowScaled=function(t){return n.scale(t,this._low,1)},e._createClass(t,[{key:"low",get:function(){return this._low}},{key:"high",get:function(){return this._high}}]),t}();const c=i.create();t.TwoVectorPosition=o,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{c as s,v as t,s as h,a as e,g as i}from"../../../../../chunks/vec3.js";import{c as o}from"../../../../../chunks/vec3f32.js";import{c as r}from"../../../../../chunks/vec3f64.js";class c{constructor(s){this._low=o(),this._high=o(),s&&this.set(s)}get low(){return this._low}get high(){return this._high}set(h){const e=this._low,i=this._high;s(e,h),t(i,h,e)}setElements(s,t,e){h(n,s,t,e),this.set(n)}get(s){return e(s,this._low,this._high)}getLowScaled(s){return i(s,this._low,1)}}const n=r();export{c as TwoVectorPosition};

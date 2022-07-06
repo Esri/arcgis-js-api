@@ -1,14 +1,24 @@
 @mixin weather() {
   .esri-weather {
     position: relative;
-    overflow: hidden;
-    padding: $cap-spacing $side-spacing;
+    padding: var(--esri-widget-padding);
     width: fit-content;
 
     &__content {
       display: flex;
       flex-direction: column;
       gap: $cap-spacing;
+      width: min-content;
+
+      // When there is an error we take up horizontal space, but not any vertical
+      // space. This way the widget maintains a constant width without us having
+      // to specify a fixed value.
+      &--has-error {
+        pointer-events: none;
+        visibility: hidden;
+        overflow: hidden;
+        height: 0;
+      }
     }
 
     &__selector {
@@ -16,6 +26,12 @@
       align-items: center;
       flex-direction: row;
       gap: $side-spacing--half;
+    }
+
+    &__options {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing;
     }
 
     &__warning {
@@ -30,8 +46,10 @@
       }
     }
 
-    &__coverage-slider calcite-slider {
-      margin: -7px; // Align slider to the buttons, header, etc
+    // Align calcite slider to the buttons, header, etc
+    &__labeled-slider calcite-slider {
+      margin: 0 -7px;
+      margin-bottom: -14px;
     }
   }
 }

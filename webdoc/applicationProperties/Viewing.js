@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass","./Search"],(function(e,r,o,t,c,s,n,p){"use strict";var u;let a=u=function(r){function o(e){var o;return(o=r.call(this,e)||this).search=null,o}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new u(t.clone({search:this.search}))},o}(o.JSONSupport);r.__decorate([c.property({type:p,json:{write:!0}})],a.prototype,"search",void 0),a=u=r.__decorate([n.subclass("esri.webdoc.applicationProperties.Viewing")],a);return a}));
+import{_ as r}from"../../chunks/tslib.es6.js";import{JSONSupport as o}from"../../core/JSONSupport.js";import{clone as s}from"../../core/lang.js";import{property as e}from"../../core/accessorSupport/decorators/property.js";import"../../core/accessorSupport/ensureType.js";import{subclass as t}from"../../core/accessorSupport/decorators/subclass.js";import c from"./Search.js";var p;let a=p=class extends o{constructor(r){super(r),this.search=null}clone(){return new p(s({search:this.search}))}};r([e({type:c,json:{write:!0}})],a.prototype,"search",void 0),a=p=r([t("esri.webdoc.applicationProperties.Viewing")],a);const i=a;export{i as default};

@@ -1,9 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(t,e,o,i){"use strict";var a;function r(a){const r=new o.ShaderBuilder;return r.attributes.add(i.VertexAttribute.POSITION,"vec3"),r.attributes.add(i.VertexAttribute.INSTANCEFEATUREATTRIBUTE,"float"),r.vertex.uniforms.add("cameraPosition","vec3").add("offset","vec3").add("width","float").add("proj","mat4").add("view","mat4").add("time","float"),r.varyings.add("vUv","vec2"),r.vertex.code.add(e.glsl`
-    //https://www.shadertoy.com/view/4djSRW
+import{PrecipitationType as e}from"../views/3d/environment/PrecipitationTechniqueConfiguration.js";import{Float3Uniform as t}from"../views/3d/webgl-engine/core/shaderModules/Float3Uniform.js";import{FloatUniform as o}from"../views/3d/webgl-engine/core/shaderModules/FloatUniform.js";import{glsl as i}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{Matrix4PassUniform as r}from"../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform.js";import{Matrix4Uniform as a}from"../views/3d/webgl-engine/core/shaderModules/Matrix4Uniform.js";import{ShaderBuilder as n}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{VertexAttribute as s}from"../views/3d/webgl-engine/lib/VertexAttribute.js";function d(d){const c=new n;return c.attributes.add(s.POSITION,"vec3"),c.attributes.add(s.INSTANCEFEATUREATTRIBUTE,"float"),c.vertex.uniforms.add(new t("cameraPosition")),c.vertex.uniforms.add(new t("offset")),c.vertex.uniforms.add(new o("width")),c.vertex.uniforms.add(new r("proj",((e,t)=>t.camera.projectionMatrix))),c.vertex.uniforms.add(new a("view")),c.vertex.uniforms.add(new o("time")),c.varyings.add("vUv","vec2"),c.vertex.code.add(i`
     vec3 hash31(float p){
       vec3 p3 = fract(vec3(p) * vec3(0.1031, 0.1030, 0.0973));
       p3 += dot(p3, p3.yzx + 33.33);
@@ -49,8 +48,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
 
       // Rain particles fall straight down and are randomly oriented
       // Snow particles have random sinusoid trajectories and are rotated to face the camera
-      ${a.type===t.PrecipitationType.RAIN?e.glsl`
-
+      ${d.type===e.Rain?i`
             // Random rotation for particle
             vec3 rotationAxis = up;
             vec4 quat = vec4(rotationAxis * sin(angle), cos(angle));
@@ -64,7 +62,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
 
             vec4 pos = mat4(mat3(view)) * vec4(transformedPos + (mod(width * animatedPos - offset, width) - 0.5 * width), 1.0);
             gl_Position = proj * pos;
-      `:e.glsl`
+      `:i`
             vec3 rotationAxis = direction;
             vec4 quat = vec4(rotationAxis * sin(angle), cos(angle));
 
@@ -75,7 +73,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
             gl_Position = proj * (0.5 * vec4(position.xzy, 0.0) + pos);
       `}
     }
-  `),r.fragment.uniforms.add("opacity","float").add("particleColor","vec3"),r.fragment.code.add(e.glsl`
+  `),c.fragment.uniforms.add(new o("opacity")),c.fragment.uniforms.add(new t("particleColor")),c.fragment.code.add(i`
     void main() {
 
       // Cut off corners of the triangle
@@ -85,7 +83,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
 
       float d = length(vUv - vec2(0.5));
 
-      ${a.type===t.PrecipitationType.RAIN?e.glsl`d = 0.5 * smoothstep(0.5, 0.0, d);`:e.glsl`d = smoothstep(0.5, 0.1, d);`}
+      ${d.type===e.Rain?i`d = 0.35 * smoothstep(0.5, 0.0, d);`:i`d = smoothstep(0.5, 0.1, d);`}
       gl_FragColor = opacity * vec4(particleColor * d, d);
     }
-  `),r}t.PrecipitationType=void 0,(a=t.PrecipitationType||(t.PrecipitationType={}))[a.RAIN=0]="RAIN",a[a.SNOW=1]="SNOW";const n=Object.freeze(Object.defineProperty({__proto__:null,get PrecipitationType(){return t.PrecipitationType},build:r},Symbol.toStringTag,{value:"Module"}));t.PrecipitationShader=n,t.build=r}));
+  `),c}const c=Object.freeze(Object.defineProperty({__proto__:null,build:d},Symbol.toStringTag,{value:"Module"}));export{c as P,d as b};

@@ -575,3 +575,91 @@
     opacity: $opacity--sortable;
   }
 }
+
+@mixin timeSlider() {
+  $tick-width: 1px;
+  $focus-ring-width: 2px;
+  $thumb-size: 16px;
+  $tick-padding: 3px;
+  $tick-height: 3px;
+  $tick-height-primary: 6px;
+
+  .esri-slider.esri-slider--horizontal {
+    width: inherit;
+    flex-grow: 1;
+    padding: 30px 13px 28px 13px;
+
+    .esri-widget__anchor,
+    .esri-slider__anchor {
+      outline: none !important;
+      color: inherit;
+    }
+
+    .esri-slider__anchor:focus .esri-slider__thumb {
+      outline: solid $focus-ring-width $border-color--active;
+      outline-offset: $focus-ring-width;
+      overflow: visible;
+    }
+
+    .esri-slider__segment.esri-slider__segment-0 {
+      background-color: unset; // Reset blue first segment
+    }
+
+    .esri-slider__thumb {
+      width: $thumb-size;
+      height: $thumb-size;
+      left: -$thumb-size * 0.5;
+      top: -$thumb-size * 0.5;
+    }
+
+    .esri-slider__tick {
+      width: $tick-width + ($tick-padding * 2);
+      height: 20px;
+      padding: $tick-padding; // Make ticks slightly easier to click on
+      margin: -$tick-padding;
+      background: none;
+
+      &:after {
+        content: "";
+        display: block;
+        width: $tick-width;
+        background: #6e6e6e66;
+      }
+
+      &.secondary-tick:after {
+        height: $tick-height;
+      }
+
+      &.primary-tick {
+        &:after {
+          height: $tick-height-primary;
+        }
+
+        .primary-tick__ampm {
+          font-size: $font-size--tiny;
+        }
+      }
+    }
+
+    .esri-slider__ticks {
+      margin: 0;
+      margin-top: $cap-spacing--half;
+      width: calc(100% - #{$tick-width});
+    }
+
+    .esri-slider__tick-label {
+      font-size: $font-size--tiny-time-slider;
+      line-height: normal;
+      margin-top: $cap-spacing;
+      text-align: center;
+    }
+
+    .esri-slider__label {
+      font-size: $font-size--small;
+    }
+
+    .esri-slider__label-input {
+      font-size: $font-size--tiny-time-slider;
+    }
+  }
+}

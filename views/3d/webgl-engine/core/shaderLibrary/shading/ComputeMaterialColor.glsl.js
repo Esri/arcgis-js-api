@@ -1,18 +1,18 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../attributes/VertexColor.glsl","../util/MixExternalColor.glsl","../../shaderModules/interfaces"],(function(e,o,r,l){"use strict";function t(e,t){e.include(o.VertexColor,t),e.fragment.include(r.MixExternalColor);const a=e.fragment;a.uniforms.add("baseColor","vec4"),a.uniforms.add("objectOpacity","float"),t.attributeColor?a.code.add(l.glsl`vec3 _baseColor() {
+import{VertexColor as o}from"../attributes/VertexColor.glsl.js";import{MixExternalColor as r}from"../util/MixExternalColor.glsl.js";import{Float4DrawUniform as e}from"../../shaderModules/Float4DrawUniform.js";import{FloatDrawUniform as a}from"../../shaderModules/FloatDrawUniform.js";import{glsl as t}from"../../shaderModules/interfaces.js";function l(l,s){l.include(o,s),l.fragment.include(r);const i=l.fragment;i.uniforms.add(new e("baseColor",(o=>o.baseColor))),i.uniforms.add(new a("objectOpacity",(o=>o.objectOpacity))),s.hasVertexColors?i.code.add(t`vec3 _baseColor() {
 return baseColor.rgb * vColor.rgb;
 }
 float _baseOpacity() {
 return baseColor.a * vColor.a;
-}`):a.code.add(l.glsl`vec3 _baseColor() {
+}`):i.code.add(t`vec3 _baseColor() {
 return baseColor.rgb;
 }
 float _baseOpacity() {
 return baseColor.a;
-}`),a.code.add(l.glsl`vec4 computeMaterialColor(vec4 textureColor, vec4 externalColor, int externalColorMixMode) {
+}`),i.code.add(t`vec4 computeMaterialColor(vec4 textureColor, vec4 externalColor, int externalColorMixMode) {
 vec3 baseColor = _baseColor();
 float baseOpacity = _baseOpacity();
 vec3 color = mixExternalColor(
@@ -28,4 +28,4 @@ externalColor.a,
 externalColorMixMode
 );
 return vec4(color, opacity);
-}`)}e.ComputeMaterialColor=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}export{l as ComputeMaterialColor};

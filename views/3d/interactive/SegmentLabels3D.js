@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{_ as e}from"../../../chunks/tslib.es6.js";import{createScreenPointArray as r}from"../../../core/screenUtils.js";import"../../../core/Logger.js";import"../../../core/accessorSupport/ensureType.js";import"../../../core/arrayUtils.js";import"../../../core/has.js";import"../../../core/accessorSupport/set.js";import{subclass as t}from"../../../core/accessorSupport/decorators/subclass.js";import{c as s}from"../../../chunks/vec3f64.js";import{SegmentLabels as o}from"../../interactive/SegmentLabels.js";import{vectorToRender as c}from"../../interactive/support/viewUtils.js";let a=class extends o{getCameraOrExtent({view:e}){return e.state.camera}toScreenPointArray({view:e,elevationInfo:t,editGeometryOperations:s},o,a=r()){const{spatialReference:p}=s.data.coordinateHelper;return c(o,p,t,e,i),e.state.camera.projectToScreen(i,a),a}};a=e([t("esri.views.3d.interactive.SegmentLabels3D")],a);const i=s();export{a as SegmentLabels3D};

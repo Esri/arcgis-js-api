@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../request"],(function(e,n){"use strict";function o(e,o,t,r,s=null){if(null!==s)return s.getToken().then((s=>{if(e=e+="?token="+s,"get"===r.toLowerCase())return n(e,{responseType:"json",query:o});if(o)for(const n in o)e.indexOf("?")>-1?e+="&":e+="?",e+=encodeURIComponent(n)+"="+encodeURIComponent(o[n]);return n(e,{method:"post",query:t,responseType:"json"})}));if("get"===r.toLowerCase())return n(e,{responseType:"json",query:o});if(o)for(const n in o)e.indexOf("?")>-1?e+="&":e+="?",e+=encodeURIComponent(n)+"="+encodeURIComponent(o[n]);return n(e,{method:"post",responseType:"json",query:t})}e.serviceRequest=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import e from"../request.js";async function o(o,n,t,r,s=null){if(null!==s){if(o=o+="?token="+await s.getToken(),"get"===r.toLowerCase())return e(o,{responseType:"json",query:n});if(n)for(const e in n)o.includes("?")?o+="&":o+="?",o+=encodeURIComponent(e)+"="+encodeURIComponent(n[e]);return e(o,{method:"post",query:t,responseType:"json"})}if("get"===r.toLowerCase())return e(o,{responseType:"json",query:n});if(n)for(const e in n)o.includes("?")?o+="&":o+="?",o+=encodeURIComponent(e)+"="+encodeURIComponent(n[e]);return await e(o,{method:"post",responseType:"json",query:t})}export{o as serviceRequest};

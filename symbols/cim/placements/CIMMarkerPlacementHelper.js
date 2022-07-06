@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../CIMCursor","../CIMOperators"],(function(e,t,n){"use strict";let r=function(){function e(){}return e.getPlacement=function(e,r,o,u){const c=n.getPlacementOperator(r);if(!c)return null;const l=t.cloneAndDecodeGeometry(e);return c.execute(l,r,o,u)},e}();e.CIMMarkerPlacementHelper=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{cloneAndDecodeGeometry as r}from"../CIMCursor.js";import{getPlacementOperator as t}from"../CIMOperators.js";class e{static getPlacement(e,o,s,c){const n=t(o);if(!n)return null;const m=r(e);return n.execute(m,o,s,c)}}export{e as CIMMarkerPlacementHelper};

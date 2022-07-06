@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(o,e){"use strict";function t(o){o.code.add(e.glsl`const float MAX_RGBA_FLOAT =
+import{glsl as o}from"../../shaderModules/interfaces.js";function a(a){a.code.add(o`const float MAX_RGBA_FLOAT =
 255.0 / 256.0 +
 255.0 / 256.0 / 256.0 +
 255.0 / 256.0 / 256.0 / 256.0 +
@@ -22,4 +22,4 @@ const vec4 RGBA_2_FLOAT_FACTORS = vec4(
 );
 float rgba2float(vec4 rgba) {
 return dot(rgba, RGBA_2_FLOAT_FACTORS);
-}`)}o.RgbaFloatEncoding=t,Object.defineProperties(o,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}export{a as RgbaFloatEncoding};

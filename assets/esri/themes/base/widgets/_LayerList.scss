@@ -3,7 +3,7 @@
   .esri-layer-list {
     color: $font-color;
     background-color: $background-color--offset;
-    padding: $cap-spacing--half $side-spacing--half;
+    padding: calc(var(--esri-widget-padding-v) * 0.5) calc(var(--esri-widget-padding-h) * 0.5);
     overflow-y: auto;
     display: flex;
     flex-flow: column;
@@ -132,6 +132,30 @@
     overflow-wrap: break-word;
     transition: color 125ms ease-in-out;
   }
+
+  .esri-layer-list__connection-status {
+    box-sizing: border-box;
+    display: flex;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    margin-block: $cap-spacing--eighth;
+    margin-inline-start: $side-spacing--half;
+    margin-inline-end: $side-spacing--eighth;
+  }
+
+  .esri-layer-list--new-ui .esri-layer-list__connection-status {
+    margin-inline-end: $side-spacing--half;
+  }
+
+  .esri-layer-list__connection-status--disconnected {
+    border: 1px solid $connection-disconnected;
+  }
+
+  .esri-layer-list__connection-status--connected {
+    background-color: $connection-connected;
+  }
+
   .esri-layer-list__item-message {
     display: flex;
     align-items: center;

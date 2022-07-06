@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptions","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,i,t,o,a,r,n,l){"use strict";function d(e){const d=new n.ShaderBuilder,c=e.output===i.ShaderOutput.Color,s=e.output===i.ShaderOutput.Depth,p=e.output===i.ShaderOutput.Highlight;return d.extensions.add("GL_OES_standard_derivatives"),d.include(t.Slice,e),d.attributes.add(l.VertexAttribute.POSITION,"vec3"),d.attributes.add(l.VertexAttribute.COLOR,"vec3"),d.vertex.uniforms.add("modelView","mat4").add("proj","mat4").add("screenMinMaxSize","vec2").add("pointScale","vec2").add("clipMin","vec3").add("clipMax","vec3"),s?(d.vertex.uniforms.add("nearFar","vec2"),d.varyings.add("depth","float")):e.output!==i.ShaderOutput.Highlight&&d.varyings.add("vColor","vec3"),d.vertex.code.add(r.glsl`
+import{ShaderOutput as e}from"../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptions.js";import{SliceDraw as i}from"../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl.js";import{OutputHighlight as o}from"../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl.js";import{RgbaFloatEncoding as r}from"../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl.js";import{Float2PassUniform as t}from"../views/3d/webgl-engine/core/shaderModules/Float2PassUniform.js";import{Float2Uniform as n}from"../views/3d/webgl-engine/core/shaderModules/Float2Uniform.js";import{Float3Uniform as a}from"../views/3d/webgl-engine/core/shaderModules/Float3Uniform.js";import{glsl as s}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{Matrix4PassUniform as d}from"../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform.js";import{Matrix4Uniform as l}from"../views/3d/webgl-engine/core/shaderModules/Matrix4Uniform.js";import{ShaderBuilder as c}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{VertexAttribute as p}from"../views/3d/webgl-engine/lib/VertexAttribute.js";function m(m){const f=new c,g=m.output===e.Color,u=m.output===e.Depth,v=m.output===e.Highlight,{vertex:w,fragment:S}=f;return f.extensions.add("GL_OES_standard_derivatives"),f.include(i,m),f.attributes.add(p.POSITION,"vec3"),f.attributes.add(p.COLOR,"vec3"),w.uniforms.add(new l("modelView")),w.uniforms.add(new d("proj",((e,i)=>i.camera.projectionMatrix))),w.uniforms.add(new n("screenMinMaxSize")),w.uniforms.add(new n("pointScale")),w.uniforms.add(new a("clipMin")),w.uniforms.add(new a("clipMax")),u?(w.uniforms.add(new t("nearFar",((e,i)=>i.camera.nearFar))),f.varyings.add("depth","float")):m.output!==e.Highlight&&f.varyings.add("vColor","vec3"),w.code.add(s`
     void main(void) {
       // Move clipped points outside of clipspace
       if (position.x < clipMin.x || position.y < clipMin.y || position.z < clipMin.z ||
@@ -23,8 +23,8 @@ define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptio
 
       float pointSize = pointScale.x;
       vec4 position = proj * camera;
-     ${e.drawScreenSize?r.glsl`
-      float clampedScreenSize = pointSize;`:r.glsl`
+     ${m.drawScreenSize?s`
+      float clampedScreenSize = pointSize;`:s`
       float pointRadius = 0.5 * pointSize;
       vec4 cameraOffset = camera + vec4(0.0, pointRadius, 0.0, 0.0);
       vec4 positionOffset = proj * cameraOffset;
@@ -42,10 +42,10 @@ define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptio
      gl_PointSize = clampedScreenSize;
      gl_Position = position;
 
-     ${s?r.glsl`depth = (-camera.z - nearFar[0]) / (nearFar[1] - nearFar[0]);`:""}
-     ${c?r.glsl`vColor = color;`:""}
+     ${u?s`depth = (-camera.z - nearFar[0]) / (nearFar[1] - nearFar[0]);`:""}
+     ${g?s`vColor = color;`:""}
     }
-  `),d.fragment.include(a.RgbaFloatEncoding,e),p&&d.include(o.OutputHighlight),d.fragment.code.add(r.glsl`
+  `),S.include(r,m),v&&f.include(o),S.code.add(s`
     void main(void) {
       vec2 vOffset = gl_PointCoord - vec2(0.5, 0.5);
       float r2 = dot(vOffset, vOffset);
@@ -53,8 +53,8 @@ define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptio
       if (r2 > 0.25) {
         discard;
       }
-      ${s?r.glsl`gl_FragColor = float2rgba(depth);`:""}
-      ${p?r.glsl`outputHighlight();`:""}
-      ${c?r.glsl`gl_FragColor = vec4(vColor, 1.0);`:""}
+      ${u?s`gl_FragColor = float2rgba(depth);`:""}
+      ${v?s`outputHighlight();`:""}
+      ${g?s`gl_FragColor = vec4(vColor, 1.0);`:""}
     }
-  `),d}const c=Object.freeze(Object.defineProperty({__proto__:null,build:d},Symbol.toStringTag,{value:"Module"}));e.PointRendererShader=c,e.build=d}));
+  `),f}const f=Object.freeze(Object.defineProperty({__proto__:null,build:m},Symbol.toStringTag,{value:"Module"}));export{f as P,m as b};

@@ -1,16 +1,16 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,t,r,d){"use strict";function o(){const e=new r.ShaderBuilder;e.vertex.uniforms.add("proj","mat4").add("view","mat4").add("width","float"),e.attributes.add(d.VertexAttribute.POSITION,"vec3"),e.attributes.add(d.VertexAttribute.NORMAL,"vec3"),e.attributes.add(d.VertexAttribute.UV0,"vec2"),e.attributes.add(d.VertexAttribute.AUXPOS1,"float"),e.varyings.add("vtc","vec2"),e.varyings.add("vlength","float"),e.varyings.add("vradius","float"),e.vertex.code.add(t.glsl`void main(void) {
+import{addProjViewLocalOrigin as e}from"../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl.js";import{Float4PassUniform as o}from"../views/3d/webgl-engine/core/shaderModules/Float4PassUniform.js";import{FloatPassUniform as t}from"../views/3d/webgl-engine/core/shaderModules/FloatPassUniform.js";import{glsl as r}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{ShaderBuilder as i}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{VertexAttribute as d}from"../views/3d/webgl-engine/lib/VertexAttribute.js";function n(n){const s=new i;e(s,n),s.vertex.uniforms.add(new t("width",(e=>e.width))),s.attributes.add(d.POSITION,"vec3"),s.attributes.add(d.NORMAL,"vec3"),s.attributes.add(d.UV0,"vec2"),s.attributes.add(d.AUXPOS1,"float"),s.varyings.add("vtc","vec2"),s.varyings.add("vlength","float"),s.varyings.add("vradius","float"),s.vertex.code.add(r`void main(void) {
 vec3 bitangent = normal;
 vtc = uv0;
 vlength = auxpos1;
 vradius = 0.5 * width;
 vec4 pos = view * vec4(position + vradius * bitangent * uv0.y, 1.0);
 gl_Position = proj * pos;
-}`),e.fragment.uniforms.add("outlineSize","float").add("outlineColor","vec4").add("stripeLength","float").add("stripeEvenColor","vec4").add("stripeOddColor","vec4");const o=1/Math.sqrt(2);return e.fragment.code.add(t.glsl`
-    const float INV_SQRT2 = ${t.glsl.float(o)};
+}`),s.fragment.uniforms.add([new t("outlineSize",(e=>e.outlineSize)),new o("outlineColor",(e=>e.outlineColor)),new t("stripeLength",(e=>e.stripeLength)),new o("stripeEvenColor",(e=>e.stripeEvenColor)),new o("stripeOddColor",(e=>e.stripeOddColor))]);const a=1/Math.sqrt(2);return s.fragment.code.add(r`
+    const float INV_SQRT2 = ${r.float(a)};
 
     vec4 arrowColor(vec2 tc, float len) {
       float d = INV_SQRT2 * (tc.x - abs(tc.y));
@@ -34,4 +34,4 @@ gl_Position = proj * pos;
       }
       gl_FragColor = color;
     }
-  `),e}const i=Object.freeze(Object.defineProperty({__proto__:null,build:o},Symbol.toStringTag,{value:"Module"}));e.MeasurementArrowShader=i,e.build=o}));
+  `),s}const s=Object.freeze(Object.defineProperty({__proto__:null,build:n},Symbol.toStringTag,{value:"Module"}));export{s as M,n as b};

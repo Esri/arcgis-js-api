@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","./FoamRendering.glsl","../../shaderModules/interfaces"],(function(e,t,r){"use strict";function a(e){e.fragment.uniforms.add("texWaveNormal","sampler2D"),e.fragment.uniforms.add("texWavePerturbation","sampler2D"),e.fragment.uniforms.add("waveParams","vec4"),e.fragment.uniforms.add("waveDirection","vec2"),e.include(t.FoamIntensity),e.fragment.code.add(r.glsl`const vec2  FLOW_JUMP = vec2(6.0/25.0, 5.0/24.0);
+import{a as e}from"../../../../../../chunks/vec2.js";import{a as t}from"../../../../../../chunks/vec2f64.js";import{s as r}from"../../../../../../chunks/vec4.js";import{c as a}from"../../../../../../chunks/vec4f64.js";import{FoamIntensity as o}from"./FoamRendering.glsl.js";import{Float2PassUniform as m}from"../../shaderModules/Float2PassUniform.js";import{Float4PassUniform as s}from"../../shaderModules/Float4PassUniform.js";import{glsl as v}from"../../shaderModules/interfaces.js";import{Texture2DUniform as u}from"../../shaderModules/Texture2DUniform.js";function l(t){t.fragment.uniforms.add(new u("texWaveNormal")),t.fragment.uniforms.add(new u("texWavePerturbation")),t.fragment.uniforms.add([new s("waveParams",(e=>r(i,e.waveStrength,e.waveTextureRepeat,e.flowStrength,e.flowOffset))),new m("waveDirection",(t=>e(f,t.waveDirection[0]*t.waveVelocity,t.waveDirection[1]*t.waveVelocity)))]),t.include(o),t.fragment.code.add(v`const vec2  FLOW_JUMP = vec2(6.0/25.0, 5.0/24.0);
 vec2 textureDenormalized2D(sampler2D _tex, vec2 _uv) {
 return 2.0 * texture2D(_tex, _uv).rg - 1.0;
 }
@@ -51,4 +51,4 @@ float waveTextureRepeat = waveParams[1];
 vec3 normal = getWaveLayer(texWaveNormal, texWavePerturbation, _uv * waveTextureRepeat, waveDirection, _time);
 float foam  = normals2FoamIntensity(normal, waveParams[0]);
 return vec4(normal, foam);
-}`)}function o(e,t){e.setUniform4f("waveParams",t.waveStrength,t.waveTextureRepeat,t.flowStrength,t.flowOffset),e.setUniform2f("waveDirection",t.waveDirection[0]*t.waveVelocity,t.waveDirection[1]*t.waveVelocity)}e.WaterDistortion=a,e.bindWaterDistortionUniforms=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}const i=a(),f=t();export{l as WaterDistortion};

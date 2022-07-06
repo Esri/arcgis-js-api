@@ -91,7 +91,7 @@
 
   .esri-elevation-profile {
     position: relative;
-    padding: $cap-spacing $side-spacing;
+    padding: var(--esri-widget-padding);
 
     &.esri-component.esri-widget--panel {
       width: $width;

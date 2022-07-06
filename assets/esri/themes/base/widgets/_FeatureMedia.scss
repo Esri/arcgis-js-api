@@ -29,11 +29,9 @@
     background: transparent;
     border: none;
     color: $interactive-font-color;
-    display: flex;
-  }
-  .esri-feature-media__container .esri-feature-media__button {
     cursor: pointer;
-    color: $interactive-font-color--hover;
+    display: flex;
+    outline-offset: -2px;
   }
   .esri-feature-media__item {
     width: 100%;

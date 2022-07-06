@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{_ as t}from"../../../chunks/tslib.es6.js";import{zeroMeters as o}from"../../../core/quantityUtils.js";import{property as e}from"../../../core/accessorSupport/decorators/property.js";import{subclass as r}from"../../../core/accessorSupport/decorators/subclass.js";import{SketchTooltipInfo as s}from"./SketchTooltipInfo.js";let i=class extends s{constructor(t){super(t),this.type="extent-rotate",this.angle=0}};t([e()],i.prototype,"type",void 0),t([e()],i.prototype,"angle",void 0),i=t([r("esri.views.interactive.tooltip.ExtentRotateTooltipInfo")],i);let p=class extends s{constructor(t){super(t),this.type="extent-scale",this.xScale=0,this.yScale=0,this.xSize=o,this.ySize=o}};t([e()],p.prototype,"type",void 0),t([e()],p.prototype,"xScale",void 0),t([e()],p.prototype,"yScale",void 0),t([e()],p.prototype,"xSize",void 0),t([e()],p.prototype,"ySize",void 0),p=t([r("esri.views.interactive.tooltip.ExtentScaleTooltipInfo")],p);export{i as ExtentRotateTooltipInfo,p as ExtentScaleTooltipInfo};

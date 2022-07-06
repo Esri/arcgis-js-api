@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../../../../../core/maybe","../../../../../../symbols/cim/effects/CIMEffectHelper"],(function(e,t){"use strict";return function(){function f(){}var n=f.prototype;return n.bindFeature=function(e,t,f){},n.write=function(f,n,r,i){var c;if(e.isNone(this._effects)||0===(null==(c=this._effects)?void 0:c.length))return this._write(f,n,i);const o=t.CIMEffectHelper.executeEffects(this._effects,n.readLegacyGeometryForDisplay(),i.geometryEngine);let s=t.CIMEffectHelper.next(o);for(;s;)this._write(f,n,i,s),s=t.CIMEffectHelper.next(o)},n._write=function(e,t,f,n){},f}()}));
+import{isNone as e}from"../../../../../../core/maybe.js";import{CIMEffectHelper as t}from"../../../../../../symbols/cim/effects/CIMEffectHelper.js";class r{bindFeature(e,t,r){}write(r,s,f,i){if(e(this._effects)||0===this._effects?.length)return this._write(r,s,i);const c=t.executeEffects(this._effects,s.readLegacyGeometryForDisplay(),i.geometryEngine);let o=t.next(c);for(;o;)this._write(r,s,i,o),o=t.next(c)}_write(e,t,r,s){}}export{r as default};

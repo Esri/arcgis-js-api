@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","./sources/resolver"],(function(e,r){"use strict";const t={shaders:{vertexShader:r.resolveIncludes("fx/integrate.vert"),fragmentShader:r.resolveIncludes("fx/integrate.frag")},attributes:new Map([["a_position",0]])};e.integrateProgram=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import{resolveIncludes as e}from"./sources/resolver.js";const r={shaders:{vertexShader:e("fx/integrate.vert"),fragmentShader:e("fx/integrate.frag")},attributes:new Map([["a_position",0]])};export{r as integrateProgram};

@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/HUD.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassGeometryTest.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,i,o,t,r,l,n,a){"use strict";function d(e){const d=new n.ShaderBuilder;return d.include(o.AlignPixel),d.include(t.HUD,e),d.include(i.Slice,e),d.attributes.add(a.VertexAttribute.UV0,"vec2"),d.vertex.uniforms.add("lineSize","float").add("pixelToNDC","vec2").add("borderSize","float").add("screenOffset","vec2"),d.varyings.add("coverageSampling","vec4"),d.varyings.add("lineSizes","vec2"),e.multipassGeometryEnabled&&d.varyings.add("depth","float"),d.vertex.code.add(l.glsl`
+import{isSome as e}from"../core/maybe.js";import{a as i}from"./vec2.js";import{a as o}from"./vec2f64.js";import{Z as r}from"./vec4f64.js";import{SliceDraw as t}from"../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl.js";import{AlignPixel as a}from"../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl.js";import{HUD as l}from"../views/3d/webgl-engine/core/shaderLibrary/hud/HUD.glsl.js";import{multipassGeometryTest as n}from"../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassGeometryTest.glsl.js";import{addScreenSizePerspectiveAlignment as s}from"../views/3d/webgl-engine/core/shaderLibrary/util/ScreenSizePerspective.glsl.js";import{Float2PassUniform as d}from"../views/3d/webgl-engine/core/shaderModules/Float2PassUniform.js";import{Float4PassUniform as c}from"../views/3d/webgl-engine/core/shaderModules/Float4PassUniform.js";import{FloatPassUniform as f}from"../views/3d/webgl-engine/core/shaderModules/FloatPassUniform.js";import{glsl as p}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{ShaderBuilder as g}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{VertexAttribute as h}from"../views/3d/webgl-engine/lib/VertexAttribute.js";function S(o){const r=new g;r.include(a),r.include(l,o),r.include(t,o),r.attributes.add(h.UV0,"vec2");const{vertex:S,fragment:u}=r;return S.uniforms.add([new c("viewport",((e,i)=>i.camera.fullViewport)),new f("lineSize",((e,i)=>Math.ceil(e.size)*i.camera.pixelRatio)),new d("pixelToNDC",((e,o)=>i(m,2/o.camera.fullViewport[2],2/o.camera.fullViewport[3]))),new f("borderSize",((i,o)=>e(i.borderColor)?o.camera.pixelRatio:0)),new d("screenOffset",((e,o)=>i(m,e.screenOffset[0]*o.camera.pixelRatio,e.screenOffset[1]*o.camera.pixelRatio)))]),r.varyings.add("coverageSampling","vec4"),r.varyings.add("lineSizes","vec2"),o.hasMultipassGeometry&&r.varyings.add("depth","float"),o.hasScreenSizePerspective&&s(S),S.code.add(p`
     void main(void) {
       ProjectHUDAux projectAux;
       vec4 endPoint = projectPositionHUD(projectAux);
@@ -12,22 +12,22 @@ define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../v
         gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
         return;
       }
-    ${e.occlusionTestEnabled?l.glsl`
+    ${o.occlusionTestEnabled?p`
       if (!testVisibilityHUD(endPoint)) {
         gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
         return;
       }`:""}
 
-    ${e.screenSizePerspectiveEnabled?l.glsl`
+    ${o.hasScreenSizePerspective?p`
       vec4 perspectiveFactor = screenSizePerspectiveScaleFactor(projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspectiveAlignment);
       vec2 screenOffsetScaled = applyScreenSizePerspectiveScaleFactorVec2(screenOffset, perspectiveFactor);
-        `:l.glsl`
+        `:p`
       vec2 screenOffsetScaled = screenOffset;
         `}
       // Add view dependent polygon offset to get exact same original starting point. This is mostly
       // used to get the correct depth value
       vec3 posView = (view * vec4(position, 1.0)).xyz;
-      ${e.multipassGeometryEnabled?"depth = posView.z;":""}
+      ${o.hasMultipassGeometry?"depth = posView.z;":""}
 
       applyHUDViewDependentPolygonOffset(auxpos1.w, projectAux.absCosAngle, posView);
       vec4 startPoint = proj * vec4(posView, 1.0);
@@ -38,15 +38,15 @@ define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../v
       // Align start and end to pixel origin
       vec4 startAligned = alignToPixelOrigin(startPoint, viewport.zw);
       vec4 endAligned = alignToPixelOrigin(endPoint, viewport.zw);
-    ${e.depthHudEnabled?e.depthHudAlignStartEnabled?l.glsl`endAligned = vec4(endAligned.xy / endAligned.w * startAligned.w, startAligned.zw);`:l.glsl`startAligned = vec4(startAligned.xy / startAligned.w * endAligned.w, endAligned.zw);`:""}
+    ${o.depthHudEnabled?o.depthHudAlignStartEnabled?p`endAligned = vec4(endAligned.xy / endAligned.w * startAligned.w, startAligned.zw);`:p`startAligned = vec4(startAligned.xy / startAligned.w * endAligned.w, endAligned.zw);`:""}
       vec4 projectedPosition = mix(startAligned, endAligned, uv0.y);
       // The direction of the line in screen space
       vec2 screenSpaceDirection = normalize(endAligned.xy / endAligned.w - startAligned.xy / startAligned.w);
       vec2 perpendicularScreenSpaceDirection = vec2(screenSpaceDirection.y, -screenSpaceDirection.x);
-    ${e.screenSizePerspectiveEnabled?l.glsl`
+    ${o.hasScreenSizePerspective?p`
       float lineSizeScaled = applyScreenSizePerspectiveScaleFactorFloat(lineSize, perspectiveFactor);
       float borderSizeScaled = applyScreenSizePerspectiveScaleFactorFloat(borderSize, perspectiveFactor);
-        `:l.glsl`
+        `:p`
       float lineSizeScaled = lineSize;
       float borderSizeScaled = borderSize;
         `}
@@ -101,9 +101,9 @@ define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../v
 
       gl_Position = projectedPosition;
     }
-  `),d.fragment.uniforms.add("uColor","vec4"),d.fragment.uniforms.add("borderColor","vec4"),e.multipassGeometryEnabled&&(d.fragment.include(r.multipassGeometryTest,e),d.fragment.uniforms.add("inverseViewport","vec2")),d.fragment.code.add(l.glsl`
+  `),u.uniforms.add([new c("uColor",(e=>v(e.color))),new c("borderColor",(e=>v(e.borderColor)))]),o.hasMultipassGeometry&&(u.include(n,o),u.uniforms.add(new d("inverseViewport",((e,i)=>i.inverseViewport)))),u.code.add(p`
     void main() {
-      ${e.multipassGeometryEnabled?"if( geometryDepthTest(gl_FragCoord.xy * inverseViewport, depth) ){ discard; }":""}
+      ${o.hasMultipassGeometry?"if( geometryDepthTest(gl_FragCoord.xy * inverseViewport, depth) ){ discard; }":""}
 
       // Mix between line and border coverage offsets depending on whether we need
       // a border (based on the sidedness).
@@ -119,16 +119,13 @@ define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../v
 
       float finalAlpha = mix(borderAlpha, 1.0, colorAlpha);
 
-    ${e.depthHudEnabled?l.glsl`
+    ${o.depthHudEnabled?p`
       if (finalAlpha < 0.01) {
         discard;
       }
-      `:l.glsl`
-      // Compute the finalRgb, but keep it pre-multiplied (for unpre-multiplied you
-      // need to divide by finalAlpha). We avoid the division here by setting the
-      // appropriate blending function in the material.
+      `:p`
       vec3 finalRgb = mix(borderColor.rgb * borderAlpha, uColor.rgb, colorAlpha);
       gl_FragColor = vec4(finalRgb, finalAlpha);
       `}
   }
-  `),d}function s(e,i,o){c(e,"uColor",i.color),e.setUniform1f("pixelRatio",o),e.setUniform2f("screenOffset",i.screenOffset[0]*o,i.screenOffset[1]*o),null!==i.borderColor?(c(e,"borderColor",i.borderColor),e.setUniform1f("borderSize",o)):(e.setUniform4f("borderColor",0,0,0,0),e.setUniform1f("borderSize",0))}function c(e,i,o){3===o.length?e.setUniform4f(i,o[0],o[1],o[2],1):e.setUniform4fv(i,o)}const f=Object.freeze(Object.defineProperty({__proto__:null,build:d,bindLineCalloutUniforms:s},Symbol.toStringTag,{value:"Module"}));e.LineCalloutShader=f,e.bindLineCalloutUniforms=s,e.build=d}));
+  `),r}function v(i){return e(i)?i:r}const m=o(),u=Object.freeze(Object.defineProperty({__proto__:null,build:S},Symbol.toStringTag,{value:"Module"}));export{u as L,S as b};

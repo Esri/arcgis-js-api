@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(r,e,o,s,t,c,p,u){"use strict";let a=function(e){function o(){var r;return(r=e.apply(this,arguments)||this).values=null,r}return r._inheritsLoose(o,e),o}(o.JSONSupport);e.__decorate([s.property({type:[Number],json:{write:!0}})],a.prototype,"values",void 0),a=e.__decorate([u.subclass("esri.layers.support.VoxelIrregularSpacing")],a);return a}));
+import{_ as r}from"../../chunks/tslib.es6.js";import{JSONSupport as o}from"../../core/JSONSupport.js";import{property as s}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as e}from"../../core/accessorSupport/decorators/subclass.js";let t=class extends o{constructor(){super(...arguments),this.values=null}};r([s({type:[Number],json:{write:!0}})],t.prototype,"values",void 0),t=r([e("esri.layers.support.VoxelIrregularSpacing")],t);const p=t;export{p as default};

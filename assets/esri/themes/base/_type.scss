@@ -15,8 +15,7 @@ $font-size--tiny: round($base-font-size * 0.71) !default;
 
 $font-size__header-text: round($base-font-size * 1.143) !default; //1.142em
 
-$font-size--tiny-daylight: round($font-size--small * 0.857) !default;
-$font-size--tinier-daylight: round($font-size--tiny-daylight * 0.857 * 0.857) !default;
+$font-size--tiny-time-slider: round($font-size--small * 0.857) !default;
 
 $font-weight--light: 300 !default;
 $font-weight--regular: 400 !default;

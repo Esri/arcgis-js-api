@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../core/shaderLibrary/Slice.glsl","../core/shaderLibrary/hud/AlignPixel.glsl","../core/shaderLibrary/hud/HUD.glsl","../core/shaderLibrary/shading/MultipassGeometryTest.glsl","../core/shaderModules/interfaces","../core/shaderModules/ShaderBuilder","../lib/VertexAttribute","../../../../chunks/LineCallout.glsl"],(function(e,r,l,i,s,d,o,a,t){"use strict";e.bindLineCalloutUniforms=t.bindLineCalloutUniforms,e.build=t.build,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import"../../../../core/maybe.js";import"../../../../chunks/vec2.js";import"../../../../chunks/vec2f64.js";import"../../../../chunks/vec4f64.js";import"../core/shaderLibrary/Slice.glsl.js";import"../core/shaderLibrary/hud/AlignPixel.glsl.js";import"../core/shaderLibrary/hud/HUD.glsl.js";import"../core/shaderLibrary/shading/MultipassGeometryTest.glsl.js";import"../core/shaderLibrary/util/ScreenSizePerspective.glsl.js";import"../core/shaderModules/Float2PassUniform.js";import"../core/shaderModules/Float4PassUniform.js";import"../core/shaderModules/FloatPassUniform.js";import"../core/shaderModules/interfaces.js";import"../core/shaderModules/ShaderBuilder.js";import"../lib/VertexAttribute.js";export{b as build}from"../../../../chunks/LineCallout.glsl.js";

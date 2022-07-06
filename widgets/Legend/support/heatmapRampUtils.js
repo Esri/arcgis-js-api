@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../../renderers/support/HeatmapColorStop"],(function(e,o){"use strict";function t(e){let t=e.colorStops,r=t.length-1;if(t&&t[0]){const e=t[r];e&&1!==e.ratio&&(t=t.slice(0),t.push(new o({ratio:1,color:e.color})),r++)}return t.map(((e,o)=>{let t="";return 0===o?t="low":o===r&&(t="high"),{color:e.color,label:t,ratio:e.ratio}})).reverse()}e.getHeatmapRampStops=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+import o from"../../../renderers/support/HeatmapColorStop.js";function r(r){if(!r.colorStops)return[];const e=[...r.colorStops].filter((o=>o.color?.a>0));let t=e.length-1;if(e&&e[0]){const r=e[t];r&&1!==r.ratio&&(e.push(new o({ratio:1,color:r.color})),t++)}return e.map(((o,e)=>{let l="";return 0===e?l=r.legendOptions?.minLabel||"low":e===t&&(l=r.legendOptions?.maxLabel||"high"),{color:o.color,label:l,ratio:o.ratio}})).reverse()}export{r as getHeatmapRampStops};

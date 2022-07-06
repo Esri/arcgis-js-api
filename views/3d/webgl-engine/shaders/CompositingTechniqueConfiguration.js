@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{_ as a}from"../../../../chunks/tslib.es6.js";import{parameter as t,ShaderTechniqueConfiguration as r}from"../core/shaderTechnique/ShaderTechniqueConfiguration.js";var n,o;!function(a){a[a.Standard=0]="Standard",a[a.TransparentToHUDVisibility=1]="TransparentToHUDVisibility",a[a.Transparency=2]="Transparency",a[a.OverlayWithTransparency=3]="OverlayWithTransparency",a[a.COUNT=4]="COUNT"}(n||(n={})),function(a){a[a.None=0]="None",a[a.Alpha=1]="Alpha",a[a.PremultipliedAlpha=2]="PremultipliedAlpha",a[a.COUNT=3]="COUNT"}(o||(o={}));class i extends r{constructor(){super(...arguments),this.function=n.Standard,this.alphaMode=o.None,this.hasOpacityFactor=!1}}a([t({count:n.COUNT})],i.prototype,"function",void 0),a([t({count:o.COUNT})],i.prototype,"alphaMode",void 0),a([t()],i.prototype,"hasOpacityFactor",void 0);export{o as AlphaMode,n as CompositingFunction,i as CompositingTechniqueConfiguration};

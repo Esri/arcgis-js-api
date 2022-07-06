@@ -1,14 +1,12 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(e,r){"use strict";function t(e,t){e.fragment.uniforms.add("terrainDepthTexture","sampler2D"),e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("inverseViewport","vec2"),e.fragment.code.add(r.glsl`
-    // Compare the linearized depths of fragment and terrain. Discard fragments on the wrong side of the terrain.
+import{ReadLinearDepth as e}from"../output/ReadLinearDepth.glsl.js";import{Float2PassUniform as r}from"../../shaderModules/Float2PassUniform.js";import{glsl as t}from"../../shaderModules/interfaces.js";import{Texture2DPassUniform as a}from"../../shaderModules/Texture2DPassUniform.js";function n(n,o){o.hasMultipassTerrain&&(n.fragment.include(e),n.fragment.uniforms.add(new a("terrainDepthTexture",((e,r)=>r.multipassTerrain.linearDepthTexture))),n.fragment.uniforms.add(new r("nearFar",((e,r)=>r.camera.nearFar))),n.fragment.uniforms.add(new r("inverseViewport",((e,r)=>r.inverseViewport))),n.fragment.code.add(t`
     void terrainDepthTest(vec4 fragCoord, float fragmentDepth){
-
       float terrainDepth = linearDepthFromTexture(terrainDepthTexture, fragCoord.xy * inverseViewport, nearFar);
-      if(fragmentDepth ${t.cullAboveGround?">":"<="} terrainDepth){
+      if(fragmentDepth ${o.cullAboveGround?">":"<="} terrainDepth){
         discard;
       }
     }
-  `)}function a(e,r){r.multipassTerrainEnabled&&r.terrainLinearDepthTexture&&e.bindTexture(r.terrainLinearDepthTexture,"terrainDepthTexture")}e.bindMultipassTerrainTexture=a,e.multipassTerrainTest=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+  `))}class o{constructor(){this.enabled=!1,this.cullAboveGround=!1}}export{o as MultipassTerrainUniforms,n as multipassTerrainTest};
