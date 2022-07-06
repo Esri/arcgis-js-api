@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({modifiedTitle:"Regressione lineare generalizzata - ${goal}",fit:"Misura",fitAndPredict:"Misurare e Prevedere",selectGoal:"Scegliere l'operazione da eseguire:",fitGoal:"Misurare un modello per valutare le performance del modello",fitAndPredictGoal:"Misurare un modello e prevedere dei valori",inputLayerLabel:"Scegliere un layer per generare un modello da",chooseDependentField:"Scegliere i campi da modellare",chooseDataType:"Scegliere il tipo di dati che si stanno modellando",continuousData:"Continuo",binaryData:"Binario",countData:"Conteggio",chooseExplanatoryField:"Scegliere i campi esplicativi",chooseFeaturesToPredict:"Scegliere un layer per prevedere valori per",chooseExplainMatch:"Scegliere come abbinare i campi esplicativi",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Feature layer generato dall’esecuzione delle soluzioni della Regressione lineare generalizzata ${goal}.",itemTags:"Risultato dell'analisi, Regressione lineare generalizzata, ${inputLayerName}, ${goal}",itemSnippet:"Feature layer generato dalla Regressione lineare generalizzata (${goal})"});

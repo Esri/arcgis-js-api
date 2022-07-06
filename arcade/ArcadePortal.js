@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
-var __extends=this&&this.__extends||function(){var t=function(n,r){return(t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,n){t.__proto__=n}||function(t,n){for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])})(n,r)};return function(n,r){if("function"!=typeof r&&null!==r)throw new TypeError("Class extends value "+String(r)+" is not a constructor or null");function e(){this.constructor=n}t(n,r),n.prototype=null===r?Object.create(r):(e.prototype=r.prototype,new e)}}();define(["require","exports","./Dictionary"],(function(t,n,r){"use strict";return function(t){function n(n){var r=t.call(this)||this;return r.immutable=!1,r.setField("url",n),r.immutable=!0,r}return __extends(n,t),n}(r)}));
+define(["require","exports","./polyfill/tsSupport/extends","./Dictionary"],(function(t,e,i,r){"use strict";return function(t){function e(e){var i=t.call(this)||this;return i.immutable=!1,i.setField("url",e),i.immutable=!0,i}return i(e,t),e}(r)}));

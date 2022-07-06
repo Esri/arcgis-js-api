@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","./pixelShaderScripts"],(function(e,r,a){var d={shaderType:"fragment",getShader:function(e,r){var a;return a=e.createShader(e.FRAGMENT_SHADER),e.shaderSource(a,r),e.compileShader(a),e.getShaderParameter(a,e.COMPILE_STATUS)||(a=null),a}};return r.mixin(d,a),d}));

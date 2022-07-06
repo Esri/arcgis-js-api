@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/promise/all","esri/dijit/geoenrichment/utils/JsonXmlConverter","./DataCollectionsCalculatorsParser","./ScriptsCalculatorsParser","./LocatorCalculatorsParser","./map/MapCalculatorsParser","./TradeAreaCalculatorsParser"],(function(a,r,e,t,s,l,o){var c={parseMetadataXML:function(c,i,n){n.log&&n.log(c.data);var u=r.parseXml(c.data);if(u&&u.tags)return a([o.parseTradeAreaCalculators(u,i,n),e.parseDataCollectionsCalculators(u,i,n),t.parseScriptsCalculators(u,i,n),s.parseLocatorCalculators(u,i,n)]).then((function(){return l.parseMapCalculators(u,i,n)}))}};return c}));

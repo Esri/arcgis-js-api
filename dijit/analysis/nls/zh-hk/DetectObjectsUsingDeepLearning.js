@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({toolDefine:"使用深度學習以定義物件",outputLayerName:"${layername}_detected",modelLabel:"選擇用來偵測物件的深度學習模型",modelArgsLabel:"指定深度學習模型引數",nameLabel:"名稱",valueLabel:"數值",removeDuplicatesLable:"從輸出移除重複的圖徵 (選用)",queryModelArgsMsg:"正在查詢模型引數...",queryModelArgsErrMsg:"無法查詢模型引數。",nonMaxSuppressionLabel:"非最大抑制",options:"選項",confidenceLabel:"信心分數欄位",classValueLabel:"類別值欄位",maxOverlapLabel:"最大重疊比率",numberOnlyMsg:"只允許數字值。",processingModeLabel:"處理模式",processAsMosaicLabel:"作為鑲嵌圖片處理",processAsItemsLabel:"分別處理所有點陣項目",analysisLayerLabel:"選擇用來偵測物件的圖片",itemDescription:"分析透過「使用深度學習以偵測物件」所產生的圖片服務",itemTags:"點陣分析結果，使用深度學習以偵測物件，${layername}",itemSnippet:"分析透過「使用深度學習以偵測物件」所產生的圖片服務"});

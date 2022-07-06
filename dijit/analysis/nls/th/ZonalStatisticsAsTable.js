@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"เลือกแรสเตอร์โซนหรือฟีเจอร์",outputTableName:"ชื่อตารางผลลัพธ์",zoneField:"ฟิลด์โซน",inputValueRaster:"เลือกแรสเตอร์ค่า",ignoreNodata:"ไม่สนใจ NoData ในการคำนวณ (ทางเลือก)",ignore:"เพิกเฉย",statisticType:"ประเภทสถิติ (ทางเลือก)",percentileValues:"ค่าเปอร์เซนไทล์ (ทางเลือก)",percentileInterpolationType:"ประเภทการประมาณค่าเปอร์เซนไทล์ (ทางเลือก)",processAsMultidimensional:"ประมวลผลในรูปแบบหลายมิติ (ทางเลือก)",allSlices:"สไลซ์ทั้งหมด",outputZonalStatsName:"สถิติโซนสำหรับ ${valuelayername} ภายใน ${layername}",itemDescription:"ตารางฟีเจอร์การวิเคราะห์ที่สร้างจากสถิติโซนในรูปแบบตาราง",itemTags:"ผลการวิเคราะห์แรสเตอร์, สถิติโซนในรูปแบบตาราง ${layername}, ${valuelayername}",autoDetect:"ตรวจจับอัตโนมัติ",nearest:"ใกล้ที่สุด",linear:"เชิงเส้น"});

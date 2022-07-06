@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({toolDefine:"ค้นหาสถิติอาร์กิวเมนต์",outputLayerName:"${layername}_argumentStatistics",dimensionLabel:"เลือกขนาดที่จะทำการแยกสถิติ",variablesLabel:"เลือกตัวแปรเพื่อทำการวิเคราะห์",variablesListLabel:"ตัวแปร [ข้อมูลขนาด] (คำอธิบาย)",statisticsTypeLabel:"เลือกประเภทสถิติ",multipleOccurrenceValueLabel:"ระบุค่าการเกิดขึ้นหลายครั้ง (ทางเลือก)",minValueLabel:"ระบุค่าต่ำสุด",maxValueLabel:"ระบุค่าสูงสุด",argumentMinLabel:"อาร์กิวเมนต์ของค่าต่ำสุด",argumentMaxLabel:"อาร์กิวเมนต์ของค่าสูงสุด",argumentMedianLabel:"อาร์กิวเมนต์ของมัธยฐาน",durationLabel:"ระยะเวลา",dimensionDefinitionLabel:"เลือกข้อกำหนดของขนาด",intervalKeywordLabel:"เลือกคำสำคัญของช่วง",all:"ทั้งหมด",intervalKeyword:"คำสำคัญของช่วง",hourly:"รายชั่วโมง",daily:"รายวัน",weekly:"รายสัปดาห์",monthly:"รายเดือน",quarterly:"ไตรมาส",yearly:"รายวัน",recurringDaily:"เกิดซ้ำรายวัน",recurringWeekly:"เกิดซ้ำรายสัปดาห์",recurringMonthly:"เกิดซ้ำรายเดือน",recurringQuarterly:"เกิดซ้ำรายไตรมาส",ignoreNodataLabel:"เพิกเฉยค่าที่หายไปในการคำนวณ",ignore:"เพิกเฉย",analysisLayerLabel:"เลือกชั้นข้อมูลภาพหลายมิติหรือหลายแบนด์เพื่อทำการวิเคราะห์",itemDescription:"เซอร์วิสภาพการวิเคราะห์ที่สร้างขึ้นจากการค้นหาสถิติอาร์กิวเมนต์",itemTags:"ผลการวิเคราะห์แรสเตอร์, ค้นหาสถิติอาร์กิวเมนต์, ${layername}",itemSnippet:"เซอร์วิสภาพการวิเคราะห์ที่สร้างขึ้นจากค้นหาสถิติอาร์กิวเมนต์"});

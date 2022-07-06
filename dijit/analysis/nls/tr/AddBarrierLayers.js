@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({addBarriers:"Engel katmanlarını seç",pointBarrier:"Nokta engelleri",lineBarrier:"Çizgi engelleri",polygonBarrier:"Çokgen engelleri",choosePointBarrier:"Nokta engel katmanını seç",chooseLineBarrier:"Çizgi engel katmanını seç",choosePolygonBarrier:"Çokgen engel katmanını seç",selectPointBarrier:"Nokta engellerini seç",selectLineBarrier:"Çizgi engellerini seç",selectPolygonBarrier:"Çokgen engellerini seç"});

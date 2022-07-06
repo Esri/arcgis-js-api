@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({documentTypes:{data:{caption:"GEMINI (Data)",description:""},service:{caption:"GEMINI (Service)",description:""}},LanguageCode:{eng:"Engels",cym:"Welsh",gle:"Gaelic (Iers)",gla:"Gaelic (Schots)",cor:"Cornish",sco:"Ulster Scots"},verticalCRS:{reference:"Referentie (bijv. urn:ogc:def:crs:EPSG::5701 )"}});

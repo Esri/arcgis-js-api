@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputSourceRasterOrFeatures:"Quell-Raster oder -Features auswählen",sourceField:"Quellfeld (optional)",outputDistanceAllocationRasterName:"Name des Ergebnis-Entfernungsallokations-Rasters",inputBarrierRasterOrFeatures:"Barriere-Raster- oder -Features auswählen (optional)",inputSurfaceRaster:"Oberflächen-Raster auswählen (optional)",inputCostRaster:"Kosten-Raster auswählen (optional)",inputVerticalRaster:"Vertikal-Raster auswählen (optional)",verticalFactor:"Vertikaler Faktor (optional)",inputHorizontalRaster:"Horizontal-Raster auswählen (optional)",horizontalFactor:"Horizontaler Faktor (optional)",outputLayerName:"Entfernungsallokation von ${layername}",outputDistanceAccumulationRasterName:"Name des Ergebnis-Entfernungsakkumulations-Rasters (optional)",outputBackDirectionRasterName:"Name des Ergebnis-Gegenrichtungs-Rasters (optional)",outputSourceDirectionRasterName:"Name des Ergebnis-Quellenrichtungs-Rasters (optional)",outputSourceLocationRasterName:"Name des Ergebnis-Quellpositions-Rasters (optional)",sourceInitialAccumulation:"Initiale Akkumulation",sourceMaximumAccumulation:"Maximale Akkumulation",sourceCostMultiplier:"Kostenmultiplikator",sourceDirection:"Reiserichtung",distanceMethod:"Entfernungsmethode",sourceCharacteristicOptions:"Optionen für Quelleneigenschaften",itemDescription:'Über "Entfernungsallokation" für ${layername} erstellter Feature-Layer. ',itemTags:"Analyseergebnis, Entfernungsallokation, ${layername} ${fieldname}",itemSnippet:'Über "Entfernungsallokation" erstellter Feature-Layer.',invalidNumber:"Geben Sie eine gültige Zahl ein",or:"oder",toSource:"Zur Quelle",fromSource:"Von Quelle",planar:"Planar",geoDesic:"Geodätisch",uniqueId:"Eindeutige ID",binary:"Binär",linear:"Linear",inverseLinear:"Invers Linear",forward:"Vorwärts",symmetricLinear:"Symmetrisch Linear",symmetricInverseLinear:"Symmetrisch Invers Linear",cos:"Cos",sec:"Sec",cosSec:"Cos â€“ Sec",secCos:"Sec â€“ Cos",zeroFactor:"Null-Faktor",lowCutAngle:"Tiefer Schnittwinkel",highCutAngle:"Hoher Schnittwinkel",cutAngle:"Schnittwinkel",slope:"Neigung",power:"Potenz",cosPower:"Cos-Potenz",secPower:"Sec-Potenz",sideValue:"Seitenfaktor",selectField:"Feld auswählen"});

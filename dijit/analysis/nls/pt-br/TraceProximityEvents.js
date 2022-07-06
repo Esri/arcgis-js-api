@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayer:"Escolher a camada para encontrar eventos de proximidade",entityField:"Selecionar um campo para identificar eventos",entityLayer:"Escolher a camada para especificar entidades de interesse",defineDistanceLabel:"Defina a distância de pesquisa espacial",distMethodLabel:"Escolha o método para calcular a distância",temporalSearchLabel:"Definir a distância de pesquisa temporal",optionsLabel:"Opções Avançadas",maxTraceDepth:"Profundidade máxima de localização",attributeMatchLabel:"Selecionar uma ou mais atributos da entidade para correspondente",includeTracksLayer:"Incluir camada de caminhos",itemDescription:"FCamada de feição gerada ao executar a solução Localize Eventos de Proximidade do ${inputLayername}.",itemTags:"Resultado de Análise, Localize Eventos de Proximidade, ${inputLayername}",itemSnippet:"Camada de feição gerada de Localize Eventos de Proximidade",outputLayerName:"Localize Eventos de Proximidade para ${inputLayername}",noEntityFieldMsg:"A camada de eventos de proximidade e a camada de entidades de interesse não têm campos em comum."});

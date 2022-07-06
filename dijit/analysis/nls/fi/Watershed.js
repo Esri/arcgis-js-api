@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Valitsi virtaussuunnan karttataso",pourPointLayerLabel:"Valitse laskupisteen rasteri tai karttataso",pourPointField:"Valitse laskupisteen kenttä",resultLayerName:"Tulostason nimi",outputLayerName:"Karttatason ${layername} valuma-alue",itemDescription:"Kohdekarttataso, joka on luotu suorittamalla Laadi yhteenveto keskikohdasta ja hajonnasta -toiminto karttatasolle ${layerName}. ",itemTags:"Analyysin tulos, valuma-alue, ${layername}, ${fieldname}",itemSnippet:"Valuma-alueesta luotu kohdekarttataso."});

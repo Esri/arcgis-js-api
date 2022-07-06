@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
-define({addBarriers:"Вибрати шари бар'єрів",pointBarrier:"Точкові бар'єри",lineBarrier:"Лінійні бар'єри",polygonBarrier:"Полігональні бар'єри",choosePointBarrier:"Вибрати шар точкових бар'єрів",chooseLineBarrier:"Вибрати шар лінійних бар'єрів",choosePolygonBarrier:"Вибрати шар полігональних бар'єрів",selectPointBarrier:"Вибрати точкові бар'єри",selectLineBarrier:"Вибрати лінійні бар'єри",selectPolygonBarrier:"Вибрати полігональні бар'єри"});
+define({addBarriers:"Вибрати шари барʼєрів",pointBarrier:"Точкові барʼєри",lineBarrier:"Лінійні барʼєри",polygonBarrier:"Полігональні барʼєри",choosePointBarrier:"Вибрати шар точкових барʼєрів",chooseLineBarrier:"Вибрати шар лінійних барʼєрів",choosePolygonBarrier:"Вибрати шар полігональних барʼєрів",selectPointBarrier:"Вибрати точкові барʼєри",selectLineBarrier:"Вибрати лінійні барʼєри",selectPolygonBarrier:"Вибрати полігональні барʼєри"});

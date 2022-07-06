@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Pasirinkti paskirties rastrą arba elementus",destinationField:"Paskirties vietos laukas (neprivaloma)",inputDistanceAccumulationRaster:"Pasirinkti atstumo kaupimo rastrą",inputBackDirectionRaster:"Pasirinkti atgalinės krypties arba tėkmės krypties rastrą",pathType:"Maršruto tipas (neprivaloma)",bestSingle:"Geriausias atskiras",eachCell:"Kiekviena gardelė",eachZone:"Kiekviena zona",outputFeatureName:"Rezultatų elementų sluoksnio pavadinimas",outputLayerName:"Optimalus kelias kaip ${layername} linija",drawSourcePointLayerName:"Šaltinio taškai",itemDescription:"Elementų sluoksnis sukurtas paleidus optimalų kelią kaip liniją sluoksnyje ${layername}. ",itemTags:"Analizės rezultatas, Optimalus kelias kaip linija, ${layername} ${fieldname}",itemSnippet:"Elementų sluoksnis, sugeneruotas funkcijos Optimalus kelias kaip linija."});

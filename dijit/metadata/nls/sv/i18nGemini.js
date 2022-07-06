@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({documentTypes:{data:{caption:"GEMINI (Data)",description:""},service:{caption:"GEMINI (Tjänst)",description:""}},LanguageCode:{eng:"Engelska",cym:"Walesiska",gle:"Gaeliska (irisk)",gla:"Gaeliska (skotsk)",cor:"Korniska",sco:"Ulsterlågskotska"},verticalCRS:{reference:"Referens (t.ex. urn:ogc:def:crs:EPSG::5701 )"}});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Выбрать слой для описания",summaryTypes:"Типы суммирования",centralFeature:"Центральный объект",meanCenter:"Усредненный центр",medianCenter:"Медианный центр",ellipse:"Эллипс",weightBy:"Вес по (дополнительно)",groupBy:"Группировать по (дополнительно)",resultLayerName:"Имя слоя результата",outputLayerName:"Описать распределение для ${layerName}",none:"Нет",itemDescription:"Векторный слой, созданный решением Суммированный центр и дисперсия для ${layerName}. ",itemTags:"Результаты анализа, Суммированный центр и дисперсия, ${layerName}",itemSnippet:"Векторный слой, полученный в результате работы Суммированный центр и дисперсия."});

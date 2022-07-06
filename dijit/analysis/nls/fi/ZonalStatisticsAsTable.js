@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Valitse vyöhykerasteri tai -kohteet",outputTableName:"Tulostaulukon nimi",zoneField:"Vyöhykekenttä",inputValueRaster:"Valitse arvorasteri",ignoreNodata:"Ohita NoData-tiedot laskelmissa (valinnainen)",ignore:"Ohita",statisticType:"Tilastojen tyyppi (valinnainen)",percentileValues:"Prosenttipistearvot (valinnainen)",percentileInterpolationType:"Prosenttipisteen interpolaatiotyyppi (valinnainen)",processAsMultidimensional:"Käsittele moniulotteisena (valinnainen)",allSlices:"Kaikki viipaleet",outputZonalStatsName:"Karttatason ${valuelayername} vyöhyketilastot karttatasolla ${layername}",itemDescription:"Analyysin kohdetaulukko on luotu vyöhyketilastoista taulukkona",itemTags:"Rasterianalyysin tulos, vyöhyketilastot taulukkona, ${layername}, ${valuelayername}",autoDetect:"Tunnista automaattisesti",nearest:"Lähin",linear:"Lineaarinen"});

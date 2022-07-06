@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Välj zonraster eller geoobjekt",outputTableName:"Resultattabellens namn",zoneField:"Zonfält",inputValueRaster:"Välj värderaster",ignoreNodata:"Ignorera NoData i beräkningar (valfritt)",ignore:"Ignorera",statisticType:"Statistiktyp (valfritt)",percentileValues:"Percentilvärden (valfritt)",percentileInterpolationType:"Interpoleringstyp för percentil (valfritt)",processAsMultidimensional:"Bearbeta flerdimensionellt (valfritt)",allSlices:"Alla sektorer",outputZonalStatsName:"Zonbaserad statistik för ${valuelayername} inom ${layername}",itemDescription:"Analysgeoobjekttabell genererad från zonbaserad statistik som tabell",itemTags:"Rasteranalysresultat, zonbaserad statistik som tabell, ${layername}, ${valuelayername}",autoDetect:"Autoidentifiering",nearest:"Närmaste",linear:"Linjär"});

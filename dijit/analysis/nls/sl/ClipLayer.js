@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Izberi geoobjekte za izsek",filterSelectLabel:"Izsekaj vse geoobjekte ali določi podmnožico (izbirno)",targetArea:"Izberi območje za izsek",outputLayerName:"Izsekaj ${inputLayerName} na ${clipLayerName}",itemDescription:"Geoobjektni sloj, ustvarjen z orodjem Izsekaj. Geoobjekti iz ${inputLayerName} so bili izsekani na ${clipLayerName}.",itemTags:"Rezultat analize, ClipLayer, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Geoobjektni sloj, ustvarjen z orodjem Izsekaj sloj"});

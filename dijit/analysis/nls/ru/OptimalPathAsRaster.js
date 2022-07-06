@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Выберите растр или объекты назначений",destinationField:"Поле назначения (дополнительно)",inputDistanceAccumulationRaster:"Выберите растр накопления расстояний",inputBackDirectionRaster:"Выберите растр обратного направления или растр направления стока",pathType:"Тип пути (дополнительно)",bestSingle:"Один наилучший",eachCell:"Каждая ячейка",eachZone:"Каждая зона",outputRasterName:"Имя слоя итогового растра",outputLayerName:"Оптимальный путь как растр ${layername}",drawSourcePointLayerName:"Исходные точки",itemDescription:"Векторный слой, созданный при определении оптимального пути как растра в ${layername}. ",itemTags:"Результат анализа, Оптимальный путь как растр, ${layername} ${fieldname}",itemSnippet:"Векторный слой, созданный при определении оптимального пути как растра."});

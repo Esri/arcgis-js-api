@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Scegli layer di direzione flusso",pourPointLayerLabel:"Scegli raster o feature layer di punti di versamento",pourPointField:"Scegli campo punto versamento",resultLayerName:"Nome del layer dei risultati",outputLayerName:"Spartiacque di ${layername}",itemDescription:"Feature layer generato in seguito all'esecuzione di Riepiloga centro e dispersione su ${layerName}. ",itemTags:"Risultato analisi, Spartiacque, ${layername} ${fieldname}",itemSnippet:"Feature layer generato da Spartiacque."});

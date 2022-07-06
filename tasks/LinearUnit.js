@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel"],(function(n,t,s,i){var e=n(null,{declaredClass:"esri.tasks.LinearUnit",constructor:function(n){n&&t.mixin(this,n)},distance:0,units:null,toJson:function(){var n={};return this.distance&&(n.distance=this.distance),this.units&&(n.units=this.units),n}});return s("extend-esri")&&t.setObject("tasks.LinearUnit",e,i),e}));

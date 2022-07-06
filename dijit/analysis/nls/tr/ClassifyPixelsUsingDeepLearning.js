@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({toolDefine:"Derin Öğrenme Kullanarak Pikselleri Sınıflandır",outputLayerName:"${layername}_sınıflandırılmış",modelLabel:"Pikselleri sınıflandırmak için kullanılan derin öğrenme modelini seçin",modelArgsLabel:"Derin öğrenme modeli değişkenlerini belirtin",nameLabel:"Adı",valueLabel:"Değer",queryModelArgsMsg:"Model değişkenleri sorgulanıyor...",queryModelArgsErrMsg:"Model bağımsız değişkenleri sorgulanamadı.",processingModeLabel:"İşlem modu",processAsMosaicLabel:"Mozaiklenmiş görüntü olarak işle",processAsItemsLabel:"Tüm raster ögelerini ayrı ayrı işle",analysisLayerLabel:"Pikselleri sınıflandırmak için kullanılan görüntüyü seçin",itemDescription:"Pikselleri Derin Öğrenme Kullanarak Sınıflandır ile oluşturulan Analiz Görüntü Hizmeti",itemTags:"Raster Analiz Sonucu, Pikselleri Derin Öğrenme Kullanarak Sınıflandır, ${layername}",itemSnippet:"Pikselleri Derin Öğrenme Kullanarak Sınıflandır ile oluşturulan Analiz Görüntü Hizmeti"});

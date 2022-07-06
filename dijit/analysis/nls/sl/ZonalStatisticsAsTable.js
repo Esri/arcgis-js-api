@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Izberi raster območja ali geoobjektov",outputTableName:"Ime tabele z rezultati",zoneField:"Polje območja",inputValueRaster:"Izberi raster vrednosti",ignoreNodata:"Prezri vrednosti brez podatkov v izračunih (izbirno)",ignore:"Prezri",statisticType:"Tip statistike (izbirno)",percentileValues:"Vrednosti percentila (izbirno)",percentileInterpolationType:"Tip interpolacije percentila (izbirno)",processAsMultidimensional:"Obdelaj kot večdimenzionalno (izbirno)",allSlices:"Vse rezine",outputZonalStatsName:"Območna statistika za ${valuelayername} znotraj ${layername}",itemDescription:"Analiza tabele geoobjektov ustvarjena iz območne statistike kot tabele",itemTags:"Rezultat rastrske analize, območna statistika kot tabela, ${layername}, ${valuelayername}",autoDetect:"Samodejno zaznavanje",nearest:"Najbližji",linear:"Linearno"});

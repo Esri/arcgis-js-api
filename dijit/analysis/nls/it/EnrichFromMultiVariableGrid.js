@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Scegliere le feature puntuali cui aggiungere dati",chooseMVgridLyrLabel:"Scegliere la griglia multi-variabile a partire dalla quale aggiungere dati",chooseVariables:"Scegliere le variabili da aggiungere",outputLayerName:"${inputFeatures} dati aggiunti da ${gridLayer}",itemDescription:"Feature layer generato in seguito all'esecuzione della soluzione Aggiungi dati da griglia multi-variabile per ${inputFeatures}.",itemTags:"Risultato di analisi, inputFeatures, ${inputFeatures}, ${gridLayer}",itemSnippet:"Feature Layer generato da Aggiungi dati da griglia multi-variabile."});

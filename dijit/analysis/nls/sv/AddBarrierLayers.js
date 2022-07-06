@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({addBarriers:"Välj hinderlager",pointBarrier:"Punkthinder",lineBarrier:"Linjehinder",polygonBarrier:"Polygonhinder",choosePointBarrier:"Välj punkthinderlager",chooseLineBarrier:"Välj linjehinderlager",choosePolygonBarrier:"Välj polygonhinderlager",selectPointBarrier:"Välj punkthinder",selectLineBarrier:"Välj linjehinder",selectPolygonBarrier:"Välj polygonhinder"});

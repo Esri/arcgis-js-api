@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayer:"Выберите слой, для которого будет вычислена статистика",trackField:"Выберите поля для идентификации треков",trackHistoryWindow:"Выберите число точек, которые будут использоваться в вычислениях",distanceMethodLabel:"Выберите метод определения расстояния, который будет использоваться в вычислениях.",idleToleranceLabel:"Определение критериев ожидания (необязательно)",chooseMotionStatsLabel:"Выберите один или несколько типов статистики движения",distance:"Расстояние",speed:"Скорость",acceleration:"Ускорение",duration:"Продолжительность",elevation:"Высота",slope:"Уклон",idle:"Нерабочий",bearing:"Курс",selectAll:"Выбрать все",deselectAll:"Очистить все",trackSplitting:"Разбиение треков",optionsLabel:"Опции",metersPerSecond:"Метры в секунду",kilometersPerHour:"Километры в час",feetPerSecond:"Футы в секунду",milesPerHour:"Мили в час",nauticalMilesPerHour:"Морские мили в час",metersPerSecondSquared:"Meters per second squared",feetPerSecondSquared:"Футы в секунду в квадрате",itemDescription:"Векторный слой, созданный с помощью решения Вычислить статистику передвижения для ${inputLayername}.",itemTags:"Результат анализа, Вычислить статистику движения, ${inputLayername}",itemSnippet:"Векторный слой, созданный с помощью Вычислить статистику передвижения ",outputLayerName:"Вычислить статистику движения для ${inputLayername}",splitTracksLabel:"Разделение треков (дополнительно)",timeSplit:"Основано на времени между входными",timeIntervalSplit:"В заданных временных интервалах"});

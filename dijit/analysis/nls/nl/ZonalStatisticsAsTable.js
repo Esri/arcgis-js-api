@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Kies zoneraster of -kenmerken",outputTableName:"Naam resultatentabel",zoneField:"Zoneveld",inputValueRaster:"Kies waarderaster",ignoreNodata:"NoData negeren in berekeningen (optioneel)",ignore:"Negeren",statisticType:"Statistiektype (optioneel)",percentileValues:"Percentielwaarden (optioneel)",percentileInterpolationType:"Percentielinterpolatietype (optioneel)",processAsMultidimensional:"Verwerken als een multidimensionaal (optioneel)",allSlices:"Alle stukjes",outputZonalStatsName:"Gebiedsstatistieken voor ${valuelayername} in ${layername}",itemDescription:"Analyse objecttabel die is gegenereerd vanuit Gebiedsstatistieken als tabel",itemTags:"Rasteranalyseresultaat, Gebiedsstatistieken als tabel, ${layername}, ${valuelayername}",autoDetect:"Auto-detect",nearest:"Dichtstbijzijnde",linear:"Lineair"});

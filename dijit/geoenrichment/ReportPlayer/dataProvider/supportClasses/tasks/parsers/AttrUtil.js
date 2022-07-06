@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define([],(function(){var n={},e=["ID","OBJECTID","AREA_ID","STORE_ID","HasData","aggregationMethod","sourceCountry","radiusIndex"];return n.cleanUpAttrs=function(n,t){n&&e.forEach((function(e){t&&t[e]||delete n[e]}))},n}));

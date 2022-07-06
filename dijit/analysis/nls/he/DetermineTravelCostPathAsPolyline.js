@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"בחר שכבת רסטר או שכבת נקודות מוצא של ישויות כדי לקבוע את המסלולים מהן",inputCostRasterLabel:"בחר את שכבת הרסטר של עלות הנסיעה",inputDestinationLayerLabel:"בחר שכבת רסטר או שכבת יעדים של ישויות כדי לקבוע את המסלולים אליהם",pathTypeLabel:"בחר את סוג המסלולים שתרצה לקבוע (אופציונלי)",bestSingle:"היחיד הטוב ביותר",eachCell:"לכל תא",eachZone:"לכל אזור",destinationField:"בחר שדה לקבלת ערכים עבור המיקום",outputPolylineName:"שם קו התוצאה",outputLayerName:"עלות נסיעה מיטבית בתור קו של ‎${layername}‎",drawDestinationPointLayerName:"נקודות יעד",drawSourcePointLayerName:"נקודות מוצא",itemDescription:"שכבת הישויות נוצרה מהפעלה של 'קביעת מסלול עלות הנסיעה בתור קו' בשכבה ‎${layername}. ",itemTags:"תוצאת הניתוח, קביעת מסלול עלות הנסיעה בתור קו, ‎${layername}‎ ‏‎${fieldname}",itemSnippet:"שכבת הישויות נוצרה באמצעות 'קביעת מסלול עלות הנסיעה בתור קו'.",missingMessage:"שכבת היעד אמורה להיות שונה משכבת המקור",noValueMessage:"חובה להזין את הערך הזה",placeHolder:"--בחר שכבה--"});

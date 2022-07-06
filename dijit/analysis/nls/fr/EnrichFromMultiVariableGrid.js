@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Choisir les entités ponctuelles à enrichir",chooseMVgridLyrLabel:"Choisir la grille multivariables à enrichir",chooseVariables:"Choisir les variables à ajouter",outputLayerName:"${inputFeatures} enrichies depuis ${gridLayer}",itemDescription:"Couche d’entités générée en exécutant la solution Enrichir à l’aide d’une grille multivariables pour ${inputFeatures}.",itemTags:"Résultat d’analyse, Enrichir à l’aide d’une grille multivariables, ${inputFeatures}, ${gridLayer}",itemSnippet:"Couche d’entités générée avec Enrichir à l’aide d’une grille multivariables"});

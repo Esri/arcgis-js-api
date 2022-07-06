@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({toolDefine:"Objektide määramine süvaõppe teel",outputLayerName:"${layername}_tuvastatud",modelLabel:"Valige objektide tuvastamisel kasutatav süvaõppemudel",modelArgsLabel:"Määrake süvaõppemudeli argumendid",nameLabel:"Nimi",valueLabel:"Väärtus",removeDuplicatesLable:"Eemaldage väljundist duplikaatobjektid (valikuline)",queryModelArgsMsg:"Tehakse mudeli argumentide päringut...",queryModelArgsErrMsg:"Mudeli argumentide päring nurjus.",nonMaxSuppressionLabel:"Summutus ei ole maksimaalne",options:"Valikud",confidenceLabel:"Usaldustaseme tulemusväli",classValueLabel:"Väärtuse klassi väli",maxOverlapLabel:"Maksimaalne ülekatte suhe",numberOnlyMsg:"Lubatud on ainult numbrilised väärtused.",processingModeLabel:"Töötlusrežiim",processAsMosaicLabel:"Töödelge mosaiikpildiga",processAsItemsLabel:"Töödelge kõiki rastriobjekte eraldi",analysisLayerLabel:"Objektide tuvastamiseks kasutatava pildi valimine",itemDescription:"Analüüsipõhine pilditeenus, mis on genereeritud objektide tuvastamisel süvaõppe teel",itemTags:"Rasteranalüüsi tulemus, objektide tuvastamine süvaõppe teel, ${layername}",itemSnippet:"Analüüsipõhine pilditeenus, mis on genereeritud objektide tuvastamisel süvaõppe teel"});

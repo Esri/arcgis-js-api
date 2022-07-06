@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"בחר שכבת כיווני זרימה",pourPointLayerLabel:"בחר רסטר של נקודות שפך או שכבת ישויות",pourPointField:"בחר שדה נקודות שפך",resultLayerName:"שם שכבת התוצאה",outputLayerName:"אגן ניקוז של ‎${layername}‎",itemDescription:"שכבת הישויות נוצרה מהרצת סיכום המרכז והפיזור בשכבה ‎${layerName}‎. ",itemTags:"תוצאת הניתוח, אגן ניקוז, ‏‎${layername}‎, ‏‎${fieldname}",itemSnippet:"שכבת הישויות נוצרה באמצעות אגן ניקוז."});

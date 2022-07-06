@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({binsLabel:"Vælg den type beholdere, der skal bruges til at oprette multi-variabel-gitteret",layersAttrLabel:"Vælg de inputlag og variabler, som du vil medtage i gitteret",itemDescription:"Vektorlag, der genereres efter kørsel af værktøjet Opret multivariabel-gitter.",itemTags:"Analyseresultat, Opret multivariabel-gitter",itemSnippet:"Vektorlag, der genereres af værktøjet Opret multivariabel-gitter",addVariables:"Tilføj variabler"});

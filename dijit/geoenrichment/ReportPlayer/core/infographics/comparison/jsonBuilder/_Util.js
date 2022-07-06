@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["../../../grid/coreUtils/GridDataUtil","../../../comparison/ComparisonUtil","../../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoFormatUtil"],(function(e,t,a){var i={};return i.valueFormatFunction=t.valueFormatFunction,i.setValueToGridData=function(t,i,o){var r=i.fieldInfos[o];r.isMissing||delete i.fieldInfos[o];var n=t[r.name];return void 0===n||"string"==typeof n?i[o]=n||"":(i[o]=a.formatNumber(n,r),e.setNumericDataValue(n,i,o)),{value:n,formattedValue:i[o],decimals:r.decimals}},i}));

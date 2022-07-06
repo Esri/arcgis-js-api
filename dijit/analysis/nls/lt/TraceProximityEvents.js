@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayer:"Pasirinkite sluoksnį, kuriame ieškoti atstumo įvykių",entityField:"Pasirinkite lauką, naudojamą identifikuoti įvykius",entityLayer:"Pasirinkite sluoksnį, kuriame bus nurodomi dominantys subjektai",defineDistanceLabel:"Nurodykite erdvinį paieškos atstumą",distMethodLabel:"Pasirinkite atstumo skaičiavimo metodą",temporalSearchLabel:"Nurodykite laiko paieškos atstumą",optionsLabel:"Išplėstinės parinktys",maxTraceDepth:"Didžiausias sekimo gylis",attributeMatchLabel:"Pasirinkite vieną ar daugiau tiriamų subjekto atributų",includeTracksLayer:"Įtraukti trajektorijų sluoksnį",itemDescription:"Elementų sluoksnis sukurtas sluoksnyje ${inputLayername} įvykdžius sprendimą Sekti atstumo įvykius.",itemTags:"Analizės rezultatai, Sekti atstumo įvykius, ${inputLayername}",itemSnippet:"Elementų sluoksnis sukurtas naudojant Sekti atstumo įvykius",outputLayerName:"Sekti atstumo įvykius sluoksnyje ${inputLayername}",noEntityFieldMsg:"Atstumo įvykių sluoksnis ir dominančių subjektų sluoksnis neturi bendrų laukų."});

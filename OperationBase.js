@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/has","./kernel"],(function(e,n,o){var l=e(null,{declaredClass:"esri.OperationBase",type:"not implemented",label:"not implemented",constructor:function(e){(e=e||{}).label&&(this.label=e.label)},performUndo:function(){console.log("performUndo has not been implemented")},performRedo:function(){console.log("performRedo has not been implemented")}});return n("extend-esri")&&(o.OperationBase=l),l}));

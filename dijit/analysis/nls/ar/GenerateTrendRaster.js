@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({toolDefine:"إنشاء بيانات نقطية للاتجاه",outputLayerName:"${layername}_trend",dimensionLabel:"اختر البُعد الذي سيتم تحليل اتجاه المتغير عليه",variablesLabel:"اختر المتغير (المتغيرات) لتحليل الاتجاه",variablesListLabel:"المتغيرات [معلومات البعد] (الوصف)",trendLineTypeLabel:"اختر نوع الخط لملائمة قيم المتغير على بُعد",linear:"خطي",harmonic:"متوافق",polynomial:"متعدد الحدود",mannKendall:"Mann-Kendall",seasonalKendall:"Seasonal-Kendall",seasonalPeriod:"يحدد الوحدة الزمنية لطول الفترة الموسمية",cycleLength:"حدد مدة الدائرة المتوافقة",cycleUnit:"اختر الوحدة الزمنية لمدة الدائرة المتوافقة",years:"سنوات",days:"الأيام",months:"أشهر",frequencyLabel:"حدد رقم التردد لملائمة الاتجاه المتوافق",polynomialOrderLabel:"حدد رقم الترتيب متعدد الحدود لملائمة الاتجاه",modelStatistics:"اختر إحصائيات النموذج المطلوب تضمينها في البيانات النقطية للاتجاه",rmse:"RMSE",r2:"معامل تحديد R مربع",slopePValue:"قيمة-p لمعامل الانحدار",ignoreNodataLabel:"تجاهُل القيم المفقودة في الحساب",ignore:"تجاهل",analysisLayerLabel:"اختر طبقة الصور متعددة الأبعاد لتحليل الاتجاه",itemDescription:"خدمة صورة التحليل المُنشأة من إنشاء بيانات نقطية للاتجاه",itemTags:"نتيجة تحليل البيانات النقطية، إنشاء البيانات النقطية للاتجاه، ${layername}",itemSnippet:"خدمة صورة التحليل المُنشأة من إنشاء بيانات نقطية للاتجاه"});

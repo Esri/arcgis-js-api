@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({clustersLabel:"Najít shluky pro vrstvu ${inputLayerName}.",chooseLayerLabel:"Vybrat vrstvu, u které budou nalezeny shluky",minClusterPtsLabel:"Minimální počet bodů, který se má považovat za shluk",minClustersPtsGAXLbl:"Minimální počet bodů, které vytvoří shluk",limitSearchLabel:"Omezit rozsah vyhledávání na (volitelné)",limitSearchReqLabel:"Omezit rozsah vyhledávání na",outputLayerName:"Najít shluky pro ${inputLayerName}",itemDescription:"Vrstva prvků vygenerovaná spuštěním řešení Najít shluky bodů pro ${inputLayerName}.",itemTags:"Výsledek analýzy, Najít shluky bodů, ${inputLayerName}",itemSnippet:"Vrstva prvků vygenerovaná řešením Najít shluky bodů",chooseClusteringMethod:"Zvolte metodu shlukování, která bude použita",dbscanLabel:"Definovaná vzdálenost (DBSCAN)",hdbscanLabel:"Automatické úpravy (HDBSCAN)",useTimeToFindCLusters:"K nalezení shluků použít čas",limitSearchDurLabel:"Omezit dobu hledání na"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/json","dojo/has","../kernel","../geometry/jsonUtils"],(function(e,t,s,o,n,r){var i=e(null,{declaredClass:"esri.tasks.DistanceParameters",geometry1:null,geometry2:null,distanceUnit:null,geodesic:null,toJson:function(){var e={},t=this.geometry1;t&&(e.geometry1=s.toJson({geometryType:r.getJsonType(t),geometry:t}));var o=this.geometry2;return o&&(e.geometry2=s.toJson({geometryType:r.getJsonType(o),geometry:o})),e.sr=s.toJson(this.geometry1.spatialReference.toJson()),this.distanceUnit&&(e.distanceUnit=this.distanceUnit),this.geodesic&&(e.geodesic=this.geodesic),e}});return o("extend-esri")&&t.setObject("tasks.DistanceParameters",i,n),i}));

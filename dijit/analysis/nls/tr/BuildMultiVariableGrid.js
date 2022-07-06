@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({binsLabel:"Çok değişkenli grid oluşturmak için kullanılacak kutuların türünü seçin",layersAttrLabel:"Gride eklemek istediğiniz giriş katmanları ve değişkenleri seçin",itemDescription:"Detay katmanı Çok Değişkenli Grid Oluştur çalıştırılarak oluşturuldu.",itemTags:"Analiz Sonucu, Çok Değişkenli Grid Oluştur",itemSnippet:"Detay katmanı Çok Değişkenli Grid Oluştur ile oluşturuldu.",addVariables:"Değişken Ekle"});

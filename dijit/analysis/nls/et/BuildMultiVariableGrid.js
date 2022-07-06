@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({binsLabel:"Valige mitme muutujaga ruudustiku koostamiseks kasutatava võrgusilma tüüp",layersAttrLabel:"Valige sisendkihid ja muutujad, mille soovite ruudustikku kaasata",itemDescription:"Objektikiht on loodud mitme muutjaga ruudustiku koostamise abil.",itemTags:"Analüüsitulemus, Koosta mitme muutujaga ruudustik",itemSnippet:"Objektikiht on loodud mitme muutjaga ruudustiku koostamise abil",addVariables:"Lisa muutujad"});

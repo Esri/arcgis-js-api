@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Pasirinkite sluoksnį apibūdinimui",summaryTypes:"Suvestinės tipai",centralFeature:"Centrinis elementas",meanCenter:"Vidutinis centras",medianCenter:"Medianos centras",ellipse:"Elipsė",weightBy:"Svoris pagal (neprivaloma)",groupBy:"Grupuoti pagal (neprivaloma)",resultLayerName:"Rezultatų sluoksnio pavadinimas",outputLayerName:"Apibūdinti sluoksnio ${layerName} pasiskirstymą",none:"Nėra",itemDescription:"Elementų sluoksnis, sukurtas įvykdžius Sumuoti centrą ir išsisklaidymą sluoksniui ${layerName}. ",itemTags:"Analizės rezultatas, Sumuoti centrą ir išsisklaidymą, ${layerName}",itemSnippet:"Elementų sluoksnis, sukurtas naudojant Sumuoti centrą ir išsisklaidymą"});

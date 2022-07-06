@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Trieu una capa a la qual afegir-ho",inputWarningLabel:"Avís: la capa a la qual ho afegiu es modificarà.",inputHostedLayerWarning:"La capa seleccionada no era una capa d’entitats allotjades. Seleccioneu una capa d’entitats allotjades a la qual afegir-ho.",appendLayerLabel:"Trieu una capa per afegir",filterLabel:"Afegiu totes les entitats o definiu un subconjunt (opcional)",fieldMappingLabel:"Trieu com afegir els camps (opcional)",inputField:"Camp d’entrada",appendValue:"Afegeix un valor",expression:"Expressió"});

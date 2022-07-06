@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({binsLabel:"Bin-Typ zum Erstellen des Gitters mit mehreren Variablen auswählen",layersAttrLabel:"Eingabe-Layer und Variablen auswählen, die in das Gitter einbezogen werden sollen",itemDescription:"Über 'Gitter mit mehreren Variablen erstellen' erstellter Feature-Layer.",itemTags:"Analyseergebnis, Gitter mit mehreren Variablen erstellen",itemSnippet:"Über 'Gitter mit mehreren Variablen erstellen' erstellter Feature-Layer",addVariables:"Variablen hinzufügen"});

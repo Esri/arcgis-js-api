@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({chooseShape:"Изберете форма",defineExtent:"Определете обхват",defineBin:"Определете размера на кошчето, като посочите",area:"Област",distance:"Разстояние",resultLayerName:"Име на резултатен слой",hexagon:"Шестоъгълник",transverseHexagon:"Напречен шестоъгълник",square:"Квадрат",triangle:"Триъгълник",diamond:"Диамант",sameAsDisplay:"Същото като показаното",emptyBinSize:"Размерът на кошчето не може да бъде без стойност",currentExtent:"текущ обхват",intersectExtent:"Запазете само пресичащите се теселации",outputLayerName:"Генериране на теселации на ${extentLayerName}",itemDescription:"Обхватът от ${extentLayerName} беше използван.",itemTags:"Резултат от анализ, Генериране на теселации, ${extentLayerName}",itemSnippet:"Обектен слой, генериран от Генериране на теселации."});

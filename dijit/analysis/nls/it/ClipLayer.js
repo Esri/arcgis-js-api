@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Scegli feature da ritagliare",filterSelectLabel:"Ritaglia tutte le feature o definisci un sottoinsieme (opzionale)",targetArea:"Scegli area da ritagliare su",outputLayerName:"Ritaglia ${inputLayerName} su ${clipLayerName}",itemDescription:"Feature layer generato dall'esecuzione della soluzione Ritaglia. Le feature si ${inputLayerName} sono state ritagliate su ${clipLayerName}.",itemTags:"Risultato di analisi, Layer taglio, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Feature layer generato da Layer taglio"});

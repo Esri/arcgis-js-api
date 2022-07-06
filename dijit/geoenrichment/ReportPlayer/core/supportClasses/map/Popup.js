@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","esri/geometry/ScreenPoint","esri/dijit/Popup"],(function(i,e,t){return i(t,{visibleWhenEmpty:!1,popupLayerId:"popupLayer",enableHighlight:function(i){this.inherited(arguments),this._forceMoveGraphic(i)},updateHighlight:function(i,e){this.inherited(arguments),this._forceMoveGraphic(i)},disableHighlight:function(i){this._highlighted&&this._highlighted.getLayer()&&this._highlighted.getLayer().remove(this._highlighted),this.inherited(arguments)},_forceMoveGraphic:function(i){if(this._highlighted){var e=i.getLayer(this.popupLayerId);e&&(i.graphics.remove(this._highlighted),e.add(this._highlighted))}},_setPosition:function(i){var t=this.getPlayerZoomScale()||1,h=i.x/t,o=i.y/t;return this.inherited(arguments,[new e(h,o)])},_onExtentChange:function(i,e,t){t&&1!==this.getPlayerZoomScale()&&this.hide()},getPlayerZoomScale:function(){}})}));

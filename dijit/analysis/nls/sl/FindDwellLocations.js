@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Izberite sloj, kjer želite iskati bivališče",selectTracksLabel:"Izberite enega ali več polj za identifikacijo sledi",defineDistanceLabel:"Določite razdaljo prostorskega iskanja",distMethodLabel:"Izberite metodo za izračun razdalje",temporalSearchLabel:"Določite razpon časovnega iskanja",outputDwellLabel:"Oddaja lokacij bivališča kot",outputLayerName:"Najdite lokacije bivališča za ${inputLayerName}",meanCenters:"Središča povprečja",convexHulls:"Konveksni trupi",dwellFeatures:"Geoobjekti bivališča",allFeatures:"Vsi geoobjekti",itemDescription:"Geoobjektni sloj, ustvarjen z orodjem Poišči lokacije bivališč za ${inputLayerName}.",itemTags:"Rezultat analize, Najdi lokacije bivališč, ${inputLayerName}",itemSnippet:"Geoobjektni sloj, ustvarjen iz Najdi lokacije bivališč",timeIntervalSplit:"Analizirajte podatke s časovnimi intervali (po želji)",timeBoundaryValidationMsg:"Časovni interval mora biti večji od trenutnega iskalnega razpona."});

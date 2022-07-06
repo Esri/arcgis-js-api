@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Selecionar camada de direção de fluxo",pourPointLayerLabel:"Selecionar raster pour point ou camada de elementos",pourPointField:"Selecionar campo pour point",resultLayerName:"Nome da camada resultante",outputLayerName:"Watershed de ${layername}",itemDescription:"Camada de elementos gerada através da execução de Resumir centro e dispersão em ${layerName}. ",itemTags:"Resultado de Análise, Watershed, ${layername} ${fieldname}",itemSnippet:"Camada de elementos gerada a partir de Watershed"});

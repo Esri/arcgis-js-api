@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["../../../dataProvider/supportClasses/data/AreaDataUtil","esri/dijit/geoenrichment/ReportPlayer/core/supportClasses/templateJsonUtils/fieldInfo/FieldInfoRenderer"],(function(e,a){return{calculateSummaryValue:function(r){var i=r.count,t=r.stats,n=r.json,l=r.areaIndex,m=r.viewModel,s=0,u=n.summarizeField,o=t.ranges.filter((function(e){return e.fieldName===u}))[0],d=u?o&&o.sumShown||0:i;if("average"===n.summarizeType)s=i?d/i:0;else if("normalize"===n.summarizeType){var f=0;if("string"==typeof n.summarizeFractionField){var c=t.ranges.filter((function(e){return e.fieldName===n.summarizeFractionField}))[0];f=c&&c.sumShown||0}else f=m.dynamicReportInfo?e.getAreaDataValue({fieldName:n.summarizeFractionField.templateName,fieldData:m.dynamicReportInfo.fieldData,featureIndex:l}):a.renderFieldInfoInTableCell(n.summarizeFractionField,{previewValues:!0}).value||123;s=f?d/f:0}else{if(n.summarizeType)return NaN;s=d}return s*=n.summarizeMultiplier||1}}}));

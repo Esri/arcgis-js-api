@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputSourceRasterOrFeatures:"Kies bronraster of objecten",outputDistanceAccumulationRasterName:"Resultaat afstandaccumulatie rasternaam",inputBarrierRasterOrFeatures:"Kies barrièreraster of objecten (optioneel)",inputSurfaceRaster:"Kies oppervlakraster (optioneel)",inputCostRaster:"Kies kostenraster (optioneel)",inputVerticalRaster:"Kies verticaal raster (optioneel)",verticalFactor:"Verticale factor (optioneel)",inputHorizontalRaster:"Kies horizontaal raster (optioneel)",horizontalFactor:"Horizontale factor (optioneel)",outputLayerName:"Afstandsaccumulatie van ${layername}",outputBackDirectionRasterName:"Resultaat terugrichting rasternaam (optioneel)",outputSourceDirectionRasterName:"Resultaat bronrichting rasternaam (optioneel)",outputSourceLocationRasterName:"Resultaat bronlocatie rasternaam (optioneel)",sourceInitialAccumulation:"Initiële accumulatie",sourceMaximumAccumulation:"Maximale accumulatie",sourceCostMultiplier:"Kostenvermenigvuldiging",sourceDirection:"Reisrichting",distanceMethod:"Afstandmethode (optioneel)",sourceCharacteristicOptions:"Opties bronkenmerken",itemDescription:"Feature layer gegenereerd door uitvoering van de Afstandaccumulatie voor ${layername}. ",itemTags:"Analyseresultaat, Afstandaccumulatie, ${layername} ${fieldname}",itemSnippet:"Feature layer gegenereerd door Afstandaccumulatie.",invalidNumber:"Voer een geldig getal in",or:"of",toSource:"Naar bron",fromSource:"Van bron",planar:"Planair",geoDesic:"Geodetisch",uniqueId:"Uniek ID",binary:"Binair",linear:"Lineair",inverseLinear:"Omgekeerd lineair",forward:"Voorwaarts",symmetricLinear:"Symmetrisch lineair",symmetricInverseLinear:"Symmetrisch omgekeerd lineair",cos:"Cos",sec:"Sec",cosSec:"Cos â€“ Sec",secCos:"Sec â€“ Cos",zeroFactor:"Nulfactor",lowCutAngle:"Lage snijhoek",highCutAngle:"Hoge snijhoek",cutAngle:"Snijhoek",slope:"Helling",power:"Macht",cosPower:"Cos-kracht",secPower:"Sec-kracht",sideValue:"Zijwaarde",selectField:"Veld selecteren"});

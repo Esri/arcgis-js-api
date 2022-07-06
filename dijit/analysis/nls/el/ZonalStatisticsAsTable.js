@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Επιλογή raster ή στοιχείων ζώνης",outputTableName:"Όνομα πίνακα αποτελεσμάτων",zoneField:"Πεδίο ζώνης",inputValueRaster:"Επιλογή τιμής raster",ignoreNodata:"Παράβλεψη NoData σε υπολογισμούς (προαιρετικό)",ignore:"Αγνόηση",statisticType:"Τύπος στατιστικών (προαιρετικό)",percentileValues:"Τιμή εκατοστημόριου (προαιρετικό)",percentileInterpolationType:"Τύπος ποσοστιαίας ένθεσης (προαιρετικό)",processAsMultidimensional:"Διαδικασία πολυδιάστατου (προαιρετικό)",allSlices:"Όλες οι φέτες",outputZonalStatsName:"Στατιστικές ζώνης για ${valuelayername} εντός ${layername}",itemDescription:"Πίνακας στοιχείων ανάλυσης παραγόμενο από το εργαλείο Στατιστικά Ζώνης ως Πίνακας",itemTags:"Αποτέλεσμα Ανάλυσης, Στατιστικές ζώνης ως Πίνακας, ${layername}, ${valuelayername}",autoDetect:"Αυτόματη ανίχνευση",nearest:"Κοντινότερο",linear:"Γραμμική"});

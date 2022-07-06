@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["dojo/number"],(function(e){return function(r,t){var c=r.decimals||0;switch(r.units){case"pct":return e.format(t/100,{places:c,type:"percent"});case"currency":return e.format(t,{places:c,type:"currency",symbol:r.symbol||"$"});default:return"esriFieldTypeDouble"==r.type||"double"==r.type?e.format(t,{places:c}):"number"==typeof t?Number(t.toFixed(10)):t}}}));

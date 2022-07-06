@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Choisir le jeu de données à décrire",describeDataLabel:"Comprendre vos données en créant un (facultatif)",sampleLayer:"Exemple de couche",extentLayer:"Couche de l’étendue",noOfFeaturesLabel:"Nombre d’entités à inclure",outputLayerName:"Nom de la couche de résultat",resultName:"Décrire les données de ${layerName}",itemDescription:"Couche d’entités générée par l’exécution de la solution Décrire le jeu de données sur ${layerName}. ",itemTags:"Résultat d’analyse, Décrire le jeu de données, ${layerName}",itemSnippet:"Couche d’entités générée avec Décrire le jeu de données."});

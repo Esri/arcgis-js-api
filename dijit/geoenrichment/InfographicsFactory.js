@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["esri/declare","esri/tasks/geoenrichment/GeoenrichmentTask","./InfographicsOptions","./Geoenrichment","./config"],(function(t,n,e,i,s){return t("esri.dijit.geoenrichment.InfographicsFactory",null,{_task:null,_options:null,getTask:function(){return this._task||(this._task=new n(s.server),this._task.token=s.token),this._task},createGeoenrichment:function(){return new i},getCountry:function(t){return this.getTask().getCountries(t.geometry).then((function(t){return t[0]}))},getOptions:function(){return this._options||(this._options=new e),this._options}})}));

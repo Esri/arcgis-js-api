@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Pilih raster atau fitur wilayah",inputCostRaster:"Pilih raster biaya (opsional)",inputBarrierRasterOrFeatures:"Pilih raster atau fitur penghalang (opsional)",distanceMethod:"Metode jarak (opsional)",connectionsWithinRegions:"Hubungan dalam wilayah (opsional)",generateConnections:"Hasilkan Koneksi",noConnections:"Tidak Ada Koneksi",planar:"Planar",geoDesic:"Geodesik",outputOptimalLinesName:"Hasilkan nama feature layer garis konektivitas optimal",outputNeighborConnectionsName:"Hasilkan nama feature layer koneksi lingkungan (opsional)",outputLayerName:"Koneksi wilayah optimal dari ${layername}",drawSourcePointLayerName:"Titik sumber",itemDescription:"Feature layer yang dihasilkan karena menjalankan Koneksi Wilayah Optimal pada ${layername}. ",itemTags:"Hasil Analisis, Koneksi Wilayah Optimal, ${layername} ${fieldname}",itemSnippet:"Feature layer yang dihasilkan dari Koneksi Wilayah Optimal.",noValueMessage:"Nilai ini diperlukan"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Pasirinkite rastrą arba elementų vietovės sluoksnį, kuriam norite nustatyti kelionės maršrutus",inputCostRasterLabel:"Pasirinkite kelionės sąnaudų rastrinį sluoksnį.",outputOptimumNetworkName:"Rezultate gauto optimalių maršrutų polilinijų sluoksnio pavadinimas",outputNeighborNetworkName:"Rezultate gauto gretimų maršrutų polilinijų sluoksnio pavadinimas (neprivaloma)",outputLayerName:"Nustatyti sluoksniui ${layername} optimalias kelionės sąnaudas",itemDescription:"Elementų sluoksnis ${layerName} sugeneruotas paleidus Nustatyti optimalių kelionės sąnaudų tinklą. ",itemTags:"Analizės rezultatas, Nustatyti optimalių kelionės sąnaudų tinklą, ${layername} ${fieldname}",itemSnippet:"Elementų sluoksnis sugeneruotas naudojant Nustatyti optimalių kelionės sąnaudų tinklą."});

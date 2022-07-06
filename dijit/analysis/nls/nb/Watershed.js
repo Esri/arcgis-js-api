@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Velg strømningsretningslag",pourPointLayerLabel:"Velg utløpspunktraster eller geoobjektslag",pourPointField:"Velg utløpspunktfelt",resultLayerName:"Navn på resultatlag",outputLayerName:"Nedbørsfelt for ${layername}",itemDescription:"Geoobjektslag generert ved kjøring av Summer midtpunkt og fordeling på ${layerName}. ",itemTags:"Analyseresultat, Nedførsfelt, ${layername} ${fieldname}",itemSnippet:"Geoobjektslag generert fra Nedbørsfelt."});

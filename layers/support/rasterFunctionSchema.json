@@ -2233,6 +2233,18 @@
         "displayName": "${rasterFunctions.rfxArgs.bandIndexesName}",
         "hidden": false
       }
+    },
+    "editorArgumentOverride": {
+      "active": true,
+      "overrides": [
+        {
+          "argumentNames": ["BandIndexes"],
+          "triggerArguments": ["Method"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxBandArithmeticBandIndexesEditor"
+          }
+        }
+      ]
     }
   },
   "ConstantFunction": {
@@ -8450,6 +8462,82 @@
         "displayName": "${rasterFunctions.rfxArgs.ignoreNoDataName}",
         "hidden": false,
         "defaultValue": false
+      }
+    }
+  },
+  "TerrainFlattenFunction": {
+    "category": "SAR",
+    "rasterFunctionArguments": {
+      "Raster": {
+        "required": true,
+        "dataType": "raster",
+        "displayName": "${rasterFunctions.rfxArgs.rasterName}",
+        "hidden": false
+      },
+      "DEM": {
+        "required": true,
+        "dataType": "raster",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.DEMName}"
+      },
+      "CorrectGeoid": {
+        "required": false,
+        "dataType": "boolean",
+        "displayName": "${rasterFunctions.rfxArgs.geoIdName}",
+        "hidden": false,
+        "defaultValue": true
+      },
+      "CalibrationType": {
+        "required": true,
+        "dataType": "long",
+        "displayName": "${rasterFunctions.rfxArgs.calibrationTypeName}",
+        "hidden": false,
+        "defaultValue": 0,
+        "domain": {
+          "type": "list",
+          "enum": "esriFlattenCalibrationTypes"
+        }
+      }
+    }
+  },
+
+  "CreateColorCompositeFunction": {
+    "category": "dataManagement",
+    "rasterFunctionArguments": {
+      "Raster": {
+        "required": true,
+        "dataType": "raster",
+        "displayName": "${rasterFunctions.rfxArgs.rasterName}",
+        "hidden": false
+      },
+      "Method": {
+        "required": true,
+        "dataType": "long",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.methodName}",
+        "defaultValue": 2,
+        "domain": {
+          "type": "list",
+          "enum": "bandCompositeMethods"
+        }
+      },
+      "BandIndexesR": {
+        "required": true,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.bandIndexesR}",
+        "hidden": false
+      },
+      "BandIndexesG": {
+        "required": true,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.bandIndexesG}",
+        "hidden": false
+      },
+      "BandIndexesB": {
+        "required": true,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.bandIndexesB}",
+        "hidden": false
       }
     }
   }

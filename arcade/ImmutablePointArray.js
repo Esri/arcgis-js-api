@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
-var __extends=this&&this.__extends||function(){var t=function(e,n){return(t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n])})(e,n)};return function(e,n){if("function"!=typeof n&&null!==n)throw new TypeError("Class extends value "+String(n)+" is not a constructor or null");function r(){this.constructor=e}t(e,n),e.prototype=null===n?Object.create(n):(r.prototype=n.prototype,new r)}}();define(["require","exports","./ImmutableArray","../geometry/Point"],(function(t,e,n,r){"use strict";return function(t){function e(e,n,r,i,o,s){var a=t.call(this,e)||this;return a._lazyPt=[],a._hasZ=!1,a._hasM=!1,a._spRef=n,a._hasZ=r,a._hasM=i,a._cacheId=o,a._partId=s,a}return __extends(e,t),e.prototype.get=function(t){if(void 0===this._lazyPt[t]){var e=this._elements[t];if(void 0===e)return;var n=this._hasZ,i=this._hasM,o=null;(o=n&&!i?new r(e[0],e[1],e[2],void 0,this._spRef):i&&!n?new r(e[0],e[1],void 0,e[2],this._spRef):n&&i?new r(e[0],e[1],e[2],e[3],this._spRef):new r(e[0],e[1],this._spRef)).setCacheValue("_arcadeCacheId",this._cacheId.toString()+"-"+this._partId.toString()+"-"+t.toString()),this._lazyPt[t]=o}return this._lazyPt[t]},e.prototype.equalityTest=function(t){return t===this||null!==t&&(t instanceof e!=!1&&t.getUniqueHash()===this.getUniqueHash())},e.prototype.getUniqueHash=function(){return this._cacheId.toString()+"-"+this._partId.toString()},e}(n)}));
+define(["require","exports","./polyfill/tsSupport/extends","./ImmutableArray","../geometry/Point"],(function(t,e,i,s,n){"use strict";return function(t){function e(e,i,s,n,r,a){var h=t.call(this,e)||this;return h._lazyPt=[],h._hasZ=!1,h._hasM=!1,h._spRef=i,h._hasZ=s,h._hasM=n,h._cacheId=r,h._partId=a,h}return i(e,t),e.prototype.get=function(t){if(void 0===this._lazyPt[t]){var e=this._elements[t];if(void 0===e)return;var i=this._hasZ,s=this._hasM,r=null;(r=i&&!s?new n(e[0],e[1],e[2],void 0,this._spRef):s&&!i?new n(e[0],e[1],void 0,e[2],this._spRef):i&&s?new n(e[0],e[1],e[2],e[3],this._spRef):new n(e[0],e[1],this._spRef)).setCacheValue("_arcadeCacheId",this._cacheId.toString()+"-"+this._partId.toString()+"-"+t.toString()),this._lazyPt[t]=r}return this._lazyPt[t]},e.prototype.equalityTest=function(t){return t===this||null!==t&&(t instanceof e!=!1&&t.getUniqueHash()===this.getUniqueHash())},e.prototype.getUniqueHash=function(){return this._cacheId.toString()+"-"+this._partId.toString()},e}(s)}));

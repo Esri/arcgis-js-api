@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({toolDefine:"Předpověď pomocí rastru trendu",outputLayerName:"${layername}_předpověď",variablesLabel:"Vyberte proměnné, které budou předpovězeny.",variablesListLabel:"Proměnné [Informace o rozměrech] (Popis)",dimensionDefinitionLabel:"Zvolte způsob předpovídání hodnot rozměrů",dimensionValuesLabel:"Určete hodnoty rozměru pro předpověď",dimensionIntervalLabel:"Určete interval rozměrů pro předpověď",intervalValueLabel:"Určete počet kroků mezi výchozí a cílovou hodnotou",intervalUnitLabel:"Vyberte jednotky, které se použijí pro interval časové hodnoty",startLabel:"Počáteční hodnota",endLabel:"Koncová hodnota",byValueLabel:"Krok iterace (hodnota)",byIntervalLabel:"Podle intervalu",hours:"Hodiny",days:"Dny",weeks:"Týdny",months:"Měsíce",years:"Roky",custom:"Vlastní",itemDescription:"Obrazová služba analýzy vytvořená nástrojem Předpověď pomocí rastru trendu",itemTags:"Výsledek analýzy rastru, Předpověď pomocí rastru trendu, ${layername}",itemSnippet:"Obrazová služba analýzy vytvořená nástrojem Předpověď pomocí rastru trendu"});

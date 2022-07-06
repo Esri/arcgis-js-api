@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vyberte vrstvu smeru toku",pourPointLayerLabel:"Vyberte raster s výtokovými bodmi alebo vrstvu prvkov",pourPointField:"Vyberte atribút určujúci výtokové body",resultLayerName:"Názov výslednej vrstvy",outputLayerName:"Povodie ${layername}",itemDescription:"Vrstvy prvkov generované nástrojom Zhrnúť centrum a rozptyl na ${layerName}. ",itemTags:"Výsledok analýzy, Povodie, ${layername}${fieldname}",itemSnippet:"Vrstva prvkov generovaná nástrojom Povodie."});

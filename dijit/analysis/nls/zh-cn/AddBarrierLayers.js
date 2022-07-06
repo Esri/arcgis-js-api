@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({addBarriers:"选择障碍图层",pointBarrier:"点障碍",lineBarrier:"线障碍",polygonBarrier:"面障碍",choosePointBarrier:"选择点障碍图层",chooseLineBarrier:"选择线障碍图层",choosePolygonBarrier:"选择面障碍图层",selectPointBarrier:"选择点障碍",selectLineBarrier:"选择线障碍",selectPolygonBarrier:"选择面障碍"});

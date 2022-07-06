@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/Color","dojo/has","../kernel","../symbols/jsonUtils","../Color","./SymbolAger"],(function(e,a,r,t,o,s,n,i){var h=e(i,{declaredClass:"esri.renderer.TimeRampAger",constructor:function(e,a,r){this.colorRange=e,this.sizeRange=a,this.alphaRange=r},getAgedSymbol:function(e,a){var t=a.getLayer(),o=a.attributes;e=s.fromJson(e.toJson());var n=t._map.timeExtent,i=n.startTime,h=n.endTime;if(!i||!h)return e;i=i.getTime(),h=h.getTime();var g=new Date(o[t._startTimeField]);(g=g.getTime())<i&&(g=i);var l,R,b=h===i?1:(g-i)/(h-i),d=this.sizeRange;if(d){var m=d[0],c=d[1];R=Math.abs(c-m)*b,this._setSymbolSize(e,m<c?m+R:m-R)}if(d=this.colorRange){var u=d[0],v=d[1],f=Math.round;l=new r;var p=u.r,M=v.r;R=Math.abs(M-p)*b,l.r=f(p<M?p+R:p-R);var T=u.g,j=v.g;R=Math.abs(j-T)*b,l.g=f(T<j?T+R:T-R);var z=u.b,C=v.b;R=Math.abs(C-z)*b,l.b=f(z<C?z+R:z-R);var _=u.a,y=v.a;R=Math.abs(y-_)*b,l.a=_<y?_+R:_-R,e.setColor(l)}if(l=e.color,(d=this.alphaRange)&&l){var J=d[0],A=d[1];R=Math.abs(A-J)*b,l.a=J<A?J+R:J-R}return e},toJson:function(){var e={};return this.sizeRange&&(e.sizeRange=this.sizeRange),this.colorRange&&(e.colorRange=[n.toJsonColor(this.colorRange[0]),n.toJsonColor(this.colorRange[1])]),this.alphaRange&&(e.alphaRange=[Math.round(255*this.alphaRange[0]),Math.round(255*this.alphaRange[1])]),e}});return t("extend-esri")&&a.setObject("renderer.TimeRampAger",h,o),h}));

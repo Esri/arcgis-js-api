@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"选择要追加到的图层",inputWarningLabel:"警告：您追加的图层将被修改。",inputHostedLayerWarning:"所选图层不是托管要素图层。 请选择要追加到的托管要素图层。",appendLayerLabel:"选择要追加的图层",filterLabel:"追加所有要素或定义一个子集(可选)",fieldMappingLabel:"选择追加字段的方式(可选)",inputField:"输入字段",appendValue:"追加值",expression:"表达式"});

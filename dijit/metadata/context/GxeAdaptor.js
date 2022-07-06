@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/has","dojo/Deferred","dijit/_WidgetBase","../../../kernel"],(function(e,t,n,r,o,a,i){var u=e([a],{postCreate:function(){this.inherited(arguments)},afterEditDocumentLoad:function(e,t,n,r){},afterViewDocumentLoad:function(e,t){},deleteMetadata:function(){var e=new o;return e.resolve(),e},getAllowEditMetadata:function(){return!1},getAllowDeleteMetadata:function(){return!1},getAllowPullItem:function(){return!1},getAllowPushToItem:function(){return!1},getOriginalXml:function(){return null},pullItem:function(e){var t=new o;return t.resolve(),t},saveXml:function(e,t,n){var r=new o;return r.resolve(),r},viewHtml:function(){var e=new o;return e.resolve(),e}});return r("extend-esri")&&t.setObject("dijit.metadata.context.GxeAdaptor",u,i),u}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["dojo/dom-construct","dojo/string","./_BuilderUtil","dojo/i18n!esri/nls/jsapi"],(function(a,e,l,t){return t=t.geoenrichment.dijit.ReportPlayer.ChartTooltip,{buildGaugeChartTooltip:function(i,o){i.showTitle&&l.addTitle(o,i.label,i),i.richTextFieldInfo&&l.buildRichText(i,o);var d=a.create("div",{class:"chartTooltip_row esriGERowHigh"},o);l.addRowOffset(d),i.isUnavailableData?l.addLabel(t.unavailableData,d):i.hasNegativeValues?l.addLabel(i.valueLabel,d):l.addLabel(e.substitute(t.gaugeChartTooltip_label,{value:i.valueLabel,total:i.sumValueLabel}),d),d.style.display=i.showValue?"":"none"}}}));

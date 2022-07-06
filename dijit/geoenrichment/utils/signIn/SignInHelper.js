@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/Deferred","esri/dijit/geoenrichment/when","esri/arcgis/OAuthInfo","esri/IdentityManager","esri/kernel","esri/dijit/geoenrichment/utils/UrlUtil"],(function(e,r,i,n,t,a){return{signIn:function(o){var s=new e,l=a.getPortalUrl(o.portalUrl);o.forceFreshStart&&t.id.destroyCredentials();var c=function(){var e=t.id.findCredential(l+"/sharing")||t.id.credentials[0];r(o.callback&&o.callback(e),(function(){s.resolve(e)}))},d=new i({portalUrl:l,appId:o.appId,popup:!!o.popup});return n.registerOAuthInfos([d]),n.checkSignInStatus(l+"/sharing").then(c).otherwise((function(){n.getCredential(l+"/sharing",{oAuthPopupConfirmation:!1}).then(c)})),s.promise}}}));

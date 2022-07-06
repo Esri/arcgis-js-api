@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Zvolit rastr nebo prvky zóny",outputTableName:"Název výsledné tabulky",zoneField:"Pole zóny",inputValueRaster:"Zvolit rastr hodnoty",ignoreNodata:"Ignorovat ve výpočtech hodnoty NoData (volitelné)",ignore:"Ignorovat",statisticType:"Typ statistiky (volitelné)",percentileValues:"Hodnoty percentilu (volitelné)",percentileInterpolationType:"Typ interpolace percentilu (volitelné)",processAsMultidimensional:"Zpracovat jako vícerozměrné (volitelné)",allSlices:"Všechny řezy",outputZonalStatsName:"Zonální statistika pro ${valuelayername} v rámci ${layername}",itemDescription:"Tabulka prvků analýzy vygenerovaná nástrojem Zonální statistika jako tabulka",itemTags:"Výsledek rastrové analýzy, Zonální statistika jako tabulka, ${layername}, ${valuelayername}",autoDetect:"Automatická detekce",nearest:"Nejbližší",linear:"Přímá"});

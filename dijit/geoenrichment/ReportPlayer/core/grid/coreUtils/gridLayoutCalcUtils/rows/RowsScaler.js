@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["./RowDataUtil"],(function(e){var i={recalcRowsToFitHeight:function(i,t){var a=t/e.recalcGridHeight(i);function n(t){t.forEach((function(t){i.columns.some((function(n,r){if(!i.looseResize&&r)return!0;e.setDataHeight(i,t,n.field,e.getDataHeight(i,t,n.field)*a)}))}))}1!==a&&(n(i.rows),i._getSavedOriginalData()&&n(i._getSavedOriginalData()),e.recalcGridHeight(i))}};return i}));

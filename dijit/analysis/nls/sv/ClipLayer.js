@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Välj geoobjekt att klippa",filterSelectLabel:"Klipp alla geoobjekt eller definiera en delmängd (valfritt)",targetArea:"Välj område att klippa till",outputLayerName:"Klipp ${inputLayerName} till ${clipLayerName}",itemDescription:"Geoobjektlager som genererats genom körning av Klipp-lösningar. Geoobjekt från ${inputLayerName} klipptes till ${clipLayerName}.",itemTags:"Analysresultat, Klipplager, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Geoobjektlager som genererats av Klipp lager"});

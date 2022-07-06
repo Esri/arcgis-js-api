@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({toolDefine:"מצב סטטיסטיקות של ארגומנט",outputLayerName:"${layername}_argumentStatistics",dimensionLabel:"בחר ממד שממנו הנתונים הסטטיסטיים יחולצו",variablesLabel:"בחר משתנה/ים לניתוח",variablesListLabel:"משתנים [Dimension Info] (תיאור)",statisticsTypeLabel:"בחר סוג נתונים סטטיסטיים",multipleOccurrenceValueLabel:"ציין ערך בו-זמניות מרובה (אופציונלי)",minValueLabel:"ציין ערך מינימום",maxValueLabel:"ציין ערך מקסימום",argumentMinLabel:"ארגומנט של המינימום",argumentMaxLabel:"ארגומנט של המקסימום",argumentMedianLabel:"ארגומנט של החציון",durationLabel:"משך",dimensionDefinitionLabel:"בחר הגדרת ממד",intervalKeywordLabel:"בחר מילת מפתח של מרווח",all:"הכל",intervalKeyword:"מילת מפתח של מרווח",hourly:"שעתי",daily:"יומי",weekly:"שבועי",monthly:"חודשי",quarterly:"רבעוני",yearly:"שנתי",recurringDaily:"חוזר כל יום",recurringWeekly:"חוזר כל שבוע",recurringMonthly:"חוזר כל חודש",recurringQuarterly:"חוזר כל רבעון",ignoreNodataLabel:"התעלם מערכים חסרים בחישוב",ignore:"התעלם",analysisLayerLabel:"בחר שכבת תמונה רב-ממדית או רב-ערוצית לניתוח",itemDescription:"ניתוח שירות התמונה שנוצר מ'מצא סטטיסטיקות של ארגומנט'",itemTags:"תוצאת ניתוח רסטר, מצא סטטיסטיקות של ארגומנט, ${layername}",itemSnippet:"ניתוח שירות התמונה שנוצר מ'מצא סטטיסטיקות של ארגומנט'"});

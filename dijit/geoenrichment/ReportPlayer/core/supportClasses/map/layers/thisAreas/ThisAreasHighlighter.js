@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["../../symbols/HighlightedSymbolGenerator"],(function(e){var r={registerThisLayersForHighlighing:function(e){e.thisAreasHighlightController&&e.thisAreaLayers.forEach((function(i,t){var a=e.thisAreaLayerIndexToAreaIndex[t];r._registerLayer(i,"thisAreaLayer"+a,e.map,e.thisAreasHighlightController,e,a)}))},_registerLayer:function(r,i,t,a,n,h){e.getHighlightSymbol({graphicsLayer:r}).then((function(e){var s=e.symbol;a.setThisAreaLayer(n.calculatorFieldName+";"+i,r,t,{thisAreaIndex:h,getGraphicForAreaIndexFunc:function(e){if(e===h)return r.graphics[0]},setGraphicHighlightedFunc:function(e,r){e.setSymbol(r?s:null)}})}))}};return r}));

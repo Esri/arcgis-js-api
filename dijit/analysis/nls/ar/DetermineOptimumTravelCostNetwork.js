@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"اختر الطبقة النقطية أو طبقة موقع المعلم لتحديد مسارات السفر بين",inputCostRasterLabel:"اختيار الطبقة النقطية لتكلفة السفر",outputOptimumNetworkName:"ناتج اسم الطبقة متعددة الخطوط للمسارات المثلى",outputNeighborNetworkName:"ناتج اسم الطبقة متعددة الخطوط للمسارات المجاورة (اختياري)",outputLayerName:"تحديد التكلفة المثلى للسفر ${layername}",itemDescription:"طبقة المعالم المنشأة من تشغيل شبكة تحديد التكلفة المثلى للسفر ${layerName}. ",itemTags:"تحليل النتيجة، شبكة تحديد التكلفة المثلى للسفر، ${layername} ${fieldname}",itemSnippet:"طبقة المعالم المنشأة من شبكة تحديد التكلفة المثلى للسفر"});

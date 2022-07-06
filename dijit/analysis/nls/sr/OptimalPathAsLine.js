@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Odaberite raster ili geoobjekte odredišta",destinationField:"Polje odredišta (opciono)",inputDistanceAccumulationRaster:"Odaberite raster akumulacije rastojanja",inputBackDirectionRaster:"Odaberite raster povratnog smera ili smera toka",pathType:"Tip putanje (opciono)",bestSingle:"Najbolja pojedinačna",eachCell:"Svaka ćelija",eachZone:"Svaka zona",outputFeatureName:"Naziv sloja geoobjekata sa rezultatima",outputLayerName:"Optimalna putanja kao linija ${layername}",drawSourcePointLayerName:"Izvorne tačke",itemDescription:"Sloj geoobjekata nastao usled pokretanja optimalne putanje kao linije na ${layername}. ",itemTags:"Rezultat analize, Optimalna putanja kao linija, ${layername} ${fieldname}",itemSnippet:"Sloj geoobjekata generisan iz optimalne putanje kao linije."});

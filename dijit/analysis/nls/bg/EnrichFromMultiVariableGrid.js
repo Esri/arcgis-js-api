@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Изберете точков слой за обогатяване",chooseMVgridLyrLabel:"Изберете мрежа с няколко променливи, от която да обогатите",chooseVariables:"Изберете променливите, които да добавите",outputLayerName:"Обогатен ${inputFeatures} от ${gridLayer}",itemDescription:"Обектен слой, генериран от изпълнението на решението за Обогатяване от мрежа с много променливи ${inputFeatures}.",itemTags:"Резултат от анализа, Обогатяване от мрежа с много променливи, ${inputFeatures}, ${gridLayer}",itemSnippet:"Обектен слой, генериран от Обогатяване от мрежа с много променливи."});

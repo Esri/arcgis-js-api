@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Choisir une entité ou un raster de régions",inputCostRaster:"Choisir un raster de coût (facultatif)",inputBarrierRasterOrFeatures:"Choisir une entité ou un raster d’interruption (facultatif)",distanceMethod:"Méthode de distance (facultatif)",connectionsWithinRegions:"Connexions à l’intérieur des régions (facultatif)",generateConnections:"Générer des connexions",noConnections:"Aucune connexion",planar:"Planaire",geoDesic:"Géodésique",outputOptimalLinesName:"Nom de la couche d’entités des lignes de connectivité optimale de résultat",outputNeighborConnectionsName:"Nom de la couche d’entités des connexions voisines de résultat (facultatif)",outputLayerName:"Connexions optimales des régions de ${layername}",drawSourcePointLayerName:"Points sources",itemDescription:"Couche d’entités générée en exécutant la solution Connexions optimales des régions sur ${layername}. ",itemTags:"Résultat d’analyse, Connexions optimales des régions, ${layername} ${fieldname}",itemSnippet:"Couche d’entités générée avec Connexions optimales des régions.",noValueMessage:"Cette valeur est requise"});

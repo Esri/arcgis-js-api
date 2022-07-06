@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayer:"Valige kiht, millelt soovite lähisündmusi leida",entityField:"Valige väli, mida soovite sündmuste tuvastamiseks kasutada",entityLayer:"Valige huvipakkuvate üksuste määramiseks kiht",defineDistanceLabel:"Ruumilise otsitava vahemaa määratlemine",distMethodLabel:"Valige vahemaa arvutamise meetod",temporalSearchLabel:"Ajalise otsitava vahemaa määratlemine",optionsLabel:"Täiendavad võimalused",maxTraceDepth:"Jälgimise maksimaalne sügavus",attributeMatchLabel:"Valige vastendamiseks üks või mitu olemiatribuuti",includeTracksLayer:"Kaasa rajakiht",itemDescription:"Objektikiht loodi lähisündmuste jälgimise lahenduse käitamise kaudu, ${inputLayername}.",itemTags:"Analüüsitulemused, lähisündmuste jälgimine, ${inputLayername}",itemSnippet:"Objektikiht loodi lähisündmuste jälgimise kaudu",outputLayerName:"Lähisündmuste jälgimine, ${inputLayername}",noEntityFieldMsg:"Lähisündmuste kihil ja huvipakkuvate üksuste kihil pole ühiseid välju."});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({chooseShape:"Vorm kiezen",defineExtent:"Extent definiëren",defineBin:"Definieer de bingrootte door deze te specificeren",area:"Gebied",distance:"Afstand",resultLayerName:"Resultaat laagnaam",hexagon:"Zeskant",transverseHexagon:"Dwarse zeshoek",square:"Vierkant",triangle:"Driehoek",diamond:"Diamant",sameAsDisplay:"Zelfde als weergave",emptyBinSize:"De bingrootte kan niet leeg zijn",currentExtent:"huidige extent",intersectExtent:"Behoud alleen kruisende betegeling",outputLayerName:"Genereer betegeling op ${extentLayerName}",itemDescription:"Extent van ${extentLayerName} is gebruikt.",itemTags:"Analyseresultaat, betegeling genereren, ${extentLayerName}",itemSnippet:"Objectlaag gegenereerd van Betegeling genereren"});

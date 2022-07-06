@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Elegir una capa que se desea describir",summaryTypes:"Tipos de resúmenes",centralFeature:"Entidad central",meanCenter:"Centro medio",medianCenter:"Centro mediano",ellipse:"Elipse",weightBy:"Ponderar por (opcional)",groupBy:"Agrupar por (opcional)",resultLayerName:"Nombre de capa de resultados",outputLayerName:"Describir distribución de ${layerName}",none:"Ninguna",itemDescription:"Capa de entidades generada al ejecutar Resumir centro y dispersión en ${layerName}. ",itemTags:"Resultado de análisis, Resumir centro y dispersión, ${layerName}",itemSnippet:"Capa de entidades generada con Resumir centro y dispersión"});

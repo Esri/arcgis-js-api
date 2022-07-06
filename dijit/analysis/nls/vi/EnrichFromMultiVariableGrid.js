@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Chọn đối tượng điểm để bổ sung",chooseMVgridLyrLabel:"Chọn lưới đa biến để bổ sung",chooseVariables:"Chọn biến để thêm",outputLayerName:"Bổ sung ${inputFeatures} từ ${gridLayer}",itemDescription:"Lớp đối tượng được tạo ra từ việc chạy giải pháp Bổ sung từ Lưới Đa biến cho ${inputFeatures}.",itemTags:"Kết quả Phân tích, Bổ sung từ Lưới Đa biến, ${inputFeatures}, ${gridLayer}",itemSnippet:"Lớp đối tượng được tạo ra từ Bổ sung từ Lưới Đa biến."});

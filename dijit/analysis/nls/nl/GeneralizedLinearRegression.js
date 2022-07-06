@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({modifiedTitle:"Gegeneraliseerde lineaire regressie - ${goal}",fit:"Passend maken",fitAndPredict:"Passen en voorspellen",selectGoal:"Wat wilt u doen?",fitGoal:"Een model passen om de prestaties van het model te beoordelen",fitAndPredictGoal:"Een model passen en waarden voorspellen",inputLayerLabel:"Kies een laag om een model van te genereren",chooseDependentField:"Het veld kiezen om te modelleren",chooseDataType:"Kies het type gegevens dat u aan het modelleren bent",continuousData:"Doorlopend",binaryData:"Binair",countData:"Aantal",chooseExplanatoryField:"Kies de verklarende velden",chooseFeaturesToPredict:"Kies een laag om waarden voor te voorspellen",chooseExplainMatch:"Kies hoe verklarende velden worden vergeleken",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Objectlaag gegenereerd door het uitvoeren van de oplossingen Gegeneraliseerde lineaire regressie ${goal}.",itemTags:"Analyseresultaat, gegeneraliseerde lineaire regressie, ${inputLayerName}, ${goal}",itemSnippet:"Objectlaag gegenereerd van gegeneraliseerde lineaire regressie (${goal})"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define([],(function(){return{getCeiling:function(t,a){if(0===t)return 0;var e;t<0?(t=-t,e=-1):e=1;var r=Math.pow(10,Math.ceil(Math.log(t)/Math.LN10)-1),n=2*Math.ceil(t/r/2)*r;return a&&Math.log(n)/Math.LN10%1==0&&(n*=2),n*e},supportsComparison:function(t,a){return"OneVar"===t||"AgePyramid"===t&&a||"RelatedVariables"===t&&a}}}));

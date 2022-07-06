@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define([],(function(){var n={checkParentWidgets:function(n,t,r){for(var e=!1;n&&(e=t(n)||e,!r||!e);)n=n.parentWidget;return e},isDataDrillingView:function(t){return n.checkParentWidgets(t,(function(n){return n.isDataDrillingView}),!0)},getReportContainerGrid:function(t){return n.findParentWidget(t,(function(n){return n.isReportContainerGrid&&!n.isTempAddContainer}))},findParentWidget:function(t,r){var e;return n.checkParentWidgets(t,(function(n){if(r(n))return e=n,!0}),!0),e}};return n}));

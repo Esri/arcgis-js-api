@@ -330,6 +330,12 @@
     padding: 15px 0 0;
   }
 
+  .esri-rfx-bandArithmetic-indexes-editor--details {
+    font-size: 13px;
+    color: gray;
+    font-weight: 300;
+  }
+
   .esri-rfx-raster-variable-grid .field-Select, .field-Delete {
     width: 60px;
   }

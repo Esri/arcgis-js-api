@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputSourceRasterOrFeatures:"Choisir des entités ou un raster source",sourceField:"Champ source (facultatif)",outputDistanceAllocationRasterName:"Nom du raster d’allocation de distance de résultat",inputBarrierRasterOrFeatures:"Choisir des entités ou un raster d’interruption (facultatif)",inputSurfaceRaster:"Choisir un raster de surface (facultatif)",inputCostRaster:"Choisir un raster de coût (facultatif)",inputVerticalRaster:"Choisir un raster vertical (facultatif)",verticalFactor:"Facteur vertical (facultatif)",inputHorizontalRaster:"Choisir un raster horizontal (facultatif)",horizontalFactor:"Facteur horizontal (facultatif)",outputLayerName:"Allocation de distance de ${layername}",outputDistanceAccumulationRasterName:"Nom du raster d’accumulation de distance de résultat (facultatif)",outputBackDirectionRasterName:"Nom du raster de direction arrière de résultat (facultatif)",outputSourceDirectionRasterName:"Nom du raster de direction source de résultat (facultatif)",outputSourceLocationRasterName:"Nom du raster de localisation source de résultat (facultatif)",sourceInitialAccumulation:"Accumulation initiale",sourceMaximumAccumulation:"Accumulation maximale",sourceCostMultiplier:"Multiplicateur de coût",sourceDirection:"Sens de déplacement",distanceMethod:"Méthode de distance",sourceCharacteristicOptions:"Options des caractéristiques de la source",itemDescription:"Couche d’entités générée en exécutant la solution Allocation de distance sur ${layername}. ",itemTags:"Résultat d’analyse, Allocation de distance, ${layername} ${fieldname}",itemSnippet:"Couche d’entités générée avec Allocation de distance.",invalidNumber:"Saisir un nombre valide",or:"ou",toSource:"Vers la source",fromSource:"À partir de la source",planar:"Planaire",geoDesic:"Géodésique",uniqueId:"ID unique",binary:"Binaire",linear:"Linéaire",inverseLinear:"Linéaire inverse",forward:"Avant",symmetricLinear:"Linéaire symétrique",symmetricInverseLinear:"Linéaire inverse symétrique",cos:"Cos",sec:"Sec",cosSec:"Cos â€“ Sec",secCos:"Sec â€“ Cos",zeroFactor:"Facteur zéro",lowCutAngle:"Angle d’inflexion inférieur",highCutAngle:"Angle d’inflexion supérieur",cutAngle:"Angle d’inflexion",slope:"Pente",power:"Puissance",cosPower:"Puissance cos",secPower:"Puissance sec",sideValue:"Valeur de bord",selectField:"Sélectionner un champ"});

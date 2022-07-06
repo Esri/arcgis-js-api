@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({chooseLayer:"Valige kiht analüüsimiseks",chooseField:"Mudeli välja valimine",chooseExplanatoryField:"Selgitavate väljade valimine",chooseNeighborhood:"Valige aja ümbruskonna määramise viis",distanceBand:"Vahemaa",numNeighbors:"Naabrite arv",chooseWeighted:"Valige ümbruskonna objektide kaalumise viis",bisquare:"Biruutmeetod",gaussian:"Gaussi meetod",resultLayerName:"Tulemkihi nimi",outputLayerName:"GWR ${inputLayerName}",distanceBandWarning:"Vahemaa väärtus peab olema ${min} ja ${max} vahel",numNeighborsWarning:"Naabrite arv peab olema ${min} ja ${max} vahel",explanatoryFieldsWarning:"Valige vähemalt üks selgitav väli",explanatoryLayerWarning:"Valitud kiht ei sisalda ühtegi kehtivat selgitavat välja, palun valige mõni teine kiht.",inputLayerWarning:"Valitud kiht ei sisalda modelleeritavaid numbrivälju, palun valige mõni muu kiht",itemDescription:"Objektikiht loodi geograafiliselt kaalutud regressiooni lahenduste abil.",itemTags:"Analüüsi tulemus, geograafiliselt kaalutud regressioon, ${inputLayerName}, sobitatud",itemSnippet:"Objektikiht loodi geograafiliselt kaalutud regressioonitööriista abil."});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Choisir des entités ou un raster de destination",destinationField:"Champ de destination (facultatif)",inputDistanceAccumulationRaster:"Choisir un raster d’accumulation de distance",inputBackDirectionRaster:"Choisir un raster de direction arrière ou de sens de circulation",pathType:"Type de chemin (facultatif)",bestSingle:"Le moins coûteux",eachCell:"Chaque cellule",eachZone:"Chaque zone",outputFeatureName:"Nom de la couche d’entités de résultat",outputLayerName:"Chemin optimal comme ligne de ${layername}",drawSourcePointLayerName:"Points source",itemDescription:"Couche d’entités générée en exécutant Chemin optimal comme ligne sur ${layername}. ",itemTags:"Résultat d’analyse, Chemin optimal comme ligne, ${layername} ${fieldname}",itemSnippet:"Couche d’entités générée avec Chemin optimal comme ligne."});

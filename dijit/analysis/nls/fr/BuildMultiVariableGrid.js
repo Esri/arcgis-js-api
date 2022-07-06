@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({binsLabel:"Choisir le type de groupe qui sera utilisé pour créer le carroyage à plusieurs variables",layersAttrLabel:"Choisir les couches et variables en entrée à inclure dans le carroyage",itemDescription:"Couche d’entités générée par l’exécution de l’outil Créer un carroyage à plusieurs variables.",itemTags:"Résultat d’analyse, Créer un carroyage à plusieurs variables",itemSnippet:"Couche d’entités générée avec Créer un carroyage à plusieurs variables",addVariables:"Ajouter des variables"});

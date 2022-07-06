@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({chooseShape:"Escolher um formato",defineExtent:"Definir extensão",defineBin:"Definir tamanho de caixa especificando",area:"Área",distance:"Distância",resultLayerName:"Nome da camada resultante",hexagon:"Hexágono",transverseHexagon:"Hexágono transversal",square:"Quadrado",triangle:"Triângulo",diamond:"Diamante",sameAsDisplay:"Semelhante à visualização",emptyBinSize:"O tamanho de caixa não pode estar vazio",currentExtent:"extensão atual",intersectExtent:"Somente manter intersecção de tesselação",outputLayerName:"Gerar tesselação em ${extentLayerName}",itemDescription:"Extensão de ${extentLayerName} foi utilizada.",itemTags:"Resultado de Análise, Gerar Tesselações, ${extentLayerName}",itemSnippet:"Camada de feição gerada de Gerar Tesselações"});

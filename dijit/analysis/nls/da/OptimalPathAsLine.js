@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Vælg destinationsraster eller -objekter",destinationField:"Destinationsfelt (valgfrit)",inputDistanceAccumulationRaster:"Vælg raster til afstandsakkumulering",inputBackDirectionRaster:"Vælg tilbageretnings- eller flowretningsraster",pathType:"Stitype (valgfrit)",bestSingle:"Bedste enkelt",eachCell:"Hver celle",eachZone:"Hver zone",outputFeatureName:"Navn på resultatvektorlag",outputLayerName:"Optimal rute som linje af ${layername}",drawSourcePointLayerName:"Kildepunkter",itemDescription:"Vektorlag genereret ud fra kørsel af den optimale rute som linje på ${layername}. ",itemTags:"Analyseresultat, optimal rute som linje, ${layername} ${fieldname}",itemSnippet:"Vektorlag genereret ud fra den optimale rute som linje."});

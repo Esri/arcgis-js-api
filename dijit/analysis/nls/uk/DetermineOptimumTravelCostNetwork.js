@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Вибрати растр або шар місця розташування об'єкту, між якими треба визначити шляхи подорожування",inputCostRasterLabel:"Вибрати растровий шар вартості подорожі",outputOptimumNetworkName:"Ім'я шару поліліній оптимальних шляхів результатів",outputNeighborNetworkName:"Ім'я шару поліліній сусідніх шляхів результатів (опціонально)",outputLayerName:"Визначити оптимальну вартість подорожі ${layername}",itemDescription:"Векторний шар, згенерований в результаті виконання визначення мережі оптимальної вартості подорожі для ${layerName}. ",itemTags:"Результат аналізу, Визначити мережу оптимальної вартості подорожі, ${layername} ${fieldname}",itemSnippet:"Векторний шар, згенерований в результаті визначення мережі оптимальної вартості подорожі."});
+define({inputLayerLabel:"Вибрати растр або шар місця розташування обʼєкту, між якими треба визначити шляхи подорожування",inputCostRasterLabel:"Вибрати растровий шар вартості подорожі",outputOptimumNetworkName:"Імʼя шару поліліній оптимальних шляхів результатів",outputNeighborNetworkName:"Імʼя шару поліліній сусідніх шляхів результатів (опціонально)",outputLayerName:"Визначити оптимальну вартість подорожі ${layername}",itemDescription:"Векторний шар, згенерований в результаті виконання визначення мережі оптимальної вартості подорожі для ${layerName}. ",itemTags:"Результат аналізу, Визначити мережу оптимальної вартості подорожі, ${layername} ${fieldname}",itemSnippet:"Векторний шар, згенерований в результаті визначення мережі оптимальної вартості подорожі."});

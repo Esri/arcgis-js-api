@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/extendsHelper","dojo/aspect","dojo/on"],(function(t,n,e,o,r){Object.defineProperty(n,"__esModule",{value:!0});var i=function(){function t(){}return t.prototype.on=function(t,n){return o.after(this,"on"+t,n,!0)},t.prototype.once=function(t,n){return r.once(this,t,n)},t.prototype.emit=function(t){r.emit(this,t,this)},t.prototype.hasEventListener=function(t){var n="on"+t;return!(!this[n]||!this[n].after)},t}();n.Evented=i,n.EventedMixin=function(t){return function(t){function n(){return null!==t&&t.apply(this,arguments)||this}return e(n,t),n.prototype.on=function(t,n){return o.after(this,"on"+t,n,!0)},n.prototype.once=function(t,n){return r.once(this,t,n)},n.prototype.emit=function(t,n){r.emit(this,t,n)},n.prototype.hasEventListener=function(t){var n="on"+t;return!(!this[n]||!this[n].after)},n}(t)}}));

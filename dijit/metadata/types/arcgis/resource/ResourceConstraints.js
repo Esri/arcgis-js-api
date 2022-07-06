@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../base/Descriptor","dojo/text!./templates/ResourceConstraints.html","../constraints/GeneralConstraints","../constraints/LegalConstraints","../constraints/SecurityConstraints","../constraints/AccessConstraints","../constraints/UseLimitations"],(function(t,s,e,n,a,r){var o=t(a,{templateString:r});return e("extend-esri")&&s.setObject("dijit.metadata.types.arcgis.resource.ResourceConstraints",o,n),o}));

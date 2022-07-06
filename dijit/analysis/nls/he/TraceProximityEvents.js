@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayer:"בחר שכבה לאיתור אירועים קרובים",entityField:"בחר שדה לזיהוי אירועים",entityLayer:"בחר שכבה לזיהוי ישויות עניין",defineDistanceLabel:"הגדר את מרחק החיפוש המרחבי",distMethodLabel:"בחר בשיטה לחישוב מרחק",temporalSearchLabel:"הגדר את מרחק החיפוש בממד זמן",optionsLabel:"אפשרויות מתקדמות",maxTraceDepth:"עומק מעקב מקסימלי",attributeMatchLabel:"בחר מאפיין ישות אחד או יותר להתאמה",includeTracksLayer:"כלול שכבת מסלולים",itemDescription:"שכבת הישויות נוצרה מהרצת פתרון מעקב אחר אירועים קרובים עבור ${inputLayername}.",itemTags:"תוצאת הניתוח, מעקב אחר אירועים קרובים, ${inputLayername}",itemSnippet:"שכבת הישויות נוצרה ממעקב אחר אירועים קרובים.",outputLayerName:"מעקב אחר אירועים קרובים עבור ${inputLayername}",noEntityFieldMsg:"לשכבת האירועים הקרובים ולשכבת ישויות העניין אין שדות משותפים."});

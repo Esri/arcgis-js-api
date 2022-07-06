@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Escolher uma camada de entrada",addAVar:"Adicionar uma variável",distToNearest:"Distância até Mais Próximo",attrOfInterest:"Atributos do Mais Próximo",summaryNearby:"Resumo do Mais Próximo",summaryIntersecting:"Resumo da intersecção",distToNearestLabel:"A distância do centro da caixa até a feição mais próxima na camada de entrada",attrOfInterestLabel:"O valor de um campo especificado a partir da feição mais próxima da camada de entrada",summaryNearbyLabel:"Um cálculo de estatística em todas as feições localizadas com a distância especificada do centro da caixa",summaryIntersectingLabel:"Uma estatística calculada em todas as feições que interseccionam a caixa",maxDistancefromCtr:"Distância máxima do centro da caixa",fieldToIncude:"Campo para incluir",statstoCalculate:"Estatística para calcular",summFeatuesWithin:"Resumir feições dentro",layerChangeWarnMsg:"As variáveis adicionadas nesta camada de entrada serão removidas se a camada de entrada for alterada",validationErrorMsg:"Corrija os erros de validação antes de adicionar nova variável",atleastOneVarMsg:"Adicione pelo menos uma variável nesta camada selecionada"});

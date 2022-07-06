@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({toolDefine:"Класифициране на пиксели с помощта на изучаване в дълбочина",outputLayerName:"${layername}_classified",modelLabel:"Изберете модел за дълбоко обучение, използван за класифициране на пиксели",modelArgsLabel:"Посочете аргументи на модела за дълбоко обучение",nameLabel:"Име",valueLabel:"Стойност",queryModelArgsMsg:"Извършване на заявка за аргументи на модела...",queryModelArgsErrMsg:"Неуспешна заявка за аргументи на модела.",processingModeLabel:"Режим на обработка",processAsMosaicLabel:"Обработвайте като мозаично изображение",processAsItemsLabel:"Обработвайте всички растерни елементи поотделно",analysisLayerLabel:"Изберете изображение, използвано за класифициране на пиксели",itemDescription:"Услуга за анализ на изображения, генерирана от класифициране на пиксели с помощта на дълбоко обучение",itemTags:"Резултат от растерния анализ, класифициране на пиксели с помощта на изучаване в дълбочина, ${layername}",itemSnippet:"Услуга за анализ на изображения, генерирана от класифициране на пиксели с помощта на дълбоко обучение"});

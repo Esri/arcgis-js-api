@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Valitse kuvailtava aineistoryhmä",describeDataLabel:"Saa käsitys aineistostasi luomalla (valinnainen)",sampleLayer:"Mallikarttataso",extentLayer:"Laajuuskarttataso",noOfFeaturesLabel:"Sisällytettävien kohteiden määrä",outputLayerName:"Tulostason nimi",resultName:"Kuvaile karttatason ${layerName} aineistoa",itemDescription:"Kohdekarttataso, joka on luotu suorittamalla Kuvaile karttatason ${layerName} aineistoryhmää -toiminto. ",itemTags:"Analyysin tulos, Kuvaile aineistoryhmää, ${layerName}",itemSnippet:"Kuvaile aineistoryhmää -toiminnon perusteella luotu kohdekarttataso."});

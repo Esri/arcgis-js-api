@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Wybierz raster lub obiekty stref",outputTableName:"Nazwa tabeli wynikowej",zoneField:"Pole strefy",inputValueRaster:"Wybierz raster wartości",ignoreNodata:"Ignoruj w obliczeniach wartości Brak danych (opcjonalnie)",ignore:"Ignoruj",statisticType:"Typ obliczeń statystycznych (opcjonalnie)",percentileValues:"Wartości percentylowe (opcjonalnie)",percentileInterpolationType:"Typ interpolacji percentylowej (opcjonalnie)",processAsMultidimensional:"Przetwarzaj jako wielowymiarowe (opcjonalnie)",allSlices:"Wszystkie przekroje",outputZonalStatsName:"Statystyki strefy dla ${valuelayername} w warstwie ${layername}",itemDescription:"Tabela obiektów analitycznych wygenerowana w wyniku uruchomienia narzędzia Statystyki strefowe jako tabela",itemTags:"Wynik analizy rastrowej, Statystyki strefowe jako tabela, ${layername}, ${valuelayername}",autoDetect:"Automatyczne wykrywanie",nearest:"Najbliższy",linear:"Liniowy"});

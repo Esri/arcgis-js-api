@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Wybierz raster lub warstwę obiektową lokalizacji, między którymi mają zostać określone ścieżki podróży",inputCostRasterLabel:"Wybierz warstwę rastrową kosztów podróży",outputOptimumNetworkName:"Nazwa wynikowej warstwy poliliniowej optymalnych ścieżek",outputNeighborNetworkName:"Nazwa wynikowej warstwy poliliniowej sąsiednich ścieżek (opcjonalnie)",outputLayerName:"Określ optymalny koszt podróży warstwy ${layername}",itemDescription:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Określ sieć optymalnego kosztu podróży dla warstwy ${layerName}. ",itemTags:"Wynik analizy, Określ sieć optymalnego kosztu podróży, ${layername} ${fieldname}",itemSnippet:"Warstwa obiektowa wygenerowana z narzędzia Określ sieć optymalnego kosztu podróży."});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/CacheUtil","esri/dijit/geoenrichment/utils/requests/UniversalClient","esri/dijit/geoenrichment/ReportPlayer/core/supportClasses/map/UrlToItemUtil","../WebMapsUtil"],(function(e,r,n,t){return{getInfo:function(i){var o=e.get("LayerInfoLoader");return o[i]||(o[i]=r.request(i).otherwise((function(){return t.executeItemUrl({url:i})})).then((function(e){var r=e.name||e.documentInfo&&e.documentInfo.Title||(n.tryCreateItemFromServerUrl(i)||{name:i}).name;return{url:i,name:r,rendererJson:e.drawingInfo&&e.drawingInfo.renderer,geometryType:e.geometryType}})).otherwise((function(e){return console.log(e),null}))),o[i]}}}));

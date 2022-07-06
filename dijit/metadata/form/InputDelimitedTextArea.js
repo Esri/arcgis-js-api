@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/has","./InputTextArea","dojo/i18n!../nls/i18nBase","../../../kernel"],(function(e,t,n,i,r,l,s){var o=e([r],{_supportsMultipleValues:!0,delimiter:",",hint:l.hints.delimitedTextArea,subTarget:null,postCreate:function(){this.inherited(arguments)},getDisplayValue:function(){if(!this.focusNode)return null;var e,t=[],n="",i=this.focusNode.value;if(this._mergeTokens(t,i),t.length>0)for(e=0;e<t.length;e++)n.length>0&&(n+=this.delimiter),n+=t[e];return n.length>0?n:null},getInputValue:function(){if(!this.focusNode)return null;var e=[],t=this.focusNode.value;return this._mergeTokens(e,t),1===e.length?e[0]:e.length>1?e:null},importValues:function(e,t){var n,i=[],r="";for(n=0;n<t.length;n++)this._mergeTokens(i,t[n]);for(n=0;n<i.length;n++)r.length>0&&(r+=this.delimiter),r+=i[n];this.setInputValue(r)},_mergeTokens:function(e,i){var r;null!=i&&(r=(i=i.replace(/(\r\n|\r|\n|\n\r)/g,this.delimiter)).split(this.delimiter),n.forEach(r,(function(n){var i=t.trim(n);i.length>0&&e.push(i)})))}});return i("extend-esri")&&t.setObject("dijit.metadata.form.InputDelimitedTextArea",o,s),o}));

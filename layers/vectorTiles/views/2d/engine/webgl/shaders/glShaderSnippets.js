@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["require","exports","dojo/text!./backgroundShaders.xml","dojo/text!./bitblitShaders.xml","dojo/text!./stencilShaders.xml","dojo/text!./tileInfo.xml","../../../../webgl/ShaderSnippets"],(function(e,t,r,o,a,d,s){var n=new s;return s.parse(r,n),s.parse(o,n),s.parse(a,n),s.parse(d,n),n}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({toolDefine:"Klasyfikuj obiekty metodą Deep Learning",inputFeaturesLabel:"Wybierz warstwę obiektową dla obiektów (opcjonalnie)",outputLayerName:"${layername}_sklasyfikowaneObiekty",modelLabel:"Wybierz model Deep Learning używany do klasyfikowania obiektów",modelArgsLabel:"Podaj argumenty modelu Deep Learning",classLabelFieldLabel:"Zdefiniuj nazwę pola etykiety klasy (opcjonalnie)",processingModeLabel:"Tryb przetwarzania",processAsMosaicLabel:"Przetwarzaj jako obraz mozaikowy",processAsItemsLabel:"Przetwarzaj wszystkie elementy rastrowe osobno",queryModelArgsMsg:"Wysyłanie zapytania o argumenty modelu...",queryModelArgsErrMsg:"Zapytanie o argumenty modelu zakończyło się niepowodzeniem.",valueLabel:"Wartość",nameLabel:"Nazwa",analysisLayerLabel:"Wybierz obraz używany do klasyfikowania obiektów",itemDescription:"Usługa rastrowa analizy wygenerowana za pomocą opcji Klasyfikuj obiekty metodą Deep Learning",itemTags:"Wynik analizy rastrowej, opcja Klasyfikuj obiekty metodą Deep Learning, warstwa ${layername}",itemSnippet:"Usługa rastrowa analizy wygenerowana za pomocą opcji Klasyfikuj obiekty metodą Deep Learning"});

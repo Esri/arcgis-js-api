@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({chooseShape:"Zvolit tvar",defineExtent:"Definovat rozsah",defineBin:"Definovat velikost přihrádky zadáním",area:"Plocha",distance:"Vzdálenost",resultLayerName:"Název výsledné vrstvy",hexagon:"Šestiúhelník",transverseHexagon:"Příčný šestiúhelník",square:"Čtverec",triangle:"Trojúhelník",diamond:"Kosočtverec",sameAsDisplay:"Stejně jako u zobrazení",emptyBinSize:"Velikost přihrádky nesmí být prázdná",currentExtent:"aktuální rozsah",intersectExtent:"Zachovat pouze protínající se pravidelné mřížky polygonů",outputLayerName:"Generovat pravidelné mřížky polygonů v ${extentLayerName}",itemDescription:"Byl použit rozsah z ${extentLayerName}.",itemTags:"Výsledek analýzy, generovat pravidelné mřížky polygonů, ${extentLayerName}",itemSnippet:"Vrstva prvků vygenerovaná řešením Generovat pravidelné mřížky polygonů."});

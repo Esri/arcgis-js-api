@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({binsLabel:"Wybierz typ koszy, który będzie używany do budowania siatki wielu wartości",layersAttrLabel:"Wybierz warstwy wejściowe i zmienne, które chcesz dołączyć do siatki",itemDescription:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Buduj siatkę wielu wartości.",itemTags:"Wynik analizy, Buduj siatkę wielu wartości",itemSnippet:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Buduj siatkę wielu wartości",addVariables:"Dodaj zmienne"});

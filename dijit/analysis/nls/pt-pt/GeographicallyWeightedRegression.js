@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({chooseLayer:"Escolher uma camada para analisar",chooseField:"Escolher o campo a modelar",chooseExplanatoryField:"Escolher os campos explanatórios",chooseNeighborhood:"Escolher como o bairro será determinado",distanceBand:"Banda de Distância",numNeighbors:"Número de vizinhos",chooseWeighted:"Escolher como os elementos vizinhos são ponderados",bisquare:"Biquadrado",gaussian:"Gaussiano",resultLayerName:"Nome da camada resultante",outputLayerName:"GWR ${inputLayerName}",distanceBandWarning:"O valor da banda de distância deve ser entre ${min} e ${max}",numNeighborsWarning:"O número de vizinhos deve ser entre ${min} e ${max}",explanatoryFieldsWarning:"Escolha pelo menos 1 campo explanatório",explanatoryLayerWarning:"A camada selecionada não contém quaisquer campos explanatórios válidos; escolha uma camada diferente",inputLayerWarning:"A camada selecionada não contém quaisquer campos numéricos para modelar; escolha uma camada diferente",itemDescription:"Camada de elementos gerada através da execução das soluções de Regressão Ponderada Geograficamente.",itemTags:"Resultado de Análise, Regressão Ponderada Geograficamente, ${inputLayerName}, ajuste",itemSnippet:"Camada de elementos gerada através da ferramenta de Regressão Ponderada Geograficamente"});

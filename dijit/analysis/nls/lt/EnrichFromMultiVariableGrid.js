@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Pasirinkite praturtintinus taškinius elementus",chooseMVgridLyrLabel:"Pasirinkite, kuriuo kelių kintamųjų tinkleliu praturtinti",chooseVariables:"Pasirinkite pridedamus kintamuosius",outputLayerName:"Praturtinti ${inputFeatures} iš ${gridLayer}",itemDescription:"Elementų sluoksnis sukurtas įvykdžius Praturtinti iš kelių kintamųjų tinklelio sprendimą, skirtą ${inputFeatures}.",itemTags:"Analizės Rezultatas, Praturtinti iš kelių kintamųjų tinklelio, ${inputFeatures}, ${gridLayer}",itemSnippet:"Elementų sluoksnis sukurtas naudojant Praturtinti iš kelių kintamųjų tinklelio."});

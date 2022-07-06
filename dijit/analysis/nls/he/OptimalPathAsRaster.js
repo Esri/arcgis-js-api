@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"בחר רסטר יעד או מאפיינים",destinationField:"שדה יעד (אופציונלי)",inputDistanceAccumulationRaster:"בחר רסטר של הצטברות מרחק",inputBackDirectionRaster:"בחר רסטר של כיוון הפוך או כיוון זרימה",pathType:"סוג נתיב (אופציונלי)",bestSingle:"היחיד הטוב ביותר",eachCell:"כל תא",eachZone:"כל אזור",outputRasterName:"שם שכבת רסטר התוצאה",outputLayerName:"נתיב מיטבי כרסטר של ${layername}",drawSourcePointLayerName:"נקודות מוצא",itemDescription:"שכבת ישויות נוצרה מהפעלת הנתיב המיטבי כרסטר ב-${layername}. ",itemTags:"תוצאת ניתוח, נתיב מיטבי כרסטר, ${layername} ${fieldname}",itemSnippet:"שכבת ישויות נוצרה מנתיב מיטבי כרסטר."});

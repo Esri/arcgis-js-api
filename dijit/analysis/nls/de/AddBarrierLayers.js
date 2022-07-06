@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({addBarriers:"Barriere-Layer auswählen",pointBarrier:"Punkt-Barrieren",lineBarrier:"Linien-Barrieren",polygonBarrier:"Polygon-Barrieren",choosePointBarrier:"Punkt-Barriere-Layer auswählen",chooseLineBarrier:"Linien-Barriere-Layer auswählen",choosePolygonBarrier:"Polygon-Barriere-Layer auswählen",selectPointBarrier:"Punkt-Barrieren auswählen",selectLineBarrier:"Linien-Barrieren auswählen",selectPolygonBarrier:"Polygon-Barrieren auswählen"});

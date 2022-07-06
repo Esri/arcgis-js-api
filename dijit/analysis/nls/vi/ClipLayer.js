@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Chọn đối tượng để cắt",filterSelectLabel:"Cắt tất cả đối tượng hoặc xác định một tập hợp con (tùy chọn)",targetArea:"Chọn vùng để cắt",outputLayerName:"Cắt ${inputLayerName} thành ${clipLayerName}",itemDescription:"Lớp đối tượng được tạo ra từ việc chạy giải pháp Cắt. Đối tượng từ ${inputLayerName} được cắt thành ${clipLayerName}.",itemTags:"Kết quả phân tích, ClipLayer, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Lớp đối tượng được tạo ra từ Clip Layer"});

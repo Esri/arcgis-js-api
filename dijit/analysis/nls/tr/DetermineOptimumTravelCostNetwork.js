@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Şunların arasındaki seyahat yollarını belirlemek için raster veya detay konumu katmanı seçin",inputCostRasterLabel:"Seyahat maliyeti raster katmanı seçin",outputOptimumNetworkName:"Sonuç optimum yol çoklu çizgi katmanı adı",outputNeighborNetworkName:"Sonuç komşu yol çoklu çizgi katmanı adı (isteğe bağlı)",outputLayerName:"${layername} katmanının optimum seyahat maliyetini seçin",itemDescription:"Detay katmanı ${layerName} üzerindeki optimum seyahat maliyeti ağını belirle, çalıştırılarak oluşturuldu. ",itemTags:"Analiz Sonucu, Optimum Seyahat Maliyeti Ağını Belirle, ${layername} ${fieldname}",itemSnippet:"Detay katmanı Optimum Seyahat Maliyeti Ağını Belirle ile oluşturuldu."});

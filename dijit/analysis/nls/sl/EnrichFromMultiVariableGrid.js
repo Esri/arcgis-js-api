@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Izberite točkovne geoobjekte, ki jih želite obogatiti",chooseMVgridLyrLabel:"Izberite mrežo z več spremenljivkami za obogatitev",chooseVariables:"Izberite spremenljivke za dodajanje",outputLayerName:"Obogateni ${inputFeatures} iz ${gridLayer}",itemDescription:"Geoobjektni sloj, ustvarjen iz izvajanja rešitve Obogatitev iz mreže več spremenljivk za ${inputFeatures}.",itemTags:"Rezultati analize, Obogatitev iz mreže več spremenljivk ${inputFeatures}, ${gridLayer}",itemSnippet:"Geoobjektni sloj, ustvarjen iz Obogatitev iz mreže več spremenljivk"});

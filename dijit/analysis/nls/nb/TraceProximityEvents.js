@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayer:"Velg laget det skal finnes nærhetshendelser i",entityField:"Velg et felt for å identifisere hendelser",entityLayer:"Velg laget der enheter av interesse skal angis",defineDistanceLabel:"Definer den geografiske søkeavstanden",distMethodLabel:"Velg metode for å beregne avstand",temporalSearchLabel:"Definer den tidsmessige søkeavstanden",optionsLabel:"Avanserte alternativer",maxTraceDepth:"Maksimal spordybde",attributeMatchLabel:"Velg ett eller flere enhetsattributter som skal matches",includeTracksLayer:"Inkluder sporlag",itemDescription:"Geoobjektlag generert ved kjøring av løsningen Spor nærhetshendelser for ${inputLayername}.",itemTags:"Analyseresultat, Spor nærhetshendelser, ${inputLayername}",itemSnippet:"Geoobjektlag generert fra Spor nærhetshendelser.",outputLayerName:"Spor nærhetshendelser for ${inputLayername}",noEntityFieldMsg:"Laget med nærhetshendelser og laget med enheter av interesse har ingen felles felt."});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
-define({inputRegionRasterOrFeatures:"Вибрати растр регіону або об'єкт",inputCostRaster:"Вибрати растр вартості (необов'язково)",inputBarrierRasterOrFeatures:"Вибрати растр або об'єкт бар'єру (необов'язково)",distanceMethod:"Метод відстані (необов'язково)",connectionsWithinRegions:"Зв'язки в межах регіонів (необов'язково)",generateConnections:"Створити підключення",noConnections:"Немає підключень",planar:"Планарний",geoDesic:"Геодезичний",outputOptimalLinesName:"Ім'я векторного шару результатів оптимальних ліній з'єднання",outputNeighborConnectionsName:"Ім'я векторного шару сусідніх зв'язків результатів (необов'язково)",outputLayerName:"Оптимальні регіональні зв'язки ${layername}",drawSourcePointLayerName:"Точки джерела",itemDescription:"Векторний шар, згенерований в результаті виконання оптимальних регіональних зв'язків на${layername}. ",itemTags:"Результат аналізу, оптимальні регіональні зв'язки, ${layername} ${fieldname}",itemSnippet:"Векторний шар, згенерований на основі оптимальних регіональних зв'язків.",noValueMessage:"Це значення є обов'язковим"});
+define({inputRegionRasterOrFeatures:"Вибрати растр регіону або обʼєкт",inputCostRaster:"Вибрати растр вартості (необовʼязково)",inputBarrierRasterOrFeatures:"Вибрати растр або обʼєкт барʼєру (необовʼязково)",distanceMethod:"Метод відстані (необовʼязково)",connectionsWithinRegions:"Звʼязки в межах регіонів (необовʼязково)",generateConnections:"Створити підключення",noConnections:"Немає підключень",planar:"Планарний",geoDesic:"Геодезичний",outputOptimalLinesName:"Імʼя векторного шару результатів оптимальних ліній зʼєднання",outputNeighborConnectionsName:"Імʼя векторного шару сусідніх звʼязків результатів (необовʼязково)",outputLayerName:"Оптимальні регіональні звʼязки ${layername}",drawSourcePointLayerName:"Точки джерела",itemDescription:"Векторний шар, згенерований в результаті виконання оптимальних регіональних звʼязків на${layername}. ",itemTags:"Результат аналізу, оптимальні регіональні звʼязки, ${layername} ${fieldname}",itemSnippet:"Векторний шар, згенерований на основі оптимальних регіональних звʼязків.",noValueMessage:"Це значення є обовʼязковим"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"בחר שכבה שאליה תרצה להוסיף",inputWarningLabel:"אזהרה: יתבצעו שינויים בשכבה שאליה תוסיף.",inputHostedLayerWarning:"השכבה שנבחרה אינה שכבת ישויות מתארחת. בחר שכבת ישויות מתארחת שאליה תתבצע ההוספה.",appendLayerLabel:"בחר שכבה שתרצה להוסיף",filterLabel:"הוסף את כל הישויות או הגדר סט משנה (אופציונלי)",fieldMappingLabel:"בחר כיצד להוסיף שדות (אופציונלי)",inputField:"שדה קלט",appendValue:"הוסף ערך",expression:"ביטוי"});

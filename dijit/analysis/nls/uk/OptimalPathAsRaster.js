@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
-define({inputDestinationRasterOrFeatures:"Вибрати цільовий растр або об'єкти",destinationField:"Поле призначення (необов'язково)",inputDistanceAccumulationRaster:"Вибрати растр сумарної відстані",inputBackDirectionRaster:"Вибрати растр зворотного напрямку або напрямку потоку",pathType:"Тип шляху (необов’язково)",bestSingle:"Найкращий одиночний",eachCell:"Кожний осередок",eachZone:"Кожна зона",outputRasterName:"Назва растрового шару результатів",outputLayerName:"Оптимальний шлях як растр ${layername}",drawSourcePointLayerName:"Точки джерела",itemDescription:"Векторний шар, згенерований в результаті проходження оптимального шляху як растру на ${layername}. ",itemTags:"Результат аналізу, оптимальний шлях як растр, ${layername} ${fieldname}",itemSnippet:"Векторний шар, згенерований з оптимального шляху як растр."});
+define({inputDestinationRasterOrFeatures:"Вибрати цільовий растр або обʼєкти",destinationField:"Поле призначення (необовʼязково)",inputDistanceAccumulationRaster:"Вибрати растр сумарної відстані",inputBackDirectionRaster:"Вибрати растр зворотного напрямку або напрямку потоку",pathType:"Тип шляху (необов’язково)",bestSingle:"Найкращий одиночний",eachCell:"Кожний осередок",eachZone:"Кожна зона",outputRasterName:"Назва растрового шару результатів",outputLayerName:"Оптимальний шлях як растр ${layername}",drawSourcePointLayerName:"Точки джерела",itemDescription:"Векторний шар, згенерований в результаті проходження оптимального шляху як растру на ${layername}. ",itemTags:"Результат аналізу, оптимальний шлях як растр, ${layername} ${fieldname}",itemSnippet:"Векторний шар, згенерований з оптимального шляху як растр."});

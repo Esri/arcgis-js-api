@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({toolDefine:"Hitta argumentstatistik",outputLayerName:"${layername}_argumentStatistics",dimensionLabel:"Välj dimension från vilken statistiken ska extraheras",variablesLabel:"Välj variabel/variabler att analysera",variablesListLabel:"Variabler [Dimensionsinformation] (Beskrivning)",statisticsTypeLabel:"Välj statistiktyp",multipleOccurrenceValueLabel:"Välj värde med flera förekomster (valfritt)",minValueLabel:"Ange minvärde",maxValueLabel:"Ange maxvärde",argumentMinLabel:"Argument för minimum",argumentMaxLabel:"Argument för maximum",argumentMedianLabel:"Argument för median",durationLabel:"Varaktighet",dimensionDefinitionLabel:"Välj dimensionsdefinition",intervalKeywordLabel:"Välj intervallnyckelord",all:"Alla",intervalKeyword:"Intervallnyckelord",hourly:"Varje timma",daily:"Dagligen",weekly:"Veckovis",monthly:"Månadsvis",quarterly:"Varje kvartal",yearly:"Årligen",recurringDaily:"Återkommer dagligen",recurringWeekly:"Återkommer veckovis",recurringMonthly:"Återkommer månadsvis",recurringQuarterly:"Återkommer varje kvartal",ignoreNodataLabel:"Ignorera saknade värden i beräkningen",ignore:"Ignorera",analysisLayerLabel:"Välj flerdimensionellt eller flerbands bildlager att analysera",itemDescription:"Analysbildtjänst genererad med Hitta argumentstatistik",itemTags:"Rasteranalysresultat, Hitta argumentstatistik, ${layername}",itemSnippet:"Analysbildtjänst genererad med Hitta argumentstatistik"});

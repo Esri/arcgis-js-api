@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({toolDefine:"Generovat vícerozměrnou anomálii (Generate Multidimensional Anomaly)",outputLayerName:"${layername}_anomaly",variablesLabel:"Vyberte proměnnou (proměnné), u kterých se budou generovat anomálie",variablesListLabel:"Proměnné [informace o rozměrech] (popis)",methodLabel:"Vyberte metodu generování anomálie",calculationIntervalLabel:"Zvolte časový interval pro výpočet střední hodnoty",differenceFromMean:"Rozdíl od střední hodnoty",percentDifferenceFromMean:"Procentuální rozdíl od střední hodnoty",percentOfMean:"Procento střední hodnoty",zScore:"Z-skóre",differenceFromMedian:"Rozdíl od mediánu",percentDifferenceFromMedian:"Procentuální rozdíl od mediánu",percentOfMedian:"Procento mediánu",all:"Vše",yearly:"Ročně",recurringMonthly:"Opakující se jednou za měsíc",recurringWeekly:"Opakující se jednou za týden",recurringDaily:"Opakující se denně",hourly:"Každou hodinu",externalRaster:"Externí rastr",meanRaster:"Vyberte vrstvu obrazových dat střední hodnoty jako referenční",ignoreNodataLabel:"Ignorovat při výpočtu chybějící hodnoty",ignore:"Ignorovat",analysisLayerLabel:"Vyberte vrstvu vícerozměrných snímků, u které chcete generovat anomálii.",itemDescription:"Analytická image služba vygenerovaná nástrojem Generovat vícerozměrnou anomálii",itemTags:"Výsledek analýzy rastru, generovat vícerozměrnou anomálii, ${layername}",itemSnippet:"Analytická image služba vygenerovaná nástrojem Generovat vícerozměrnou anomálii"});

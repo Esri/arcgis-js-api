@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({distToNearest:"Rastojanje do najbliže",attrOfInterest:"Atribut najbliže",summaryNearby:"Rezime obližnje",summaryIntersecting:"Rezime preseka",distToNearestLabel:"Rastojanje od središta bloka do najbližeg geoobjekta u ulaznom sloju",attrOfInterestLabel:"Vrednost navedenog polja iz najbližeg geoobjekta iz ulaznog sloja",summaryNearbyLabel:"Izračunata statistika na svim geoobjektima pronađenim sa navedenim rastojanjem središta bloka",summaryIntersectingLabel:"Izračunata statistika na svim geoobjektima koji presecaju blok",maxDistancefromCtr:"Maksimalno rastojanje od središta bloka",fieldToIncude:"Polje koje treba uključiti",statstoCalculate:"Statistika koju treba izračunati",summFeatuesWithin:"Sumiraj geoobjekte unutar",smallMaxDistErrorMsg:"Maksimalno rastojanje od središta bloka mora da bude veće od veličine bloka.",smallSumFeaturesErrorMsg:"Maksimalno rastojanje od središta bloka mora da bude veće od veličine bloka."});

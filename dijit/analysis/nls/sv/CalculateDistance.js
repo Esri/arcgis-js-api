@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Välj raster eller geoobjektplatslager för att beräkna avståndet till",inputRaster:"Välj raster eller geoobjektlager som ska utgöra barriärer (valfritt)",maxDistanceLabel:"Maximalt avstånd att beräkna (valfritt)",outputCellSize:"Utdatacellstorlek (valfritt)",distanceMethod:"Avståndsmetod",resultDistLayerName:"Resultatavståndslagrets namn",resultDirectionLayerName:"Resultatriktningslagrets namn (valfritt)",resultAllocationLayerName:"Resultattilldelningslagrets namn (valfritt)",outputBackDirectionName:"Riktningslagrets namn för resultat tillbaka (valfritt)",outputLayerName:"Beräknat avstånd för ${layername}",allocationFieldLabel:"Välj tilldelningsfält (valfritt)",itemDescription:"Geoobjektlager som genererats genom körning av Beräkna avstånd på ${layerName}. ",itemTags:"Analysresultat, Beräknat avstånd, ${layername}, ${fieldname}",itemSnippet:"Geoobjektlager som genererats av Beräkna avstånd.",planar:"Plan",geodesic:"Geodetisk",selectDistance:"-- välj --"});

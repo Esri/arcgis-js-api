@@ -2170,6 +2170,26 @@
         "key": 1,
         "label": "${rasterFunctions.enumLabels.interpolateIrregularDataNearest}"
       }
+    ],
+    "esriFlattenCalibrationTypes": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.radarCalibGammaNought}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.radarCalibSigmaNought}"
+      }
+    ],
+    "bandCompositeMethods": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.bandComboByNames}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.bandComboByIDs}"
+      }
     ]
   },
 

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/date/locale","dojo/has","../kernel"],(function(t,e,a,o,r){var s=t(null,{declaredClass:"esri.tasks.Date",constructor:function(t){t&&(t.format&&(this.format=t.format),this.date=a.parse(t.date,{selector:"date",datePattern:this.format}))},date:new Date,format:"EEE MMM dd HH:mm:ss zzz yyyy",toJson:function(){return{date:a.format(this.date,{selector:"date",datePattern:this.format}),format:this.format}}});return o("extend-esri")&&e.setObject("tasks.Date",s,r),s}));

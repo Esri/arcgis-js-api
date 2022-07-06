@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayer:"Izberite sloj, da najdete dogodke v bližini",entityField:"Izberite polje za prepoznavanje dogodkov",entityLayer:"Izberite sloj za določanje entitet zanimanja",defineDistanceLabel:"Določite razdaljo prostorskega iskanja",distMethodLabel:"Izberite metodo za izračun razdalje",temporalSearchLabel:"Določite razdaljo časovnega iskanja",optionsLabel:"Napredne možnosti",maxTraceDepth:"Maksimalna globina sledi",attributeMatchLabel:"Izberite enega ali več atributov entitete za skladnost",includeTracksLayer:"Vključite sloj sledi",itemDescription:"Geoobjektni sloj, ustvarjen z rešitvijo Sledi dogodkom v bližini za ${inputLayername}.",itemTags:"Rezultat analize, sledi dogodkom v bližini, ${inputLayername}",itemSnippet:"Geoobjektni sloj, ustvarjen iz Sledi dogodke v bližini.",outputLayerName:"Sledi dogodkom v bližini za ${inputLayername}",noEntityFieldMsg:"Sloj dogodkov v bližini in sloj entitete zanimanja nimata skupnih polj."});

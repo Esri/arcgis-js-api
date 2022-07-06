@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Teede määramiseks valige objekti asukohakihi raster",inputCostRasterLabel:"Valige reisikulu rasterkiht",inputDestinationLayerLabel:"Valige raster või objekti sihtkoha kiht, et määratleda teed sihtkohta",pathTypeLabel:"Valige määratletavate teede tüüp (valikuline)",bestSingle:"Parim üksik",eachCell:"Igale pikslile",eachZone:"Igale tsoonile",destinationField:"Sihtkoha väärtuste saamiseks valige väli",outputPolylineName:"Tulemi murdjoone nimi",outputLayerName:"Kihi ${layername} optimaalne reisikulu murdjoonena",drawDestinationPointLayerName:"Sihtpunktid",drawSourcePointLayerName:"Lähtepunktid",itemDescription:"Objektikihi loomiseks kasutati kihil ${layername} tööriista „Määratle reisikulu tee murdjoonena“. ",itemTags:"Analüüsi tulemus, Määratle reisikulu tee murdjoonena, ${layername} ${fieldname}",itemSnippet:"Objektikihi loomiseks kasutati tööriista „Määratle reisikulu tee murdjoonena“.",missingMessage:"Sihtkiht peab olema lähtekihist erinev",noValueMessage:"See väärtus on nõutav:",placeHolder:"--Vali kiht--"});

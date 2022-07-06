@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vybrať údajovú sadu na opis",describeDataLabel:"Rozumieť vašim údajom vytvorením (voliteľné)",sampleLayer:"Vrstva vzorky",extentLayer:"Vrstva rozsahu",noOfFeaturesLabel:"Počet prvkov na zahrnutie",outputLayerName:"Názov výslednej vrstvy",resultName:"Opísať údaje ${layerName}",itemDescription:"Vrstvy prvkov generované nástrojom Opísať údajovú sadu na ${layerName} ",itemTags:"Výsledok analýzy, Opísať dátovú sadu, ${layerName}",itemSnippet:"Vrstvy prvkov generované nástrojom Opísať dátovú sadu."});

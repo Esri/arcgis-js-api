@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Pasirinkti zonos rastrą arba elementus",outputTableName:"Rezultatų lentelės pavadinimas",zoneField:"Zonos laukas",inputValueRaster:"Pasirinkti reikšmių rastrą",ignoreNodata:"Skaičiuojant nepaisyti NoData (neprivaloma)",ignore:"Ignoruoti",statisticType:"Statistikos tipas (neprivaloma)",percentileValues:"Procentinės reikšmės (neprivaloma)",percentileInterpolationType:"Procentinės interpoliacijos tipas (neprivaloma)",processAsMultidimensional:"Apdoroti kaip daugiamatį (neprivaloma)",allSlices:"Visos skiltys",outputZonalStatsName:"${valuelayername} zoninė statistika ${layername} viduje",itemDescription:"Analizės elementų lentelė, sugeneruota iš funkcijos Zoninė statistika kaip lentelė",itemTags:"Rastro analizės rezultatas, Zoninė statistika kaip lentelė, ${layername}, ${valuelayername}",autoDetect:"Automatinis nustatymas",nearest:"Artimiausias",linear:"Linijinis"});

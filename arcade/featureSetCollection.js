@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
-define(["require","exports","./polyfill/promiseUtils"],(function(e,t,r){"use strict";return function(){function e(){this.declaredRootClass="esri.arcade.featureSetCollection",this._layerById={},this._layerByName={}}return e.prototype.add=function(e,t,r){this._layerById[t]=r,this._layerByName[e]=r},e.prototype.featureSetByName=function(e,t,r){return void 0===t&&(t=!0),void 0===r&&(r=["*"]),void 0===this._layerByName[e]?this.resolvePromise(null):this.resolvePromise(this._layerByName[e])},e.prototype.featureSetById=function(e,t,r){return void 0===t&&(t=!0),void 0===r&&(r=["*"]),void 0===this._layerById[e]?this.resolvePromise(null):this.resolvePromise(this._layerById[e])},e.prototype.castToText=function(){return"object, FeatureSetCollection"},e.prototype.resolvePromise=function(e){return r.resolve(e)},e}()}));
+define(["require","exports","./polyfill/tsSupport/awaiter","./polyfill/tsSupport/generator"],(function(t,e,r,i){"use strict";return function(){function t(){this.declaredRootClass="esri.arcade.featureSetCollection",this._layerById={},this._layerByName={}}return t.prototype.add=function(t,e,r){this._layerById[e]=r,this._layerByName[t]=r},t.prototype.featureSetByName=function(t,e,o){return void 0===e&&(e=!0),void 0===o&&(o=["*"]),r(this,void 0,void 0,(function(){return i(this,(function(e){return void 0===this._layerByName[t]?[2,null]:[2,this._layerByName[t]]}))}))},t.prototype.featureSetById=function(t,e,o){return void 0===e&&(e=!0),void 0===o&&(o=["*"]),r(this,void 0,void 0,(function(){return i(this,(function(e){return void 0===this._layerById[t]?[2,null]:[2,this._layerById[t]]}))}))},t.prototype.castToText=function(){return"object, FeatureSetCollection"},t}()}));

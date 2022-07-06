@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({clustersLabel:"Find klyngerne for laget ${inputLayerName}.",chooseLayerLabel:"Vælg det lag, som der skal findes klynger for.",minClusterPtsLabel:"Minimalt antal punkter for at blive anset for at være en klynge",minClustersPtsGAXLbl:"Minimalt antal punkter, der kan udgøre en klynge",limitSearchLabel:"Begræns søgeområdet til (valgfri)",limitSearchReqLabel:"Begræns søgeområdet til",outputLayerName:"Find klynger for ${inputLayerName}",itemDescription:"Vektorlag genereret ud fra kørsel af Find punktklynger-løsningen for ${inputLayerName}.",itemTags:"Analyseresultat, Find punktklynger, ${inputLayerName}",itemSnippet:"Vektorlag genereret ud fra Find punktklynger",chooseClusteringMethod:"Vælg den metode til klyngedannelse, der skal anvendes",dbscanLabel:"Defineret afstand (DBSCAN)",hdbscanLabel:"Selvjustering (HDBSCAN)",useTimeToFindCLusters:"Brug tid på at finde klynger",limitSearchDurLabel:"Begræns søgevarigheden til"});

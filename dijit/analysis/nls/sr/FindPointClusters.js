@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({clustersLabel:"Za sloj ${inputLayerName} pronađite klastere.",chooseLayerLabel:"Odaberite sloj za koji će klasteri da budu pronađeni",minClusterPtsLabel:"Minimalni broj tačaka koje se uzimaju u razmatranje za klaster",minClustersPtsGAXLbl:"Minimalan broj tačaka koje mogu da budu matične za klaster",limitSearchLabel:"Ograničite opseg pretrage na (opciono)",limitSearchReqLabel:"Ograničite opseg pretrage na",outputLayerName:"Pronađite klastere za ${inputLayerName}",itemDescription:"Sloj geoobjekata nastao usled pokretanja rešenja Pronađi tačkaste klastere za ${inputLayerName}.",itemTags:"Rezultat analize, Pronađi tačkaste klastere, ${inputLayerName}",itemSnippet:"Sloj geoobjekata nastao iz zadatka Pronađi tačkaste klastere",chooseClusteringMethod:"Odaberite metod grupisanja koji će se koristiti",dbscanLabel:"Definisano rastojanje (DBSCAN)",hdbscanLabel:"Samopodešavanje (HDBSCAN)",useTimeToFindCLusters:"Upotrebi vreme za pronalaženje klastera",limitSearchDurLabel:"Ograničite trajanje pretrage na"});

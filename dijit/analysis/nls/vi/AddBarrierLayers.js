@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({addBarriers:"Chọn lớp rào cản",pointBarrier:"Rào cản dạng điểm",lineBarrier:"Rào cản dạng đường",polygonBarrier:"Rào cản dạng vùng",choosePointBarrier:"Chọn lớp rào cản dạng điểm",chooseLineBarrier:"Chọn lớp rào cản dạng đường",choosePolygonBarrier:"Chọn lớp rào cản dạng vùng",selectPointBarrier:"Chọn rào cản dạng điểm",selectLineBarrier:"Chọn rào cản dạng đường",selectPolygonBarrier:"Chọn rào cản dạng vùng"});

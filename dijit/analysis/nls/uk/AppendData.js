@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Вибрати шар, приєднання до якого треба виконати",inputWarningLabel:"Попередження: шар, приєднання до якого ви виконуєте, буде змінений.",inputHostedLayerWarning:"Вибраний шар не був розміщеним на хості векторним шаром. Виберіть розміщений на хості векторний шар, до якого треба виконати приєднання.",appendLayerLabel:"Вибрати шар для приєднання",filterLabel:"Приєднати всі об'єкти або визначити підмножину (опціонально)",fieldMappingLabel:"Вибрати спосіб приєднання полів (опціонально)",inputField:"Вхідне поле",appendValue:"Приєднати значення",expression:"Вираз"});
+define({inputLayerLabel:"Вибрати шар, приєднання до якого треба виконати",inputWarningLabel:"Попередження: шар, приєднання до якого ви виконуєте, буде змінений.",inputHostedLayerWarning:"Вибраний шар не був розміщеним на хості векторним шаром. Виберіть розміщений на хості векторний шар, до якого треба виконати приєднання.",appendLayerLabel:"Вибрати шар для приєднання",filterLabel:"Приєднати всі обʼєкти або визначити підмножину (опціонально)",fieldMappingLabel:"Вибрати спосіб приєднання полів (опціонально)",inputField:"Вхідне поле",appendValue:"Приєднати значення",expression:"Вираз"});

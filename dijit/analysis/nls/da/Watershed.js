@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vælg vandløbsretningslag",pourPointLayerLabel:"Vælg punktraster eller vektorlag for vandløbsretning",pourPointField:"Vælg punktfelt for vandløbsretning",resultLayerName:"Navn på resultatlag",outputLayerName:"Vandskel for ${layername}",itemDescription:"Vektorlag genereret ud fra kørsel af Summér center og spredning for ${layerName}. ",itemTags:"Analyseresultat, Vandskel, ${layername} ${fieldname}",itemSnippet:"Vektorlag genereret ud fra Vandskel."});

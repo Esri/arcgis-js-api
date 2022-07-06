@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({modifiedTitle:"Klasifikácia a regresia založená na lesoch - ${goal}",train:"Trénovať",trainAndPredict:"Trénovať a predpovedať",selectGoal:"Čo by ste chceli urobiť?",trainGoal:"Trénovať model pre hodnotenie výkonnosti modelu",trainAndPredictGoal:"Trénovať model a predpovedať hodnoty",inFeaturesLabel:"Vybrať trénovaciu vrstvu",variablePredictLabel:"Vybrať pole na predpoveď",categorical:"Kategorický",chooseExplanatoryField:"Vybrať jedno alebo viac polí s nezávislými premennými",chooseFeaturesToPredict:"Vybrať vrstvu na predpovedanie hodnôt pre",chooseExplainMatch:"Vybrať ako budú zhodovať polia s nezávislými premennými",options:"Možnosti",advancedForestOptions:"Pokročilé nastavenia lesa",numberOfTrees:"Počet stromov",minimumLeafSize:"Minimálna veľkosť listu",maximumTreeDepth:"Maximálna hĺbka stromu",sampleSize:"Údaje dostupné pre strom (%)",randomVariables:"Počet náhodne vzorkovaných premenných",variableConstraintMsg:"Musí byť medzi 1 a počtom nezávislých premenných.",validationOptions:"Možnosti validácie",percentageForValidation:"Trénovacie údaje vylúčené z overenia (%)",outputLayerName:"FBCR ${inFeaturesName}",itemDescription:"Vrstvy prvkov generované nástrojom Klasifikácia a regresia založená na lesoch${goal}.",itemTags:"Výsledok analýzy, Klasifikácia a regresia založená na lesoch, ${inFeaturesName}, ${goal}",itemSnippet:"Vrstvy prvkov generované nástrojom Klasifikácia a regresia založená na lesoch (${goal})"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({addBarriers:"Odaberite slojeve ograničenja",pointBarrier:"Točkasta ograničenja",lineBarrier:"Linijska ograničenja",polygonBarrier:"Poligonska ograničenja",choosePointBarrier:"Izaberite sloj točkastih ograničenja",chooseLineBarrier:"Izaberite sloj linijskih ograničenja",choosePolygonBarrier:"Izaberite sloj poligonskih ograničenja",selectPointBarrier:"Odaberite točkasta ograničenja",selectLineBarrier:"Odaberite linijska ograničenja",selectPolygonBarrier:"Odaberite poligonska ograničenja"});

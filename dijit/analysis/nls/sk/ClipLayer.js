@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vybrať prvky pre orezanie",filterSelectLabel:"Orezať všetky prvky alebo definovať podmnožinu (voliteľné)",targetArea:"Vybrať oblasť na orezanie",outputLayerName:"Orezať ${inputLayerName} podľa ${clipLayerName}",itemDescription:"Vrstvy prvkov generované z riešenia nástroja Orezať. Prvky z ${inputLayerName} boli orezané podľa ${clipLayerName}.",itemTags:"Výsledok analýzy, Orezať vrstvu, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Vrstvy prvkov generované nástrojom Orezať vrstvu"});

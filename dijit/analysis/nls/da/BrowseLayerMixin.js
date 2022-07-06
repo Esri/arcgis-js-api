@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Vælg Living Atlas-analyselag",customAnalysisLayerTitle:"Vælg analyselag",searchPlaceholderText:"Søg i Living Atlas-analyselag",searchCustomPlaceholderText:"Søg i analyselag",mainActionTitle:"Vælg",customActionName:"Vælg og tilføj til kort",customeSectionName:"Living Atlas-analyselag",Categories:"Kategorier",boundaries:"Grænser",places:"Steder",boundariesAndPlaces:"Grænser og steder",hexbins:"Hexbins",transportation:"Transport",point:"Punktlag",line:"Polylinjelag",polygon:"Polygonlag",pointFilterName:"Punkt",lineFilterName:"Polylinje",polygonFilterName:"Polygon",multiPointFilterName:"Multi-punkter",geometryFilterName:"Geometri",featureLayerName:"Vektorlag",tableLayerName:"Tabel",itemTypeFilterName:"Elementtype",instantFilterName:"Øjeblikkelig",intervalFilterName:"Interval",timeFilterName:"Tid",edit:"Redigér",boundaryLayers:"Esri-grænselag",customAnalysisGroupName:"Organisationens analysegruppe"});

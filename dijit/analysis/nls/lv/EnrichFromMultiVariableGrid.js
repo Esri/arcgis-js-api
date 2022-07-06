@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Izvēlieties punktveida elementus, lai papildinātu",chooseMVgridLyrLabel:"Izvēlieties vairāku mainīgo režģi, lai papildinātu no",chooseVariables:"Izvēlieties mainīgos, ko pievienot",outputLayerName:"Uzlaboti ${inputFeatures} no ${gridLayer}",itemDescription:"Elementu slānis ir ģenerēts, palaižot risinājumu Uzlabot no vairāku mainīgo režģa slānim ${inputFeatures}.",itemTags:"Analīzes rezultāts, Uzlabot no vairāku mainīgo režģa, ${inputFeatures}, ${gridLayer}",itemSnippet:"Elementu slānis, kas ģenerēts no Uzlabot no vairāku mainīgo režģa"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Välj ett lager som ska beskrivas",summaryTypes:"Sammanfattningstyper",centralFeature:"Centralt geoobjekt",meanCenter:"Centrum för medelvärde",medianCenter:"Mediancentrum",ellipse:"Ellips",weightBy:"Vikta efter (valfritt)",groupBy:"Gruppera efter (valfritt)",resultLayerName:"Resultatlagrets namn",outputLayerName:"Beskriv fördelning för ${layerName}",none:"Inga",itemDescription:"Geoobjektlager som genererats genom körning av Summera mitt och spridning på ${layerName}. ",itemTags:"Analysresultat, Summera mitt och spridning, ${layerName}",itemSnippet:"Geoobjektlager som genererats av Summera mitt och spridning"});

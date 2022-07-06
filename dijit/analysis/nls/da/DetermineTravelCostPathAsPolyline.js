@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Vælg det raster- eller vektorkildelag, der skal beregnes ruter fra",inputCostRasterLabel:"Vælg rasterlag for rejseomkostninger",inputDestinationLayerLabel:"Vælg det raster- eller vektordestinationslag, der skal beregnes ruter til",pathTypeLabel:"Vælg den type ruter, der skal beregnes (valgfrit)",bestSingle:"Bedste enkelt",eachCell:"Til hver celle",eachZone:"Til hver zone",destinationField:"Vælg et felt for at få værdier for destinationen",outputPolylineName:"Navn på resulterende polylinje",outputLayerName:"Optimale rejseomkostninger som polylinje for ${layername}",drawDestinationPointLayerName:"Destinationspunkter",drawSourcePointLayerName:"Kildepunkter",itemDescription:"Vektorlag genereret ud fra kørsel af Beregn rejseomkostninger som polylinje for ${layername}. ",itemTags:"Analyseresultat, Beregn rejseomkostninger som polylinje, ${layername} ${fieldname}",itemSnippet:"Vektorlag genereret ud fra kørsel af Beregn rejseomkostninger som polylinje.",missingMessage:"Destinationslaget skal adskille sig fra kildelaget",noValueMessage:"Denne værdi er obligatorisk",placeHolder:"--Vælg et lag--"});

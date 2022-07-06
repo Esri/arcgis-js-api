@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Wybierz warstwę kierunku przepływu",pourPointLayerLabel:"Wybierz raster punktów wylewu lub warstwę obiektową",pourPointField:"Wybierz pole punktów wylewu",resultLayerName:"Nazwa warstwy wynikowej",outputLayerName:"Zlewnia warstwy ${layername}",itemDescription:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Sumuj wyśrodkowanie i rozproszenie dla warstwy ${layerName}. ",itemTags:"Wynik analizy, Zlewnia, ${layername} ${fieldname}",itemSnippet:"Warstwa obiektowa wygenerowana z narzędzia Zlewnia."});

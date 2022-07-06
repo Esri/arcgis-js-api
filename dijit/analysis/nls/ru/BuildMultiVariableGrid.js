@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({binsLabel:"Выберите тип бинов, который будет использоваться для построения многовариантной сетки",layersAttrLabel:"Выберите входные слои и переменные, которые вы будете включать в  сетку",itemDescription:"Векторный слой, полученный путем запуска инструмента Построить многовариантную сетку.",itemTags:"Результат анализа инструмента Построить многовариантную сетку",itemSnippet:"Векторный слой, созданный инструментом Построить многовариантную сетку",addVariables:"Добавить переменные"});

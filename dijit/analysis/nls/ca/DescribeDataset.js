@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Trieu el dataset que s'ha de descriure",describeDataLabel:"Per entendre les dades, creeu (de manera opcional) una",sampleLayer:"Capa de mostra",extentLayer:"Capa d'extensió",noOfFeaturesLabel:"Nombre d'entitats que s'inclouran",outputLayerName:"Nom de la capa de resultats",resultName:"Descriu les dades de ${layerName}",itemDescription:"Capa d'entitats generada en executar Descriu el dataset a ${layerName}. ",itemTags:"Resultat de l'anàlisi, Descriu el dataset, ${layerName}",itemSnippet:"Capa d'entitats generada a partir de Descriu el dataset."});

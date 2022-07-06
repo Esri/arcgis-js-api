@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/ReportPlayer/core/infographics/utils/InfographicThemeUtil","esri/dijit/geoenrichment/ReportPlayer/core/supportClasses/ElementUsageTypes","esri/dijit/geoenrichment/utils/ObjectUtil"],(function(e,t,r){function n(e){return[e.themeStyle,e.backgroundThemeStyle]}function o(e,t){e.themeStyle=t[0],e.backgroundThemeStyle=t[1]}return{getThemeStylesFromShapeJson:function(i,a){var s={};if(a){var l;l=a.parentWidget.elementUsageType===t.INFOGRAPHIC_SECTION?a.viewModel.getStaticInfographicDefaultStyles(a.theme):a.viewModel.getTheme(a.theme);var p=n(i);e.applyThemeSettingsToShapeJson(i,l);var h=i.themeStyle;o(i,p),r.copyOwnJsonProperties(h,s)}return r.copyOwnJsonProperties(i.themeStyle,s),s},getBackgroundThemeStylesFromShapeJson:function(i,a){var s={};if(a){var l;a.parentWidget.elementUsageType===t.INFOGRAPHIC_SECTION&&(l=a.viewModel.getStaticInfographicDefaultStyles(a.theme));var p=n(i);e.applyThemeSettingsToShapeJson(i,l);var h=i.backgroundThemeStyle;o(i,p),r.copyOwnJsonProperties(h,s)}return r.copyOwnJsonProperties(i.backgroundThemeStyle,s),s}}}));

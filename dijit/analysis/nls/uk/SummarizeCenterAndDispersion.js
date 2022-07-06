@@ -1,4 +1,4 @@
-// COPYRIGHT © 2021 Esri
+// COPYRIGHT © 2022 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.40/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Вибрати шар для опису",summaryTypes:"Типи підсумування",centralFeature:"Центральний об'єкт",meanCenter:"Усереднений центр",medianCenter:"Медіана",ellipse:"Еліпс",weightBy:"Зважити по (опціонально)",groupBy:"Групувати по (опціонально)",resultLayerName:"Ім'я шару результатів",outputLayerName:"Описати розподіл ${layerName}",none:"Немає",itemDescription:"Векторний шар, згенерований в результаті підсумування центру та розкиду для ${layerName}. ",itemTags:"Результат аналізу, Підсумувати центр та розкид, ${layerName}",itemSnippet:"Векторний шар, згенерований в результаті підсумування центру та розкиду."});
+define({inputLayerLabel:"Вибрати шар для опису",summaryTypes:"Типи підсумування",centralFeature:"Центральний обʼєкт",meanCenter:"Усереднений центр",medianCenter:"Медіана",ellipse:"Еліпс",weightBy:"Зважити по (опціонально)",groupBy:"Групувати по (опціонально)",resultLayerName:"Імʼя шару результатів",outputLayerName:"Описати розподіл ${layerName}",none:"Немає",itemDescription:"Векторний шар, згенерований в результаті підсумування центру та розкиду для ${layerName}. ",itemTags:"Результат аналізу, Підсумувати центр та розкид, ${layerName}",itemSnippet:"Векторний шар, згенерований в результаті підсумування центру та розкиду."});
