@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({modifiedTitle:"Обобщенная линейная регрессия - ${goal}",fit:"Вписать",fitAndPredict:"Подгонка и прогнозирование",selectGoal:"Что вы хотите сделать?",fitGoal:"Подгонка модели для повышения производительности",fitAndPredictGoal:"Подгонка модели и прогнозирование значений",inputLayerLabel:"Выберите слой, по которому генерируется модель",chooseDependentField:"Выберите поле для модели",chooseDataType:"Выберите тип моделируемых данных",continuousData:"Непрерывная",binaryData:"Двоичная",countData:"Числа",chooseExplanatoryField:"Выберите описательные поля",chooseFeaturesToPredict:"Выберите слой для прогноза значений для",chooseExplainMatch:"Выберите способ сопоставления описательных полей",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Векторный слой, созданный в результате работы решений Обобщенная линейная регрессия ${goal}.",itemTags:"Результаты анализа, Обобщенная линейная регрессия, ${inputLayerName}, ${goal}",itemSnippet:"Векторный слой, созданный в результате Обобщенной линейной регрессии (${goal}."});

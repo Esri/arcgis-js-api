@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({fields:"欄位",categorical:"分類",requiredMessage:"至少必須選擇 1 個說明變數。"});

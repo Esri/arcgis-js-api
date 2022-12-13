@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Zvolit vrstvu, která se má popsat",summaryTypes:"Typy shrnutí",centralFeature:"Identifikace středového prvku",meanCenter:"Geografický střed prvků",medianCenter:"Geografický medián prvků",ellipse:"Elipsa",weightBy:"Vážit podle (volitelné)",groupBy:"Seskupit podle (volitelné)",resultLayerName:"Název výsledné vrstvy",outputLayerName:"Popsat rozložení ${layerName}",none:"Žádná",itemDescription:"Vrstva prvků vygenerovaná spuštěním nástroje Souhrn středové hodnoty a rozptýlení pro ${layerName}. ",itemTags:"Výsledek analýzy, Souhrn středové hodnoty a rozptýlení, ${layerName}",itemSnippet:"Vrstva prvků vygenerovaná nástrojem Souhrn středové hodnoty a rozptýlení"});

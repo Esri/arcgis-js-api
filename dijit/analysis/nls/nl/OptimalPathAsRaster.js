@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Kies bestemmingsraster of -kenmerken",destinationField:"Bestemmingsveld (optioneel)",inputDistanceAccumulationRaster:"Kies afstand accumulatieraster",inputBackDirectionRaster:"Kies terugrichting of stroomrichting raster",pathType:"Padtype (optioneel)",bestSingle:"Beste enkel",eachCell:"Elke cel",eachZone:"Elke zone",outputRasterName:"Naam resultaatrasterlaag",outputLayerName:"Optimaal pad als raster van ${layername}",drawSourcePointLayerName:"Bronpunten",itemDescription:"Feature layer die is gegenereerd door uitvoering van het optimale pad als raster op ${layername}. ",itemTags:"Analyseresultaat, Optimaal pad als raster, ${layername} ${fieldname}",itemSnippet:"Objectlaag die is gegenereerd door optimaal pad als raster."});

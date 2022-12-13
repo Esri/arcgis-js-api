@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Wybierz raster lub obiektową warstwę lokalizacji, do których ma zostać obliczona odległość",inputRaster:"Wybierz warstwę rastrową lub obiektową reprezentującą bariery (opcjonalnie)",maxDistanceLabel:"Maksymalna odległość do obliczenia (opcjonalnie)",outputCellSize:"Wielkość komórki danych wynikowych (opcjonalnie)",distanceMethod:"Metoda ustalania odległości",resultDistLayerName:"Nazwa warstwy wynikowej odległości",resultDirectionLayerName:"Nazwa warstwy wynikowej kierunku (opcjonalnie)",resultAllocationLayerName:"Nazwa warstwy wynikowej przydziału (opcjonalnie)",outputBackDirectionName:"Nazwa warstwy dla wynikowego kierunku wstecz (opcjonalnie)",outputLayerName:"Obliczona odległość warstwy ${layername}",allocationFieldLabel:"Wybierz pole przydziału (opcjonalnie)",itemDescription:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Oblicz odległość dla warstwy ${layerName}. ",itemTags:"Wynik analizy, Oblicz odległość, ${layername} ${fieldname}",itemSnippet:"Warstwa obiektowa wygenerowana z narzędzia Oblicz odległość.",planar:"Płaskie",geodesic:"Geodezyjne",selectDistance:"-- wybierz --"});

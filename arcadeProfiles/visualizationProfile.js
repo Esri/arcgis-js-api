@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../promiseList","../support/expressionUtils","./utils"],(function(e,i,r,s,a,o,n){var t=new(e(null,{declaredClass:"esri.arcadeProfiles.VisualizationProfile",initialize:function(e){var i=[];return n.hasGeometryOperations(e)&&i.push(o.enableGeometryOperations()),a(i)}}));return r("extend-esri")&&i.setObject("arcadeProfiles.visualizationProfile",t,s),t}));

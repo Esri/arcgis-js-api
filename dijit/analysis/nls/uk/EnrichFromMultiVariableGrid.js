@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Вибрати точкові обʼєкти для збагачення",chooseMVgridLyrLabel:"Вибрати сітку з декількома змінними, на основі котрої треба виконати збагачення",chooseVariables:"Вибрати змінні для додання",outputLayerName:"Збагачено ${inputFeatures} з ${gridLayer}",itemDescription:"Векторний шар, згенерований в результаті виконання рішення «Збагатити на основі сітки з декількома змінними» для ${inputFeatures}.",itemTags:"Результат аналізу, Збагатити на основі сітки з декількома змінними, ${inputFeatures}, ${gridLayer}",itemSnippet:"Векторний шар, згенерований зі «Збагатити на основі сітки з декількома змінними»."});

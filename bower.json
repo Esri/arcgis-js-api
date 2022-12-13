@@ -1,40 +1,27 @@
 {
   "name": "arcgis-js-api",
-  "version": "3.41.0",
+  "version": "3.42.0",
   "description": "Minified, unbuilt version of the ArcGIS API for JavaScript that can be used for bower.",
-  "license": "SEE LICENSE IN http://js.arcgis.com/3.41/esri/copyright.txt",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+  "license": "SEE LICENSE IN http://js.arcgis.com/3.42/esri/copyright.txt",
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
   "dependencies": {
-    "dojo": "Esri/dojo#v1.16.4/esri-3.38.0",
-    "dojox": "Esri/dojox#v1.16.4/esri-3.38.0",
-    "dijit": "Esri/dijit#v1.16.4/esri-3.38.0",
-    "util": "Esri/dojo-util#v1.16.4/esri-3.38.0",
+    "dojo": "Esri/dojo#v1.17.3/esri-3.42.0",
+    "dojox": "Esri/dojox#v1.17.3/esri-3.42.0",
+    "dijit": "Esri/dijit#v1.17.3/esri-3.42.0",
+    "util": "Esri/dojo-util#v1.17.3/esri-3.42.0",
     "dgrid": "Esri/dgrid#0.3.17/esri-3.20.0",
-    "dgrid1": "Esri/dgrid#v1.2.1/esri-3.22.0",
+    "dgrid1": "Esri/dgrid#v1.3.3/esri-3.42.0",
     "dstore": "1.1.2",
     "dijit-themes": "https://github.com/dojo/dijit-themes.git#1.16.4",
     "put-selector": "0.3.6",
-    "xstyle": "0.3.2",
-    "moment": "2.29.1"
+    "xstyle": "0.3.2"
   },
-  "moduleType": [
-    "amd"
-  ],
-  "keywords": [
-    "arcgis",
-    "esri",
-    "gis"
-  ],
+  "moduleType": ["amd"],
+  "keywords": ["arcgis", "esri", "gis"],
   "resolutions": {
-    "dojo": "v1.16.4/esri-3.38.0",
-    "dojox": "v1.16.4/esri-3.38.0",
-    "dijit": "v1.16.4/esri-3.38.0",
+    "dojo": "v1.17.3/esri-3.42.0",
+    "dojox": "v1.17.3/esri-3.42.0",
+    "dijit": "v1.17.3/esri-3.42.0",
     "dijit-themes": "https://github.com/dojo/dijit-themes.git#1.16.4"
   }
 }

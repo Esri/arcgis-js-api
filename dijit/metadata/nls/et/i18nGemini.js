@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({documentTypes:{data:{caption:"GEMINI (andmed)",description:""},service:{caption:"GEMINI (teenus)",description:""}},LanguageCode:{eng:"inglise",cym:"Kõmri",gle:"Gaeli (Iirimaa)",gla:"Gaeli (Šotimaa)",cor:"Korni",sco:"Ulsteri-šoti keel"},verticalCRS:{reference:"Viide (nt urn:ogc:def:crs:EPSG::5701)"}});

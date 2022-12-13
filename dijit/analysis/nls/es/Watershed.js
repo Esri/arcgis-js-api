@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Elegir capa de dirección del flujo",pourPointLayerLabel:"Elegir capa de entidades o ráster de puntos de fluidez",pourPointField:"Elegir campo de punto de fluidez",resultLayerName:"Nombre de capa de resultados",outputLayerName:"Cuenca hidrográfica de ${layername}",itemDescription:"Capa de entidades generada al ejecutar Resumir centro y dispersión en ${layerName}. ",itemTags:"Resultados del análisis, Cuenca hidrográfica, ${layername} ${fieldname}",itemSnippet:"Capa de entidades generada a partir de Cuenca hidrográfica."});

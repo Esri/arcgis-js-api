@@ -2055,6 +2055,18 @@
       {
         "key": 2,
         "label": "${rasterFunctions.enumLabels.esriComputeChangeMethodCategorical}"
+      },
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.esriComputeChangeMethodMultispectralEuclideanDistance}"
+      },
+      {
+        "key": 4,
+        "label": "${rasterFunctions.enumLabels.esriComputeChangeMethodMultispectralAngularDifference}"
+      },
+      {
+        "key": 5,
+        "label": "${rasterFunctions.enumLabels.esriComputeChangeMethodMultispectralAxisWithBiggestChange}"
       }
     ],
     "esriComputeChangeKeepMethods": [
@@ -2189,6 +2201,74 @@
       {
         "key": 1,
         "label": "${rasterFunctions.enumLabels.bandComboByIDs}"
+      }
+    ],
+    "gpsaCircularCalculation": [
+      {
+        "key": "ARITHMETIC",
+        "label": "${rasterFunctions.enumLabels.arithmeticName}"
+      },
+      {
+        "key": "CIRCULAR",
+        "label": "${rasterFunctions.enumLabels.circularName}"
+      }
+    ],
+    "esriSurfaceParameterType": [
+      {
+        "key": 4,
+        "label": "${rasterFunctions.enumLabels.slopeName}"
+      },
+      {
+        "key": 5,
+        "label": "${rasterFunctions.enumLabels.aspectName}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.meanCurvature}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.profileCurvature}"
+      },
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.tangentialCurvature}"
+      },
+      {
+        "key": 6,
+        "label": "${rasterFunctions.enumLabels.planCurvature}"
+      },
+      {
+        "key": 7,
+        "label": "${rasterFunctions.enumLabels.contourGeodesicTorsion}"
+      },
+      {
+        "key": 8,
+        "label": "${rasterFunctions.enumLabels.gaussianCurvature}"
+      },
+      {
+        "key": 9,
+        "label": "${rasterFunctions.enumLabels.casoratiCurvature}"
+      }
+    ],
+    "esriLocalSurfaceType": [
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.localSurfaceTypeQuadratic}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.localSurfaceTypeBiquadratic}"
+      }
+    ],
+    "outputSlopeType": [
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.slopeTypeDegree}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.slopeTypePercentRise}"
       }
     ]
   },

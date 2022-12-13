@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Επιλογή του θεματικού επιπέδου για εύρεση στάσεων από",selectTracksLabel:"Επιλογή ενός ή περισσότερων πεδίων για εντοπισμό ιχνών",defineDistanceLabel:"Καθορισμός της απόστασης της χωρικής αναζήτησης",distMethodLabel:"Επιλογή της μεθόδου υπολογισμού της απόστασης",temporalSearchLabel:"Καθορισμός του χρονικού εύρους της αναζήτησης",outputDwellLabel:"Έξοδος τοποθεσιών στάσεων",outputLayerName:"Εύρεση τοποθεσιών στάσεων για το θεματικό επίπεδο ${inputLayerName}",meanCenters:"Μέσα κέντρα",convexHulls:"Κυρτά κελύφη",dwellFeatures:"Στοιχεία σημείων παραμονής",allFeatures:"Όλα τα στοιχεία",itemDescription:"Feature layer που δημιουργήθηκε από την εκτέλεση της λύσης «Εύρεση Τοποθεσιών Στάσεων» για το θεματικό επίπεδο ${inputLayerName}.",itemTags:"Αποτέλεσμα ανάλυσης, Εύρεση Τοποθεσιών Στάσεων, Θεματικό επίπεδο ${inputLayerName}",itemSnippet:"Feature layer που δημιουργήθηκε από την εκτέλεση της λύσης «Εύρεση Τοποθεσιών Στάσεων»",timeIntervalSplit:"Ανάλυση δεδομένων με χρονικά διαστήματα (προαιρετικά)",timeBoundaryValidationMsg:"Το χρονικό διάστημα πρέπει να είναι μεγαλύτερο από χρονικό εύρος τιμών για την αναζήτηση."});

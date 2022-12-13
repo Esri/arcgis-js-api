@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define(["../../declare","../../urlUtils","dojo/_base/array","dojo/_base/lang","./taskHelper","../FeatureSet","./GeographyQueryBase","./GeographyQuery","./BatchGeographyQuery","./SubGeographyQuery"],(function(e,r,t,o,n,s,a,u,c,i){return e("esri.tasks.geoenrichment.StandardGeographyQueryTask",null,{constructor:function(e){this.url=e||r.getProtocolForWebResource()+"//geoenrich.arcgis.com/arcgis/rest/services/World/GeoenrichmentServer"},execute:function(e){e instanceof a||(e=e.returnSubGeographyLayer?new i(e):e.geographyQueries||o.isArray(e.where)?new c(e):new u(e));var r=e instanceof c;return n.invokeMethod(this,r?"/StandardGeographiesBatchQuery/execute":"/StandardGeographyQuery/execute",(function(){return n.jsonToRest(e.toJson())}),(function(e){return(!e.results||e.results.length<1||!e.results[0].value)&&n.throwEmptyResponse(),{featureSet:new s(e.results[0].value),messages:e.messages}}),"onExecuteComplete","onError")},onExecuteComplete:function(e){},onError:function(e){}})}));

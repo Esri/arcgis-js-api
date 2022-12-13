@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({chooseShape:"Pasirinkite figūrą",defineExtent:"Nurodykite aprėptį",defineBin:"Nurodydami apibrėžkite daugiakampio dydį",area:"Plotas",distance:"Atstumas",resultLayerName:"Rezultatų sluoksnio pavadinimas",hexagon:"Šešiakampis",transverseHexagon:"Skersinis šešiakampis",square:"Kvadratas",triangle:"Trikampis",diamond:"Rombas",sameAsDisplay:"Kaip ir ekranas",emptyBinSize:"Būtina nurodyti daugiakampio dydį",currentExtent:"esama aprėptis",intersectExtent:"Palikti tik susikertančias teseliacijas",outputLayerName:"Generuoti teseliacijas sluoksnyje ${extentLayerName}",itemDescription:"Naudota sluoksnio ${extentLayerName} aprėptis.",itemTags:"Analizės rezultatas, Generuoti teseliacijas, ${extentLayerName}",itemSnippet:"Elementų sluoksnis sukurtas naudojant Generuoti teseliacijas."});

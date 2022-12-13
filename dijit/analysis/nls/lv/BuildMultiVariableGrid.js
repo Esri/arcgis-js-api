@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({binsLabel:"Izvēlieties to nodalījumu veidu, kas tiks lietots, lai izveidotu vairāku mainīgo vērtību režģi",layersAttrLabel:"Izvēlēties vairākus ievades slāņus un mainīgās vērtības, ko vēlaties iekļaut režģī",itemDescription:"Elementu slānis, kas ģenerēts no pašreizējā izveidotā vairāku mainīgo vērtību režģa.",itemTags:"Analīzes rezultāts, izveidots vairāku mainīgo vērtību režģis",itemSnippet:"Elementu slānis, kas ģenerēts no vairāku mainīgo vērtību režģa",addVariables:"Pievienot mainīgās vērtības"});

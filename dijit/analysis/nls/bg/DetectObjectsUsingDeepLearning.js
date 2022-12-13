@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({toolDefine:"Определете обекти, използвайки Изучаване в дълбочина",outputLayerName:"${layername}_detected",modelLabel:"Изберете модел за Изучаване в дълбочина, използван за откриване на обекти",modelArgsLabel:"Посочете аргументи на модела за Изучаване в дълбочина",nameLabel:"Име",valueLabel:"Стойност",removeDuplicatesLable:"Премахване на дублирани обекти от изхода (по избор)",queryModelArgsMsg:"Извършване на заявка за аргументи на модела...",queryModelArgsErrMsg:"Неуспешна заявка за аргументи на модела.",nonMaxSuppressionLabel:"Не максимално потискане",options:"Опции",confidenceLabel:"Поле за оценка на доверие",classValueLabel:"Поле за стойност на клас",maxOverlapLabel:"Максимално съотношение на припокриване",numberOnlyMsg:"Разрешени са само числови стойности.",processingModeLabel:"Режим на обработка",processAsMosaicLabel:"Обработвайте като мозаично изображение",processAsItemsLabel:"Обработвайте всички растерни елементи поотделно",analysisLayerLabel:"Изберете изображение, използвано за откриване на обекти",itemDescription:"Услуга за анализ на изображения, генерирана от откриване на обекти с помощта на дълбоко обучение",itemTags:"Резултат от растерния анализ, откриване на обекти с помощта на задълбочено обучение, ${layername}",itemSnippet:"Услуга за анализ на изображения, генерирана от откриване на обекти с помощта на Изучаване в дълбочина"});

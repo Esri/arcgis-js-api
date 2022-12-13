@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({relationalDS:"Relacyjne",spatialDS:"Czasowo-przestrzenne",agsDataStore:"ArcGIS Data Store",bdfsTemplates:"Szablony danych wynikowych udostępnionych plików dużych zbiorów danych"});

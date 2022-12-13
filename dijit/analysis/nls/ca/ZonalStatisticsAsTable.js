@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Trieu les entitats o el ràster de zona",outputTableName:"Nom de la taula de resultats",zoneField:"Camp de zona",inputValueRaster:"Trieu el ràster de valor",ignoreNodata:"Ignora NoData als càlculs (opcional)",ignore:"Ignora",statisticType:"Tipus d'estadística (opcional)",percentileValues:"Valors de percentil (opcional)",percentileInterpolationType:"Tipus d'interpolació del percentil (opcional)",processAsMultidimensional:"Processa com a multidimensional (opcional)",allSlices:"Tots els sectors",outputZonalStatsName:"Estadístiques zonals per a ${valuelayername} dins de ${layername}",itemDescription:"Taula d'entitats d'anàlisi generada a partir d'estadístiques zonals com a taula",itemTags:"Resultat de l'anàlisi del ràster, estadístiques zonals com a taula, ${layername}, ${valuelayername}",autoDetect:"Detecta automàticament",nearest:"Més proper",linear:"Lineal"});

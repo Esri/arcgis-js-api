@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Escolher a camada para encontrar intervalos",selectTracksLabel:"Selecionar um ou mais campos para identificar trilhos",defineDistanceLabel:"Definir distância de pesquisa espacial",distMethodLabel:"Escolher método para calcular distância",temporalSearchLabel:"Definir intervalo de pesquisa temporal",outputDwellLabel:"Fornecer localizações de intervalo como",outputLayerName:"Encontrar Localizações de Intervalo para ${inputLayerName}",meanCenters:"Centros médios",convexHulls:"Fechos convexos",dwellFeatures:"Elementos de intervalo",allFeatures:"Todos os elementos",itemDescription:"Camada de elementos gerada através da execução da solução Encontrar Localizações de Intervalo para ${inputLayerName}.",itemTags:"Resultado da Análise, Encontrar Localizações de Intervalo, ${inputLayerName}",itemSnippet:"Camada de elementos gerada a partir de Encontrar Localizações de Intervalo",timeIntervalSplit:"Analisar dados com intervalos de tempo (opcional)",timeBoundaryValidationMsg:"O intervalo de tempo tem de ser superior ao intervalo de pesquisa temporal."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Изберете обекти за изрязване",filterSelectLabel:"Изрежете всички обекти или определете подмножество (по избор)",targetArea:"Изберете област за изрязване",outputLayerName:"Изрязване ${inputLayerName} до ${clipLayerName}",itemDescription:"Обектен слой, генериран от изпълнението на решенията за изрязване. Обекти от ${inputLayerName} бяха изрязани до ${clipLayerName}.",itemTags:"Резултат от анализа, Слой за изрязване, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Обектен слой, генериран от изрязан слой."});

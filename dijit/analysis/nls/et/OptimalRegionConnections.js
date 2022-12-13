@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Valige piirkonna raster või objekt",inputCostRaster:"Valige kuluraster (valikuline)",inputBarrierRasterOrFeatures:"Valige tõkkeraster või -objekt (valikuline)",distanceMethod:"Kauguse meetod (valikuline)",connectionsWithinRegions:"Ühendused piirkondade sees (valikuline)",generateConnections:"Loo ühendused",noConnections:"Ühendusi pole",planar:"Planaarne",geoDesic:"Geodeetiline",outputOptimalLinesName:"Optimaalsete ühendusjoonte tulemobjektikihi nimi",outputNeighborConnectionsName:"Naaberühenduste tulemobjektikihi nimi (valikuline)",outputLayerName:"Kihi ${layername} optimaalsed piirkonnaühendused",drawSourcePointLayerName:"Lähtepunktid",itemDescription:"Objektikiht koostati kihil ${layername} optimaalsete piirkonnaühenduste lahenduse käitamise kaudu. ",itemTags:"Analüüsitulemus, optimaalsed piirkonnaühendused, ${layername} ${fieldname}",itemSnippet:"Objektikiht koostati optimaalsete piirkonnaühenduste kaudu.",noValueMessage:"See väärtus on nõutav:"});

@@ -801,6 +801,7 @@
           "argumentNames": [
             "Gamma"
           ],
+          "triggerArguments": ["Raster"],
           "widget": {
             "path": "esri/dijit/RasterFunctionEditor/RFxGammaEditor"
           }
@@ -1005,6 +1006,17 @@
         "dataType": "rasterarray",
         "displayName": "${rasterFunctions.rfxArgs.rastersName}",
         "hidden": false
+      },
+      "CellsizeType": {
+        "required": true,
+        "dataType": "long",
+        "displayName": "${rasterFunctions.rfxArgs.cellsizeTypeName}",
+        "hidden": false,
+        "defaultValue": 2,
+        "domain": {
+          "type": "list",
+          "enum": "esriCellsizeTypes"
+        }
       }
     }
   },
@@ -2039,6 +2051,7 @@
             "ClippingGeometry",
             "Extent"
           ],
+          "triggerArguments": ["Raster","ClippingType", "UseInputFeatureGeometry"],
           "widget": {
             "path": "esri/dijit/RasterFunctionEditor/RFxClippingGeometry"
           }
@@ -4169,6 +4182,12 @@
               "active": ["percentile_interpolation_type"],
               "inactive": [],
               "autoRevert": true
+            },
+            {
+              "values": ["MAXIMUM", "MINIMUM", "RANGE", "PERCENTILE", "MEDIAN", "SUM"],
+              "active": [],
+              "inactive": ["circular_calculation", "circular_wrap_value"],
+              "autoRevert": true
             }
           ]
         }
@@ -4192,6 +4211,35 @@
           "type": "list",
           "enum": "gpsaZonalPercentileInterpolationTypes"
         }
+      },
+      "circular_calculation": {
+        "required": false,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.circularCalculation}",
+        "hidden": false,
+        "defaultValue": "ARITHMETIC",
+        "domain": {
+          "type": "list",
+          "enum": "gpsaCircularCalculation"
+        },
+        "editorStateTrigger": {
+          "active": true,
+          "triggers": [
+            {
+              "values": ["ARITHMETIC"],
+              "active": [],
+              "inactive": ["circular_wrap_value"],
+              "autoRevert": true
+            }
+          ]
+        }
+      },
+      "circular_wrap_value": {
+        "required": false,
+        "dataType": "double",
+        "displayName": "${rasterFunctions.rfxArgs.circularWrapValue}",
+        "hidden": false,
+        "defaultValue": 360.0
       },
       "ignore_nodata": {
         "required": false,
@@ -4225,6 +4273,13 @@
           "triggerAttributes": "pixelType:in_value_raster,float,MEAN|MAXIMUM|MINIMUM|RANGE|STD|SUM",
           "widget": {
             "path": "esri/dijit/RasterFunctionEditor/RFxFilteredArgumentEditor"
+          }
+        },
+        {
+          "argumentNames": ["percentile_value"],
+          "triggerAttributes": "minValue:0;maxValue:100",
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxRangedValueEditor"
           }
         }
       ]
@@ -8538,6 +8593,142 @@
         "dataType": "string",
         "displayName": "${rasterFunctions.rfxArgs.bandIndexesB}",
         "hidden": false
+      }
+    }
+  },
+
+  "SurfaceParamFunction": {
+    "category": "surface",
+    "icon": "surfaceParameters.png",
+    "rasterFunctionArguments": {
+      "Raster": {
+        "required": true,
+        "dataType": "raster",
+        "displayName": "${rasterFunctions.rfxArgs.rasterName}",
+        "hidden": false
+      },
+      "SurfaceCalculation": {
+        "required": true,
+        "dataType": "long",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.surfaceParameterType}",
+        "defaultValue": 4,
+        "domain": {
+          "type": "list",
+          "enum": "esriSurfaceParameterType"
+        },
+        "editorStateTrigger": {
+          "active": true,
+          "triggers": [
+            {
+              "values": [4],
+              "active": ["SlopeType"],
+              "inactive": ["ProjectAzimuths", "UseEquatorialAspect"],
+              "autoRevert": false
+            },
+            {
+              "values": [5],
+              "active": ["ProjectAzimuths", "UseEquatorialAspect"],
+              "inactive": ["SlopeType"],
+              "autoRevert": false
+            },
+            {
+              "values": [1],
+              "inactive": ["SlopeType", "ProjectAzimuths", "UseEquatorialAspect"]
+            },
+            {
+              "values": [2],
+              "inactive": ["SlopeType", "ProjectAzimuths", "UseEquatorialAspect"],
+              "autoRevert": false
+            },
+            {
+              "values": [3],
+              "inactive": ["SlopeType", "ProjectAzimuths", "UseEquatorialAspect"],
+              "autoRevert": false
+            },
+            {
+              "values": [6],
+              "inactive": ["SlopeType", "ProjectAzimuths", "UseEquatorialAspect"],
+              "autoRevert": false
+            },
+            {
+              "values": [7],
+              "inactive": ["SlopeType", "ProjectAzimuths", "UseEquatorialAspect"],
+              "autoRevert": false
+            },
+            {
+              "values": [8],
+              "inactive": ["SlopeType", "ProjectAzimuths", "UseEquatorialAspect"],
+              "autoRevert": false
+            },
+            {
+              "values": [9],
+              "inactive": ["SlopeType", "ProjectAzimuths", "UseEquatorialAspect"],
+              "autoRevert": false
+            }
+          ]
+        }
+      },
+      "LocalSurface": {
+        "required": true,
+        "dataType": "long",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.localSurfaceType}",
+        "defaultValue": 1,
+        "domain": {
+          "type": "list",
+          "enum": "esriLocalSurfaceType"
+        }
+      },
+      "AnalysisScaleWithUnits": {
+        "required": true,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.neighborhoodDistance}",
+        "hidden": false,
+        "defaultValue": "1 Meters"
+      },
+      "UseAdaptiveScale": {
+        "required": true,
+        "dataType": "boolean",
+        "displayName": "${rasterFunctions.rfxArgs.useAdaptiveNeighborhood}",
+        "hidden": false,
+        "defaultValue": false
+      },
+      "ZUnit": {
+        "required": true,
+        "dataType": "string",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.zUnit}",
+        "defaultValue": "Meters",
+        "domain": {
+          "type": "list",
+          "enum": "gpsaLinearUnitTypes"
+        }
+      },
+      "SlopeType": {
+        "required": true,
+        "dataType": "long",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.outputSlopeType}",
+        "defaultValue": 1,
+        "domain": {
+          "type": "list",
+          "enum": "outputSlopeType"
+        }
+      },
+      "ProjectAzimuths": {
+        "required": true,
+        "dataType": "boolean",
+        "displayName": "${rasterFunctions.rfxArgs.projectAzimuths}",
+        "hidden": false,
+        "defaultValue": false
+      },
+      "UseEquatorialAspect": {
+        "required": true,
+        "dataType": "boolean",
+        "displayName": "${rasterFunctions.rfxArgs.useEquatorialAspect}",
+        "hidden": false,
+        "defaultValue": false
       }
     }
   }

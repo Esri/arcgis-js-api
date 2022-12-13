@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Izberi raster cilja ali geoobjekte",destinationField:"Polje cilja (izbirno)",inputDistanceAccumulationRaster:"Izberi raster akumulacije razdalje",inputBackDirectionRaster:"Izberi raster povratne povezave ali smeri toka",pathType:"Tip poti (izbirno)",bestSingle:"Najboljša edina",eachCell:"Vsaka celica",eachZone:"Vsako območje",outputFeatureName:"Ime geoobjektnega sloja z rezultati",outputLayerName:"Optimalna pot kot linija ${layername}",drawSourcePointLayerName:"Izvorne točke",itemDescription:"Geoobjektni sloj ustvarjen ob zagonu optimalne poti kot linije na ${layername}. ",itemTags:"Rezultat analize, Optimalna pot kot linija, ${layername} ${fieldname}",itemSnippet:"Geoobjektni sloj ustvarjen iz optimalne poti kot linije."});

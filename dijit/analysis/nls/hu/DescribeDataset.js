@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Válassza ki a leírandó adathalmazt",describeDataLabel:"Adatok értelmezése következő létrehozásával (opcionális):",sampleLayer:"Mintaréteg",extentLayer:"Kiterjedési réteg",noOfFeaturesLabel:"Felvenni kívánt vektoros elemek száma",outputLayerName:"Eredményréteg neve",resultName:"Adja meg a(z) ${layerName} adatainak leírását",itemDescription:"Az Adathalmaz leírása függvény ${layerName} rétegen végrehajtott futtatásából létrehozott vektoros réteg. ",itemTags:"Elemzés végeredménye, Adathalmaz leírása, ${layerName}",itemSnippet:"Az adathalmaz leírása alapján létrehozott vektoros réteg."});

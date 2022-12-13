@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","esri/dijit/geoenrichment/utils/animation/Animator","esri/dijit/geoenrichment/ReportPlayer/ReportPlayerState","./_defaults"],(function(n,i,t,a){return n(null,{_animateColumn:function(n){if(!n.isAnimating&&!t.isAnimationSuspended){var e=n.shape,o=n.voffset,s=n.vsize;0===s&&(s=1),i.animateTransform({shape:e,duration:this.animate.duration||a.duration,easing:a.easingFunc,transform:[{name:"translate",start:[0,o-o/s],end:[0,0]},{name:"scale",start:[1,1/s],end:[1,1]}],onEnd:function(){n.isAnimating=!1}})}},renderAnimation:function(){this._animationInfos&&this._animationInfos.forEach((function(n){this._animateColumn(n)}),this)}})}));

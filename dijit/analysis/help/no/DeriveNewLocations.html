@@ -40,12 +40,11 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="regularsize">
+    <div id="toolDescription" class="smallsize">
         <h2>Utled nye plasseringer</h2><p/>
         <h2><img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" alt="Utled nye plasseringer"></h2>
         <hr/>
-    <p>Med dette verkt&oslash;yet hentes nye geoobjekter i studieomr&aring;det som oppfyller en serie med kriterier som du har angitt. Kriteriene kan baseres p&aring; attributtsp&oslash;rringer (for eksempel ledige tomter) og geografiske sp&oslash;rringer (for eksempel tomter innenfor flomsoner).
-
+    <p>Med dette verkt&oslash;yet hentes nye geoobjekter i studieomr&aring;det som oppfyller en serie med kriterier. Kriteriene kan baseres p&aring; attributtsp&oslash;rringer (for eksempel ledige tomter) og geografiske sp&oslash;rringer (for eksempel tomter innenfor flomsoner).
     </p>
     <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det kun geoobjektene som vises i gjeldende kartvisning, som analyseres. Hvis det ikke er merket av for dette alternativet, blir alle geoobjektene analysert, selv om de ligger utenfor den gjeldende kartutstrekningen.
     </p>
@@ -57,7 +56,9 @@
         <div>
             <p>Klikk p&aring; knappen  <b>Legg til uttrykk</b> for &aring; definere et uttrykk. Du kan legge til flere uttrykk. N&aring;r du har angitt uttrykkene og klikket p&aring; <b>Kj&oslash;r analyse</b>, filtreres geoobjektene i analyselaget basert p&aring; hvert enkelt uttrykk. De delene av geoobjektene som oppfyller alle uttrykkene, skrives til resultatlaget.
             </p>
-            <p>Du kan opprette to grunnleggende typer uttrykk: attributt og romlig. Attributtuttrykk er sp&oslash;rringer i feltverdier, for eksempel  <code>der navnet er San Francisco</code>. Det finnes fire typer romlige uttrykk:
+            <p> Du kan opprette to grunnleggende typer uttrykk: attributt og romlig. Attributtuttrykk er sp&oslash;rringer i feltverdier, for eksempel <pre>where name is 'San Francisco'</pre>.
+            </p>
+            <p>Det er fire alternativer for romlig uttrykk:
                 <ul>
                     <li> <b>innenfor en avstand p&aring;</b>: deler av et geoobjekt som er innenfor en gitt avstand fra et geoobjekt i et annet lag. Du kan for eksempel finne delen av tomter som befinner seg innenfor 500 meter fra Los Angeles-eleven.
                     </li>
@@ -72,7 +73,7 @@
                 </ul>
                 
             </p>
-            <p>Hvert romlige uttrykk har en tilsvarende negasjon, med unntak av  <b>n&aelig;rmest</b>; <b>ikke innenfor en avstand p&aring;</b>, <b>inneholder ikke hele</b>, <b>ikke helt innenfor</b>, og <b>krysser ikke</b>.
+            <p>Fire av de fem romlige uttrykkene har en tilsvarende negasjon:  <b>ikke innenfor en avstand p&aring;</b>, <b>omfatter ikke hele</b>, <b>ikke helt innenfor</b> og <b>krysser ikke;</b> <b>n&aelig;rmest</b> har ingen negasjon.
             </p> 
         </div>
     </div>
@@ -80,7 +81,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
-            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til i kartet.  Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis lagnavnet finnes allerede, blir du bedt om &aring; oppgi et annet navn.
+            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis lagnavnet finnes allerede, blir du bedt om &aring; oppgi et annet navn.
             </p>
             <p>Bruk rullegardinmenyen  <b>Lagre resultat i</b> til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
             </p>

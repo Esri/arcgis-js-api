@@ -232,6 +232,43 @@
   margin: .5em 0;
 }
 
+.esri-rfx-custom-extent {
+  width: 90%;
+  height: 12em;
+  display: block;
+  position: relative;
+}
+.esri-rfx-custom-extent label {
+  text-align: center;
+}
+.esri-rfx-custom-extent__top, .esri-rfx-custom-extent__left, .esri-rfx-custom-extent__right, .esri-rfx-custom-extent__bottom {
+  position: absolute;
+  display: block;
+  width: 8em;
+}
+.esri-rfx-custom-extent__top {
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.esri-rfx-custom-extent__left {
+  top: 50%;
+  left: 0;
+  margin-top: -1em;
+}
+.esri-rfx-custom-extent__right {
+  top: 50%;
+  right: 0;
+  margin-top: -1em;
+}
+.esri-rfx-custom-extent__bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 .esriRFxArgsEditor .esri-rfx-switch-selector,
 .esriRFxArgsEditor .esri-rfx-linear-input,
 .esriRFxArgsEditor .esriRFxGridBase,

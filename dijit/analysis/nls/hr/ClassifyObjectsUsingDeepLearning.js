@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({toolDefine:"Klasificiranje objekata pomoću dubokog učenja",inputFeaturesLabel:"Odaberi sloj značajke za objekte (opcionalno)",outputLayerName:"${layername}_classifiedObjects",modelLabel:"Odaberi model dubokog učenja koji se koristi za klasificiranje objekata",modelArgsLabel:"Odredi argumente modela dubokog učenja",classLabelFieldLabel:"Definiraj naziv polja oznake klase (opcionalno)",processingModeLabel:"Način obrade",processAsMosaicLabel:"Obrađeno kao mozaična slika",processAsItemsLabel:"Obradi sve rastere objekata odvojeno",queryModelArgsMsg:"Ispitivanje argumenata za model...",queryModelArgsErrMsg:"Neuspjelo ispitivanje argumenata za model.",valueLabel:"Vrijednost",nameLabel:"Naziv",analysisLayerLabel:"Odaberi sliku koja će se koristiti za klasificiranje objekata",itemDescription:"Usluga analize slike generirana iz Klasificiraj objekte pomoću dubokog učenja",itemTags:"Rezultat analize rastera, Klasificiraj objekte upotrebom dubokog učenja, ${layername}",itemSnippet:"Usluga analize slike generirana alatom Klasificiraj objekte upotrebom dubokog učenja"});

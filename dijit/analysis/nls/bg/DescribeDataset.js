@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Използвайте набор от данни, за да опишете",describeDataLabel:"Разберете вашите данни, като създадете (по избор)",sampleLayer:"Примерен слой",extentLayer:"Обхват на слой",noOfFeaturesLabel:"Брой на обекти за включване",outputLayerName:"Име на резултатен слой",resultName:"Описание на данни на ${layerName}",itemDescription:"Обектният слой е генериран от изпълнението на Описанието на набор от данни на ${layerName}. ",itemTags:"Резултат от анализ, Описание на набор от данни , ${layerName}",itemSnippet:"Обектният слой е генериран от изпълнението на Описание на набор от данни."});

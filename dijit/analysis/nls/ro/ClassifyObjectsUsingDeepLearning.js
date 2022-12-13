@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({toolDefine:"Clasificare obiecte folosind învățare aprofundată",inputFeaturesLabel:"Alegeți stratul tematic pentru obiecte (opțional)",outputLayerName:"${layername}_classifiedObjects",modelLabel:"Alegeți modelul de învățare aprofundată folosit pentru clasificarea obiectelor",modelArgsLabel:"Specificați argumentele modelului de învățare aprofundată",classLabelFieldLabel:"Definiți numele câmpului etichetă al clasei (opțional)",processingModeLabel:"Mod de procesare",processAsMosaicLabel:"Procesați ca imagine mozaicată",processAsItemsLabel:"Procesați toate elementele raster separat",queryModelArgsMsg:"Se analizează argumentele modelului...",queryModelArgsErrMsg:"A eșuat interogarea argumentelor modelului.",valueLabel:"Valoare",nameLabel:"Nume",analysisLayerLabel:"Alegeți imaginea folosită pentru clasificarea obiectelor",itemDescription:"Serviciu de analiză a imaginilor generat de Clasificare obiecte cu ajutorul învățării profunde",itemTags:"Rezultatul analizei raster, clasificare obiecte cu ajutorul învățării profunde, ${layername}",itemSnippet:"Serviciul de analiză a imaginilor generat de Clasificare obiecte cu ajutorul învățării profunde"});

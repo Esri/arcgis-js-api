@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 /*!
  * @esri/arcgis-html-sanitizer - v2.9.0-next.1 - Tue Oct 19 2021 10:19:42 GMT-0400 (Eastern Daylight Time)

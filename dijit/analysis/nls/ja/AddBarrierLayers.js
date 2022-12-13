@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({addBarriers:"バリア レイヤーの選択",pointBarrier:"ポイント バリア",lineBarrier:"ライン バリア",polygonBarrier:"ポリゴン バリア",choosePointBarrier:"ポイント バリア レイヤーの選択",chooseLineBarrier:"ライン バリア レイヤーの選択",choosePolygonBarrier:"ポリゴン バリア レイヤーの選択",selectPointBarrier:"ポイント バリアの選択",selectLineBarrier:"ライン バリアの選択",selectPolygonBarrier:"ポリゴン バリアの選択"});

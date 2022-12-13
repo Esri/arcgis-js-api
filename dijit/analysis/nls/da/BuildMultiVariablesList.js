@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Vælg et inputlag",addAVar:"Tilføj en variabel",distToNearest:"Afstand til Nærmeste",attrOfInterest:"Attribut for Nærmeste",summaryNearby:"Resumé af i nærheden",summaryIntersecting:"Resumé af Gennemskæring",distToNearestLabel:"Afstand fra beholderens centrum til det nærmeste objekt i inputlaget",attrOfInterestLabel:"Værdien af et angivet felt fra det nærmeste objekt i inputlaget",summaryNearbyLabel:"En statistik, der er beregnet for alle objekter med den angivne afstand fra beholderens centrum",summaryIntersectingLabel:"En statistik, der er beregnet for alle objekter, der gennemskærer beholderen",maxDistancefromCtr:"Maksimal afstand fra beholderens centrum",fieldToIncude:"Felt, der skal medtages",statstoCalculate:"Statistik, der skal beregnes",summFeatuesWithin:"Summér objekter inden for",layerChangeWarnMsg:"Variabler, der er føjet til dette inputlag, vil blive fjernet, hvis inputlaget ændres",validationErrorMsg:"Ret valideringsfejl, før du tilføjer en ny variabel",atleastOneVarMsg:"Føj mindst én variabel til det valgte lag"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/array","dojo/_base/lang","dojo/has","../kernel","../lang","../layers/RasterFunction","./colorRampUtils"],(function(e,i,t,l,a,r,o,s){var n=e(null,{declaredClass:"esri.renderer.ShadedReliefRenderer",constructor:function(e){e=e||{},this.hillshadeType=e.hillshadeType||"traditional",this.azimuth=null!=e.azimuth?e.azimuth:315,this.altitude=null!=e.altitude?e.altitude:45,this.zFactor=e.zFactor||1,this.scalingType=e.scalingType||"none",this.pixelSizePower=null!=e.pixelSizePower?e.pixelSizePower:.664,this.pixelSizeFactor=null!=e.pixelSizeFactor?e.pixelSizeFactor:.024,this.removeEdgeEffect=e.removeEdgeEffect||!1,this.colorRamp=s.fromJson(e.colorRamp)},toJson:function(){var e={type:"rasterShadedRelief",hillshadeType:this.hillshadeType,azimuth:this.azimuth,altitude:this.altitude,zFactor:this.zFactor,scalingType:this.scalingType,pixelSizePower:this.pixelSizePower,pixelSizeFactor:this.pixelSizeFactor,colorRamp:this.colorRamp&&this.colorRamp.toJson()};return r.fixJson(e)},toRenderingRule:function(e){}});return l("extend-esri")&&t.setObject("renderer.ShadedReliefRenderer",n,a),n}));

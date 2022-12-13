@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Välj analyslagret Levande världsatlas",customAnalysisLayerTitle:"Välj analyslager",searchPlaceholderText:"Sök i Living Atlas-analyslager",searchCustomPlaceholderText:"Sök i analyslager",mainActionTitle:"Välj",customActionName:"Välj och lägg till i karta",customeSectionName:"Living Atlas-analyslager",Categories:"Kategorier",boundaries:"Gränser",places:"Platser",boundariesAndPlaces:"Gränser och platser",hexbins:"Hex Bins",transportation:"Transport",point:"Punktlager",line:"Polylinjelager",polygon:"Polygonlager",pointFilterName:"Punkt",lineFilterName:"Polylinje",polygonFilterName:"Polygon",multiPointFilterName:"Multipunkter",geometryFilterName:"Geometri",featureLayerName:"geoobjektlager",tableLayerName:"Tabell",itemTypeFilterName:"Objekttyp",instantFilterName:"Omedelbar",intervalFilterName:"Intervall",timeFilterName:"Tid",edit:"Redigera",boundaryLayers:"Gränslager från Esri",customAnalysisGroupName:"Organisationens analysgrupp"});

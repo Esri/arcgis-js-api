@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({_widgetLabel:"Geoduomenų apdorojimas",_featureAction_ReceiveFeatureSet:"Nustatyti kaip įvestį ",requiredInfo:"būtina.",drawnOnMap:"Rezultatas nupieštas žemėlapyje.",noToolConfig:"Iš anksto sukonfigūruotos geoduomenų apdorojimo užduoties nėra.",useUrlForGPInput:"URL",useUploadForGPInput:"Įkelti failą",useImageServiceLayer:"Vaizdų paslaugos sluoksnis",useBrowseLayerPortal:"Naršyti / Pasirinkti iš portalo",selectFileToUpload:"Pasirinkite failą...",rasterFormat:"Rastrinių duomenų formatas",noFileSelected:"Nepasirinktas joks failas!",uploadSuccess:"Failas įkeltas sėkmingai!",showLayerContent:"Rodyti sluoksnio turinį",invalidUrl:"Netinkamas elementų paslaugos url",urlPlaceholder:"elementui nustatytas URL",addShapefile:"Įtraukti Shape failą",generateShapefileError:"Sugeneruokite Shape failo klaidą, žr.: ",cleared:"Rezultatai išvalyti:",enlargeView:"Padidinti vaizdą",exportOutput:"Eksportuoti",emptyResult:"Rezultato nėra.",useSelectedFeatureset:"Naudoti rezultato elementą (-us).",closeSelectedFeatureset:"Valyti ir naudoti sukonfigūruotą įvesties parinktį."});

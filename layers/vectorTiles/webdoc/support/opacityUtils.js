@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define(["require","exports","../../core/accessorSupport/ensureType"],(function(e,r,n){Object.defineProperty(r,"__esModule",{value:!0}),r.opacityToTransparency=function(e){var r=n.ensureInteger(100*(1-e));return Math.max(0,Math.min(r,100))},r.transparencyToOpacity=function(e){var r=1-e/100;return Math.max(0,Math.min(r,1))}}));

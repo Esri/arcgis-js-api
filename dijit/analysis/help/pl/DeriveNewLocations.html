@@ -41,38 +41,39 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Wprowadź nowe lokalizacje</h2><p/>
+        <h2>Wyznacz nowe lokalizacje</h2><p/>
         <h2><img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" alt="Wprowadź nowe lokalizacje"></h2>
         <hr/>
-    <p>Narzędzie to umożliwia wprowadzanie do badanego obszaru nowych obiekt&oacute;w spełniających podane kryteria. Kryteria te mogą być utworzone na podstawie zapytań o&nbsp;atrybut (na przykład: działki na sprzedaż) oraz zapytań przestrzennych (na przykład: działki w&nbsp;strefie zalewowej).
-
+    <p>Narzędzie to umożliwia wyznaczanie na badanym obszarze nowych obiekt&oacute;w spełniających konkretne kryteria. Kryteria te mogą być utworzone na podstawie zapytań o&nbsp;atrybut (na przykład: działki na sprzedaż) oraz zapytań przestrzennych (na przykład: działki w&nbsp;strefie zalewowej).
     </p>
     <p>Jeśli zaznaczono opcję  <b>Użyj bieżącego zasięgu mapy</b>, analizowane będą tylko obiekty widoczne w bieżącym zasięgu mapy. Jeśli opcja ta nie jest zaznaczona, przeanalizowane zostaną wszystkie obiekty, nawet jeśli znajdują się poza bieżącym zasięgiem mapy.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="Expression">
-        <div><h2>Wyznacz nowe lokalizacje spełniające następujące wyrażenie(-a)</h2></div>
+        <div><h2>Wprowadź nowe lokalizacje spełniające następujące wyrażenie(-a)</h2></div>
         <hr/>
         <div>
-            <p>Kliknij przycisk  <b>Dodaj wyrażenie</b>, aby zdefiniować wyrażenie. Można dodać wiele wyrażeń. Po wprowadzeniu wyrażeń i&nbsp;kliknięciu przycisku <b>Uruchom analizę</b> obiekty w&nbsp;warstwie analizy filtrowane są według każdego z&nbsp;wyrażeń. Części obiekt&oacute;w spełniające warunki wszystkich wyrażeń zapisywane są w&nbsp;warstwie wynikowej.
+            <p>Kliknij przycisk  <b>Dodaj wyrażenie</b>, aby zdefiniować wyrażenie. Można dodać wiele wyrażeń. Po wprowadzeniu wyrażeń i kliknięciu przycisku <b>Uruchom analizę</b> obiekty w warstwie analizy filtrowane są według każdego z wyrażeń. Obiekty, kt&oacute;re spełniają warunki wszystkich wyrażeń, są zapisywane w warstwie wynikowej.
             </p>
-            <p>Można tworzyć następujące dwa podstawowe typy wyrażeń: zapytanie o&nbsp;atrybut i&nbsp;zapytanie przestrzenne. Wyrażenia oparte na atrybutach to zapytania bazujące na wartości p&oacute;l, na przykład polach  <code>o&nbsp;nazwie nazwę &bdquo;San Francisco&rdquo;</code>. Dostępne są cztery typy wyrażeń przestrzennych:
+            <p> Można tworzyć następujące dwa podstawowe typy wyrażeń: atrybutowe i przestrzenne. Wyrażenia oparte na atrybutach to zapytania bazujące na wartości p&oacute;l, na przykład <pre>where name is 'San Francisco'</pre>.
+            </p>
+            <p>Istnieje pięć opcji wyrażeń przestrzennych:
                 <ul>
-                    <li> <b>w odległości do</b>: części obiektu znajdują się w określonej odległości od obiektu w innej warstwie. Na przykład znajdź części działki znajdujące się w odległości do 500 metr&oacute;w od rzeki Los Angeles.
+                    <li> <b>w odległości do</b> &mdash; części obiektu znajdują się w określonej odległości od obiektu w innej warstwie. Na przykład znajdź części działki znajdujące się w odległości do 500 metr&oacute;w od rzeki Los Angeles.
                     </li>
-                    <li> <b>w pełni obejmuje</b>: obiekt musi całkowicie obejmować obiekt z innej warstwy. Na przykład znajdź zlewnie, kt&oacute;re całkowicie zawierają działki przeznaczone pod działalność przemysłową. Żadna część działki nie może w&oacute;wczas wychodzić poza granice wododziału.
+                    <li> <b>w pełni obejmuje</b> &mdash; obiekt musi całkowicie obejmować obiekt z innej warstwy. Na przykład znajdź zlewnie, kt&oacute;re całkowicie zawierają działki przeznaczone pod działalność przemysłową. Żadna część działki nie może w&oacute;wczas wychodzić poza granice zlewni.
                     </li>
-                    <li> <b>w pełni otoczony</b>: obiekt musi znajdować się całkowicie wewnątrz obiektu z innej warstwy. Na przykład znajdź okręgi szkolne w&nbsp;całości mieszczące się w&nbsp;granicach miasta. Żadna część okręgu nie może w&oacute;wczas wychodzić poza granice miasta.
+                    <li> <b>w pełni otoczone</b> &mdash; obiekt musi znajdować się całkowicie wewnątrz obiektu z innej warstwy. Na przykład znajdź okręgi szkolne w&nbsp;całości mieszczące się w&nbsp;granicach miasta. Żadna część okręgu nie może w&oacute;wczas wychodzić poza granice miasta.
                     </li>
-                    <li> <b>przecina się</b>: obiekt lub części obiektu muszą nakładać się na obiekt w innej warstwie lub go przecinać. Na przykład znajdź obszary z&nbsp;roślinnością spaloną w&nbsp;wyniku wielu pożar&oacute;w w&nbsp;granicach parku narodowego. Spalone obszary poza granicami parku narodowego nie będą uwzględnione.
+                    <li> <b>przecinają się</b> &mdash; obiekt lub części obiektu muszą nakładać się na obiekt w innej warstwie lub go przecinać. Na przykład znajdź obszary z&nbsp;roślinnością spaloną w&nbsp;wyniku wielu pożar&oacute;w w&nbsp;granicach parku narodowego. Spalone obszary poza granicami parku narodowego nie będą uwzględnione.
                     </li>
-                    <li> <b>najbliższy</b>: obiekt musi znajdować się najbliżej obiektu w innej warstwie. Na przykład, można znaleźć parki znajdujące się najbliżej poszczeg&oacute;lnych szk&oacute;ł.
+                    <li> <b>najbliższe</b> &mdash; obiekt musi znajdować się najbliżej obiektu w innej warstwie. Na przykład, można znaleźć parki znajdujące się najbliżej poszczeg&oacute;lnych szk&oacute;ł.
                     </li>
                 </ul>
                 
             </p>
-            <p>Każde wyrażenie przestrzenne ma swoje zaprzeczenie, z wyjątkiem wyrażenia  <b>najbliższy</b>: <b>nie w&nbsp;odległości do</b>, <b>nie całkowicie zawiera</b>, <b>nie całkowicie wewnątrz</b> oraz <b>nie przecina się</b>.
+            <p>Cztery z tych pięciu wyrażeń przestrzennych mają swoje zaprzeczenie:  <b>nie w odległości do</b>, <b>nie całkowicie zawierają</b>, <b>nie całkowicie wewnątrz</b> oraz <b>nie przecinają się</b>. Wyrażenie <b>najbliższe</b> nie ma zaprzeczenia.
             </p> 
         </div>
     </div>

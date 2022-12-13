@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Bölge rasterı veya detayı seçin",inputCostRaster:"Maliyet rasterı seçin (isteğe bağlı)",inputBarrierRasterOrFeatures:"Engel rasterı ya da detayı seçin (isteğe bağlı)",distanceMethod:"Mesafe yöntemi (isteğe bağlı)",connectionsWithinRegions:"Bölgeler içerisindeki bağlantılar (isteğe bağlı)",generateConnections:"Bağlantılar Oluştur",noConnections:"Bağlantı Yok",planar:"Düzlemsel",geoDesic:"Jeodezik",outputOptimalLinesName:"Sonuç en uygun bağlantı çizgileri detay katmanı adı",outputNeighborConnectionsName:"Sonuç komşu bağlantılar detay katmanı adı (isteğe bağlı)",outputLayerName:"${layername} için en uygun bölge bağlantıları",drawSourcePointLayerName:"Kaynak noktalar",itemDescription:"Detay katmanı ${layername} üzerinde En Uygun Bölge Bağlantılarının çalıştırılmasıyla oluşturuldu. ",itemTags:"Analiz Sonucu, En Uygun Bölge Bağlantıları, ${layername} ${fieldname}",itemSnippet:"Detay katmanı En Uygun Bölge Bağlantılarından oluşturuldu.",noValueMessage:"Bu değer gereklidir"});

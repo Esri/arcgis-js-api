@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({toolDefine:"Класифікувати пікселі, використовуючи глибоке навчання",outputLayerName:"${layername}_класифіковано",modelLabel:"Вибрати модель глибокого навчання, використовувану для класифікації пікселів",modelArgsLabel:"Вказати аргументи моделі глибокого навчання",nameLabel:"Імʼя",valueLabel:"Значення",queryModelArgsMsg:"Запит аргументів моделі...",queryModelArgsErrMsg:"Не вдалося запитати аргументи моделі",processingModeLabel:"Режим обробки",processAsMosaicLabel:"Обробити як мозаїчне зображення",processAsItemsLabel:"Обробити всі елементи растру окремо",analysisLayerLabel:"Вибрати зображення, використовуване для класифікації",itemDescription:"Аналітичний сервіс зображень, згенерований з «Класифікувати пікселі, використовуючи глибоке навчання»",itemTags:"Результат аналізу растру, Класифікувати пікселі, використовуючи глибоке навчання, ${layername}",itemSnippet:"Аналітичний сервіс зображень, згенерований з «Класифікувати пікселі, використовуючи глибоке навчання»"});

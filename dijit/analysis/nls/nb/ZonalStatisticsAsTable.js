@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Velg soneraster eller geoobjekter",outputTableName:"Navn på resultattabell",zoneField:"Sonefelt",inputValueRaster:"Velg verdiraster",ignoreNodata:"Ignorer NoData i beregninger (valgfritt)",ignore:"Ignorer",statisticType:"Statistikktype (valgfritt)",percentileValues:"Persentilverdier (valgfritt)",percentileInterpolationType:"Type interpolasjon av persentil (valgfritt)",processAsMultidimensional:"Behandle som flerdimensjonal (valgfritt)",allSlices:"Alle sektorer",outputZonalStatsName:"Sonestatistikk for ${valuelayername} innenfor ${layername}",itemDescription:"Geoobjekttabell for analyse generert fra Sonestatistikk som tabell",itemTags:"Rasteranalyseresultat, Sonestatistikk som tabell, ${layername}, ${valuelayername}",autoDetect:"Auto-detekter",nearest:"Nærmeste",linear:"Lineær"});

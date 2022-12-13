@@ -44,8 +44,7 @@
         <h2>Härled nya platser</h2><p/>
         <h2><img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" alt="H&auml;rled nya platser"></h2>
         <hr/>
-    <p>Det h&auml;r verktyget h&auml;mtar nya geoobjekt i unders&ouml;kningsomr&aring;det som uppfyller en rad kriterier du anger. Kriterierna kan bygga p&aring; attributfr&aring;gor (till exempel fastigheter som &auml;r tomma) och geografiska fr&aring;gor (till exempel fastigheter i &ouml;versv&auml;mningszoner).
-
+    <p>Det h&auml;r verktyget h&auml;mtar nya geoobjekt i ett unders&ouml;kningsomr&aring;de som uppfyller en rad specifika kriterier. Kriterierna kan bygga p&aring; attributfr&aring;gor (till exempel fastigheter som &auml;r tomma) och geografiska fr&aring;gor (till exempel fastigheter i &ouml;versv&auml;mningszoner).
     </p>
     <p>Om  <b>Anv&auml;nd aktuell kartutbredning</b> &auml;r markerat analyseras endast de geoobjekt som &auml;r synliga i den aktuella kartutbredningen. Om alternativet inte markeras analyseras alla geoobjekt, &auml;ven om de ligger utanf&ouml;r den aktuella kartutbredningen.
     </p>
@@ -55,24 +54,26 @@
         <div><h2>Härled nya platser som matchar följande uttryck</h2></div>
         <hr/>
         <div>
-            <p>Klicka p&aring; knappen  <b>L&auml;gg till uttryck</b> n&auml;r du vill definiera ett uttryck. Du kan l&auml;gga till flera uttryck. Efter att du har angett uttrycken och klickat p&aring; knappen <b>K&ouml;r analys</b> filtreras geoobjekt i ditt analyslager genom varje uttryck. De delar av geoobjekt som uppfyller alla uttryck skrivs till resultatlagret.
+            <p>Klicka p&aring; knappen  <b>L&auml;gg till uttryck</b> n&auml;r du vill definiera ett uttryck. Du kan l&auml;gga till flera uttryck. Efter att du har angett uttrycken och klickat p&aring; knappen <b>K&ouml;r analys</b> filtreras geoobjekt i analyslagret genom varje uttryck. De delar av geoobjekt som uppfyller alla uttryck skrivs till resultatlagret.
             </p>
-            <p>Du kan skapa tv&aring; grundl&auml;ggande typer av uttryck: attribututtryck och geografiska uttryck. Attribututtryck &auml;r fr&aring;gor om f&auml;ltv&auml;rden, t.ex.  <code>d&auml;r namnet &auml;r &quot;San Francisco&quot;</code>. Det finns fyra typer av geografiska uttryck:
+            <p> Du kan skapa tv&aring; grundl&auml;ggande typer av uttryck: attribututtryck och geografiska uttryck. Attribututtryck &auml;r fr&aring;gor om f&auml;ltv&auml;rden, t.ex. <pre>where name is 'San Francisco'</pre>.
+            </p>
+            <p>Det finns fem alternativ f&ouml;r spatiala uttryck:
                 <ul>
-                    <li> <b>inom ett avst&aring;nd fr&aring;n</b>: delar av ett geoobjekt inom ett avst&aring;nd fr&aring;n ett geoobjekt i ett annat lager. Exempel: hitta delar av fastigheter inom 500 meter fr&aring;n Los Angelesfloden.
+                    <li> <b>inom ett avst&aring;nd fr&aring;n</b> &mdash; delar av ett geoobjekt inom ett avst&aring;nd fr&aring;n ett geoobjekt i ett annat lager. Exempel: hitta delar av fastigheter inom 500 meter fr&aring;n Los Angelesfloden.
                     </li>
-                    <li> <b>inneh&aring;ller helt</b>: geoobjektet m&aring;ste inneh&aring;lla ett helt geoobjekt i ett annat lager. Exempel: hitta avrinningsomr&aring;den som helt inneh&aring;ller fastigheter f&ouml;r industribruk. Ingen del av fastigheten f&aring;r ligga utanf&ouml;r avrinningsomr&aring;det.
+                    <li> <b>inneh&aring;ller helt</b> &mdash; geoobjektet m&aring;ste inneh&aring;lla ett helt geoobjekt i ett annat lager. Exempel: hitta avrinningsomr&aring;den som helt inneh&aring;ller fastigheter f&ouml;r industribruk. Ingen del av fastigheten f&aring;r ligga utanf&ouml;r avrinningsomr&aring;det.
                     </li>
-                    <li> <b>helt inom</b>: geoobjektet m&aring;ste vara helt omgivet av ett geoobjekt i ett annat lager. Exempel: hitta skoldistrikt som helt ligger innanf&ouml;r en kommungr&auml;ns. Ingen del av skoldistriktet f&aring;r ligga utanf&ouml;r kommungr&auml;nsen.
+                    <li> <b>helt inom</b> &mdash; geoobjektet m&aring;ste vara helt omgivet av ett geoobjekt i ett annat lager. Exempel: hitta skoldistrikt som helt ligger innanf&ouml;r en kommungr&auml;ns. Ingen del av skoldistriktet f&aring;r ligga utanf&ouml;r kommungr&auml;nsen.
                     </li>
-                    <li> <b>korsar</b>: geoobjektet eller delar av geoobjektet m&aring;ste &ouml;verlappa eller korsa ett geoobjekt i ett annat lager. Exempel: hitta omr&aring;den med br&auml;nd vegetation efter flera br&auml;nder i en nationalpark. Br&auml;nda omr&aring;den utanf&ouml;r parkens gr&auml;nser inkluderas inte.
+                    <li> <b>korsar</b> &mdash; geoobjektet eller delar av geoobjektet m&aring;ste &ouml;verlappa eller korsa ett geoobjekt i ett annat lager. Exempel: hitta omr&aring;den med br&auml;nd vegetation efter flera br&auml;nder i en nationalpark. Br&auml;nda omr&aring;den utanf&ouml;r parkens gr&auml;nser inkluderas inte.
                     </li>
-                    <li> <b>n&auml;rmast</b>: geoobjektet m&aring;ste vara n&auml;rmast ett geoobjekt i ett annat lager. Hitta till exempel det gr&ouml;nomr&aring;de som ligger n&auml;rmast varje skola.
+                    <li> <b>n&auml;rmast</b> &mdash; geoobjektet m&aring;ste vara n&auml;rmast ett geoobjekt i ett annat lager. Hitta till exempel det gr&ouml;nomr&aring;de som ligger n&auml;rmast varje skola.
                     </li>
                 </ul>
                 
             </p>
-            <p>Varje geografiskt uttryck har en motsvarande negation, med undantag f&ouml;r  <b>n&auml;rmast</b>: <b>inte inom ett avst&aring;nd fr&aring;n</b>, <b>inneh&aring;ller inte helt</b>, <b>inte helt inom</b> och <b>korsar inte</b>.
+            <p>Fyra av de geografiska uttrycken har en motsvarande negation:  <b>inte inom ett avst&aring;nd fr&aring;n</b>, <b>inneh&aring;ller inte helt</b>, <b>inte helt inom</b> och <b>korsar inte</b>; <b>n&auml;rmast</b> har ingen negation.
             </p> 
         </div>
     </div>

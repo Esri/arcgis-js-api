@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Izvēlēties slāni, no kura meklēt mājokļus",selectTracksLabel:"Izvēlieties vienu vai vairākus laukus, lai identificētu maršrutus",defineDistanceLabel:"Definēt telpiskās meklēšanas attālumu",distMethodLabel:"Izvēlēties attāluma aprēķināšanas metodi",temporalSearchLabel:"Definēt temporālās meklēšanas diapazonu",outputDwellLabel:"Izvadīt mājokļa novietojumus kā",outputLayerName:"Atrast slāņa ${inputLayerName} mājokļu novietojumus",meanCenters:"Vidējie centri",convexHulls:"Aptverošie laukumi",dwellFeatures:"Mājokļu elementi",allFeatures:"Visi elementi",itemDescription:"Elementu slānis, kas ģenerēts, palaižot risinājumu Atrast mājokļu novietojumus slānim ${inputLayerName}.",itemTags:"Analīzes rezultāts, Atrast mājokļu novietojumus, ${inputLayerName}",itemSnippet:"Elementu slānis ir ģenerēts, izmantojot Atrast mājokļu novietojumus",timeIntervalSplit:"Analizēt datus ar laika intervāliem (pēc izvēles)",timeBoundaryValidationMsg:"Laika intervālam jābūt lielākam par laika (temporālo) meklēšanas diapazonu."});

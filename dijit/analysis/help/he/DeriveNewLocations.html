@@ -41,45 +41,44 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Derive New Locations</h2><p/>
-        <h2><img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" alt="Derive New Locations"></h2>
+        <h2>הפקת מיקומים חדשים</h2><p/>
+        <h2><img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" alt="הפקת מיקומים חדשים"></h2>
         <hr/>
-    <p>This tool derives new features in your
-study area that meet a series of criteria you specify. These criteria can be based on attribute queries (for example, parcels that are vacant) and spatial queries (for example,   parcels that are within flood zones).
-
-
+    <p>כלי זה מפיק ישויות חדשות באזור מחקר שעונות על סדרת קריטריונים ספציפיים. קריטריונים אלה יכולים להיות מבוססים על שאילתות מאפיינים (לדוגמה, חלקות שהן פנויות) ושאילתות מרחביות (לדוגמה, חלקון שהן באזורי הצפה).
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only the features  that are visible within the current map extent will be analyzed.  If unchecked, all features will be analyzed, even if they are outside the current map extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק הישויות שנראות בתוך גבולות תיחום המפה הנוכחי ינותחו. אם האפשרות לא מסומנת, כל הישויות ינותחו, גם אם הן מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="Expression">
-        <div><h2>Derive new locations that match the following expression(s)</h2></div>
+        <div><h2>הסקת מיקומים חדשים שתואמים לביטוי/ים הבא/ים</h2></div>
         <hr/>
         <div>
-            <p>Click the  <b>Add Expression</b> button to define an expression.  You can add multiple expressions.  After entering the expressions and clicking the <b>Run Analysis</b> button, features in your analysis layer are filtered through each expression.  The portions of features that satisfy all expressions are written to the result layer.
+            <p>לחץ על  <b>הוסף ביטוי</b> כדי להגדיר ביטוי. ניתן להוסיף ביטויים מרובים. לאחר הזנת הביטויים ולחיצה על לחצן <b>הרץ ניתוח</b>, יישויות בשכבת הניתוח מסוננות דרך כל ביטוי. חלקי היישויות שתואמות לכל הביטויים נכתבות לשכבת התוצאה.
             </p>
-            <p>There are two basic types of expressions you can create; attribute and spatial.  Attribute expressions are queries on field values, such as  <code>where name is 'San Francisco'</code>.  There are four  types of spatial expressions:
+            <p> יש שני סוגי ביטויים בסיסיים שבאפשרותך ליצור: מאפיין ומרחבי. ביטויי מאפיין הן שאילתות על ערכי שדה, כגון <pre>where name is 'San Francisco'</pre>.
+            </p>
+            <p>קיימות חמש אפשרויות ביטוי מרחבי:
                 <ul>
-                    <li> <b>within a distance of</b>: portions of a feature within a distance of a feature in another layer.  For example, find the portions of  parcels that are within 500 meters of the Los Angeles river.
+                    <li> <b>בתוך מרחק מ</b> - חלקים מיישות בתוך מרחק מיישות בשכבה אחרת. לדוגמה, מצא את חלקי החלקות שהן בטווח 500 מטר מנהר לוס אנג'לס.
                     </li>
-                    <li> <b>completely contains</b>: the feature must contain all of a feature in another layer.  For example, find watersheds that completely contain parcels zoned for industrial use.  No part of the parcel can be outside of the watershed.
+                    <li> <b>מוכל לחלוטין</b> - היישות חייבת להכיל את היישות בשכבה אחרת. לדוגמה, מצא קווי פרשת מים שמכילים באופן מלא חלקות שהוגדרו לאזורים לשימוש תעשייתי. אף חלק של החלקה לא יכול להיות מחוץ לקו פרש המים.
                     </li>
-                    <li> <b>completely within</b>: the feature must be entirely surrounded by a feature in another layer.  For example, find school districts that are completely within the boundary of a city.  No part of the school district can be outside of the city boundary.
+                    <li> <b>לחלוטין בתוך</b> - היישות חייבת להיות מוקפת לחלוטין על ידי יישות בשכבה אחרת. לדוגמה, מצא מחוזות בתי ספר שנמצאים לחלוטין בתוך הגבול של עיר. אף חלק ממחוז בית הספר לא יכול להיות מחוץ לגבול העיר.
                     </li>
-                    <li> <b>intersect</b>: the feature or portions of the feature must overlap or intersect a feature in another layer.  For example, find areas of burned vegetation from multiple fires within a national park.   Burned areas outside the park boundary will not be included.
+                    <li> <b>מצטלב</b> - הישות או החלקים מהיישות חייבים לחפוף או להצטרף עם ישות בשכבה אחרת. לדוגמה, מצא אזורים של צמחייה שרופה משריפות מרובות בתוך פארק לאומי. אזורים שרופים מחוץ לגבול הפארק לא ייכללו.
                     </li>
-                    <li> <b>nearest to</b>: the feature must be nearest to a feature in another layer.  For example, find the green space that is closest to each school.
+                    <li> <b>הקרוב ביותר אל</b> - היישות חייבת להיות הקרובה ביותר ליישות בשכבה אחרת. לדוגמה, מצא את השטח הירוק שהוא הקרוב ביותר לכל בית ספר.
                     </li>
                 </ul>
                 
             </p>
-            <p>Each spatial expression has a corresponding negation, with the exception of  <b>nearest to</b>; <b>not within a distance of</b>, <b>does not completely contain</b>, <b>not completely within</b>, and <b>does not intersect</b>.
+            <p>לארבע מתוך חמשת הביטויים המרחביים יש שלילה תואמת  <b>לא מתוך מרחק מ</b>, <b>לא מוכל לחלוטין</b>, <b>לא לחלוטין בתוך</b> וכן <b>לא מצטלב</b>; לביטוי <b>הקרוב ביותר אל</b> אין שלילה.
             </p> 
         </div>
     </div>
     <div id="OutputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
             <p>השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.

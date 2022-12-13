@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Escolher feição ou raster de região",inputCostRaster:"Escolher raster de custo (opcional)",inputBarrierRasterOrFeatures:"Escolher feição ou raster de barreira (opcional)",distanceMethod:"Método de distância (opcional)",connectionsWithinRegions:"Conexões dentro de regiões (opcional)",generateConnections:"Gerar Conexões",noConnections:"Nenhuma Conexão",planar:"Planar",geoDesic:"Geodésica",outputOptimalLinesName:"Nome da camada de feição das linhas de conectividade favorável resultante",outputNeighborConnectionsName:"Nome da camada de feição das conexões vizinhas resultante (opcional)",outputLayerName:"Conexões de região favoráveis de ${layername}",drawSourcePointLayerName:"Ponto de origem",itemDescription:"Camada de feição gerada a partir da execução das Conexões de Região Favoráveis ${layername}. ",itemTags:"Resultado de Análise, Conexões de Região Favoráveis, ${layername} ${fieldname}",itemSnippet:"Camada de feição gerada a partir de Conexões de Região Favoráveis.",noValueMessage:"Este valor é exigido"});

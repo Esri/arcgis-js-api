@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({binsLabel:"Vybrať typ záložiek, ktoré budú použité na vybudovanie tabuľky viacerých premenných",layersAttrLabel:"Vybrať vstupné vrstvy a premenné, ktoré by ste chceli zahrnúť do tabuľky",itemDescription:"Vrstvy prvkov generované nástroja Vybudovať tabuľku viacerých premenných.",itemTags:"Výsledok analýzy, Vybudovať tabuľku viacerých premenných",itemSnippet:"Vrstvy prvkov generované nástrojom Vybudovať tabuľky viacerých premenných",addVariables:"Pridať premenné"});

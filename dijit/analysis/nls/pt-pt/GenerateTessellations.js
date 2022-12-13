@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({chooseShape:"Escolher forma",defineExtent:"Definir extensão",defineBin:"Definir tamanho de bin especificando",area:"Área",distance:"Distância",resultLayerName:"Nome da camada resultante",hexagon:"Hexágono",transverseHexagon:"Hexágono transversal",square:"Quadrado",triangle:"Triângulo",diamond:"Diamante",sameAsDisplay:"O mesmo que o em exibição",emptyBinSize:"O tamanho de bin não pode estar vazio",currentExtent:"extensão atual",intersectExtent:"Manter apenas tesselações de intersecção",outputLayerName:"Gerar tesselações em ${extentLayerName}",itemDescription:"Extensão de ${extentLayerName} usada.",itemTags:"Resultado da análise, Gerar tesselações, ${extentLayerName}",itemSnippet:"Camada de elementos gerada a partir de Gerar tesselações"});

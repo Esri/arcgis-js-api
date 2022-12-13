@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({toolDefine:"Classer des objets à l’aide d’algorithmes de Deep Learning",inputFeaturesLabel:"Choisir la couche d’entités pour les objets (facultatif)",outputLayerName:"${layername}_classifiedObjects",modelLabel:"Choisir le modèle de Deep Learning utilisé pour classer les objets",modelArgsLabel:"Spécifier les arguments du modèle de Deep Learning",classLabelFieldLabel:"Définir le nom de champ de la classe d’étiquettes (facultatif)",processingModeLabel:"Mode de traitement",processAsMosaicLabel:"Traiter comme une image mosaïquée",processAsItemsLabel:"Traiter tous les éléments raster séparément",queryModelArgsMsg:"Interrogation des arguments du modèle...",queryModelArgsErrMsg:"Échec de l’interrogation des arguments du modèle.",valueLabel:"Valeur",nameLabel:"Nom",analysisLayerLabel:"Choisir l’image à utiliser pour classer les objets",itemDescription:"Service d’imagerie d’analyse généré avec Classer des objets à l’aide d’algorithmes de Deep Learning",itemTags:"Résultat d’analyse raster, Classer des objets à l’aide d’algorithmes de Deep Learning, ${layername}",itemSnippet:"Service d’imagerie d’analyse généré avec Classer des objets à l’aide d’algorithmes de Deep Learning"});

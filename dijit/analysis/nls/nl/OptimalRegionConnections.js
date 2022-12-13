@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Kies regioraster of object",inputCostRaster:"Kies kostenraster (optioneel)",inputBarrierRasterOrFeatures:"Kies barrièreraster of object (optioneel)",distanceMethod:"Afstandmethode (optioneel)",connectionsWithinRegions:"Verbindingen binnen regio's (optioneel)",generateConnections:"Verbindingen genereren",noConnections:"Geen verbindingen",planar:"Planair",geoDesic:"Geodetisch",outputOptimalLinesName:"Resultaat optimale connectiviteitslijnen naam feature layer",outputNeighborConnectionsName:"Resultaat naam feature layer van de naburige verbindingen (optioneel)",outputLayerName:"Optimale regioverbindingen van ${layername}",drawSourcePointLayerName:"Bronpunten",itemDescription:"Feature layer gegenereerd door uitvoering van de Optimale regioverbindingen voor ${layername}. ",itemTags:"Analyseresultaat, Optimale regioverbindingen, ${layername} ${fieldname}",itemSnippet:"Feature layer gegenereerd door de Optimale regioverbindingen.",noValueMessage:"Deze waarde is vereist"});

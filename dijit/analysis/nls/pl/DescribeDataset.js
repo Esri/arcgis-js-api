@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Wybierz zestaw danych do opisania",describeDataLabel:"Uzyskaj informacje o danych, tworząc (opcjonalnie)",sampleLayer:"Przykładowa warstwa",extentLayer:"Warstwa zasięgu",noOfFeaturesLabel:"Liczba obiektów do uwzględnienia",outputLayerName:"Nazwa warstwy wynikowej",resultName:"Opisz dane w warstwie ${layerName}",itemDescription:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Opisz zestaw danych w warstwie ${layerName}. ",itemTags:"Wynik analizy, Opisz zestaw danych, ${layerName}",itemSnippet:"Warstwa obiektowa wygenerowana w wyniku użycia narzędzia Opisz zestaw danych."});

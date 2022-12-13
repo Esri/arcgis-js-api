@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({chooseLayer:"Вибрати шар для аналізу",chooseField:"Вибрати поля для моделювання",chooseExplanatoryField:"Вибрати пояснювальні поля",chooseNeighborhood:"Вибрати, як визначатиметься окіл",distanceBand:"Канал відстані",numNeighbors:"Число сусідів",chooseWeighted:"Оберіть, як будуть зважуватися сусідні об’єкти",bisquare:"Біквадратний",gaussian:"Гаусовий",resultLayerName:"Назва результуючого шару",outputLayerName:"GWR ${inputLayerName}",distanceBandWarning:"Значення каналу відстані повинне бути між ${min} і ${max}",numNeighborsWarning:"Число сусідів повинне бути між ${min} і ${max}",explanatoryFieldsWarning:"Оберіть щонайменше 1 пояснювальне поле",explanatoryLayerWarning:"Обраний шар не містить жодних пояснювальних полів, оберіть інший шар",inputLayerWarning:"Обраний шар не містить жодних числових полів для моделювання, оберіть інший шар",itemDescription:"Векторний шар, згенерований на основі виконання рішень з Географічно зваженої регресії.",itemTags:"Результат аналізу, Географічно зважена регресія, ${inputLayerName}, підгонка",itemSnippet:"Векторний шар, згенерований за допомогою інструмента Географічно зважена регресія"});

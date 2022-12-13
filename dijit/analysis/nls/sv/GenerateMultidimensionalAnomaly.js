@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({toolDefine:"Generera flerdimensionell avvikelse",outputLayerName:"${layername}_avvikelse",variablesLabel:"Välj variabel/variabler som avvikelser ska genereras för",variablesListLabel:"Variabler [Dimensionsinformation] (Beskrivning)",methodLabel:"Välj metod för att generera avvikelse",calculationIntervalLabel:"Välj tidsintervall för att beräkna medel",differenceFromMean:"Skillnad från medel",percentDifferenceFromMean:"Procentskillnad från medel",percentOfMean:"Procent av medel",zScore:"Z-poäng",differenceFromMedian:"Skillnad från median",percentDifferenceFromMedian:"Procentskillnad från median",percentOfMedian:"Procent av median",all:"Alla",yearly:"Årligen",recurringMonthly:"Återkommer månadsvis",recurringWeekly:"Återkommer veckovis",recurringDaily:"Återkommer dagligen",hourly:"Varje timma",externalRaster:"Externt raster",meanRaster:"Välj bildlager för medelvärde som referens",ignoreNodataLabel:"Ignorera saknade värden i beräkningen",ignore:"Ignorera",analysisLayerLabel:"Välj flerdimensionellt bildlager för att generera avvikelse",itemDescription:"Analysbildtjänst genererad från Generera flerdimensionell avvikelse",itemTags:"Rasteranalysresultat, Generera flerdimensionell avvikelse, ${layername}",itemSnippet:"Analysbildtjänst genererad från Generera flerdimensionell avvikelse"});

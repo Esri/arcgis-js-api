@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Ziel-Raster oder -Features auswählen",destinationField:"Zielfeld (optional)",inputDistanceAccumulationRaster:"Entfernungs-Akkumulations-Raster auswählen",inputBackDirectionRaster:"Gegenrichtungs- oder Fließrichtungs-Raster auswählen",pathType:"Pfadtyp (optional)",bestSingle:"Der Beste",eachCell:"Jede Zelle",eachZone:"Jede Zone",outputFeatureName:"Name des Ergebnis-Feature-Layers",outputLayerName:"Optimaler Pfad als Linie von ${layername}",drawSourcePointLayerName:"Ausgangspunkte",itemDescription:'Über "Optimaler Pfad als Linie" für ${layername} erstellter Feature-Layer. ',itemTags:"Analyseergebnis, Optimaler Pfad als Linie, ${layername} ${fieldname}",itemSnippet:'Über "Optimaler Pfad als Linie" erstellter Feature-Layer.'});

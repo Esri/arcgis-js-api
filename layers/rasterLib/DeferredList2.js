@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define(["dojo/DeferredList"],(function(n){return function(i,e,c,t,l){this.list=i;var o=new n(i,e,c,t,l),r=o.resolve.bind(o),f=o.cancel.bind(o);return o.cancel=function(){i&&i.forEach((function(n){n.cancel&&n.cancel()})),f.apply(this,arguments)}.bind(o),o.resolve=function(){this.isFulfilled()||r.apply(this,arguments)}.bind(o),o}}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({chooseLayer:"בחר שכבה לניתוח",chooseField:"בחר את השדות ליצירת מודל",chooseExplanatoryField:"בחר את השדות המסבירים",chooseNeighborhood:"בחר כיצד השכונה תיקבע",distanceBand:"טווח מרחק",numNeighbors:"מספר השכנים",chooseWeighted:"בחר כיצד ישויות שכונה נשקלות",bisquare:"Bisquare",gaussian:"Gaussian",resultLayerName:"שם שכבת התוצאה",outputLayerName:"GWR ${inputLayerName}",distanceBandWarning:"ערך ערוץ המרחק חייב להיות בין ${min} ל-${max}",numNeighborsWarning:"מספר השכנים חייב להיות בין ${min} ל-${max}",explanatoryFieldsWarning:"בחר לפחות שדה מסביר אחד",explanatoryLayerWarning:"השכבה שנבחרה לא מכילה שדות מסבירים חוקיים כלשהם, בחר שכבה אחרת.",inputLayerWarning:"השכבה שנבחרה לא מכילה שדות מספריים כלשהם למידול, בחר שכבה אחרת.",itemDescription:"שכבת ישויות שנוצרה מהרצת פתרונות 'רגרסיה משוקללת גיאוגרפית'.",itemTags:"תוצאת ניתוח, רגרסיה משוקללת גיאוגרפית, ${inputLayerName}, התאמה",itemSnippet:"שכבת ישויות שנוצרה מכלי רגרסיה משוקללת גיאוגרפית'"});

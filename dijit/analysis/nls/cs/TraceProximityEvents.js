@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayer:"Vyberte vrstvu, ve které chcete vyhledat události v blízkosti",entityField:"Vyberte pole k identifikaci událostí",entityLayer:"Vyberte vrstvu k určení zájmových entit",defineDistanceLabel:"Určete vzdálenost pro prostorové vyhledávání",distMethodLabel:"Vyberte metodu výpočtu vzdálenosti",temporalSearchLabel:"Určete časovou vyhledávací vzdálenost",optionsLabel:"Pokročilé možnosti",maxTraceDepth:"Maximální hloubka trasování",attributeMatchLabel:"Vyberte jeden nebo více atributů entity, které chcete spárovat",includeTracksLayer:"Zahrnout vrstvu stop",itemDescription:"Vrstva prvků vygenerovaná spuštěním nástroje Trasovat události v blízkosti pro ${inputLayername}.",itemTags:"Výsledek analýzy, Trasovat události v blízkosti, ${inputLayername}",itemSnippet:"Vrstva prvků vygenerovaná nástrojem Trasovat události v blízkosti.",outputLayerName:"Trasovat události v blízkosti pro ${inputLayername}",noEntityFieldMsg:"Vrstva událostí v blízkosti a vrstva zájmových entit nemají žádná společná pole."});

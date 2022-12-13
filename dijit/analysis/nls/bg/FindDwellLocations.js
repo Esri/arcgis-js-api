@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Изберете слоя, от който да откривате жилища",selectTracksLabel:"Изберете едно или повече полета, за да идентифицирате следи",defineDistanceLabel:"Определете разстояние за пространствено търсене.",distMethodLabel:"Изберете метода за изчисляване на разстояние",temporalSearchLabel:"Определете диапазон от време за търсене",outputDwellLabel:"Извеждане на местата на пребиваване като",outputLayerName:"Намиране на населени места за ${inputLayerName}",meanCenters:"Осреднен център",convexHulls:"Изпъкнал корпус",dwellFeatures:"Жилищни обекти",allFeatures:"Всички обекти",itemDescription:"Обектен слой, генериран от изпълнението на решението за Намиране на места за обитаване ${inputLayerName}.",itemTags:"Резултат от анализа, Намиране на места за обитаване, ${inputLayerName}",itemSnippet:"Обектен слой, генериран от Намиране на места за обитаване",timeIntervalSplit:"Анализирайте данните с интервали от време (по избор)",timeBoundaryValidationMsg:"Интервалът от време трябва да е по-голям от диапазона на времето за търсене."});

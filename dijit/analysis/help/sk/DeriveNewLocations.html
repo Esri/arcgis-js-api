@@ -44,9 +44,9 @@
         <h2>Odvodiť nové lokality</h2><p/>
         <h2><img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" alt="Odvodiť nov&eacute; lokality"></h2>
         <hr/>
-    <p>Tento n&aacute;stroj odvodzuje nov&eacute; prvky v z&aacute;ujmovej oblasti tak, aby spĺňali sadu zadan&yacute;ch krit&eacute;ri&iacute;. Tieto krit&eacute;ri&aacute; m&ocirc;žu byť založen&eacute; na atrib&uacute;tov&yacute;ch dopytoch (napr&iacute;klad pr&aacute;zdne parcely) a priestorov&yacute;ch dopytoch (napr&iacute;klad parcely, ktor&eacute; s&uacute; v povodňov&yacute;ch oblastiach).
+    <p>Tento n&aacute;stroj umožňuje odvodiť nov&eacute; prvky v z&aacute;ujmovej oblasti spĺňaj&uacute;cich s&eacute;riu &scaron;pecifick&yacute;ch krit&eacute;ri&iacute;. Tieto krit&eacute;ri&aacute; m&ocirc;žu byť založen&eacute; na atrib&uacute;tov&yacute;ch dopytoch (napr&iacute;klad pr&aacute;zdne parcely) a priestorov&yacute;ch dopytoch (napr&iacute;klad parcely, ktor&eacute; s&uacute; v povodňov&yacute;ch oblastiach).
     </p>
-    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, analyzovan&eacute; bud&uacute; len prvky viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, bud&uacute; analyzovan&eacute; v&scaron;etky prvky, aj tie, ktor&eacute; sa nach&aacute;dzaj&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, analyzovan&eacute; bud&uacute; len prvky viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, v&scaron;etky prvky bud&uacute; analyzovan&eacute;, aj prvky mimo aktu&aacute;lneho rozsahu mapy.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -54,24 +54,26 @@
         <div><h2>Odvodiť nové umiestnenia, ktoré sa zhodujú s nasledujúcim výrazom(i)</h2></div>
         <hr/>
         <div>
-            <p>Kliknite na tlačidlo  <b>Pridať V&yacute;raz</b> na definovanie v&yacute;razu. M&ocirc;žete pridať viacero v&yacute;razov. Po zadan&iacute; v&yacute;razov a kliknut&iacute;m na tlačidlo <b>Spustiť Anal&yacute;zu</b>, bud&uacute; prvky vo va&scaron;ej analytickej vrstve filtrovan&eacute; každ&yacute;m z v&yacute;razov. Množina prvkov spĺňaj&uacute;cich v&scaron;etky v&yacute;razy je zap&iacute;san&aacute; do v&yacute;slednej vrstvy.
+            <p>Kliknite na tlačidlo  <b>Pridať V&yacute;raz</b> na definovanie v&yacute;razu. M&ocirc;žete pridať viacero v&yacute;razov. Po zadan&iacute; v&yacute;razov a kliknut&iacute; na tlačidlo <b>Spustiť anal&yacute;zu</b>, bud&uacute; prvky v analytickej vrstve filtrovan&eacute; každ&yacute;m z v&yacute;razov. Množina prvkov spĺňaj&uacute;cich v&scaron;etky v&yacute;razy je zap&iacute;san&aacute; do v&yacute;slednej vrstvy.
             </p>
-            <p>Existuj&uacute; dva z&aacute;kladn&eacute; typy v&yacute;razov, ktor&eacute; m&ocirc;žete vytvoriť; atrib&uacute;tov&eacute; a priestorov&eacute;. Atrib&uacute;tov&eacute; v&yacute;razy s&uacute; dopyty na hodnoty pol&iacute;, napr&iacute;klad  <code>kde je n&aacute;zov 'San Francisco'</code>. Existuj&uacute; &scaron;tyri typy priestorov&yacute;ch v&yacute;razov:
+            <p> Existuj&uacute; dva z&aacute;kladn&eacute; typy v&yacute;razov, ktor&eacute; m&ocirc;žete vytvoriť; atrib&uacute;tov&eacute; a priestorov&eacute;. Atrib&uacute;tov&eacute; v&yacute;razy s&uacute; dopyty na hodnoty v poliach, napr&iacute;klad <pre>where name is 'San Francisco'</pre>.
+            </p>
+            <p>K dispoz&iacute;cii je p&auml;ť možnost&iacute; priestorov&yacute;ch v&yacute;razov:
                 <ul>
-                    <li> <b>v r&aacute;mci vzdialenosti</b>: množina prvkov vo vzdialenosti od prvku z inej vrstvy. Napr&iacute;klad, vyhľadajte parcely vo vzdialenosti do 500 metrov od rieky Los Angeles.
+                    <li> <b>v r&aacute;mci vzdialenosti</b>&mdash;Množina prvkov vo vzdialenosti od prvku z inej vrstvy. Napr&iacute;klad, vyhľadajte parcely vo vzdialenosti do 500 metrov od rieky Los Angeles.
                     </li>
-                    <li> <b>&uacute;plne obsahuje</b>: prvok mus&iacute; obsahovať cel&yacute; prvok z inej vrstvy. Napr&iacute;klad, n&aacute;jdite povodia, ktor&eacute; &uacute;plne obsahuj&uacute; parcely určen&eacute; pre priemyseln&eacute; využitie. Žiadna časť parcely nem&ocirc;že byť mimo povodia.
+                    <li> <b>&uacute;plne obsahuje</b>&mdash;Prvok mus&iacute; obsahovať cel&yacute; prvok z inej vrstvy. Napr&iacute;klad, n&aacute;jdite povodia, ktor&eacute; obsahuj&uacute; pozemkov&eacute; z&oacute;ny pre priemysel. Žiadna časť pozemku sa nem&ocirc;že nach&aacute;dzať mimo povodia.
                     </li>
-                    <li> <b>&uacute;plne vo vn&uacute;tri</b>: prvok mus&iacute; byť &uacute;plne obsiahnut&yacute; v prvku z inej vrstvy. Napr&iacute;klad, n&aacute;jdite &scaron;kolsk&eacute; obvody vo vn&uacute;tri hran&iacute;c mesta. Žiadna časť &scaron;kolsk&eacute;ho obvodu nem&ocirc;že zasahovať mimo hranice mesta.
+                    <li> <b>&uacute;plne vn&uacute;tri</b>&mdash;Prvok mus&iacute; byť &uacute;plne obsiahnut&yacute; v r&aacute;mci prvku z inej vrstvy. Napr&iacute;klad, n&aacute;jdite &scaron;kolsk&eacute; obvody nach&aacute;dzaj&uacute;ce sa v r&aacute;mci hran&iacute;c mesta. Žiadna časť &scaron;kolsk&eacute;ho obvodu nem&ocirc;že byť mimo hran&iacute;c mesta.
                     </li>
-                    <li> <b>pret&iacute;nať</b>: prvok alebo časti prvku sa musia prekr&yacute;vať alebo pret&iacute;nať s prvkom z inej vrstvy. Napr&iacute;klad, n&aacute;jdite sp&aacute;len&eacute; oblasti z viacer&yacute;ch požiarov v r&aacute;mci n&aacute;rodn&eacute;ho parku. Sp&aacute;len&eacute; oblasti mimo hran&iacute;c parku nebud&uacute; zahrnut&eacute;.
+                    <li> <b>pret&iacute;na sa</b>&mdash;Prvok alebo časti prvku sa musia prekr&yacute;vať alebo pret&iacute;nať s prvkom z inej vrstvy. Napr&iacute;klad, n&aacute;jdite oblasti sp&aacute;len&eacute; požiarmi v r&aacute;mci n&aacute;rodn&eacute;ho parku. Sp&aacute;len&eacute; oblasti mimo hran&iacute;c parku nebud&uacute; zahrnut&eacute;.
                     </li>
-                    <li> <b>najbliž&scaron;ie k</b>: prvok mus&iacute; byť najbliž&scaron;ie k prvku z inej vrstvy. Napr&iacute;klad, n&aacute;jdite zelen&yacute; priestor, ktor&yacute; je najbliž&scaron;&iacute; ku každej &scaron;kole.
+                    <li> <b>najbliž&scaron;ie k</b>&mdash;Prvok mus&iacute; byť najbliž&scaron;ie k prvku z inej vrstvy. Napr&iacute;klad, n&aacute;jdite zelen&yacute; priestor, ktor&yacute; je najbliž&scaron;&iacute; ku každej &scaron;kole.
                     </li>
                 </ul>
                 
             </p>
-            <p>Každ&yacute; priestorov&yacute; v&yacute;raz m&aacute; prisl&uacute;chaj&uacute;cu neg&aacute;ciu, s v&yacute;nimkou  <b>najbliž&scaron;ie k</b>; <b>nie je v r&aacute;mci vzdialenosti od</b>, <b>neobsahuje &uacute;plne</b>, <b>nie &uacute;plne vo vn&uacute;tri</b> a <b>nepret&iacute;na</b>.
+            <p>&Scaron;tyri z piatich priestorov&yacute;ch v&yacute;razov maj&uacute; zodpovedaj&uacute;cu neg&aacute;ciu:  <b>nie je vo vzdialenosti od</b>, <b>neobsahuje &uacute;plne</b>, <b>nie je &uacute;plne vn&uacute;tri</b> a <b>nepret&iacute;na sa</b>; <b>najbliž&scaron;ie k nem&aacute; neg&aacute;ciu</b>.
             </p> 
         </div>
     </div>
@@ -79,7 +81,7 @@
         <div><h2>Názov výslednej vrstvy</h2></div>
         <hr/>
         <div>
-            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; zadať in&eacute; meno.
             </p>
             <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude uložen&yacute; v&yacute;sledok.
             </p>

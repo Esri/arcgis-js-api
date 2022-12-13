@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Zóna raszter vagy vektoros elemek kiválasztása",outputTableName:"Eredmény táblázat neve",zoneField:"Zóna mező",inputValueRaster:"Értékraszter kiválasztása",ignoreNodata:"NoData értékek figyelmen kívül hagyása a számításoknál (opcionális)",ignore:"Kihagyás",statisticType:"Statisztika típusa (opcionális)",percentileValues:"Percentilis értékek (opcionális)",percentileInterpolationType:"Percentilis interpolációtípus (opcionális)",processAsMultidimensional:"Feldolgozás többdimenziósként (opcionális)",allSlices:"Minden szelet",outputZonalStatsName:"Zónastatisztikák ehhez: ${valuelayername}, ebben: ${layername}",itemDescription:"Zónastatisztika táblázat függvényből létrehozott Analízis vektoros elem táblázat",itemTags:"Raszteres elemzés végeredménye, Zónastatisztika táblázat, ${layername}, ${valuelayername}",autoDetect:"Automatikus észlelés",nearest:"Legközelebbi",linear:"Lineáris"});

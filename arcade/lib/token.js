@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define(["require","exports"],(function(e,r){"use strict";var a;Object.defineProperty(r,"__esModule",{value:!0}),r.TokenName=r.TokenType=void 0,function(e){e[e.BooleanLiteral=1]="BooleanLiteral",e[e.EOF=2]="EOF",e[e.Identifier=3]="Identifier",e[e.Keyword=4]="Keyword",e[e.NullLiteral=5]="NullLiteral",e[e.NumericLiteral=6]="NumericLiteral",e[e.Punctuator=7]="Punctuator",e[e.StringLiteral=8]="StringLiteral",e[e.RegularExpression=9]="RegularExpression",e[e.Template=10]="Template"}(a=r.TokenType||(r.TokenType={})),r.TokenName={},r.TokenName[a.BooleanLiteral]="Boolean",r.TokenName[a.EOF]="<end>",r.TokenName[a.Identifier]="Identifier",r.TokenName[a.Keyword]="Keyword",r.TokenName[a.NullLiteral]="Null",r.TokenName[a.NumericLiteral]="Numeric",r.TokenName[a.Punctuator]="Punctuator",r.TokenName[a.StringLiteral]="String",r.TokenName[a.RegularExpression]="RegularExpression",r.TokenName[a.Template]="Template"}));

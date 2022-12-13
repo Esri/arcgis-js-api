@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define(["require","exports","./extensions/aliasedProperty","./extensions/computedProperty","./extensions/serializableProperty"],(function(e,t,r,a,o){Object.defineProperty(t,"__esModule",{value:!0});var s=[r.default,a.default,o.default];t.processPrototypeMetadatas=function(e,t){for(var r=Object.getOwnPropertyNames(e),a=0,o=s;a<o.length;a++){var n=o[a];if(n.processPrototypePropertyMetadata)for(var p=0,c=r;p<c.length;p++){var i=c[p],d=e[i];n.processPrototypePropertyMetadata(i,d,e,t)}}},t.processClassMetadatas=function(e,t){for(var r=Object.getOwnPropertyNames(e),a=0,o=s;a<o.length;a++){var n=o[a];if(n.processClassPropertyMetadata)for(var p=0,c=r;p<c.length;p++){var i=c[p],d=e[i];n.processClassPropertyMetadata(i,d,e,t)}}},t.instanceCreated=function(e,t){for(var r=Object.getOwnPropertyNames(t),a=0,o=s;a<o.length;a++){var n=o[a];n.instanceCreated&&n.instanceCreated(e,t,r)}}}));

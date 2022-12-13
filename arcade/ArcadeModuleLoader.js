@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","./messageHandler","./errorMessages","./ExtensionBase"],(function(e,n,i,s){return e([s],{config:null,_setConfig:function(e){this.config=e||{}},__messageReceived:function(e){if("updateconfig"===e.functionName.toLowerCase())return e.args={configuration:this.config},n._sendMessage(e);this.inherited(arguments)},readyToPersistConfig:function(e){if(!this._isHostInitialized())throw new Error(i.hostNotReady);n._sendMessage({functionName:"readyToPersistConfig",args:{canAccept:e}})}})}));
+define(["require","exports"],(function(e,r){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.ArcadeModuleLoader=void 0;var t=function(){function e(e,r){this._moduleSingletons=e,this._syntaxModules=r}return e.prototype.loadLibrary=function(e){if(null==this._syntaxModules)return null;var r=this._syntaxModules[e.toLowerCase()];return r?{syntax:r.script,uri:r.uri}:null},e}();r.ArcadeModuleLoader=t}));

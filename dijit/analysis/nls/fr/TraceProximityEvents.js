@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayer:"Choisir la couche dans laquelle rechercher les événements de proximité",entityField:"Sélectionner un champ pour identifier les événements",entityLayer:"Choisir la couche pour spécifier les entités d’intérêt",defineDistanceLabel:"Définir la distance de recherche spatiale",distMethodLabel:"Sélectionner la méthode de calcul de la distance",temporalSearchLabel:"Définir la distance de recherche temporelle",optionsLabel:"Options avancées",maxTraceDepth:"Profondeur de tracé maximale",attributeMatchLabel:"Sélectionner un ou plusieurs attributs d’entité à apparier",includeTracksLayer:"Inclure la couche des traces",itemDescription:"Couche d’entités générée en exécutant la solution Tracer les événements de proximité pour ${inputLayername}.",itemTags:"Résultat d’analyse, Tracer les événements de proximité, ${inputLayername}",itemSnippet:"Couche d’entités générée avec Tracer les événements de proximité",outputLayerName:"Tracer les événements de proximité pour ${inputLayername}",noEntityFieldMsg:"La couche des événements de proximité et la couche des entités d’intérêt n’ont aucun champ en commun."});

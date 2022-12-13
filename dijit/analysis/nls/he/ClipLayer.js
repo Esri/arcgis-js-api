@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"בחר ישויות לחיתוך",filterSelectLabel:"חתוך את כל הישויות או הגדר סט משנה (אופציונלי)",targetArea:"בחר אזור שאליו יתבצע החיתוך",outputLayerName:"חתוך את ‎${inputLayerName}‎ אל ‎${clipLayerName}‎",itemDescription:"שכבת ישויות נוצרה מהפעלת פתרונות החיתוך. הישויות מתוך ‎${inputLayerName}‎ נחתכו אל ‎${clipLayerName}‎.",itemTags:"תוצאת ניתוח, ClipLayer‏, ‎${inputLayerName}‎‏, ‎${clipLayerName}‎‏, ‎${outputLayerGeometry}‎",itemSnippet:"שכבת ישויות נוצרה משכבת החיתוך"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define(["../../declare","./StudyAreaOptions","./GeographyLevel"],(function(e,r,n){return e("esri.tasks.geoenrichment.IntersectingGeographies",[r],{geographyLevels:null,constructor:function(e){var r;r=e?e.intersectingGeographies||e.levels||e.geographyLevels:[{layerID:"Admin2"}],this.geographyLevels=n.fromJsonArray(r)},toJson:function(){return{areaType:"StandardGeography",intersectingGeographies:n.toJsonArray(this.geographyLevels)}}})}));

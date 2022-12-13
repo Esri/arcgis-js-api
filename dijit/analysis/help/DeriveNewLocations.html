@@ -44,8 +44,8 @@
         <h2>Derive New Locations</h2><p/>
         <h2><img src="./images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" alt="Derive New Locations"></h2>
         <hr/>
-    <p>This tool derives new features in your
-study area that meet a series of criteria you specify. These criteria can be based on attribute queries (for example, parcels that are vacant) and spatial queries (for example,   parcels that are within flood zones).
+    <p>This tool derives new features in a
+study area that meet a series of specific criteria. These criteria can be based on attribute queries (for example, parcels that are vacant) and spatial queries (for example,   parcels that are within flood zones).
 
 
     </p>
@@ -57,24 +57,26 @@ study area that meet a series of criteria you specify. These criteria can be bas
         <div><h2>Derive new locations that match the following expression(s)</h2></div>
         <hr/>
         <div>
-            <p>Click the  <b>Add Expression</b> button to define an expression.  You can add multiple expressions.  After entering the expressions and clicking the <b>Run Analysis</b> button, features in your analysis layer are filtered through each expression.  The portions of features that satisfy all expressions are written to the result layer.
+            <p>Click the  <b>Add Expression</b> button to define an expression.  You can add multiple expressions.  After entering the expressions and clicking the <b>Run Analysis</b> button, features in the analysis layer are filtered through each expression.  The portions of features that satisfy all expressions are written to the result layer.
             </p>
-            <p>There are two basic types of expressions you can create; attribute and spatial.  Attribute expressions are queries on field values, such as  <code>where name is 'San Francisco'</code>.  There are four  types of spatial expressions:
+            <p> There are two basic types of expressions you can create: attribute and spatial.  Attribute expressions are queries on field values, such as <pre>where name is 'San Francisco'</pre>.
+            </p>
+            <p>There are five  spatial expression options:
                 <ul>
-                    <li> <b>within a distance of</b>: portions of a feature within a distance of a feature in another layer.  For example, find the portions of  parcels that are within 500 meters of the Los Angeles river.
+                    <li> <b>within a distance of</b>&mdash;Portions of a feature within a distance of a feature in another layer.  For example, find the portions of  parcels that are within 500 meters of the Los Angeles river.
                     </li>
-                    <li> <b>completely contains</b>: the feature must contain all of a feature in another layer.  For example, find watersheds that completely contain parcels zoned for industrial use.  No part of the parcel can be outside of the watershed.
+                    <li> <b>completely contains</b>&mdash;The feature must contain all of a feature in another layer.  For example, find watersheds that completely contain parcels zoned for industrial use.  No part of the parcel can be outside the watershed.
                     </li>
-                    <li> <b>completely within</b>: the feature must be entirely surrounded by a feature in another layer.  For example, find school districts that are completely within the boundary of a city.  No part of the school district can be outside of the city boundary.
+                    <li> <b>completely within</b>&mdash;The feature must be entirely surrounded by a feature in another layer.  For example, find school districts that are completely within the boundary of a city.  No part of the school district can be outside the city boundary.
                     </li>
-                    <li> <b>intersect</b>: the feature or portions of the feature must overlap or intersect a feature in another layer.  For example, find areas of burned vegetation from multiple fires within a national park.   Burned areas outside the park boundary will not be included.
+                    <li> <b>intersect</b>&mdash;The feature or portions of the feature must overlap or intersect a feature in another layer.  For example, find areas of burned vegetation from multiple fires within a national park.   Burned areas outside the park boundary will not be included.
                     </li>
-                    <li> <b>nearest to</b>: the feature must be nearest to a feature in another layer.  For example, find the green space that is closest to each school.
+                    <li> <b>nearest to</b>&mdash;The feature must be nearest to a feature in another layer.  For example, find the green space that is closest to each school.
                     </li>
                 </ul>
                 
             </p>
-            <p>Each spatial expression has a corresponding negation, with the exception of  <b>nearest to</b>; <b>not within a distance of</b>, <b>does not completely contain</b>, <b>not completely within</b>, and <b>does not intersect</b>.
+            <p>Four of the five spatial expressions have a corresponding negation:  <b>not within a distance of</b>, <b>does not completely contain</b>, <b>not completely within</b>, and <b>does not intersect</b>; <b>nearest to</b> does not have a negation.
             </p> 
         </div>
     </div>

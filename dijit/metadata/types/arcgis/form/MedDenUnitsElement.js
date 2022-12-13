@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/query","dijit/registry","dojo/has","../../../../../kernel","../../../form/OpenElement","dojo/i18n!../../../nls/i18nBase"],(function(e,t,a,n,i,r,o,s,l){var d=e([s],{postCreate:function(){this.inherited(arguments)},beforeValidateValue:function(e,a,n){if((null===n||0===t.trim(n).length)&&this._hasDensityValue()){var i=l.validation.pattern,r=l.validation.empty;a.isValid=!1,a.message=i.replace("{label}",a.label).replace("{message}",r)}},_hasDensityValue:function(){var e=this.parentElement.gxePath+"/medDensity",r=this.domNode.parentNode,o=n("[data-gxe-path='"+e+"']",r);return a.some(o,(function(e){var a,n=i.byNode(e);if(n&&n.inputWidget)return!(null===(a=n.inputWidget.getInputValue())||0===t.trim(a).length)}))}});return r("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.form.MedDenUnitsElement",d,o),d}));

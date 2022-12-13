@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayer:"اختر الطبقة المراد حساب الإحصائيات لها",trackField:"اختر حقلاً واحدًا أو أكثر لتعريف المسارات",trackHistoryWindow:"اختر عدد النقاط المراد استخدامها في الحسابات",distanceMethodLabel:"اختر طريقة المسافة المستخدمة في الحسابات",idleToleranceLabel:"تحديد معايير السكون (اختياري)",chooseMotionStatsLabel:"اختر واحدة أو أكثر من إحصائيات الحركة",distance:"المسافة",speed:"السرعة",acceleration:"التسارع",duration:"الفترة الزمنية",elevation:"مسقط رأسي:",slope:"الانحدار",idle:"الخمول",bearing:"زاوية بعد",selectAll:"تحديد الكل",deselectAll:"إلغاء تحديد الكل",trackSplitting:"تقسيم المسارات",optionsLabel:"خيارات",metersPerSecond:"متر لكل ثانية",kilometersPerHour:"كيلومترات كل ساعة",feetPerSecond:"قدم لكل ثانية",milesPerHour:"الأميال كل ساعة",nauticalMilesPerHour:"ميل بحري لكل ساعة",metersPerSecondSquared:"Meters per second squared",feetPerSecondSquared:"قدم لكل ثانية مربعة",itemDescription:"طبقة المعالم الصادرة عن تشغيل حل حساب إحصائيات الحركة لـ ${inputLayername}.",itemTags:"نتيجة التحليل، حساب إحصائيات الحركة، ${inputLayername}",itemSnippet:"طبقة المعالم الصادرة عن حساب إحصائيات الحركة ",outputLayerName:"حساب إحصائيات الحركة لـ ${inputLayername}",splitTracksLabel:"تقسيم المسارات (اختياري)",timeSplit:"على أساس وقت بين الإدخالات",timeIntervalSplit:"في أوقات زمنية محددة"});

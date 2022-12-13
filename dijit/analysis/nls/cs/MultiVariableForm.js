@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({distToNearest:"Vzdálenost k nejbližšímu",attrOfInterest:"Atribut nejbližšího",summaryNearby:"Shrnutí nejbližšího",summaryIntersecting:"Shrnutí průniku",distToNearestLabel:"Vzdálenost od středu buňky k nejbližšímu prvku ve vstupní vrstvě",attrOfInterestLabel:"Hodnota určeného pole od nejbližšího prvku ze vstupní vrstvy",summaryNearbyLabel:"Statistika vypočtená ze všech prvků nalezených ve stanovené vzdálenosti od středu buňky",summaryIntersectingLabel:"Statistika vypočtená ze všech prvků, které protínají buňku",maxDistancefromCtr:"Maximální vzdálenost od středu buňky",fieldToIncude:"Pole, které má být zahrnuto",statstoCalculate:"Statistika, která se má vypočítat",summFeatuesWithin:"Souhrn prvků v rozmezí",smallMaxDistErrorMsg:"Maximální vzdálenost od středu buňky musí být větší než velikost buňky.",smallSumFeaturesErrorMsg:"Maximální vzdálenost od středu buňky musí být větší než velikost buňky."});

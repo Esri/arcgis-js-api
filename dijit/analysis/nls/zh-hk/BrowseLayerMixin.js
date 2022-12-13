@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"選擇生動地圖集圖層",customAnalysisLayerTitle:"選擇分析圖層",searchPlaceholderText:"搜尋 Living Atlas 分析圖層",searchCustomPlaceholderText:"搜尋分析圖層",mainActionTitle:"選擇",customActionName:"選擇和新增至地圖",customeSectionName:"Living Atlas 分析圖層",Categories:"類別",boundaries:"邊界",places:"地點",boundariesAndPlaces:"邊界和地點",hexbins:"Hexbins",transportation:"交通",point:"點圖層",line:"折線圖層",polygon:"多邊形圖層",pointFilterName:"點",lineFilterName:"折線",polygonFilterName:"面",multiPointFilterName:"多點",geometryFilterName:"幾何",featureLayerName:"圖徵圖層",tableLayerName:"表",itemTypeFilterName:"項目類型",instantFilterName:"即時",intervalFilterName:"間隔",timeFilterName:"時間",edit:"編輯",boundaryLayers:"Esri 邊界圖層",customAnalysisGroupName:"組織分析群組"});

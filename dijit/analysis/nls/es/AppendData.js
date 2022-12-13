@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Elegir capa a la que incorporar",inputWarningLabel:"Advertencia: La capa a la que realice la incorporación se modificará.",inputHostedLayerWarning:"La capa seleccionada no es una capa de entidades alojada. Seleccione la capa de entidades alojada a la que desea incorporar.",appendLayerLabel:"Elegir capa a incorporar",filterLabel:"Incorporar todas las entidades o definir un subconjunto (opcional)",fieldMappingLabel:"Elegir cómo incorporar los campos (opcional)",inputField:"Campo de entrada",appendValue:"Incorporar valor",expression:"Expresión"});

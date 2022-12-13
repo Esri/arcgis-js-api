@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({toolDefine:"딥러닝을 사용하여 객체 정의(Define Objects Using Deep Learning)",outputLayerName:"${layername}_감지됨",modelLabel:"객체 감지에 사용되는 딥러닝 모델 선택",modelArgsLabel:"딥러닝 모델 인수 지정",nameLabel:"이름",valueLabel:"값",removeDuplicatesLable:"결과에서 중복 피처 제거(선택)",queryModelArgsMsg:"모델 인수 쿼리 중...",queryModelArgsErrMsg:"모델 인수를 쿼리하지 못했습니다.",nonMaxSuppressionLabel:"비최대값 억제",options:"옵션",confidenceLabel:"신뢰도 점수 필드",classValueLabel:"클래스 값 필드",maxOverlapLabel:"최대 중첩 비율",numberOnlyMsg:"숫자 값만 허용됩니다.",processingModeLabel:"프로세싱 모드",processAsMosaicLabel:"모자이크 처리된 이미지로 처리",processAsItemsLabel:"모든 래스터 항목을 개별적으로 처리",analysisLayerLabel:"객체 감지에 사용되는 이미지 선택",itemDescription:"딥러닝을 사용하여 객체 감지에서 생성된 분석 이미지 서비스",itemTags:"래스터 분석 결과, 딥러닝을 사용하여 객체 감지, ${layername}",itemSnippet:"딥러닝을 사용하여 객체 감지에서 생성된 분석 이미지 서비스"});

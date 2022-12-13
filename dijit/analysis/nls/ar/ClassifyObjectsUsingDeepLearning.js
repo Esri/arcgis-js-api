@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({toolDefine:"تصنيف الكائنات باستخدام التعلم الشامل",inputFeaturesLabel:"اختر طبقة معالم للكائنات (اختياري)",outputLayerName:"${layername}_classifiedObjects",modelLabel:"اختر نموذج التعلم العميق المستخدم لتصنيف الكائنات",modelArgsLabel:"تحديد وسيطات نموذج التعلم الشامل",classLabelFieldLabel:"حدد اسم محدد تسمية التصنيف (اختياري)",processingModeLabel:"وضع المعالجة",processAsMosaicLabel:"المعالجة كصورة فسيفساء",processAsItemsLabel:"معالجة جميع عناصر البيانات النقطية بشكل منفصل",queryModelArgsMsg:"جار الاستعلام عن وسيطات النموذج...",queryModelArgsErrMsg:"فشل الاستعلام عن وسائط النموذج.",valueLabel:"القيمة",nameLabel:"الاسم",analysisLayerLabel:"اختر الصورة المستخدمة لتصنيف الكائنات",itemDescription:"تحليل خدمة الصورة المنشأة من تصنيف الكائنات باستخدام التعلم الشامل",itemTags:"نتيجة تحليل البيانات النقطية، تصنيف الكائنات باستخدام التعلم الشامل، ${layername}",itemSnippet:"تحليل خدمة الصورة المنشأة من تصنيف الكائنات باستخدام التعلم الشامل"});

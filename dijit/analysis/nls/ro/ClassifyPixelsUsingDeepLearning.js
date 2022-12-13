@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({toolDefine:"Clasificare pixeli utilizând învățarea profundă (Deep Learning)",outputLayerName:"${layername}_classified",modelLabel:"Alegeți modelul de învățare profundă folosit pentru a clasifica pixeli",modelArgsLabel:"Specificați argumentele modelului de învățare profundă",nameLabel:"Nume",valueLabel:"Valoare",queryModelArgsMsg:"Se analizează argumentele modelului...",queryModelArgsErrMsg:"A eșuat interogarea argumentelor modelului.",processingModeLabel:"Mod de procesare",processAsMosaicLabel:"Procesați ca imagine mozaicată",processAsItemsLabel:"Procesați toate elementele raster separat",analysisLayerLabel:"Alegeți imaginea utilizată pentru a clasifica pixeli",itemDescription:"Serviciu de analiză a imaginilor generat de Clasificare pixeli utilizând învățarea profundă",itemTags:"Rezultat analiză raster, Clasificare pixeli utilizând învățarea profundă, ${layername}",itemSnippet:"Serviciu de analiză a imaginilor generat de Clasificare pixeli utilizând învățarea profundă"});

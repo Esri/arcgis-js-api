@@ -1,0 +1,25 @@
+// COPYRIGHT © 2022 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+
+define(["require","exports","../lib/arcade-parser"],(function(e,n,i){"use strict";var r,t;Object.defineProperty(n,"__esModule",{value:!0}),n.DiagnosticMessages=n.DiagnosticCodes=void 0,function(e){e.AlreadyDefined="AlreadyDefined",e.ApiConflict="ApiConflict",e.AssignedNeverUsed="AssignedNeverUsed",e.DefinedNeverAssigned="DefinedNeverAssigned",e.DefinedNeverUsed="DefinedNeverUsed",e.EmptyBlockStatement="EmptyBlockStatement",e.ExecutionError="ExecutionError",e.ProfileVariablesConflict="ProfileVariablesConflict",e.ProfileVariablesAreImmutable="ProfileVariablesAreImmutable",e.InvalidCallIdentifier="InvalidCallIdentifier",e.InvalidConstantIdentifier="InvalidConstantIdentifier",e.InvalidPropertyIdentifier="InvalidPropertyIdentifier",e.UnknownPropertyIdentifier="UnknownPropertyIdentifier",e.NoArgumentExpected="NoArgumentExpected",e.NotDefined="NotDefined",e.NotADictionary="NotADictionary",e.NotEnoughArguments="NotEnoughArguments",e.TooManyArguments="TooManyArguments",e.UnexpectedEmptyFunction="UnexpectedEmptyFunction",e.UnexpectedPropertyIdentifier="UnexpectedPropertyIdentifier"}(t=n.DiagnosticCodes||(n.DiagnosticCodes={})),n.DiagnosticMessages=((r={})[t.ExecutionError]="Execution Error: '${stack}'",r[t.NoArgumentExpected]="Expecting no argument",r[t.NotEnoughArguments]="Expecting at least ${min} argument(s)",r[t.TooManyArguments]="Too many arguments, expecting ${max}",r[t.UnexpectedEmptyFunction]="Unexpected empty function '${identifier}'",r[t.NotDefined]="'${identifier}' is not defined",r[t.AlreadyDefined]="'${identifier}' is already defined",r[t.ApiConflict]="'${identifier}' is already defined as an Arcade constant or function",r[t.ProfileVariablesConflict]="'${identifier}' is already defined as a profile variable",r[t.ProfileVariablesAreImmutable]="Profile variables cannot be modified",r[t.EmptyBlockStatement]="Empty block statement",r[t.AssignedNeverUsed]="'${identifier}' is assigned but never used",r[t.DefinedNeverUsed]="'${identifier}' is defined but never used",r[t.DefinedNeverAssigned]="'${identifier}' is defined but never assigned",r[t.InvalidConstantIdentifier]="Invalid constant identifier, expecting ${list}",r[t.InvalidPropertyIdentifier]="Invalid property identifier, expecting ${list}",r[t.UnknownPropertyIdentifier]="Unknown property identifier '${identifier}'",r[t.NotADictionary]="'${identifier}' doesn't have properties",r[t.UnexpectedPropertyIdentifier]="Unexpected property identifier",r[i.ParsingErrorCodes.ForInOfLoopInitializer]="Variable in for-in loop cannot be initialized",r[i.ParsingErrorCodes.IdentiferExpected]="Identifier expected",r[i.ParsingErrorCodes.InvalidEscapedReservedWord]="Keyword cannot contain escaped characters",r[i.ParsingErrorCodes.InvalidExpression]="Invalid expression",r[i.ParsingErrorCodes.InvalidFunctionIdentifier]="Invalid function identifier",r[i.ParsingErrorCodes.InvalidHexEscapeSequence]="Invalid hexadecimal escape sequence",r[i.ParsingErrorCodes.InvalidLeftHandSideInAssignment]="Invalid left-hand side in assignment",r[i.ParsingErrorCodes.InvalidLeftHandSideInForIn]="Invalid left-hand side in for-in",r[i.ParsingErrorCodes.InvalidTemplateHead]="Invalid template structure",r[i.ParsingErrorCodes.InvalidVariableAssignment]="Invalid variable assignment",r[i.ParsingErrorCodes.KeyMustBeString]="Object keys must be a string",r[i.ParsingErrorCodes.NoFunctionInsideFunction]="Functions cannot be declared inside another function",r[i.ParsingErrorCodes.PunctuatorExpected]="'${value}' expected",r[i.ParsingErrorCodes.TemplateOctalLiteral]="Octal literals are not allowed in template strings.",r[i.ParsingErrorCodes.UnexpectedEndOfScript]="Unexpected end of script",r[i.ParsingErrorCodes.UnexpectedIdentifier]="Unexpected identifier",r[i.ParsingErrorCodes.UnexpectedNumber]="Unexpected number",r[i.ParsingErrorCodes.UnexpectedString]="Unexpected string",r[i.ParsingErrorCodes.UnexpectedTemplate]="Unexpected quasi '${value}'",r[i.ParsingErrorCodes.UnexpectedToken]="Unexpected token",r)}));

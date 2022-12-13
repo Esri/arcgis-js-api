@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Välj destinationsraster eller geoobjekt",destinationField:"Destinationsfält (valfritt)",inputDistanceAccumulationRaster:"Välj avståndsackumuleringsraster",inputBackDirectionRaster:"Välj tillbakafördelnings- eller flödesriktningsraster",pathType:"Vägtyp (valfri)",bestSingle:"Bästa enskilda",eachCell:"Varje cell",eachZone:"Varje zon",outputFeatureName:"Resultatgeoobjektlagrets namn",outputLayerName:"Optimal väg som linje av ${layername}",drawSourcePointLayerName:"Källpunkter",itemDescription:"Geoobjektlager som genererats genom körning av optimal väg som linje på ${layername} ",itemTags:"Analysresultat, optimal väg som linje, ${layername} ${fieldname}",itemSnippet:"Geoobjektlager som genererats genom optimal väg som linje."});

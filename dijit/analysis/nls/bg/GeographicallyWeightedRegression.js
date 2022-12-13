@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({chooseLayer:"Изберете слой за анализ",chooseField:"Изберете полето за моделиране",chooseExplanatoryField:"Изберете полета за обяснение",chooseNeighborhood:"Изберете как ще се определи кварталът",distanceBand:"Лента за разстояние",numNeighbors:"Брой съседи",chooseWeighted:"Изберете как да се претеглят съседните обекти",bisquare:"Bisquare",gaussian:"Гаус",resultLayerName:"Име на резултатен слой",outputLayerName:"GWR ${inputLayerName}",distanceBandWarning:"Стойността на лентата за разстояние трябва да бъде между ${min} и ${max}",numNeighborsWarning:"Броят съседи трябва да бъде между ${min} и ${max}",explanatoryFieldsWarning:"Изберете поне едно поле за обяснение",explanatoryLayerWarning:"Избраният слой не съдържа валидни обяснителни полета, моля, изберете друг слой",inputLayerWarning:"Избраният слой не съдържа числови полета за моделиране, моля, изберете друг слой",itemDescription:"Обектен слой, генериран от старатиране на решенията за Географски претеглена регресия.",itemTags:"Резултат от анализ, Географски претеглена регресия, ${inputLayerName}, подходящ",itemSnippet:"Обектен слой, генериран от инструмента за географски претеглена регресия"});

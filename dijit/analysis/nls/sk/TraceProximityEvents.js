@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayer:"Vyberte vrstvu, v ktorej chcete vyhľadať blízke udalosti",entityField:"Vyberte pole na identifikáciu udalostí",entityLayer:"Vyberte vrstvu a zadajte entity záujmu.",defineDistanceLabel:"Definujte geografickú vzdialenosť vyhľadávania",distMethodLabel:"Vyberte metódu pre vypočítanie vzdialenosti",temporalSearchLabel:"Definujte rozsah časového vyhľadávania.",optionsLabel:"Pokročilé nastavenia",maxTraceDepth:"Maximálna hĺbka stopy",attributeMatchLabel:"Vyberte jeden alebo viac atribútov entít pre spárovanie",includeTracksLayer:"Zahrnúť vrstvu stôp",itemDescription:"Vrstva prvkov vygenerovaná spustením Sledovanie blízkych udalostí pre ${inputLayername}.",itemTags:"Výsledok analýzy, Sledovanie blízkych udalostí, ${inputLayername}",itemSnippet:"Prvkové vrstvy generované nástrojom Sledovanie blízkych udalostí.",outputLayerName:"Sledovanie blízkych udalostí pre ${inputLayername}",noEntityFieldMsg:"Vrstva blízkych udalostí a vrstva záujmových entít nemajú spoločné žiadne polia."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayer:"Вибрати шар для пошуку подій наближеності з",entityField:"Вибрати поле для ідентифікації подій",entityLayer:"Вибрати шар для вказання сутностей інтересу",defineDistanceLabel:"Визначити відстань для просторового пошуку",distMethodLabel:"Вибрати метод обчислення відстані",temporalSearchLabel:"Визначити відстань для часового пошуку",optionsLabel:"Розширені опції",maxTraceDepth:"Максимальна глибина відстеження",attributeMatchLabel:"Вибрати один або більше атрибутів сутностей для зіставлення",includeTracksLayer:"Включити шар треків",itemDescription:"Векторний шар, згенерований в результаті виконання рішення «Відстеження наближеності подій» для ${inputLayername}.",itemTags:"Результат аналізу, Відстеження наближеності подій, ${inputLayername}",itemSnippet:"Векторний шар, згенерований з «Відстеження наближеності подій».",outputLayerName:"Відстеження наближеності подій для ${inputLayername}",noEntityFieldMsg:"Шар наближеності подій і шар сутностей інтересу не мають загальних полів."});

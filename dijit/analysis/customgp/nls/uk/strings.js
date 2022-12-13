@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({_widgetLabel:"Геообробка",_featureAction_ReceiveFeatureSet:"Задати як введення ",requiredInfo:"потрібно.",drawnOnMap:"Результат відображається на карті.",noToolConfig:"Попередньо налаштована задача геообробки недоступна.",useUrlForGPInput:"URL",useUploadForGPInput:"Передати файл",useImageServiceLayer:"Шар сервісу зображень",useBrowseLayerPortal:"Огляд / вибір з порталу",selectFileToUpload:"Вибрати файл...",rasterFormat:"Формат растрових даних",noFileSelected:"Файл не вибрано!",uploadSuccess:"Файл успішно передано!",showLayerContent:"Показати зміст шару",invalidUrl:"Недійсний URL сервісу обʼєктів",urlPlaceholder:"URL набору обʼєктів",addShapefile:"Додати шейп-файл",generateShapefileError:"Помилка генерування шейп-файлу, перевірте: ",cleared:"Результат було видалено.",enlargeView:"Збільшити вид",exportOutput:"Експорт",emptyResult:"Результат порожній.",useSelectedFeatureset:"Використовувати підсумковий обʼєкт(-и).",closeSelectedFeatureset:"Очистити та використовувати налаштовану опцію введення."});

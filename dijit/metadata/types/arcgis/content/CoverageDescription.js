@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../base/Descriptor","dojo/text!./templates/CoverageDescription.html","./ContentTypCd","./Band","./RangeDimension"],(function(e,t,n,a,o,i){var r=e(o,{templateString:i});return n("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.content.CoverageDescription",r,a),r}));

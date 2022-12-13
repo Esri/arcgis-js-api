@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"اختيار مجموعة بيانات لوصفها",describeDataLabel:"استيعاب البيانات بإنشاء (اختياري)",sampleLayer:"طبقة عينة",extentLayer:"طبقة مدى",noOfFeaturesLabel:"عدد المعالم لتضمينها",outputLayerName:"اسم طبقة النتيجة",resultName:"وصف بيانات ${layerName}",itemDescription:"طبقة المعالم المُنشأة من تشغيل وصف مجموعة البيانات في ${layerName}. ",itemTags:"نتيجة التحليل، وصف مجموعة البيانات، ${layerName}",itemSnippet:"طبقة المعالم المُنشأة من وصف مجموعة البيانات."});

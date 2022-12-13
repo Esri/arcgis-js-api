@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({addBarriers:"Valitse esteiden karttatasot",pointBarrier:"Piste-esteet",lineBarrier:"Viivaesteet",polygonBarrier:"Alue-esteet",choosePointBarrier:"Valitse piste-estekarttataso",chooseLineBarrier:"Valitse viivaestekarttataso",choosePolygonBarrier:"Valitse alue-estekarttataso",selectPointBarrier:"Valitse piste-esteet",selectLineBarrier:"Valitse viivaesteet",selectPolygonBarrier:"Valitse alue-esteet"});

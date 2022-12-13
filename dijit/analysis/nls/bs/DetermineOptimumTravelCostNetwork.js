@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.41/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Izaberite raster ili sloj lokacija geoobjekata da biste utvrdili putanje između",inputCostRasterLabel:"Izaberite rasterski sloj troškova putovanja",outputOptimumNetworkName:"Naziv sloja rezultata polilinije optimalnih putanja",outputNeighborNetworkName:"Naziv sloja rezultata polilinije susjednih putanja (neobavezno)",outputLayerName:"Utvrdite optimalne troškove putovanja na sloju ${layername}",itemDescription:"Sloj geoobjekata koji je generiran pokretanjem opcije Utvrdi mrežu optimalnih troškova putovanja na sloju ${layerName}. ",itemTags:"Rezultat analize, Utvrdi mrežu optimalnih troškova putovanja, ${layername} ${fieldname}",itemSnippet:"Sloj geoobjekata koji je generiran pomoću opcije Utvrdi mrežu optimalnih troškova putovanja."});
