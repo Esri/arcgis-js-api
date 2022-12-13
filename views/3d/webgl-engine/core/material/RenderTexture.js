@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{releaseMaybe as e,isSome as t}from"../../../../../core/maybe.js";import{isPromiseLike as s}from"../../../../../core/promiseUtils.js";class r{constructor(t,r){this._textureRep=t,this._disposed=!1;const i=this._textureRep.acquire(r);s(i)?(i.then((t=>{this._disposed?e(t):this._textureRef=t})),this.loadPromise=i):this._textureRef=i}dispose(){this._textureRef=e(this._textureRef),this._disposed=!0}get glTexture(){return t(this._textureRef)?this._textureRef.glTexture:null}}export{r as RenderTexture};
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../core/maybe","../../../../../core/promiseUtils"],(function(e,t,s,i){"use strict";let r=function(){function e(e,t){this._textureRep=e,this._disposed=!1;const r=this._textureRep.acquire(t);i.isPromiseLike(r)?(r.then((e=>{this._disposed?s.releaseMaybe(e):this._textureRef=e})),this.loadPromise=r):this._textureRef=r}return e.prototype.dispose=function(){this._textureRef=s.releaseMaybe(this._textureRef),this._disposed=!0},t._createClass(e,[{key:"glTexture",get:function(){return s.isSome(this._textureRef)?this._textureRef.glTexture:null}}]),e}();e.RenderTexture=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

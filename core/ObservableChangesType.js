@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-var E;!function(E){E[E.ADD=1]="ADD",E[E.REMOVE=2]="REMOVE",E[E.MOVE=4]="MOVE"}(E||(E={}));export{E as ObservableChangesType};
+define(["exports"],(function(e){"use strict";var s;e.ObservableChangesType=void 0,(s=e.ObservableChangesType||(e.ObservableChangesType={}))[s.ADD=1]="ADD",s[s.REMOVE=2]="REMOVE",s[s.MOVE=4]="MOVE",Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

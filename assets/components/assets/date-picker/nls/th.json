@@ -1,5 +1,5 @@
 {
-  "default-calendar": "gregorian",
+  "default-calendar": "buddhist",
   "separator": "/",
   "unitOrder": "DD/MM/YYYY",
   "weekStart": 7,

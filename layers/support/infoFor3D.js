@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-var s,e;!function(s){s.featureGUID="featureGUID",s.assetName="assetName",s.hash="hash",s.type="type",s.conversionStatus="conversionStatus",s.flags="flags",s.complexity="complexity",s.size="size",s.seqNo="seqNo",s.sourceHash="sourceHash",s.assetURL="assetURL"}(s||(s={})),function(s){s.SUBMITTED="SUBMITTED",s.INPROGRESS="INPROGRESS",s.FAILED="FAILED",s.COMPLETED="COMPLETED"}(e||(e={}));export{s as AssetMapFieldRole,e as Status};
+define(["exports"],(function(e){"use strict";var t;e.AssetType=void 0,(t=e.AssetType||(e.AssetType={})).GLTF_BINARY="3D_glb",t.GLTF_JSON="3D_gltf",Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

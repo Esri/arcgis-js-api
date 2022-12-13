@@ -1,60 +1,61 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{ShaderOutput as o}from"../ShaderOutputOptions.js";import{SliceDraw as r}from"../Slice.glsl.js";import{Transform as e}from"../Transform.glsl.js";import{NormalAttribute as t,NormalAttributeType as i}from"../attributes/NormalAttribute.glsl.js";import{TextureCoordinateAttribute as a}from"../attributes/TextureCoordinateAttribute.glsl.js";import{VertexNormal as l}from"../attributes/VertexNormal.glsl.js";import{OutputDepth as s}from"../output/OutputDepth.glsl.js";import{OutputHighlight as d}from"../output/OutputHighlight.glsl.js";import{VisualVariables as n}from"../shading/VisualVariables.glsl.js";import{DiscardOrAdjustAlphaPass as u}from"../util/AlphaDiscard.glsl.js";import{addProjViewLocalOrigin as m}from"../util/View.glsl.js";import{Float2PassUniform as p}from"../../shaderModules/Float2PassUniform.js";import{glsl as c}from"../../shaderModules/interfaces.js";import{Texture2DPassUniform as v}from"../../shaderModules/Texture2DPassUniform.js";function f(f,h){const g=f.vertex.code,x=f.fragment.code,j=h.hasModelTransformation;h.output!==o.Depth&&h.output!==o.Shadow||(m(f,h),f.include(e,{linearDepth:!0,hasModelTransformation:j}),f.include(a,h),f.include(n,h),f.include(s,h),f.include(r,h),f.vertex.uniforms.add(new p("nearFar",((o,r)=>r.camera.nearFar))),f.varyings.add("depth","float"),h.hasColorTexture&&f.fragment.uniforms.add(new v("tex",(o=>o.texture))),g.add(c`
-      void main(void) {
-        vpos = calculateVPos();
-        vpos = subtractOrigin(vpos);
-        vpos = addVerticalOffset(vpos, localOrigin);
-        gl_Position = transformPositionWithDepth(proj, view, ${j?"model,":""} vpos, nearFar, depth);
-        forwardTextureCoordinates();
-      }
-    `),f.include(u,h),x.add(c`
-      void main(void) {
-        discardBySlice(vpos);
-        ${h.hasColorTexture?c`
-        vec4 texColor = texture2D(tex, vuv0);
-        discardOrAdjustAlpha(texColor);`:""}
-        outputDepth(depth);
-      }
-    `)),h.output===o.Normal&&(m(f,h),f.include(e,{linearDepth:!1,hasModelTransformation:j}),f.include(t,h),f.include(l,h),f.include(a,h),f.include(n,h),h.hasColorTexture&&f.fragment.uniforms.add(new v("tex",(o=>o.texture))),f.varyings.add("vPositionView","vec3"),g.add(c`
-      void main(void) {
-        vpos = calculateVPos();
-        vpos = subtractOrigin(vpos);
-        ${h.normalType===i.Attribute?c`
-        vNormalWorld = dpNormalView(vvLocalNormal(normalModel()));`:""}
-        vpos = addVerticalOffset(vpos, localOrigin);
-        gl_Position = transformPosition(proj, view, ${j?"model,":""} vpos);
-        forwardTextureCoordinates();
-      }
-    `),f.include(r,h),f.include(u,h),x.add(c`
-      void main() {
-        discardBySlice(vpos);
-        ${h.hasColorTexture?c`
-        vec4 texColor = texture2D(tex, vuv0);
-        discardOrAdjustAlpha(texColor);`:""}
+define(["exports","../../../../../../core/maybe","../../../../../../chunks/mat4f64","../ForwardLinearDepth.glsl","../ShaderOutput","../Slice.glsl","../Transform.glsl","../attributes/NormalAttribute.glsl","../attributes/ObjectAndLayerIdColor.glsl","../attributes/TextureCoordinateAttribute.glsl","../attributes/VertexNormal.glsl","../output/OutputDepth.glsl","../output/OutputHighlight.glsl","../shading/VisualVariables.glsl","../util/AlphaDiscard.glsl","../util/View.glsl","../../shaderModules/interfaces","../../shaderModules/Matrix4PassUniform","../../shaderModules/Texture2DPassUniform","../../../lib/basicInterfaces"],(function(e,r,o,t,a,l,i,s,d,u,n,c,p,g,v,m,h,f,x,O){"use strict";function b(e,b){const{vertex:T,fragment:A}=e,w=b.hasModelTransformation;w&&T.uniforms.add(new f.Matrix4PassUniform("model",(e=>r.isSome(e.modelTransformation)?e.modelTransformation:o.IDENTITY)));const D=b.hasColorTexture&&b.alphaDiscardMode!==O.AlphaDiscardMode.Opaque;switch(b.output){case a.ShaderOutput.Depth:case a.ShaderOutput.Shadow:case a.ShaderOutput.ShadowHighlight:case a.ShaderOutput.ShadowExludeHighlight:case a.ShaderOutput.ObjectAndLayerIdColor:m.addProjViewLocalOrigin(T,b),e.include(i.Transform,b),e.include(u.TextureCoordinateAttribute,b),e.include(g.VisualVariables,b),e.include(c.OutputDepth,b),e.include(l.SliceDraw,b),e.include(d.ObjectAndLayerIdColor,b),t.addNearFar(e),e.varyings.add("depth","float"),D&&A.uniforms.add(new x.Texture2DPassUniform("tex",(e=>e.texture))),T.code.add(h.glsl`
+          void main(void) {
+            vpos = calculateVPos();
+            vpos = subtractOrigin(vpos);
+            vpos = addVerticalOffset(vpos, localOrigin);
+            gl_Position = transformPositionWithDepth(proj, view, ${w?"model,":""} vpos, nearFar, depth);
+            forwardTextureCoordinates();
+            forwardObjectAndLayerIdColor();
+          }
+        `),e.include(v.DiscardOrAdjustAlphaPass,b),A.code.add(h.glsl`
+          void main(void) {
+            discardBySlice(vpos);
+            ${D?h.glsl`
+                    vec4 texColor = texture2D(tex, ${b.hasColorTextureTransform?h.glsl`colorUV`:h.glsl`vuv0`});
+                    discardOrAdjustAlpha(texColor);`:""}
+            ${b.output===a.ShaderOutput.ObjectAndLayerIdColor?h.glsl`outputObjectAndLayerIdColor();`:h.glsl`outputDepth(depth);`}
+          }
+        `);break;case a.ShaderOutput.Normal:m.addProjViewLocalOrigin(T,b),e.include(i.Transform,b),e.include(s.NormalAttribute,b),e.include(n.VertexNormal,b),e.include(u.TextureCoordinateAttribute,b),e.include(g.VisualVariables,b),D&&A.uniforms.add(new x.Texture2DPassUniform("tex",(e=>e.texture))),e.varyings.add("vPositionView","vec3"),T.code.add(h.glsl`
+          void main(void) {
+            vpos = calculateVPos();
+            vpos = subtractOrigin(vpos);
+            ${b.normalType===s.NormalAttributeType.Attribute?h.glsl`
+            vNormalWorld = dpNormalView(vvLocalNormal(normalModel()));`:""}
+            vpos = addVerticalOffset(vpos, localOrigin);
+            gl_Position = transformPosition(proj, view, ${w?"model,":""} vpos);
+            forwardTextureCoordinates();
+          }
+        `),e.include(l.SliceDraw,b),e.include(v.DiscardOrAdjustAlphaPass,b),A.code.add(h.glsl`
+          void main() {
+            discardBySlice(vpos);
+            ${D?h.glsl`
+                    vec4 texColor = texture2D(tex, ${b.hasColorTextureTransform?h.glsl`colorUV`:h.glsl`vuv0`});
+                    discardOrAdjustAlpha(texColor);`:""}
 
-        ${h.normalType===i.ScreenDerivative?c`
-            vec3 normal = screenDerivativeNormal(vPositionView);`:c`
-            vec3 normal = normalize(vNormalWorld);
-            if (gl_FrontFacing == false) normal = -normal;`}
-        gl_FragColor = vec4(vec3(0.5) + 0.5 * normal, 1.0);
-      }
-    `)),h.output===o.Highlight&&(m(f,h),f.include(e,{linearDepth:!1,hasModelTransformation:j}),f.include(a,h),f.include(n,h),h.hasColorTexture&&f.fragment.uniforms.add(new v("tex",(o=>o.texture))),g.add(c`
-      void main(void) {
-        vpos = calculateVPos();
-        vpos = subtractOrigin(vpos);
-        vpos = addVerticalOffset(vpos, localOrigin);
-        gl_Position = transformPosition(proj, view, ${j?"model,":""} vpos);
-        forwardTextureCoordinates();
-      }
-    `),f.include(r,h),f.include(u,h),f.include(d),x.add(c`
-      void main() {
-        discardBySlice(vpos);
-        ${h.hasColorTexture?c`
-        vec4 texColor = texture2D(tex, vuv0);
-        discardOrAdjustAlpha(texColor);`:""}
-        outputHighlight();
-      }
-    `))}export{f as DefaultMaterialAuxiliaryPasses};
+            ${b.normalType===s.NormalAttributeType.ScreenDerivative?h.glsl`
+                vec3 normal = screenDerivativeNormal(vPositionView);`:h.glsl`
+                vec3 normal = normalize(vNormalWorld);
+                if (gl_FrontFacing == false) normal = -normal;`}
+            gl_FragColor = vec4(vec3(0.5) + 0.5 * normal, 1.0);
+          }
+        `);break;case a.ShaderOutput.Highlight:m.addProjViewLocalOrigin(T,b),e.include(i.Transform,b),e.include(u.TextureCoordinateAttribute,b),e.include(g.VisualVariables,b),D&&A.uniforms.add(new x.Texture2DPassUniform("tex",(e=>e.texture))),T.code.add(h.glsl`
+          void main(void) {
+            vpos = calculateVPos();
+            vpos = subtractOrigin(vpos);
+            vpos = addVerticalOffset(vpos, localOrigin);
+            gl_Position = transformPosition(proj, view, ${w?"model,":""} vpos);
+            forwardTextureCoordinates();
+          }
+        `),e.include(l.SliceDraw,b),e.include(v.DiscardOrAdjustAlphaPass,b),e.include(p.OutputHighlight,b),A.code.add(h.glsl`
+          void main() {
+            discardBySlice(vpos);
+            ${D?h.glsl`
+                    vec4 texColor = texture2D(tex, ${b.hasColorTextureTransform?h.glsl`colorUV`:h.glsl`vuv0`});
+                    discardOrAdjustAlpha(texColor);`:""}
+            outputHighlight();
+          }
+        `)}}e.DefaultMaterialAuxiliaryPasses=b,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-const l=null;export{l as units};
+define(["exports"],(function(e){"use strict";const t=null;e.units=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as r}from"../../chunks/tslib.es6.js";import{JSONSupport as o}from"../../core/JSONSupport.js";import{property as s}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as e}from"../../core/accessorSupport/decorators/subclass.js";let t=class extends o{constructor(r){super(r)}clone(){}};r([s({type:["style"],readOnly:!0,json:{read:!0,write:{ignoreOrigin:!0}}})],t.prototype,"type",void 0),t=r([e("esri.symbols.patterns.Pattern3D")],t);const p=t;export{p as default};
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(r,e,t,o,s,c,n){"use strict";let p=function(e){function t(r){return e.call(this,r)||this}return r._inheritsLoose(t,e),t.prototype.clone=function(){},t}(t.JSONSupport);e.__decorate([o.property({type:["style"],readOnly:!0,json:{read:!0,write:{ignoreOrigin:!0}}})],p.prototype,"type",void 0),p=e.__decorate([n.subclass("esri.symbols.patterns.Pattern3D")],p);return p}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import e from"./GeoEventConnection.js";import{WebSocketConnection as n}from"./WebSocketConnection.js";function t(t,o,r,c,i,s,a,m){const p=0===t.path.indexOf("wss://")||0===t.path.indexOf("ws://"),f={source:t,sourceSpatialReference:o,spatialReference:r,geometryType:c,filter:i,maxReconnectionAttempts:s,maxReconnectionInterval:a,customParameters:m};return p?new n(f):new e(f)}export{t as createConnection};
+define(["exports","./GeoEventConnection","./WebSocketConnection"],(function(e,n,t){"use strict";function o(e,o,c,i,r,a,s,u){const f=0===e.path.indexOf("wss://")||0===e.path.indexOf("ws://"),l={source:e,sourceSpatialReference:o,spatialReference:c,geometryType:i,filter:r,maxReconnectionAttempts:a,maxReconnectionInterval:s,customParameters:u};return f?new t.WebSocketConnection(l):new n(l)}e.createConnection=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

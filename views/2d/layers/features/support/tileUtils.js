@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{Tile as o}from"./Tile.js";function e(e,n,r){const t=e.tileInfoView.tileInfo.isWrappable,i=l(e.key,n,r,t);return new o(e.tileInfoView,i)}function l(o,e,l,n){const r=o.clone(),t=1<<r.level,i=r.col+e,c=r.row+l;return n&&i<0?(r.col=i+t,r.world-=1):i>=t?(r.col=i-t,r.world+=1):r.col=i,r.row=c,r}export{l as getPow2NeighborKey,e as getPow2NeighborTile};
+define(["exports","./Tile"],(function(e,o){"use strict";function l(e,l,t){const n=e.tileInfoView.tileInfo.isWrappable,r=i(e.key,l,t,n);return new o.Tile(e.tileInfoView,r)}function i(e,o,l,i){const t=e.clone(),n=1<<t.level,r=t.col+o,c=t.row+l;return i&&r<0?(t.col=r+n,t.world-=1):r>=n?(t.col=r-n,t.world+=1):t.col=r,t.row=c,t}e.getPow2NeighborKey=i,e.getPow2NeighborTile=l,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

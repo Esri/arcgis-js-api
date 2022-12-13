@@ -1,37 +1,37 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{isSome as e}from"../core/maybe.js";import{O as r}from"./vec2f64.js";import{ShaderOutput as o}from"../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptions.js";import{SliceDraw as i}from"../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl.js";import{Transform as a}from"../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl.js";import{multipassTerrainTest as t}from"../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl.js";import{defaultMaskAlphaCutoff as s}from"../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff.js";import{ColorConversion as d}from"../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl.js";import{addProjViewLocalOrigin as l}from"../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl.js";import{Float2PassUniform as n}from"../views/3d/webgl-engine/core/shaderModules/Float2PassUniform.js";import{FloatPassUniform as g}from"../views/3d/webgl-engine/core/shaderModules/FloatPassUniform.js";import{glsl as c}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{ShaderBuilder as p}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{Texture2DPassUniform as u}from"../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform.js";import{TransparencyPassType as m}from"../views/3d/webgl-engine/lib/basicInterfaces.js";import{VertexAttribute as v}from"../views/3d/webgl-engine/lib/VertexAttribute.js";function f(f){const w=new p;l(w,f),w.include(a),w.attributes.add(v.POSITION,"vec3"),w.attributes.add(v.UV0,"vec2"),w.varyings.add("vpos","vec3"),f.hasMultipassTerrain&&w.varyings.add("depth","float");const{vertex:h,fragment:b}=w;return h.uniforms.add(new n("textureCoordinateScaleFactor",(o=>e(o.texture)&&e(o.texture.descriptor.textureCoordinateScaleFactor)?o.texture.descriptor.textureCoordinateScaleFactor:r))),h.code.add(c`
+define(["exports","../core/maybe","./vec2f64","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutput","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform","../views/3d/webgl-engine/lib/TransparencyPassType","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,r,a,i,o,t,s,l,d,n,g,c,u,p,v,h,w){"use strict";function b(e){const b=new p.ShaderBuilder,{vertex:f,fragment:y}=b;return n.addProjViewLocalOrigin(f,e),b.include(t.Transform,e),b.attributes.add(w.VertexAttribute.POSITION,"vec3"),b.attributes.add(w.VertexAttribute.UV0,"vec2"),b.varyings.add("vpos","vec3"),e.hasMultipassTerrain&&b.varyings.add("depth","float"),f.uniforms.add(new g.Float2PassUniform("textureCoordinateScaleFactor",(e=>r.isSome(e.texture)&&r.isSome(e.texture.descriptor.textureCoordinateScaleFactor)?e.texture.descriptor.textureCoordinateScaleFactor:a.ONES))),f.code.add(u.glsl`
     void main(void) {
       vpos = position;
-      ${f.hasMultipassTerrain?"depth = (view * vec4(vpos, 1.0)).z;":""}
+      ${e.hasMultipassTerrain?"depth = (view * vec4(vpos, 1.0)).z;":""}
       vTexCoord = uv0 * textureCoordinateScaleFactor;
       gl_Position = transformPosition(proj, view, vpos);
     }
-  `),w.include(i,f),w.include(t,f),b.uniforms.add([new u("tex",(e=>e.texture)),new g("opacity",(e=>e.opacity))]),w.varyings.add("vTexCoord","vec2"),f.output===o.Alpha?b.code.add(c`
+  `),b.include(o.SliceDraw,e),b.include(s.multipassTerrainTest,e),y.uniforms.add([new v.Texture2DPassUniform("tex",(e=>e.texture)),new c.FloatPassUniform("opacity",(e=>e.opacity))]),b.varyings.add("vTexCoord","vec2"),e.output===i.ShaderOutput.Alpha?y.code.add(u.glsl`
     void main() {
       discardBySlice(vpos);
-      ${f.hasMultipassTerrain?"terrainDepthTest(gl_FragCoord, depth);":""}
+      ${e.hasMultipassTerrain?"terrainDepthTest(gl_FragCoord, depth);":""}
 
       float alpha = texture2D(tex, vTexCoord).a * opacity;
-      if (alpha  < ${c.float(s)}) {
+      if (alpha  < ${u.glsl.float(l.defaultMaskAlphaCutoff)}) {
         discard;
       }
 
       gl_FragColor = vec4(alpha);
     }
-    `):(b.include(d),b.code.add(c`
+    `):(y.include(d.ColorConversion),y.code.add(u.glsl`
     void main() {
       discardBySlice(vpos);
-      ${f.hasMultipassTerrain?"terrainDepthTest(gl_FragCoord, depth);":""}
+      ${e.hasMultipassTerrain?"terrainDepthTest(gl_FragCoord, depth);":""}
       gl_FragColor = texture2D(tex, vTexCoord) * opacity;
 
-      if (gl_FragColor.a < ${c.float(s)}) {
+      if (gl_FragColor.a < ${u.glsl.float(l.defaultMaskAlphaCutoff)}) {
         discard;
       }
 
       gl_FragColor = highlightSlice(gl_FragColor, vpos);
-      ${f.transparencyPassType===m.Color?"gl_FragColor = premultiplyAlpha(gl_FragColor);":""}
+      ${e.transparencyPassType===h.TransparencyPassType.Color?"gl_FragColor = premultiplyAlpha(gl_FragColor);":""}
     }
-    `)),w}const w=Object.freeze(Object.defineProperty({__proto__:null,build:f},Symbol.toStringTag,{value:"Module"}));export{w as I,f as b};
+    `)),b}const f=Object.freeze(Object.defineProperty({__proto__:null,build:b},Symbol.toStringTag,{value:"Module"}));e.ImageMaterial=f,e.build=b}));

@@ -1,12 +1,12 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{Float3PassUniform as e}from"../../shaderModules/Float3PassUniform.js";import{Float4sPassUniform as i}from"../../shaderModules/Float4sPassUniform.js";import{FloatPassUniform as t}from"../../shaderModules/FloatPassUniform.js";import{FloatsPassUniform as o}from"../../shaderModules/FloatsPassUniform.js";import{glsl as a}from"../../shaderModules/interfaces.js";import{VertexAttribute as r}from"../../../lib/VertexAttribute.js";import{vvColorNumber as v}from"../../../materials/VisualVariablePassParameters.js";const l=8;function s(s,u){const c=s.vertex;c.uniforms.add(new t("intrinsicWidth",(e=>e.width))),u.vvSize?(s.attributes.add(r.SIZEFEATUREATTRIBUTE,"float"),c.uniforms.add(new e("vvSizeMinSize",(e=>e.vvSizeMinSize))),c.uniforms.add(new e("vvSizeMaxSize",(e=>e.vvSizeMaxSize))),c.uniforms.add(new e("vvSizeOffset",(e=>e.vvSizeOffset))),c.uniforms.add(new e("vvSizeFactor",(e=>e.vvSizeFactor))),c.code.add(a`float getSize() {
+define(["exports","../../shaderModules/Float3PassUniform","../../shaderModules/Float4sPassUniform","../../shaderModules/FloatPassUniform","../../shaderModules/FloatsPassUniform","../../shaderModules/interfaces","../../../lib/VertexAttribute","../../../materials/VisualVariablePassParameters"],(function(e,t,i,o,a,r,v,l){"use strict";const s=8;function u(e,u){const n=e.vertex;n.uniforms.add(new o.FloatPassUniform("intrinsicWidth",(e=>e.width))),u.vvSize?(e.attributes.add(v.VertexAttribute.SIZEFEATUREATTRIBUTE,"float"),n.uniforms.add(new t.Float3PassUniform("vvSizeMinSize",(e=>e.vvSizeMinSize))),n.uniforms.add(new t.Float3PassUniform("vvSizeMaxSize",(e=>e.vvSizeMaxSize))),n.uniforms.add(new t.Float3PassUniform("vvSizeOffset",(e=>e.vvSizeOffset))),n.uniforms.add(new t.Float3PassUniform("vvSizeFactor",(e=>e.vvSizeFactor))),n.code.add(r.glsl`float getSize() {
 return intrinsicWidth * clamp(vvSizeOffset + sizeFeatureAttribute * vvSizeFactor, vvSizeMinSize, vvSizeMaxSize).x;
-}`)):(s.attributes.add(r.SIZE,"float"),c.code.add(a`float getSize(){
+}`)):(e.attributes.add(v.VertexAttribute.SIZE,"float"),n.code.add(r.glsl`float getSize(){
 return intrinsicWidth * size;
-}`)),u.vvOpacity?(s.attributes.add(r.OPACITYFEATUREATTRIBUTE,"float"),c.constants.add("vvOpacityNumber","int",8),c.uniforms.add([new o("vvOpacityValues",(e=>e.vvOpacityValues),l),new o("vvOpacityOpacities",(e=>e.vvOpacityOpacities),l)]),c.code.add(a`float interpolateOpacity( float value ){
+}`)),u.vvOpacity?(e.attributes.add(v.VertexAttribute.OPACITYFEATUREATTRIBUTE,"float"),n.constants.add("vvOpacityNumber","int",8),n.uniforms.add([new a.FloatsPassUniform("vvOpacityValues",(e=>e.vvOpacityValues),s),new a.FloatsPassUniform("vvOpacityOpacities",(e=>e.vvOpacityOpacities),s)]),n.code.add(r.glsl`float interpolateOpacity( float value ){
 if (value <= vvOpacityValues[0]) {
 return vvOpacityOpacities[0];
 }
@@ -20,9 +20,9 @@ return vvOpacityOpacities[vvOpacityNumber - 1];
 }
 vec4 applyOpacity( vec4 color ){
 return vec4(color.xyz, interpolateOpacity(opacityFeatureAttribute));
-}`)):c.code.add(a`vec4 applyOpacity( vec4 color ){
+}`)):n.code.add(r.glsl`vec4 applyOpacity( vec4 color ){
 return color;
-}`),u.vvColor?(s.attributes.add(r.COLORFEATUREATTRIBUTE,"float"),c.constants.add("vvColorNumber","int",v),c.uniforms.add(new o("vvColorValues",(e=>e.vvColorValues),v)),c.uniforms.add(new i("vvColorColors",(e=>e.vvColorColors),v)),c.code.add(a`vec4 interpolateColor( float value ) {
+}`),u.vvColor?(e.attributes.add(v.VertexAttribute.COLORFEATUREATTRIBUTE,"float"),n.constants.add("vvColorNumber","int",l.vvColorNumber),n.uniforms.add(new a.FloatsPassUniform("vvColorValues",(e=>e.vvColorValues),l.vvColorNumber)),n.uniforms.add(new i.Float4sPassUniform("vvColorColors",(e=>e.vvColorColors),l.vvColorNumber)),n.code.add(r.glsl`vec4 interpolateColor( float value ) {
 if (value <= vvColorValues[0]) {
 return vvColorColors[0];
 }
@@ -36,6 +36,6 @@ return vvColorColors[vvColorNumber - 1];
 }
 vec4 getColor(){
 return applyOpacity(interpolateColor(colorFeatureAttribute));
-}`)):(s.attributes.add(r.COLOR,"vec4"),c.code.add(a`vec4 getColor(){
+}`)):(e.attributes.add(v.VertexAttribute.COLOR,"vec4"),n.code.add(r.glsl`vec4 getColor(){
 return applyOpacity(color);
-}`))}export{s as RibbonVertexPosition};
+}`))}e.RibbonVertexPosition=u,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

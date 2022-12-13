@@ -65,6 +65,10 @@ $content-height--loading: 150px !default;
     max-height: 100%;
     image-orientation: from-image;
   }
+  .esri-feature-content video {
+    max-width: 100%;
+    max-height: 100%;
+  }
   .esri-feature-content figure {
     padding: 0;
     margin: 0;

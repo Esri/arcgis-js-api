@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-class t{constructor(t){this.gain=t}update(t){if(this.hasLastValue){const e=this.computeDelta(t);this._updateDelta(e)}this.lastValue=t}reset(){this.lastValue=void 0,this.filteredDelta=void 0}get hasLastValue(){return void 0!==this.lastValue}get hasFilteredDelta(){return void 0!==this.filteredDelta}computeDelta(t){return t-this.lastValue}_updateDelta(t){this.hasFilteredDelta?this.filteredDelta=(1-this.gain)*this.filteredDelta+this.gain*t:this.filteredDelta=t}}export{t as FilteredFiniteDifference};
+define(["exports"],(function(t){"use strict";let e=function(){function t(t){this._gain=t,this.lastValue=void 0,this.filteredDelta=void 0}var e=t.prototype;return e.update=function(t){if(this.hasLastValue()){const e=this.computeDelta(t);this._updateDelta(e)}this.lastValue=t},e.reset=function(){this.lastValue=void 0,this.filteredDelta=void 0},e.hasLastValue=function(){return void 0!==this.lastValue},e.hasFilteredDelta=function(){return void 0!==this.filteredDelta},e.computeDelta=function(t){return void 0===this.lastValue?NaN:t-this.lastValue},e._updateDelta=function(t){void 0!==this.filteredDelta?this.filteredDelta=(1-this._gain)*this.filteredDelta+this._gain*t:this.filteredDelta=t},t}();t.FilteredFiniteDifference=e,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

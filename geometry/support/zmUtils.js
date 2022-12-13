@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-function h(h,a,s=!1){let{hasM:t,hasZ:e}=h;Array.isArray(a)?4!==a.length||t||e?3===a.length&&s&&!t?(e=!0,t=!1):3===a.length&&t&&e&&(t=!1,e=!1):(t=!0,e=!0):(e=!e&&a.hasZ&&(!t||a.hasM),t=!t&&a.hasM&&(!e||a.hasZ)),h.hasZ=e,h.hasM=t}export{h as updateSupportFromPoint};
+define(["exports"],(function(e){"use strict";function t(e,t,a=!1){let{hasM:s,hasZ:h}=e;Array.isArray(t)?4!==t.length||s||h?3===t.length&&a&&!s?(h=!0,s=!1):3===t.length&&s&&h&&(s=!1,h=!1):(s=!0,h=!0):(h=!h&&t.hasZ&&(!s||t.hasM),s=!s&&t.hasM&&(!h||t.hasZ)),e.hasZ=h,e.hasM=s}e.updateSupportFromPoint=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

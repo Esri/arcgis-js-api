@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-function n(n,r){const e=n.layer?.uid;return e&&r.find((n=>n.layer?.uid===e))}export{n as findSelectedItem};
+define(["exports"],(function(e){"use strict";function t(e,t){const i=e.layer?.uid;return i&&t.find((e=>e.layer?.uid===i))}e.findSelectedItem=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

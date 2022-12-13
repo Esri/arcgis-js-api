@@ -7,6 +7,7 @@
   "days": {
     "abbreviated": ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"],
     "narrow": ["D", "S", "T", "Q", "Q", "S", "S"],
+    "short": ["dom.", "seg.", "ter.", "qua.", "qui.", "sex.", "sáb."],
     "wide": ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"]
   },
   "numerals": "0123456789",

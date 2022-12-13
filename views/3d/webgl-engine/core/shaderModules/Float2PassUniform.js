@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{Uniform as r}from"./Uniform.js";import{BindType as s}from"../shaderTechnique/BindType.js";class e extends r{constructor(r,e){super(r,"vec2",s.Pass,((s,o,t)=>s.setUniform2fv(r,e(o,t))))}}export{e as Float2PassUniform};
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","./Uniform","../shaderTechnique/BindType"],(function(e,n,i,t){"use strict";let o=function(e){function i(n,i){return e.call(this,n,"vec2",t.BindType.Pass,((e,t,o)=>e.setUniform2fv(n,i(t,o))))||this}return n._inheritsLoose(i,e),i}(i.Uniform);e.Float2PassUniform=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

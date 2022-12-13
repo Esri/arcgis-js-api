@@ -1,24 +1,38 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{Float2PassUniform as r}from"../../shaderModules/Float2PassUniform.js";import{glsl as o}from"../../shaderModules/interfaces.js";import{Texture2DPassUniform as e}from"../../shaderModules/Texture2DPassUniform.js";function t(t){t.fragment.uniforms.add(new e("u_transformGrid",(r=>r.u_transformGrid))),t.fragment.uniforms.add(new r("u_transformSpacing",(r=>r.common.u_transformSpacing))),t.fragment.uniforms.add(new r("u_transformGridSize",(r=>r.common.u_transformGridSize))),t.fragment.uniforms.add(new r("u_targetImageSize",(r=>r.common.u_targetImageSize))),t.fragment.code.add(o`vec2 projectPixelLocation(vec2 coords) {
-vec2 index_image = floor(coords * u_targetImageSize);
-vec2 oneTransformPixel = vec2(0.25 / u_transformGridSize.s, 1.0 / u_transformGridSize.t);
-vec2 index_transform = floor(index_image / u_transformSpacing) / u_transformGridSize;
-vec2 pos = fract((index_image + vec2(0.5, 0.5)) / u_transformSpacing);
-vec2 srcLocation;
-vec2 transform_location = index_transform + oneTransformPixel * 0.5;
-if (pos.s <= pos.t) {
-vec4 ll_abc = texture2D(u_transformGrid, vec2(transform_location.s, transform_location.t));
-vec4 ll_def = texture2D(u_transformGrid, vec2(transform_location.s + oneTransformPixel.s, transform_location.t));
-srcLocation.s = dot(ll_abc.rgb, vec3(pos, 1.0));
-srcLocation.t = dot(ll_def.rgb, vec3(pos, 1.0));
-} else {
-vec4 ur_abc = texture2D(u_transformGrid, vec2(transform_location.s + 2.0 * oneTransformPixel.s, transform_location.t));
-vec4 ur_def = texture2D(u_transformGrid, vec2(transform_location.s + 3.0 * oneTransformPixel.s, transform_location.t));
-srcLocation.s = dot(ur_abc.rgb, vec3(pos, 1.0));
-srcLocation.t = dot(ur_def.rgb, vec3(pos, 1.0));
-}
-return srcLocation;;
-}`)}export{t as Projection};
+define(["exports","../util/WebGL2Utils","../../shaderModules/Float2PassUniform","../../shaderModules/interfaces","../../shaderModules/Texture2DPassUniform","../../shaderModules/TextureSizeUniformType"],(function(e,r,o,t,n,i){"use strict";function s(e,s){e.fragment.uniforms.add(n.createTexture2DPassSizeUniforms("u_transformGrid",(e=>e.u_transformGrid),s.hasWebGL2Context?i.TextureSizeUniformType.None:i.TextureSizeUniformType.InvSize)),e.fragment.uniforms.add(new o.Float2PassUniform("u_transformSpacing",(e=>e.common.u_transformSpacing))),e.fragment.uniforms.add(new o.Float2PassUniform("u_targetImageSize",(e=>e.common.u_targetImageSize))),e.fragment.code.add(t.glsl`
+    vec2 projectPixelLocation(vec2 coords) {
+      // Pixel index in row/column, corresponds to upperleft corner, e.g. [100, 20]
+      vec2 index_image = floor(coords * u_targetImageSize);
+
+      // Pixel's corresponding cell index in transform grid
+      // Each transform cell corresponds to 4 pixels: 6 coefficients from lowerleft triangle followed by 6 coefficients from upperright triangle
+      vec2 oneTransformPixel = vec2(4.0, 1.0);
+      vec2 index_transform = floor(index_image / u_transformSpacing) * oneTransformPixel;
+
+      // Correspoding position in transform grid cell, cell center coordinates
+      vec2 pos = fract((index_image + 0.5) / u_transformSpacing);
+
+      // Pixel's corresponding transform cell location, cell center coordinates
+      vec2 transform_location = index_transform + 0.5;
+
+      vec2 srcLocation;
+
+      // Use lower triangle or upper triangle
+      if (pos.s <= pos.t) {
+        vec3 ll_abc = ${r.texelFetch(s,"u_transformGrid","transform_location")}.rgb;
+        vec3 ll_def = ${r.texelFetch(s,"u_transformGrid","vec2(transform_location.s + 1.0, transform_location.t)")}.rgb;
+        srcLocation.s = dot(ll_abc, vec3(pos, 1.0));
+        srcLocation.t = dot(ll_def, vec3(pos, 1.0));
+      } else {
+        vec3 ur_abc = ${r.texelFetch(s,"u_transformGrid","vec2(transform_location.s + 2.0, transform_location.t)")}.rgb;
+        vec3 ur_def = ${r.texelFetch(s,"u_transformGrid","vec2(transform_location.s + 3.0, transform_location.t)")}.rgb;
+        srcLocation.s = dot(ur_abc, vec3(pos, 1.0));
+        srcLocation.t = dot(ur_def, vec3(pos, 1.0));
+      }
+
+      return srcLocation;
+    }
+  `)}e.Projection=s,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

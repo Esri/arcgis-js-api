@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{createResolver as e}from"../../../../../core/promiseUtils.js";class r{constructor(){this._resolver=null}isHeld(){return!!this._resolver}async acquire(){this._resolver?(await this._resolver.promise,await this.acquire()):this._resolver=e()}release(){const e=this._resolver;this._resolver=null,e.resolve()}}async function s(e,r,s){try{await e.acquire(),await r(s),e.release()}catch(t){throw e.release(),t}}export{r as Lock,s as withLock};
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../core/promiseUtils"],(function(e,r,t){"use strict";let i=function(){function e(){this._resolver=null}var i=e.prototype;return i.isHeld=function(){return!!this._resolver},i.acquire=function(){var e=r._asyncToGenerator((function*(){this._resolver?(yield this._resolver.promise,yield this.acquire()):this._resolver=t.createResolver()}));function i(){return e.apply(this,arguments)}return i}(),i.release=function(){const e=this._resolver;this._resolver=null,e?.resolve()},e}();function n(e,r,t){return o.apply(this,arguments)}function o(){return(o=r._asyncToGenerator((function*(e,r,t){try{yield e.acquire(),yield r(t),e.release()}catch(i){throw e.release(),i}}))).apply(this,arguments)}e.Lock=i,e.withLock=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

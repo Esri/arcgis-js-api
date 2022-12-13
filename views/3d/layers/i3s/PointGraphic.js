@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as r}from"../../../../chunks/tslib.es6.js";import o from"../../../../Graphic.js";import{property as s}from"../../../../core/accessorSupport/decorators/property.js";import"../../../../core/arrayUtils.js";import"../../../../core/has.js";import"../../../../core/accessorSupport/ensureType.js";import{subclass as e}from"../../../../core/accessorSupport/decorators/subclass.js";let t=class extends o{constructor(r){super(r)}};r([s({constructOnly:!0,clonable:"reference"})],t.prototype,"pointCloudMetadata",void 0),t=r([e("esri.views.3d.layers.i3s.PointGraphic")],t);export{t as PointGraphic};
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/tslib.es6","../../../../Graphic","../../../../core/accessorSupport/decorators/property","../../../../core/arrayUtils","../../../../core/accessorSupport/ensureType","../../../../core/accessorSupport/decorators/subclass"],(function(e,r,o,t,s,c,i,a){"use strict";e.PointGraphic=function(e){function o(r){return e.call(this,r)||this}return r._inheritsLoose(o,e),o}(t),o.__decorate([s.property({constructOnly:!0,clonable:"reference"})],e.PointGraphic.prototype,"pointCloudMetadata",void 0),e.PointGraphic=o.__decorate([a.subclass("esri.views.3d.layers.i3s.PointGraphic")],e.PointGraphic),Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

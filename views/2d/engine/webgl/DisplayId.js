@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-const n=8388607,t=8388608,r=254,o=255,u=0,c=1,e=n=>(n&t)>>>23,f=t=>t&n,i=n=>e(n)===c?r:o;function p(n){return e(n)===c}function s(n,r){return((r?t:0)|n)>>>0}export{r as AGGREGATE_VALID_FILTERS_MASK,n as DISPLAY_ID_TEXEL_MASK,c as DISPLAY_ID_TYPE_AGGREGATE,u as DISPLAY_ID_TYPE_FEATURE,t as DISPLAY_ID_TYPE_MASK,o as NONAGGREGATE_VALID_FILTERS_MASK,s as createDisplayId,i as getDisplayIdFilterMask,f as getDisplayIdTexel,e as getDisplayIdType,p as isAggregateId};
+define(["exports"],(function(e){"use strict";const _=8388607,t=8388608,A=254,I=255,E=0,i=1,D=e=>(e&t)>>>23,T=e=>e&_,n=e=>D(e)===i?A:I;function r(e){return D(e)===i}function s(e,_){return((_?t:0)|e)>>>0}e.AGGREGATE_VALID_FILTERS_MASK=A,e.DISPLAY_ID_TEXEL_MASK=_,e.DISPLAY_ID_TYPE_AGGREGATE=i,e.DISPLAY_ID_TYPE_FEATURE=E,e.DISPLAY_ID_TYPE_MASK=t,e.NONAGGREGATE_VALID_FILTERS_MASK=I,e.createDisplayId=s,e.getDisplayIdFilterMask=n,e.getDisplayIdTexel=T,e.getDisplayIdType=D,e.isAggregateId=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

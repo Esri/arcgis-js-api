@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{isNone as t}from"../../../core/maybe.js";import{getCentroidOptimizedGeometry as e}from"../centroid.js";import{OptimizedFeature as r}from"../OptimizedFeature.js";import o from"../OptimizedGeometry.js";const i={getObjectId:t=>t.objectId,getAttributes:t=>t.attributes,getAttribute:(t,e)=>t.attributes[e],cloneWithGeometry:(t,e)=>new r(e,t.attributes,null,t.objectId),getGeometry:t=>t.geometry,getCentroid:(r,i)=>(t(r.centroid)&&(r.centroid=e(new o,r.geometry,i.hasZ,i.hasM)),r.centroid)};export{i as optimizedFeatureQueryEngineAdapter};
+define(["exports","../../../core/maybe","../centroid","../OptimizedFeature","../OptimizedGeometry"],(function(e,t,i,r,o){"use strict";const d={getObjectId:e=>e.objectId,getAttributes:e=>e.attributes,getAttribute:(e,t)=>e.attributes[t],cloneWithGeometry:(e,t)=>new r.OptimizedFeature(t,e.attributes,null,e.objectId),getGeometry:e=>e.geometry,getCentroid:(e,r)=>(t.isNone(e.centroid)&&(e.centroid=i.getCentroidOptimizedGeometry(new o,e.geometry,r.hasZ,r.hasM)),e.centroid)};e.optimizedFeatureQueryEngineAdapter=d,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

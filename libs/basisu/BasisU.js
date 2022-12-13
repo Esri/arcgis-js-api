@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{getAssetUrl as e}from"../../assets.js";import{isNone as t}from"../../core/maybe.js";function s(){if(t(i)){const t=t=>e(`esri/libs/basisu/${t}`);i=import("../../chunks/basis_transcoder.js").then((e=>e.b)).then((({default:e})=>e({locateFile:t}).then((e=>(e.initializeBasis(),delete e.then,e)))))}return i}let i;export{s as getBasisTranscoder};
+define(["require","exports","../../assets","../../core/maybe"],(function(e,s,t,i){"use strict";function n(){if(i.isNone(r)){const s=e=>t.getAssetUrl(`esri/libs/basisu/${e}`);r=new Promise(((s,t)=>e(["../../chunks/basis_transcoder"],s,t))).then((e=>e.basis_transcoder)).then((({default:e})=>e({locateFile:s}).then((e=>(e.initializeBasis(),delete e.then,e)))))}return r}let r;s.getBasisTranscoder=n,Object.defineProperties(s,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -162,8 +162,7 @@
     }
 
     calcite-label {
-      // Cancel default calcite component margin. See https://github.com/Esri/calcite-components/issues/2138
-      margin-bottom: -0.6rem;
+      --calcite-label-margin-bottom: 0;
     }
   }
 
@@ -253,6 +252,7 @@
     display: flex;
     flex-direction: column;
     padding: $cap-spacing $side-spacing;
+    color: $font-color;
   }
 
   .esri-slider-with-dropdown__list-item:hover {

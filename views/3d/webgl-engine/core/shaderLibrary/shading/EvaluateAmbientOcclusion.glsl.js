@@ -1,11 +1,15 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{s as e}from"../../../../../../chunks/vec4.js";import{c as o}from"../../../../../../chunks/vec4f64.js";import{Float4PassUniform as r}from"../../shaderModules/Float4PassUniform.js";import{glsl as t}from"../../shaderModules/interfaces.js";import{Texture2DPassUniform as s}from"../../shaderModules/Texture2DPassUniform.js";function a(o,a){const l=o.fragment;a.receiveAmbientOcclusion?(l.uniforms.add([new s("ssaoTex",((e,o)=>o.ssaoHelper.colorTexture)),new r("viewportPixelSz",((o,r)=>e(i,r.camera.fullViewport[0],r.camera.fullViewport[1],1/r.ssaoHelper.width,1/r.ssaoHelper.height)))]),l.code.add(t`float evaluateAmbientOcclusion() {
-return 1.0 - texture2D(ssaoTex, (gl_FragCoord.xy - viewportPixelSz.xy) * viewportPixelSz.zw).a;
-}
-float evaluateAmbientOcclusionInverse() {
-return texture2D(ssaoTex, (gl_FragCoord.xy - viewportPixelSz.xy) * viewportPixelSz.zw).a;
-}`)):l.code.add(t`float evaluateAmbientOcclusion() { return 0.0; }
-float evaluateAmbientOcclusionInverse() { return 1.0; }`)}const i=o();export{a as EvaluateAmbientOcclusion};
+define(["exports","../util/WebGL2Utils","../../shaderModules/interfaces","../../shaderModules/Texture2DPassUniform","../../shaderModules/TextureSizeUniformType","../../../lib/SSAOHelper"],(function(e,s,t,r,i,n){"use strict";function o(e,o){const l=e.fragment;o.receiveAmbientOcclusion?(l.uniforms.add(r.createTexture2DPassSizeUniforms("ssaoTex",((e,s)=>s.ssaoHelper.colorTexture),o.hasWebGL2Context?i.TextureSizeUniformType.None:i.TextureSizeUniformType.InvSize)),l.constants.add("blurSizePixelsInverse","float",1/n.blurSizePixels),l.code.add(t.glsl`
+      float evaluateAmbientOcclusionInverse() {
+        vec2 ssaoTextureSizeInverse = ${s.textureSize(o,"ssaoTex",!0)};
+        return texture2D(ssaoTex, gl_FragCoord.xy * blurSizePixelsInverse * ssaoTextureSizeInverse).a;
+      }
+
+      float evaluateAmbientOcclusion() {
+        return 1.0 - evaluateAmbientOcclusionInverse();
+      }
+    `)):l.code.add(t.glsl`float evaluateAmbientOcclusionInverse() { return 1.0; }
+float evaluateAmbientOcclusion() { return 0.0; }`)}e.EvaluateAmbientOcclusion=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

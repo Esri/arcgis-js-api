@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as r}from"../../chunks/tslib.es6.js";import o from"../../core/Accessor.js";import{property as e}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as s}from"../../core/accessorSupport/decorators/subclass.js";let t=class extends o{constructor(r){super(r),this.typeCategoryFilter="both"}};r([e()],t.prototype,"searchQuery",void 0),r([e()],t.prototype,"typeCategoryFilter",void 0),t=r([s("esri.rest.knowledgeGraph.GraphSearch")],t);const p=t;export{p as default};
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Accessor","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(r,e,o,t,s,c,p){"use strict";let a=function(e){function o(r){var o;return(o=e.call(this,r)||this).typeCategoryFilter="both",o}return r._inheritsLoose(o,e),o}(o);e.__decorate([t.property()],a.prototype,"searchQuery",void 0),e.__decorate([t.property()],a.prototype,"typeCategoryFilter",void 0),a=e.__decorate([p.subclass("esri.rest.knowledgeGraph.GraphSearch")],a);return a}));

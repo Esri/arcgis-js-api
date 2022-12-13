@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-function r(r,o){if(!r)throw new Error("ASSERT: "+o)}export{r as assert};
+define(["exports"],(function(e){"use strict";function t(e,t){if(!e)throw new Error("ASSERT: "+t)}e.assert=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

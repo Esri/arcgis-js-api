@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-const t=1;function n(t,n){let o=0;for(const e of n){const n=e.attributes?.[t];"number"==typeof n&&isFinite(n)&&(o=Math.max(o,n))}return o}export{n as findLastObjectIdFromFeatures,t as initialObjectId};
+define(["exports"],(function(t){"use strict";const e=1;function i(t,e){let i=0;for(const n of e){const e=n.attributes?.[t];"number"==typeof e&&isFinite(e)&&(i=Math.max(i,e))}return i}t.findLastObjectIdFromFeatures=i,t.initialObjectId=e,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

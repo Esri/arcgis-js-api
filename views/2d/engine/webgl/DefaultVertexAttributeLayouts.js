@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{DataType as e}from"../../../webgl/enums.js";import{VertexElementDescriptor as o}from"../../../webgl/VertexElementDescriptor.js";const r={geometry:[new o("a_pos",2,e.BYTE,0,2)]},t={geometry:[new o("a_pos",2,e.BYTE,0,4),new o("a_tex",2,e.BYTE,2,4)]},m={geometry:[new o("a_pos",2,e.UNSIGNED_SHORT,0,4)]};export{r as Pos2b,m as Pos2us,t as PosTex2b};
+define(["exports","../../../webgl/enums","../../../webgl/VertexElementDescriptor"],(function(e,t,r){"use strict";const o={geometry:[new r.VertexElementDescriptor("a_pos",2,t.DataType.BYTE,0,2)]},s={geometry:[new r.VertexElementDescriptor("a_pos",2,t.DataType.BYTE,0,4),new r.VertexElementDescriptor("a_tex",2,t.DataType.BYTE,2,4)]},n={geometry:[new r.VertexElementDescriptor("a_pos",2,t.DataType.UNSIGNED_SHORT,0,4)]};e.Pos2b=o,e.Pos2us=n,e.PosTex2b=s,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

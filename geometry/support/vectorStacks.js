@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{VectorStack as e}from"../../core/VectorStack.js";const t=e.createVec2f64(),c=e.createVec3f64(),r=e.createVec4f64(),a=e.createMat3f64(),f=e.createMat4f64(),o=e.createQuatf64();export{a as sm3d,f as sm4d,o as sq4d,t as sv2d,c as sv3d,r as sv4d};
+define(["exports","../../core/VectorStack"],(function(e,t){"use strict";const c=t.VectorStack.createVec2f64(),a=t.VectorStack.createVec3f64(),r=t.VectorStack.createVec4f64(),o=t.VectorStack.createMat3f64(),s=t.VectorStack.createMat4f64(),d=t.VectorStack.createQuatf64();e.sm3d=o,e.sm4d=s,e.sq4d=d,e.sv2d=c,e.sv3d=a,e.sv4d=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

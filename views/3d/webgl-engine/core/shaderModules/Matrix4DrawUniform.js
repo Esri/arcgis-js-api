@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{Uniform as r}from"./Uniform.js";import{BindType as e}from"../shaderTechnique/BindType.js";class o extends r{constructor(r,o){super(r,"mat4",e.Draw,((e,s,t)=>e.setUniformMatrix4fv(r,o(s,t))))}}export{o as Matrix4DrawUniform};
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","./Uniform","../shaderTechnique/BindType"],(function(e,i,n,r){"use strict";let t=function(e){function n(i,n){return e.call(this,i,"mat4",r.BindType.Draw,((e,r,t)=>e.setUniformMatrix4fv(i,n(r,t))))||this}return i._inheritsLoose(n,e),n}(n.Uniform);e.Matrix4DrawUniform=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

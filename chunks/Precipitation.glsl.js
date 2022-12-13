@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{PrecipitationType as e}from"../views/3d/environment/PrecipitationTechniqueConfiguration.js";import{Float3Uniform as t}from"../views/3d/webgl-engine/core/shaderModules/Float3Uniform.js";import{FloatUniform as o}from"../views/3d/webgl-engine/core/shaderModules/FloatUniform.js";import{glsl as i}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{Matrix4PassUniform as r}from"../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform.js";import{Matrix4Uniform as a}from"../views/3d/webgl-engine/core/shaderModules/Matrix4Uniform.js";import{ShaderBuilder as n}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{VertexAttribute as s}from"../views/3d/webgl-engine/lib/VertexAttribute.js";function d(d){const c=new n;return c.attributes.add(s.POSITION,"vec3"),c.attributes.add(s.INSTANCEFEATUREATTRIBUTE,"float"),c.vertex.uniforms.add(new t("cameraPosition")),c.vertex.uniforms.add(new t("offset")),c.vertex.uniforms.add(new o("width")),c.vertex.uniforms.add(new r("proj",((e,t)=>t.camera.projectionMatrix))),c.vertex.uniforms.add(new a("view")),c.vertex.uniforms.add(new o("time")),c.varyings.add("vUv","vec2"),c.vertex.code.add(i`
+define(["exports","./vec3","./vec3f64","../views/3d/environment/PrecipitationTechniqueConfiguration","../views/3d/webgl-engine/core/shaderModules/Float3PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,t,o,i,a,r,n,s,d,c){"use strict";function l(e){const t=new d.ShaderBuilder;return t.attributes.add(c.VertexAttribute.POSITION,"vec3"),t.attributes.add(c.VertexAttribute.INSTANCEFEATUREATTRIBUTE,"float"),t.vertex.uniforms.add(new a.Float3PassUniform("cameraPosition",((e,t)=>t.camera.eye))),t.vertex.uniforms.add(new a.Float3PassUniform("offset",((e,t)=>v(e,t)))),t.vertex.uniforms.add(new r.FloatPassUniform("width",(e=>e.width))),t.vertex.uniforms.add(new s.Matrix4PassUniform("proj",((e,t)=>t.camera.projectionMatrix))),t.vertex.uniforms.add(new s.Matrix4PassUniform("view",((e,t)=>t.camera.viewMatrix))),t.vertex.uniforms.add(new r.FloatPassUniform("time",(e=>e.time))),t.varyings.add("vUv","vec2"),t.vertex.code.add(n.glsl`
     vec3 hash31(float p){
       vec3 p3 = fract(vec3(p) * vec3(0.1031, 0.1030, 0.0973));
       p3 += dot(p3, p3.yzx + 33.33);
@@ -48,7 +48,7 @@ import{PrecipitationType as e}from"../views/3d/environment/PrecipitationTechniqu
 
       // Rain particles fall straight down and are randomly oriented
       // Snow particles have random sinusoid trajectories and are rotated to face the camera
-      ${d.type===e.Rain?i`
+      ${e.type===i.PrecipitationType.Rain?n.glsl`
             // Random rotation for particle
             vec3 rotationAxis = up;
             vec4 quat = vec4(rotationAxis * sin(angle), cos(angle));
@@ -62,7 +62,7 @@ import{PrecipitationType as e}from"../views/3d/environment/PrecipitationTechniqu
 
             vec4 pos = mat4(mat3(view)) * vec4(transformedPos + (mod(width * animatedPos - offset, width) - 0.5 * width), 1.0);
             gl_Position = proj * pos;
-      `:i`
+      `:n.glsl`
             vec3 rotationAxis = direction;
             vec4 quat = vec4(rotationAxis * sin(angle), cos(angle));
 
@@ -73,7 +73,7 @@ import{PrecipitationType as e}from"../views/3d/environment/PrecipitationTechniqu
             gl_Position = proj * (0.5 * vec4(position.xzy, 0.0) + pos);
       `}
     }
-  `),c.fragment.uniforms.add(new o("opacity")),c.fragment.uniforms.add(new t("particleColor")),c.fragment.code.add(i`
+  `),t.fragment.uniforms.add([new r.FloatPassUniform("opacity",(e=>e.opacity)),new a.Float3PassUniform("particleColor",((t,o)=>f(o,e)))]),t.fragment.code.add(n.glsl`
     void main() {
 
       // Cut off corners of the triangle
@@ -83,7 +83,7 @@ import{PrecipitationType as e}from"../views/3d/environment/PrecipitationTechniqu
 
       float d = length(vUv - vec2(0.5));
 
-      ${d.type===e.Rain?i`d = 0.35 * smoothstep(0.5, 0.0, d);`:i`d = smoothstep(0.5, 0.1, d);`}
+      ${e.type===i.PrecipitationType.Rain?n.glsl`d = 0.35 * smoothstep(0.5, 0.0, d);`:n.glsl`d = smoothstep(0.5, 0.1, d);`}
       gl_FragColor = opacity * vec4(particleColor * d, d);
     }
-  `),c}const c=Object.freeze(Object.defineProperty({__proto__:null,build:d},Symbol.toStringTag,{value:"Module"}));export{c as P,d as b};
+  `),t}function v(e,o){const i=o.camera.eye,a=.5*e.width,r=1/e.width,n=t.floor(m,t.set(m,(i[0]+a)*r,(i[1]+a)*r,(i[2]+a)*r));return t.sub(n,i,t.scale(n,n,e.width))}function f(e,o){const a=o.type===i.PrecipitationType.Rain?g:p,r=t.scale(m,a,h),n=e.camera.eye;t.normalize(u,n);const s=Math.max(0,t.dot(u,e.lighting.mainLight.direction));return t.lerp(r,r,a,s)}const m=o.create(),u=o.create(),p=o.fromValues(1,1,1),g=o.fromValues(.85,.85,.85),h=.7,w=Object.freeze(Object.defineProperty({__proto__:null,build:l},Symbol.toStringTag,{value:"Module"}));e.Precipitation=w,e.build=l}));

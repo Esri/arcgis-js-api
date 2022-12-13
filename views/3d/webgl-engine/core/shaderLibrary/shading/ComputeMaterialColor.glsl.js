@@ -1,18 +1,18 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{VertexColor as o}from"../attributes/VertexColor.glsl.js";import{MixExternalColor as r}from"../util/MixExternalColor.glsl.js";import{Float4DrawUniform as e}from"../../shaderModules/Float4DrawUniform.js";import{FloatDrawUniform as a}from"../../shaderModules/FloatDrawUniform.js";import{glsl as t}from"../../shaderModules/interfaces.js";function l(l,s){l.include(o,s),l.fragment.include(r);const i=l.fragment;i.uniforms.add(new e("baseColor",(o=>o.baseColor))),i.uniforms.add(new a("objectOpacity",(o=>o.objectOpacity))),s.hasVertexColors?i.code.add(t`vec3 _baseColor() {
+define(["exports","../attributes/VertexColor.glsl","../util/MixExternalColor.glsl","../../shaderModules/Float4DrawUniform","../../shaderModules/FloatDrawUniform","../../shaderModules/interfaces"],(function(o,e,r,a,l,t){"use strict";function i(o,i){o.include(e.VertexColor,i),o.fragment.include(r.MixExternalColor);const s=o.fragment;s.uniforms.add(new a.Float4DrawUniform("baseColor",(o=>o.baseColor))),s.uniforms.add(new l.FloatDrawUniform("objectOpacity",(o=>o.objectOpacity))),i.hasVertexColors?s.code.add(t.glsl`vec3 _baseColor() {
 return baseColor.rgb * vColor.rgb;
 }
 float _baseOpacity() {
 return baseColor.a * vColor.a;
-}`):i.code.add(t`vec3 _baseColor() {
+}`):s.code.add(t.glsl`vec3 _baseColor() {
 return baseColor.rgb;
 }
 float _baseOpacity() {
 return baseColor.a;
-}`),i.code.add(t`vec4 computeMaterialColor(vec4 textureColor, vec4 externalColor, int externalColorMixMode) {
+}`),s.code.add(t.glsl`vec4 computeMaterialColor(vec4 textureColor, vec4 externalColor, int externalColorMixMode) {
 vec3 baseColor = _baseColor();
 float baseOpacity = _baseOpacity();
 vec3 color = mixExternalColor(
@@ -28,4 +28,4 @@ externalColor.a,
 externalColorMixMode
 );
 return vec4(color, opacity);
-}`)}export{l as ComputeMaterialColor};
+}`)}o.ComputeMaterialColor=i,Object.defineProperties(o,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

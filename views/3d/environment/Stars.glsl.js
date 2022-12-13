@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import"../../../chunks/mat4.js";import"../../../chunks/mat4f64.js";import"../webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl.js";import"../webgl-engine/core/shaderModules/Float4PassUniform.js";import"../webgl-engine/core/shaderModules/FloatPassUniform.js";import"../webgl-engine/core/shaderModules/interfaces.js";import"../webgl-engine/core/shaderModules/Matrix4PassUniform.js";import"../webgl-engine/core/shaderModules/ShaderBuilder.js";import"../webgl-engine/lib/VertexAttribute.js";export{b as build}from"../../../chunks/Stars.glsl.js";
+define(["exports","../../../chunks/mat4","../../../chunks/mat4f64","../webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl","../webgl-engine/core/shaderModules/Float4PassUniform","../webgl-engine/core/shaderModules/FloatPassUniform","../webgl-engine/core/shaderModules/interfaces","../webgl-engine/core/shaderModules/Matrix4PassUniform","../webgl-engine/core/shaderModules/ShaderBuilder","../webgl-engine/lib/VertexAttribute","../../../chunks/Stars.glsl"],(function(e,l,r,s,n,i,o,a,d,g,t){"use strict";e.build=t.build,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

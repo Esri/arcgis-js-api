@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import"../../geometry.js";import e from"../../request.js";import{getJsonType as t,fromJSON as r}from"../../geometry/support/jsonUtils.js";import{parseUrl as s}from"../utils.js";async function o(o,i,n,m){const a=s(o),p=i[0].spatialReference,u={...m,query:{...a.query,f:"json",sr:JSON.stringify(p),target:JSON.stringify({geometryType:t(i[0]),geometries:i}),cutter:JSON.stringify(n)}},c=await e(a.path+"/cut",u),{cutIndexes:f,geometries:g=[]}=c.data;return{cutIndexes:f,geometries:g.map((e=>{const t=r(e);return t.spatialReference=p,t}))}}export{o as cut};
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../geometry","../../request","../../geometry/support/jsonUtils","../utils"],(function(e,t,r,n,s,i){"use strict";function o(e,t,r,n){return u.apply(this,arguments)}function u(){return u=t._asyncToGenerator((function*(e,t,r,o){const u=i.parseUrl(e),a=t[0].spatialReference,l={...o,query:{...u.query,f:"json",sr:JSON.stringify(a),target:JSON.stringify({geometryType:s.getJsonType(t[0]),geometries:t}),cutter:JSON.stringify(r)}},c=yield n(u.path+"/cut",l),{cutIndexes:p,geometries:y=[]}=c.data;return{cutIndexes:p,geometries:y.map((e=>{const t=s.fromJSON(e);return t.spatialReference=a,t}))}})),u.apply(this,arguments)}e.cut=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

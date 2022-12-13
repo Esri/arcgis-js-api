@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{Geometry as t}from"./Geometry.js";class e extends t{constructor(t,e,r,i,n,s){super(t,e),this.path=r,this.geometrySR=i,this.upVectorAlignment=n,this.stencilWidth=s}}function r(t){return"upVectorAlignment"in t}export{e as PathGeometry,r as isPathGeometry};
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","./basicInterfaces","./Geometry"],(function(e,t,i,n){"use strict";let r=function(e){function n(t,n,r,o,l,u,s){var c;return(c=e.call(this,t,n,i.PrimitiveType.Triangle,s)||this).path=r,c.geometrySR=o,c.upVectorAlignment=l,c.stencilWidth=u,c}return t._inheritsLoose(n,e),n}(n.Geometry);function o(e){return"upVectorAlignment"in e}e.PathGeometry=r,e.isPathGeometry=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

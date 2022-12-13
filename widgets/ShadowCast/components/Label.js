@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{LABEL as s}from"../css.js";import{classes as t}from"../../support/widgetUtils.js";import{tsx as r}from"../../support/jsxFactory.js";function o(o,e){const{for:a,label:c,tabIndex:i,...l}=o;return r("div",{class:t(s,l?.class),key:a,...l},r("calcite-label",{for:a,scale:"s",tabIndex:i,"disable-spacing":"true"},c),e)}export{o as Label};
+define(["exports","../css","../../support/widgetUtils","../../support/jsxFactory"],(function(e,s,t,l){"use strict";function a(e,a){const{for:c,label:o,tabIndex:i,...r}=e;return l.tsx("div",{class:t.classes(s.LABEL,r?.class),key:c,...r},l.tsx("calcite-label",{for:c,scale:"s",tabIndex:i,"disable-spacing":"true"},o),a)}e.Label=a,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

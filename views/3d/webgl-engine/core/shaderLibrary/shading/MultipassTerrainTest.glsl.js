@@ -1,12 +1,12 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{ReadLinearDepth as e}from"../output/ReadLinearDepth.glsl.js";import{Float2PassUniform as r}from"../../shaderModules/Float2PassUniform.js";import{glsl as t}from"../../shaderModules/interfaces.js";import{Texture2DPassUniform as a}from"../../shaderModules/Texture2DPassUniform.js";function n(n,o){o.hasMultipassTerrain&&(n.fragment.include(e),n.fragment.uniforms.add(new a("terrainDepthTexture",((e,r)=>r.multipassTerrain.linearDepthTexture))),n.fragment.uniforms.add(new r("nearFar",((e,r)=>r.camera.nearFar))),n.fragment.uniforms.add(new r("inverseViewport",((e,r)=>r.inverseViewport))),n.fragment.code.add(t`
+define(["exports","../output/ReadLinearDepth.glsl","../../shaderModules/Float2PassUniform","../../shaderModules/interfaces","../../shaderModules/Texture2DPassUniform"],(function(e,r,a,t,n){"use strict";function i(e,i){i.hasMultipassTerrain&&(e.fragment.include(r.ReadLinearDepth),e.fragment.uniforms.add(new n.Texture2DPassUniform("terrainDepthTexture",((e,r)=>r.multipassTerrain.linearDepthTexture))),e.fragment.uniforms.add(new a.Float2PassUniform("nearFar",((e,r)=>r.camera.nearFar))),e.fragment.uniforms.add(new a.Float2PassUniform("inverseViewport",((e,r)=>r.inverseViewport))),e.fragment.code.add(t.glsl`
     void terrainDepthTest(vec4 fragCoord, float fragmentDepth){
       float terrainDepth = linearDepthFromTexture(terrainDepthTexture, fragCoord.xy * inverseViewport, nearFar);
-      if(fragmentDepth ${o.cullAboveGround?">":"<="} terrainDepth){
+      if(fragmentDepth ${i.cullAboveGround?">":"<="} terrainDepth){
         discard;
       }
     }
-  `))}class o{constructor(){this.enabled=!1,this.cullAboveGround=!1}}export{o as MultipassTerrainUniforms,n as multipassTerrainTest};
+  `))}let s=function(){this.enabled=!1,this.cullAboveGround=!1};e.MultipassTerrainUniforms=s,e.multipassTerrainTest=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

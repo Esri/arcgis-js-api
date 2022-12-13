@@ -1,21 +1,21 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{ColorMixModeEnum as e}from"../../../../layers/support/symbolColorUtils.js";import{ColorConversion as t}from"./ColorConversion.glsl.js";import{glsl as r}from"../../shaderModules/interfaces.js";function i(i){i.include(t),i.code.add(r`
+define(["exports","../../../../layers/support/symbolColorUtils","./ColorConversion.glsl","../../shaderModules/interfaces"],(function(e,t,i,r){"use strict";function o(e){e.include(i.ColorConversion),e.code.add(r.glsl`
     vec3 mixExternalColor(vec3 internalColor, vec3 textureColor, vec3 externalColor, int mode) {
       // workaround for artifacts in OSX using Intel Iris Pro
       // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/10475
       vec3 internalMixed = internalColor * textureColor;
       vec3 allMixed = internalMixed * externalColor;
 
-      if (mode == ${r.int(e.Multiply)}) {
+      if (mode == ${r.glsl.int(t.ColorMixModeEnum.Multiply)}) {
         return allMixed;
       }
-      if (mode == ${r.int(e.Ignore)}) {
+      if (mode == ${r.glsl.int(t.ColorMixModeEnum.Ignore)}) {
         return internalMixed;
       }
-      if (mode == ${r.int(e.Replace)}) {
+      if (mode == ${r.glsl.int(t.ColorMixModeEnum.Replace)}) {
         return externalColor;
       }
 
@@ -32,14 +32,14 @@ import{ColorMixModeEnum as e}from"../../../../layers/support/symbolColorUtils.js
       float internalMixed = internalOpacity * textureOpacity;
       float allMixed = internalMixed * externalOpacity;
 
-      if (mode == ${r.int(e.Ignore)}) {
+      if (mode == ${r.glsl.int(t.ColorMixModeEnum.Ignore)}) {
         return internalMixed;
       }
-      if (mode == ${r.int(e.Replace)}) {
+      if (mode == ${r.glsl.int(t.ColorMixModeEnum.Replace)}) {
         return externalOpacity;
       }
 
       // multiply or tint (or something invalid)
       return allMixed;
     }
-  `)}export{i as MixExternalColor};
+  `)}e.MixExternalColor=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

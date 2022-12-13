@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{isSome as e}from"../core/maybe.js";import{a as i}from"./vec2.js";import{a as o}from"./vec2f64.js";import{Z as r}from"./vec4f64.js";import{SliceDraw as t}from"../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl.js";import{AlignPixel as a}from"../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl.js";import{HUD as l}from"../views/3d/webgl-engine/core/shaderLibrary/hud/HUD.glsl.js";import{multipassGeometryTest as n}from"../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassGeometryTest.glsl.js";import{addScreenSizePerspectiveAlignment as s}from"../views/3d/webgl-engine/core/shaderLibrary/util/ScreenSizePerspective.glsl.js";import{Float2PassUniform as d}from"../views/3d/webgl-engine/core/shaderModules/Float2PassUniform.js";import{Float4PassUniform as c}from"../views/3d/webgl-engine/core/shaderModules/Float4PassUniform.js";import{FloatPassUniform as f}from"../views/3d/webgl-engine/core/shaderModules/FloatPassUniform.js";import{glsl as p}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{ShaderBuilder as g}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{VertexAttribute as h}from"../views/3d/webgl-engine/lib/VertexAttribute.js";function S(o){const r=new g;r.include(a),r.include(l,o),r.include(t,o),r.attributes.add(h.UV0,"vec2");const{vertex:S,fragment:u}=r;return S.uniforms.add([new c("viewport",((e,i)=>i.camera.fullViewport)),new f("lineSize",((e,i)=>Math.ceil(e.size)*i.camera.pixelRatio)),new d("pixelToNDC",((e,o)=>i(m,2/o.camera.fullViewport[2],2/o.camera.fullViewport[3]))),new f("borderSize",((i,o)=>e(i.borderColor)?o.camera.pixelRatio:0)),new d("screenOffset",((e,o)=>i(m,e.screenOffset[0]*o.camera.pixelRatio,e.screenOffset[1]*o.camera.pixelRatio)))]),r.varyings.add("coverageSampling","vec4"),r.varyings.add("lineSizes","vec2"),o.hasMultipassGeometry&&r.varyings.add("depth","float"),o.hasScreenSizePerspective&&s(S),S.code.add(p`
+define(["exports","../core/maybe","./vec2","./vec2f64","./vec4f64","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/HUD.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassGeometryTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/ScreenSizePerspective.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,i,o,r,l,t,a,n,s,d,c,f,p,g,S,h){"use strict";function v(e){const r=new S.ShaderBuilder;r.include(a.AlignPixel),r.include(n.HUD,e),r.include(t.SliceDraw,e),r.attributes.add(h.VertexAttribute.UV0,"vec2");const{vertex:l,fragment:v}=r;return l.uniforms.add([new f.Float4PassUniform("viewport",((e,i)=>i.camera.fullViewport)),new p.FloatPassUniform("lineSize",((e,i)=>Math.ceil(e.size)*i.camera.pixelRatio)),new c.Float2PassUniform("pixelToNDC",((e,i)=>o.set(b,2/i.camera.fullViewport[2],2/i.camera.fullViewport[3]))),new p.FloatPassUniform("borderSize",((e,o)=>i.isSome(e.borderColor)?o.camera.pixelRatio:0)),new c.Float2PassUniform("screenOffset",((e,i)=>o.set(b,e.screenOffset[0]*i.camera.pixelRatio,e.screenOffset[1]*i.camera.pixelRatio)))]),r.varyings.add("coverageSampling","vec4"),r.varyings.add("lineSizes","vec2"),e.hasMultipassGeometry&&r.varyings.add("depth","float"),e.hasScreenSizePerspective&&d.addScreenSizePerspectiveAlignment(l),l.code.add(g.glsl`
     void main(void) {
       ProjectHUDAux projectAux;
       vec4 endPoint = projectPositionHUD(projectAux);
@@ -12,22 +12,22 @@ import{isSome as e}from"../core/maybe.js";import{a as i}from"./vec2.js";import{a
         gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
         return;
       }
-    ${o.occlusionTestEnabled?p`
+    ${e.occlusionTestEnabled?g.glsl`
       if (!testVisibilityHUD(endPoint)) {
         gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
         return;
       }`:""}
 
-    ${o.hasScreenSizePerspective?p`
+    ${e.hasScreenSizePerspective?g.glsl`
       vec4 perspectiveFactor = screenSizePerspectiveScaleFactor(projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspectiveAlignment);
       vec2 screenOffsetScaled = applyScreenSizePerspectiveScaleFactorVec2(screenOffset, perspectiveFactor);
-        `:p`
+        `:g.glsl`
       vec2 screenOffsetScaled = screenOffset;
         `}
       // Add view dependent polygon offset to get exact same original starting point. This is mostly
       // used to get the correct depth value
       vec3 posView = (view * vec4(position, 1.0)).xyz;
-      ${o.hasMultipassGeometry?"depth = posView.z;":""}
+      ${e.hasMultipassGeometry?"depth = posView.z;":""}
 
       applyHUDViewDependentPolygonOffset(auxpos1.w, projectAux.absCosAngle, posView);
       vec4 startPoint = proj * vec4(posView, 1.0);
@@ -38,15 +38,15 @@ import{isSome as e}from"../core/maybe.js";import{a as i}from"./vec2.js";import{a
       // Align start and end to pixel origin
       vec4 startAligned = alignToPixelOrigin(startPoint, viewport.zw);
       vec4 endAligned = alignToPixelOrigin(endPoint, viewport.zw);
-    ${o.depthHudEnabled?o.depthHudAlignStartEnabled?p`endAligned = vec4(endAligned.xy / endAligned.w * startAligned.w, startAligned.zw);`:p`startAligned = vec4(startAligned.xy / startAligned.w * endAligned.w, endAligned.zw);`:""}
+    ${e.depthHudEnabled?e.depthHudAlignStartEnabled?g.glsl`endAligned = vec4(endAligned.xy / endAligned.w * startAligned.w, startAligned.zw);`:g.glsl`startAligned = vec4(startAligned.xy / startAligned.w * endAligned.w, endAligned.zw);`:""}
       vec4 projectedPosition = mix(startAligned, endAligned, uv0.y);
       // The direction of the line in screen space
       vec2 screenSpaceDirection = normalize(endAligned.xy / endAligned.w - startAligned.xy / startAligned.w);
       vec2 perpendicularScreenSpaceDirection = vec2(screenSpaceDirection.y, -screenSpaceDirection.x);
-    ${o.hasScreenSizePerspective?p`
+    ${e.hasScreenSizePerspective?g.glsl`
       float lineSizeScaled = applyScreenSizePerspectiveScaleFactorFloat(lineSize, perspectiveFactor);
       float borderSizeScaled = applyScreenSizePerspectiveScaleFactorFloat(borderSize, perspectiveFactor);
-        `:p`
+        `:g.glsl`
       float lineSizeScaled = lineSize;
       float borderSizeScaled = borderSize;
         `}
@@ -101,9 +101,9 @@ import{isSome as e}from"../core/maybe.js";import{a as i}from"./vec2.js";import{a
 
       gl_Position = projectedPosition;
     }
-  `),u.uniforms.add([new c("uColor",(e=>v(e.color))),new c("borderColor",(e=>v(e.borderColor)))]),o.hasMultipassGeometry&&(u.include(n,o),u.uniforms.add(new d("inverseViewport",((e,i)=>i.inverseViewport)))),u.code.add(p`
+  `),v.uniforms.add([new f.Float4PassUniform("uColor",(e=>u(e.color))),new f.Float4PassUniform("borderColor",(e=>u(e.borderColor)))]),e.hasMultipassGeometry&&(v.include(s.multipassGeometryTest,e),v.uniforms.add(new c.Float2PassUniform("inverseViewport",((e,i)=>i.inverseViewport)))),v.code.add(g.glsl`
     void main() {
-      ${o.hasMultipassGeometry?"if( geometryDepthTest(gl_FragCoord.xy * inverseViewport, depth) ){ discard; }":""}
+      ${e.hasMultipassGeometry?"if( geometryDepthTest(gl_FragCoord.xy * inverseViewport, depth) ){ discard; }":""}
 
       // Mix between line and border coverage offsets depending on whether we need
       // a border (based on the sidedness).
@@ -119,13 +119,13 @@ import{isSome as e}from"../core/maybe.js";import{a as i}from"./vec2.js";import{a
 
       float finalAlpha = mix(borderAlpha, 1.0, colorAlpha);
 
-    ${o.depthHudEnabled?p`
+    ${e.depthHudEnabled?g.glsl`
       if (finalAlpha < 0.01) {
         discard;
       }
-      `:p`
+      `:g.glsl`
       vec3 finalRgb = mix(borderColor.rgb * borderAlpha, uColor.rgb, colorAlpha);
       gl_FragColor = vec4(finalRgb, finalAlpha);
       `}
   }
-  `),r}function v(i){return e(i)?i:r}const m=o(),u=Object.freeze(Object.defineProperty({__proto__:null,build:S},Symbol.toStringTag,{value:"Module"}));export{u as L,S as b};
+  `),r}function u(e){return i.isSome(e)?e:l.ZEROS}const b=r.create(),w=Object.freeze(Object.defineProperty({__proto__:null,build:v},Symbol.toStringTag,{value:"Module"}));e.LineCallout=w,e.build=v}));

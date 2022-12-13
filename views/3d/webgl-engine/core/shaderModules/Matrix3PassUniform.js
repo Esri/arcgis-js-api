@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{Uniform as r}from"./Uniform.js";import{BindType as s}from"../shaderTechnique/BindType.js";class e extends r{constructor(r,e){super(r,"mat3",s.Pass,((s,o,t)=>s.setUniformMatrix3fv(r,e(o,t))))}}export{e as Matrix3PassUniform};
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","./Uniform","../shaderTechnique/BindType"],(function(e,i,n,t){"use strict";let r=function(e){function n(i,n){return e.call(this,i,"mat3",t.BindType.Pass,((e,t,r)=>e.setUniformMatrix3fv(i,n(t,r))))||this}return i._inheritsLoose(n,e),n}(n.Uniform);e.Matrix3PassUniform=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

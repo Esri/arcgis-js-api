@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-export{v as vec3}from"../../../chunks/vec32.js";export{v as vec4}from"../../../chunks/vec42.js";
+define(["exports","../../../chunks/vec32","../../../chunks/vec42"],(function(e,c,t){"use strict";e.vec3=c.vec3,e.vec4=t.vec4,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

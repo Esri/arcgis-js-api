@@ -1,35 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{ScreenSpacePass as e}from"../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass.js";import{ReadLinearDepth as r}from"../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl.js";import{CameraSpace as o,getZScale as t}from"../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl.js";import{Float2PassUniform as a}from"../views/3d/webgl-engine/core/shaderModules/Float2PassUniform.js";import{Float2Uniform as n}from"../views/3d/webgl-engine/core/shaderModules/Float2Uniform.js";import{FloatUniform as i}from"../views/3d/webgl-engine/core/shaderModules/FloatUniform.js";import{glsl as s}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{ShaderBuilder as l}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{Texture2DUniform as c}from"../views/3d/webgl-engine/core/shaderModules/Texture2DUniform.js";import{SSAOOutput as d}from"../views/3d/webgl-engine/lib/SSAOTechniqueConfiguration.js";const f={samples:16,filterRadius:4};function u(u){const p=new l,m=p.fragment;if(p.include(e),u.output===d.Blur){const e=(f.filterRadius+1)/2,o=1/(2*e*e);m.include(r),m.uniforms.add([new c("normalMap"),new c("depthMap"),new c("tex"),new n("blurSize"),new i("projScale"),new a("nearFar",((e,r)=>r.camera.nearFar))]),m.code.add(s`
-      void blurFunction(vec2 uv, float r, float center_d, float sharpness, inout float wTotal, inout float bTotal) {
-        float c = texture2D(tex, uv).r;
-        float d = linearDepthFromTexture(depthMap, uv, nearFar);
-
-        float ddiff = d - center_d;
-
-        float w = exp(-r * r * ${s.float(o)} - ddiff * ddiff * sharpness);
-        wTotal += w;
-        bTotal += w * c;
-      }
-    `),m.code.add(s`
-      void main(void) {
-        float b = 0.0;
-        float w_total = 0.0;
-
-        float center_d = linearDepthFromTexture(depthMap, uv, nearFar);
-
-        float sharpness = -0.05 * projScale/center_d;
-        for (int r = -${s.int(f.filterRadius)}; r <= ${s.int(f.filterRadius)}; ++r) {
-          float rf = float(r);
-          vec2 uvOffset = uv + rf * blurSize;
-          blurFunction(uvOffset, rf, center_d, sharpness, w_total, b);
-        }
-
-        gl_FragColor = vec4(b / w_total);
-      }
-    `)}return u.output===d.SSAO&&(m.include(r),p.include(o),m.uniforms.add(new c("normalMap")),m.uniforms.add(new c("depthMap")),m.uniforms.add(new c("rnm")),m.uniforms.add(new i("intensity")),m.uniforms.add(new i("projScale")),m.uniforms.add(new i("radius")),m.uniforms.add(new a("nearFar",((e,r)=>r.camera.nearFar))),m.uniforms.add(new n("screenSize")),m.uniforms.add(new n("rnmScale")),m.code.add(s`vec3 sphere[16];
+define(["exports","../core/maybe","./vec2","./vec2f64","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform"],(function(e,r,a,t,n,o,s,i,c,l,u,d){"use strict";const f=16,v=.5;function p(){const e=new u.ShaderBuilder,t=e.fragment;return e.include(n.ScreenSpacePass),t.include(o.ReadLinearDepth),e.include(s.CameraSpace),t.uniforms.add(new c.FloatPassUniform("radius",((e,r)=>m(r)))),t.code.add(l.glsl`vec3 sphere[16];
 void fillSphere() {
 sphere[0] = vec3(0.186937, 0.0, 0.0);
 sphere[1] = vec3(0.700542, 0.0, 0.0);
@@ -51,65 +24,65 @@ sphere[15] = vec3(0.417709, -0.386701, 0.442449);
 float fallOffFunction(float vv, float vn, float bias) {
 float f = max(radius * radius - vv, 0.0);
 return f * f * f * max(vn-bias, 0.0);
-}`),m.code.add(s`float aoValueFromPositionsAndNormal(vec3 C, vec3 n_C, vec3 Q) {
+}`),t.code.add(l.glsl`float aoValueFromPositionsAndNormal(vec3 C, vec3 n_C, vec3 Q) {
 vec3 v = Q - C;
 float vv = dot(v, v);
 float vn = dot(normalize(v), n_C);
 return fallOffFunction(vv, vn, 0.1);
-}`),p.fragment.uniforms.add(new a("zScale",((e,r)=>t(r)))),m.code.add(s`
-      void main(void) {
-        fillSphere();
-        vec3 fres = normalize((texture2D(rnm, uv * rnmScale).xyz * 2.0) - vec3(1.0));
-        float currentPixelDepth = linearDepthFromTexture(depthMap, uv, nearFar);
+}`),t.uniforms.add([new i.Float2PassUniform("nearFar",((e,r)=>r.camera.nearFar)),new d.Texture2DPassUniform("normalMap",(e=>e.normalTexture)),new d.Texture2DPassUniform("depthMap",(e=>e.depthTexture)),new i.Float2PassUniform("zScale",((e,r)=>s.getZScale(r))),new c.FloatPassUniform("projScale",(e=>e.projScale)),new d.Texture2DPassUniform("rnm",(e=>e.noiseTexture)),new i.Float2PassUniform("rnmScale",((e,t)=>a.set(h,t.camera.fullWidth/r.unwrap(e.noiseTexture).descriptor.width,t.camera.fullHeight/r.unwrap(e.noiseTexture).descriptor.height))),new c.FloatPassUniform("intensity",((e,r)=>4*v/m(r)**6)),new i.Float2PassUniform("screenSize",((e,r)=>a.set(h,r.camera.fullWidth,r.camera.fullHeight)))]),t.code.add(l.glsl`
+    void main(void) {
+      fillSphere();
+      vec3 fres = normalize((texture2D(rnm, uv * rnmScale).xyz * 2.0) - vec3(1.0));
+      float currentPixelDepth = linearDepthFromTexture(depthMap, uv, nearFar);
 
-        if (-currentPixelDepth>nearFar.y || -currentPixelDepth<nearFar.x) {
-          gl_FragColor = vec4(0.0);
-          return;
-        }
-
-        vec3 currentPixelPos = reconstructPosition(gl_FragCoord.xy,currentPixelDepth);
-
-        // get the normal of current fragment
-        vec4 norm4 = texture2D(normalMap, uv);
-        vec3 norm = vec3(-1.0) + 2.0 * norm4.xyz;
-        bool isTerrain = norm4.w<0.5;
-
-        float sum = .0;
-        vec3 tapPixelPos;
-
-        // note: the factor 2.0 should not be necessary, but makes ssao much nicer.
-        // bug or deviation from CE somewhere else?
-        float ps = projScale/(2.0 * currentPixelPos.z * zScale.x + zScale.y);
-
-        for(int i = 0; i < ${s.int(f.samples)}; ++i) {
-          vec2 unitOffset = reflect(sphere[i], fres).xy;
-          vec2 offset = vec2(-unitOffset * radius * ps);
-
-          //don't use current or very nearby samples
-          if ( abs(offset.x)<2.0 || abs(offset.y)<2.0) continue;
-
-          vec2 tc = vec2(gl_FragCoord.xy + offset);
-          if (tc.x < 0.0 || tc.y < 0.0 || tc.x > screenSize.x || tc.y > screenSize.y) continue;
-          vec2 tcTap = tc / screenSize;
-          float occluderFragmentDepth = linearDepthFromTexture(depthMap, tcTap, nearFar);
-
-          if (isTerrain) {
-            bool isTerrainTap = texture2D(normalMap, tcTap).w<0.5;
-            if (isTerrainTap) {
-              continue;
-            }
-          }
-
-          tapPixelPos = reconstructPosition(tc, occluderFragmentDepth);
-
-          sum+= aoValueFromPositionsAndNormal(currentPixelPos, norm, tapPixelPos);
-        }
-
-        // output the result
-        float A = max(1.0-sum*intensity/float(${s.int(f.samples)}),0.0);
-
-        // Anti-tone map to reduce contrast and drag dark region farther: (x^0.2 + 1.2 * x^4)/2.2
-        A = (pow(A, 0.2) + 1.2 * A*A*A*A) / 2.2;
-        gl_FragColor = vec4(A);
+      if (-currentPixelDepth>nearFar.y || -currentPixelDepth<nearFar.x) {
+        gl_FragColor = vec4(0.0);
+        return;
       }
-    `)),p}const p=Object.freeze(Object.defineProperty({__proto__:null,build:u},Symbol.toStringTag,{value:"Module"}));export{p as S,u as b};
+
+      vec3 currentPixelPos = reconstructPosition(gl_FragCoord.xy,currentPixelDepth);
+
+      // get the normal of current fragment
+      vec4 norm4 = texture2D(normalMap, uv);
+      vec3 norm = vec3(-1.0) + 2.0 * norm4.xyz;
+      bool isTerrain = norm4.w<0.5;
+
+      float sum = .0;
+      vec3 tapPixelPos;
+
+      // note: the factor 2.0 should not be necessary, but makes ssao much nicer.
+      // bug or deviation from CE somewhere else?
+      float ps = projScale / (2.0 * currentPixelPos.z * zScale.x + zScale.y);
+
+      for(int i = 0; i < ${l.glsl.int(f)}; ++i) {
+        vec2 unitOffset = reflect(sphere[i], fres).xy;
+        vec2 offset = vec2(-unitOffset * radius * ps);
+
+        //don't use current or very nearby samples
+        if ( abs(offset.x)<2.0 || abs(offset.y)<2.0) continue;
+
+        vec2 tc = vec2(gl_FragCoord.xy + offset);
+        if (tc.x < 0.0 || tc.y < 0.0 || tc.x > screenSize.x || tc.y > screenSize.y) continue;
+        vec2 tcTap = tc / screenSize;
+        float occluderFragmentDepth = linearDepthFromTexture(depthMap, tcTap, nearFar);
+
+        if (isTerrain) {
+          bool isTerrainTap = texture2D(normalMap, tcTap).w<0.5;
+          if (isTerrainTap) {
+            continue;
+          }
+        }
+
+        tapPixelPos = reconstructPosition(tc, occluderFragmentDepth);
+
+        sum+= aoValueFromPositionsAndNormal(currentPixelPos, norm, tapPixelPos);
+      }
+
+      // output the result
+      float A = max(1.0 - sum * intensity / float(${l.glsl.int(f)}),0.0);
+
+      // Anti-tone map to reduce contrast and drag dark region farther: (x^0.2 + 1.2 * x^4)/2.2
+      A = (pow(A, 0.2) + 1.2 * A*A*A*A) / 2.2;
+      gl_FragColor = vec4(A);
+    }
+  `),e}function m(e){return Math.max(10,20*e.camera.computeRenderPixelSizeAtDist(Math.abs(4*e.camera.relativeElevation)))}const h=t.create(),g=Object.freeze(Object.defineProperty({__proto__:null,build:p},Symbol.toStringTag,{value:"Module"}));e.SSAO=g,e.build=p}));

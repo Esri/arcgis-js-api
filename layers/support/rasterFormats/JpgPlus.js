@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{J as t}from"../../../chunks/Jpg.js";import{Z as e}from"../../../chunks/Zlib.js";class n{static decode(n,r=!1){const s=new Uint8Array(n),o=new t;o.parse(s);const{width:a,height:i,numComponents:l,eof:h}=o,c=o.getData(a,i,!0);let f;const g=a*i;let p=0,u=0,m=0;if(!r&&h<s.length-1)try{const t=new e(s.subarray(h)).getBytes();f=new Uint8Array(g);let n=0;for(p=0;p<t.length;p++)for(m=7;m>=0;m--)f[n++]=t[p]>>m&1}catch{}let w,y=null;if(1===l&&c.length===a*i)y=[c,c,c];else{for(y=[],p=0;p<3;p++)w=new Uint8Array(g),y.push(w);for(m=0,u=0;u<g;u++)for(p=0;p<3;p++)y[p][u]=c[m++]}return{width:a,height:i,pixels:y,mask:f}}}export{n as default};
+define(["../../../chunks/Jpg","../../../chunks/Zlib"],(function(n,e){"use strict";return function(){function t(){}return t.decode=function(t,r=!1){const i=new Uint8Array(t),o=new n.JpegImage;o.parse(i);const{width:s,height:u,numComponents:c,eof:f}=o,h=o.getData(s,u,!0),a=s*u;let l,g=null,w=0,p=0,y=0;if(!r&&f<i.length-1)try{const n=new e.Zlib(i.subarray(f)).getBytes();g=new Uint8Array(a);let t=0;for(w=0;w<n.length;w++)for(y=7;y>=0;y--)g[t++]=n[w]>>y&1}catch{}if(1===c&&h.length===s*u)l=[h,h,h];else{for(l=[],w=0;w<3;w++)l.push(new Uint8Array(a));for(y=0,p=0;p<a;p++)for(w=0;w<3;w++)l[w][p]=h[y++]}return{width:s,height:u,pixels:l,mask:g}},t}()}));

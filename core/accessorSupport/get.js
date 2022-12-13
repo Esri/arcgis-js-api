@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{pathToArray as t,getProperties as n,isPropertyDeclared as r}from"./utils.js";function e(t,e){const i="?"===t[t.length-1]?t.slice(0,-1):t;if(null!=e.getItemAt||Array.isArray(e)){const t=parseInt(i,10);if(!isNaN(t))return Array.isArray(e)?e[t]:e.getItemAt(t)}const u=n(e);return r(u,i)?u.get(i):e[i]}function i(t,n,r){if(null==t)return t;const u=e(n[r],t);return!u&&r<n.length-1?void 0:r===n.length-1?u:i(u,n,r+1)}function u(n,r,u=0){return"string"!=typeof r||r.includes(".")?i(n,t(r),u):e(r,n)}function o(t,n){return u(t,n)}function s(t,n){return void 0!==u(n,t)}export{s as exists,o as get,u as valueOf};
+define(["exports","./utils"],(function(t,e){"use strict";function r(t,r){const n="?"===t[t.length-1]?t.slice(0,-1):t;if(null!=r.getItemAt||Array.isArray(r)){const t=parseInt(n,10);if(!isNaN(t))return Array.isArray(r)?r[t]:r.getItemAt(t)}const i=e.getProperties(r);return e.isPropertyDeclared(i,n)?i.get(n):r[n]}function n(t,e,i){if(null==t)return t;const u=r(e[i],t);return!u&&i<e.length-1?void 0:i===e.length-1?u:n(u,e,i+1)}function i(t,i,u=0){return"string"!=typeof i||i.includes(".")?n(t,e.pathToArray(i),u):r(i,t)}function u(t,e){return i(t,e)}function o(t,e){return void 0!==i(e,t)}t.exists=o,t.get=u,t.valueOf=i,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{isNone as e}from"../../../core/maybe.js";import{getGeometryZScaler as o}from"../../../geometry/support/zscale.js";function r(r,t,f){if(!f||!f.features||!f.hasZ)return;const s=o(f.geometryType,t,r.outSpatialReference);if(!e(s))for(const e of f.features)s(e.geometry)}export{r as applyFeatureSetZUnitScaling};
+define(["exports","../../../core/maybe","../../../geometry/support/zscale"],(function(e,t,o){"use strict";function r(e,r,a){if(!a||!a.features||!a.hasZ)return;const n=o.getGeometryZScaler(a.geometryType,r,e.outSpatialReference);if(!t.isNone(n))for(const t of a.features)n(t.geometry)}e.applyFeatureSetZUnitScaling=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

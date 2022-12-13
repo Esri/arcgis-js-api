@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{remove as r}from"../../arrayUtils.js";class s{constructor(r,s){this._observers=r,this._observer=s}remove(){r(this._observers,this._observer)}}export{s as ObservationHandle};
+define(["exports","../../arrayUtils"],(function(e,r){"use strict";let t=function(){function e(e,r){this._observers=e,this._observer=r}return e.prototype.remove=function(){r.remove(this._observers,this._observer)},e}();e.ObservationHandle=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

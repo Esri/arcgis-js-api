@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{ColorMixModeEnum as o}from"../../../../../layers/support/symbolColorUtils.js";import{glsl as l}from"../../../../core/shaderModules/interfaces.js";function e(e){e.vertex.code.add(l`
+define(["exports","../../../../../layers/support/symbolColorUtils","../../../../core/shaderModules/interfaces"],(function(o,l,e){"use strict";function s(o){o.vertex.code.add(e.glsl`
     vec4 decodeSymbolColor(vec4 symbolColor, out int colorMixMode) {
       float symbolAlpha = 0.0;
 
@@ -11,19 +11,19 @@ import{ColorMixModeEnum as o}from"../../../../../layers/support/symbolColorUtils
       const float scaleAlpha = 3.0;
 
       if (symbolColor.a > maxReplace) {
-        colorMixMode = ${l.int(o.Multiply)};
+        colorMixMode = ${e.glsl.int(l.ColorMixModeEnum.Multiply)};
         symbolAlpha = scaleAlpha * (symbolColor.a - maxReplace);
       } else if (symbolColor.a > maxTint) {
-        colorMixMode = ${l.int(o.Replace)};
+        colorMixMode = ${e.glsl.int(l.ColorMixModeEnum.Replace)};
         symbolAlpha = scaleAlpha * (symbolColor.a - maxTint);
       } else if (symbolColor.a > 0.0) {
-        colorMixMode = ${l.int(o.Tint)};
+        colorMixMode = ${e.glsl.int(l.ColorMixModeEnum.Tint)};
         symbolAlpha = scaleAlpha * symbolColor.a;
       } else {
-        colorMixMode = ${l.int(o.Multiply)};
+        colorMixMode = ${e.glsl.int(l.ColorMixModeEnum.Multiply)};
         symbolAlpha = 0.0;
       }
 
       return vec4(symbolColor.r, symbolColor.g, symbolColor.b, symbolAlpha);
     }
-  `)}export{e as DecodeSymbolColor};
+  `)}o.DecodeSymbolColor=s,Object.defineProperties(o,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -38,11 +38,13 @@ $background-color--overlay: rgba(0, 0, 0, 0.7) !default;
 $opacity--disabled: 0.4 !default;
 $opacity--sortable: 0.75 !default;
 $interactive-font-color--disabled: rgba($interactive-font-color, $opacity--disabled) !default;
-$font-color--placeholder: rgba($font-color, $opacity--disabled) !default;
+$font-color--placeholder: $interactive-font-color !default;
 $border-color: rgba($interactive-font-color, 0.3) !default;
 $border-color--subtle: rgba($interactive-font-color, 0.15) !default;
 $border-color--contrast: rgba($interactive-font-color, 0.4) !default;
+$border-color--input: $Calcite_Gray_450;
 
+$updating: $Calcite_Highlight_Blue_350;
 $connection-connected: $Brand_Green_200;
 $connection-disconnected: $Brand_Orange_100;
 

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-var r;!function(r){r.Threshold="threshold",r.Duration="duration",r.Discrete="discrete"}(r||(r={}));const e=[r.Threshold,r.Duration,r.Discrete];export{e as SHADOW_VISUALIZATION_TYPES,r as ShadowVisualizationType};
+define(["exports"],(function(i){"use strict";var e;i.ShadowVisualizationType=void 0,(e=i.ShadowVisualizationType||(i.ShadowVisualizationType={})).Threshold="threshold",e.Duration="duration",e.Discrete="discrete";const o=[i.ShadowVisualizationType.Threshold,i.ShadowVisualizationType.Duration,i.ShadowVisualizationType.Discrete];i.SHADOW_VISUALIZATION_TYPES=o,Object.defineProperties(i,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

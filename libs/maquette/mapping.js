@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-let e=(e,l,t)=>{let r=[],n=[];return{results:n,map:g=>{let h=g.map(e),f=n.slice(),s=0;for(let e=0;e<g.length;e++){let a=g[e],i=h[e];if(i===r[s])n[e]=f[s],t(a,f[s],e),s++;else{let h=!1;for(let l=1;l<r.length+1;l++){let a=(s+l)%r.length;if(r[a]===i){n[e]=f[a],t(g[e],f[a],e),s=a+1,h=!0;break}}h||(n[e]=l(a,e))}}n.length=g.length,r=h}}};export{e as createMapping};
+define(["exports"],(function(e){"use strict";let t=(e,t,l)=>{let n=[],r=[];return{results:r,map:i=>{let o=i.map(e),s=r.slice(),a=0;for(let e=0;e<i.length;e++){let g=i[e],u=o[e];if(u===n[a])r[e]=s[a],l(g,s[a],e),a++;else{let o=!1;for(let t=1;t<n.length+1;t++){let g=(a+t)%n.length;if(n[g]===u){r[e]=s[g],l(i[e],s[g],e),a=g+1,o=!0;break}}o||(r[e]=t(g,e))}}r.length=i.length,n=o}}};e.createMapping=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

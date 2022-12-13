@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/quat","../../chunks/quatf64","../../chunks/vec3f64","../../chunks/common","../../chunks/vec3"],(function(e,t,n,a,o,r){"use strict";const c=a.create(),i=n.create(),u=n.create(),s=n.create(),l=new Float64Array([0,0,1]),m=new Float64Array([0,1,0]),f=new Float64Array([1,0,0]);function A(e){r.copy(c,e),r.normalize(c,c);const a=Math.atan2(c[1],c[0]),i=t.setAxisAngle(n.create(),l,-a);r.transformQuat(c,c,i);const u=-1*Math.atan2(c[2],c[0]);return[o.toDegree(a)+270,o.toDegree(u)+90]}function g(e,n){return t.setAxisAngle(u,l,o.toRadian(e-270)),t.setAxisAngle(s,m,o.toRadian(n-90)),t.multiply(i,u,s),r.copy(c,f),r.transformQuat(c,c,i),r.normalize(c,c),[c[0],c[1],c[2]]}e.computeNormalFromOrientationTilt=g,e.computeOrientationTiltFromNormal=A,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

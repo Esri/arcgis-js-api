@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{propertyJSONMeta as r}from"./property.js";function o(o,e,t){let a,c;return void 0===e||Array.isArray(e)?(c=o,t=e,a=[void 0]):(c=e,a=Array.isArray(o)?o:[o]),(o,e)=>{const d=o.constructor.prototype;a.forEach((a=>{const s=r(o,a,c);s.read&&"object"==typeof s.read||(s.read={}),s.read.reader=d[e],t&&(s.read.source=(s.read.source||[]).concat(t))}))}}export{o as reader};
+define(["exports","./property"],(function(r,e){"use strict";function o(r,o,t){let a,c;return void 0===o||Array.isArray(o)?(c=r,t=o,a=[void 0]):(c=o,a=Array.isArray(r)?r:[r]),(r,o)=>{const d=r.constructor.prototype;a.forEach((a=>{const n=e.propertyJSONMeta(r,a,c);n.read&&"object"==typeof n.read||(n.read={}),n.read.reader=d[o],t&&(n.read.source=(n.read.source||[]).concat(t))}))}}r.reader=o,Object.defineProperties(r,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

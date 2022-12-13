@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as r}from"../../chunks/tslib.es6.js";import s from"../../core/Accessor.js";import{property as o}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as e}from"../../core/accessorSupport/decorators/subclass.js";let t=class extends s{constructor(r){super(r)}};r([o()],t.prototype,"resultRowsStream",void 0),t=r([e("esri.rest.knowledgeGraph.GraphQueryResult")],t);const c=t;export{c as default};
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Accessor","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(r,e,s,o,t,c,u){"use strict";let p=function(e){function s(r){return e.call(this,r)||this}return r._inheritsLoose(s,e),s}(s);e.__decorate([o.property()],p.prototype,"resultRowsStream",void 0),p=e.__decorate([u.subclass("esri.rest.knowledgeGraph.GraphQueryResult")],p);return p}));

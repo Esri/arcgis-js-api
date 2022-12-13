@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+*/
+define(["exports","../chunks/_rollupPluginBabelHelpers","../request","../core/urlUtils","./utils","../symbols/CIMSymbol"],(function(e,n,t,o,a,s){"use strict";function l(e,n,t){return r.apply(this,arguments)}function r(){return(r=n._asyncToGenerator((function*(e,n,l){const r=a.parseUrl(e),i=n.svgImage,m=new FormData;if("FormData"in globalThis&&"HTMLFormElement"in globalThis)if(i instanceof FormData){const e=i.get("svgImage");m.append("svgImage",e,e.name)}else if(i instanceof HTMLFormElement){const e=new FormData(i).get("svgImage");m.append("svgImage",e,e.name)}if("string"==typeof i){const e=new Blob([i.trim()],{type:"image/svg+xml"});m.append("svgImage",e,"symbol.svg")}m.append("f","json");const g={...l,method:"post",body:m},p=o.join(r.path,"generateSymbol"),{data:u}=yield t(p,g);return{symbol:new s({data:{type:"CIMSymbolReference",symbol:u}})}}))).apply(this,arguments)}e.generateSymbol=l,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

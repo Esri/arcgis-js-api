@@ -232,7 +232,7 @@
 
   .esri-input {
     background-color: $background-color;
-    border: 1px solid $border-color;
+    border: 1px solid $border-color--input;
     color: $font-color;
     font-family: $font-family;
     font-size: $font-size;
@@ -255,6 +255,9 @@
     &::-webkit-input-placeholder {
       color: $font-color--placeholder;
     }
+  }
+  calcite-combobox.esri-input {
+    border: none;
   }
 
   .esri-button {
@@ -388,7 +391,7 @@
     width: 100%;
     height: $button-height;
     color: $font-color;
-    border: 1px solid $border-color;
+    border: 1px solid $border-color--input;
     margin: 0;
     -webkit-appearance: none;
     -moz-appearance: none;

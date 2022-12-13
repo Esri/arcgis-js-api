@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{assumeNonNull as t}from"../core/maybe.js";import{beforeLocaleChange as n,getLocale as r}from"./locale.js";const a={ar:"ar-u-nu-latn"};let e=new WeakMap,o={};function i(n){const i=n||o;if(!e.has(i)){const t=r(),o=a[r()]||t;e.set(i,new Intl.NumberFormat(o,n))}return t(e.get(i))}function u(t={}){const n={};return null!=t.digitSeparator&&(n.useGrouping=t.digitSeparator),null!=t.places&&(n.minimumFractionDigits=n.maximumFractionDigits=t.places),n}function m(t,n){return-0===t&&(t=0),i(n).format(t)}n((()=>{e=new WeakMap,o={}}));export{u as convertNumberFormatToIntlOptions,m as formatNumber,i as getFormatter};
+define(["exports","../core/maybe","./locale"],(function(e,t,n){"use strict";const o={ar:"ar-u-nu-latn"};let a=new WeakMap,r={};function i(e){const i=e||r;if(!a.has(i)){const t=n.getLocale(),r=o[n.getLocale()]||t;a.set(i,new Intl.NumberFormat(r,e))}return t.assumeNonNull(a.get(i))}function u(e={}){const t={};return null!=e.digitSeparator&&(t.useGrouping=e.digitSeparator),null!=e.places&&(t.minimumFractionDigits=t.maximumFractionDigits=e.places),t}function l(e,t){return-0===e&&(e=0),i(t).format(e)}n.beforeLocaleChange((()=>{a=new WeakMap,r={}})),e.convertNumberFormatToIntlOptions=u,e.formatNumber=l,e.getFormatter=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

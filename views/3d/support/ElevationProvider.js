@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{unwrapOr as e}from"../../../core/maybe.js";import{isDehydratedPoint as r}from"../../../layers/graphics/dehydratedFeatureUtils.js";class t{constructor(e,r=null,t=0){this.array=e,this.spatialReference=r,this.offset=t}}function a(e){return"array"in e}function i(t,i,n="ground"){if(r(i))return t.getElevation(i.x,i.y,i.z||0,i.spatialReference,n);if(a(i)){let r=i.offset;return t.getElevation(i.array[r++],i.array[r++],i.array[r]||0,e(i.spatialReference,t.spatialReference),n)}return t.getElevation(i[0],i[1],i[2]||0,t.spatialReference,n)}export{t as SamplePosition,i as getElevationAtPoint,a as isSamplePosition};
+define(["exports","../../../core/maybe","../../../layers/graphics/dehydratedFeatureUtils"],(function(e,t,r){"use strict";let a=function(e,t=null,r=0){this.array=e,this.spatialReference=t,this.offset=r};function i(e){return"array"in e}function n(e,a,n="ground"){if(r.isDehydratedPoint(a))return e.getElevation(a.x,a.y,a.z||0,a.spatialReference,n);if(i(a)){let r=a.offset;return e.getElevation(a.array[r++],a.array[r++],a.array[r]||0,t.unwrapOr(a.spatialReference,e.spatialReference),n)}return e.getElevation(a[0],a[1],a[2]||0,e.spatialReference,n)}e.SamplePosition=a,e.getElevationAtPoint=n,e.isSamplePosition=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

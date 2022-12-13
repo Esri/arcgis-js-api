@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-const h={width:600,height:400},t=1.5;function i(i,e){e=e||h;let{width:d,height:n}=e;const g=d/n;return g<t?n=d/t:g>t&&(d=n*t),d>i.width&&(n*=i.width/d,d=i.width),n>i.height&&(d*=i.height/n,n=i.height),{width:Math.round(d),height:Math.round(n)}}export{i as getOptimalThumbnailSize};
+define(["exports"],(function(t){"use strict";const e={width:600,height:400},i=1.5;function h(t,h){h=h||e;let{width:n,height:d}=h;const o=n/d;return o<i?d=n/i:o>i&&(n=d*i),n>t.width&&(d*=t.width/n,n=t.width),d>t.height&&(n*=t.height/d,d=t.height),{width:Math.round(n),height:Math.round(d)}}t.getOptimalThumbnailSize=h,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as e}from"../../../chunks/tslib.es6.js";import{parameter as n,ShaderTechniqueConfiguration as o}from"../webgl-engine/core/shaderTechnique/ShaderTechniqueConfiguration.js";var t;!function(e){e[e.Rain=0]="Rain",e[e.Snow=1]="Snow",e[e.COUNT=2]="COUNT"}(t||(t={}));class i extends o{constructor(){super(...arguments),this.type=t.Rain}}e([n({count:t.COUNT})],i.prototype,"type",void 0);export{i as PrecipitationTechniqueConfiguration,t as PrecipitationType};
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../webgl-engine/core/shaderTechnique/ShaderTechniqueConfiguration"],(function(e,i,n,t){"use strict";var o;e.PrecipitationType=void 0,(o=e.PrecipitationType||(e.PrecipitationType={}))[o.Rain=0]="Rain",o[o.Snow=1]="Snow",o[o.COUNT=2]="COUNT";let r=function(n){function t(){var i;return(i=n.apply(this,arguments)||this).type=e.PrecipitationType.Rain,i}return i._inheritsLoose(t,n),t}(t.ShaderTechniqueConfiguration);n.__decorate([t.parameter({count:e.PrecipitationType.COUNT})],r.prototype,"type",void 0),e.PrecipitationTechniqueConfiguration=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

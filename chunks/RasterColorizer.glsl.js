@@ -1,23 +1,11 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{isSome as e}from"../core/maybe.js";import{Z as a}from"./vec3f64.js";import{RasterColorizerType as o,RasterColorizerStretchType as r}from"../views/2d/engine/imagery/enums.js";import{LayerBlendMode as l}from"../views/3d/webgl-engine/core/shaderLibrary/output/BlendOptions.js";import{Colormap as i}from"../views/3d/webgl-engine/core/shaderLibrary/raster/Colormap.glsl.js";import{CommonPassParameters as t,Common as n}from"../views/3d/webgl-engine/core/shaderLibrary/raster/Common.glsl.js";import{BackgroundGrid as u}from"../views/3d/webgl-engine/core/shaderLibrary/terrain/BackgroundGrid.glsl.js";import{TileBlendInput as s}from"../views/3d/webgl-engine/core/shaderLibrary/terrain/TileBlendInput.js";import{TileComposite as c}from"../views/3d/webgl-engine/core/shaderLibrary/terrain/TileComposite.glsl.js";import{a as m}from"./BlendLayers.glsl.js";import{BlendModes as d}from"../views/3d/webgl-engine/core/shaderLibrary/util/BlendModes.glsl.js";import{ColorConversion as f}from"../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl.js";import{BooleanPassUniform as g}from"../views/3d/webgl-engine/core/shaderModules/BooleanPassUniform.js";import{Float2PassUniform as p}from"../views/3d/webgl-engine/core/shaderModules/Float2PassUniform.js";import{Float3PassUniform as x}from"../views/3d/webgl-engine/core/shaderModules/Float3PassUniform.js";import{FloatPassUniform as v}from"../views/3d/webgl-engine/core/shaderModules/FloatPassUniform.js";import{FloatsPassUniform as y}from"../views/3d/webgl-engine/core/shaderModules/FloatsPassUniform.js";import{IntegerPassUniform as _}from"../views/3d/webgl-engine/core/shaderModules/IntegerPassUniform.js";import{glsl as b}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{ShaderBuilder as h}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{Texture2DPassUniform as C}from"../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform.js";class w extends t{constructor(e,o,r,l,i,t){super(e,l,i),this.colormap=o,this.symbolizer=r,this.u_colormap=t,this.backgroundColor=a,this.fboTexture=null,this.baseOpacity=1}}class O extends w{}class z extends w{}function L(a){const r=new h;r.include(c),r.include(n),r.include(i),a.tileBlendInput===s.GridComposite&&(r.extensions.add("GL_OES_standard_derivatives"),r.fragment.include(u));const t=a.tileBlendInput===s.ColorComposite;t&&r.fragment.uniforms.add(new x("backgroundColor",(e=>e.backgroundColor))),a.baseOpacityMode!==m.One&&r.fragment.uniforms.add(new v("baseOpacity",(e=>e.baseOpacity)));const f=a.baseOpacityMode===m.OnBaseLayer,g=a.baseOpacityMode===m.OnBackground||a.baseOpacityMode===m.OnBaseLayer,p=a.blendMode!==l.Normal;r.fragment.include(d,a);const y=a.tileBlendInput!==s.LayerOnly;return(p&&!y||f)&&(r.fragment.uniforms.add(new C("fboColor",(e=>e.fboTexture))),r.fragment.uniforms.add(new v("tileSize",(a=>e(a.fboTexture)?a.fboTexture.descriptor.width:1)))),r.fragment.code.add(b`
-    vec4 applyBackgroundBlend(vec4 layerColor) {
-      ${y||f?b`
-          vec4 bgColor = ${f?b`texture2D(fboColor, gl_FragCoord.xy / tileSize)`:t?b`vec4(backgroundColor, 1.0)`:b`gridColor(vuv)`};
-          ${g?b`bgColor *= baseOpacity;`:""}`:""}
-      ${p?b`
-            vec3 pmColorLayer = layerColor.rgb * layerColor.a;
-            vec4 fboTex = ${y?b`bgColor;`:b`texture2D(fboColor, gl_FragCoord.xy / tileSize) ${f?" * baseOpacity":""};`}
-            vec3 Cb = fboTex.a == 0.0 ? fboTex.rgb : vec3(fboTex.rgb * fboTex.a);
-            return applyBlendMode(pmColorLayer.rgb, layerColor.a * u_opacity, Cb, fboTex.a);`:y||f?b`
-            float composeAlpha = layerColor.a * u_opacity;
-            vec4 pmColorLayer = vec4(layerColor.rgb, 1.0);
-            return mix(bgColor, pmColorLayer, composeAlpha);`:b`
-            return layerColor * layerColor.a * u_opacity;`}
-    }
-  `),a.colorizerType===o.Stretch?B(r,a):a.colorizerType===o.Lut?P(r):a.colorizerType===o.Hillshade&&V(r,a),r}function P(e){e.fragment.code.add(b`void main() {
+define(["exports","./_rollupPluginBabelHelpers","./vec3f64","../views/2d/engine/imagery/enums","../views/3d/webgl-engine/core/shaderLibrary/raster/Colormap.glsl","../views/3d/webgl-engine/core/shaderLibrary/raster/Common.glsl","../views/3d/webgl-engine/core/shaderLibrary/terrain/TileBackground.glsl","../views/3d/webgl-engine/core/shaderLibrary/terrain/TileComposite.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderModules/BooleanPassUniform","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/FloatsPassUniform","../views/3d/webgl-engine/core/shaderModules/IntegerPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform"],(function(e,a,o,l,r,i,t,n,u,s,c,m,f,g,d,v,p){"use strict";let x=function(e){function l(a,l,r,i,t,n){var u;return(u=e.call(this,a,i,t)||this).colormap=l,u.symbolizer=r,u.u_colormap=n,u.backgroundColor=o.ZEROS,u.fboTexture=null,u.baseOpacity=1,u}return a._inheritsLoose(l,e),l}(i.CommonPassParameters),_=function(e){function o(){return e.apply(this,arguments)||this}return a._inheritsLoose(o,e),o}(x),y=function(e){function o(){return e.apply(this,arguments)||this}return a._inheritsLoose(o,e),o}(x);function h(e){const a=new v.ShaderBuilder;return a.include(n.TileComposite),a.include(i.Common,e),a.include(r.Colormap,e),a.include(t.TileBackground,e),a.fragment.code.add(d.glsl`vec4 applyBackgroundBlend(vec4 layerColor) {
+vec4 bgColor = getBackground(vuv);
+return blendLayers(bgColor, layerColor, u_opacity);
+}`),e.colorizerType===l.RasterColorizerType.Stretch?b(a,e):e.colorizerType===l.RasterColorizerType.Lut?C(a):e.colorizerType===l.RasterColorizerType.Hillshade&&P(a,e),a}function C(e){e.fragment.code.add(d.glsl`void main() {
 vec2 pixelLocation = getPixelLocation(uv);
 if (isOutside(pixelLocation)) {
 gl_FragColor = applyBackgroundBlend(vec4(0.0, 0.0, 0.0, 0.0));
@@ -25,7 +13,7 @@ return;
 }
 vec4 currentPixel = getPixel(pixelLocation);
 gl_FragColor = applyBackgroundBlend(colormap(currentPixel, true));
-}`)}function B(e,a){e.fragment.uniforms.add([new _("u_bandCount",(e=>e.symbolizer.u_bandCount)),new y("u_minCutOff",(e=>e.symbolizer.u_minCutOff),3),new y("u_maxCutOff",(e=>e.symbolizer.u_maxCutOff),3),new y("u_factor",(e=>e.symbolizer.u_factor),3),new v("u_minOutput",(e=>e.symbolizer.u_minOutput)),new v("u_maxOutput",(e=>e.symbolizer.u_maxOutput)),new g("u_useGamma",(e=>e.symbolizer.u_useGamma)),new y("u_gamma",(e=>e.symbolizer.u_gamma),3),new y("u_gammaCorrection",(e=>e.symbolizer.u_gammaCorrection),3),new v("u_opacity",(e=>e.common.u_opacity))]),e.fragment.code.add(b`float stretchOneValue(float val, float minCutOff, float maxCutOff, float minOutput, float maxOutput, float factor, bool useGamma, float gamma, float gammaCorrection) {
+}`)}function b(e,a){e.fragment.uniforms.add([new g.IntegerPassUniform("u_bandCount",(e=>e.symbolizer.u_bandCount)),new f.FloatsPassUniform("u_minCutOff",(e=>e.symbolizer.u_minCutOff),3),new f.FloatsPassUniform("u_maxCutOff",(e=>e.symbolizer.u_maxCutOff),3),new f.FloatsPassUniform("u_factor",(e=>e.symbolizer.u_factor),3),new m.FloatPassUniform("u_minOutput",(e=>e.symbolizer.u_minOutput)),new m.FloatPassUniform("u_maxOutput",(e=>e.symbolizer.u_maxOutput)),new s.BooleanPassUniform("u_useGamma",(e=>e.symbolizer.u_useGamma)),new f.FloatsPassUniform("u_gamma",(e=>e.symbolizer.u_gamma),3),new f.FloatsPassUniform("u_gammaCorrection",(e=>e.symbolizer.u_gammaCorrection),3),new m.FloatPassUniform("u_opacity",(e=>e.common.u_opacity))]),e.fragment.code.add(d.glsl`float stretchOneValue(float val, float minCutOff, float maxCutOff, float minOutput, float maxOutput, float factor, bool useGamma, float gamma, float gammaCorrection) {
 if (val >= maxCutOff) {
 return maxOutput;
 } else if (val <= minCutOff) {
@@ -44,7 +32,7 @@ stretchedVal = (tempf * outRange * pow(relativeVal, 1.0 / gamma) + minOutput) / 
 stretchedVal = minOutput + (val - minCutOff) * factor;
 }
 return stretchedVal;
-}`);const o=a.applyColormap?b`gl_FragColor = applyBackgroundBlend(colormap(vec4(grayVal, grayVal, grayVal, currentPixel.a), !u_useGamma));`:b`gl_FragColor = applyBackgroundBlend(vec4(grayVal, grayVal, grayVal, currentPixel.a));`;e.fragment.code.add(b`
+}`);const o=a.applyColormap?d.glsl`gl_FragColor = applyBackgroundBlend(colormap(vec4(grayVal, grayVal, grayVal, currentPixel.a), !u_useGamma));`:d.glsl`gl_FragColor = applyBackgroundBlend(vec4(grayVal, grayVal, grayVal, currentPixel.a));`;e.fragment.code.add(d.glsl`
       void main() {
         vec2 pixelLocation = getPixelLocation(uv);
         if (isOutside(pixelLocation)) {
@@ -53,8 +41,8 @@ return stretchedVal;
         }
 
         vec4 currentPixel = getPixel(pixelLocation);
-        ${a.stretchType===r.Noop?b`
-        gl_FragColor = applyBackgroundBlend(currentPixel);`:b`
+        ${a.stretchType===l.RasterColorizerStretchType.Noop?d.glsl`
+        gl_FragColor = applyBackgroundBlend(currentPixel);`:d.glsl`
         if (currentPixel.a == 0.0) {
           gl_FragColor = applyBackgroundBlend(vec4(0.0, 0.0, 0.0, 0.0));
           return;
@@ -68,19 +56,19 @@ return stretchedVal;
           float blueVal = stretchOneValue(currentPixel.b, u_minCutOff[2], u_maxCutOff[2], u_minOutput, u_maxOutput, u_factor[2], u_useGamma, u_gamma[2], u_gammaCorrection[2]);
           gl_FragColor = applyBackgroundBlend(vec4(redVal, greenVal, blueVal, currentPixel.a));
         }`}
-      }`)}function V(e,a){const o=e.fragment;o.uniforms.add([new C("u_image",(e=>e.u_image)),new _("u_hillshadeType",(e=>e.symbolizer.u_hillshadeType)),new y("u_sinZcosAs",(e=>e.symbolizer.u_sinZcosAs),6),new y("u_sinZsinAs",(e=>e.symbolizer.u_sinZsinAs),6),new y("u_cosZs",(e=>e.symbolizer.u_cosZs),6),new y("u_weights",(e=>e.symbolizer.u_weights),6),new p("u_factor",(e=>e.symbolizer.u_factor)),new v("u_minValue",(e=>e.symbolizer.u_minValue)),new v("u_maxValue",(e=>e.symbolizer.u_maxValue)),new p("u_srcImageSize",(e=>e.common.u_srcImageSize))]),o.include(f),o.code.add(b`vec4 overlay(float val, float minValue, float maxValue, float hillshade, float alpha) {
+      }`)}function P(e,a){const o=e.fragment;o.uniforms.add([new p.Texture2DPassUniform("u_image",(e=>e.u_image)),new g.IntegerPassUniform("u_hillshadeType",(e=>e.symbolizer.u_hillshadeType)),new f.FloatsPassUniform("u_sinZcosAs",(e=>e.symbolizer.u_sinZcosAs),6),new f.FloatsPassUniform("u_sinZsinAs",(e=>e.symbolizer.u_sinZsinAs),6),new f.FloatsPassUniform("u_cosZs",(e=>e.symbolizer.u_cosZs),6),new f.FloatsPassUniform("u_weights",(e=>e.symbolizer.u_weights),6),new c.Float2PassUniform("u_factor",(e=>e.symbolizer.u_factor)),new m.FloatPassUniform("u_minValue",(e=>e.symbolizer.u_minValue)),new m.FloatPassUniform("u_maxValue",(e=>e.symbolizer.u_maxValue)),new c.Float2PassUniform("u_srcImageSize",(e=>e.common.u_srcImageSize))]),o.include(u.ColorConversion),o.code.add(d.glsl`vec4 overlay(float val, float minValue, float maxValue, float hillshade, float alpha) {
 val = clamp((val - minValue) / (maxValue - minValue), 0.0, 1.0);
 vec3 hsv = rgb2hsv(colormap(vec4(val, val, val, 1.0), false).rgb);
 hsv.z = hillshade;
 return vec4(hsv2rgb(hsv) * alpha, alpha);
-}`),o.code.add(b`float getNeighborHoodAlpha(float a, float b, float c, float d, float e, float f, float g, float h, float i){
+}`),o.code.add(d.glsl`float getNeighborHoodAlpha(float a, float b, float c, float d, float e, float f, float g, float h, float i){
 if (a == 0.0 || a == 0.0 || a==0.0 || a == 0.0 || a == 0.0 || a==0.0 || a == 0.0 || a == 0.0 || a==0.0) {
 return 0.0;
 }  else {
 return e;
 }
-}`);const r=a.applyColormap?b`gl_FragColor = applyBackgroundBlend(overlay(ve.r, u_minValue, u_maxValue, hillshade, alpha));`:b`hillshade *= alpha;
-gl_FragColor = applyBackgroundBlend(vec4(hillshade, hillshade, hillshade, alpha));`;o.code.add(b`
+}`);const l=a.applyColormap?d.glsl`gl_FragColor = applyBackgroundBlend(overlay(ve.r, u_minValue, u_maxValue, hillshade, alpha));`:d.glsl`hillshade *= alpha;
+gl_FragColor = applyBackgroundBlend(vec4(hillshade, hillshade, hillshade, alpha));`;o.code.add(d.glsl`
     void main() {
       vec2 pixelLocation = getPixelLocation(uv);
       if (isOutside(pixelLocation)) {
@@ -162,6 +150,6 @@ gl_FragColor = applyBackgroundBlend(vec4(hillshade, hillshade, hillshade, alpha)
       // set color
       float alpha = getNeighborHoodAlpha(va.a, vb.a, vc.a, vd.a, ve.a, vf.a, vg.a, vh.a, vi.a);
       alpha *= u_opacity;
-      ${r}
+      ${l}
     }
-  `)}const k=Object.freeze(Object.defineProperty({__proto__:null,ColorizerUniforms:w,ColorizerStretchUniforms:O,ColorizerHillshadeUniforms:z,build:L},Symbol.toStringTag,{value:"Module"}));export{w as C,k as R,O as a,z as b,L as c};
+  `)}const z=Object.freeze(Object.defineProperty({__proto__:null,ColorizerUniforms:x,ColorizerStretchUniforms:_,ColorizerHillshadeUniforms:y,build:h},Symbol.toStringTag,{value:"Module"}));e.ColorizerHillshadeUniforms=y,e.ColorizerStretchUniforms=_,e.ColorizerUniforms=x,e.RasterColorizer=z,e.build=h}));

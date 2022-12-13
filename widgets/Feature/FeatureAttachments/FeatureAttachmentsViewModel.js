@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as t}from"../../../chunks/tslib.es6.js";import{property as e}from"../../../core/accessorSupport/decorators/property.js";import"../../../core/arrayUtils.js";import"../../../core/has.js";import"../../../core/accessorSupport/ensureType.js";import{subclass as r}from"../../../core/accessorSupport/decorators/subclass.js";import s from"../../Attachments/AttachmentsViewModel.js";let o=class extends s{constructor(t){super(t),this.description=null,this.title=null}};t([e()],o.prototype,"description",void 0),t([e()],o.prototype,"title",void 0),o=t([r("esri.widgets.Feature.FeatureAttachments.FeatureAttachmentsViewModel")],o);const c=o;export{c as default};
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/arrayUtils","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/subclass","../../Attachments/AttachmentsViewModel"],(function(e,t,r,o,s,c,i){"use strict";let n=function(t){function r(e){var r;return(r=t.call(this,e)||this).description=null,r.title=null,r}return e._inheritsLoose(r,t),r}(i);t.__decorate([r.property()],n.prototype,"description",void 0),t.__decorate([r.property()],n.prototype,"title",void 0),n=t.__decorate([c.subclass("esri.widgets.Feature.FeatureAttachments.FeatureAttachmentsViewModel")],n);return n}));

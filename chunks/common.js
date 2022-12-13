@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-const t=1e-6,a=Math.random,e=Math.PI/180,n=180/Math.PI;function o(t){return t*e}function r(t){return t*n}function s(a,e){return Math.abs(a-e)<=t*Math.max(1,Math.abs(a),Math.abs(e))}const u=Object.freeze(Object.defineProperty({__proto__:null,EPSILON:t,RANDOM:a,toRadian:o,toDegree:r,equals:s},Symbol.toStringTag,{value:"Module"}));export{t as E,a as R,r as a,u as c,s as e,o as t};
+define(["exports"],(function(t){"use strict";let e=1e-6;function n(){return e}function o(t){e=t}const a=Math.random,r=Math.PI/180,i=180/Math.PI;function s(t){return t*r}function u(t){return t*i}function c(t,n){return Math.abs(t-n)<=e*Math.max(1,Math.abs(t),Math.abs(n))}const l=Object.freeze(Object.defineProperty({__proto__:null,getEpsilon:n,setEpsilon:o,RANDOM:a,toRadian:s,toDegree:u,equals:c},Symbol.toStringTag,{value:"Module"}));t.RANDOM=a,t.common=l,t.equals=c,t.getEpsilon=n,t.setEpsilon=o,t.toDegree=u,t.toRadian=s}));

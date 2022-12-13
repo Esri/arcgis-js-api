@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import t from"../inputs/BarcodeScannerInput.js";import o from"../inputs/ComboBoxInput.js";import p from"../inputs/DateTimePickerInput.js";import r from"../inputs/Input.js";import i from"../inputs/RadioButtonsInput.js";import n from"../inputs/SwitchInput.js";import s from"../inputs/TextAreaInput.js";import e from"../inputs/TextBoxInput.js";const m={base:r,key:"type",typeMap:{"barcode-scanner":t,"combo-box":o,"datetime-picker":p,"radio-buttons":i,switch:n,"text-area":s,"text-box":e}};export{m as types};
+define(["exports","../inputs/BarcodeScannerInput","../inputs/ComboBoxInput","../inputs/DateTimePickerInput","../inputs/Input","../inputs/RadioButtonsInput","../inputs/SwitchInput","../inputs/TextAreaInput","../inputs/TextBoxInput"],(function(t,e,n,u,p,i,o,s,a){"use strict";const r={base:p,key:"type",typeMap:{"barcode-scanner":e,"combo-box":n,"datetime-picker":u,"radio-buttons":i,switch:o,"text-area":s,"text-box":a}};t.types=r,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

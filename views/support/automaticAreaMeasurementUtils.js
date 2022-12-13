@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{isSome as e}from"../../core/maybe.js";import{euclideanHorizontalPlanarArea as r,euclideanPlanarArea as t,createEuclideanPlanarAreaCache as o}from"./euclideanAreaMeasurementUtils.js";import{geodesicArea as i}from"./geodesicAreaMeasurementUtils.js";function m(m,s,n=o()){if(s){const t=i(m);return e(t)?t:r(m,n)}return t(m,n)}export{m as autoAreaByDrapedStatus};
+define(["exports","../../core/maybe","./euclideanAreaMeasurementUtils","./geodesicAreaMeasurementUtils"],(function(e,a,r,n){"use strict";function t(e,t,o=r.createEuclideanPlanarAreaCache()){if("on-the-ground"===t){const t=n.geodesicArea(e);return a.isSome(t)?t:r.euclideanHorizontalPlanarArea(e,o)}return r.euclideanPlanarArea(e,o)}function o(e,a=r.createEuclideanPlanarAreaCache()){return t(e,"on-the-ground",a)}e.autoArea2D=o,e.autoAreaByElevationMode=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

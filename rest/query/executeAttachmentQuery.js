@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{parseUrl as t}from"../utils.js";import{executeAttachmentQuery as r,processAttachmentQueryResult as e}from"./operations/queryAttachments.js";import o from"../support/AttachmentQuery.js";async function a(a,m,n){const s=t(a);return r(s,o.from(m),{...n}).then((t=>e(t.data.attachmentGroups,s.path)))}export{a as executeAttachmentQuery};
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../utils","./operations/queryAttachments","../support/AttachmentQuery"],(function(t,e,n,r,u){"use strict";function a(t,e,n){return o.apply(this,arguments)}function o(){return(o=e._asyncToGenerator((function*(t,e,a){const o=n.parseUrl(t);return r.executeAttachmentQuery(o,u.from(e),{...a}).then((t=>r.processAttachmentQueryResult(t.data.attachmentGroups,o.path)))}))).apply(this,arguments)}t.executeAttachmentQuery=a,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

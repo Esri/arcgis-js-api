@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import t from"./SunLighting.js";import e from"./VirtualLighting.js";const i={key:"type",defaultKeyValue:"sun",base:null,typeMap:{sun:t,virtual:e}};export{i as lightingTypes};
+define(["exports","./SunLighting","./VirtualLighting"],(function(e,t,i){"use strict";const u={key:"type",defaultKeyValue:"sun",base:null,typeMap:{sun:t,virtual:i}};e.lightingTypes=u,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-class t{constructor(t,s,i,h,o,e=!1,r=0){this.name=t,this.count=s,this.type=i,this.offset=h,this.stride=o,this.normalized=e,this.divisor=r}}export{t as VertexElementDescriptor};
+define(["exports"],(function(e){"use strict";let t=function(e,t,i,s,o,n=!1,r=0){this.name=e,this.count=t,this.type=i,this.offset=s,this.stride=o,this.normalized=n,this.divisor=r};e.VertexElementDescriptor=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

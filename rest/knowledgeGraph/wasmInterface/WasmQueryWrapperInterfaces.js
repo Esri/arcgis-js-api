@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-var T;!function(T){T[T.OBJECT=0]="OBJECT",T[T.ENTITY=1]="ENTITY",T[T.RELATIONSHIP=2]="RELATIONSHIP",T[T.PATH=3]="PATH",T[T.ARRAY=4]="ARRAY"}(T||(T={}));export{T as WasmGraphQueryResponseTypeCodes};
+define(["exports"],(function(e){"use strict";var s,o;e.WasmGraphQueryResponseTypeCodes=void 0,(s=e.WasmGraphQueryResponseTypeCodes||(e.WasmGraphQueryResponseTypeCodes={}))[s.OBJECT=0]="OBJECT",s[s.ENTITY=1]="ENTITY",s[s.RELATIONSHIP=2]="RELATIONSHIP",s[s.PATH=3]="PATH",s[s.ARRAY=4]="ARRAY",e.WasmQuantizeModeCodes=void 0,(o=e.WasmQuantizeModeCodes||(e.WasmQuantizeModeCodes={}))[o.view=0]="view",o[o.edit=1]="edit",Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

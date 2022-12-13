@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{isSome as e}from"../../../../core/maybe.js";import{RenderingContext as t}from"../../../webgl/RenderingContext.js";class r extends t{constructor(e,t,r){super(e,t),this.newCache=r,this._refCount=1}dispose(){--this._refCount>0||super.dispose()}ref(){++this._refCount}bindTechnique(t,r,s,n){this.useProgram(t.program);const o=e(s)?s.slot:null;return t.bindPipelineState(this,o,n),e(r)&&e(s)&&t.bindPass(r,s),t.program}get test(){return this.programCache.test}}export{r as RenderingContext};
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../webgl/RenderingContext"],(function(e,t,n){"use strict";let r=function(e){function n(t,n,r){var i;return(i=e.call(this,t,n)||this).newCache=r,i._refCount=1,i}t._inheritsLoose(n,e);var r=n.prototype;return r.dispose=function(){--this._refCount>0||e.prototype.dispose.call(this)},r.ref=function(){++this._refCount},r.bindTechnique=function(e,t,n,r){return this.useProgram(e.program),e.bindPipelineState(this,n?.slot,r),e.program.bindPass(t,n),e.program},t._createClass(n,[{key:"test",get:function(){return this.programCache.test}}]),n}(n.RenderingContext);e.RenderingContext=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

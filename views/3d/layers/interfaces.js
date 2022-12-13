@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-var e,t;!function(e){e[e.RasterImage=0]="RasterImage",e[e.Features=1]="Features"}(e||(e={})),function(e){e[e.WithRasterImage=0]="WithRasterImage",e[e.WithoutRasterImage=1]="WithoutRasterImage"}(t||(t={}));export{e as DrapeSourceType,t as DrapeTargetType};
+define(["exports"],(function(e){"use strict";var a,r;e.DrapeSourceType=void 0,(a=e.DrapeSourceType||(e.DrapeSourceType={}))[a.RasterImage=0]="RasterImage",a[a.Features=1]="Features",e.DrapeTargetType=void 0,(r=e.DrapeTargetType||(e.DrapeTargetType={}))[r.WithRasterImage=0]="WithRasterImage",r[r.WithoutRasterImage=1]="WithoutRasterImage",Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

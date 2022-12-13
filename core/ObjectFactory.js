@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
-*/
-function t(t){return t&&t.release&&"function"==typeof t.release}function e(t){return t&&t.acquire&&"function"==typeof t.acquire}class i{constructor(t,e,i=1,s=0){this.acquireFunction=t,this.releaseFunction=e,this.growthSize=i,this._pool=new Array(s),this._set=new Set,this._initialSize=s;for(let o=0;o<s;o++)this._pool[o]=this.acquireFunction();this.growthSize=Math.max(i,1)}acquire(){if(0===this._pool.length){const t=this.growthSize;for(let e=0;e<t;e++)this._pool[e]=this.acquireFunction()}const t=this._pool.shift();return e(t)&&t.acquire(),this._set.delete(t),t}release(e){e&&!this._set.has(e)&&(this.releaseFunction?this.releaseFunction(e):t(e)&&e.release(),this._pool.push(e),this._set.add(e))}prune(){if(this._pool.length<=this._initialSize)return;let t;for(;this._initialSize>this._pool.length;)t=this._pool.shift(),this._set.delete(t),t.dispose&&"function"==typeof t.dispose&&t.dispose()}}export{i as default};

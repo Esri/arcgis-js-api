@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as r}from"../../chunks/tslib.es6.js";import{property as e}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as o}from"../../core/accessorSupport/decorators/subclass.js";import{FeatureReduction as s}from"./FeatureReduction.js";var t;let c=t=class extends s{constructor(r){super(r),this.type="selection"}clone(){return new t}};r([e({type:["selection"]})],c.prototype,"type",void 0),c=t=r([o("esri.layers.support.FeatureReductionSelection")],c);const p=c;export{p as default};
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass","./FeatureReduction"],(function(e,r,t,o,s,c,n){"use strict";var u;let p=u=function(r){function t(e){var t;return(t=r.call(this,e)||this).type="selection",t}return e._inheritsLoose(t,r),t.prototype.clone=function(){return new u},t}(n.FeatureReduction);r.__decorate([t.property({type:["selection"]})],p.prototype,"type",void 0),p=u=r.__decorate([c.subclass("esri.layers.support.FeatureReductionSelection")],p);return p}));

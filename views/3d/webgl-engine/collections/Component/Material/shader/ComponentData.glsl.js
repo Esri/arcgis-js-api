@@ -1,43 +1,73 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{neverReached as o}from"../../../../../../../core/compilerUtils.js";import{packFloatRGBA as e}from"../../../../../../../core/floatRGBA.js";import{DecodeSymbolColor as r}from"./DecodeSymbolColor.glsl.js";import{RgbaFloatEncoding as n}from"../../../../core/shaderLibrary/util/RgbaFloatEncoding.glsl.js";import{Float2Uniform as t}from"../../../../core/shaderModules/Float2Uniform.js";import{Float4DrawUniform as l}from"../../../../core/shaderModules/Float4DrawUniform.js";import{IntegerDrawUniform as a}from"../../../../core/shaderModules/IntegerDrawUniform.js";import{glsl as d}from"../../../../core/shaderModules/interfaces.js";import{Texture2DUniform as i}from"../../../../core/shaderModules/Texture2DUniform.js";import{VertexAttribute as c}from"../../../../lib/VertexAttribute.js";var m;!function(o){o[o.Uniform=0]="Uniform",o[o.Varying=1]="Varying",o[o.COUNT=2]="COUNT"}(m||(m={}));const x=429496.7296;function s(o,r){e(o/x*.5+.5,r)}function C(e,r){switch(r.componentData){case m.Varying:return f(e);case m.Uniform:return v(e);case m.COUNT:return;default:o(r.componentData)}}function f(o){const{vertex:e,fragment:l}=o;e.include(n),e.uniforms.add([new i("componentColorTex"),new t("componentColorTexInvDim")]),o.attributes.add(c.COMPONENTINDEX,"float"),o.varyings.add("vExternalColorMixMode","mediump float"),o.varyings.add("vExternalColor","vec4"),o.include(r),e.constants.add("elevationScale","float",2*x),e.code.add(d`vec4 _readComponentColor() {
-float normalizedIndex = (componentIndex * 2.0 + 0.5) * componentColorTexInvDim.x;
-vec2 indexCoord = vec2(
-mod(normalizedIndex, 1.0),
-(floor(normalizedIndex) + 0.5) * componentColorTexInvDim.y
-);
-return texture2D(componentColorTex, indexCoord);
-}
-float readElevationOffset() {
-float normalizedIndex = (componentIndex * 2.0 + 1.5) * componentColorTexInvDim.x;
-vec2 indexCoord = vec2(
-mod(normalizedIndex, 1.0),
-(floor(normalizedIndex) + 0.5) * componentColorTexInvDim.y
-);
-return (rgba2float(texture2D(componentColorTex, indexCoord)) - 0.5) * elevationScale;
-}
-vec4 forwardExternalColor(out bool castShadows) {
-vec4 componentColor = _readComponentColor() * 255.0;
-float shadowFlag = mod(componentColor.b * 255.0, 2.0);
-componentColor.b -= shadowFlag;
-castShadows = shadowFlag >= 1.0;
-int decodedColorMixMode;
-vExternalColor = decodeSymbolColor(componentColor, decodedColorMixMode) * 0.003921568627451;
-vExternalColorMixMode = float(decodedColorMixMode) + 0.5;
-return vExternalColor;
-}`),l.code.add(d`void readExternalColor(out vec4 externalColor, out int externalColorMixMode) {
-externalColor = vExternalColor;
-externalColorMixMode = int(vExternalColorMixMode);
-}`)}function v(o){const{vertex:e,fragment:r}=o;e.uniforms.add(new l("externalColor",(o=>o.componentParameters.externalColor))),r.uniforms.add(new a("externalColorMixMode",(o=>o.componentParameters.externalColorMixMode))),o.varyings.add("vExternalColor","vec4"),e.code.add(d`float readElevationOffset() {
+define(["exports","../../../../../../../core/compilerUtils","../../../../../../../core/floatRGBA","../../../../../../../core/has","./DecodeSymbolColor.glsl","../../../../core/shaderLibrary/ShaderOutput","../../../../core/shaderLibrary/util/RgbaFloatEncoding.glsl","../../../../core/shaderLibrary/util/WebGL2Utils","../../../../core/shaderModules/Float4DrawUniform","../../../../core/shaderModules/IntegerDrawUniform","../../../../core/shaderModules/interfaces","../../../../core/shaderModules/Texture2DDrawUniform","../../../../core/shaderModules/TextureSizeUniformType","../../../../lib/VertexAttribute"],(function(e,o,r,t,n,a,l,d,c,i,s,x,C,u){"use strict";var m;e.ComponentDataType=void 0,(m=e.ComponentDataType||(e.ComponentDataType={}))[m.Uniform=0]="Uniform",m[m.Varying=1]="Varying",m[m.COUNT=2]="COUNT";const f=429496.7296;function p(e,o){r.packFloatRGBA(e/f*.5+.5,o)}function v(r,t){switch(t.componentData){case e.ComponentDataType.Varying:return g(r,t);case e.ComponentDataType.Uniform:return y(r);case e.ComponentDataType.COUNT:return;default:o.neverReached(t.componentData)}}function g(e,o){const{vertex:r,fragment:c}=e;r.include(l.RgbaFloatEncoding),r.uniforms.add(x.createTexture2DDrawSizeUniforms("componentColorTex",(e=>e.componentParameters.texture.texture),o.hasWebGL2Context?C.TextureSizeUniformType.None:C.TextureSizeUniformType.Size)),e.attributes.add(u.VertexAttribute.COMPONENTINDEX,"float"),e.varyings.add("vExternalColorMixMode","mediump float"),e.varyings.add("vExternalColor","vec4");const i=o.output===a.ShaderOutput.ObjectAndLayerIdColor;i&&e.varyings.add("vObjectAndLayerIdColor","vec4"),e.include(n.DecodeSymbolColor),r.constants.add("elevationScale","float",2*f),r.constants.add("stride","float",t("enable-feature:objectAndLayerId-rendering")?3:2),r.code.add(s.glsl`
+  vec2 getComponentTextureCoordinates(float componentIndex, float typeOffset) {
+    vec2 textureSize = ${d.textureSize(o,"componentColorTex")};
+
+    float index = componentIndex * stride + typeOffset;
+    float coordX = mod(index, textureSize.x);
+    float coordY = floor(index / textureSize.x);
+
+    return vec2(coordX, coordY) + 0.5;
+  }
+  `),r.code.add(s.glsl`
+  vec4 _readComponentColor() {
+    vec2 textureCoordinates = getComponentTextureCoordinates(componentIndex, 0.0);
+
+    return ${d.texelFetch(o,"componentColorTex","textureCoordinates","1.0 / componentColorTexSize")};
+   }
+
+   float readElevationOffset() {
+    vec2 textureCoordinates = getComponentTextureCoordinates(componentIndex, 1.0);
+
+    vec4 encodedElevation = ${d.texelFetch(o,"componentColorTex","textureCoordinates","1.0 / componentColorTexSize")};
+    return (rgba2float(encodedElevation) - 0.5) * elevationScale;
+  }
+
+  ${i?s.glsl`
+          void forwardObjectAndLayerIdColor() {
+            vec2 textureCoordinates = getComponentTextureCoordinates(componentIndex, 2.0);
+
+            vObjectAndLayerIdColor = ${d.texelFetch(o,"componentColorTex","textureCoordinates","1.0 / componentColorTexSize")};
+          }`:s.glsl`void forwardObjectAndLayerIdColor() {}`}
+
+  vec4 forwardExternalColor(out bool castShadows) {
+    vec4 componentColor = _readComponentColor() * 255.0;
+
+    float shadowFlag = mod(componentColor.b * 255.0, 2.0);
+    componentColor.b -= shadowFlag;
+    castShadows = shadowFlag >= 1.0;
+
+    int decodedColorMixMode;
+    vExternalColor = decodeSymbolColor(componentColor, decodedColorMixMode) * 0.003921568627451; // = 1/255;
+    vExternalColorMixMode = float(decodedColorMixMode) + 0.5; // add 0.5 to avoid interpolation artifacts
+
+    return vExternalColor;
+  }
+`),c.code.add(s.glsl`
+  void readExternalColor(out vec4 externalColor, out int externalColorMixMode) {
+    externalColor = vExternalColor;
+    externalColorMixMode = int(vExternalColorMixMode);
+  }
+
+  void outputObjectAndLayerIdColor() {
+     ${i?s.glsl`gl_FragColor = vObjectAndLayerIdColor;`:""}
+  }
+`)}function y(e){const{vertex:o,fragment:r}=e;o.uniforms.add(new c.Float4DrawUniform("externalColor",(e=>e.componentParameters.externalColor))),r.uniforms.add(new i.IntegerDrawUniform("externalColorMixMode",(e=>e.componentParameters.externalColorMixMode))),e.varyings.add("vExternalColor","vec4"),o.code.add(s.glsl`float readElevationOffset() {
 return 0.0;
+}
+void forwardObjectAndLayerIdColor() {
 }
 vec4 forwardExternalColor(out bool castShadows) {
 vExternalColor = externalColor;
 castShadows = true;
 return externalColor;
-}`),r.code.add(d`void readExternalColor(out vec4 color, out int colorMixMode) {
+}`),r.code.add(s.glsl`void readExternalColor(out vec4 color, out int colorMixMode) {
 color = vExternalColor;
 colorMixMode = externalColorMixMode;
-}`)}export{C as ComponentData,m as ComponentDataType,x as MAX_ELEVATION_OFFSET,s as encodeElevationOffset};
+}
+void outputObjectAndLayerIdColor() {
+gl_FragColor = vec4(1.0,0.0,0.0,0.0);
+}`)}e.ComponentData=v,e.MAX_ELEVATION_OFFSET=f,e.encodeElevationOffset=p,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

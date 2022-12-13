@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{c as r}from"../../../../chunks/mat4f64.js";import{DrawParameters as s}from"./DrawParameters.js";class t extends s{constructor(){super(...arguments),this.translatedView=r()}}export{t as LineDrawParameters};
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/mat4f64","./DrawParameters"],(function(e,r,t,a){"use strict";let n=function(e){function a(){var r;return(r=e.apply(this,arguments)||this).translatedView=t.create(),r}return r._inheritsLoose(a,e),a}(a.DrawParameters);e.LineDrawParameters=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

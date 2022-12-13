@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{meterIn as t}from"../../renderers/support/lengthUtils.js";function n(n){return null!=t[n]}function r(n){return 1/(t[n]||1)}function e(){const n=Object.keys(t);return n.sort(),n}const o=e();export{r as getMetersPerUnit,o as supportedUnits,n as supportsUnit};
+define(["exports","../../renderers/support/lengthUtils"],(function(e,t){"use strict";function n(e){return null!=t.meterIn[e]}function r(e){return 1/(t.meterIn[e]||1)}function s(){const e=Object.keys(t.meterIn);return e.sort(),e}const o=s();e.getMetersPerUnit=r,e.supportedUnits=o,e.supportsUnit=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

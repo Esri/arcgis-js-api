@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-class e{constructor(e){this.readFile=e}resolveIncludes(e){return this._resolve(e)}_resolve(e,t=new Map){if(t.has(e))return t.get(e);const r=this._read(e);if(!r)throw new Error(`cannot find shader file ${e}`);const s=/^[^\S\n]*#include\s+<(\S+)>[^\S\n]?/gm;let n=s.exec(r);const l=[];for(;null!=n;)l.push({path:n[1],start:n.index,length:n[0].length}),n=s.exec(r);let a=0,h="";return l.forEach((e=>{h+=r.slice(a,e.start),h+=t.has(e.path)?"":this._resolve(e.path,t),a=e.start+e.length})),h+=r.slice(a),t.set(e,h),h}_read(e){return this.readFile(e)}}export{e as ShaderCompiler};
+define(["exports"],(function(e){"use strict";let t=function(){function e(e){this._readFile=e}var t=e.prototype;return t.resolveIncludes=function(e){return this._resolve(e)},t._resolve=function(e,t=new Map){if(t.has(e))return t.get(e);const n=this._read(e);if(!n)throw new Error(`cannot find shader file ${e}`);const r=/^[^\S\n]*#include\s+<(\S+)>[^\S\n]?/gm;let s=r.exec(n);const i=[];for(;null!=s;)i.push({path:s[1],start:s.index,length:s[0].length}),s=r.exec(n);let o=0,l="";return i.forEach((e=>{l+=n.slice(o,e.start),l+=t.has(e.path)?"":this._resolve(e.path,t),o=e.start+e.length})),l+=n.slice(o),t.set(e,l),l},t._read=function(e){return this._readFile(e)},e}();e.ShaderCompiler=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

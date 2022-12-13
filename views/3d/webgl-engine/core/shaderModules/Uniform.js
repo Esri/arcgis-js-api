@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{isSome as e}from"../../../../../core/maybe.js";import{BindType as r}from"../shaderTechnique/BindType.js";class i{constructor(i,s,t,a,n=null){this.name=i,this.type=s,this.arraySize=n,this.bind={[r.Pass]:null,[r.Draw]:null},e(t)&&e(a)&&(this.bind[t]=a)}equals(e){return this.type===e.type&&this.name===e.name&&this.arraySize===e.arraySize}}export{i as Uniform};
+define(["exports","../../../../../core/maybe","../shaderTechnique/BindType"],(function(e,i,t){"use strict";let n=function(){function e(e,n,r,s,a=null){this.name=e,this.type=n,this.arraySize=a,this.bind={[t.BindType.Pass]:null,[t.BindType.Draw]:null},i.isSome(r)&&i.isSome(s)&&(this.bind[r]=s)}return e.prototype.equals=function(e){return this.type===e.type&&this.name===e.name&&this.arraySize===e.arraySize},e}();e.Uniform=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

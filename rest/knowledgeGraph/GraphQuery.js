@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as r}from"../../chunks/tslib.es6.js";import o from"../../core/Accessor.js";import{property as s}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as e}from"../../core/accessorSupport/decorators/subclass.js";let t=class extends o{constructor(r){super(r)}};r([s()],t.prototype,"openCypherQuery",void 0),t=r([e("esri.rest.knowledgeGraph.GraphQuery")],t);const p=t;export{p as default};
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Accessor","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(r,e,o,s,c,t,p){"use strict";let u=function(e){function o(r){return e.call(this,r)||this}return r._inheritsLoose(o,e),o}(o);e.__decorate([s.property()],u.prototype,"openCypherQuery",void 0),u=e.__decorate([p.subclass("esri.rest.knowledgeGraph.GraphQuery")],u);return u}));

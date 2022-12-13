@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-class e{constructor(e){this.gain=e}update(e){this.hasFilteredValue?this.filteredValue=(1-this.gain)*this.filteredValue+this.gain*e:this.filteredValue=e}reset(){this.filteredValue=void 0}get hasFilteredValue(){return void 0!==this.filteredValue}}export{e as FilteredValue};
+define(["exports","../../chunks/_rollupPluginBabelHelpers"],(function(e,t){"use strict";let i=function(){function e(e){this._gain=e}var i=e.prototype;return i.update=function(e){void 0!==this.filteredValue?this.filteredValue=(1-this._gain)*this.filteredValue+this._gain*e:this.filteredValue=e},i.reset=function(){this.filteredValue=void 0},t._createClass(e,[{key:"hasFilteredValue",get:function(){return void 0!==this.filteredValue}}]),e}();e.FilteredValue=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

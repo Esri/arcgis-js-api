@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{c as e,d as s,a}from"../../../../chunks/boundedPlane.js";const t=e();class n{constructor(){this._plane=e()}get isEnabled(){return!s(this.plane,t)}get plane(){return this._plane}set plane(e){a(e||t,this._plane)}}export{n as default};
+define(["../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/boundedPlane"],(function(e,n){"use strict";const t=n.create();return function(){function u(){this._plane=n.create()}return e._createClass(u,[{key:"isEnabled",get:function(){return!n.equals(this.plane,t)}},{key:"plane",get:function(){return this._plane},set:function(e){n.copy(e||t,this._plane)}}]),u}()}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{isSome as t}from"../../core/maybe.js";async function n(n,r){if("2d"===n.type)return n.hitTest(r);const s=await n.hitTest(r);if(0===s.results.length)return s;const i=s.results[0],u=t(i.distance)?i.distance*(1+e):i.distance,c=s.results.findIndex((t=>t.distance>u));return-1!==c&&(s.results=s.results.slice(0,c)),s}const e=.05;function r(n){return t(n)&&"graphic"===n.type}function s(t){return t.find(r)??null}function i(t){return t.filter(r)}export{i as filterGraphicHits,s as findFirstGraphicHit,n as hitTestSelectSimilarDistance};
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../core/maybe"],(function(e,t,n){"use strict";function i(e,t){return r.apply(this,arguments)}function r(){return(r=t._asyncToGenerator((function*(e,t){if("2d"===e.type)return e.hitTest(t);const i=yield e.hitTest(t);if(0===i.results.length)return i;const r=i.results[0],u=n.isSome(r.distance)?r.distance*(1+s):r.distance,l=i.results.findIndex((e=>e.distance>u));return-1!==l&&(i.results=i.results.slice(0,l)),i}))).apply(this,arguments)}const s=.05;function u(e){return n.isSome(e)&&"graphic"===e.type}function l(e){return e.find(u)??null}function c(e){return e.filter(u)}e.filterGraphicHits=c,e.findFirstGraphicHit=l,e.hitTestSelectSimilarDistance=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

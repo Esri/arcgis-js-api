@@ -1,3 +1,52 @@
+$base-scrim-z-index: 50;
+
+@mixin esri-feature-table__prompt($contextColor) {
+  animation: esri-fade-in-up 250ms ease-in-out;
+  background-color: var(--calcite-ui-background);
+  border: solid 3px $contextColor;
+  color: $font-color;
+  @include defaultBoxShadow();
+  display: flex;
+  flex-flow: column nowrap;
+  max-height: 85%;
+  padding: $cap-spacing $side-spacing;
+
+  .esri-feature-table__prompt__header {
+    color: $contextColor;
+    display: flex;
+    flex: 0 0 auto;
+    margin-bottom: $cap-spacing;
+
+    &__heading {
+      color: $heading-color;
+      margin: 0 $side-spacing--quarter;
+    }
+  }
+
+  .esri-feature-table__prompt__message {
+    color: inherit;
+    font-weight: $font-weight;
+    flex: 1 1 auto;
+    overflow: auto;
+    overflow-x: hidden;
+    padding: 0 0 $cap-spacing 0;
+    word-break: break-word;
+  }
+
+  .esri-feature-table__prompt__divider {
+    border-bottom: $border;
+    border-color: $border-color--subtle;
+    color: inherit;
+    flex: 0 0 auto;
+    margin: 0 0 $cap-spacing 0;
+  }
+
+  .esri-feature-table__prompt__actions {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
 @mixin featureTable() {
   .esri-feature-table {
     display: flex;
@@ -171,6 +220,18 @@
     border: none;
     padding: 0 5px;
     flex: 1 1 0;
+  }
+
+  .esri-feature-table__prompt--info {
+    @include esri-feature-table__prompt(var(--calcite-ui-info));
+  }
+
+  .esri-feature-table__prompt--warning {
+    @include esri-feature-table__prompt(var(--calcite-ui-warning));
+  }
+
+  .esri-feature-table__prompt--danger {
+    @include esri-feature-table__prompt(var(--calcite-ui-danger));
   }
 
   [dir="rtl"] {

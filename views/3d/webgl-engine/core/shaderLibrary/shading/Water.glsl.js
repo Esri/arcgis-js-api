@@ -1,12 +1,12 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{FoamColor as e}from"./FoamRendering.glsl.js";import{Gamma as o}from"./Gamma.glsl.js";import{PhysicallyBasedRendering as r}from"./PhysicallyBasedRendering.glsl.js";import{ScreenSpaceReflections as t}from"./ScreenSpaceReflections.glsl.js";import{CloudsParallaxShading as i}from"../util/CloudsParallaxShading.glsl.js";import{FloatPassUniform as a}from"../../shaderModules/FloatPassUniform.js";import{glsl as l}from"../../shaderModules/interfaces.js";function n(n,d){n.include(r,d),n.include(o),n.include(e),d.hasCloudsReflections&&n.include(i,d),d.hasScreenSpaceReflections&&n.include(t,d);const c=n.fragment;c.constants.add("fresnelSky","vec3",[.02,1,15]).add("fresnelMaterial","vec2",[.02,.1]).add("roughness","float",.015).add("foamIntensityExternal","float",1.7).add("ssrIntensity","float",.65).add("ssrHeightFadeStart","float",3e5).add("ssrHeightFadeEnd","float",5e5).add("waterDiffusion","float",.92).add("waterSeaColorMod","float",.8).add("correctionViewingPowerFactor","float",.4).add("skyZenitColor","vec3",[.52,.68,.9]).add("skyColor","vec3",[.67,.79,.9]).add("cloudFresnelModifier","vec2",[1.2,.01]),c.code.add(l`PBRShadingWater shadingInfo;
+define(["exports","./FoamRendering.glsl","./Gamma.glsl","./PhysicallyBasedRendering.glsl","./ScreenSpaceReflections.glsl","../util/CloudsParallaxShading.glsl","../../shaderModules/FloatPassUniform","../../shaderModules/interfaces","../../shaderModules/Matrix4PassUniform","../../shaderModules/Texture2DPassUniform"],(function(e,o,r,t,a,l,i,n,d,s){"use strict";function c(e,c){e.include(t.PhysicallyBasedRendering,c),e.include(r.Gamma),e.include(o.FoamColor),c.hasCloudsReflections&&e.include(l.CloudsParallaxShading,c),c.hasScreenSpaceReflections&&e.include(a.ScreenSpaceReflections,c);const f=e.fragment;f.constants.add("fresnelSky","vec3",[.02,1,15]).add("fresnelMaterial","vec2",[.02,.1]).add("roughness","float",.015).add("foamIntensityExternal","float",1.7).add("ssrIntensity","float",.65).add("ssrHeightFadeStart","float",3e5).add("ssrHeightFadeEnd","float",5e5).add("waterDiffusion","float",.92).add("waterSeaColorMod","float",.8).add("correctionViewingPowerFactor","float",.4).add("skyZenitColor","vec3",[.52,.68,.9]).add("skyColor","vec3",[.67,.79,.9]).add("cloudFresnelModifier","vec2",[1.2,.01]),f.code.add(n.glsl`PBRShadingWater shadingInfo;
 vec3 getSkyGradientColor(in float cosTheta, in vec3 horizon, in vec3 zenit) {
 float exponent = pow((1.0 - cosTheta), fresnelSky[2]);
 return mix(zenit, horizon, exponent);
-}`),c.uniforms.add([new a("lightingSpecularStrength",((e,o)=>o.lighting.mainLight.specularStrength)),new a("lightingEnvironmentStrength",((e,o)=>o.lighting.mainLight.environmentStrength))]),c.code.add(l`vec3 getSeaColor(in vec3 n, in vec3 v, in vec3 l, vec3 color, in vec3 lightIntensity, in vec3 localUp, in float shadow, float foamIntensity, vec3 viewPosition, vec3 position) {
+}`),f.uniforms.add([new i.FloatPassUniform("lightingSpecularStrength",((e,o)=>o.lighting.mainLight.specularStrength)),new i.FloatPassUniform("lightingEnvironmentStrength",((e,o)=>o.lighting.mainLight.environmentStrength))]),f.code.add(n.glsl`vec3 getSeaColor(in vec3 n, in vec3 v, in vec3 l, vec3 color, in vec3 lightIntensity, in vec3 localUp, in float shadow, float foamIntensity, vec3 viewPosition, vec3 position) {
 float reflectionHit = 0.0;
 float reflectionHitDiffused = 0.0;
 vec3 seaWaterColor = linearizeGamma(color);
@@ -40,13 +40,13 @@ foam = foamIntensity2FoamColor(foamIntensityExternal, foamIntensity, skyZenitCol
 }
 float correctionViewingFactor = pow(max(dot(v, localUp), 0.0), correctionViewingPowerFactor);
 vec3 normalCorrectedClouds = mix(localUp, n, correctionViewingFactor);
-vec3 reflectedWorld = normalize(reflect(-v, normalCorrectedClouds));`),d.hasCloudsReflections&&c.code.add(l`vec4 cloudsColor = renderClouds(reflectedWorld, position);
+vec3 reflectedWorld = normalize(reflect(-v, normalCorrectedClouds));`),c.hasCloudsReflections&&f.code.add(n.glsl`vec4 cloudsColor = renderClouds(reflectedWorld, position);
 cloudsColor.a = 1.0 - cloudsColor.a;
 cloudsColor = pow(cloudsColor, vec4(GAMMA));
-cloudsColor *= clamp(fresnelModifier.y*cloudFresnelModifier[0] - cloudFresnelModifier[1], 0.0, 1.0) * clamp((1.0 - totalFadeInOut), 0.0, 1.0);`),d.hasScreenSpaceReflections?c.code.add(l`vec3 viewDir = normalize(viewPosition);
+cloudsColor *= clamp(fresnelModifier.y*cloudFresnelModifier[0] - cloudFresnelModifier[1], 0.0, 1.0) * clamp((1.0 - totalFadeInOut), 0.0, 1.0);`),c.hasScreenSpaceReflections?(f.uniforms.add(new d.Matrix4PassUniform("view",((e,o)=>o.ssr.camera.viewMatrix))),f.uniforms.add(new s.Texture2DPassUniform("lastFrameColorMap",((e,o)=>o.ssr.lastFrameColorTexture))),f.code.add(n.glsl`vec3 viewDir = normalize(viewPosition);
 vec4 viewNormalVectorCoordinate = view *vec4(n, 0.0);
 vec3 viewNormal = normalize(viewNormalVectorCoordinate.xyz);
-vec4 viewUp = view *vec4(localUp, 0.0);
+vec4 viewUp = view * vec4(localUp, 0.0);
 vec3 viewNormalCorrectedSSR = mix(viewUp.xyz, viewNormal, correctionViewingFactor);
 vec3 reflected = normalize(reflect(viewDir, viewNormalCorrectedSSR));
 vec3 hitCoordinate = screenSpaceIntersection(reflected, viewPosition, viewDir, viewUp.xyz);
@@ -61,7 +61,7 @@ reflectionHitDiffused = waterDiffusion * reflectionHit;
 reflectedColor = linearizeGamma(texture2D(lastFrameColorMap, reprojectedCoordinate).xyz)* reflectionHitDiffused * fresnelModifier.y * ssrIntensity;
 }
 float seaColorMod =  mix(waterSeaColorMod, waterSeaColorMod*0.5, reflectionHitDiffused);
-vec3 waterRenderedColor = tonemapACES((1.0 - reflectionHitDiffused) * reflSky + reflectedColor + reflSea * seaColorMod + specular  + foam);`):c.code.add(l`vec3 waterRenderedColor = tonemapACES(reflSky + reflSea * waterSeaColorMod + specular + foam);`),d.hasCloudsReflections?d.hasScreenSpaceReflections?c.code.add(l`return waterRenderedColor * (1.0 - (1.0 - reflectionHit) * cloudsColor.a) + (1.0 - reflectionHit) * cloudsColor.xyz;
-}`):c.code.add(l`return waterRenderedColor * (1.0 - cloudsColor.a) + cloudsColor.xyz;
-}`):c.code.add(l`return waterRenderedColor;
-}`)}export{n as Water};
+vec3 waterRenderedColor = tonemapACES((1.0 - reflectionHitDiffused) * reflSky + reflectedColor + reflSea * seaColorMod + specular  + foam);`)):f.code.add(n.glsl`vec3 waterRenderedColor = tonemapACES(reflSky + reflSea * waterSeaColorMod + specular + foam);`),c.hasCloudsReflections?c.hasScreenSpaceReflections?f.code.add(n.glsl`return waterRenderedColor * (1.0 - (1.0 - reflectionHit) * cloudsColor.a) + (1.0 - reflectionHit) * cloudsColor.xyz;
+}`):f.code.add(n.glsl`return waterRenderedColor * (1.0 - cloudsColor.a) + cloudsColor.xyz;
+}`):f.code.add(n.glsl`return waterRenderedColor;
+}`)}e.Water=c,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

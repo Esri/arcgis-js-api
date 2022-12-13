@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{ScreenSpacePass as e}from"../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass.js";import{ReadLinearDepth as r}from"../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl.js";import{CameraSpace as o}from"../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl.js";import{RgbaFloatEncoding as a}from"../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl.js";import{Float4PassUniform as s}from"../views/3d/webgl-engine/core/shaderModules/Float4PassUniform.js";import{FloatPassUniform as i}from"../views/3d/webgl-engine/core/shaderModules/FloatPassUniform.js";import{glsl as n}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{ShaderBuilder as l}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{Texture2DPassUniform as d}from"../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform.js";import{s as t}from"./ShadowCastAccumulate.glsl.js";import{ShadowCastVisualization as c}from"../views/3d/webgl-engine/shaders/ShadowCastVisualizeTechniqueConfiguration.js";function m(m){const g=new l,u=g.fragment;u.include(a),u.include(r),g.include(o),g.include(e);const{visualization:p,bandsEnabled:w}=m;u.constants.add("inverseSampleValue","float",t),u.uniforms.add([new d("shadowCastMap",(e=>e.shadowCastMap)),new i("sampleScale",(e=>e.sampleScale)),new i("opacityFromElevation",(e=>e.opacityFromElevation)),new s("uColor",(e=>e.color))]);const h=p===c.Gradient,f=p===c.Threshold;return h&&w?u.uniforms.add(new i("bandSize",(e=>e.bandSize))):f&&u.uniforms.add(new i("threshold",(e=>e.threshold))),u.code.add(n`
+define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform","./ShadowCastAccumulate.glsl","../views/3d/webgl-engine/shaders/ShadowCastVisualizeTechniqueConfiguration"],(function(e,a,s,i,o,l,n,r,d,t,c,u){"use strict";function g(e){const g=new d.ShaderBuilder,h=g.fragment;h.include(o.RgbaFloatEncoding),h.include(s.ReadLinearDepth),g.include(i.CameraSpace),g.include(a.ScreenSpacePass);const{visualization:w,bandsEnabled:m}=e;h.constants.add("inverseSampleValue","float",c.shadowCastMaxSamples),h.uniforms.add([new t.Texture2DPassUniform("shadowCastMap",(e=>e.shadowCastMap)),new n.FloatPassUniform("sampleScale",(e=>e.sampleScale)),new n.FloatPassUniform("opacityFromElevation",(e=>e.opacityFromElevation)),new l.Float4PassUniform("uColor",(e=>e.color))]);const p=w===u.ShadowCastVisualization.Gradient,S=w===u.ShadowCastVisualization.Threshold;return p&&m?h.uniforms.add(new n.FloatPassUniform("bandSize",(e=>e.bandSize))):S&&h.uniforms.add(new n.FloatPassUniform("threshold",(e=>e.threshold))),h.code.add(r.glsl`
       void main(void) {
         vec4 record = texture2D(shadowCastMap, uv);
         float pixelSamples = record.r * inverseSampleValue;
@@ -12,13 +12,13 @@ import{ScreenSpacePass as e}from"../views/3d/webgl-engine/core/shaderLibrary/Scr
 
         float strength = pixelSamples * sampleScale;
 
-        ${f?n`
+        ${S?r.glsl`
             if (strength <= threshold) {
               discard;
             }`:""}
 
-        ${h&&w?n`strength = ceil(strength / bandSize) * bandSize;`:""}
+        ${p&&m?r.glsl`strength = ceil(strength / bandSize) * bandSize;`:""}
 
-        gl_FragColor = vec4(uColor.xyz, uColor.a * opacityFromElevation ${h?n`* strength`:""});
+        gl_FragColor = vec4(uColor.xyz, uColor.a * opacityFromElevation ${p?r.glsl`* strength`:""});
       }
-    `),g}const g=Object.freeze(Object.defineProperty({__proto__:null,build:m},Symbol.toStringTag,{value:"Module"}));export{g as S,m as b};
+    `),g}const h=Object.freeze(Object.defineProperty({__proto__:null,build:g},Symbol.toStringTag,{value:"Module"}));e.ShadowCastVisualize=h,e.build=g}));

@@ -114,6 +114,7 @@ $border: 1px solid $border-color;
     transition: opacity 250ms ease-in-out;
     &-icon {
       background-color: rgba($background-color--inverse, 0.5);
+      color: $background-color;
       border-radius: 100%;
       display: flex;
       padding: $cap-spacing--plus-half;
@@ -160,6 +161,7 @@ $border: 1px solid $border-color;
     display: inline-block;
     font-size: $font-size--small;
     margin-bottom: $cap-spacing--quarter;
+    @include wordbreak();
   }
   .esri-attachments__file-fieldset {
     border: none;
@@ -237,6 +239,7 @@ $border: 1px solid $border-color;
       text-align: center;
       text-overflow: ellipsis;
       width: calc(#{$attachment-image-container-width} - #{$side-spacing});
+      @include wordbreak();
     }
     .esri-attachments__item-mask--icon {
       background-color: transparent;

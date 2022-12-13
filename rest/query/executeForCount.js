@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{parseUrl as o}from"../utils.js";import{executeQueryForCount as r}from"./operations/query.js";import t from"../support/Query.js";async function n(n,s,m){const p=o(n);return r(p,t.from(s),{...m}).then((o=>o.data.count))}export{n as executeForCount};
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../utils","./operations/query","../support/Query"],(function(e,t,r,u,n){"use strict";function o(e,t,r){return s.apply(this,arguments)}function s(){return(s=t._asyncToGenerator((function*(e,t,o){const s=r.parseUrl(e);return u.executeQueryForCount(s,n.from(t),{...o}).then((e=>e.data.count))}))).apply(this,arguments)}e.executeForCount=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

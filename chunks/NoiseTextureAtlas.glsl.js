@@ -1,10 +1,10 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{NoiseTextureRenderMode as e}from"../views/3d/environment/NoiseTextureAtlasConfiguration.js";import{TILE_ROWS as o,WEATHER_TILE_SIZE as t,WEATHER_MAP_SIZE as r,TILE_SIZE as l,ATLAS_SIZE as a}from"../views/3d/environment/NoiseTextureAtlasDimensions.js";import{ScreenSpacePass as i}from"../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass.js";import{Float2Uniform as d}from"../views/3d/webgl-engine/core/shaderModules/Float2Uniform.js";import{glsl as f}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{ShaderBuilder as n}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";function p(p){const c=new n;if(c.include(i,!1),c.fragment.code.add(f`float remap(float x, float low1, float high1, float low2, float high2) {
+define(["exports","./_rollupPluginBabelHelpers","./vec2f64","../views/3d/environment/NoiseTextureAtlasConfiguration","../views/3d/environment/NoiseTextureAtlasDimensions","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,o,l,t,r,a,i,d,f){"use strict";let n=function(e){function t(){var o;return(o=e.apply(this,arguments)||this).weatherTile=l.fromValues(0,0),o}return o._inheritsLoose(t,e),t}(d.NoParameters);function s(e){const o=new f.ShaderBuilder;if(o.include(a.ScreenSpacePass,!1),o.fragment.code.add(d.glsl`float remap(float x, float low1, float high1, float low2, float high2) {
 return low2 + (x - low1) * (high2 - low2) / (high1 - low1);
-}`),c.fragment.uniforms.add(new d("weatherTile")),p.mode===e.Full){const e=2,t=8;c.fragment.code.add(f`
+}`),e.mode===t.NoiseTextureRenderMode.Full){const e=2,l=8;o.fragment.code.add(d.glsl`
     float saturate(float x) {
       return clamp(x, 0.0, 1.0);
     }
@@ -86,26 +86,26 @@ return low2 + (x - low1) * (high2 - low2) / (high1 - low1);
 
     vec3 get3Dfrom2D(vec2 uv) {
       vec2 tile = floor(uv);
-      float z = floor(${f.float(o)} * tile.y + tile.x);
+      float z = floor(${d.glsl.float(r.TILE_ROWS)} * tile.y + tile.x);
       return vec3(fract(uv), z);
     }
 
     float getTextureForPointPerlinWorley(vec3 p) {
-      float perlinNoise = getPerlinNoise(p, ${f.float(t)});
+      float perlinNoise = getPerlinNoise(p, ${d.glsl.float(l)});
 
-      float worley0 = worley(p, ${f.float(e)} * 2.0);
-      float worley1 = worley(p, ${f.float(e)} * 8.0);
-      float worley2 = worley(p, ${f.float(e)} * 14.0);
+      float worley0 = worley(p, ${d.glsl.float(e)} * 2.0);
+      float worley1 = worley(p, ${d.glsl.float(e)} * 8.0);
+      float worley2 = worley(p, ${d.glsl.float(e)} * 14.0);
 
       float worleyFBM = worley0 * 0.625 + worley1 * 0.25 + worley2 * 0.125;
       return remap(perlinNoise, 0.0, 1.0, worleyFBM, 1.0);
     }
 
     float getTextureForPointWorley(vec3 p) {
-      float worley0 = worley(p, ${f.float(e)});
-      float worley1 = worley(p, ${f.float(e)} * 2.0);
-      float worley2 = worley(p, ${f.float(e)} * 4.0);
-      float worley3 = worley(p, ${f.float(e)} * 8.0);
+      float worley0 = worley(p, ${d.glsl.float(e)});
+      float worley1 = worley(p, ${d.glsl.float(e)} * 2.0);
+      float worley2 = worley(p, ${d.glsl.float(e)} * 4.0);
+      float worley3 = worley(p, ${d.glsl.float(e)} * 8.0);
 
       float FBM0 = worley0 * 0.625 + worley1 * 0.25 + worley2 * 0.125;
       float FBM1 = worley1 * 0.625 + worley2 * 0.25 + worley3 * 0.125;
@@ -113,20 +113,20 @@ return low2 + (x - low1) * (high2 - low2) / (high1 - low1);
 
       return FBM0 * 0.625 + FBM1 * 0.25 + FBM2 * 0.125;
     }
-  `)}return c.fragment.code.add(f`
+  `)}return o.fragment.uniforms.add(new i.Float2PassUniform("weatherTile",(e=>e.weatherTile))),o.fragment.code.add(d.glsl`
     vec2 modulo(vec2 m, float n){
       return mod(mod(m, n) + n, n);
     }
 
     vec2 hash(vec2 p){
       // Get position of p in weather tile
-      p = modulo(p, ${f.float(t)});
+      p = modulo(p, ${d.glsl.float(r.WEATHER_TILE_SIZE)});
 
       // Get global coordinates of p
-      p += weatherTile * ${f.float(t)};
+      p += weatherTile * ${d.glsl.float(r.WEATHER_TILE_SIZE)};
 
       // Limit position to avoid numerical instability
-      p = modulo(p, ${f.float(r)});
+      p = modulo(p, ${d.glsl.float(r.WEATHER_MAP_SIZE)});
 
       vec3 p3 = fract(vec3(p.xyx) * vec3(0.1031, 0.1030, 0.0973));
       p3 += dot(p3, p3.yzx + 33.33);
@@ -163,10 +163,10 @@ return low2 + (x - low1) * (high2 - low2) / (high1 - low1);
         }
       return 1.0 - clamp(d, 0.0, 1.0);
     }
-  `),c.fragment.code.add(f`void main() {`),p.mode===e.Full&&c.fragment.code.add(f`
+  `),o.fragment.code.add(d.glsl`void main() {`),e.mode===t.NoiseTextureRenderMode.Full&&o.fragment.code.add(d.glsl`
         float padWidth = 1.0;
-        float paddedSize = ${f.float(l)} + 2.0 * padWidth;
-        float tileCount = ${f.float(o)} * ${f.float(o)};
+        float paddedSize = ${d.glsl.float(r.TILE_SIZE)} + 2.0 * padWidth;
+        float tileCount = ${d.glsl.float(r.TILE_ROWS)} * ${d.glsl.float(r.TILE_ROWS)};
         vec2 tile = floor((gl_FragCoord.xy - 0.5) / paddedSize);
 
         bool padCell = false;
@@ -206,49 +206,49 @@ return low2 + (x - low1) * (high2 - low2) / (high1 - low1);
           vec2 pixel = gl_FragCoord.xy - padWidth - padding;
 
           if (startPadX) {
-            pixel.x += ${f.float(l)};
+            pixel.x += ${d.glsl.float(r.TILE_SIZE)};
           }
 
           if (startPadY) {
-            pixel.y += ${f.float(l)};
+            pixel.y += ${d.glsl.float(r.TILE_SIZE)};
           }
 
           if (endPadX) {
-            pixel.x -= ${f.float(l)};
+            pixel.x -= ${d.glsl.float(r.TILE_SIZE)};
           }
 
           if (endPadY) {
-            pixel.y -= ${f.float(l)};
+            pixel.y -= ${d.glsl.float(r.TILE_SIZE)};
           }
 
-          uv = vec2(pixel.xy / ${f.float(l)});
+          uv = vec2(pixel.xy / ${d.glsl.float(r.TILE_SIZE)});
         } else {
           vec2 pixel = gl_FragCoord.xy - padWidth - padding;
-          uv = vec2(pixel.xy / ${f.float(l)});
+          uv = vec2(pixel.xy / ${d.glsl.float(r.TILE_SIZE)});
         }
 
         vec3 p_ = get3Dfrom2D(uv);
         vec3 p = p_;
-        p.z /= (${f.float(o)} * ${f.float(o)});
+        p.z /= (${d.glsl.float(r.TILE_ROWS)} * ${d.glsl.float(r.TILE_ROWS)});
 
         float worleyPerlinNoise = getTextureForPointPerlinWorley(p);
         float worleyNoise = getTextureForPointWorley(p);
 
         gl_FragColor.r = saturate(remap(worleyPerlinNoise, worleyNoise, 1.0, 0.0, 1.0));
 
-        p_ = mod(p_ + 1.0, ${f.float(o)} * ${f.float(o)});
+        p_ = mod(p_ + 1.0, ${d.glsl.float(r.TILE_ROWS)} * ${d.glsl.float(r.TILE_ROWS)});
         p = p_;
-        p.z /= (${f.float(o)} * ${f.float(o)});
+        p.z /= (${d.glsl.float(r.TILE_ROWS)} * ${d.glsl.float(r.TILE_ROWS)});
 
         worleyPerlinNoise = getTextureForPointPerlinWorley(p);
         worleyNoise = getTextureForPointWorley(p);
 
         gl_FragColor.g = saturate(remap(worleyPerlinNoise, worleyNoise, 1.0, 0.0, 1.0));
-      `),c.fragment.code.add(f`
-      vec2 mapUV = ${f.float(t)} * (gl_FragCoord.xy / ${f.float(a)});
+      `),o.fragment.code.add(d.glsl`
+      vec2 mapUV = ${d.glsl.float(r.WEATHER_TILE_SIZE)} * (gl_FragCoord.xy / ${d.glsl.float(r.ATLAS_SIZE)});
       float map = abs(gradientNoise(mapUV));
       map = remap(map, 0.25 * (1.0 - worley(8.0 * mapUV)), 1.0, 0.0, 1.0);
 
-      ${p.mode===e.Full?f`gl_FragColor.ba = vec2(0.0, map);`:f`gl_FragColor = vec4(map);`};
+      ${e.mode===t.NoiseTextureRenderMode.Full?d.glsl`gl_FragColor.ba = vec2(0.0, map);`:d.glsl`gl_FragColor = vec4(map);`};
     }
-  `),c}const c=Object.freeze(Object.defineProperty({__proto__:null,build:p},Symbol.toStringTag,{value:"Module"}));export{c as N,p as b};
+  `),o}const p=Object.freeze(Object.defineProperty({__proto__:null,NoiseTextureAtlasPassParameters:n,build:s},Symbol.toStringTag,{value:"Module"}));e.NoiseTextureAtlas=p,e.NoiseTextureAtlasPassParameters=n,e.build=s}));
