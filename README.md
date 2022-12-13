@@ -2,6 +2,10 @@
 
 A minified, unbuilt version of the [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/) ES modules.
 
+| :warning:  Repository Archive Notice   |
+| :-----------------------------------------|
+| This repository will be archived at 4.26 (Early 2023) and then removed in a future release. All versions will continue to be available for install on NPM: https://www.npmjs.com/package/arcgis-js-api |
+
 ## Features
 
 For an overview of the SDK, visit the [developer documentation](https://developers.arcgis.com/javascript/latest/key-features/) site.
