@@ -1,6 +1,6 @@
 # @arcgis/core
 
-A minified, unbuilt version of the [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/) ES modules.
+A minified, unbuilt version of the [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/) AMD modules.
 
 | :warning:  Repository Archive Notice   |
 | :-----------------------------------------|
