@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-var a;!function(a){a[a.Horizontal=0]="Horizontal",a[a.Vertical=1]="Vertical",a[a.Cross=2]="Cross",a[a.ForwardDiagonal=3]="ForwardDiagonal",a[a.BackwardDiagonal=4]="BackwardDiagonal",a[a.DiagonalCross=5]="DiagonalCross",a[a.COUNT=6]="COUNT"}(a||(a={}));export{a as Style};
+define(["exports"],(function(a){"use strict";var o;a.Style=void 0,(o=a.Style||(a.Style={}))[o.Horizontal=0]="Horizontal",o[o.Vertical=1]="Vertical",o[o.Cross=2]="Cross",o[o.ForwardDiagonal=3]="ForwardDiagonal",o[o.BackwardDiagonal=4]="BackwardDiagonal",o[o.DiagonalCross=5]="DiagonalCross",o[o.COUNT=6]="COUNT",Object.defineProperties(a,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

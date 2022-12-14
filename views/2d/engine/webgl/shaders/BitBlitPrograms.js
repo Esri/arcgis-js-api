@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{resolveIncludes as t}from"./sources/resolver.js";const e={shaders:{vertexShader:t("bitBlit/bitBlit.vert"),fragmentShader:t("bitBlit/bitBlit.frag")},attributes:new Map([["a_pos",0],["a_tex",1]])};export{e as bitBlit};
+define(["exports","./sources/resolver"],(function(e,t){"use strict";const r={shaders:{vertexShader:t.resolveIncludes("bitBlit/bitBlit.vert"),fragmentShader:t.resolveIncludes("bitBlit/bitBlit.frag")},attributes:new Map([["a_pos",0],["a_tex",1]])};e.bitBlit=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

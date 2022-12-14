@@ -1,26 +1,26 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{SimpleAtmosphereGeometry as e}from"../views/3d/environment/SimpleAtmosphereTechniqueConfiguration.js";import{Transform as o}from"../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl.js";import{Float2Uniform as i}from"../views/3d/webgl-engine/core/shaderModules/Float2Uniform.js";import{Float3PassUniform as r}from"../views/3d/webgl-engine/core/shaderModules/Float3PassUniform.js";import{Float3Uniform as n}from"../views/3d/webgl-engine/core/shaderModules/Float3Uniform.js";import{FloatUniform as t}from"../views/3d/webgl-engine/core/shaderModules/FloatUniform.js";import{NoParameters as s,glsl as a}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{Matrix4PassUniform as l}from"../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform.js";import{Matrix4Uniform as d}from"../views/3d/webgl-engine/core/shaderModules/Matrix4Uniform.js";import{ShaderBuilder as c}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{Texture2DPassUniform as m}from"../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform.js";import{VertexAttribute as g}from"../views/3d/webgl-engine/lib/VertexAttribute.js";class f extends s{}function p(s){const f=new c,{vertex:p,fragment:v}=f;if(s.geometry===e.Underground)f.attributes.add(g.POSITION,"vec2"),f.varyings.add("color","vec4"),p.uniforms.add([new r("lightingMainDirection",((e,o)=>o.lighting.lightingMainDirection)),new n("cameraPosition"),new t("undergroundFadeAlpha")]),p.code.add(a`void main(void) {
-float ndotl = dot(normalize(cameraPosition), lightingMainDirection);
+define(["exports","./_rollupPluginBabelHelpers","./vec2f64","./vec3f64","../views/3d/environment/SimpleAtmosphereTechniqueConfiguration","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MainLighting.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/Float3PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,o,i,r,t,n,a,s,l,d,c,m,g,u,f){"use strict";let h=function(e){function r(){var o;return(o=e.apply(this,arguments)||this).texV=i.create(),o.altitudeFade=0,o.innerScale=0,o.undergroundFadeAlpha=0,o.silhouette=new p,o}return o._inheritsLoose(r,e),r}(c.NoParameters),p=function(){this.center=r.create(),this.v1=r.create(),this.v2=r.create()};function v(e){const o=new g.ShaderBuilder,{vertex:i,fragment:r}=o;if(a.addMainLightDirection(i),e.geometry===t.SimpleAtmosphereGeometry.Underground)o.attributes.add(f.VertexAttribute.POSITION,"vec2"),o.varyings.add("color","vec4"),i.uniforms.add([new l.Float3PassUniform("cameraPosition",((e,o)=>o.camera.eye)),new d.FloatPassUniform("undergroundFadeAlpha",(e=>e.undergroundFadeAlpha))]),i.code.add(c.glsl`void main(void) {
+float ndotl = dot(normalize(cameraPosition), mainLightDirection);
 float lighting = max(0.0, smoothstep(-1.0, 0.8, 2.0 * ndotl));
 color = vec4(vec3(lighting), undergroundFadeAlpha);
 gl_Position = vec4(position.xy, 1.0, 1.0);
-}`),v.code.add(a`void main() {
+}`),r.code.add(c.glsl`void main() {
 gl_FragColor = color;
-}`);else{f.include(o),f.attributes.add(g.POSITION,"vec3"),f.varyings.add("vtc","vec2"),f.varyings.add("falloff","float");const c=s.geometry===e.Cylinder;p.uniforms.add([new l("proj",((e,o)=>o.camera.projectionMatrix)),new d("view"),new r("lightingMainDirection",((e,o)=>o.lighting.lightingMainDirection))]),c||(f.varyings.add("innerFactor","float"),p.uniforms.add(new n("silCircleCenter")),p.uniforms.add(new n("silCircleV1")),p.uniforms.add(new n("silCircleV2")),p.uniforms.add(new i("texV")),p.uniforms.add(new t("innerScale")));const u=6.2831853,w=1/128;p.code.add(a`
+}`);else{o.include(n.Transform,e),o.attributes.add(f.VertexAttribute.POSITION,"vec3"),o.varyings.add("vtc","vec2"),o.varyings.add("falloff","float");const a=e.geometry===t.SimpleAtmosphereGeometry.Cylinder;i.uniforms.add([new m.Matrix4PassUniform("proj",((e,o)=>o.camera.projectionMatrix)),new m.Matrix4PassUniform("view",((e,o)=>o.camera.viewMatrix))]),a||(o.varyings.add("innerFactor","float"),i.uniforms.add(new l.Float3PassUniform("silCircleCenter",(e=>e.silhouette.center))),i.uniforms.add(new l.Float3PassUniform("silCircleV1",(e=>e.silhouette.v1))),i.uniforms.add(new l.Float3PassUniform("silCircleV2",(e=>e.silhouette.v2))),i.uniforms.add(new s.Float2PassUniform("texV",(e=>e.texV))),i.uniforms.add(new d.FloatPassUniform("innerScale",(e=>e.innerScale))));const g=6.2831853,h=1/128;i.code.add(c.glsl`
 		void main(void) {
-      ${c?a`
+      ${a?c.glsl`
       vec3 pos = position;
-      float ndotl = lightingMainDirection.z;
-      vtc = vec2(0.0, position.z + 0.05);`:a`
+      float ndotl = mainLightDirection.z;
+      vtc = vec2(0.0, position.z + 0.05);`:c.glsl`
       innerFactor = clamp(-position.z, 0.0, 1.0);
       float scale = position.y * (1.0 + innerFactor * innerScale);
-      float phi = position.x * ${a.float(u*w)} + 1.0;
+      float phi = position.x * ${c.glsl.float(g*h)} + 1.0;
       vec3 pos =  (silCircleCenter + sin(phi) * silCircleV1 + cos(phi) * silCircleV2) * scale;
-      float ndotl = dot(normalize(position.y > 0.0 ? pos: silCircleCenter), lightingMainDirection);
-      vtc.x = position.x  * ${a.float(w)};
+      float ndotl = dot(normalize(position.y > 0.0 ? pos: silCircleCenter), mainLightDirection);
+      vtc.x = position.x  * ${c.glsl.float(h)};
       vtc.y = texV.x * (1.0 - position.z) + texV.y * position.z;
       `}
       falloff = max(0.0, smoothstep(-1.0, 0.8, 2.0 * ndotl));
@@ -28,11 +28,11 @@ gl_FragColor = color;
 		  gl_Position = transformPosition(proj, view, pos);
 		  gl_Position.z = gl_Position.w; // project atmosphere onto the far plane
     }
-	  `),v.uniforms.add(new m("tex",(e=>e.texture))),c||v.uniforms.add(new t("altitudeFade")),v.code.add(a`
+	  `),r.uniforms.add(new u.Texture2DPassUniform("tex",(e=>e.texture))),a||r.uniforms.add(new d.FloatPassUniform("altitudeFade",(e=>e.altitudeFade))),r.code.add(c.glsl`
 		void main() {
 			vec4 atmosphereColor = texture2D(tex, vtc) * falloff;
-      ${c?a`gl_FragColor = atmosphereColor;`:a`
+      ${a?c.glsl`gl_FragColor = atmosphereColor;`:c.glsl`
 			vec4 innerColor = vec4(atmosphereColor.rgb, 1.0 - altitudeFade);
 			gl_FragColor = mix(atmosphereColor, innerColor, smoothstep(0.0, 1.0, innerFactor));
       `}
-    }`)}return f}const v=Object.freeze(Object.defineProperty({__proto__:null,SimpleAtmospherePassParameters:f,build:p},Symbol.toStringTag,{value:"Module"}));export{f as S,v as a,p as b};
+    }`)}return o}const w=Object.freeze(Object.defineProperty({__proto__:null,SimpleAtmospherePassParameters:h,SilhouetteCircle:p,build:v},Symbol.toStringTag,{value:"Module"}));e.SilhouetteCircle=p,e.SimpleAtmosphere=w,e.SimpleAtmospherePassParameters=h,e.build=v}));

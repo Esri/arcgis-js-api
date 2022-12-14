@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{computeDepthRange as t}from"./DepthRange.js";class e{constructor(t){this._objects=t}submit(t,e){this._objects.preSubmit(e),this._objects.visibleObjects.forAll((s=>s.renderable.material.submit(t,e,s)))}queryShadowCasterDepthRange(e){return this._objects.visibleObjects.length?t(e,this._objects.visibleObjects):null}}export{e as RenderSubmitSystem};
+define(["exports","./DepthRange"],(function(e,t){"use strict";let i=function(){function e(e){this._objects=e}var i=e.prototype;return i.submit=function(e,t){this._objects.preSubmit(t),this._objects.visibleObjects.forAll((i=>i.renderable.material.submit(e,t,i)))},i.queryShadowCasterDepthRange=function(e){return this._objects.visibleObjects.length?t.computeDepthRange(e,this._objects.visibleObjects):null},e}();e.RenderSubmitSystem=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

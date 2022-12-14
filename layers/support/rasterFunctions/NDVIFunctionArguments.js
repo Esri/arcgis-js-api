@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/arrayUtils","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/subclass","./BaseFunctionArguments"],(function(e,r,o,t,s,n,a){"use strict";var i;let c=i=function(r){function o(){var e;return(e=r.apply(this,arguments)||this).visibleBandID=0,e.infraredBandID=1,e.scaled=!0,e}return e._inheritsLoose(o,r),o.prototype.clone=function(){const{visibleBandID:e,infraredBandID:r,scaled:o}=this;return new i({visibleBandID:e,infraredBandID:r,scaled:o})},o}(a);r.__decorate([o.property({json:{write:!0}})],c.prototype,"visibleBandID",void 0),r.__decorate([o.property({json:{write:!0}})],c.prototype,"infraredBandID",void 0),r.__decorate([o.property({json:{write:!0}})],c.prototype,"scaled",void 0),c=i=r.__decorate([n.subclass("esri.layers.support.rasterFunctions.NDVIFunctionArguments")],c);return c}));

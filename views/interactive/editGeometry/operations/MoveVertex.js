@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-class t{constructor(t,s,d,h){this.helper=t,this.dx=s,this.dy=d,this.dz=h}_move(t,s,d,h){this.helper.addDelta(t.pos,s,d,h)}apply(t){this._move(t,this.dx,this.dy,this.dz)}undo(t){this._move(t,-this.dx,-this.dy,-this.dz)}canAccumulate(s){return s instanceof t}accumulate(t,s){this._move(t,s.dx,s.dy,s.dz)}accumulateParams(t){this.dx+=t.dx,this.dy+=t.dy,this.dz+=t.dz}}export{t as MoveVertex};
+define(["exports"],(function(t){"use strict";let e=function(){function t(t,e,i,n){this._helper=t,this.dx=e,this.dy=i,this.dz=n}var e=t.prototype;return e._move=function(t,e,i,n){this._helper.addDelta(t.pos,e,i,n)},e.apply=function(t){this._move(t,this.dx,this.dy,this.dz)},e.undo=function(t){this._move(t,-this.dx,-this.dy,-this.dz)},e.canAccumulate=function(e){return e instanceof t},e.accumulate=function(t,e){this._move(t,e.dx,e.dy,e.dz)},e.accumulateParams=function(t){this.dx+=t.dx,this.dy+=t.dy,this.dz+=t.dz},t}();t.MoveVertex=e,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

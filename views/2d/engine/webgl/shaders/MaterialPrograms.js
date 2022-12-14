@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{resolveIncludes as r}from"./sources/resolver.js";import{glslifyDefineMap as t}from"../../../../webgl/programUtils.js";const e=r=>{let t="";t+=r[0].toUpperCase();for(let e=1;e<r.length;e++){const s=r[e];s===s.toUpperCase()?(t+="_",t+=s):t+=s.toUpperCase()}return t},s=r=>{const s={};for(const t in r){s[e(t)]=r[t]}return t(s)},o=(t,e,o,n)=>{const a=t+t.substring(t.lastIndexOf("/")),p=e+e.substring(e.lastIndexOf("/")),f=s(n);return{attributes:o,shaders:{vertexShader:f+r(`${a}.vert`),fragmentShader:f+r(`${p}.frag`)}}};export{o as createProgramTemplate};
+define(["exports","./sources/resolver","../../../../webgl/programUtils"],(function(e,r,t){"use strict";const s=e=>{let r="";r+=e[0].toUpperCase();for(let t=1;t<e.length;t++){const s=e[t];s===s.toUpperCase()?(r+="_",r+=s):r+=s.toUpperCase()}return r},n=e=>{const r={};for(const t in e){r[s(t)]=e[t]}return t.glslifyDefineMap(r)},o=(e,t,s,o)=>{const l=e+e.substring(e.lastIndexOf("/")),a=t+t.substring(t.lastIndexOf("/")),u=n(o);return{attributes:s,shaders:{vertexShader:u+r.resolveIncludes(`${l}.vert`),fragmentShader:u+r.resolveIncludes(`${a}.frag`)}}};e.createProgramTemplate=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

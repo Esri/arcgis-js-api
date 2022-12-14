@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-const n=new Map;function t(){n.clear()}function e(t){return n.get(t)}function c(t,e){n.set(t,e)}function o(t){n.delete(t)}export{t as clearVNodeCache,o as deleteVNodeCache,e as getVNodeCache,c as setVNodeCache};
+define(["exports"],(function(e){"use strict";const t=new Map;function n(){t.clear()}function o(e){return t.get(e)}function c(e,n){t.set(e,n)}function u(e){t.delete(e)}e.clearVNodeCache=n,e.deleteVNodeCache=u,e.getVNodeCache=o,e.setVNodeCache=c,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

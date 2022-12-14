@@ -1,6 +1,6 @@
 {
-  "name": "@arcgis/core",
-  "version": "4.24.5",
+  "name": "arcgis-js-api",
+  "version": "4.25.5",
   "homepage": "https://js.arcgis.com",
   "description": "ArcGIS API for JavaScript: A complete 2D and 3D mapping and data visualization API",
   "keywords": [
@@ -24,14 +24,8 @@
     "path": false,
     "process": false
   },
-  "dependencies": {
-    "@esri/arcgis-html-sanitizer": "~2.10.0",
-    "@esri/calcite-colors": "~6.0.1",
-    "@esri/calcite-components": "1.0.0-beta.82",
-    "@popperjs/core": "~2.11.5",
-    "focus-trap": "~6.9.4",
-    "luxon": "~2.4.0",
-    "sortablejs": "~1.15.0"
-  },
-  "type": "module"
+  "dependencies": {},
+  "dojoBuild": "esri.profile.js",
+  "repository": "Esri/arcgis-js-api",
+  "types": "index.d.ts"
 }

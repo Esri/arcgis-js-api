@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as r}from"../../chunks/tslib.es6.js";import o from"../../core/Accessor.js";import{property as s}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as e}from"../../core/accessorSupport/decorators/subclass.js";let t=class extends o{constructor(){super(...arguments),this.header=!0}};r([s({type:Boolean,nonNullable:!0})],t.prototype,"header",void 0),t=r([e("esri.widgets.Weather.VisibleElements")],t);const c=t;export{c as default};
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Accessor","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(e,r,s,o,t,c,a){"use strict";let n=function(r){function s(){var e;return(e=r.apply(this,arguments)||this).header=!0,e}return e._inheritsLoose(s,r),s}(s);r.__decorate([o.property({type:Boolean,nonNullable:!0})],n.prototype,"header",void 0),n=r.__decorate([a.subclass("esri.widgets.Weather.VisibleElements")],n);return n}));

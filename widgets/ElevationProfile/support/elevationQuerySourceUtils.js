@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import r from"../../../Ground.js";import{last as n,min as t}from"../../../core/arrayUtils.js";import{isNone as o,isSome as e}from"../../../core/maybe.js";import{getMetersPerUnitForSR as i}from"../../../core/unitUtils.js";function l(t){if(o(t))return null;if(t instanceof r)return u(t);const e=t.tileInfo;if(o(e))return null;const l=n(e.lods);return o(l)?null:l.resolution*i(e.spatialReference)}function u(r){if(o(r))return null;const n=r.layers.items.map(f).filter(e);return t(n)??null}function f(r){return"tileInfo"in r?l(r):null}export{u as getGroundMinDemResolution,l as getQuerySourceMinDemResolution};
+define(["exports","../../../Ground","../../../core/arrayUtils","../../../core/maybe","../../../core/unitUtils"],(function(e,n,t,i,o){"use strict";function r(e){if(i.isNone(e))return null;if(e instanceof n)return u(e);const r=e.tileInfo;if(i.isNone(r))return null;const l=t.last(r.lods);return i.isNone(l)?null:l.resolution*o.getMetersPerUnitForSR(r.spatialReference)}function u(e){if(i.isNone(e))return null;const n=e.layers.items.map(l).filter(i.isSome);return t.min(n)??null}function l(e){return"tileInfo"in e?r(e):null}e.getGroundMinDemResolution=u,e.getQuerySourceMinDemResolution=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

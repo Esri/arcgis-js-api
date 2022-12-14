@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as r}from"../../../chunks/tslib.es6.js";import{property as t}from"../../../core/accessorSupport/decorators/property.js";import"../../../core/arrayUtils.js";import"../../../core/has.js";import"../../../core/accessorSupport/ensureType.js";import{subclass as o}from"../../../core/accessorSupport/decorators/subclass.js";import s from"./Input.js";let e=class extends s{constructor(r){super(r),this.maxLength=null,this.minLength=0}};r([t({type:Number,json:{write:!0}})],e.prototype,"maxLength",void 0),r([t({type:Number,json:{write:!0}})],e.prototype,"minLength",void 0),e=r([o("esri.form.elements.inputs.TextInput")],e);const p=e;export{p as default};
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/arrayUtils","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/subclass","./Input"],(function(e,r,t,o,s,n,c){"use strict";let p=function(r){function t(e){var t;return(t=r.call(this,e)||this).maxLength=null,t.minLength=0,t}return e._inheritsLoose(t,r),t}(c);r.__decorate([t.property({type:Number,json:{write:!0}})],p.prototype,"maxLength",void 0),r.__decorate([t.property({type:Number,json:{write:!0}})],p.prototype,"minLength",void 0),p=r.__decorate([n.subclass("esri.form.elements.inputs.TextInput")],p);return p}));

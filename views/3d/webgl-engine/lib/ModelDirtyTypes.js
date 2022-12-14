@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-var E;!function(E){var I,T;(I=E.Geometry||(E.Geometry={}))[I.ADD=1]="ADD",I[I.UPDATE=2]="UPDATE",I[I.REMOVE=4]="REMOVE",(T=E.State||(E.State={}))[T.VISIBILITIES=1]="VISIBILITIES",T[T.VERTEXATTRS=2]="VERTEXATTRS",T[T.TRANSFORMATION=4]="TRANSFORMATION",T[T.HIGHLIGHTS=8]="HIGHLIGHTS",T[T.OCCLUDEES=16]="OCCLUDEES"}(E||(E={}));export{E as ModelDirty};
+define(["exports"],(function(t){"use strict";var e,E;t.DirtyOperation=void 0,(e=t.DirtyOperation||(t.DirtyOperation={}))[e.ADD=0]="ADD",e[e.UPDATE=1]="UPDATE",e[e.REMOVE=2]="REMOVE",t.DirtyState=void 0,(E=t.DirtyState||(t.DirtyState={}))[E.NONE=0]="NONE",E[E.VISIBILITIES=1]="VISIBILITIES",E[E.VERTEXATTRS=2]="VERTEXATTRS",E[E.TRANSFORMATION=4]="TRANSFORMATION",E[E.HIGHLIGHTS=8]="HIGHLIGHTS",E[E.OCCLUDEES=16]="OCCLUDEES",Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

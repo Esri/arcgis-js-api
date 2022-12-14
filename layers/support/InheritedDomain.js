@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as r}from"../../chunks/tslib.es6.js";import"../../core/Logger.js";import"../../core/accessorSupport/ensureType.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/set.js";import{enumeration as o}from"../../core/accessorSupport/decorators/enumeration.js";import{subclass as e}from"../../core/accessorSupport/decorators/subclass.js";import s from"./Domain.js";var t;let p=t=class extends s{constructor(r){super(r),this.type="inherited"}clone(){return new t}};r([o({inherited:"inherited"})],p.prototype,"type",void 0),p=t=r([e("esri.layers.support.InheritedDomain")],p);const c=p;export{c as default};
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Logger","../../core/accessorSupport/ensureType","../../core/arrayUtils","../../core/Error","../../core/has","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","./Domain"],(function(e,r,o,t,s,n,c,i,u,a){"use strict";var p;let l=p=function(r){function o(e){var o;return(o=r.call(this,e)||this).type="inherited",o}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new p},o}(a);r.__decorate([i.enumeration({inherited:"inherited"})],l.prototype,"type",void 0),l=p=r.__decorate([u.subclass("esri.layers.support.InheritedDomain")],l);return l}));

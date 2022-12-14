@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{generateUID as o}from"../../../../core/uid.js";class r{constructor(r){this.channel=r,this.id=o()}}export{r as Object3DStateID};
+define(["exports","../../../../core/uid"],(function(e,t){"use strict";let i=function(e){this.channel=e,this.id=t.generateUID()};e.Object3DStateID=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

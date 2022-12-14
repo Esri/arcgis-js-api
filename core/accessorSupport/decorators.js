@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-export{aliasOf}from"./decorators/aliasOf.js";export{autoDestroy}from"./decorators/autoDestroy.js";export{cast}from"./decorators/cast.js";export{enumeration}from"./decorators/enumeration.js";export{ensureRange,property,propertyJSONMeta}from"./decorators/property.js";export{reader}from"./decorators/reader.js";export{shared}from"./decorators/shared.js";export{finalizeClass,subclass}from"./decorators/subclass.js";export{writer}from"./decorators/writer.js";
+define(["exports","./decorators/aliasOf","./decorators/autoDestroy","./decorators/cast","./decorators/enumeration","./decorators/property","./decorators/reader","./decorators/shared","./decorators/subclass","./decorators/writer"],(function(e,r,a,s,o,t,d,i,c,n){"use strict";e.aliasOf=r.aliasOf,e.autoDestroy=a.autoDestroy,e.cast=s.cast,e.enumeration=o.enumeration,e.ensureRange=t.ensureRange,e.property=t.property,e.propertyJSONMeta=t.propertyJSONMeta,e.reader=d.reader,e.shared=i.shared,e.finalizeClass=c.finalizeClass,e.subclass=c.subclass,e.writer=n.writer,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

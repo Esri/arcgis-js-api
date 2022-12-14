@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-const n=(n,l)=>n&&((...n)=>l.warn("DEBUG:",...n))||(()=>null),l=!1;export{l as DEBUG_ATTR_UPDATES,n as createDebugLogger};
+define(["exports"],(function(e){"use strict";const t=(e,t)=>e&&((...e)=>t.warn("DEBUG:",...e))||(()=>null),o=!1;e.DEBUG_ATTR_UPDATES=o,e.createDebugLogger=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-var a;!function(a){a[a.FadeIn=0]="FadeIn",a[a.FadeOut=1]="FadeOut"}(a||(a={}));export{a as FadeDirection};
+define(["exports"],(function(e){"use strict";var i;e.FadeDirection=void 0,(i=e.FadeDirection||(e.FadeDirection={}))[i.FadeIn=0]="FadeIn",i[i.FadeOut=1]="FadeOut",Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

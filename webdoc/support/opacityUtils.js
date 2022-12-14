@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{ensureInteger as t}from"../../core/accessorSupport/ensureType.js";function n(n){const r=t(100*(1-n));return Math.max(0,Math.min(r,100))}function r(t){const n=1-t/100;return Math.max(0,Math.min(n,1))}export{n as opacityToTransparency,r as transparencyToOpacity};
+define(["exports","../../core/accessorSupport/ensureType"],(function(e,t){"use strict";function n(e){const n=t.ensureInteger(100*(1-e));return Math.max(0,Math.min(n,100))}function r(e){const t=1-e/100;return Math.max(0,Math.min(t,1))}e.opacityToTransparency=n,e.transparencyToOpacity=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

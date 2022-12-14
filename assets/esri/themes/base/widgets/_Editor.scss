@@ -62,6 +62,7 @@ $base-scrim-z-index: 50;
     background-color: $panel-background-color;
     display: flex;
     flex-direction: column;
+    height: 100%;
     position: relative;
   }
 
@@ -104,6 +105,10 @@ $base-scrim-z-index: 50;
   .esri-editor .esri-feature-form {
     width: 100%;
     padding: 0;
+
+    .esri-feature-form__label:last-child {
+      margin-bottom: 12px;
+    }
   }
 
   .esri-editor {
@@ -114,6 +119,15 @@ $base-scrim-z-index: 50;
     .esri-item-list__group {
       margin-left: 0;
       margin-right: 0;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+
+    .esri-item-list__filter-container,
+    .esri-item-list__filter-container--sticky {
+      margin-bottom: 20px;
     }
   }
 
@@ -159,15 +173,19 @@ $base-scrim-z-index: 50;
   .esri-editor__progress-bar {
     position: absolute;
     width: 100%;
+    z-index: 3; // calcite panel header is 2
   }
 
   .esri-editor__panel-toolbar {
     --divider-border: 1px solid var(--calcite-ui-border-2);
 
     background-color: var(--calcite-ui-foreground-1);
+    border-bottom: var(--divider-border);
     display: flex;
     flex-direction: row;
-    border-bottom: var(--divider-border);
+    position: sticky;
+    top: 0;
+    z-index: 1;
 
     &__snapping-button {
       flex-grow: 1;
@@ -176,7 +194,7 @@ $base-scrim-z-index: 50;
 
   .esri-editor__panel-content {
     position: relative;
-    height: 100%;
+    height: auto;
     min-height: 20vh;
     display: flex;
     flex-direction: column;
@@ -197,6 +215,7 @@ $base-scrim-z-index: 50;
     &__message {
       display: flex;
       flex-basis: 100%;
+      flex-grow: 1;
       justify-content: center;
       align-items: center;
       font-size: var(--calcite-font-size-0);

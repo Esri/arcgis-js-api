@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request"],(function(e,r,t){"use strict";function n(e,r){return s.apply(this,arguments)}function s(){return(s=r._asyncToGenerator((function*(e,r){let t=yield i(e,r);t=t||{},t.layers=t.layers?.filter(u)||[];const n={serviceJSON:t};if((t.currentVersion??0)<10.5)return n;const s=yield i(e+"/layers",r);return n.layersJSON={layers:s?.layers?.filter(u)||[],tables:s?.tables||[]},n}))).apply(this,arguments)}function u(e){return!e.type||"Feature Layer"===e.type}function i(e,r){return a.apply(this,arguments)}function a(){return(a=r._asyncToGenerator((function*(e,r){return(yield t(e,{responseType:"json",query:{f:"json",...r?.customParameters,token:r?.apiKey}})).data}))).apply(this,arguments)}e.fetchFeatureService=n,e.fetchService=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

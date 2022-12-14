@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-const r=(()=>{const r=new ArrayBuffer(4),n=new Uint8Array(r);return new Uint32Array(r)[0]=1,1===n[0]})();export{r as isPlatformLittleEndian};
+define(["exports"],(function(e){"use strict";const t=(()=>{const e=new ArrayBuffer(4),t=new Uint8Array(e);return new Uint32Array(e)[0]=1,1===t[0]})();e.isPlatformLittleEndian=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

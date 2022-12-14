@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
-*/
-import{_ as o}from"../../chunks/tslib.es6.js";import r from"../../Color.js";import{JSONSupport as e}from"../../core/JSONSupport.js";import{property as s}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import{Integer as t}from"../../core/accessorSupport/ensureType.js";import{subclass as p}from"../../core/accessorSupport/decorators/subclass.js";let l=class extends e{constructor(){super(...arguments),this.color=null,this.value=null,this.enabled=!0,this.label=null}};o([s({type:r,json:{type:[t],write:{enabled:!0,isRequired:!0}}})],l.prototype,"color",void 0),o([s({type:Number,json:{write:{enabled:!0,isRequired:!0}}})],l.prototype,"value",void 0),o([s({type:Boolean,json:{default:!0,write:!0}})],l.prototype,"enabled",void 0),o([s({type:String,json:{write:!0}})],l.prototype,"label",void 0),l=o([p("esri.layers.support.VoxelIsosurface")],l);const i=l;export{i as default};

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-const o=!0,t=32,c=1.5,e=200;export{t as COLLISION_GRID_CELL_SIZE,c as DECLUTTER_BUDGET,o as DECLUTTER_TILES,e as FADE_DURATION};
+define(["exports"],(function(e){"use strict";const t=!0,E=32,o=1.5,T=200;e.COLLISION_GRID_CELL_SIZE=E,e.DECLUTTER_BUDGET=o,e.DECLUTTER_TILES=t,e.FADE_DURATION=T,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,10 +1,10 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{unwrap as e,isNone as s,isSome as i}from"../../../../../core/maybe.js";import{j as a}from"../../../../../chunks/mat4.js";import{c as o}from"../../../../../chunks/mat4f64.js";import{s as c,b as r,m as l,a as t}from"../../../../../chunks/vec3.js";import{Z as n,c as f}from"../../../../../chunks/vec3f64.js";import{Float3DrawUniform as d}from"../shaderModules/Float3DrawUniform.js";import{Float3PassUniform as _}from"../shaderModules/Float3PassUniform.js";import{NoParameters as P,glsl as h}from"../shaderModules/interfaces.js";class m extends P{constructor(e){super(),this.slicePlaneLocalOrigin=e}}function p(s,i){H(s,i,[new _("slicePlaneOrigin",((e,s)=>v(i,e,s))),new _("slicePlaneBasis1",((s,a)=>B(i,s,a,e(a.slicePlane)?.basis1))),new _("slicePlaneBasis2",((s,a)=>B(i,s,a,e(a.slicePlane)?.basis2)))])}function u(s,i){H(s,i,[new d("slicePlaneOrigin",((e,s)=>v(i,e,s))),new d("slicePlaneBasis1",((s,a)=>B(i,s,a,e(a.slicePlane)?.basis1))),new d("slicePlaneBasis2",((s,a)=>B(i,s,a,e(a.slicePlane)?.basis2)))])}function H(e,s,i){if(!s.hasSlicePlane){const i=h`#define rejectBySlice(_pos_) false
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../core/maybe","../../../../../chunks/mat4","../../../../../chunks/mat4f64","../../../../../chunks/vec3","../../../../../chunks/vec3f64","../shaderModules/Float3DrawUniform","../shaderModules/Float3PassUniform","../shaderModules/interfaces"],(function(e,s,a,i,l,o,r,c,t,n){"use strict";let f=function(e){function a(s){var a;return(a=e.call(this)||this).slicePlaneLocalOrigin=s,a}return s._inheritsLoose(a,e),a}(n.NoParameters);function d(e,s){P(e,s,[new t.Float3PassUniform("slicePlaneOrigin",((e,a)=>m(s,e,a))),new t.Float3PassUniform("slicePlaneBasis1",((e,i)=>p(s,e,i,a.unwrap(i.slicePlane)?.basis1))),new t.Float3PassUniform("slicePlaneBasis2",((e,i)=>p(s,e,i,a.unwrap(i.slicePlane)?.basis2)))])}function u(e,s){P(e,s,[new c.Float3DrawUniform("slicePlaneOrigin",((e,a)=>m(s,e,a))),new c.Float3DrawUniform("slicePlaneBasis1",((e,i)=>p(s,e,i,a.unwrap(i.slicePlane)?.basis1))),new c.Float3DrawUniform("slicePlaneBasis2",((e,i)=>p(s,e,i,a.unwrap(i.slicePlane)?.basis2)))])}function P(e,s,a){if(!s.hasSlicePlane){const a=n.glsl`#define rejectBySlice(_pos_) false
 #define discardBySlice(_pos_) {}
-#define highlightSlice(_color_, _pos_) (_color_)`;return s.hasSliceInVertexProgram&&e.vertex.code.add(i),void e.fragment.code.add(i)}e.extensions.add("GL_OES_standard_derivatives"),s.hasSliceInVertexProgram&&e.vertex.uniforms.add(i),e.fragment.uniforms.add(i);const a=h`struct SliceFactors {
+#define highlightSlice(_color_, _pos_) (_color_)`;return s.hasSliceInVertexProgram&&e.vertex.code.add(a),void e.fragment.code.add(a)}e.extensions.add("GL_OES_standard_derivatives"),s.hasSliceInVertexProgram&&e.vertex.uniforms.add(a),e.fragment.uniforms.add(a);const i=n.glsl`struct SliceFactors {
 float front;
 float side0;
 float side1;
@@ -41,7 +41,7 @@ bool sliceByPlane(vec3 pos) {
 return sliceEnabled() && sliceByFactors(calculateSliceFactors(pos));
 }
 #define rejectBySlice(_pos_) sliceByPlane(_pos_)
-#define discardBySlice(_pos_) { if (sliceByPlane(_pos_)) discard; }`,o=h`vec4 applySliceHighlight(vec4 color, vec3 pos) {
+#define discardBySlice(_pos_) { if (sliceByPlane(_pos_)) discard; }`,l=n.glsl`vec4 applySliceHighlight(vec4 color, vec3 pos) {
 SliceFactors factors = calculateSliceFactors(pos);
 const float HIGHLIGHT_WIDTH = 1.0;
 const vec4 HIGHLIGHT_COLOR = vec4(0.0, 0.0, 0.0, 0.3);
@@ -59,7 +59,7 @@ float highlightFactor = (1.0 - step(0.5, factors.front))
 * (1.0 - step(0.5, factors.side2))
 * (1.0 - step(0.5, factors.side3));
 return mix(color, vec4(HIGHLIGHT_COLOR.rgb, color.a), highlightFactor * HIGHLIGHT_COLOR.a);
-}`,c=s.hasSliceHighlight?h`
-        ${o}
+}`,o=s.hasSliceHighlight?n.glsl`
+        ${l}
         #define highlightSlice(_color_, _pos_) (sliceEnabled() ? applySliceHighlight(_color_, _pos_) : (_color_))
-      `:h`#define highlightSlice(_color_, _pos_) (_color_)`;s.hasSliceInVertexProgram&&e.vertex.code.add(a),e.fragment.code.add(a),e.fragment.code.add(c)}function g(e,s,i){return e.instancedDoublePrecision?c(S,i.camera.viewInverseTransposeMatrix[3],i.camera.viewInverseTransposeMatrix[7],i.camera.viewInverseTransposeMatrix[11]):s.slicePlaneLocalOrigin}function I(e,s){return i(e)?r(L,s.origin,e):s.origin}function b(e,s,o){return e.hasSliceTranslatedView?i(s)?a(T,o.camera.viewMatrix,s):o.camera.viewMatrix:null}function v(e,a,o){if(s(o.slicePlane))return n;const c=g(e,a,o),r=I(c,o.slicePlane),t=b(e,c,o);return i(t)?l(L,r,t):r}function B(e,a,o,c){if(s(c)||s(o.slicePlane))return n;const f=g(e,a,o),d=I(f,o.slicePlane),_=b(e,f,o);return i(_)?(t(G,c,d),l(L,d,_),l(G,G,_),r(G,G,L)):c}const S=f(),L=f(),G=f(),T=o();export{u as SliceDraw,p as SlicePass,m as SlicePlaneParameters};
+      `:n.glsl`#define highlightSlice(_color_, _pos_) (_color_)`;s.hasSliceInVertexProgram&&e.vertex.code.add(i),e.fragment.code.add(i),e.fragment.code.add(o)}function _(e,s,a){return e.instancedDoublePrecision?o.set(H,a.camera.viewInverseTransposeMatrix[3],a.camera.viewInverseTransposeMatrix[7],a.camera.viewInverseTransposeMatrix[11]):s.slicePlaneLocalOrigin}function h(e,s){return a.isSome(e)?o.subtract(S,s.origin,e):s.origin}function g(e,s,l){return e.hasSliceTranslatedView?a.isSome(s)?i.translate(I,l.camera.viewMatrix,s):l.camera.viewMatrix:null}function m(e,s,i){if(a.isNone(i.slicePlane))return r.ZEROS;const l=_(e,s,i),c=h(l,i.slicePlane),t=g(e,l,i);return a.isSome(t)?o.transformMat4(S,c,t):c}function p(e,s,i,l){if(a.isNone(l)||a.isNone(i.slicePlane))return r.ZEROS;const c=_(e,s,i),t=h(c,i.slicePlane),n=g(e,c,i);return a.isSome(n)?(o.add(b,l,t),o.transformMat4(S,t,n),o.transformMat4(b,b,n),o.subtract(b,b,S)):l}const H=r.create(),S=r.create(),b=r.create(),I=l.create();e.SliceDraw=u,e.SlicePass=d,e.SlicePlaneParameters=f,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

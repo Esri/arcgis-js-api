@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import t from"../../request.js";import{parseUrl as r,asValidOptions as o}from"../utils.js";import{lengthsToRESTParameters as s}from"../operations/lengths.js";import e from"../support/LengthsParameters.js";async function n(n,m,p){m=e.from(m);const a=s(m),f=r(n),i={...f.query,f:"json",...a},u=o(i,p);return t(f.path+"/lengths",u).then((({data:t})=>t))}export{n as lengths};
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../utils","../operations/lengths","../support/LengthsParameters"],(function(e,t,n,r,s,o){"use strict";function a(e,t,n){return l.apply(this,arguments)}function l(){return(l=t._asyncToGenerator((function*(e,t,a){t=o.from(t);const l=s.lengthsToRESTParameters(t),u=r.parseUrl(e),i={...u.query,f:"json",...l},p=r.asValidOptions(i,a);return n(u.path+"/lengths",p).then((({data:e})=>e))}))).apply(this,arguments)}e.lengths=a,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

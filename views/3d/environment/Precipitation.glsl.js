@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import"./PrecipitationTechniqueConfiguration.js";import"../webgl-engine/core/shaderModules/Float3Uniform.js";import"../webgl-engine/core/shaderModules/FloatUniform.js";import"../webgl-engine/core/shaderModules/interfaces.js";import"../webgl-engine/core/shaderModules/Matrix4PassUniform.js";import"../webgl-engine/core/shaderModules/Matrix4Uniform.js";import"../webgl-engine/core/shaderModules/ShaderBuilder.js";import"../webgl-engine/lib/VertexAttribute.js";export{b as build}from"../../../chunks/Precipitation.glsl.js";
+define(["exports","../../../chunks/vec3","../../../chunks/vec3f64","./PrecipitationTechniqueConfiguration","../webgl-engine/core/shaderModules/Float3PassUniform","../webgl-engine/core/shaderModules/FloatPassUniform","../webgl-engine/core/shaderModules/interfaces","../webgl-engine/core/shaderModules/Matrix4PassUniform","../webgl-engine/core/shaderModules/ShaderBuilder","../webgl-engine/lib/VertexAttribute","../../../chunks/Precipitation.glsl"],(function(e,i,n,r,o,s,l,t,u,a,d){"use strict";e.build=d.build,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

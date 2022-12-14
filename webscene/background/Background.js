@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as r}from"../../chunks/tslib.es6.js";import{JSONSupport as o}from"../../core/JSONSupport.js";import{property as s}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as e}from"../../core/accessorSupport/decorators/subclass.js";let t=class extends o{constructor(r){super(r)}clone(){}};r([s({readOnly:!0,json:{read:!1}})],t.prototype,"type",void 0),t=r([e("esri.webscene.background.Background")],t);const c=t;export{c as default};
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(r,e,o,t,s,c,n){"use strict";let p=function(e){function o(r){return e.call(this,r)||this}return r._inheritsLoose(o,e),o.prototype.clone=function(){},o}(o.JSONSupport);e.__decorate([t.property({readOnly:!0,json:{read:!1}})],p.prototype,"type",void 0),p=e.__decorate([n.subclass("esri.webscene.background.Background")],p);return p}));

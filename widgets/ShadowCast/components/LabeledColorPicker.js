@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{Label as o}from"./Label.js";import{ColorPicker as r}from"../../support/ColorPicker.js";import"../../support/widgetUtils.js";import{tsx as t}from"../../support/jsxFactory.js";function e(e){return t(o,{for:e.id,label:e.label,tabIndex:-1},t(r,{id:e.id,value:e.value,onChange:e.onChange}))}export{e as LabeledColorPicker};
+define(["exports","./Label","../../support/ColorPicker","../../support/widgetUtils","../../support/jsxFactory"],(function(e,o,t,l,r){"use strict";function i(e){return r.tsx(o.Label,{for:e.id,label:e.label,tabIndex:-1},r.tsx(t.ColorPicker,{id:e.id,value:e.value,onChange:e.onChange}))}e.LabeledColorPicker=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

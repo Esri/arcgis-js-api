@@ -1,14 +1,14 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{neverReached as e}from"../../../../../../core/compilerUtils.js";import{TextureCoordinateAttribute as t,TextureCoordinateAttributeType as r}from"./TextureCoordinateAttribute.glsl.js";import{TextureAtlasLookup as u}from"../util/TextureAtlasLookup.glsl.js";import{glsl as o}from"../../shaderModules/interfaces.js";function a(a,s){switch(a.include(t,s),a.fragment.code.add(o`
+define(["exports","../../../../../../core/compilerUtils","./TextureCoordinateAttribute.glsl","../util/TextureAtlasLookup.glsl","../../shaderModules/interfaces"],(function(e,t,r,u,o){"use strict";function a(e,a){switch(e.include(r.TextureCoordinateAttribute,a),e.fragment.code.add(o.glsl`
   struct TextureLookupParameter {
     vec2 uv;
-    ${s.supportsTextureAtlas?"vec2 size;":""}
+    ${a.supportsTextureAtlas?"vec2 size;":""}
   } vtc;
-  `),s.textureCoordinateType){case r.Default:return void a.fragment.code.add(o`vec4 textureLookup(sampler2D texture, TextureLookupParameter params) {
+  `),a.textureCoordinateType){case r.TextureCoordinateAttributeType.Default:case r.TextureCoordinateAttributeType.Compressed:return void e.fragment.code.add(o.glsl`vec4 textureLookup(sampler2D texture, TextureLookupParameter params) {
 return texture2D(texture, params.uv);
-}`);case r.Atlas:return a.include(u),void a.fragment.code.add(o`vec4 textureLookup(sampler2D texture, TextureLookupParameter params) {
+}`);case r.TextureCoordinateAttributeType.Atlas:return e.include(u.TextureAtlasLookup),void e.fragment.code.add(o.glsl`vec4 textureLookup(sampler2D texture, TextureLookupParameter params) {
 return textureAtlasLookup(texture, params.size, params.uv, vuvRegion);
-}`);default:e(s.textureCoordinateType);case r.None:case r.COUNT:return}}export{a as VertexTextureCoordinates};
+}`);default:t.neverReached(a.textureCoordinateType);case r.TextureCoordinateAttributeType.None:case r.TextureCoordinateAttributeType.COUNT:return}}e.VertexTextureCoordinates=a,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

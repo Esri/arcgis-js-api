@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as e}from"../../../chunks/tslib.es6.js";import{LayerBlendMode as o}from"../webgl-engine/core/shaderLibrary/output/BlendOptions.js";import{parameter as r,ShaderTechniqueConfiguration as n}from"../webgl-engine/core/shaderTechnique/ShaderTechniqueConfiguration.js";class s extends n{constructor(){super(...arguments),this.blendMode=o.Normal}}e([r({count:o.COUNT})],s.prototype,"blendMode",void 0);export{s as BlendModeTechniqueConfiguration};
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../webgl-engine/core/shaderLibrary/output/BlendOptions","../webgl-engine/core/shaderTechnique/ShaderTechniqueConfiguration"],(function(e,n,o,r,i){"use strict";let t=function(e){function o(){var n;return(n=e.apply(this,arguments)||this).blendMode=r.LayerBlendMode.Normal,n}return n._inheritsLoose(o,e),o}(i.ShaderTechniqueConfiguration);o.__decorate([i.parameter({count:r.LayerBlendMode.COUNT})],t.prototype,"blendMode",void 0),e.BlendModeTechniqueConfiguration=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

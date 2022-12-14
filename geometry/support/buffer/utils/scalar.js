@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-export{c as copy,m as makeDense}from"../../../../chunks/scalar.js";
+define(["exports","../../../../chunks/scalar"],(function(e,o){"use strict";e.copy=o.copy,e.makeDense=o.makeDense,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

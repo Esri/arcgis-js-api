@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import e from"../../request.js";import{fromJSON as r}from"../../geometry/support/jsonUtils.js";import{parseUrl as t,asValidOptions as o}from"../utils.js";import{generalizeToRESTParameters as s}from"../operations/generalize.js";import i from"../support/GeneralizeParameters.js";async function m(m,a,p){const n=(a=i.from(a)).toJSON(),f=s(a),j=t(m),l={...j.query,f:"json",...f},u=n.geometries[0].spatialReference,c=o(l,p);return e(j.path+"/generalize",c).then((({data:e})=>(e.geometries||[]).map((e=>r(e).set({spatialReference:u})))))}export{m as generalize};
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../../geometry/support/jsonUtils","../utils","../operations/generalize","../support/GeneralizeParameters"],(function(e,r,t,n,a,s,o){"use strict";function i(e,r,t){return l.apply(this,arguments)}function l(){return(l=r._asyncToGenerator((function*(e,r,i){const l=(r=o.from(r)).toJSON(),u=s.generalizeToRESTParameters(r),p=a.parseUrl(e),c={...p.query,f:"json",...u},f=l.geometries[0].spatialReference,g=a.asValidOptions(c,i);return t(p.path+"/generalize",g).then((({data:e})=>(e.geometries||[]).map((e=>n.fromJSON(e).set({spatialReference:f})))))}))).apply(this,arguments)}e.generalize=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

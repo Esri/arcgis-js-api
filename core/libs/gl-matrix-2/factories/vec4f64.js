@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-export{O as ONES,k as UNIT_W,U as UNIT_X,i as UNIT_Y,j as UNIT_Z,Z as ZEROS,d as clone,c as create,a as createView,b as fromArray,f as fromValues,o as ones,h as unitW,u as unitX,e as unitY,g as unitZ,z as zeros}from"../../../../chunks/vec4f64.js";
+define(["exports","../../../../chunks/vec4f64"],(function(e,t){"use strict";e.ONES=t.ONES,e.UNIT_W=t.UNIT_W,e.UNIT_X=t.UNIT_X,e.UNIT_Y=t.UNIT_Y,e.UNIT_Z=t.UNIT_Z,e.ZEROS=t.ZEROS,e.clone=t.clone,e.create=t.create,e.createView=t.createView,e.fromArray=t.fromArray,e.fromValues=t.fromValues,e.ones=t.ones,e.unitW=t.unitW,e.unitX=t.unitX,e.unitY=t.unitY,e.unitZ=t.unitZ,e.zeros=t.zeros,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

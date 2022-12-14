@@ -36,12 +36,32 @@
     }
   }
 
+  .esri-feature-form__input-wrapper {
+    position: relative;
+    order: 3;
+    display: inline-flex;
+    flex: 1 1 0%;
+    align-items: center;
+  }
+
+  .esri-feature-form__input-loader {
+    inset-block-start: 5px;
+    inset-inline: 1px;
+    pointer-events: none;
+    position: absolute;
+    display: block;
+  }
+
   .esri-feature-form__input {
     margin-top: $cap-spacing--third;
     width: 100%;
-
     // for textarea
     resize: horizontal;
+
+    &:focus {
+      outline: 2px solid var(--calcite-ui-brand);
+      outline-offset: -2px;
+    }
   }
 
   .esri-feature-form__input--date,
@@ -50,7 +70,7 @@
   }
 
   .esri-feature-form__input--disabled {
-    opacity: $opacity--disabled;
+    font-weight: var(--calcite-font-weight-medium);
   }
 
   .esri-feature-form__input--invalid {

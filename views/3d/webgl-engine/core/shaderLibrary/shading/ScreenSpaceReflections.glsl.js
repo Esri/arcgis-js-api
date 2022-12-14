@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{c as e}from"../../../../../../chunks/mat4f64.js";import{ReadLinearDepth as o}from"../output/ReadLinearDepth.glsl.js";import{Float2PassUniform as t}from"../../shaderModules/Float2PassUniform.js";import{FloatPassUniform as r}from"../../shaderModules/FloatPassUniform.js";import{glsl as a}from"../../shaderModules/interfaces.js";import{Matrix4PassUniform as i}from"../../shaderModules/Matrix4PassUniform.js";import{Texture2DPassUniform as d}from"../../shaderModules/Texture2DPassUniform.js";function n(e,n){const c=e.fragment.uniforms;c.add(new t("nearFar",((e,o)=>o.camera.nearFar))),c.add(new d("depthMap",((e,o)=>o.linearDepthTexture))),c.add(new i("view",((e,o)=>o.ssr.camera.viewMatrix))),c.add(new i("proj",((e,o)=>o.ssr.camera.projectionMatrix))),c.add(new r("invResolutionHeight",((e,o)=>1/o.ssr.camera.height))),c.add(new d("lastFrameColorMap",((e,o)=>o.ssr.lastFrameColorTexture))),c.add(new i("reprojectionMatrix",((e,o)=>o.ssr.reprojectionMatrix))),e.fragment.include(o),e.fragment.code.add(a`
+define(["exports","../../../../../../chunks/mat4f64","../output/ReadLinearDepth.glsl","../../shaderModules/Float2PassUniform","../../shaderModules/FloatPassUniform","../../shaderModules/interfaces","../../shaderModules/Matrix4PassUniform","../../shaderModules/Texture2DPassUniform"],(function(e,o,t,r,a,i,n,d){"use strict";function c(e,o){const c=e.fragment;c.include(t.ReadLinearDepth),c.uniforms.add(new r.Float2PassUniform("nearFar",((e,o)=>o.camera.nearFar))),c.uniforms.add(new d.Texture2DPassUniform("depthMap",((e,o)=>o.linearDepthTexture))),c.uniforms.add(new n.Matrix4PassUniform("proj",((e,o)=>o.ssr.camera.projectionMatrix))),c.uniforms.add(new a.FloatPassUniform("invResolutionHeight",((e,o)=>1/o.ssr.camera.height))),c.uniforms.add(new n.Matrix4PassUniform("reprojectionMatrix",((e,o)=>o.ssr.reprojectionMatrix))),c.code.add(i.glsl`
   vec2 reprojectionCoordinate(vec3 projectionCoordinate)
   {
     vec4 zw = proj * vec4(0.0, 0.0, -projectionCoordinate.z, 1.0);
@@ -11,7 +11,7 @@ import{c as e}from"../../../../../../chunks/mat4f64.js";import{ReadLinearDepth a
     return reprojectedCoord.xy * 0.5 + 0.5;
   }
 
-  const int maxSteps = ${n.highStepCount?"150;":"75;"}
+  const int maxSteps = ${o.highStepCount?"150":"75"};
 
   vec4 applyProjectionMat(mat4 projectionMat, vec3 x)
   {
@@ -109,4 +109,4 @@ import{c as e}from"../../../../../../chunks/mat4f64.js";import{ReadLinearDepth a
     }
     return vec3(P, 0.0);
   }
-  `)}class c{constructor(){this.reprojectionMatrix=e()}}export{c as SSRUniforms,n as ScreenSpaceReflections};
+  `)}let s=function(){this.reprojectionMatrix=o.create()};e.SSRUniforms=s,e.ScreenSpaceReflections=c,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

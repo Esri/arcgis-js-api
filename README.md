@@ -55,77 +55,51 @@ If you need to manage the assets locally, copy them into your project from `/nod
 **Important:** Every time you upgrade the SDK, be sure to recopy the new version of the assets to your project. This ensures the assets stay synchronized.
 
 Here’s a React example:
+=======
+A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) AMD modules.
 
-*package.json*
+If you are starting a new project, we recommend using [@arcgis/core](https://developers.arcgis.com/javascript/latest/es-modules/) ES modules. 
+
+## Features
+
+You can install these modules with [npm](https://npmjs.org/) and create your own custom builds, for example you can use [RequireJS](https://requirejs.org/) or the [Dojo Toolkit](https://dojotoolkit.org/).
+
+## Instructions
+
+Additional instructions and examples are available in the SDK's [Build with AMD modules](https://developers.arcgis.com/javascript/latest/amd-build/) Guide page.
+
+```
+npm install arcgis-js-api
+```
+
+## TypeScript Typings
+
+You can use the typings included with `arcgis-js-api` two ways. The first way is to include a `///` directive in your main TypeScript file:
+
+*main.ts*
+
+```ts
+/// <reference types="arcgis-js-api" />
+```
+
+Or, add a reference to the declaration file in the `include` of your `tsconfig.json`:
+
+*tsconfig.json*
 
 ```json
 {
-  "scripts": {
-    "start": "ncp ./node_modules/@arcgis/core/assets ./public/assets && react-scripts start",
-    "build": "ncp ./node_modules/@arcgis/core/assets ./public/assets && react-scripts build",
-  }
-}
-```
-
-*App.js*
-
-```js
-import esriConfig from "@arcgis/core/config.js";
-esriConfig.assetsPath = "./assets"; 
-```
-
-*index.css*
-
-```css
-@import "@arcgis/core/assets/esri/themes/light/main.css";
-```
-
-For Angular, copy the asset files by configuring the `architect/build/options/assets` section of `angular.json`, for example:
-
-*angular.json*
-
-```json
-{
-  "assets": [
-    {
-      "glob": "**/*",
-      "input": "node_modules/@arcgis/core/assets",
-      "output": "/assets/"
-    }
+  "include": [
+    "node_modules/arcgis-js-api/index.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ]
 }
 ```
 
-*app.component.ts*
-
-```ts
-import esriConfig from "@arcgis/core/config.js";
-esriConfig.assetsPath = "./assets"; 
-```
-
-*app.component.css*
-
-```css
-@import "@arcgis/core/assets/esri/themes/light/main.css";
-```
-
-For other installations, consider using this npm script as a starting point:
-
-*package.json*
-
-```json
-{
-  "script": {
-    "copy": "cp -R ./node_modules/@arcgis/core/assets ./dist/assets"
-  }
-}
-```
-
-Windows users can use [`xcopy`](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy) or [`ncp`](https://www.npmjs.com/package/ncp) for any platform.
-
 ## Requirements
 
 Use of the ArcGIS Maps SDK for JavaScript is subject to the terms described in the product-specific [terms of use.](https://www.esri.com/en-us/legal/terms/product-specific-scope-of-use) Learn more about licensing [here](https://developers.arcgis.com/javascript/latest/licensing/).
+
 
 ## Resources
 

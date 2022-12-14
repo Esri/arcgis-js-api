@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as r}from"../../chunks/tslib.es6.js";import{JSONSupport as t}from"../../core/JSONSupport.js";import{property as o}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as s}from"../../core/accessorSupport/decorators/subclass.js";var e;let p=e=class extends t{constructor(){super(...arguments),this.text=""}clone(){return new e({text:this.text})}};r([o({type:String,json:{write:!0}})],p.prototype,"text",void 0),p=e=r([s("esri.webscene.support.Description")],p);const c=p;export{c as default};
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(e,r,t,o,s,c,p){"use strict";var n;let u=n=function(r){function t(){var e;return(e=r.apply(this,arguments)||this).text="",e}return e._inheritsLoose(t,r),t.prototype.clone=function(){return new n({text:this.text})},t}(t.JSONSupport);r.__decorate([o.property({type:String,json:{write:!0}})],u.prototype,"text",void 0),u=n=r.__decorate([p.subclass("esri.webscene.support.Description")],u);return u}));

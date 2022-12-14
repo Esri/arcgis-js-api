@@ -1,11 +1,12 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{isSome as e}from"../core/maybe.js";import{a as o,c as i}from"./vec2.js";import{O as r,a as l}from"./vec2f64.js";import{Z as t}from"./vec4f64.js";import{DEFAULT_TEX_SIZE as a}from"../views/3d/layers/graphics/sdfPrimitives.js";import{ShaderOutput as s}from"../views/3d/webgl-engine/core/shaderLibrary/ShaderOutputOptions.js";import{SliceDraw as n}from"../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl.js";import{AlignPixel as c}from"../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl.js";import{HUD as d}from"../views/3d/webgl-engine/core/shaderLibrary/hud/HUD.glsl.js";import{HUDOcclusionPass as u}from"../views/3d/webgl-engine/core/shaderLibrary/hud/HUDOcclusionPass.glsl.js";import{OutputHighlight as p}from"../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl.js";import{VisualVariables as v}from"../views/3d/webgl-engine/core/shaderLibrary/shading/VisualVariables.glsl.js";import{symbolAlphaCutoff as g,defaultMaskAlphaCutoff as f}from"../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff.js";import{ColorConversion as m}from"../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl.js";import{RgbaFloatEncoding as b}from"../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl.js";import{ScreenSizePerspective as h,addScreenSizePerspective as w,addScreenSizePerspectiveAlignment as x}from"../views/3d/webgl-engine/core/shaderLibrary/util/ScreenSizePerspective.glsl.js";import{Float2PassUniform as C}from"../views/3d/webgl-engine/core/shaderModules/Float2PassUniform.js";import{Float4PassUniform as P}from"../views/3d/webgl-engine/core/shaderModules/Float4PassUniform.js";import{Float4sPassUniform as S}from"../views/3d/webgl-engine/core/shaderModules/Float4sPassUniform.js";import{FloatPassUniform as j}from"../views/3d/webgl-engine/core/shaderModules/FloatPassUniform.js";import{FloatsPassUniform as z}from"../views/3d/webgl-engine/core/shaderModules/FloatsPassUniform.js";import{glsl as y}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{ShaderBuilder as F}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{Texture2DPassUniform as O}from"../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform.js";import{TransparencyPassType as A}from"../views/3d/webgl-engine/lib/basicInterfaces.js";import{VertexAttribute as $}from"../views/3d/webgl-engine/lib/VertexAttribute.js";import{vvColorNumber as D}from"../views/3d/webgl-engine/materials/VisualVariablePassParameters.js";function B(i){const l=new F,B=i.signedDistanceFieldEnabled;if(l.include(c),l.include(d,i),l.include(n,i),i.output===s.Occlusion)return l.include(u,i),l;const{vertex:H,fragment:V}=l;l.include(h),V.include(b),V.include(m),l.include(v,i),l.varyings.add("vcolor","vec4"),l.varyings.add("vtc","vec2"),l.varyings.add("vsize","vec2"),i.binaryHighlightOcclusionEnabled&&l.varyings.add("voccluded","float"),H.uniforms.add([new P("viewport",((e,o)=>o.camera.fullViewport)),new C("screenOffset",((e,i)=>o(U,2*e.screenOffset[0]*i.camera.pixelRatio,2*e.screenOffset[1]*i.camera.pixelRatio))),new C("anchorPosition",(e=>L(e))),new P("materialColor",(e=>e.color)),new j("pixelRatio",((e,o)=>o.camera.pixelRatio))]),B&&(H.uniforms.add(new P("outlineColor",(e=>e.outlineColor))),V.uniforms.add([new P("outlineColor",(e=>_(e)?e.outlineColor:t)),new j("outlineSize",(e=>_(e)?e.outlineSize:0))])),i.hasScreenSizePerspective&&(w(H),x(H)),(i.debugDrawLabelBorder||i.binaryHighlightOcclusionEnabled)&&l.varyings.add("debugBorderCoords","vec4"),l.attributes.add($.UV0,"vec2"),l.attributes.add($.COLOR,"vec4"),l.attributes.add($.SIZE,"vec2"),l.attributes.add($.AUXPOS2,"vec4"),H.code.add(y`
+define(["exports","../core/maybe","./vec2","./vec2f64","./vec4f64","../views/3d/support/engineContent/sdfPrimitives","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutput","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/ObjectAndLayerIdColor.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/HUD.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/HUDOcclusionPass.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/VisualVariables.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/ScreenSizePerspective.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/Float4sPassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/FloatsPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform","../views/3d/webgl-engine/lib/TransparencyPassType","../views/3d/webgl-engine/lib/VertexAttribute","../views/3d/webgl-engine/materials/VisualVariablePassParameters"],(function(e,o,l,i,r,a,t,s,n,c,d,u,g,v,p,b,f,h,C,m,w,x,P,S,y,z,F,A,O){"use strict";function D(e){const D=new y.ShaderBuilder,$=e.signedDistanceFieldEnabled;if(D.include(c.AlignPixel),D.include(d.HUD,e),D.include(s.SliceDraw,e),e.occlusionPass)return D.include(u.HUDOcclusionPass,e),D;const{vertex:_,fragment:B}=D;D.include(h.ScreenSizePerspective),B.include(f.RgbaFloatEncoding),B.include(b.ColorConversion),D.include(v.VisualVariables,e),D.include(n.ObjectAndLayerIdColor,e),D.varyings.add("vcolor","vec4"),D.varyings.add("vtc","vec2"),D.varyings.add("vsize","vec2"),e.binaryHighlightOcclusionEnabled&&D.varyings.add("voccluded","float"),_.uniforms.add([new m.Float4PassUniform("viewport",((e,o)=>o.camera.fullViewport)),new C.Float2PassUniform("screenOffset",((e,o)=>l.set(L,2*e.screenOffset[0]*o.camera.pixelRatio,2*e.screenOffset[1]*o.camera.pixelRatio))),new C.Float2PassUniform("anchorPosition",(e=>U(e))),new m.Float4PassUniform("materialColor",(e=>e.color)),new x.FloatPassUniform("pixelRatio",((e,o)=>o.camera.pixelRatio))]),$&&(_.uniforms.add(new m.Float4PassUniform("outlineColor",(e=>e.outlineColor))),B.uniforms.add([new m.Float4PassUniform("outlineColor",(e=>j(e)?e.outlineColor:r.ZEROS)),new x.FloatPassUniform("outlineSize",(e=>j(e)?e.outlineSize:0))])),e.hasScreenSizePerspective&&(h.addScreenSizePerspective(_),h.addScreenSizePerspectiveAlignment(_)),(e.debugDrawLabelBorder||e.binaryHighlightOcclusionEnabled)&&D.varyings.add("debugBorderCoords","vec4"),D.attributes.add(A.VertexAttribute.UV0,"vec2"),D.attributes.add(A.VertexAttribute.COLOR,"vec4"),D.attributes.add(A.VertexAttribute.SIZE,"vec2"),D.attributes.add(A.VertexAttribute.AUXPOS2,"vec4"),_.code.add(S.glsl`
     void main(void) {
       ProjectHUDAux projectAux;
       vec4 posProj = projectPositionHUD(projectAux);
+      forwardObjectAndLayerIdColor();
 
       if (rejectBySlice(projectAux.posModel)) {
         // Project outside of clip plane
@@ -13,60 +14,60 @@ import{isSome as e}from"../core/maybe.js";import{a as o,c as i}from"./vec2.js";i
         return;
       }
       vec2 inputSize;
-      ${i.hasScreenSizePerspective?y`
+      ${e.hasScreenSizePerspective?S.glsl`
       inputSize = screenSizePerspectiveScaleVec2(size, projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspective);
       vec2 screenOffsetScaled = screenSizePerspectiveScaleVec2(screenOffset, projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspectiveAlignment);
-         `:y`
+         `:S.glsl`
       inputSize = size;
       vec2 screenOffsetScaled = screenOffset;`}
 
-      ${i.vvSize?"inputSize *= vvScale(auxpos2).xx;":""}
+      ${e.vvSize?"inputSize *= vvScale(auxpos2).xx;":""}
 
       vec2 combinedSize = inputSize * pixelRatio;
       vec4 quadOffset = vec4(0.0);
 
-      ${i.occlusionTestEnabled||i.binaryHighlightOcclusionEnabled?"bool visible = testVisibilityHUD(posProj);":""}
+      ${e.occlusionTestEnabled||e.binaryHighlightOcclusionEnabled?"bool visible = testVisibilityHUD(posProj);":""}
 
-      ${i.binaryHighlightOcclusionEnabled?"voccluded = visible ? 0.0 : 1.0;":""}
-    `);const E=y`vec2 uv01 = floor(uv0);
+      ${e.binaryHighlightOcclusionEnabled?"voccluded = visible ? 0.0 : 1.0;":""}
+    `);const T=S.glsl`vec2 uv01 = floor(uv0);
 vec2 uv = uv0 - uv01;
-quadOffset.xy = ((uv01 - anchorPosition) * 2.0 * combinedSize + screenOffsetScaled) / viewport.zw * posProj.w;`,T=i.pixelSnappingEnabled?B?y`posProj = alignToPixelOrigin(posProj, viewport.zw) + quadOffset;`:y`posProj += quadOffset;
+quadOffset.xy = ((uv01 - anchorPosition) * 2.0 * combinedSize + screenOffsetScaled) / viewport.zw * posProj.w;`,V=e.pixelSnappingEnabled?$?S.glsl`posProj = alignToPixelOrigin(posProj, viewport.zw) + quadOffset;`:S.glsl`posProj += quadOffset;
 if (inputSize.x == size.x) {
 posProj = alignToPixelOrigin(posProj, viewport.zw);
-}`:y`posProj += quadOffset;`;i.vvColor&&H.uniforms.add([new S("vvColorColors",(e=>e.vvColorColors),D),new z("vvColorValues",(e=>e.vvColorValues),D)]),H.uniforms.add(new C("textureCoordinateScaleFactor",(o=>e(o.texture)&&e(o.texture.descriptor.textureCoordinateScaleFactor)?o.texture.descriptor.textureCoordinateScaleFactor:r))),H.code.add(y`
-    ${i.occlusionTestEnabled?"if (visible) {":""}
-    ${E}
-    ${i.vvColor?"vcolor = vvGetColor(auxpos2, vvColorValues, vvColorColors) * materialColor;":"vcolor = color / 255.0 * materialColor;"}
+}`:S.glsl`posProj += quadOffset;`;e.vvColor&&_.uniforms.add([new w.Float4sPassUniform("vvColorColors",(e=>e.vvColorColors),O.vvColorNumber),new P.FloatsPassUniform("vvColorValues",(e=>e.vvColorValues),O.vvColorNumber)]),_.uniforms.add(new C.Float2PassUniform("textureCoordinateScaleFactor",(e=>o.isSome(e.texture)&&o.isSome(e.texture.descriptor.textureCoordinateScaleFactor)?e.texture.descriptor.textureCoordinateScaleFactor:i.ONES))),_.code.add(S.glsl`
+    ${e.occlusionTestEnabled?"if (visible) {":""}
+    ${T}
+    ${e.vvColor?"vcolor = vvGetColor(auxpos2, vvColorValues, vvColorColors) * materialColor;":"vcolor = color / 255.0 * materialColor;"}
 
-    bool alphaDiscard = vcolor.a < ${y.float(g)};
-    ${B?`alphaDiscard = alphaDiscard && outlineColor.a < ${y.float(g)};`:""}
+    bool alphaDiscard = vcolor.a < ${S.glsl.float(p.symbolAlphaCutoff)};
+    ${$?`alphaDiscard = alphaDiscard && outlineColor.a < ${S.glsl.float(p.symbolAlphaCutoff)};`:""}
     if (alphaDiscard) {
       // "early discard" if both symbol color (= fill) and outline color (if applicable) are transparent
       gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
       return;
     } else {
-      ${T}
+      ${V}
       gl_Position = posProj;
     }
 
     vtc = uv * textureCoordinateScaleFactor;
 
-    ${i.debugDrawLabelBorder?"debugBorderCoords = vec4(uv01, 1.5 / combinedSize);":""}
+    ${e.debugDrawLabelBorder?"debugBorderCoords = vec4(uv01, 1.5 / combinedSize);":""}
     vsize = inputSize;
-    ${i.occlusionTestEnabled?y`} else { vtc = vec2(0.0);
-      ${i.debugDrawLabelBorder?"debugBorderCoords = vec4(0.5, 0.5, 1.5 / combinedSize);}":"}"}`:""}
+    ${e.occlusionTestEnabled?S.glsl`} else { vtc = vec2(0.0);
+      ${e.debugDrawLabelBorder?"debugBorderCoords = vec4(0.5, 0.5, 1.5 / combinedSize);}":"}"}`:""}
   }
-  `),V.uniforms.add(new O("tex",(e=>e.texture)));const M=i.debugDrawLabelBorder?y`(isBorder > 0.0 ? 0.0 : ${y.float(f)})`:y.float(f),R=y`
-    ${i.debugDrawLabelBorder?y`
+  `),B.uniforms.add(new z.Texture2DPassUniform("tex",(e=>e.texture)));const E=e.debugDrawLabelBorder?S.glsl`(isBorder > 0.0 ? 0.0 : ${S.glsl.float(p.defaultMaskAlphaCutoff)})`:S.glsl.float(p.defaultMaskAlphaCutoff),H=S.glsl`
+    ${e.debugDrawLabelBorder?S.glsl`
       float isBorder = float(any(lessThan(debugBorderCoords.xy, debugBorderCoords.zw)) || any(greaterThan(debugBorderCoords.xy, 1.0 - debugBorderCoords.zw)));`:""}
 
-    ${B?y`
+    ${$?S.glsl`
       vec4 fillPixelColor = vcolor;
 
       // Attempt to sample texel centers to avoid that thin cross outlines
       // disappear with large symbol sizes.
       // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/7058#issuecomment-603041
-      const float txSize = ${y.float(a)};
+      const float txSize = ${S.glsl.float(a.DEFAULT_TEX_SIZE)};
       const float texelSize = 1.0 / txSize;
       // Calculate how much we have to add/subtract to/from each texel to reach the size of an onscreen pixel
       vec2 scaleFactor = (vsize - txSize) * texelSize;
@@ -91,8 +92,8 @@ posProj = alignToPixelOrigin(posProj, viewport.zw);
         outlinePixelColor.a *= outlineAlphaFactor;
 
         if (
-          outlineAlphaFactor + fillAlphaFactor < ${M} ||
-          fillPixelColor.a + outlinePixelColor.a < ${y.float(g)}
+          outlineAlphaFactor + fillAlphaFactor < ${E} ||
+          fillPixelColor.a + outlinePixelColor.a < ${S.glsl.float(p.symbolAlphaCutoff)}
         ) {
           discard;
         }
@@ -104,7 +105,7 @@ posProj = alignToPixelOrigin(posProj, viewport.zw);
 
         gl_FragColor = vec4(compositeColor, compositeAlpha);
       } else {
-        if (fillAlphaFactor < ${M}) {
+        if (fillAlphaFactor < ${E}) {
           discard;
         }
 
@@ -113,34 +114,39 @@ posProj = alignToPixelOrigin(posProj, viewport.zw);
 
       // visualize SDF:
       // gl_FragColor = vec4(clamp(-dist/vsize.x*2.0, 0.0, 1.0), clamp(dist/vsize.x*2.0, 0.0, 1.0), 0.0, 1.0);
-      `:y`
+      `:S.glsl`
           vec4 texColor = texture2D(tex, vtc, -0.5);
-          if (texColor.a < ${M}) {
+          if (texColor.a < ${E}) {
             discard;
           }
           gl_FragColor = texColor * premultiplyAlpha(vcolor);
           `}
 
     // Draw debug border with transparency, so that original texels along border are still partially visible
-    ${i.debugDrawLabelBorder?y`gl_FragColor = mix(gl_FragColor, vec4(1.0, 0.0, 1.0, 1.0), isBorder * 0.5);`:""}
-  `;return i.output===s.Alpha&&V.code.add(y`
+    ${e.debugDrawLabelBorder?S.glsl`gl_FragColor = mix(gl_FragColor, vec4(1.0, 0.0, 1.0, 1.0), isBorder * 0.5);`:""}
+  `;return e.output===t.ShaderOutput.Alpha&&B.code.add(S.glsl`
       void main() {
-        ${R}
+        ${H}
         gl_FragColor = vec4(gl_FragColor.a);
       }
-      `),i.output===s.Color&&V.code.add(y`
+      `),e.output===t.ShaderOutput.ObjectAndLayerIdColor&&B.code.add(S.glsl`
+      void main() {
+        ${H}
+        outputObjectAndLayerIdColor();
+      }
+      `),e.output===t.ShaderOutput.Color&&B.code.add(S.glsl`
     void main() {
-      ${R}
-      ${i.transparencyPassType===A.FrontFace?"gl_FragColor.rgb /= gl_FragColor.a;":""}
+      ${H}
+      ${e.transparencyPassType===F.TransparencyPassType.FrontFace?"gl_FragColor.rgb /= gl_FragColor.a;":""}
     }
-    `),i.output===s.Highlight&&(l.include(p),V.code.add(y`
+    `),e.output===t.ShaderOutput.Highlight&&(D.include(g.OutputHighlight,e),B.code.add(S.glsl`
     void main() {
-      ${R}
-      ${i.binaryHighlightOcclusionEnabled?y`
+      ${H}
+      ${e.binaryHighlightOcclusionEnabled?S.glsl`
           if (voccluded == 1.0) {
             gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);
           } else {
             gl_FragColor = vec4(1.0, 0.0, 1.0, 1.0);
           }`:"outputHighlight();"}
     }
-    `)),l}function _(e){return e.outlineColor[3]>0&&e.outlineSize>0}function L(e,o=U){return e.textureIsSignedDistanceField?H(e.anchorPosition,e.distanceFieldBoundingBox,o):i(o,e.anchorPosition),o}function H(i,r,l){e(r)?o(l,i[0]*(r[2]-r[0])+r[0],i[1]*(r[3]-r[1])+r[1]):o(l,0,0)}const U=l(),V=Object.freeze(Object.defineProperty({__proto__:null,build:B,calculateAnchorPosForRendering:L},Symbol.toStringTag,{value:"Module"}));export{V as H,B as b,L as c};
+    `)),D}function j(e){return e.outlineColor[3]>0&&e.outlineSize>0}function U(e,o=L){return e.textureIsSignedDistanceField?$(e.anchorPosition,e.distanceFieldBoundingBox,o):l.copy(o,e.anchorPosition),o}function $(e,i,r){o.isSome(i)?l.set(r,e[0]*(i[2]-i[0])+i[0],e[1]*(i[3]-i[1])+i[1]):l.set(r,0,0)}const L=i.create(),_=Object.freeze(Object.defineProperty({__proto__:null,build:D,calculateAnchorPosForRendering:U},Symbol.toStringTag,{value:"Module"}));e.HUDMaterial=_,e.build=D,e.calculateAnchorPosForRendering=U}));

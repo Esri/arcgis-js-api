@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{c as s}from"../../../../chunks/mat3f32.js";import{TiledDisplayObject as r}from"./TiledDisplayObject.js";class t extends r{_createTransforms(){return{dvs:s(),tileMat3:s()}}}export{t as RenderableTile};
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/mat3f32","./TiledDisplayObject"],(function(e,t,r,i){"use strict";let n=function(e){function i(){return e.apply(this,arguments)||this}return t._inheritsLoose(i,e),i.prototype._createTransforms=function(){return{dvs:r.create(),tileMat3:r.create()}},i}(i.TiledDisplayObject);e.RenderableTile=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{canProjectWithoutEngine as o}from"../../geometry/projection.js";import{getSphericalPCPF as r,SphericalECEFSpatialReference as t,WGS84ECEFSpatialReference as e}from"../../geometry/projectionEllipsoid.js";function i(i){const m=r(i),n=m===t?e:m;return o(i,n)?n:i}export{i as computeEuclideanMeasurementSR};
+define(["exports","../../geometry/projection","../../geometry/projectionEllipsoid"],(function(e,t,o){"use strict";function i(e){const i=o.getSphericalPCPF(e),n=i===o.SphericalECEFSpatialReference?o.WGS84ECEFSpatialReference:i;return t.canProjectWithoutEngine(e,n)?n:e}e.computeEuclideanMeasurementSR=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

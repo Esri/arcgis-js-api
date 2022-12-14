@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import r from"./isWebGL2Context.js";function A(A,_){if(_.disjointTimerQuery)return null;if(r(A))return{drawBuffers:A.drawBuffers.bind(A),MAX_DRAW_BUFFERS:A.MAX_DRAW_BUFFERS,MAX_COLOR_ATTACHMENTS:A.MAX_COLOR_ATTACHMENTS};if(_.drawBuffers)return null;const e=A.getExtension("WEBGL_draw_buffers");return e?{drawBuffers:e.drawBuffersWEBGL.bind(e),MAX_DRAW_BUFFERS:e.MAX_DRAW_BUFFERS_WEBGL,MAX_COLOR_ATTACHMENTS:e.MAX_COLOR_ATTACHMENTS_WEBGL}:null}export{A as load};
+define(["exports","./isWebGL2Context"],(function(e,r){"use strict";function _(e,_){if(_.disjointTimerQuery)return null;if(r(e))return{drawBuffers:e.drawBuffers.bind(e),MAX_DRAW_BUFFERS:e.MAX_DRAW_BUFFERS,MAX_COLOR_ATTACHMENTS:e.MAX_COLOR_ATTACHMENTS};if(_.drawBuffers)return null;const n=e.getExtension("WEBGL_draw_buffers");return n?{drawBuffers:n.drawBuffersWEBGL.bind(n),MAX_DRAW_BUFFERS:n.MAX_DRAW_BUFFERS_WEBGL,MAX_COLOR_ATTACHMENTS:n.MAX_COLOR_ATTACHMENTS_WEBGL}:null}e.load=_,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import"../../../../core/compilerUtils.js";import"../core/shaderLibrary/ScreenSpacePass.js";import"../core/shaderModules/FloatPassUniform.js";import"../core/shaderModules/IntegerPassUniform.js";import"../core/shaderModules/interfaces.js";import"../core/shaderModules/ShaderBuilder.js";import"../core/shaderModules/Texture2DPassUniform.js";import"./CompositingTechniqueConfiguration.js";export{C as CompositingPassParameters,b as build}from"../../../../chunks/Compositing.glsl.js";
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../core/shaderLibrary/ScreenSpacePass","../core/shaderModules/FloatPassUniform","../core/shaderModules/interfaces","../core/shaderModules/ShaderBuilder","../core/shaderModules/Texture2DPassUniform","../../../../chunks/Compositing.glsl"],(function(e,s,r,o,a,i,l,u){"use strict";e.CompositingPassParameters=u.CompositingPassParameters,e.build=u.build,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

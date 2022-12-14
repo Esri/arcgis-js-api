@@ -1,12 +1,12 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{FloatUniform as e}from"../../../core/shaderModules/FloatUniform.js";import{glsl as t}from"../../../core/shaderModules/interfaces.js";import{usesSketchLogic as r,EdgeUtilMode as s}from"./EdgeUtil.glsl.js";import{UnpackAttributes as a}from"./UnpackAttributes.glsl.js";function d(d,u){const i=d.vertex;switch(d.include(a,u),r(u)&&i.uniforms.add(new e("strokesAmplitude")),u.mode){case s.SOLID:i.code.add(t`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
+define(["exports","../../../core/shaderModules/FloatDrawUniform","../../../core/shaderModules/interfaces","./EdgeUtil.glsl","./UnpackAttributes.glsl"],(function(e,t,d,l,r){"use strict";function s(e,s){const u=e.vertex;switch(e.include(r.UnpackAttributes,s),s.mode){case l.EdgeUtilMode.SOLID:u.code.add(d.glsl`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
 return 0.0;
-}`);break;case s.SKETCH:i.code.add(t`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
+}`);break;case l.EdgeUtilMode.SKETCH:u.uniforms.add(new t.FloatDrawUniform("strokesAmplitude",(e=>e.strokesTexture.amplitude))),u.code.add(d.glsl`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
 return strokesAmplitude;
-}`);break;case s.MIXED:i.code.add(t`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
+}`);break;case l.EdgeUtilMode.MIXED:u.uniforms.add(new t.FloatDrawUniform("strokesAmplitude",(e=>e.strokesTexture.amplitude))),u.code.add(d.glsl`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
 float type = unpackedAttributes.type;
 if (type <= 0.0) {
 return strokesAmplitude;
@@ -14,4 +14,4 @@ return strokesAmplitude;
 else {
 return 0.0;
 }
-}`)}}export{d as LineAmplitude};
+}`)}}e.LineAmplitude=s,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import t from"../../request.js";import{parseUrl as r,asValidOptions as n}from"../utils.js";async function o(o,s,e){const a=r(o),u={...a.query,f:"json",...s.toJSON()},f=n(u,e);return t(a.path+"/areasAndLengths",f).then((t=>t.data))}export{o as areasAndLengths};
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../utils"],(function(e,t,n,r){"use strict";function s(e,t,n){return a.apply(this,arguments)}function a(){return(a=t._asyncToGenerator((function*(e,t,s){const a=r.parseUrl(e),u={...a.query,f:"json",...t.toJSON()},o=r.asValidOptions(u,s);return n(a.path+"/areasAndLengths",o).then((e=>e.data))}))).apply(this,arguments)}e.areasAndLengths=s,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

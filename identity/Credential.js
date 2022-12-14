@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{Credential as a}from"./IdentityManagerBase.js";const e=a;export{e as default};
+define(["./IdentityManagerBase"],(function(e){"use strict";return e.Credential}));

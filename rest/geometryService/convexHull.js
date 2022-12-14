@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import t from"../../request.js";import{fromJSON as e}from"../../geometry/support/jsonUtils.js";import{parseUrl as r,asValidOptions as s}from"../utils.js";import{encodeGeometries as o}from"./utils.js";async function i(i,n,m){const f=n[0].spatialReference,p=r(i),a={...p.query,f:"json",sr:JSON.stringify(f.toJSON()),geometries:JSON.stringify(o(n))},u=s(a,m);return t(p.path+"/convexHull",u).then((({data:t})=>e(t.geometry).set({spatialReference:f})))}export{i as convexHull};
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../../geometry/support/jsonUtils","../utils","./utils"],(function(e,t,n,r,s,o){"use strict";function i(e,t,n){return l.apply(this,arguments)}function l(){return(l=t._asyncToGenerator((function*(e,t,i){const l=t[0].spatialReference,u=s.parseUrl(e),a={...u.query,f:"json",sr:JSON.stringify(l.toJSON()),geometries:JSON.stringify(o.encodeGeometries(t))},p=s.asValidOptions(a,i);return n(u.path+"/convexHull",p).then((({data:e})=>r.fromJSON(e.geometry).set({spatialReference:l})))}))).apply(this,arguments)}e.convexHull=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

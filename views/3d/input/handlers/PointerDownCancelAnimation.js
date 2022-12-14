@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{InputHandler as t}from"../../../input/InputHandler.js";class e extends t{constructor(t,e){super(!0),this.view=t,this.registerIncoming("pointer-down",e,(()=>this.view.state.stopActiveCameraController()))}}export{e as PointerDownCancelAnimation};
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../input/InputHandler"],(function(e,n,t){"use strict";let i=function(e){function t(n,t){var i;return(i=e.call(this,!0)||this).view=n,i.registerIncoming("pointer-down",t,(()=>i.view.state.stopActiveCameraController())),i}return n._inheritsLoose(t,e),t}(t.InputHandler);e.PointerDownCancelAnimation=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

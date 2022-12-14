@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-export{Stage}from"./engine/Stage.js";export{default as LabelManager}from"./LabelManager.js";export{default as GraphicsView2D}from"./layers/graphics/GraphicsView2D.js";export{default as GraphicContainer}from"./layers/graphics/GraphicContainer.js";export{default as MapViewNavigation}from"./navigation/MapViewNavigation.js";export{default as MagnifierView2D}from"./magnifier/MagnifierView2D.js";
+define(["exports","./engine/Stage","./LabelManager","./layers/graphics/GraphicsView2D","./layers/graphics/GraphicContainer","./navigation/MapViewNavigation","./magnifier/MagnifierView2D"],(function(e,a,i,n,r,g,t){"use strict";e.Stage=a.Stage,e.LabelManager=i,e.GraphicsView2D=n,e.GraphicContainer=r,e.MapViewNavigation=g,e.MagnifierView2D=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-export{a as clone,c as create,b as createView,f as fromValues}from"../../../../chunks/mat2f32.js";
+define(["exports","../../../../chunks/mat2f32"],(function(e,t){"use strict";e.clone=t.clone,e.create=t.create,e.createView=t.createView,e.fromValues=t.fromValues,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

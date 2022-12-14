@@ -1,11 +1,11 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{BooleanPassUniform as e}from"../core/shaderModules/BooleanPassUniform.js";import{Float4Uniform as r}from"../core/shaderModules/Float4Uniform.js";import{NoParameters as o,glsl as t}from"../core/shaderModules/interfaces.js";import{ShaderBuilder as a}from"../core/shaderModules/ShaderBuilder.js";import{Texture2DUniform as n}from"../core/shaderModules/Texture2DUniform.js";import{VertexAttribute as s}from"../lib/VertexAttribute.js";class d extends o{constructor(){super(...arguments),this.maskEnabled=!1,this.overlayEnabled=!1}}function i(){const o=new a;return o.attributes.add(s.POSITION,"vec2"),o.vertex.uniforms.add(new r("drawPosition")),o.varyings.add("vUV","vec2"),o.vertex.code.add(t`void main(void) {
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/screenUtils","../../../../chunks/vec4","../../../../chunks/vec4f64","../core/shaderModules/BooleanPassUniform","../core/shaderModules/Float4PassUniform","../core/shaderModules/interfaces","../core/shaderModules/ShaderBuilder","../core/shaderModules/Texture2DPassUniform","../lib/VertexAttribute"],(function(e,r,t,a,n,o,s,i,u,l,c){"use strict";let d=function(){},f=function(e){function t(){var r;return(r=e.apply(this,arguments)||this).textures=new d,r}return r._inheritsLoose(t,e),t}(i.NoParameters);function v(){const e=new u.ShaderBuilder;return e.attributes.add(c.VertexAttribute.POSITION,"vec2"),e.vertex.uniforms.add(new s.Float4PassUniform("drawPosition",((e,r)=>m(e,r)))),e.varyings.add("vUV","vec2"),e.vertex.code.add(i.glsl`void main(void) {
 vUV = position;
 gl_Position = vec4(drawPosition.xy + vec2(position - 0.5) * drawPosition.zw, 0.0, 1.0);
-}`),o.fragment.uniforms.add(new n("textureInput")),o.fragment.uniforms.add(new n("textureMask")),o.fragment.uniforms.add(new n("textureOverlay")),o.fragment.uniforms.add(new e("maskEnabled",(e=>e.maskEnabled))),o.fragment.uniforms.add(new e("overlayEnabled",(e=>e.overlayEnabled))),o.fragment.code.add(t`const float barrelFactor = 1.1;
+}`),e.fragment.uniforms.add(new l.Texture2DPassUniform("textureInput",(e=>e.textures.input))),e.fragment.uniforms.add(new l.Texture2DPassUniform("textureMask",(e=>e.textures.mask))),e.fragment.uniforms.add(new l.Texture2DPassUniform("textureOverlay",(e=>e.textures.overlay))),e.fragment.uniforms.add(new o.BooleanPassUniform("maskEnabled",(e=>e.magnifier.maskEnabled))),e.fragment.uniforms.add(new o.BooleanPassUniform("overlayEnabled",(e=>e.magnifier.overlayEnabled))),e.fragment.code.add(i.glsl`const float barrelFactor = 1.1;
 vec2 barrel(vec2 uv) {
 vec2 uvn = uv * 2.0 - 1.0;
 if (uvn.x == 0.0 && uvn.y == 0.0) {
@@ -20,4 +20,4 @@ float mask = maskEnabled ? texture2D(textureMask, vUV).a : 1.0;
 vec4 inputColor = texture2D(textureInput, barrel(vUV)) * mask;
 vec4 overlayColor = overlayEnabled ? texture2D(textureOverlay, vUV) : vec4(0);
 gl_FragColor = overlayColor + (1.0 - overlayColor.a) * inputColor;
-}`),o}export{d as MagnifierPassParameters,i as build};
+}`),e}function m(e,r){const n=r.camera.pixelRatio,o=e.magnifier.offset.x*n,s=e.magnifier.offset.y*n;t.screenPointObjectToArray(e.magnifier.position,x);const i=r.camera.screenToRender(x,g),u=Math.ceil(n*e.magnifier.size),l=r.camera.fullWidth,c=r.camera.fullHeight;return a.set(P,(i[0]+o)/l*2-1,(i[1]-s)/c*2-1,u/l*2,u/c*2)}const x=t.createScreenPointArray(),g=t.createRenderScreenPointArray(),P=n.create();e.MagnifierPassParameters=f,e.TextureResources=d,e.build=v,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

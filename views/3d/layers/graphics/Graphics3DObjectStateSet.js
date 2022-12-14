@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{Object3DStateSet as t}from"../../webgl-engine/lib/Object3DStateSet.js";class e{constructor(e,i){this.stateType=e,this.objectIdField=i,this.objectStateSet=new t,this.ids=new Set,this.paused=!1}hasGraphic(t){if(this.objectIdField){const e=t.graphic.attributes[this.objectIdField];return this.ids.has(e)}return this.ids.has(t.graphic.uid)}}export{e as Graphics3DObjectStateSet};
+define(["exports","../../webgl-engine/lib/Object3DStateSet"],(function(t,e){"use strict";let i=function(){function t(t,i){this.stateType=t,this.objectIdField=i,this.objectStateSet=new e.Object3DStateSet,this.ids=new Set,this.paused=!1}return t.prototype.hasGraphic=function(t){if(this.objectIdField){const e=t.graphic.attributes[this.objectIdField];return this.ids.has(e)}return this.ids.has(t.graphic.uid)},t}();t.Graphics3DObjectStateSet=i,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

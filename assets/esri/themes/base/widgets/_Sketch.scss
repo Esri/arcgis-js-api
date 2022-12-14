@@ -11,6 +11,12 @@
     }
   }
 
+  .esri-expand__content {
+    .esri-sketch {
+      width: max-content;
+    }
+  }
+
   .esri-sketch__menu-header {
     margin: $cap-spacing--half;
     border-bottom: $border;
@@ -26,7 +32,7 @@
   .esri-sketch__panel {
     align-items: center;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     padding: 0;
   }
 
@@ -53,7 +59,7 @@
   .esri-sketch__section {
     align-items: center;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     padding: 0 $side-spacing--half;
     margin: $cap-spacing--half 0;
   }
@@ -108,7 +114,7 @@
   }
 
   .esri-sketch--vertical {
-    flex-direction: row-reverse;
+    flex-flow: row-reverse;
 
     .esri-sketch__panel {
       flex-flow: column;
@@ -135,9 +141,6 @@
     .esri-sketch__info-section {
       margin-top: $cap-spacing--quarter;
       width: $button-width;
-    }
-    .esri-sketch__menu-container {
-      min-width: 30vh;
     }
 
     .esri-selection-toolbar__container {

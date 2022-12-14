@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{ScreenSpacePass as e}from"../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass.js";import{Float4Uniform as r}from"../views/3d/webgl-engine/core/shaderModules/Float4Uniform.js";import{glsl as o}from"../views/3d/webgl-engine/core/shaderModules/interfaces.js";import{ShaderBuilder as n}from"../views/3d/webgl-engine/core/shaderModules/ShaderBuilder.js";import{Texture2DUniform as i}from"../views/3d/webgl-engine/core/shaderModules/Texture2DUniform.js";function s(){const s=new n;return s.include(e),s.fragment.uniforms.add([new i("tex"),new r("uColor")]),s.fragment.code.add(o`void main() {
+define(["exports","./_rollupPluginBabelHelpers","./vec4f64","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform"],(function(e,r,o,n,s,t,l,a){"use strict";let i=function(e){function n(){var r;return(r=e.apply(this,arguments)||this).color=o.fromValues(1,1,1,1),r}return r._inheritsLoose(n,e),n}(t.NoParameters);function u(){const e=new l.ShaderBuilder;return e.include(n.ScreenSpacePass),e.fragment.uniforms.add([new a.Texture2DPassUniform("tex",(e=>e.texture)),new s.Float4PassUniform("uColor",(e=>e.color))]),e.fragment.code.add(t.glsl`void main() {
 vec4 texColor = texture2D(tex, uv);
 gl_FragColor = texColor * uColor;
-}`),s}const t=Object.freeze(Object.defineProperty({__proto__:null,build:s},Symbol.toStringTag,{value:"Module"}));export{t as T,s as b};
+}`),e}const d=Object.freeze(Object.defineProperty({__proto__:null,TextureOnlyPassParameters:i,build:u},Symbol.toStringTag,{value:"Module"}));e.TextureOnly=d,e.TextureOnlyPassParameters=i,e.build=u}));

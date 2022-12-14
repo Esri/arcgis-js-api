@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/Accessor","../../../core/accessorSupport/decorators/property","../../../core/arrayUtils","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/subclass"],(function(e,o,t,r,s,i,c,n){"use strict";e.SketchTooltipElevationOptions=function(e){function t(o){var t;return(t=e.call(this,o)||this).mode="absolute-height",t}return o._inheritsLoose(t,e),t.prototype.toJSON=function(){return{mode:this.mode}},t}(r),t.__decorate([s.property({type:String,nonNullable:!0})],e.SketchTooltipElevationOptions.prototype,"mode",void 0),e.SketchTooltipElevationOptions=t.__decorate([n.subclass("esri.widgets.Sketch.SketchTooltipOptions.ElevationOptions")],e.SketchTooltipElevationOptions),Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

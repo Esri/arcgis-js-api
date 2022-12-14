@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{clamp as e}from"../../core/mathUtils.js";import{classes as t}from"./widgetUtils.js";import{tsx as r}from"./jsxFactory.js";const i={heading:"esri-widget__heading"};function n(e,n){const l=o(e.level),s=`h${l}`;return delete e.level,r(s,{...e,class:t(i.heading,e.class),role:"heading","aria-level":String(l)},n)}function o(t){return e(Math.ceil(t),1,6)}function l(e,t=1){return o(e+t)}export{i as CSS,n as Heading,l as incrementHeadingLevel};
+define(["exports","../../core/mathUtils","./widgetUtils","./jsxFactory"],(function(e,t,n,i){"use strict";const l={heading:"esri-widget__heading"};function s(e,t){const s=a(e.level),r=`h${s}`;return delete e.level,i.tsx(r,{...e,class:n.classes(l.heading,e.class),role:"heading","aria-level":String(s)},t)}function a(e){return t.clamp(Math.ceil(e),1,6)}function r(e,t=1){return a(e+t)}e.CSS=l,e.Heading=s,e.incrementHeadingLevel=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as r}from"../../../chunks/tslib.es6.js";import{property as e}from"../../../core/accessorSupport/decorators/property.js";import"../../../core/arrayUtils.js";import"../../../core/has.js";import"../../../core/accessorSupport/ensureType.js";import{subclass as s}from"../../../core/accessorSupport/decorators/subclass.js";import o from"../SmartMappingSliderViewModel.js";let t=class extends o{constructor(r){super(r),this.zoomingEnabled=!1}get breaks(){return this.breaks}};r([e()],t.prototype,"breaks",null),r([e({readOnly:!0})],t.prototype,"zoomingEnabled",void 0),t=r([s("esri.widgets.smartMapping.ClassedSizeSlider.ClassedSizeSliderViewModel")],t);const p=t;export{p as default};
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/arrayUtils","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/subclass","../SmartMappingSliderViewModel"],(function(e,r,s,o,t,i,a){"use strict";let c=function(r){function s(e){var s;return(s=r.call(this,e)||this).zoomingEnabled=!1,s}return e._inheritsLoose(s,r),s}(a);r.__decorate([s.property({readOnly:!0})],c.prototype,"zoomingEnabled",void 0),c=r.__decorate([i.subclass("esri.widgets.smartMapping.ClassedSizeSlider.ClassedSizeSliderViewModel")],c);return c}));

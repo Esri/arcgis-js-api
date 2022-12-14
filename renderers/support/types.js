@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import e from"../ClassBreaksRenderer.js";import r from"../DictionaryRenderer.js";import t from"../DotDensityRenderer.js";import o from"../HeatmapRenderer.js";import s from"../PieChartRenderer.js";import a from"../Renderer.js";import i from"../SimpleRenderer.js";import m from"../UniqueValueRenderer.js";const p={key:"type",base:a,typeMap:{heatmap:o,simple:i,"unique-value":m,"class-breaks":e,"dot-density":t,dictionary:r,"pie-chart":s},errorContext:"renderer"},n={key:"type",base:a,typeMap:{simple:i,"unique-value":m,"class-breaks":e,heatmap:o},errorContext:"renderer"};export{p as rendererTypes,n as webSceneRendererTypes};
+define(["exports","../ClassBreaksRenderer","../DictionaryRenderer","../DotDensityRenderer","../HeatmapRenderer","../PieChartRenderer","../Renderer","../SimpleRenderer","../UniqueValueRenderer"],(function(e,r,n,t,a,s,i,d,p){"use strict";const o={key:"type",base:i,typeMap:{heatmap:a,simple:d,"unique-value":p,"class-breaks":r,"dot-density":t,dictionary:n,"pie-chart":s},errorContext:"renderer"},l={key:"type",base:i,typeMap:{simple:d,"unique-value":p,"class-breaks":r,heatmap:a},errorContext:"renderer"};e.rendererTypes=o,e.webSceneRendererTypes=l,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

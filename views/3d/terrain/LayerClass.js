@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-var A;!function(A){A[A.ELEVATION=0]="ELEVATION",A[A.MAP=1]="MAP"}(A||(A={}));const E=[A.ELEVATION,A.MAP];export{A as LayerClass,E as LayerClasses};
+define(["exports"],(function(e){"use strict";var s;e.LayerClass=void 0,(s=e.LayerClass||(e.LayerClass={}))[s.ELEVATION=0]="ELEVATION",s[s.MAP=1]="MAP";const a=[e.LayerClass.ELEVATION,e.LayerClass.MAP];e.LayerClasses=a,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

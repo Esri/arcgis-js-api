@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{FeatureReduction as e}from"./FeatureReduction.js";import t from"./FeatureReductionBinning.js";import i from"./FeatureReductionCluster.js";import o from"./FeatureReductionSelection.js";const n={key:"type",base:e,typeMap:{selection:i}},p={types:{key:"type",base:e,typeMap:{selection:o,cluster:i,binning:t}},json:{name:"layerDefinition.featureReduction",write:{allowNull:!0},origins:{"web-map":{types:n},"portal-item":{types:n},"web-scene":{types:{key:"type",base:e,typeMap:{selection:o}}}}}};export{p as featureReductionProperty};
+define(["exports","./FeatureReduction","./FeatureReductionBinning","./FeatureReductionCluster","./FeatureReductionSelection"],(function(e,t,n,i,u){"use strict";const o={key:"type",base:t.FeatureReduction,typeMap:{selection:u}},a={key:"type",base:t.FeatureReduction,typeMap:{cluster:i,binning:n}},r={types:{key:"type",base:t.FeatureReduction,typeMap:{selection:u,cluster:i,binning:n}},json:{name:"layerDefinition.featureReduction",write:{allowNull:!0},origins:{"web-map":{types:a},"portal-item":{types:a},"web-scene":{types:o}}}};e.featureReductionProperty=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

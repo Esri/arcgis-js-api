@@ -1,32 +1,41 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{f as e}from"../../../../../../chunks/vec3f32.js";import{VertexTextureCoordinates as s}from"../attributes/VertexTextureCoordinates.glsl.js";import{Float3DrawUniform as o}from"../../shaderModules/Float3DrawUniform.js";import{Float3PassUniform as t}from"../../shaderModules/Float3PassUniform.js";import{glsl as r}from"../../shaderModules/interfaces.js";import{createTexture2DDrawSizeUniforms as a}from"../../shaderModules/Texture2DDrawUniform.js";import{createTexture2DPassSizeUniforms as i}from"../../shaderModules/Texture2DPassUniform.js";import{BindType as c}from"../../shaderTechnique/BindType.js";import{GLTextureMaterialBindParameters as n}from"../../../lib/GLTextureMaterial.js";const u=e(0,.6,.2);var l;!function(e){e[e.Disabled=0]="Disabled",e[e.Normal=1]="Normal",e[e.Schematic=2]="Schematic",e[e.Water=3]="Water",e[e.WaterOnIntegratedMesh=4]="WaterOnIntegratedMesh",e[e.COUNT=5]="COUNT"}(l||(l={}));class m extends n{}function d(e,n){const u=e.fragment,m=n.hasMetalnessAndRoughnessTexture||n.hasEmissionTexture||n.hasOcclusionTexture;if(n.pbrMode===l.Normal&&m&&e.include(s,n),n.pbrMode!==l.Schematic)if(n.pbrMode!==l.Disabled){if(n.pbrMode===l.Normal){u.code.add(r`vec3 mrr;
+define(["exports","../../../../../../chunks/_rollupPluginBabelHelpers","../../../../../../chunks/vec3f32","../attributes/VertexTextureCoordinates.glsl","../util/WebGL2Utils","../../shaderModules/Float3DrawUniform","../../shaderModules/Float3PassUniform","../../shaderModules/interfaces","../../shaderModules/Texture2DDrawUniform","../../shaderModules/Texture2DPassUniform","../../shaderModules/TextureSizeUniformType","../../shaderTechnique/BindType","../../../lib/GLTextureMaterial"],(function(e,s,t,r,o,a,i,l,n,u,c,d,m){"use strict";const x=t.fromValues(0,.6,.2);var p;e.PBRMode=void 0,(p=e.PBRMode||(e.PBRMode={}))[p.Disabled=0]="Disabled",p[p.Normal=1]="Normal",p[p.Schematic=2]="Schematic",p[p.Water=3]="Water",p[p.WaterOnIntegratedMesh=4]="WaterOnIntegratedMesh",p[p.COUNT=5]="COUNT";let T=function(e){function t(){return e.apply(this,arguments)||this}return s._inheritsLoose(t,e),t}(m.GLTextureMaterialBindParameters);function g(s,t){const m=s.fragment,x=t.hasMetallicRoughnessTexture||t.hasEmissionTexture||t.hasOcclusionTexture;if(t.pbrMode===e.PBRMode.Normal&&x&&s.include(r.VertexTextureCoordinates,t),t.pbrMode!==e.PBRMode.Schematic)if(t.pbrMode!==e.PBRMode.Disabled){if(t.pbrMode===e.PBRMode.Normal){m.code.add(l.glsl`vec3 mrr;
 vec3 emission;
-float occlusion;`);const e=n.supportsTextureAtlas,s=n.pbrTextureBindType;n.hasMetalnessAndRoughnessTexture&&(u.uniforms.add(s===c.Pass?i("texMetallicRoughness",(e=>e.textureMetallicRoughness),e):a("texMetallicRoughness",(e=>e.textureMetallicRoughness),e)),u.code.add(r`void applyMetallnessAndRoughness(TextureLookupParameter params) {
+float occlusion;`);const e=t.supportsTextureAtlas?t.hasWebGL2Context?c.TextureSizeUniformType.None:c.TextureSizeUniformType.Size:c.TextureSizeUniformType.None,s=t.pbrTextureBindType;t.hasMetallicRoughnessTexture&&(m.uniforms.add(s===d.BindType.Pass?u.createTexture2DPassSizeUniforms("texMetallicRoughness",(e=>e.textureMetallicRoughness),e):n.createTexture2DDrawSizeUniforms("texMetallicRoughness",(e=>e.textureMetallicRoughness),e)),m.code.add(l.glsl`void applyMetallnessAndRoughness(TextureLookupParameter params) {
 vec3 metallicRoughness = textureLookup(texMetallicRoughness, params).rgb;
 mrr[0] *= metallicRoughness.b;
 mrr[1] *= metallicRoughness.g;
-}`)),n.hasEmissionTexture&&(u.uniforms.add(s===c.Pass?i("texEmission",(e=>e.textureEmissive),e):a("texEmission",(e=>e.textureEmissive),e)),u.code.add(r`void applyEmission(TextureLookupParameter params) {
+}`)),t.hasEmissionTexture&&(m.uniforms.add(s===d.BindType.Pass?u.createTexture2DPassSizeUniforms("texEmission",(e=>e.textureEmissive),e):n.createTexture2DDrawSizeUniforms("texEmission",(e=>e.textureEmissive),e)),m.code.add(l.glsl`void applyEmission(TextureLookupParameter params) {
 emission *= textureLookup(texEmission, params).rgb;
-}`)),n.hasOcclusionTexture?(u.uniforms.add(s===c.Pass?i("texOcclusion",(e=>e.textureOcclusion),e):a("texOcclusion",(e=>e.textureOcclusion),e)),u.code.add(r`void applyOcclusion(TextureLookupParameter params) {
+}`)),t.hasOcclusionTexture?(m.uniforms.add(s===d.BindType.Pass?u.createTexture2DPassSizeUniforms("texOcclusion",(e=>e.textureOcclusion),e):n.createTexture2DDrawSizeUniforms("texOcclusion",(e=>e.textureOcclusion),e)),m.code.add(l.glsl`void applyOcclusion(TextureLookupParameter params) {
 occlusion *= textureLookup(texOcclusion, params).r;
 }
 float getBakedOcclusion() {
 return occlusion;
-}`)):u.code.add(r`float getBakedOcclusion() { return 1.0; }`),u.uniforms.add(s===c.Pass?[new t("emissionFactor",(e=>e.emissiveFactor)),new t("mrrFactors",(e=>e.mrrFactors))]:[new o("emissionFactor",(e=>e.emissiveFactor)),new o("mrrFactors",(e=>e.mrrFactors))]),u.code.add(r`
+}`)):m.code.add(l.glsl`float getBakedOcclusion() { return 1.0; }`),m.uniforms.add(s===d.BindType.Pass?[new i.Float3PassUniform("emissionFactor",(e=>e.emissiveFactor)),new i.Float3PassUniform("mrrFactors",(e=>e.mrrFactors))]:[new a.Float3DrawUniform("emissionFactor",(e=>e.emissiveFactor)),new a.Float3DrawUniform("mrrFactors",(e=>e.mrrFactors))]),m.code.add(l.glsl`
     void applyPBRFactors() {
       mrr = mrrFactors;
       emission = emissionFactor;
       occlusion = 1.0;
-      ${m?"vtc.uv = vuv0;":""}
-      ${n.hasMetalnessAndRoughnessTexture?n.supportsTextureAtlas?"vtc.size = texMetallicRoughnessSize; applyMetallnessAndRoughness(vtc);":"applyMetallnessAndRoughness(vtc);":""}
-      ${n.hasEmissionTexture?n.supportsTextureAtlas?"vtc.size = texEmissionSize; applyEmission(vtc);":"applyEmission(vtc);":""}
-      ${n.hasOcclusionTexture?n.supportsTextureAtlas?"vtc.size = texOcclusionSize; applyOcclusion(vtc);":"applyOcclusion(vtc);":""}
+      ${x?l.glsl`vtc.uv = vuv0;`:""}
+      ${t.hasMetallicRoughnessTextureTransform?l.glsl`vtc.uv = metallicRoughnessUV;`:""}
+      ${t.hasMetallicRoughnessTexture?t.supportsTextureAtlas?l.glsl`
+                vtc.size = ${o.textureSize(t,"texMetallicRoughness")};
+                applyMetallnessAndRoughness(vtc);`:l.glsl`applyMetallnessAndRoughness(vtc);`:""}
+      ${t.hasEmissiveTextureTransform?l.glsl`vtc.uv = emissiveUV;`:""}
+      ${t.hasEmissionTexture?t.supportsTextureAtlas?l.glsl`
+                vtc.size = ${o.textureSize(t,"texEmission")};
+                applyEmission(vtc);`:l.glsl`applyEmission(vtc);`:""}
+      ${t.hasOcclusionTextureTransform?l.glsl`vtc.uv = occlusionUV;`:""}
+      ${t.hasOcclusionTexture?t.supportsTextureAtlas?l.glsl`
+                vtc.size = ${o.textureSize(t,"texOcclusion")};
+                applyOcclusion(vtc);`:l.glsl`applyOcclusion(vtc);`:""}
     }
-  `)}}else u.code.add(r`float getBakedOcclusion() { return 1.0; }`);else u.code.add(r`vec3 mrr = vec3(0.0, 0.6, 0.2);
+  `)}}else m.code.add(l.glsl`float getBakedOcclusion() { return 1.0; }`);else m.code.add(l.glsl`vec3 mrr = vec3(0.0, 0.6, 0.2);
 vec3 emission = vec3(0.0);
 float occlusion = 1.0;
 void applyPBRFactors() {}
-float getBakedOcclusion() { return 1.0; }`)}export{m as PBRBindParameters,l as PBRMode,u as PBRSchematicMRRValues,d as PhysicallyBasedRenderingParameters};
+float getBakedOcclusion() { return 1.0; }`)}e.PBRBindParameters=T,e.PBRSchematicMRRValues=x,e.PhysicallyBasedRenderingParameters=g,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

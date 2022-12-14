@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{Program as r}from"./Program.js";function e(e,t,a=""){return new r(e,a+t.shaders.vertexShader,a+t.shaders.fragmentShader,t.attributes)}export{e as createProgram};
+define(["exports","./Program"],(function(e,r){"use strict";function t(e,t,a=""){return new r.Program(e,a+t.shaders.vertexShader,a+t.shaders.fragmentShader,t.attributes)}e.createProgram=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

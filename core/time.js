@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-function n(n){return n}function r(r){return n(1e3*r)}function t(n){return n}function u(n){return t(.001*n)}export{n as Milliseconds,t as Seconds,r as millisecondsFromSeconds,u as secondsFromMilliseconds};
+define(["exports"],(function(e){"use strict";function n(e){return e}function o(e){return n(1e3*e)}function i(e){return e}function t(e){return i(.001*e)}e.Milliseconds=n,e.Seconds=i,e.millisecondsFromSeconds=o,e.secondsFromMilliseconds=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

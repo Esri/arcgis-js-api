@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{resolveIncludes as r}from"./sources/resolver.js";const e={shaders:{vertexShader:r("background/background.vert"),fragmentShader:r("background/background.frag")},attributes:new Map([["a_pos",0]])};export{e as background};
+define(["exports","./sources/resolver"],(function(e,r){"use strict";const o={shaders:{vertexShader:r.resolveIncludes("background/background.vert"),fragmentShader:r.resolveIncludes("background/background.frag")},attributes:new Map([["a_pos",0]])};e.background=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

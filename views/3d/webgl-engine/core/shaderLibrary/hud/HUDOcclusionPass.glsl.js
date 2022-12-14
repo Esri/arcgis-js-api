@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{ReadLinearDepth as e}from"../output/ReadLinearDepth.glsl.js";import{multipassGeometryTest as r}from"../shading/MultipassGeometryTest.glsl.js";import{RgbaFloatEncoding as t}from"../util/RgbaFloatEncoding.glsl.js";import{Float2PassUniform as o}from"../../shaderModules/Float2PassUniform.js";import{glsl as a}from"../../shaderModules/interfaces.js";import{Texture2DPassUniform as i}from"../../shaderModules/Texture2DPassUniform.js";function s(s,n){const{vertex:p,fragment:l}=s;n.hasMultipassGeometry&&p.include(r),n.hasMultipassTerrain&&s.varyings.add("depth","float"),p.code.add(a`
+define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometryTest.glsl","../util/RgbaFloatEncoding.glsl","../util/WebGL2Utils","../../shaderModules/Float2PassUniform","../../shaderModules/interfaces","../../shaderModules/Texture2DPassUniform","../../shaderModules/TextureSizeUniformType"],(function(e,t,r,o,a,i,s,n,l){"use strict";function p(e,p){const{vertex:u,fragment:d}=e;p.hasMultipassGeometry&&u.include(r.multipassGeometryTest),p.hasMultipassTerrain&&e.varyings.add("depth","float"),u.code.add(s.glsl`
   void main(void) {
     vec4 posProjCenter;
     if (dot(position, position) > 0.0) {
@@ -12,13 +12,13 @@ import{ReadLinearDepth as e}from"../output/ReadLinearDepth.glsl.js";import{multi
       vec4 posProj = projectPositionHUD(projectAux);
       posProjCenter = alignToPixelCenter(posProj, viewport.zw);
 
-      ${n.hasMultipassGeometry?a`
+      ${p.hasMultipassGeometry?s.glsl`
         // Don't draw vertices behind geometry
         if(geometryDepthTest(.5 + .5 * posProjCenter.xy / posProjCenter.w, projectAux.posView.z)){
           posProjCenter = vec4(1e038, 1e038, 1e038, 1.0);
         }`:""}
 
-      ${n.hasMultipassTerrain?"depth = projectAux.posView.z;":""}
+      ${p.hasMultipassTerrain?"depth = projectAux.posView.z;":""}
       vec3 vpos = projectAux.posModel;
       if (rejectBySlice(vpos)) {
         // Project out of clip space
@@ -33,21 +33,21 @@ import{ReadLinearDepth as e}from"../output/ReadLinearDepth.glsl.js";import{multi
     gl_Position = posProjCenter;
     gl_PointSize = 1.0;
   }
-  `),n.hasMultipassTerrain&&l.include(e),n.hasMultipassTerrain&&l.uniforms.add([new i("terrainDepthTexture",((e,r)=>r.multipassTerrain.linearDepthTexture)),new o("nearFar",((e,r)=>r.camera.nearFar)),new o("inverseViewport",((e,r)=>r.inverseViewport))]),l.include(t),l.code.add(a`
+  `),p.hasMultipassTerrain&&d.include(t.ReadLinearDepth),p.hasMultipassTerrain&&d.uniforms.add([...n.createTexture2DPassSizeUniforms("terrainDepthTexture",((e,t)=>t.multipassTerrain.linearDepthTexture),p.hasWebGL2Context?l.TextureSizeUniformType.None:l.TextureSizeUniformType.InvSize),new i.Float2PassUniform("nearFar",((e,t)=>t.camera.nearFar))]),d.include(o.RgbaFloatEncoding),d.code.add(s.glsl`
   void main() {
     gl_FragColor = vec4(1, 1, 1, 1);
-    ${n.hasMultipassTerrain?a`
-          vec2 uv = gl_FragCoord.xy * inverseViewport;
+    ${p.hasMultipassTerrain?s.glsl`
+          vec2 uv = gl_FragCoord.xy;
 
-          //Read the rgba data from the texture linear depth
-          vec4 terrainDepthData = texture2D(terrainDepthTexture, uv);
+          // Read the rgba data from the texture linear depth
+          vec4 terrainDepthData = ${a.texelFetch(p,"terrainDepthTexture","uv")};
 
           float terrainDepth = linearDepthFromFloat(rgba2float(terrainDepthData), nearFar);
 
-          //If HUD vertex is behind terrain and the terrain depth is not the initialize value (e.g. we are not looking at the sky)
-          //Mark the HUD vertex as occluded by transparent terrain
+          // If HUD vertex is behind terrain and the terrain depth is not the initialize value (e.g. we are not looking at the sky)
+          // Mark the HUD vertex as occluded by transparent terrain
           if(depth < terrainDepth && terrainDepthData != vec4(0,0,0,1)){
             gl_FragColor.g = 0.5;
           }`:""}
   }
-  `)}export{s as HUDOcclusionPass};
+  `)}e.HUDOcclusionPass=p,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

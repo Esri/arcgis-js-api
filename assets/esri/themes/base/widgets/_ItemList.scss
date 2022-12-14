@@ -82,7 +82,6 @@
 
   .esri-item-list__list-item {
     box-shadow: 0 1px 0 var(--calcite-ui-border-2);
-    padding: 0 12px;
     background-color: var(--calcite-ui-foreground-1);
     cursor: pointer;
     border: 1px solid transparent;
@@ -107,6 +106,10 @@
     &#{&}--selected {
       border-color: $border-color--active;
     }
+  }
+
+  .esri-item-list__list-item-icon {
+    padding: 0 12px;
   }
 
   .esri-item-list__list-item-label {

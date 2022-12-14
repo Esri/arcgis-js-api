@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
-*/
-import{_ as o}from"../../chunks/tslib.es6.js";import{ClonableMixin as r}from"../../core/Clonable.js";import{JSONSupport as e}from"../../core/JSONSupport.js";import{property as t}from"../../core/accessorSupport/decorators/property.js";import"../../core/arrayUtils.js";import"../../core/has.js";import"../../core/accessorSupport/ensureType.js";import{subclass as s}from"../../core/accessorSupport/decorators/subclass.js";let p=class extends(r(e)){constructor(){super(...arguments),this.enabled=!0,this.label="",this.normal=null,this.point=null}};o([t({type:Boolean,json:{write:!0}})],p.prototype,"enabled",void 0),o([t({type:String,json:{write:!0}})],p.prototype,"label",void 0),o([t({type:[Number],json:{write:!0}})],p.prototype,"normal",void 0),o([t({type:[Number],json:{write:!0}})],p.prototype,"point",void 0),p=o([s("esri.layers.support.VoxelSlice")],p);const i=p;export{i as default};

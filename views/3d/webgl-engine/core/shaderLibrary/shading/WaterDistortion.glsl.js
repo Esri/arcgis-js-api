@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{a as e}from"../../../../../../chunks/vec2.js";import{a as t}from"../../../../../../chunks/vec2f64.js";import{s as r}from"../../../../../../chunks/vec4.js";import{c as a}from"../../../../../../chunks/vec4f64.js";import{FoamIntensity as o}from"./FoamRendering.glsl.js";import{Float2PassUniform as m}from"../../shaderModules/Float2PassUniform.js";import{Float4PassUniform as s}from"../../shaderModules/Float4PassUniform.js";import{glsl as v}from"../../shaderModules/interfaces.js";import{Texture2DUniform as u}from"../../shaderModules/Texture2DUniform.js";function l(t){t.fragment.uniforms.add(new u("texWaveNormal")),t.fragment.uniforms.add(new u("texWavePerturbation")),t.fragment.uniforms.add([new s("waveParams",(e=>r(i,e.waveStrength,e.waveTextureRepeat,e.flowStrength,e.flowOffset))),new m("waveDirection",(t=>e(f,t.waveDirection[0]*t.waveVelocity,t.waveDirection[1]*t.waveVelocity)))]),t.include(o),t.fragment.code.add(v`const vec2  FLOW_JUMP = vec2(6.0/25.0, 5.0/24.0);
+define(["exports","../../../../../../chunks/_rollupPluginBabelHelpers","../../../../../../chunks/vec2","../../../../../../chunks/vec2f64","../../../../../../chunks/vec4","../../../../../../chunks/vec4f64","./FoamRendering.glsl","../../shaderModules/Float2PassUniform","../../shaderModules/Float4PassUniform","../../shaderModules/interfaces","../../shaderModules/Texture2DPassUniform"],(function(e,t,r,a,o,s,u,m,v,l,n){"use strict";function i(e){e.fragment.uniforms.add(new n.Texture2DPassUniform("texWaveNormal",(e=>e.waveNormal))),e.fragment.uniforms.add(new n.Texture2DPassUniform("texWavePerturbation",(e=>e.wavePertubation))),e.fragment.uniforms.add([new v.Float4PassUniform("waveParams",(e=>o.set(f,e.waveStrength,e.waveTextureRepeat,e.flowStrength,e.flowOffset))),new m.Float2PassUniform("waveDirection",(e=>r.set(_,e.waveDirection[0]*e.waveVelocity,e.waveDirection[1]*e.waveVelocity)))]),e.include(u.FoamIntensity),e.fragment.code.add(l.glsl`const vec2  FLOW_JUMP = vec2(6.0/25.0, 5.0/24.0);
 vec2 textureDenormalized2D(sampler2D _tex, vec2 _uv) {
 return 2.0 * texture2D(_tex, _uv).rg - 1.0;
 }
@@ -51,4 +51,4 @@ float waveTextureRepeat = waveParams[1];
 vec3 normal = getWaveLayer(texWaveNormal, texWavePerturbation, _uv * waveTextureRepeat, waveDirection, _time);
 float foam  = normals2FoamIntensity(normal, waveParams[0]);
 return vec4(normal, foam);
-}`)}const i=a(),f=t();export{l as WaterDistortion};
+}`)}let c=function(e){function r(){return e.apply(this,arguments)||this}return t._inheritsLoose(r,e),r}(l.NoParameters);const f=s.create(),_=a.create();e.WaterDistortion=i,e.WaterDistortionPassParameters=c,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

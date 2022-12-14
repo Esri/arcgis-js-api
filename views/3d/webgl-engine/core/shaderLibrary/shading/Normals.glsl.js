@@ -1,14 +1,14 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{neverReached as a}from"../../../../../../core/compilerUtils.js";import{glsl as r}from"../../shaderModules/interfaces.js";function e(e,o){const n=e.fragment;switch(n.code.add(r`struct ShadingNormalParameters {
+define(["exports","../../../../../../core/compilerUtils","../../shaderModules/interfaces"],(function(e,a,r){"use strict";function o(o,d){const i=o.fragment;switch(i.code.add(r.glsl`struct ShadingNormalParameters {
 vec3 normalView;
 vec3 viewDirection;
-} shadingParams;`),o.doubleSidedMode){case i.None:n.code.add(r`vec3 shadingNormal(ShadingNormalParameters params) {
+} shadingParams;`),d.doubleSidedMode){case e.NormalsDoubleSidedMode.None:i.code.add(r.glsl`vec3 shadingNormal(ShadingNormalParameters params) {
 return normalize(params.normalView);
-}`);break;case i.View:n.code.add(r`vec3 shadingNormal(ShadingNormalParameters params) {
+}`);break;case e.NormalsDoubleSidedMode.View:i.code.add(r.glsl`vec3 shadingNormal(ShadingNormalParameters params) {
 return dot(params.normalView, params.viewDirection) > 0.0 ? normalize(-params.normalView) : normalize(params.normalView);
-}`);break;case i.WindingOrder:n.code.add(r`vec3 shadingNormal(ShadingNormalParameters params) {
+}`);break;case e.NormalsDoubleSidedMode.WindingOrder:i.code.add(r.glsl`vec3 shadingNormal(ShadingNormalParameters params) {
 return gl_FrontFacing ? normalize(params.normalView) : normalize(-params.normalView);
-}`);break;default:a(o.doubleSidedMode);case i.COUNT:}}var i;!function(a){a[a.None=0]="None",a[a.View=1]="View",a[a.WindingOrder=2]="WindingOrder",a[a.COUNT=3]="COUNT"}(i||(i={}));export{e as Normals,i as NormalsDoubleSidedMode};
+}`);break;default:a.neverReached(d.doubleSidedMode);case e.NormalsDoubleSidedMode.COUNT:}}var d;e.NormalsDoubleSidedMode=void 0,(d=e.NormalsDoubleSidedMode||(e.NormalsDoubleSidedMode={}))[d.None=0]="None",d[d.View=1]="View",d[d.WindingOrder=2]="WindingOrder",d[d.COUNT=3]="COUNT",e.Normals=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

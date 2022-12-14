@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import n from"../../Color.js";const o=new n("white"),r=new n("black"),e=new n([255,255,255,0]);function t(n){return 0===n.r&&0===n.g&&0===n.b}export{r as black,t as isBlack,e as transparentWhite,o as white};
+define(["exports","../../Color"],(function(e,t){"use strict";const n=new t("white"),i=new t("black"),o=new t([255,255,255,0]);function r(e){return 0===e.r&&0===e.g&&0===e.b}e.black=i,e.isBlack=r,e.transparentWhite=o,e.white=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{f as s}from"../../../chunks/vec3f64.js";import{f as t}from"../../../chunks/vec4f64.js";class e{constructor(e,f,o,r,c,i){this.texture=e,this.type=f,e.retain(),this.offsetAndScale=t(o.offset[0],o.offset[1],o.scale,o.scale),this.opacities=s(r,i,c)}destroy(){this.texture.release()}}export{e as TextureReference};
+define(["exports","../../../chunks/vec3f64","../../../chunks/vec4f64"],(function(e,t,s){"use strict";let o=function(){function e(e,o,f,i,n,r){this.texture=e,this.type=o,e.retain(),this.offsetAndScale=s.fromValues(f.offset[0],f.offset[1],f.scale,f.scale),this.opacities=t.fromValues(i,n,r)}return e.prototype.destroy=function(){this.texture.release()},e}();e.TextureReference=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

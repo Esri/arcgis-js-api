@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import"../../../../chunks/common.js";export{l as add,e as copy,h as determinant,u as equals,q as exactEquals,k as frob,c as fromRotation,f as fromScaling,a as fromTranslation,i as identity,b as invert,v as mul,m as multiply,o as multiplyScalar,p as multiplyScalarAndAdd,r as rotate,s as scale,g as set,j as str,w as sub,n as subtract,t as translate}from"../../../../chunks/mat2d.js";
+define(["exports","../../../../chunks/common","../../../../chunks/mat2d"],(function(t,a,l){"use strict";t.add=l.add,t.copy=l.copy,t.determinant=l.determinant,t.equals=l.equals,t.exactEquals=l.exactEquals,t.frob=l.frob,t.fromRotation=l.fromRotation,t.fromScaling=l.fromScaling,t.fromTranslation=l.fromTranslation,t.identity=l.identity,t.invert=l.invert,t.mul=l.mul,t.multiply=l.multiply,t.multiplyScalar=l.multiplyScalar,t.multiplyScalarAndAdd=l.multiplyScalarAndAdd,t.rotate=l.rotate,t.scale=l.scale,t.set=l.set,t.str=l.str,t.sub=l.sub,t.subtract=l.subtract,t.translate=l.translate,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

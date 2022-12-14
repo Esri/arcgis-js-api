@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{FeatureSnappingEngine as e}from"./FeatureSnappingEngine.js";import{SelfSnappingEngine as n}from"./SelfSnappingEngine.js";function i(i,p){return[new n({view:i,options:p}),new e({view:i,options:p,spatialReference:i.spatialReference})]}export{i as defaultSnappingEnginesFactory};
+define(["exports","./FeatureSnappingEngine","./SelfSnappingEngine"],(function(e,n,i){"use strict";function t(e,t){return[new i.SelfSnappingEngine({view:e,options:t}),new n.FeatureSnappingEngine({view:e,options:t,spatialReference:e.spatialReference})]}e.defaultSnappingEnginesFactory=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

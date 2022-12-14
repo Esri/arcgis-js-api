@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import"../../../../chunks/common.js";export{a as add,o as ceil,c as copy,G as dist,x as distance,F as div,k as divide,d as dot,h as equals,g as exactEquals,p as floor,z as inverse,I as len,e as length,l as lerp,r as max,q as min,E as mul,m as multiply,y as negate,n as normalize,A as random,u as round,b as scale,w as scaleAndAdd,s as set,H as sqrDist,J as sqrLen,i as squaredDistance,f as squaredLength,C as str,D as sub,j as subtract,t as transformMat4,B as transformQuat}from"../../../../chunks/vec4.js";
+define(["exports","../../../../chunks/common","../../../../chunks/vec4"],(function(e,s,t){"use strict";e.add=t.add,e.ceil=t.ceil,e.copy=t.copy,e.dist=t.dist,e.distance=t.distance,e.div=t.div,e.divide=t.divide,e.dot=t.dot,e.equals=t.equals,e.exactEquals=t.exactEquals,e.floor=t.floor,e.inverse=t.inverse,e.len=t.len,e.length=t.length,e.lerp=t.lerp,e.max=t.max,e.min=t.min,e.mul=t.mul,e.multiply=t.multiply,e.negate=t.negate,e.normalize=t.normalize,e.random=t.random,e.round=t.round,e.scale=t.scale,e.scaleAndAdd=t.scaleAndAdd,e.set=t.set,e.sqrDist=t.sqrDist,e.sqrLen=t.sqrLen,e.squaredDistance=t.squaredDistance,e.squaredLength=t.squaredLength,e.str=t.str,e.sub=t.sub,e.subtract=t.subtract,e.transformMat4=t.transformMat4,e.transformQuat=t.transformQuat,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{c as r}from"../../../../../../chunks/mat3f64.js";import{c as o}from"../../../../../../chunks/mat4f64.js";import{c as e}from"../../../../../../chunks/vec3f32.js";import{c as t}from"../../../../../../chunks/vec3f64.js";import{PositionAttribute as a}from"./PositionAttribute.glsl.js";import{DoublePrecision as s}from"../util/DoublePrecision.glsl.js";import{Float3DrawUniform as i}from"../../shaderModules/Float3DrawUniform.js";import{Float3PassUniform as m}from"../../shaderModules/Float3PassUniform.js";import{glsl as d,NoParameters as n}from"../../shaderModules/interfaces.js";import{Matrix3DrawUniform as l}from"../../shaderModules/Matrix3DrawUniform.js";import{Matrix3PassUniform as f}from"../../shaderModules/Matrix3PassUniform.js";import{Matrix4PassUniform as v}from"../../shaderModules/Matrix4PassUniform.js";function F(r,o){r.include(a);const e=r.vertex;e.include(s,o),r.varyings.add("vPositionWorldCameraRelative","vec3"),r.varyings.add("vPosition_view","vec3"),e.uniforms.add([new m("transformWorldFromViewTH",(r=>r.transformWorldFromViewTH)),new m("transformWorldFromViewTL",(r=>r.transformWorldFromViewTL)),new f("transformViewFromCameraRelativeRS",(r=>r.transformViewFromCameraRelativeRS)),new v("transformProjFromView",(r=>r.transformProjFromView)),new l("transformWorldFromModelRS",(r=>r.transformWorldFromModelRS)),new i("transformWorldFromModelTH",(r=>r.transformWorldFromModelTH)),new i("transformWorldFromModelTL",(r=>r.transformWorldFromModelTL))]),e.code.add(d`vec3 positionWorldCameraRelative() {
+define(["exports","../../../../../../chunks/_rollupPluginBabelHelpers","../../../../../../chunks/mat3f64","../../../../../../chunks/mat4f64","../../../../../../chunks/vec3f32","../../../../../../chunks/vec3f64","./PositionAttribute.glsl","../util/DoublePrecision.glsl","../../shaderModules/Float3DrawUniform","../../shaderModules/Float3PassUniform","../../shaderModules/interfaces","../../shaderModules/Matrix3DrawUniform","../../shaderModules/Matrix3PassUniform","../../shaderModules/Matrix4PassUniform"],(function(r,o,e,a,t,i,s,n,l,m,d,f,v,c){"use strict";function F(r,o){r.include(s.PositionAttribute);const e=r.vertex;e.include(n.DoublePrecision,o),r.varyings.add("vPositionWorldCameraRelative","vec3"),r.varyings.add("vPosition_view","vec3"),e.uniforms.add([new m.Float3PassUniform("transformWorldFromViewTH",(r=>r.transformWorldFromViewTH)),new m.Float3PassUniform("transformWorldFromViewTL",(r=>r.transformWorldFromViewTL)),new v.Matrix3PassUniform("transformViewFromCameraRelativeRS",(r=>r.transformViewFromCameraRelativeRS)),new c.Matrix4PassUniform("transformProjFromView",(r=>r.transformProjFromView)),new f.Matrix3DrawUniform("transformWorldFromModelRS",(r=>r.transformWorldFromModelRS)),new l.Float3DrawUniform("transformWorldFromModelTH",(r=>r.transformWorldFromModelTH)),new l.Float3DrawUniform("transformWorldFromModelTL",(r=>r.transformWorldFromModelTL))]),e.code.add(d.glsl`vec3 positionWorldCameraRelative() {
 vec3 rotatedModelPosition = transformWorldFromModelRS * positionModel();
 vec3 transform_CameraRelativeFromModel = dpAdd(
 transformWorldFromModelTL,
@@ -11,18 +11,18 @@ transformWorldFromModelTH,
 -transformWorldFromViewTH
 );
 return transform_CameraRelativeFromModel + rotatedModelPosition;
-}`),e.code.add(d`
+}`),e.code.add(d.glsl`
     void forwardPosition(float fOffset) {
       vPositionWorldCameraRelative = positionWorldCameraRelative();
       if (fOffset != 0.0) {
-        vPositionWorldCameraRelative += fOffset * ${o.spherical?d`normalize(transformWorldFromViewTL + vPositionWorldCameraRelative)`:d`vec3(0.0, 0.0, 1.0)`};
+        vPositionWorldCameraRelative += fOffset * ${o.spherical?d.glsl`normalize(transformWorldFromViewTL + vPositionWorldCameraRelative)`:d.glsl`vec3(0.0, 0.0, 1.0)`};
       }
 
       vPosition_view = transformViewFromCameraRelativeRS * vPositionWorldCameraRelative;
       gl_Position = transformProjFromView * vec4(vPosition_view, 1.0);
     }
-  `),r.fragment.uniforms.add(new m("transformWorldFromViewTL",(r=>r.transformWorldFromViewTL))),e.code.add(d`vec3 positionWorld() {
+  `),r.fragment.uniforms.add(new m.Float3PassUniform("transformWorldFromViewTL",(r=>r.transformWorldFromViewTL))),e.code.add(d.glsl`vec3 positionWorld() {
 return transformWorldFromViewTL + vPositionWorldCameraRelative;
-}`),r.fragment.code.add(d`vec3 positionWorld() {
+}`),r.fragment.code.add(d.glsl`vec3 positionWorld() {
 return transformWorldFromViewTL + vPositionWorldCameraRelative;
-}`)}class c extends n{constructor(){super(...arguments),this.transformWorldFromViewTH=t(),this.transformWorldFromViewTL=t(),this.transformViewFromCameraRelativeRS=r(),this.transformProjFromView=o()}}class W extends n{constructor(){super(...arguments),this.transformWorldFromModelRS=r(),this.transformWorldFromModelTH=e(),this.transformWorldFromModelTL=e()}}export{F as VertexPosition,W as VertexPositionDrawParameters,c as VertexPositionPassParameters};
+}`)}let u=function(r){function t(){var o;return(o=r.apply(this,arguments)||this).transformWorldFromViewTH=i.create(),o.transformWorldFromViewTL=i.create(),o.transformViewFromCameraRelativeRS=e.create(),o.transformProjFromView=a.create(),o}return o._inheritsLoose(t,r),t}(d.NoParameters),P=function(r){function a(){var o;return(o=r.apply(this,arguments)||this).transformWorldFromModelRS=e.create(),o.transformWorldFromModelTH=t.create(),o.transformWorldFromModelTL=t.create(),o}return o._inheritsLoose(a,r),a}(d.NoParameters);r.VertexPosition=F,r.VertexPositionDrawParameters=P,r.VertexPositionPassParameters=u,Object.defineProperties(r,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

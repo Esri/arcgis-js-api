@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{InputHandler as t}from"../../../input/InputHandler.js";import{eventMatchesPointerAction as i}from"../../../input/handlers/support.js";class a extends t{constructor(t,i){super(!0),this.view=t,this.registerIncoming("double-click",i,(t=>this._handleDoubleClick(t,i)))}_handleDoubleClick(t,a){i(t.data,"primary")&&(t.stopPropagation(),a?this.view.mapViewNavigation.zoomOut([t.data.x,t.data.y]):this.view.mapViewNavigation.zoomIn([t.data.x,t.data.y]))}}export{a as DoubleClickZoom};
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../input/InputHandler","../../../input/handlers/support"],(function(e,t,i,n){"use strict";let o=function(e){function i(t,i){var n;return(n=e.call(this,!0)||this)._view=t,n.registerIncoming("double-click",i,(e=>n._handleDoubleClick(e,i))),n}return t._inheritsLoose(i,e),i.prototype._handleDoubleClick=function(e,t){n.eventMatchesPointerAction(e.data,"primary")&&(e.stopPropagation(),t?this._view.mapViewNavigation.zoomOut([e.data.x,e.data.y]):this._view.mapViewNavigation.zoomIn([e.data.x,e.data.y]))},i}(i.InputHandler);e.DoubleClickZoom=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import t from"../../request.js";import{fromJSON as e}from"../../geometry/support/jsonUtils.js";import{parseUrl as o,asValidOptions as s}from"../utils.js";function r(r,i,n){const p=i.map((t=>t.toJSON())),a=i[0].spatialReference,f=o(r),l={...f.query,f:"json",sr:a.wkid?a.wkid:JSON.stringify(a.toJSON()),polygons:JSON.stringify(p)},m=s(l,n);return t(f.path+"/labelPoints",m).then((({data:t})=>(t.labelPoints||[]).map((t=>e(t).set({spatialReference:a})))))}export{r as labelPoints};
+define(["exports","../../request","../../geometry/support/jsonUtils","../utils"],(function(e,t,s,i){"use strict";function o(e,o,n){const r=o.map((e=>e.toJSON())),a=o[0].spatialReference,l=i.parseUrl(e),p={...l.query,f:"json",sr:a.wkid?a.wkid:JSON.stringify(a.toJSON()),polygons:JSON.stringify(r)},u=i.asValidOptions(p,n);return t(l.path+"/labelPoints",u).then((({data:e})=>(e.labelPoints||[]).map((e=>s.fromJSON(e).set({spatialReference:a})))))}e.labelPoints=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

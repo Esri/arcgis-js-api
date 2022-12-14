@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-class o{constructor(o){this.elevationInfo=o}}export{o as SnappingHint};
+define(["exports"],(function(e){"use strict";let t=function(e,t){this.elevationInfo=e,this.domain=t};e.SnappingHint=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -92,6 +92,7 @@
   .esri-elevation-profile {
     position: relative;
     padding: var(--esri-widget-padding);
+    isolation: isolate;
 
     &.esri-component.esri-widget--panel {
       width: $width;

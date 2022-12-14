@@ -205,19 +205,24 @@
   }
 
   .esri-bookmarks__add-bookmark {
+    align-items: center;
     background-color: $background-color--offset;
-    padding: $cap-spacing--half $side-spacing--half;
+    display: flex;
+    justify-content: center;
+    padding: $cap-spacing--half $side-spacing--half $cap-spacing;
   }
 
   .esri-bookmarks__add-bookmark-button {
-    border-radius: $border-radius;
+    align-items: center;
+    background-color: $background-color;
+    border-radius: $button-height;
     font-size: $font-size--small;
-    flex: 1 1 auto;
-    justify-content: flex-start;
-    padding: $cap-spacing $side-spacing--quarter;
+    flex: 0 1 auto;
+    justify-content: center;
+    padding: $cap-spacing--three-quarters $side-spacing--half;
     transition: background-color 250ms ease-in-out;
+    width: auto;
     &:hover {
-      background-color: $background-color;
       text-decoration: none;
       @include defaultBoxShadow();
     }
@@ -225,8 +230,8 @@
 
   .esri-bookmarks__add-bookmark-icon {
     font-size: $font-size;
-    padding-left: $side-spacing--quarter;
-    padding-right: $side-spacing--quarter;
+    padding-inline-start: $side-spacing--quarter;
+    padding-inline-end: $side-spacing--half;
   }
 
   .esri-bookmarks__authoring-card {

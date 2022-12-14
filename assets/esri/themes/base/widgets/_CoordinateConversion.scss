@@ -197,13 +197,11 @@
     }
     .esri-coordinate-conversion__back-button {
       position: absolute;
-      margin-left: 0;
-      top: 0;
-      left: 0;
+      margin-inline-start: 0;
       background-color: $background-color--offset;
-    }
-    .esri-coordinate-conversion__back-button:hover {
-      background-color: $background-color;
+      &:hover {
+        background-color: $background-color;
+      }
     }
   }
   .esri-coordinate-conversion__popup {

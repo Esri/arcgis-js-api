@@ -19,6 +19,12 @@
       font-family: $font-family;
       font-size: $font-size--small;
       color: $font-color;
+
+      // Hide the content altogether when there is nothing inside. Otherwise we'd
+      // see a small empty square due to the tooltip padding.
+      &:empty {
+        opacity: 0;
+      }
     }
 
     &-field {

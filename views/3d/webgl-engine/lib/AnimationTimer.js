@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{isSome as e}from"../../../../core/maybe.js";import{Milliseconds as t}from"../../../../core/time.js";class i{constructor(){this.enabled=!0,this._time=0}get time(){return t(this._time)}advance(t){return e(t.forcedTime)?this._time!==t.forcedTime&&(this._time=t.forcedTime,!0):!(!this.enabled||0===t.dt)&&(this._time+=t.dt,!0)}}export{i as AnimationTimer};
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/time"],(function(e,t,i){"use strict";let n=function(){function e(){this.enabled=!0,this._time=i.Milliseconds(0)}return e.prototype.advance=function(e){return this._time!==e.time&&(this._time=e.time,!0)},t._createClass(e,[{key:"time",get:function(){return this._time}}]),e}();e.AnimationTimer=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

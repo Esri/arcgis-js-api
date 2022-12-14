@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-class t{constructor(t,o){this._module=t,this._loadModule=o}get(){return this._module}async reload(){return this._module=await this._loadModule(),this._module}}export{t as ReloadableShaderModule};
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers"],(function(e,t){"use strict";let o=function(){function e(e,t){this._module=e,this._loadModule=t}var o=e.prototype;return o.get=function(){return this._module},o.reload=function(){var e=t._asyncToGenerator((function*(){return this._module=yield this._loadModule(),this._module}));function o(){return e.apply(this,arguments)}return o}(),e}();e.ReloadableShaderModule=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

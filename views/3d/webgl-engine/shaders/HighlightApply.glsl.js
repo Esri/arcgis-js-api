@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import"../../../../chunks/vec4.js";import"../../../../chunks/vec4f64.js";import"../core/shaderModules/Float4PassUniform.js";import"../core/shaderModules/interfaces.js";import"../core/shaderModules/ShaderBuilder.js";import"../core/shaderModules/Texture2DPassUniform.js";import"../lib/VertexAttribute.js";export{b as build}from"../../../../chunks/HighlightApply.glsl.js";
+define(["exports","../../../../chunks/vec4","../../../../chunks/vec4f64","../core/shaderModules/Float4PassUniform","../core/shaderModules/interfaces","../core/shaderModules/ShaderBuilder","../core/shaderModules/Texture2DPassUniform","../lib/VertexAttribute","../../../../chunks/HighlightApply.glsl"],(function(e,s,r,l,o,u,d,i,t){"use strict";e.build=t.build,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

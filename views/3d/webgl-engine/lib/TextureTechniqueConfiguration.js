@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{_ as s}from"../../../../chunks/tslib.es6.js";import{parameter as e,ShaderTechniqueConfiguration as o}from"../core/shaderTechnique/ShaderTechniqueConfiguration.js";class r extends o{constructor(){super(...arguments),this.hasAlpha=!1}}s([e()],r.prototype,"hasAlpha",void 0);export{r as TextureTechniqueConfiguration};
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/tslib.es6","../core/shaderTechnique/ShaderTechniqueConfiguration"],(function(e,i,n,r){"use strict";let t=function(e){function n(){var i;return(i=e.apply(this,arguments)||this).hasAlpha=!1,i}return i._inheritsLoose(n,e),n}(r.ShaderTechniqueConfiguration);n.__decorate([r.parameter()],t.prototype,"hasAlpha",void 0),e.TextureTechniqueConfiguration=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

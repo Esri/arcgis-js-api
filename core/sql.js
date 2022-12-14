@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+See https://js.arcgis.com/4.25/esri/copyright.txt for details.
 */
-import{isSome as e}from"./maybe.js";async function r(e,r){const{WhereClause:t}=await import("./sql/WhereClause.js");return t.create(e,r)}function t(r,t){return e(r)?e(t)?`(${r}) AND (${t})`:r:t}export{r as parseWhereClause,t as sqlAnd};
+define(["require","exports","../chunks/_rollupPluginBabelHelpers","./maybe"],(function(e,r,n,t){"use strict";function u(e,r){return s.apply(this,arguments)}function s(){return(s=n._asyncToGenerator((function*(r,n){const{WhereClause:t}=yield new Promise(((r,n)=>e(["./sql/WhereClause"],r,n)));return t.create(r,n)}))).apply(this,arguments)}function i(e,r){return t.isSome(e)?t.isSome(r)?`(${e}) AND (${r})`:e:r}r.parseWhereClause=u,r.sqlAnd=i,Object.defineProperties(r,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
