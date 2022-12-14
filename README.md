@@ -1,4 +1,4 @@
-# @arcgis/core
+# arcgis-js-api
 
 A minified, unbuilt version of the [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/) AMD modules.
 
