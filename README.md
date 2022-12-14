@@ -2,15 +2,18 @@
 
 # arcgis-js-api
 
-A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/3/) to be used with [bower](http://bower.io).
+A minified, unbuilt version of the [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/3/) to be used with [bower](http://bower.io).
+
+| :warning:  Repository Archive Notice   |
+| :-----------------------------------------|
+| This repository will be archived at 3.43 (Early 2023) and then removed in a future release. We recommend migrating to use [`esri-loader`](https://github.com/Esri/esri-loader) or ES modules with [@arcgis/core](https://www.npmjs.com/package/@arcgis/core) |
 
 ## Features
-A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/3/).
 You can install this repo via [bower](http://bower.io/) and create your own custom builds with [Dojo](http://dojotoolkit.org/) or [RequireJS](http://requirejs.org/).
 
 ## Instructions
 
-Building an ArcGIS API for JavaScript application requires signing up for an [ArcGIS account](https://developers.arcgis.com).
+Building an application with the SDK requires signing up for an [ArcGIS account](https://developers.arcgis.com).
 
 `bower install arcgis-js-api`
 
@@ -41,7 +44,7 @@ Please see our [recommended guide](https://developers.arcgis.com/javascript/late
 
 ## Resources
 
-* [ArcGIS for JavaScript](https://developers.arcgis.com/javascript/3/)
+* [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/3/)
 * [http://blogs.esri.com/esri/arcgis/tag/javascript/](http://blogs.esri.com/esri/arcgis/tag/javascript/)
 * [twitter@esri](http://twitter.com/esri)
 
