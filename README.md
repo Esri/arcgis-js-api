@@ -2,7 +2,7 @@
 
 # arcgis-js-api
 
-A minified, unbuilt version of the [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/3/) to be used with [bower](http://bower.io).
+A minified, unbuilt version of the [ArcGIS Maps SDK for JavaScript version 3.x](https://developers.arcgis.com/javascript/3/) to be used with [bower](http://bower.io).
 
 | :warning:  Repository Archive Notice   |
 | :-----------------------------------------|
