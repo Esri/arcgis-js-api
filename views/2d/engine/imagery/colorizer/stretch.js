@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
+*/
+define(["./utils","../../../../webgl/rasterUtils"],(function(e,t){"use strict";const r={vsPath:"raster/common",fsPath:"raster/stretch",attributes:new Map([["a_position",0],["a_texcoord",1]])};function o(t,o,s){const{colormap:n}=o.symbolizerParameters,a=[...s?[]:e.getProjectionDefines(o.transformGrid),...e.getInterpolationDefines(o.interpolation,null!=n,t.context)];o.isRendereredSource&&!s?a.push("noop"):null!=n&&a.push("applyColormap");return{defines:a,program:t.painter.materialManager.getProgram(r,a)}}function s(e,r,o,s,n=!1){const{names:a,textures:i}=o.getTextures({useProcessedTexture:n});t.setTextures(e.context,r,a,i),t.setUniforms(r,s,o.commonUniforms),r.setUniformMatrix3fv("u_dvsMat3",o.transforms.dvs);const m=o.symbolizerParameters,{colormap:c,colormapOffset:f}=m;if(null!=c){const e=t.getColormapUniforms(c,f);t.setUniforms(r,s,e)}const u=t.getStretchUniforms(m);t.setUniforms(r,s,u)}return{createProgram:o,bindTextureAndUniforms:s}}));

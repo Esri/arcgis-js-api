@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../../../../../layers/support/symbolColorUtils","../../../../core/shaderModules/interfaces"],(function(o,l,e){"use strict";function s(o){o.vertex.code.add(e.glsl`
     vec4 decodeSymbolColor(vec4 symbolColor, out int colorMixMode) {
@@ -26,4 +26,4 @@ define(["exports","../../../../../layers/support/symbolColorUtils","../../../../
 
       return vec4(symbolColor.r, symbolColor.g, symbolColor.b, symbolAlpha);
     }
-  `)}o.DecodeSymbolColor=s,Object.defineProperties(o,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+  `)}o.DecodeSymbolColor=s,Object.defineProperty(o,Symbol.toStringTag,{value:"Module"})}));

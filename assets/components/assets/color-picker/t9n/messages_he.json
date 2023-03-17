@@ -1,0 +1,22 @@
+{
+  "b": "B",
+  "blue": "כחול",
+  "deleteColor": "מחק צבע",
+  "g": "G",
+  "green": "ירוק",
+  "h": "H",
+  "hsv": "HSV",
+  "hex": "Hex",
+  "hue": "גוון",
+  "noColor": "ללא צבע",
+  "opacity": "אטימות",
+  "r": "R",
+  "red": "אדום",
+  "rgb": "RGB",
+  "s": "S",
+  "saturation": "רווייה",
+  "saveColor": "שמור צבע",
+  "saved": "שמורות",
+  "v": "V",
+  "value": "ערך"
+}

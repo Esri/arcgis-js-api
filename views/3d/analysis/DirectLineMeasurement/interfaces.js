@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";var o,t;e.ViewMode=void 0,(o=e.ViewMode||(e.ViewMode={}))[o.None=0]="None",o[o.Direct=1]="Direct",o[o.Triangle=2]="Triangle",o[o.ProjectedGeodesic=3]="ProjectedGeodesic",e.VisualElementOrientation=void 0,(t=e.VisualElementOrientation||(e.VisualElementOrientation={}))[t.Auto=0]="Auto",t[t.AboveSegment=1]="AboveSegment",t[t.BelowSegment=2]="BelowSegment",Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports"],(function(e){"use strict";var t,o;e.ViewMode=void 0,(t=e.ViewMode||(e.ViewMode={}))[t.None=0]="None",t[t.Direct=1]="Direct",t[t.Triangle=2]="Triangle",t[t.ProjectedGeodesic=3]="ProjectedGeodesic",e.VisualElementOrientation=void 0,(o=e.VisualElementOrientation||(e.VisualElementOrientation={}))[o.Auto=0]="Auto",o[o.AboveSegment=1]="AboveSegment",o[o.BelowSegment=2]="BelowSegment",Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../../../../../../core/maybe","../../../../support/engineContent/marker","../../shaderModules/FloatPassUniform","../../shaderModules/interfaces","../../../shaders/LineMarkerTechniqueConfiguration"],(function(e,r,a,o,t,n){"use strict";function i(e,i){const d=e.vertex;e.constants.add("markerSizePerLineWidth","float",a.MARKER_SIZE_PER_LINE_WIDTH),d.uniforms.add(new o.FloatPassUniform("pixelRatio",((e,r)=>r.camera.pixelRatio))),r.isNone(d.uniforms.get("markerScale"))&&d.constants.add("markerScale","float",1),d.code.add(t.glsl`float getLineWidth() {
 return max(getSize(), 1.0) * pixelRatio;
@@ -19,4 +19,4 @@ float screenToWorldRatio = perRenderPixelRatio * distanceToCamera * 0.5;
 float worldMarkerSize = getScreenMarkerSize() * screenToWorldRatio;
 float segmentLen = length(pos.xyz - other.xyz);
 return worldMarkerSize > maxSegmentLengthFraction * segmentLen;
-}`))}e.MarkerSizing=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`))}e.MarkerSizing=i,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

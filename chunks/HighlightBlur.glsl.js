@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","./_rollupPluginBabelHelpers","./vec2f64","../views/3d/webgl-engine/core/shaderModules/Float2DrawUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DDrawUniform","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,r,t,i,u,o,n,l,a){"use strict";let s=function(e){function i(){var r;return(r=e.apply(this,arguments)||this).blurSize=t.create(),r}return r._inheritsLoose(i,e),i}(u.NoParameters);function d(){const e=new o.ShaderBuilder,{vertex:r,fragment:t}=e,s=r.code,d=t.code;return e.attributes.add(a.VertexAttribute.POSITION,"vec2"),e.attributes.add(a.VertexAttribute.UV0,"vec2"),e.varyings.add("blurCoordinate","vec3"),r.uniforms.add(new l.Texture2DPassUniform("coverageTex",(e=>e.coverageTexture))),t.uniforms.add(new i.Float2DrawUniform("blurSize",(e=>e.blurSize))),s.add(u.glsl`void main() {
 gl_Position = vec4(position, 0.0, 1.0);

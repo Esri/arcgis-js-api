@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Collection","../../core/lang","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass","./BuildingFilterAuthoringInfo","./BuildingFilterAuthoringInfoBlock"],(function(e,o,r,t,c,s,n,i,p){"use strict";var l;const u=r.ofType(p);let a=l=function(o){function r(){var e;return(e=o.apply(this,arguments)||this).type="checkbox",e}return e._inheritsLoose(r,o),r.prototype.clone=function(){return new l({filterBlocks:t.clone(this.filterBlocks)})},r}(i);o.__decorate([c.property({type:["checkbox"]})],a.prototype,"type",void 0),o.__decorate([c.property({type:u,json:{write:!0}})],a.prototype,"filterBlocks",void 0),a=l=o.__decorate([n.subclass("esri.layers.support.BuildingFilterAuthoringInfoCheckbox")],a);return a}));

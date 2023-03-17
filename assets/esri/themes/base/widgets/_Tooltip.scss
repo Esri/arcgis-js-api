@@ -1,6 +1,8 @@
 @use "sass:color";
 
 @mixin tooltip() {
+  $item-cap-padding: $cap-spacing--eighth;
+
   .esri-tooltip {
     position: absolute;
     overflow: visible;
@@ -11,7 +13,6 @@
 
     &-content {
       position: relative;
-      display: table;
       padding: $cap-spacing--half $side-spacing--half;
       background: color.change($background-color, $alpha: 0.8);
       backdrop-filter: blur(3px);
@@ -27,13 +28,18 @@
       }
     }
 
+    &-table {
+      display: table;
+      width: 100%;
+    }
+
     &-field {
       display: table-row;
 
       &__title,
       &__value {
         display: table-cell;
-        padding: $cap-spacing--eighth 0;
+        padding: $item-cap-padding 0;
         white-space: nowrap;
       }
 
@@ -51,6 +57,27 @@
       // Add some space between the left/right (e.g. width/height) values.
       span:nth-child(2) {
         margin-inline: $side-spacing--half;
+      }
+    }
+
+    &-help-message {
+      $help-message-border-spacing: $cap-spacing--half;
+
+      width: min-content;
+      min-width: 200px;
+      margin-top: $help-message-border-spacing;
+      padding-top: $help-message-border-spacing + $item-cap-padding;
+      padding-bottom: $item-cap-padding;
+      border-top: solid 1px $border-color;
+      font-family: $font-family;
+      font-size: $font-size--small;
+      text-align: center;
+      white-space: break-spaces;
+
+      &:only-child {
+        margin-top: 0;
+        padding-top: $item-cap-padding;
+        border-top: none;
       }
     }
   }

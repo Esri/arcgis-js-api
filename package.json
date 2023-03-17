@@ -1,8 +1,8 @@
 {
   "name": "arcgis-js-api",
-  "version": "4.25.5",
+  "version": "4.26.5",
   "homepage": "https://js.arcgis.com",
-  "description": "ArcGIS API for JavaScript: A complete 2D and 3D mapping and data visualization API",
+  "description": "ArcGIS Maps SDK for JavaScript: A complete 2D and 3D mapping and data visualization API",
   "keywords": [
     "ArcGIS",
     "javascript",

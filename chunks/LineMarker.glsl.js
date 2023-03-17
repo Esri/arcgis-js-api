@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/support/engineContent/marker","../views/3d/webgl-engine/core/shaderLibrary/ForwardLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutput","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/RibbonVertexPosition.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MarkerSizing.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform","../views/3d/webgl-engine/lib/TransparencyPassType","../views/3d/webgl-engine/lib/VertexAttribute","../views/3d/webgl-engine/shaders/LineMarkerTechniqueConfiguration"],(function(e,r,a,i,o,t,n,s,l,c,d,p,v,g,h,u,f,m,S,w,y,b,x){"use strict";function P(e){const P=new S.ShaderBuilder,z=e.hasMultipassTerrain&&(e.output===i.ShaderOutput.Color||e.output===i.ShaderOutput.Alpha),L=e.space===x.LineMarkerSpace.World;e.hasTip&&L&&P.extensions.add("GL_OES_standard_derivatives"),P.include(t.RibbonVertexPosition,e),P.include(s.MarkerSizing,e),e.output===i.ShaderOutput.Depth&&P.include(n.OutputDepth,e);const{vertex:C,fragment:M}=P;return M.include(p.RgbaFloatEncoding),v.addProjViewLocalOrigin(C,e),P.attributes.add(b.VertexAttribute.POSITION,"vec3"),P.attributes.add(b.VertexAttribute.UV0,"vec2"),P.attributes.add(b.VertexAttribute.AUXPOS1,"vec3"),P.varyings.add("vColor","vec4"),P.varyings.add("vpos","vec3"),P.varyings.add("vUV","vec2"),P.varyings.add("vSize","float"),a.addLinearDepth(P),z&&P.varyings.add("depth","float"),e.hasTip&&P.varyings.add("vLineWidth","float"),C.uniforms.add([new g.Float2PassUniform("nearFar",((e,r)=>r.camera.nearFar)),new h.Float4PassUniform("viewport",((e,r)=>r.camera.fullViewport))]),C.code.add(f.glsl`vec4 projectAndScale(vec4 pos) {
+define(["exports","../views/3d/support/engineContent/marker","../views/3d/webgl-engine/core/shaderLibrary/ForwardLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutput","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/RibbonVertexPosition.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MarkerSizing.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform","../views/3d/webgl-engine/lib/TransparencyPassType","../views/3d/webgl-engine/lib/VertexAttribute","../views/3d/webgl-engine/shaders/LineMarkerTechniqueConfiguration"],(function(e,r,a,i,o,t,n,s,l,d,c,p,v,g,h,u,f,m,S,w,y,b,x){"use strict";function P(e){const P=new S.ShaderBuilder,z=e.hasMultipassTerrain&&(e.output===i.ShaderOutput.Color||e.output===i.ShaderOutput.Alpha),L=e.space===x.LineMarkerSpace.World;e.hasTip&&L&&P.extensions.add("GL_OES_standard_derivatives"),P.include(t.RibbonVertexPosition,e),P.include(s.MarkerSizing,e),e.output===i.ShaderOutput.Depth&&P.include(n.OutputDepth,e);const{vertex:C,fragment:M}=P;return M.include(p.RgbaFloatEncoding),v.addProjViewLocalOrigin(C,e),P.attributes.add(b.VertexAttribute.POSITION,"vec3"),P.attributes.add(b.VertexAttribute.UV0,"vec2"),P.attributes.add(b.VertexAttribute.AUXPOS1,"vec3"),P.varyings.add("vColor","vec4"),P.varyings.add("vpos","vec3"),P.varyings.add("vUV","vec2"),P.varyings.add("vSize","float"),a.addLinearDepth(P),z&&P.varyings.add("depth","float"),e.hasTip&&P.varyings.add("vLineWidth","float"),C.uniforms.add([new g.Float2PassUniform("nearFar",((e,r)=>r.camera.nearFar)),new h.Float4PassUniform("viewport",((e,r)=>r.camera.fullViewport))]),C.code.add(f.glsl`vec4 projectAndScale(vec4 pos) {
 vec4 posNdc = proj * pos;
 posNdc.xy *= viewport.zw / posNdc.w;
 return posNdc;
@@ -121,7 +121,7 @@ displacedPosScreen = projectAndScale(pos);`)),C.code.add(f.glsl`
         gl_Position = displacedPosScreen;
       }
     }
-  `),z&&P.include(l.multipassTerrainTest,e),P.include(o.SliceDraw,e),M.uniforms.add([new h.Float4PassUniform("intrinsicColor",(e=>e.color)),new w.Texture2DPassUniform("tex",(e=>e.texture))]),M.include(d.ColorConversion),P.constants.add("texelSize","float",1/r.MARKER_TEXTURE_SIZE),M.code.add(f.glsl`float markerAlpha(vec2 samplePos) {
+  `),z&&P.include(l.multipassTerrainTest,e),P.include(o.SliceDraw,e),M.uniforms.add([new h.Float4PassUniform("intrinsicColor",(e=>e.color)),new w.Texture2DPassUniform("tex",(e=>e.texture))]),M.include(c.ColorConversion),P.constants.add("texelSize","float",1/r.MARKER_TEXTURE_SIZE),M.code.add(f.glsl`float markerAlpha(vec2 samplePos) {
 samplePos += vec2(0.5, -0.5) * texelSize;
 float sdf = rgba2float(texture2D(tex, samplePos)) - 0.5;
 float distance = sdf * vSize;
@@ -141,7 +141,7 @@ return clamp(0.5 - distance, 0.0, 1.0);
       float distance = max(abs(samplePos.x) - halfMarkerSize, abs(samplePos.y) - halfTipLineWidth);
       return clamp(0.5 - distance, 0.0, 1.0);
     }
-  `)),P.constants.add("symbolAlphaCutoff","float",c.symbolAlphaCutoff),M.code.add(f.glsl`
+  `)),P.constants.add("symbolAlphaCutoff","float",d.symbolAlphaCutoff),M.code.add(f.glsl`
   void main() {
     discardBySlice(vpos);
     ${z?"terrainDepthTest(gl_FragCoord, depth);":""}
@@ -151,6 +151,8 @@ return clamp(0.5 - distance, 0.0, 1.0);
     ${L?"vec2 samplePos = vUV;":"vec2 samplePos = vUV * gl_FragCoord.w;"}
 
     ${e.hasTip?"finalColor.a *= max(markerAlpha(samplePos), tipAlpha(samplePos));":"finalColor.a *= markerAlpha(samplePos);"}
+
+    ${e.output===i.ShaderOutput.ObjectAndLayerIdColor?f.glsl`finalColor.a = 1.0;`:""}
 
     if (finalColor.a < symbolAlphaCutoff) {
       discard;

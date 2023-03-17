@@ -1,0 +1,14 @@
+{
+  "hour": "שעה",
+  "hourDown": "הקטן שעה",
+  "hourUp": "הגדל שעה",
+  "meridiem": "AM/PM",
+  "meridiemDown": "הקטן AM/PM",
+  "meridiemUp": "הגדל AM/PM",
+  "minute": "דקה",
+  "minuteDown": "הקטן דקה",
+  "minuteUp": "הגדל דקה",
+  "second": "שנייה",
+  "secondDown": "הקטן שנייה",
+  "secondUp": "הגדל שנייה"
+}

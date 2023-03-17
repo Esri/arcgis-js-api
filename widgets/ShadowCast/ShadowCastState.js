@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";var a;e.ShadowCastState=void 0,(a=e.ShadowCastState||(e.ShadowCastState={})).Disabled="disabled",a.Ready="ready",Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports"],(function(e){"use strict";var t;e.ShadowCastState=void 0,(t=e.ShadowCastState||(e.ShadowCastState={})).Disabled="disabled",t.Ready="ready",Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

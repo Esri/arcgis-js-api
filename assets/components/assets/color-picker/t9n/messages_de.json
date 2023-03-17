@@ -1,0 +1,22 @@
+{
+  "b": "B",
+  "blue": "Blau",
+  "deleteColor": "Farbe löschen",
+  "g": "G",
+  "green": "Grün",
+  "h": "H",
+  "hsv": "HSV",
+  "hex": "Hex",
+  "hue": "Farbton",
+  "noColor": "Keine Farbe",
+  "opacity": "Opazität",
+  "r": "R",
+  "red": "Rot",
+  "rgb": "RGB",
+  "s": "S",
+  "saturation": "Sättigung",
+  "saveColor": "Farbe speichern",
+  "saved": "Gespeichert",
+  "v": "W",
+  "value": "Wert"
+}

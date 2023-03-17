@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "מסדר מחדש ${itemLabel}, מיקום נוכחי ${position} מתוך ${total}.",
+  "dragHandleChange": "${itemLabel}, מיקום חדש ${position} מתוך ${total}. לחץ על רווח לאישור",
+  "dragHandleCommit": "${itemLabel}, מיקום נוכחי ${position} מתוך ${total}.",
+  "dragHandleIdle": "${itemLabel}, לחץ על רווח והשתמש במקשי החצים כדי לשנות את סדר התוכן. מיקום נוכחי ${total} מתוך ${position}."
+}

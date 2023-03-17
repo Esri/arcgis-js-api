@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../util/WebGL2Utils","../../shaderModules/Float2PassUniform","../../shaderModules/interfaces","../../shaderModules/Texture2DPassUniform","../../shaderModules/TextureSizeUniformType"],(function(e,r,o,t,n,i){"use strict";function s(e,s){e.fragment.uniforms.add(n.createTexture2DPassSizeUniforms("u_transformGrid",(e=>e.u_transformGrid),s.hasWebGL2Context?i.TextureSizeUniformType.None:i.TextureSizeUniformType.InvSize)),e.fragment.uniforms.add(new o.Float2PassUniform("u_transformSpacing",(e=>e.common.u_transformSpacing))),e.fragment.uniforms.add(new o.Float2PassUniform("u_targetImageSize",(e=>e.common.u_targetImageSize))),e.fragment.code.add(t.glsl`
     vec2 projectPixelLocation(vec2 coords) {
@@ -35,4 +35,4 @@ define(["exports","../util/WebGL2Utils","../../shaderModules/Float2PassUniform",
 
       return srcLocation;
     }
-  `)}e.Projection=s,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+  `)}e.Projection=s,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

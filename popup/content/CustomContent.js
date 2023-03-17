@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/lang","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass","./Content"],(function(e,r,t,o,s,c,p){"use strict";var n;let u=n=function(r){function o(e){var t;return(t=r.call(this,e)||this).creator=null,t.destroyer=null,t.outFields=null,t.type="custom",t}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new n({creator:this.creator,destroyer:this.destroyer,outFields:Array.isArray(this.outFields)?t.clone(this.outFields):null})},o}(p);r.__decorate([o.property()],u.prototype,"creator",void 0),r.__decorate([o.property()],u.prototype,"destroyer",void 0),r.__decorate([o.property()],u.prototype,"outFields",void 0),r.__decorate([o.property({type:["custom"],readOnly:!0})],u.prototype,"type",void 0),u=n=r.__decorate([c.subclass("esri.popup.content.CustomContent")],u);return u}));

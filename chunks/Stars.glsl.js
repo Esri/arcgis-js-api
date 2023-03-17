@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","./mat4","./mat4f64","../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,i,a,t,r,o,l,n,s,d){"use strict";function c(){const e=new s.ShaderBuilder;return e.attributes.add(d.VertexAttribute.POSITION,"vec3"),e.attributes.add(d.VertexAttribute.COLOR,"vec4"),e.attributes.add(d.VertexAttribute.SIZE,"float"),e.varyings.add("vcolor","vec4"),e.varyings.add("vsize","float"),e.vertex.uniforms.add([new n.Matrix4PassUniform("transform",((e,i)=>v(e,i))),new r.Float4PassUniform("viewport",((e,i)=>i.camera.fullViewport)),new o.FloatPassUniform("pixelRatio",((e,i)=>i.camera.pixelRatio))]),e.include(t.AlignPixel),e.vertex.code.add(l.glsl`void main(void) {
 vec4 posProj = transform * vec4(position, 0);

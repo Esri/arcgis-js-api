@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../../chunks/_rollupPluginBabelHelpers"],(function(e,t){"use strict";let i=function(){function e(e){this._gain=e}var i=e.prototype;return i.reset=function(e){this._value=e},i.update=function(e){void 0===this._value?this._value=e:this._value=this._gain*e+(1-this._gain)*this._value},t._createClass(e,[{key:"gain",set:function(e){this._gain=e}},{key:"value",get:function(){return void 0===this._value?0:this._value}}]),e}();e.ExponentialFalloff=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../../chunks/_rollupPluginBabelHelpers"],(function(t,e){"use strict";let i=function(){function t(t){this._gain=t}var i=t.prototype;return i.reset=function(t){this._value=t},i.update=function(t){void 0===this._value?this._value=t:this._value=this._gain*t+(1-this._gain)*this._value},e._createClass(t,[{key:"gain",set:function(t){this._gain=t}},{key:"value",get:function(){return void 0===this._value?0:this._value}}]),t}();t.ExponentialFalloff=i,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

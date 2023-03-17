@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "Изменить порядок ${itemLabel}, текущее положение ${position} из ${total}.",
+  "dragHandleChange": "${itemLabel}, новое положение ${position} из ${total}. Нажмите пробел для подтверждения.",
+  "dragHandleCommit": "${itemLabel}, текущее положение ${position} из ${total}.",
+  "dragHandleIdle": "${itemLabel}, нажмите пробел и используйте клавиши со стрелками, чтобы изменить порядок содержания. Текущее положение ${position} из ${total}."
+}

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../IntersectorInterfaces","../intersectorUtils"],(function(e,t,r){"use strict";function s(e){return r.isValidIntersectorResult(e)&&e.intersector===t.IntersectorType.LOD&&!!e.target}e.isLodIntersectorResult=s,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../IntersectorInterfaces","../IntersectorTarget","../intersectorUtils"],(function(e,t,r,n,i){"use strict";let o=function(e){function r(t,r,n,i,o,s){var c;return(c=e.call(this,t,r)||this).layerUid=t,c.graphicUid=r,c.geometryId=n,c.triangleNr=i,c.baseBoundingSphere=o,c.numLodLevels=s,c}return t._inheritsLoose(r,e),r}(n.Graphic3DTarget);function s(e){return i.isValidIntersectorResult(e)&&e.intersector===r.IntersectorType.LOD&&!!e.target}e.LodTarget=o,e.isLodIntersectorResult=s,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

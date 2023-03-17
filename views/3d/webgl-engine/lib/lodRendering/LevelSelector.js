@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../Camera"],(function(e,t){"use strict";let r=function(){function e(e,r){this.thresholdScale=1,this._camera=new t.Camera,this._worldSpaceRadius=e,this._thresholds=r.map((e=>e))}var r=e.prototype;return r.updateCamera=function(e){this._camera.copyFrom(e)},r.selectLevel=function(e,t){const r=this._camera.computeScreenPixelSizeAt(e),o=this._worldSpaceRadius*t/r,a=this._thresholds;let s=-1;for(let i=0;i<a.length;++i)o>=a[i]*this.thresholdScale&&(s=i);return s},e}();e.LevelSelector=r,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports"],(function(e){"use strict";let t=function(){function e(e,t){this._worldSpaceRadius=e,this._minScreenSpaceRadii=t}return e.prototype.selectLevel=function(e,t,i){const n=i.computeScreenPixelSizeAt(e),c=this._worldSpaceRadius*t/n;let r=0;for(let o=1;o<this._minScreenSpaceRadii.length;++o)c>=this._minScreenSpaceRadii[o]&&(r=o);return r},e}();e.LevelSelector=t,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

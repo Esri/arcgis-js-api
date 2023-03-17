@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces"],(function(e,c){"use strict";function v(e){e.code.add(c.glsl`vec4 premultiplyAlpha(vec4 v) {
 return vec4(v.rgb * v.a, v.a);
@@ -20,4 +20,4 @@ return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
 }
 float rgb2v(vec3 c) {
 return max(c.x, max(c.y, c.z));
-}`)}e.ColorConversion=v,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}e.ColorConversion=v,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

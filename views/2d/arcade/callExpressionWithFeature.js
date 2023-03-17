@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["../../../core/Error","../../../core/Logger","../../../core/maybe","../../../geometry/support/quantizationUtils"],(function(e,r,t,n){"use strict";function o(e,n,o,a,i){if(t.isNone(e))return null;const s=e.referencesGeometry()&&i?u(n,a,i):n,c=e.repurposeFeature(s);try{return e.evaluate({...o,$feature:c})}catch(l){return r.getLogger("esri.views.2d.support.arcadeOnDemand").warn("Feature arcade evaluation failed:",l),null}}const a=new Map;function u(e,r,t){const{transform:n,hasZ:o,hasM:u}=t;a.has(r)||a.set(r,i(r));const s=a.get(r)(e.geometry,n,o,u);return{...e,geometry:s}}function i(t){const o={};switch(t){case"esriGeometryPoint":return(e,r,t,a)=>n.unquantizePoint(r,o,e,t,a);case"esriGeometryPolygon":return(e,r,t,a)=>n.unquantizePolygon(r,o,e,t,a);case"esriGeometryPolyline":return(e,r,t,a)=>n.unquantizePolyline(r,o,e,t,a);case"esriGeometryMultipoint":return(e,r,t,a)=>n.unquantizeMultipoint(r,o,e,t,a);default:return r.getLogger("esri.views.2d.support.arcadeOnDemand").error(new e("mapview-arcade",`Unable to handle geometryType: ${t}`)),e=>e}}return o}));

@@ -1,0 +1,14 @@
+{
+  "hour": "óra",
+  "hourDown": "Óra csökkentése",
+  "hourUp": "Óra növelése",
+  "meridiem": "DE/DU",
+  "meridiemDown": "AM/PM csökkentése",
+  "meridiemUp": "AM/PM növelése",
+  "minute": "perc",
+  "minuteDown": "Perc csökkentése",
+  "minuteUp": "Perc növelése",
+  "second": "Másodperc",
+  "secondDown": "Másodperc csökkentése",
+  "secondUp": "Másodperc növelése"
+}

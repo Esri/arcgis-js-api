@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/time"],(function(e,t,i){"use strict";let n=function(){function e(){this.enabled=!0,this._time=i.Milliseconds(0)}return e.prototype.advance=function(e){return this._time!==e.time&&(this._time=e.time,!0)},t._createClass(e,[{key:"time",get:function(){return this._time}}]),e}();e.AnimationTimer=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/maybe","../../../../core/time"],(function(e,i,t,n){"use strict";let s=function(){function e(){this.enabled=!0,this._time=n.Milliseconds(0)}return e.prototype.advance=function({deltaTime:e,fixedTime:i}){return t.isSome(i)?this._time!==i&&(this._time=i,!0):(this._time=n.Milliseconds(this._time+e),0!==e)},i._createClass(e,[{key:"time",get:function(){return this._time}}]),e}(),o=function(e,i){this.deltaTime=e,this.fixedTime=i};e.AnimationTimer=s,e.Parameters=o,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

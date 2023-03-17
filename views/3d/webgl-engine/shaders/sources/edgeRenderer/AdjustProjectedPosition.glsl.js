@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../../../../../chunks/vec2f64","../../../core/shaderLibrary/util/IsNaN.glsl","../../../core/shaderModules/Float2PassUniform","../../../core/shaderModules/interfaces","../../../core/shaderModules/Matrix3PassUniform","../../../core/shaderModules/Matrix4PassUniform"],(function(o,e,r,a,s,t,l){"use strict";const i=-4e-4,c=.5,f=e.fromValues(c,i);function d(o,e){const i=o.vertex;i.include(r.IsNaN),i.constants.add("depthBias","vec2",f),i.uniforms.add(new a.Float2PassUniform("inverseViewport",((o,e)=>e.inverseViewport))),e.legacy?(i.uniforms.add(new l.Matrix4PassUniform("proj",((o,e)=>e.camera.projectionMatrix))),i.code.add(s.glsl`vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {
+define(["exports","../../../../../../chunks/vec2f64","../../../core/shaderLibrary/util/IsNaN.glsl","../../../core/shaderModules/Float2PassUniform","../../../core/shaderModules/interfaces","../../../core/shaderModules/Matrix3PassUniform","../../../core/shaderModules/Matrix4PassUniform"],(function(o,r,e,a,s,t,l){"use strict";const i=-4e-4,c=.5,f=r.fromValues(c,i);function n(o,r){const i=o.vertex;i.include(e.IsNaN),i.constants.add("depthBias","vec2",f),i.uniforms.add(new a.Float2PassUniform("inverseViewport",((o,r)=>r.inverseViewport))),r.legacy?(i.uniforms.add(new l.Matrix4PassUniform("proj",((o,r)=>r.camera.projectionMatrix))),i.code.add(s.glsl`vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {
 float offsetXY = depthBias.x;
 vec4 projNormal = proj * localView * vec4(globalNormal, 0.0);
 return offsetXY * projPos.w * 2.0 * inverseViewport * normalize(projNormal.xyz).xy;
@@ -21,4 +21,4 @@ projPos.xy += offsetXY;
 }
 projPos.z += _calculateProjectedBiasZ(projPos);
 return projPos;
-}`)}o.AdjustProjectedPosition=d,Object.defineProperties(o,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}o.AdjustProjectedPosition=n,Object.defineProperty(o,Symbol.toStringTag,{value:"Module"})}));

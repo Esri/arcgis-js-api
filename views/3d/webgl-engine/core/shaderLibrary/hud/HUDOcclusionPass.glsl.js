@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometryTest.glsl","../util/RgbaFloatEncoding.glsl","../util/WebGL2Utils","../../shaderModules/Float2PassUniform","../../shaderModules/interfaces","../../shaderModules/Texture2DPassUniform","../../shaderModules/TextureSizeUniformType"],(function(e,t,r,o,a,i,s,n,l){"use strict";function p(e,p){const{vertex:u,fragment:d}=e;p.hasMultipassGeometry&&u.include(r.multipassGeometryTest),p.hasMultipassTerrain&&e.varyings.add("depth","float"),u.code.add(s.glsl`
+define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometryTest.glsl","../util/RgbaFloatEncoding.glsl","../util/WebGL2Utils","../../shaderModules/Float2PassUniform","../../shaderModules/interfaces","../../shaderModules/Texture2DPassUniform","../../shaderModules/TextureSizeUniformType"],(function(e,t,r,o,a,i,s,n,l){"use strict";function p(e,p){const{vertex:d,fragment:u}=e;p.hasMultipassGeometry&&d.include(r.multipassGeometryTest),p.hasMultipassTerrain&&e.varyings.add("depth","float"),d.code.add(s.glsl`
   void main(void) {
     vec4 posProjCenter;
     if (dot(position, position) > 0.0) {
@@ -33,7 +33,7 @@ define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometry
     gl_Position = posProjCenter;
     gl_PointSize = 1.0;
   }
-  `),p.hasMultipassTerrain&&d.include(t.ReadLinearDepth),p.hasMultipassTerrain&&d.uniforms.add([...n.createTexture2DPassSizeUniforms("terrainDepthTexture",((e,t)=>t.multipassTerrain.linearDepthTexture),p.hasWebGL2Context?l.TextureSizeUniformType.None:l.TextureSizeUniformType.InvSize),new i.Float2PassUniform("nearFar",((e,t)=>t.camera.nearFar))]),d.include(o.RgbaFloatEncoding),d.code.add(s.glsl`
+  `),p.hasMultipassTerrain&&u.include(t.ReadLinearDepth),p.hasMultipassTerrain&&u.uniforms.add([...n.createTexture2DPassSizeUniforms("terrainDepthTexture",((e,t)=>t.multipassTerrain.linearDepthTexture),p.hasWebGL2Context?l.TextureSizeUniformType.None:l.TextureSizeUniformType.InvSize),new i.Float2PassUniform("nearFar",((e,t)=>t.camera.nearFar))]),u.include(o.RgbaFloatEncoding),u.code.add(s.glsl`
   void main() {
     gl_FragColor = vec4(1, 1, 1, 1);
     ${p.hasMultipassTerrain?s.glsl`
@@ -50,4 +50,4 @@ define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometry
             gl_FragColor.g = 0.5;
           }`:""}
   }
-  `)}e.HUDOcclusionPass=p,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+  `)}e.HUDOcclusionPass=p,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

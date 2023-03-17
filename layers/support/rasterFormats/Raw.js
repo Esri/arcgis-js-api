@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define((function(){"use strict";const e=(e,r)=>{const n=r.width*r.height,a=r.pixelType;return Math.floor(e.byteLength/(n*t(a)))},t=e=>{let t=1;switch(e){case Uint8Array:case Int8Array:t=1;break;case Uint16Array:case Int16Array:t=2;break;case Uint32Array:case Int32Array:case Float32Array:t=4;break;case Float64Array:t=8}return t},r=(e,t)=>{if(8*e.byteLength<t)return null;const r=new Uint8Array(e,0,Math.ceil(t/8)),n=new Uint8Array(t);let a=0,i=0,s=0,c=0;for(s=0;s<r.length-1;s++)for(i=r[s],c=7;c>=0;c--)n[a++]=i>>c&1;for(c=7;a<t-1;)i=r[r.length-1],n[a++]=i>>c&1,c--;return n};return function(){function n(){}return n.decode=function(n,a){const i=a.pixelType,s=[],c=a.width*a.height,o=e(n,a),{bandIds:h,format:l}=a,y=h&&h.length||e(n,a),u=n.byteLength-n.byteLength%(c*t(i)),f=new i(n,0,c*o);let b,g,A,p,d=null;if("bip"===l)for(b=0;b<y;b++){for(A=new i(c),p=h?h[b]:b,g=0;g<c;g++)A[g]=f[g*o+p];s.push(A)}else if("bsq"===l)for(b=0;b<y;b++)p=h?h[b]:b,s.push(f.subarray(p*c,(p+1)*c));return u<n.byteLength-1&&(d=r(n.slice(u),c)),{pixels:s,mask:d}},n}()}));

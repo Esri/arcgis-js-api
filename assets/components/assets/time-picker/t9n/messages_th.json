@@ -1,0 +1,14 @@
+{
+  "hour": "ชั่วโมง",
+  "hourDown": "ลดชั่วโมง",
+  "hourUp": "เพิ่มชั่วโมง",
+  "meridiem": "AM/PM",
+  "meridiemDown": "ลด AM/PM",
+  "meridiemUp": "เพิ่ม AM/PM",
+  "minute": "นาที",
+  "minuteDown": "ลดนาที",
+  "minuteUp": "เพิ่มนาที",
+  "second": "วินาที",
+  "secondDown": "ลดวินาที",
+  "secondUp": "เพิ่มวินาที"
+}

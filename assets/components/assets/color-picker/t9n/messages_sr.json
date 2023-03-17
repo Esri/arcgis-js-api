@@ -1,0 +1,22 @@
+{
+  "b": "B",
+  "blue": "Plava",
+  "deleteColor": "Obriši boju",
+  "g": "G",
+  "green": "Zelena",
+  "h": "V",
+  "hsv": "HSV",
+  "hex": "Heksadecimalni",
+  "hue": "Nijansa",
+  "noColor": "Nema boje",
+  "opacity": "Neprozirnost",
+  "r": "R",
+  "red": "Crvena",
+  "rgb": "RGB",
+  "s": "J",
+  "saturation": "Zasićenost",
+  "saveColor": "Sačuvaj boju",
+  "saved": "Sačuvano",
+  "v": "V",
+  "value": "Vrednost"
+}

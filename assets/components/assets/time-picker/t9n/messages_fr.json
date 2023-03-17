@@ -1,0 +1,14 @@
+{
+  "hour": "Heure",
+  "hourDown": "Diminuer l’heure",
+  "hourUp": "Augmenter l’heure",
+  "meridiem": "AM/PM",
+  "meridiemDown": "Diminuer AM/PM",
+  "meridiemUp": "Augmenter AM/PM",
+  "minute": "Minute",
+  "minuteDown": "Diminuer la minute",
+  "minuteUp": "Augmenter la minute",
+  "second": "Seconde",
+  "secondDown": "Diminuer la seconde",
+  "secondUp": "Augmenter la seconde"
+}

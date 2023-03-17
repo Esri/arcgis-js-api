@@ -1,0 +1,41 @@
+@mixin utilityNetworkAssociations() {
+  .esri-un-associations__widget-block-content {
+    width: 330px;
+    border-bottom: none;
+    margin: 0px;
+  }
+
+  .esri-un-associations__widget-block-actions {
+    align-self: center;
+  }
+
+  .esri-un-associations__widget-settings-container {
+    display: grid;
+    padding-top: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .esri-un-associations__controls-label-and-toggle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: inherit;
+  }
+
+  .esri-un-associations__controls-label-and-slider {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .esri-un-associations__controls-label {
+    height: 1rem;
+  }
+
+  .esri-un-associations__controls-slider {
+    padding: 0rem 0.5rem;
+  }
+}
+
+@if $include_UtilityNetworkAssociations == true {
+  @include utilityNetworkAssociations();
+}

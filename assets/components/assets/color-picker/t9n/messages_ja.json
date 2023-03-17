@@ -1,0 +1,22 @@
+{
+  "b": "B",
+  "blue": "青",
+  "deleteColor": "色の削除",
+  "g": "G",
+  "green": "緑",
+  "h": "H",
+  "hsv": "HSV",
+  "hex": "Hex",
+  "hue": "色相",
+  "noColor": "色なし",
+  "opacity": "透明度",
+  "r": "R",
+  "red": "赤",
+  "rgb": "RGB",
+  "s": "S",
+  "saturation": "彩度",
+  "saveColor": "色の保存",
+  "saved": "保存済み",
+  "v": "V",
+  "value": "値"
+}

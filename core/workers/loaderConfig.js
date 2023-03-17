@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../assets","../has","../urlUtils"],(function(a,e,s,n){"use strict";let t=null;const c={};function o(a,e){for(const s of a)if(s.name===e.name)return;a.push(e)}function r(a){const e={async:a.async,isDebug:a.isDebug,locale:a.locale,baseUrl:a.baseUrl,has:{...a.has},map:{...a.map},packages:a.packages&&a.packages.concat()||[],paths:{...a.paths}};return a.hasOwnProperty("async")||(e.async=!0),a.hasOwnProperty("isDebug")||(e.isDebug=!1),a.baseUrl||(e.baseUrl=c.baseUrl),c.packages?.forEach((a=>{o(e.packages??[],a)})),e}a.DEFAULT_LOADER_URL=t,a.loaderConfig=r,Object.defineProperties(a,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../assets","../has","../urlUtils"],(function(s,a,e,t){"use strict";let n=null;const l={};function r(s){const a={async:s.async,isDebug:s.isDebug,locale:s.locale,baseUrl:s.baseUrl,has:{...s.has},map:{...s.map},packages:s.packages&&s.packages.concat()||[],paths:{...s.paths}};return s.hasOwnProperty("async")||(a.async=!0),s.hasOwnProperty("isDebug")||(a.isDebug=!1),s.baseUrl||(a.baseUrl=l.baseUrl),a}s.DEFAULT_LOADER_URL=n,s.loaderConfig=r,Object.defineProperty(s,Symbol.toStringTag,{value:"Module"})}));

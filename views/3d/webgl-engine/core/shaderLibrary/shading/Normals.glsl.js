@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../../../../../../core/compilerUtils","../../shaderModules/interfaces"],(function(e,a,r){"use strict";function o(o,d){const i=o.fragment;switch(i.code.add(r.glsl`struct ShadingNormalParameters {
 vec3 normalView;
@@ -11,4 +11,4 @@ return normalize(params.normalView);
 return dot(params.normalView, params.viewDirection) > 0.0 ? normalize(-params.normalView) : normalize(params.normalView);
 }`);break;case e.NormalsDoubleSidedMode.WindingOrder:i.code.add(r.glsl`vec3 shadingNormal(ShadingNormalParameters params) {
 return gl_FrontFacing ? normalize(params.normalView) : normalize(-params.normalView);
-}`);break;default:a.neverReached(d.doubleSidedMode);case e.NormalsDoubleSidedMode.COUNT:}}var d;e.NormalsDoubleSidedMode=void 0,(d=e.NormalsDoubleSidedMode||(e.NormalsDoubleSidedMode={}))[d.None=0]="None",d[d.View=1]="View",d[d.WindingOrder=2]="WindingOrder",d[d.COUNT=3]="COUNT",e.Normals=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`);break;default:a.neverReached(d.doubleSidedMode);case e.NormalsDoubleSidedMode.COUNT:}}var d;e.NormalsDoubleSidedMode=void 0,(d=e.NormalsDoubleSidedMode||(e.NormalsDoubleSidedMode={}))[d.None=0]="None",d[d.View=1]="View",d[d.WindingOrder=2]="WindingOrder",d[d.COUNT=3]="COUNT",e.Normals=o,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

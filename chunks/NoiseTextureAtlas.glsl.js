@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","./_rollupPluginBabelHelpers","./vec2f64","../views/3d/environment/NoiseTextureAtlasConfiguration","../views/3d/environment/NoiseTextureAtlasDimensions","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,o,l,t,r,a,i,d,f){"use strict";let n=function(e){function t(){var o;return(o=e.apply(this,arguments)||this).weatherTile=l.fromValues(0,0),o}return o._inheritsLoose(t,e),t}(d.NoParameters);function s(e){const o=new f.ShaderBuilder;if(o.include(a.ScreenSpacePass,!1),o.fragment.code.add(d.glsl`float remap(float x, float low1, float high1, float low2, float high2) {
+define(["exports","./_rollupPluginBabelHelpers","./vec2f64","../views/3d/environment/NoiseTextureAtlasConfiguration","../views/3d/environment/NoiseTextureAtlasDimensions","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,o,l,t,r,a,i,d,f){"use strict";let n=function(e){function t(){var o;return(o=e.apply(this,arguments)||this).weatherTile=l.fromValues(0,0),o}return o._inheritsLoose(t,e),t}(d.NoParameters);function s(e){const o=new f.ShaderBuilder;if(o.include(a.ScreenSpacePass,!1),o.fragment.code.add(d.glsl`float remap(float x, float low1, float high1, float low2, float high2) {
 return low2 + (x - low1) * (high2 - low2) / (high1 - low1);
 }`),e.mode===t.NoiseTextureRenderMode.Full){const e=2,l=8;o.fragment.code.add(d.glsl`
     float saturate(float x) {

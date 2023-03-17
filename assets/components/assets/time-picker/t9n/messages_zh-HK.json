@@ -1,0 +1,14 @@
+{
+  "hour": "小時",
+  "hourDown": "減少小時",
+  "hourUp": "增加小時",
+  "meridiem": "AM/PM",
+  "meridiemDown": "減少 AM/PM",
+  "meridiemUp": "增加 AM/PM",
+  "minute": "分鐘",
+  "minuteDown": "減少分鐘",
+  "minuteUp": "增加分鐘",
+  "second": "秒",
+  "secondDown": "減少秒",
+  "secondUp": "增加秒"
+}

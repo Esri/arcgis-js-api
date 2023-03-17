@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function n(e,n){for(const[t,r]of e)if(n(r,t))return!0;return!1}function t(e,n){for(const[t,r]of e)if(n(r,t))return r;return null}function r(e,n,t){const r=e.get(n);if(void 0!==r)return r;const o=t();return e.set(n,o),o}function o(e){const n=e.values().next();return!0!==n.done?n.value:null}e.findInMap=t,e.first=o,e.getOrCreateMapValue=r,e.someMap=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports"],(function(n){"use strict";function t(n,t){for(const[e,r]of n)if(t(r,e))return!0;return!1}function e(n,t){for(const[e,r]of n)if(t(r,e))return r;return null}function r(n,t,e){const r=n.get(t);if(void 0!==r)return r;const o=e();return n.set(t,o),o}function o(n){const t=n.values().next();return!0!==t.done?t.value:null}n.findInMap=e,n.first=o,n.getOrCreateMapValue=r,n.someMap=t,Object.defineProperty(n,Symbol.toStringTag,{value:"Module"})}));

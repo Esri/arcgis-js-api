@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutput","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexColor.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/LineStipple.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff","../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,i,t,o,l,r,s,a,n,d,c,g,p,u){"use strict";function h(e){const h=new p.ShaderBuilder,{vertex:v,fragment:w}=h;return h.include(o.Transform,e),h.include(l.VertexColor,e),h.include(s.LineStipple,e),n.addProjViewLocalOrigin(v,e),e.stippleEnabled&&(h.attributes.add(u.VertexAttribute.UV0,"vec2"),h.attributes.add(u.VertexAttribute.AUXPOS1,"vec3"),v.uniforms.add(new d.Float4PassUniform("viewport",((e,i)=>i.camera.fullViewport)))),h.attributes.add(u.VertexAttribute.POSITION,"vec3"),h.varyings.add("vpos","vec3"),v.code.add(g.glsl`void main(void) {
+define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutput","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexColor.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/LineStipple.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff","../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,i,t,o,l,r,s,a,n,d,c,g,p,u){"use strict";function h(e){const h=new p.ShaderBuilder,{vertex:v,fragment:S}=h;return h.include(o.Transform,e),h.include(l.VertexColor,e),h.include(s.LineStipple,e),n.addProjViewLocalOrigin(v,e),e.stippleEnabled&&(h.attributes.add(u.VertexAttribute.UV0,"vec2"),h.attributes.add(u.VertexAttribute.AUXPOS1,"vec3"),v.uniforms.add(new d.Float4PassUniform("viewport",((e,i)=>i.camera.fullViewport)))),h.attributes.add(u.VertexAttribute.POSITION,"vec3"),h.varyings.add("vpos","vec3"),v.code.add(g.glsl`void main(void) {
 vpos = position;
 forwardNormalizedVertexColor();
 gl_Position = transformPosition(proj, view, vpos);`),e.stippleEnabled&&(v.code.add(g.glsl`vec4 vpos2 = transformPosition(proj, view, auxpos1);
@@ -13,7 +13,7 @@ float segmentLengthPseudoScreen = lineSegmentPixelSize;`):v.code.add(g.glsl`floa
 float startPseudoScreen = mix(uv0.y, uv0.y - segmentLengthRender, uv0.x) * discreteWorldToScreenRatio;
 float segmentLengthPseudoScreen = segmentLengthRender * discreteWorldToScreenRatio;`),v.uniforms.add(new c.FloatPassUniform("stipplePatternPixelSize",(e=>s.computePixelSize(e)))),v.code.add(g.glsl`vec2 stippleDistanceLimits = computeStippleDistanceLimits(startPseudoScreen, segmentLengthPseudoScreen, lineSegmentPixelSize, stipplePatternPixelSize);
 vStippleDistance = mix(stippleDistanceLimits.x, stippleDistanceLimits.y, uv0.x);
-vStippleDistance *= gl_Position.w;`)),v.code.add(g.glsl`}`),e.output===i.ShaderOutput.Highlight&&h.include(r.OutputHighlight,e),h.include(t.SliceDraw,e),w.uniforms.add(new c.FloatPassUniform("alphaCoverage",((e,i)=>Math.min(1,e.width*i.camera.pixelRatio)))),e.hasVertexColors||w.uniforms.add(new d.Float4PassUniform("constantColor",(e=>e.color))),w.code.add(g.glsl`
+vStippleDistance *= gl_Position.w;`)),v.code.add(g.glsl`}`),e.output===i.ShaderOutput.Highlight&&h.include(r.OutputHighlight,e),h.include(t.SliceDraw,e),S.uniforms.add(new c.FloatPassUniform("alphaCoverage",((e,i)=>Math.min(1,e.width*i.camera.pixelRatio)))),e.hasVertexColors||S.uniforms.add(new d.Float4PassUniform("constantColor",(e=>e.color))),S.code.add(g.glsl`
   void main() {
     discardBySlice(vpos);
 
@@ -23,6 +23,8 @@ vStippleDistance *= gl_Position.w;`)),v.code.add(g.glsl`}`),e.output===i.ShaderO
     discardByStippleAlpha(stippleAlpha, stippleAlphaColorDiscard);
 
     vec4 finalColor = blendStipple(vec4(color.rgb, color.a * alphaCoverage), stippleAlpha);
+
+    ${e.output===i.ShaderOutput.ObjectAndLayerIdColor?g.glsl`finalColor.a = 1.0;`:""}
 
     if (finalColor.a < ${g.glsl.float(a.symbolAlphaCutoff)}) {
       discard;

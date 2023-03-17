@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","./FoamRendering.glsl","./Gamma.glsl","./PhysicallyBasedRendering.glsl","./ScreenSpaceReflections.glsl","../util/CloudsParallaxShading.glsl","../../shaderModules/FloatPassUniform","../../shaderModules/interfaces","../../shaderModules/Matrix4PassUniform","../../shaderModules/Texture2DPassUniform"],(function(e,o,r,t,a,l,i,n,d,s){"use strict";function c(e,c){e.include(t.PhysicallyBasedRendering,c),e.include(r.Gamma),e.include(o.FoamColor),c.hasCloudsReflections&&e.include(l.CloudsParallaxShading,c),c.hasScreenSpaceReflections&&e.include(a.ScreenSpaceReflections,c);const f=e.fragment;f.constants.add("fresnelSky","vec3",[.02,1,15]).add("fresnelMaterial","vec2",[.02,.1]).add("roughness","float",.015).add("foamIntensityExternal","float",1.7).add("ssrIntensity","float",.65).add("ssrHeightFadeStart","float",3e5).add("ssrHeightFadeEnd","float",5e5).add("waterDiffusion","float",.92).add("waterSeaColorMod","float",.8).add("correctionViewingPowerFactor","float",.4).add("skyZenitColor","vec3",[.52,.68,.9]).add("skyColor","vec3",[.67,.79,.9]).add("cloudFresnelModifier","vec2",[1.2,.01]),f.code.add(n.glsl`PBRShadingWater shadingInfo;
+define(["exports","./FoamRendering.glsl","./Gamma.glsl","./PhysicallyBasedRendering.glsl","./ScreenSpaceReflections.glsl","../util/CloudsParallaxShading.glsl","../../shaderModules/FloatPassUniform","../../shaderModules/interfaces","../../shaderModules/Matrix4PassUniform","../../shaderModules/Texture2DPassUniform"],(function(e,o,r,t,a,l,i,n,d,s){"use strict";function c(e,c){e.include(t.PhysicallyBasedRenderingWater,c),e.include(r.Gamma),e.include(o.FoamColor),c.hasCloudsReflections&&e.include(l.CloudsParallaxShading,c),c.hasScreenSpaceReflections&&e.include(a.ScreenSpaceReflections,c);const f=e.fragment;f.constants.add("fresnelSky","vec3",[.02,1,15]).add("fresnelMaterial","vec2",[.02,.1]).add("roughness","float",.015).add("foamIntensityExternal","float",1.7).add("ssrIntensity","float",.65).add("ssrHeightFadeStart","float",3e5).add("ssrHeightFadeEnd","float",5e5).add("waterDiffusion","float",.92).add("waterSeaColorMod","float",.8).add("correctionViewingPowerFactor","float",.4).add("skyZenitColor","vec3",[.52,.68,.9]).add("skyColor","vec3",[.67,.79,.9]).add("cloudFresnelModifier","vec2",[1.2,.01]),f.code.add(n.glsl`PBRShadingWater shadingInfo;
 vec3 getSkyGradientColor(in float cosTheta, in vec3 horizon, in vec3 zenit) {
 float exponent = pow((1.0 - cosTheta), fresnelSky[2]);
 return mix(zenit, horizon, exponent);
@@ -43,7 +43,7 @@ vec3 normalCorrectedClouds = mix(localUp, n, correctionViewingFactor);
 vec3 reflectedWorld = normalize(reflect(-v, normalCorrectedClouds));`),c.hasCloudsReflections&&f.code.add(n.glsl`vec4 cloudsColor = renderClouds(reflectedWorld, position);
 cloudsColor.a = 1.0 - cloudsColor.a;
 cloudsColor = pow(cloudsColor, vec4(GAMMA));
-cloudsColor *= clamp(fresnelModifier.y*cloudFresnelModifier[0] - cloudFresnelModifier[1], 0.0, 1.0) * clamp((1.0 - totalFadeInOut), 0.0, 1.0);`),c.hasScreenSpaceReflections?(f.uniforms.add(new d.Matrix4PassUniform("view",((e,o)=>o.ssr.camera.viewMatrix))),f.uniforms.add(new s.Texture2DPassUniform("lastFrameColorMap",((e,o)=>o.ssr.lastFrameColorTexture))),f.code.add(n.glsl`vec3 viewDir = normalize(viewPosition);
+cloudsColor *= clamp(fresnelModifier.y*cloudFresnelModifier[0] - cloudFresnelModifier[1], 0.0, 1.0) * clamp((1.0 - totalFadeInOut), 0.0, 1.0);`),c.hasScreenSpaceReflections?(f.uniforms.add([new d.Matrix4PassUniform("view",((e,o)=>o.ssr.camera.viewMatrix)),new s.Texture2DPassUniform("lastFrameColorTexture",((e,o)=>o.ssr.lastFrameColorTexture)),new i.FloatPassUniform("fadeFactor",((e,o)=>o.ssr.fadeFactor))]),f.code.add(n.glsl`vec3 viewDir = normalize(viewPosition);
 vec4 viewNormalVectorCoordinate = view *vec4(n, 0.0);
 vec3 viewNormal = normalize(viewNormalVectorCoordinate.xyz);
 vec4 viewUp = view * vec4(localUp, 0.0);
@@ -56,12 +56,14 @@ if (hitCoordinate.z > 0.0)
 vec2 reprojectedCoordinate = reprojectionCoordinate(hitCoordinate);
 vec2 dCoords = smoothstep(0.3, 0.6, abs(vec2(0.5, 0.5) - hitCoordinate.xy));
 float heightMod = smoothstep(ssrHeightFadeEnd, ssrHeightFadeStart, -viewPosition.z);
-reflectionHit = clamp(1.0 - (1.3*dCoords.y), 0.0, 1.0) * heightMod;
+reflectionHit = clamp(1.0 - (1.3 * dCoords.y), 0.0, 1.0) * heightMod * fadeFactor;
 reflectionHitDiffused = waterDiffusion * reflectionHit;
-reflectedColor = linearizeGamma(texture2D(lastFrameColorMap, reprojectedCoordinate).xyz)* reflectionHitDiffused * fresnelModifier.y * ssrIntensity;
+reflectedColor = linearizeGamma(texture2D(lastFrameColorTexture, reprojectedCoordinate).xyz) *
+reflectionHitDiffused * fresnelModifier.y * ssrIntensity;
 }
-float seaColorMod =  mix(waterSeaColorMod, waterSeaColorMod*0.5, reflectionHitDiffused);
-vec3 waterRenderedColor = tonemapACES((1.0 - reflectionHitDiffused) * reflSky + reflectedColor + reflSea * seaColorMod + specular  + foam);`)):f.code.add(n.glsl`vec3 waterRenderedColor = tonemapACES(reflSky + reflSea * waterSeaColorMod + specular + foam);`),c.hasCloudsReflections?c.hasScreenSpaceReflections?f.code.add(n.glsl`return waterRenderedColor * (1.0 - (1.0 - reflectionHit) * cloudsColor.a) + (1.0 - reflectionHit) * cloudsColor.xyz;
+float seaColorMod =  mix(waterSeaColorMod, waterSeaColorMod * 0.5, reflectionHitDiffused);
+vec3 waterRenderedColor = tonemapACES((1.0 - reflectionHitDiffused) * reflSky + reflectedColor +
+reflSea * seaColorMod + specular + foam);`)):f.code.add(n.glsl`vec3 waterRenderedColor = tonemapACES(reflSky + reflSea * waterSeaColorMod + specular + foam);`),c.hasCloudsReflections?c.hasScreenSpaceReflections?f.code.add(n.glsl`return waterRenderedColor * (1.0 - (1.0 - reflectionHit) * cloudsColor.a) + (1.0 - reflectionHit) * cloudsColor.xyz;
 }`):f.code.add(n.glsl`return waterRenderedColor * (1.0 - cloudsColor.a) + cloudsColor.xyz;
 }`):f.code.add(n.glsl`return waterRenderedColor;
-}`)}e.Water=c,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}e.Water=c,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

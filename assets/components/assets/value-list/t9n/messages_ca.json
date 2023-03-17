@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "S'està canviant l'ordre de ${itemLabel}, posició actual ${position} de ${total}.",
+  "dragHandleChange": "${itemLabel}, posició nova ${position} de ${total}. Premeu la tecla d'espai per confirmar-ho.",
+  "dragHandleCommit": "${itemLabel}, posició actual ${position} de ${total}.",
+  "dragHandleIdle": "${itemLabel}, premeu la tecla d'espai i feu servir les tecles de fletxa per canviar l'ordre del contingut. Posició actual ${position} de ${total}."
+}

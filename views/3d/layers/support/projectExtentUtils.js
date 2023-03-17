@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../../../core/maybe","../../../../geometry/support/webMercatorUtils","../../../../portal/support/geometryServiceUtils"],(function(e,o,r,t){"use strict";function l(e){const l=e.view.spatialReference,s=e.layer.fullExtent,i=o.isSome(s)&&s.spatialReference;if(o.isNone(s)||!i)return Promise.resolve(null);if(i.equals(l))return Promise.resolve(s.clone());const n=r.project(s,l);return o.isSome(n)?Promise.resolve(n):e.view.state.isLocal?t.projectGeometry(s,l,e.layer.portalItem).then((o=>!e.destroyed&&o?o:void 0)).catch((()=>null)):Promise.resolve(null)}e.toViewIfLocal=l,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../../../core/maybe","../../../../geometry/support/webMercatorUtils","../../../../portal/support/geometryServiceUtils"],(function(e,r,t,o){"use strict";function l(e){const l=e.view.spatialReference,s=e.layer.fullExtent,i=r.isSome(s)&&s.spatialReference;if(r.isNone(s)||!i)return Promise.resolve(null);if(i.equals(l))return Promise.resolve(s.clone());const n=t.project(s,l);return r.isSome(n)?Promise.resolve(n):e.view.state.isLocal?o.projectGeometry(s,l,e.layer.portalItem).then((r=>!e.destroyed&&r?r:null)).catch((()=>null)):Promise.resolve(null)}e.toViewIfLocal=l,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

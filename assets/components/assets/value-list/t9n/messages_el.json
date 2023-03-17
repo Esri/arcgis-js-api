@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "Αναδιάταξη ${itemLabel}, τρέχουσα θέση ${position} του ${total}.",
+  "dragHandleChange": "${itemLabel}, νέα θέση ${position} του ${total}. Πατήστε space για επιβεβαίωση.",
+  "dragHandleCommit": "${itemLabel}, τρέχουσα θέση ${position} του ${total}.",
+  "dragHandleIdle": "${itemLabel}, πατήστε space και χρησιμοποιήστε τα βέλη για να αναδιατάξετε το περιεχόμενο. Τρέχουσα θέση ${position} του ${total}."
+}

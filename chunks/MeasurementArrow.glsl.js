@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,t,r,o,i,n,s){"use strict";function a(e){const a=new n.ShaderBuilder,{vertex:d,fragment:l}=a;t.addProjViewLocalOrigin(d,e),d.uniforms.add(new o.FloatPassUniform("width",(e=>e.width))),a.attributes.add(s.VertexAttribute.POSITION,"vec3"),a.attributes.add(s.VertexAttribute.NORMAL,"vec3"),a.attributes.add(s.VertexAttribute.UV0,"vec2"),a.attributes.add(s.VertexAttribute.AUXPOS1,"float"),a.varyings.add("vtc","vec2"),a.varyings.add("vlength","float"),a.varyings.add("vradius","float"),d.code.add(i.glsl`void main(void) {
 vec3 bitangent = normal;

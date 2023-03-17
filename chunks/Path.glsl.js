@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ForwardLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutput","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/PathVertexPosition.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/EvaluateAmbientOcclusion.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/EvaluateSceneLighting.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MainLighting.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/Normals.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/NormalUtils.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/ReadShadowMap.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl","../views/3d/webgl-engine/core/shaderModules/Float3PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/TransparencyPassType"],(function(e,a,i,o,r,l,s,n,d,t,c,g,u,h,p,v,m,w,b,y,f,S){"use strict";function P(e){const P=new f.ShaderBuilder,{vertex:L,fragment:O}=P;switch(m.addProjViewLocalOrigin(L,e),P.varyings.add("vpos","vec3"),P.include(l.PathVertexPosition,e),e.output!==i.ShaderOutput.Color&&e.output!==i.ShaderOutput.Alpha||(P.include(r.Transform,e),P.include(p.ReadShadowMapDraw,e),P.include(a.ForwardLinearDepth,e),P.varyings.add("vnormal","vec3"),P.varyings.add("vcolor","vec4"),e.hasMultipassTerrain&&P.varyings.add("depth","float"),L.code.add(y.glsl`
       void main() {
@@ -43,7 +43,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ForwardLinearDept
           gl_FragColor = highlightSlice(gl_FragColor, vpos);
           ${e.transparencyPassType===S.TransparencyPassType.Color?"gl_FragColor = premultiplyAlpha(gl_FragColor);":""}
         }
-      `);break;case i.ShaderOutput.Depth:case i.ShaderOutput.Shadow:case i.ShaderOutput.ShadowHighlight:case i.ShaderOutput.ShadowExludeHighlight:P.include(r.Transform,e),a.addNearFar(P),P.varyings.add("depth","float"),L.code.add(y.glsl`void main() {
+      `);break;case i.ShaderOutput.Depth:case i.ShaderOutput.Shadow:case i.ShaderOutput.ShadowHighlight:case i.ShaderOutput.ShadowExcludeHighlight:P.include(r.Transform,e),a.addNearFar(P),P.varyings.add("depth","float"),L.code.add(y.glsl`void main() {
 vpos = calculateVPos();
 gl_Position = transformPositionWithDepth(proj, view, vpos, nearFar, depth);
 }`),P.include(o.SliceDraw,e),P.include(s.OutputDepth,e),O.code.add(y.glsl`void main() {

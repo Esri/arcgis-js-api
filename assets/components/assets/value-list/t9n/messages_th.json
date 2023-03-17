@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "กำลังเรียงลำดับใหม่ ${itemLabel}, ตำแหน่งปัจจุบัน ${position} จาก ${total}",
+  "dragHandleChange": "${itemLabel}, ตำแหน่งใหม่ ${position} จาก ${total} กด Space เพื่อยืนยัน",
+  "dragHandleCommit": "${itemLabel}, ตำแหน่งปัจจุบัน ${position} จาก ${total}",
+  "dragHandleIdle": "${itemLabel}, กด Space และใช้ปุ่มลูกศรเพื่อเรียงลำดับเนื้อหาใหม่ ตำแหน่งที่ตั้งปัจจุบัน ${position} ของ ${total}"
+}

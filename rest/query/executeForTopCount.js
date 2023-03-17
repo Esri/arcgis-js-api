@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../chunks/_rollupPluginBabelHelpers","../utils","./operations/queryTopFeatures","../support/TopFeaturesQuery"],(function(e,t,o,r,u){"use strict";function n(e,t,o){return s.apply(this,arguments)}function s(){return(s=t._asyncToGenerator((function*(e,t,n){const s=o.parseUrl(e);return(yield r.executeQueryForTopCount(s,u.from(t),{...n})).data.count}))).apply(this,arguments)}e.executeForTopCount=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../utils","./operations/queryTopFeatures","../support/TopFeaturesQuery"],(function(e,t,r,o,u){"use strict";function n(e,t,r){return p.apply(this,arguments)}function p(){return(p=t._asyncToGenerator((function*(e,t,n){const p=r.parseUrl(e);return(yield o.executeQueryForTopCount(p,u.from(t),{...n})).data.count}))).apply(this,arguments)}e.executeForTopCount=n,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

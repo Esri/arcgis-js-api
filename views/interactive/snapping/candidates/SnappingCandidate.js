@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports"],(function(t){"use strict";let e=function(t,e,i,n,o){this.coordinateHelper=t,this.targetPoint=e,this.constraint=i,this.elevationInfo=n,this.domain=o};t.SnappingCandidate=e,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports"],(function(t){"use strict";let i=function(t,i,e,n){this.targetPoint=t,this.constraint=i,this.isDraped=e,this.domain=n};t.SnappingCandidate=i,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

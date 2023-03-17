@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/Float3PassUniform","../../shaderModules/Float4sPassUniform","../../shaderModules/FloatPassUniform","../../shaderModules/FloatsPassUniform","../../shaderModules/interfaces","../../../lib/VertexAttribute","../../../materials/VisualVariablePassParameters"],(function(e,t,i,o,a,r,v,l){"use strict";const s=8;function u(e,u){const n=e.vertex;n.uniforms.add(new o.FloatPassUniform("intrinsicWidth",(e=>e.width))),u.vvSize?(e.attributes.add(v.VertexAttribute.SIZEFEATUREATTRIBUTE,"float"),n.uniforms.add(new t.Float3PassUniform("vvSizeMinSize",(e=>e.vvSizeMinSize))),n.uniforms.add(new t.Float3PassUniform("vvSizeMaxSize",(e=>e.vvSizeMaxSize))),n.uniforms.add(new t.Float3PassUniform("vvSizeOffset",(e=>e.vvSizeOffset))),n.uniforms.add(new t.Float3PassUniform("vvSizeFactor",(e=>e.vvSizeFactor))),n.code.add(r.glsl`float getSize() {
 return intrinsicWidth * clamp(vvSizeOffset + sizeFeatureAttribute * vvSizeFactor, vvSizeMinSize, vvSizeMaxSize).x;
@@ -38,4 +38,4 @@ vec4 getColor(){
 return applyOpacity(interpolateColor(colorFeatureAttribute));
 }`)):(e.attributes.add(v.VertexAttribute.COLOR,"vec4"),n.code.add(r.glsl`vec4 getColor(){
 return applyOpacity(color);
-}`))}e.RibbonVertexPosition=u,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`))}e.RibbonVertexPosition=u,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","./_rollupPluginBabelHelpers","./vec2f64","./vec3f64","../views/3d/environment/SimpleAtmosphereTechniqueConfiguration","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MainLighting.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/Float3PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,o,i,r,t,n,a,s,l,d,c,m,g,u,f){"use strict";let h=function(e){function r(){var o;return(o=e.apply(this,arguments)||this).texV=i.create(),o.altitudeFade=0,o.innerScale=0,o.undergroundFadeAlpha=0,o.silhouette=new p,o}return o._inheritsLoose(r,e),r}(c.NoParameters),p=function(){this.center=r.create(),this.v1=r.create(),this.v2=r.create()};function v(e){const o=new g.ShaderBuilder,{vertex:i,fragment:r}=o;if(a.addMainLightDirection(i),e.geometry===t.SimpleAtmosphereGeometry.Underground)o.attributes.add(f.VertexAttribute.POSITION,"vec2"),o.varyings.add("color","vec4"),i.uniforms.add([new l.Float3PassUniform("cameraPosition",((e,o)=>o.camera.eye)),new d.FloatPassUniform("undergroundFadeAlpha",(e=>e.undergroundFadeAlpha))]),i.code.add(c.glsl`void main(void) {
 float ndotl = dot(normalize(cameraPosition), mainLightDirection);
@@ -35,4 +35,4 @@ gl_FragColor = color;
 			vec4 innerColor = vec4(atmosphereColor.rgb, 1.0 - altitudeFade);
 			gl_FragColor = mix(atmosphereColor, innerColor, smoothstep(0.0, 1.0, innerFactor));
       `}
-    }`)}return o}const w=Object.freeze(Object.defineProperty({__proto__:null,SimpleAtmospherePassParameters:h,SilhouetteCircle:p,build:v},Symbol.toStringTag,{value:"Module"}));e.SilhouetteCircle=p,e.SimpleAtmosphere=w,e.SimpleAtmospherePassParameters=h,e.build=v}));
+    }`)}return o}const w=Object.freeze(Object.defineProperty({__proto__:null,SilhouetteCircle:p,SimpleAtmospherePassParameters:h,build:v},Symbol.toStringTag,{value:"Module"}));e.SilhouetteCircle=p,e.SimpleAtmosphere=w,e.SimpleAtmospherePassParameters=h,e.build=v}));

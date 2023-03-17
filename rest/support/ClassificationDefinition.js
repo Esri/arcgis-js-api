@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
-*/
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/jsonMap","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass","./colorRamps","../../symbols/Symbol"],(function(e,r,o,t,s,p,a,i,c,n){"use strict";const l=new o.JSONMap({classBreaksDef:"class-breaks-definition",uniqueValueDef:"unique-value-definition"});let u=function(r){function o(){var e;return(e=r.apply(this,arguments)||this).baseSymbol=null,e.colorRamp=null,e.type=null,e}return e._inheritsLoose(o,r),o}(t.JSONSupport);r.__decorate([s.property({type:n,json:{write:!0}})],u.prototype,"baseSymbol",void 0),r.__decorate([s.property({types:c.types,json:{read:{reader:c.fromJSON},write:!0}})],u.prototype,"colorRamp",void 0),r.__decorate([s.property({json:{read:l.read,write:l.write}})],u.prototype,"type",void 0),u=r.__decorate([i.subclass("esri.rest.support.ClassificationDefinition")],u);return u}));

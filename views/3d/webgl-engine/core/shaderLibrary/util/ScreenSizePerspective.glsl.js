@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../../../../../../chunks/vec4","../../../../../../chunks/vec4f64","../../shaderModules/Float4PassUniform","../../shaderModules/interfaces"],(function(e,a,r,s,c){"use strict";function t(e){e.vertex.code.add(c.glsl`float screenSizePerspectiveMinSize(float size, vec4 factor) {
 float nonZeroSize = 1.0 - step(size, 0.0);
@@ -33,4 +33,4 @@ screenSizePerspectiveScaleFactor(absCosAngle, distanceToCamera, params)
 return mix(size * clamp(factor.x, screenSizePerspectiveMinSize(size.y, factor) / max(1e-5, size.y), 1.0), size, factor.y);
 }`),e.vertex.code.add(c.glsl`vec2 screenSizePerspectiveScaleVec2(vec2 size, float absCosAngle, float distanceToCamera, vec4 params) {
 return applyScreenSizePerspectiveScaleFactorVec2(size, screenSizePerspectiveScaleFactor(absCosAngle, distanceToCamera, params));
-}`)}function i(e){e.uniforms.add(new s.Float4PassUniform("screenSizePerspective",(e=>o(e.screenSizePerspective))))}function n(e){e.uniforms.add(new s.Float4PassUniform("screenSizePerspectiveAlignment",(e=>o(e.screenSizePerspectiveAlignment||e.screenSizePerspective))))}function o(e){return a.set(l,e.parameters.divisor,e.parameters.offset,e.parameters.minPixelSize,e.paddingPixelsOverride)}const l=r.create();e.ScreenSizePerspective=t,e.addScreenSizePerspective=i,e.addScreenSizePerspectiveAlignment=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}function i(e){e.uniforms.add(new s.Float4PassUniform("screenSizePerspective",(e=>o(e.screenSizePerspective))))}function n(e){e.uniforms.add(new s.Float4PassUniform("screenSizePerspectiveAlignment",(e=>o(e.screenSizePerspectiveAlignment||e.screenSizePerspective))))}function o(e){return a.set(l,e.parameters.divisor,e.parameters.offset,e.parameters.minPixelSize,e.paddingPixelsOverride)}const l=r.create();e.ScreenSizePerspective=t,e.addScreenSizePerspective=i,e.addScreenSizePerspectiveAlignment=n,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

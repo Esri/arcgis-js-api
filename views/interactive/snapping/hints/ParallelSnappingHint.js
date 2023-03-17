@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/has","../../../../core/Logger","../SnappingDomain","../snappingUtils","./SnappingHint"],(function(n,e,i,t,l,a,o){"use strict";let r=function(n){function i(e,i,t,a=l.SnappingDomain.ALL){var o;return(o=n.call(this,t,a)||this).lineStart=e,o.lineEnd=i,o}return e._inheritsLoose(i,n),i.prototype.equals=function(n){return n instanceof i&&(a.objectEqual(this.lineStart,n.lineStart)&&a.objectEqual(this.lineEnd,n.lineEnd))},i}(o.SnappingHint);n.ParallelSnappingHint=r,Object.defineProperties(n,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/has","../../../../core/Logger","../../../../chunks/vec3","../SnappingDomain","./SnappingHint"],(function(n,e,t,i,a,l,r){"use strict";let o=function(n){function t(e,t,i,a=l.SnappingDomain.ALL){var r;return(r=n.call(this,i,a)||this).lineStart=e,r.lineEnd=t,r}return e._inheritsLoose(t,n),t.prototype.equals=function(n){return n instanceof t&&(a.exactEquals(this.lineStart,n.lineStart)&&a.exactEquals(this.lineEnd,n.lineEnd))},t}(r.SnappingHint);n.ParallelSnappingHint=o,Object.defineProperty(n,Symbol.toStringTag,{value:"Module"})}));

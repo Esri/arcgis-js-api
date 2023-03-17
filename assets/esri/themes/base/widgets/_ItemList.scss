@@ -81,30 +81,15 @@
   }
 
   .esri-item-list__list-item {
-    box-shadow: 0 1px 0 var(--calcite-ui-border-2);
-    background-color: var(--calcite-ui-foreground-1);
     cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 3px;
     margin-bottom: $cap-spacing--half;
     min-height: $list-item-height;
     transition: border 250ms ease-in-out;
-
     display: flex;
     justify-content: space-between;
 
-    &:hover,
-    &:focus {
-      background-color: var(--calcite-ui-foreground-2);
-      border-color: var(--calcite-ui-brand);
-    }
-
     @include icomoonIconSelector("&") {
       padding-right: $font-size * 0.2;
-    }
-
-    &#{&}--selected {
-      border-color: $border-color--active;
     }
   }
 

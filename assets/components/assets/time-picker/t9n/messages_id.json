@@ -1,0 +1,14 @@
+{
+  "hour": "Jam",
+  "hourDown": "Kurangi jam",
+  "hourUp": "Tambah jam",
+  "meridiem": "AM/PM",
+  "meridiemDown": "Kurangi AM/PM",
+  "meridiemUp": "Tambah AM/PM",
+  "minute": "Menit",
+  "minuteDown": "Kurangi menit",
+  "minuteUp": "Tambah menit",
+  "second": "Detik",
+  "secondDown": "Kurangi detik",
+  "secondUp": "Tambah detik"
+}

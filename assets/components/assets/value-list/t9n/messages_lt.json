@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "Keičiama tvarka ${itemLabel}, dabartinė pozicija ${position} iš ${total}.",
+  "dragHandleChange": "${itemLabel}, nauja pozicija ${position} iš ${total}. Norėdami patvirtinti, paspauskite tarpo klavišą.",
+  "dragHandleCommit": "${itemLabel}, dabartinė pozicija ${position} iš ${total}.",
+  "dragHandleIdle": "${itemLabel}, norėdami keisti turinio tvarką, paspauskite tarpo klavišą ir naudokite rodyklių klavišus. Dabartinė padėtis: ${position} iš ${total}."
+}

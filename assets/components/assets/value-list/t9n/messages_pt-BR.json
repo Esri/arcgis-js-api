@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "Reordenando ${itemLabel}, posição atual ${position} de ${total}.",
+  "dragHandleChange": "${itemLabel}, nova posição ${position} de ${total}. Pressione espaço para confirmar.",
+  "dragHandleCommit": "${itemLabel}, posição atual ${position} de ${total}.",
+  "dragHandleIdle": "${itemLabel}, pressione espaço e use as teclas de seta para reordenar o conteúdo. Posição atual ${position} de ${total}."
+}

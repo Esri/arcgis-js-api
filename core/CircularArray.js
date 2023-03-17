@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["../chunks/_rollupPluginBabelHelpers","./maybe"],(function(t,i){"use strict";return function(){function e(t){this.size=0,this._start=0,this.maxSize=t,this._buffer=new Array(t)}var s=e.prototype;return s.enqueue=function(t){if(this.size===this.maxSize){const i=this._buffer[this._start];return this._buffer[this._start]=t,this._start=(this._start+1)%this.maxSize,i}return this._buffer[(this._start+this.size++)%this.maxSize]=t,null},s.dequeue=function(){if(0===this.size)return null;const t=this._buffer[this._start];return this._buffer[this._start]=null,this.size--,this._start=(this._start+1)%this.maxSize,t},s.peek=function(){return 0===this.size?null:this._buffer[this._start]},s.find=function(t){if(0===this.size)return null;for(const e of this._buffer)if(i.isSome(e)&&t(e))return e;return null},s.clear=function(t){let e=this.dequeue();for(;i.isSome(e);)t&&t(e),e=this.dequeue()},t._createClass(e,[{key:"entries",get:function(){return this._buffer}}]),e}()}));

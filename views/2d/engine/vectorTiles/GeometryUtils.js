@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports"],(function(t){"use strict";const e=Number.POSITIVE_INFINITY,n=Math.PI,_=2*n,r=n/2,o=128/n,u=n/128,i=256/360,I=n/180,T=1.414213562,c=1/T,f=1/Math.LN2;function C(t,e){return(t%=e)>=0?t:t+e}function a(t){return C(t*o,256)}function l(t){return C(t*i,256)}function s(t){return Math.log(t)*f}function d(t){return t*t}function N(t,e,n){return t*(1-n)+e*n}function M(t,e,n){return t>=e&&t<=n||t>=n&&t<=e}t.C_256_TO_RAD=u,t.C_2PI=_,t.C_DEG_TO_256=i,t.C_DEG_TO_RAD=I,t.C_INFINITY=e,t.C_PI=n,t.C_PI_BY_2=r,t.C_RAD_TO_256=o,t.C_SQRT2=T,t.C_SQRT2_INV=c,t.between=M,t.degToByte=l,t.interpolate=N,t.log2=s,t.positiveMod=C,t.radToByte=a,t.sqr=d,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports"],(function(t){"use strict";const n=Number.POSITIVE_INFINITY,e=Math.PI,r=2*e,o=128/e,u=256/360,i=e/180,_=1/Math.LN2;function c(t,n){return(t%=n)>=0?t:t+n}function I(t){return c(t*o,256)}function f(t){return c(t*u,256)}function T(t){return Math.log(t)*_}function a(t){return t*t}function d(t,n,e){return t*(1-e)+n*e}function l(t,n,e){return t>=n&&t<=e||t>=e&&t<=n}t.C_2PI=r,t.C_DEG_TO_256=u,t.C_DEG_TO_RAD=i,t.C_INFINITY=n,t.C_PI=e,t.C_RAD_TO_256=o,t.between=l,t.degToByte=f,t.interpolate=d,t.log2=T,t.positiveMod=c,t.radToByte=I,t.sqr=a,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

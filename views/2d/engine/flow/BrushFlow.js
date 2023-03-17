@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["../../../../chunks/_rollupPluginBabelHelpers","../../../../core/maybe","../../../../chunks/mat3f32","../webgl/brushes/WGLBrush","../../../webgl/enums"],(function(t,e,a,s,i){"use strict";let n=function(s){function n(){var t;return(t=s.apply(this,arguments)||this)._visualState={time:0,dvsMat3:a.create(),displayViewMat3:a.create()},t}t._inheritsLoose(n,s);var r=n.prototype;return r.dispose=function(){},r.prepareState=function(t){const{context:e}=t;e.setColorMask(!0,!0,!0,!0),e.setStencilFunction(i.CompareFunction.EQUAL,0,255)},r.draw=function(t,a){const{requestRender:s,allowDelayedRender:i}=t,{displayData:n}=a;if(e.isNone(n))return;if("loaded"===n.state.name&&n.attach(t),"attached"!==n.state.name)return;const r=n.state.resources;i&&!r.ready&&e.isSome(s)?s():(this._visualState.time=t.time/1e3,this._visualState.dvsMat3=a.transforms.dvs,this._visualState.displayViewMat3=t.state.displayViewMat3,n.flowStyle.render(t,this._visualState,r),n.flowStyle.animated&&e.isSome(s)&&s())},n}(s);return n}));

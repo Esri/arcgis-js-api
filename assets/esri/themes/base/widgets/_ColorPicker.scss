@@ -62,6 +62,10 @@
     &__opacity-slider {
       margin-inline: 8px; // Align slider handles
     }
+
+    &__calcite-color-picker {
+      --calcite-ui-border-1: transparent;
+    }
   }
 }
 

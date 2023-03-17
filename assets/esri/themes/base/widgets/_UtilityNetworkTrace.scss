@@ -13,9 +13,12 @@
       background-color: $background-color--offset;
       padding-bottom: 0;
       padding-top: 0;
-      &:not([active]) {
+      &:not([selected]) {
         flex: 0;
       }
+    }
+    calcite-block {
+      margin-bottom: 0rem;
     }
   }
 

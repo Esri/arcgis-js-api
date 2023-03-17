@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/JSONSupport","../../../core/lang","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/subclass","./ChartMediaInfoValueSeries"],(function(e,o,r,t,i,p,s,l){"use strict";var n;let c=n=function(o){function r(e){var r;return(r=o.call(this,e)||this).fields=[],r.normalizeField=null,r.series=[],r.tooltipField=null,r}return e._inheritsLoose(r,o),r.prototype.clone=function(){return new n({fields:t.clone(this.fields),normalizeField:this.normalizeField,tooltipField:this.tooltipField})},r}(r.JSONSupport);o.__decorate([i.property({type:[String],json:{write:!0}})],c.prototype,"fields",void 0),o.__decorate([i.property({type:String,json:{write:!0}})],c.prototype,"normalizeField",void 0),o.__decorate([i.property({type:[l],json:{read:!1}})],c.prototype,"series",void 0),o.__decorate([i.property({type:String,json:{write:!0}})],c.prototype,"tooltipField",void 0),c=n=o.__decorate([s.subclass("esri.popup.content.support.ChartMediaInfoValue")],c);return c}));

@@ -1,0 +1,14 @@
+{
+  "hour": "Stunda",
+  "hourDown": "Samazināt stundas",
+  "hourUp": "Palielināt stundas",
+  "meridiem": "AM/PM",
+  "meridiemDown": "Samazināt AM/PM",
+  "meridiemUp": "Palielināt AM/PM",
+  "minute": "Minūte",
+  "minuteDown": "Samazināt minūtes",
+  "minuteUp": "Palielināt minūtes",
+  "second": "Sekunde",
+  "secondDown": "Samazināt sekundes",
+  "secondUp": "Palielināt sekundes"
+}

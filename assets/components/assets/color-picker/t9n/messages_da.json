@@ -1,0 +1,22 @@
+{
+  "b": "B",
+  "blue": "Blå",
+  "deleteColor": "Slet farve",
+  "g": "G",
+  "green": "Grøn",
+  "h": "H",
+  "hsv": "HSV",
+  "hex": "Hex",
+  "hue": "Nuance",
+  "noColor": "Ingen farve",
+  "opacity": "Gennemsigtighed",
+  "r": "R",
+  "red": "Rød",
+  "rgb": "RGB",
+  "s": "L",
+  "saturation": "Mætning",
+  "saveColor": "Gem farve",
+  "saved": "Gemt",
+  "v": "V",
+  "value": "Værdi"
+}

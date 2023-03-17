@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","./editingTools/draw/DrawGraphicTool2D"],(function(e,o){"use strict";Object.defineProperty(e,"DrawGraphicTool2D",{enumerable:!0,get:()=>o.DrawGraphicTool2D}),Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","./editingTools/draw/DrawGraphicTool2D","./editingTools/ControlPointsTransformTool","./editingTools/TransformTool","./editingTools/MediaTransformToolsWrapper"],(function(o,e,r,n,t){"use strict";Object.defineProperty(o,"DrawGraphicTool2D",{enumerable:!0,get:()=>e.DrawGraphicTool2D}),Object.defineProperty(o,"ControlPointsTransformTool",{enumerable:!0,get:()=>r.ControlPointsTransformTool}),Object.defineProperty(o,"TransformTool",{enumerable:!0,get:()=>n.TransformTool}),Object.defineProperty(o,"MediaTransformToolsWrapper",{enumerable:!0,get:()=>t.MediaTransformToolsWrapper}),Object.defineProperty(o,Symbol.toStringTag,{value:"Module"})}));

@@ -5,6 +5,7 @@ var profile = (function() {
     onlineFolderRe = /^esri\/arcgisonline\//i,
     mobileFolderRe = /^esri\/mobile\//i,
     assetsFolderRe = /^esri\/assets\//i,
+    calciteAssetsFolderRe = /^esri\/widgets\/support\/components\/assets\//i,
     discoveryFolderRe = /^esri\/discovery\//i,
 
     copyOnly = function(filename, mid) {
@@ -16,6 +17,7 @@ var profile = (function() {
 
       return (
         assetsFolderRe.test(mid) ||
+        calciteAssetsFolderRe.test(mid) ||
         (mid in mids)
       );
     },

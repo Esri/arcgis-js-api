@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "Změna pořadí ${itemLabel}, aktuální pozice ${position} z ${total}.",
+  "dragHandleChange": "${itemLabel}, nová pozice ${position} z ${total}. Potvrďte stisknutím mezerníku.",
+  "dragHandleCommit": "${itemLabel}, aktuální pozice ${position} z ${total}.",
+  "dragHandleIdle": "${itemLabel}, stiskněte mezerník a pomocí šipek změňte pořadí obsahu. Aktuální pozice ${position} z ${total}."
+}

@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","./vec3","./vec3f64","../views/3d/environment/PrecipitationTechniqueConfiguration","../views/3d/webgl-engine/core/shaderModules/Float3PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,t,o,i,a,r,n,s,d,c){"use strict";function l(e){const t=new d.ShaderBuilder;return t.attributes.add(c.VertexAttribute.POSITION,"vec3"),t.attributes.add(c.VertexAttribute.INSTANCEFEATUREATTRIBUTE,"float"),t.vertex.uniforms.add(new a.Float3PassUniform("cameraPosition",((e,t)=>t.camera.eye))),t.vertex.uniforms.add(new a.Float3PassUniform("offset",((e,t)=>v(e,t)))),t.vertex.uniforms.add(new r.FloatPassUniform("width",(e=>e.width))),t.vertex.uniforms.add(new s.Matrix4PassUniform("proj",((e,t)=>t.camera.projectionMatrix))),t.vertex.uniforms.add(new s.Matrix4PassUniform("view",((e,t)=>t.camera.viewMatrix))),t.vertex.uniforms.add(new r.FloatPassUniform("time",(e=>e.time))),t.varyings.add("vUv","vec2"),t.vertex.code.add(n.glsl`
     vec3 hash31(float p){

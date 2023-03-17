@@ -27,13 +27,13 @@
     /*
      * Padding/spacing - should be respected by each widget
      */
-    --esri-widget-padding-v: #{$cap-spacing};
-    --esri-widget-padding-h: #{$side-spacing};
-    --esri-widget-padding: var(--esri-widget-padding-v) var(--esri-widget-padding-h);
+    --esri-widget-padding-x: #{$side-spacing};
+    --esri-widget-padding-y: #{$cap-spacing};
+    --esri-widget-padding: var(--esri-widget-padding-y) var(--esri-widget-padding-x);
 
     &.esri-widget--compact {
-      --esri-widget-padding-v: 0;
-      --esri-widget-padding-h: 0;
+      --esri-widget-padding-y: 0;
+      --esri-widget-padding-x: 0;
     }
   }
 

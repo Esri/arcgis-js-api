@@ -1,5 +1,3 @@
-$base-scrim-z-index: 50;
-
 @mixin esri-editor__prompt($contextColor) {
   background-color: var(--calcite-ui-background);
   border-top: solid 3px $contextColor;
@@ -64,6 +62,35 @@ $base-scrim-z-index: 50;
     flex-direction: column;
     height: 100%;
     position: relative;
+
+    .esri-item-list {
+      background-color: transparent;
+    }
+
+    .esri-item-list__group {
+      margin-left: 0;
+      margin-right: 0;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+
+    .esri-item-list__filter-container,
+    .esri-item-list__filter-container--sticky {
+      background-color: var(--calcite-ui-background);
+      margin-bottom: 10px;
+      padding: 10px 0;
+    }
+
+    .esri-feature-form {
+      width: 100%;
+      padding: 0;
+
+      .esri-feature-form__label:last-child {
+        margin-bottom: 12px;
+      }
+    }
   }
 
   .esri-editor__content {
@@ -102,51 +129,31 @@ $base-scrim-z-index: 50;
     padding-bottom: $cap-spacing;
   }
 
-  .esri-editor .esri-feature-form {
-    width: 100%;
-    padding: 0;
-
-    .esri-feature-form__label:last-child {
-      margin-bottom: 12px;
-    }
-  }
-
-  .esri-editor {
-    .esri-item-list {
-      background-color: transparent;
-    }
-
-    .esri-item-list__group {
-      margin-left: 0;
-      margin-right: 0;
-
-      &:first-of-type {
-        margin-top: 0;
+  .esri-expand__content {
+    .esri-editor {
+      .esri-feature-form {
+        max-height: fit-content;
+        overflow-y: visible;
       }
     }
+  }
 
-    .esri-item-list__filter-container,
-    .esri-item-list__filter-container--sticky {
-      margin-bottom: 20px;
+  .esri-editor__actions {
+    display: flex;
+    width: 100%;
+    row-gap: $cap-spacing--half;
+
+    calcite-button {
+      flex-grow: 1;
     }
   }
 
-  .esri-editor__temp-wrapper {
+  .esri-editor__help-message {
     display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-  }
-  .esri-editor__controls {
-    background-color: $background-color;
-    border-top: $border;
-    padding: $cap-spacing $side-spacing;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .esri-editor__control-button {
-    margin-bottom: 6px;
-    min-height: $button-height;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding-inline: calc(#{$side-spacing} - 0.5rem); // Align with the editor content
   }
 
   .esri-editor__prompt--info {
@@ -170,11 +177,6 @@ $base-scrim-z-index: 50;
     top: 0;
     background-color: $background-color--overlay;
   }
-  .esri-editor__progress-bar {
-    position: absolute;
-    width: 100%;
-    z-index: 3; // calcite panel header is 2
-  }
 
   .esri-editor__panel-toolbar {
     --divider-border: 1px solid var(--calcite-ui-border-2);
@@ -183,13 +185,6 @@ $base-scrim-z-index: 50;
     border-bottom: var(--divider-border);
     display: flex;
     flex-direction: row;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-
-    &__snapping-button {
-      flex-grow: 1;
-    }
   }
 
   .esri-editor__panel-content {
@@ -202,7 +197,7 @@ $base-scrim-z-index: 50;
     padding-bottom: 0;
 
     &__section {
-      padding: 15px 12px 12px 12px;
+      padding: $cap-spacing $side-spacing;
       position: relative;
 
       &__group {
@@ -224,20 +219,13 @@ $base-scrim-z-index: 50;
     }
   }
 
-  .esri-editor__snapping-settings {
+  .esri-editor__panel-content__scrim-container {
+    overflow: hidden;
+  }
+
+  .esri-editor__settings {
     width: 100%;
     border: 0;
-  }
-
-  .esri-editor__update-features-action-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0;
-  }
-
-  .esri-editor__update-features-action-buttons--button {
-    flex-grow: 1;
   }
 
   .esri-editor__feature-templates-container {
@@ -246,13 +234,9 @@ $base-scrim-z-index: 50;
     }
   }
 
-  .esri-editor__snapping-controls-popover {
-    width: $panel-width * 0.9;
-    display: flex;
-    flex-direction: column;
+  .esri-editor__owner-admin-notice {
+    margin-bottom: $cap-spacing;
   }
-
-  @include loopingProgressBar(".esri-editor__progress-bar");
 }
 
 @if $include_Editor == true {

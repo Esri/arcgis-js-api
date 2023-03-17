@@ -1,10 +1,10 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../../../../../../core/compilerUtils","../../../../../../../core/floatRGBA","../../../../../../../core/has","./DecodeSymbolColor.glsl","../../../../core/shaderLibrary/ShaderOutput","../../../../core/shaderLibrary/util/RgbaFloatEncoding.glsl","../../../../core/shaderLibrary/util/WebGL2Utils","../../../../core/shaderModules/Float4DrawUniform","../../../../core/shaderModules/IntegerDrawUniform","../../../../core/shaderModules/interfaces","../../../../core/shaderModules/Texture2DDrawUniform","../../../../core/shaderModules/TextureSizeUniformType","../../../../lib/VertexAttribute"],(function(e,o,r,t,n,a,l,d,c,i,s,x,C,u){"use strict";var m;e.ComponentDataType=void 0,(m=e.ComponentDataType||(e.ComponentDataType={}))[m.Uniform=0]="Uniform",m[m.Varying=1]="Varying",m[m.COUNT=2]="COUNT";const f=429496.7296;function p(e,o){r.packFloatRGBA(e/f*.5+.5,o)}function v(r,t){switch(t.componentData){case e.ComponentDataType.Varying:return g(r,t);case e.ComponentDataType.Uniform:return y(r);case e.ComponentDataType.COUNT:return;default:o.neverReached(t.componentData)}}function g(e,o){const{vertex:r,fragment:c}=e;r.include(l.RgbaFloatEncoding),r.uniforms.add(x.createTexture2DDrawSizeUniforms("componentColorTex",(e=>e.componentParameters.texture.texture),o.hasWebGL2Context?C.TextureSizeUniformType.None:C.TextureSizeUniformType.Size)),e.attributes.add(u.VertexAttribute.COMPONENTINDEX,"float"),e.varyings.add("vExternalColorMixMode","mediump float"),e.varyings.add("vExternalColor","vec4");const i=o.output===a.ShaderOutput.ObjectAndLayerIdColor;i&&e.varyings.add("vObjectAndLayerIdColor","vec4"),e.include(n.DecodeSymbolColor),r.constants.add("elevationScale","float",2*f),r.constants.add("stride","float",t("enable-feature:objectAndLayerId-rendering")?3:2),r.code.add(s.glsl`
+define(["exports","../../../../../../../core/compilerUtils","../../../../../../../core/floatRGBA","../../../../../../../core/has","./DecodeSymbolColor.glsl","../../../../core/shaderLibrary/ShaderOutput","../../../../core/shaderLibrary/util/RgbaFloatEncoding.glsl","../../../../core/shaderLibrary/util/WebGL2Utils","../../../../core/shaderModules/Float4DrawUniform","../../../../core/shaderModules/IntegerDrawUniform","../../../../core/shaderModules/interfaces","../../../../core/shaderModules/Texture2DDrawUniform","../../../../core/shaderModules/TextureSizeUniformType","../../../../lib/VertexAttribute"],(function(e,o,r,t,n,a,d,l,c,i,x,s,C,u){"use strict";var m;e.ComponentDataType=void 0,(m=e.ComponentDataType||(e.ComponentDataType={}))[m.Uniform=0]="Uniform",m[m.Varying=1]="Varying",m[m.COUNT=2]="COUNT";const f=429496.7296;function p(e,o){r.packFloatRGBA(e/f*.5+.5,o)}function v(r,t){switch(t.componentData){case e.ComponentDataType.Varying:return g(r,t);case e.ComponentDataType.Uniform:return y(r);case e.ComponentDataType.COUNT:return;default:o.neverReached(t.componentData)}}function g(e,o){const{vertex:r,fragment:c}=e;r.include(d.RgbaFloatEncoding),r.uniforms.add(s.createTexture2DDrawSizeUniforms("componentColorTex",(e=>e.componentParameters.texture.texture),o.hasWebGL2Context?C.TextureSizeUniformType.None:C.TextureSizeUniformType.Size)),e.attributes.add(u.VertexAttribute.COMPONENTINDEX,"float"),e.varyings.add("vExternalColorMixMode","mediump float"),e.varyings.add("vExternalColor","vec4");const i=o.output===a.ShaderOutput.ObjectAndLayerIdColor;i&&e.varyings.add("vObjectAndLayerIdColor","vec4"),e.include(n.DecodeSymbolColor),r.constants.add("elevationScale","float",2*f),r.constants.add("stride","float",t("enable-feature:objectAndLayerId-rendering")?3:2),r.code.add(x.glsl`
   vec2 getComponentTextureCoordinates(float componentIndex, float typeOffset) {
-    vec2 textureSize = ${d.textureSize(o,"componentColorTex")};
+    vec2 textureSize = ${l.textureSize(o,"componentColorTex")};
 
     float index = componentIndex * stride + typeOffset;
     float coordX = mod(index, textureSize.x);
@@ -12,26 +12,26 @@ define(["exports","../../../../../../../core/compilerUtils","../../../../../../.
 
     return vec2(coordX, coordY) + 0.5;
   }
-  `),r.code.add(s.glsl`
+  `),r.code.add(x.glsl`
   vec4 _readComponentColor() {
     vec2 textureCoordinates = getComponentTextureCoordinates(componentIndex, 0.0);
 
-    return ${d.texelFetch(o,"componentColorTex","textureCoordinates","1.0 / componentColorTexSize")};
+    return ${l.texelFetch(o,"componentColorTex","textureCoordinates","1.0 / componentColorTexSize")};
    }
 
    float readElevationOffset() {
     vec2 textureCoordinates = getComponentTextureCoordinates(componentIndex, 1.0);
 
-    vec4 encodedElevation = ${d.texelFetch(o,"componentColorTex","textureCoordinates","1.0 / componentColorTexSize")};
+    vec4 encodedElevation = ${l.texelFetch(o,"componentColorTex","textureCoordinates","1.0 / componentColorTexSize")};
     return (rgba2float(encodedElevation) - 0.5) * elevationScale;
   }
 
-  ${i?s.glsl`
+  ${i?x.glsl`
           void forwardObjectAndLayerIdColor() {
             vec2 textureCoordinates = getComponentTextureCoordinates(componentIndex, 2.0);
 
-            vObjectAndLayerIdColor = ${d.texelFetch(o,"componentColorTex","textureCoordinates","1.0 / componentColorTexSize")};
-          }`:s.glsl`void forwardObjectAndLayerIdColor() {}`}
+            vObjectAndLayerIdColor = ${l.texelFetch(o,"componentColorTex","textureCoordinates","1.0 / componentColorTexSize")};
+          }`:x.glsl`void forwardObjectAndLayerIdColor() {}`}
 
   vec4 forwardExternalColor(out bool castShadows) {
     vec4 componentColor = _readComponentColor() * 255.0;
@@ -46,16 +46,16 @@ define(["exports","../../../../../../../core/compilerUtils","../../../../../../.
 
     return vExternalColor;
   }
-`),c.code.add(s.glsl`
+`),c.code.add(x.glsl`
   void readExternalColor(out vec4 externalColor, out int externalColorMixMode) {
     externalColor = vExternalColor;
     externalColorMixMode = int(vExternalColorMixMode);
   }
 
   void outputObjectAndLayerIdColor() {
-     ${i?s.glsl`gl_FragColor = vObjectAndLayerIdColor;`:""}
+     ${i?x.glsl`gl_FragColor = vObjectAndLayerIdColor;`:""}
   }
-`)}function y(e){const{vertex:o,fragment:r}=e;o.uniforms.add(new c.Float4DrawUniform("externalColor",(e=>e.componentParameters.externalColor))),r.uniforms.add(new i.IntegerDrawUniform("externalColorMixMode",(e=>e.componentParameters.externalColorMixMode))),e.varyings.add("vExternalColor","vec4"),o.code.add(s.glsl`float readElevationOffset() {
+`)}function y(e){const{vertex:o,fragment:r}=e;o.uniforms.add(new c.Float4DrawUniform("externalColor",(e=>e.componentParameters.externalColor))),r.uniforms.add(new i.IntegerDrawUniform("externalColorMixMode",(e=>e.componentParameters.externalColorMixMode))),e.varyings.add("vExternalColor","vec4"),o.code.add(x.glsl`float readElevationOffset() {
 return 0.0;
 }
 void forwardObjectAndLayerIdColor() {
@@ -64,10 +64,10 @@ vec4 forwardExternalColor(out bool castShadows) {
 vExternalColor = externalColor;
 castShadows = true;
 return externalColor;
-}`),r.code.add(s.glsl`void readExternalColor(out vec4 color, out int colorMixMode) {
+}`),r.code.add(x.glsl`void readExternalColor(out vec4 color, out int colorMixMode) {
 color = vExternalColor;
 colorMixMode = externalColorMixMode;
 }
 void outputObjectAndLayerIdColor() {
 gl_FragColor = vec4(1.0,0.0,0.0,0.0);
-}`)}e.ComponentData=v,e.MAX_ELEVATION_OFFSET=f,e.encodeElevationOffset=p,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}e.ComponentData=v,e.MAX_ELEVATION_OFFSET=f,e.encodeElevationOffset=p,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

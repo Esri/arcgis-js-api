@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../chunks/_rollupPluginBabelHelpers","./GPOptions","./utils","../support/JobInfo"],(function(t,e,n,o,r){"use strict";function u(t,e,n,o){return s.apply(this,arguments)}function s(){return(s=e._asyncToGenerator((function*(t,e,u,s){return u=n.from(u||{}),o.constructRequest(t,"submitJob",u,e,s).then((e=>{const n=r.fromJSON(e.data);return n.sourceUrl=t,n}))}))).apply(this,arguments)}t.submitJob=u,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../chunks/_rollupPluginBabelHelpers","./GPOptions","./utils","../support/JobInfo"],(function(t,n,e,o,r){"use strict";function u(t,n,e,o){return s.apply(this,arguments)}function s(){return(s=n._asyncToGenerator((function*(t,n,u,s){return u=e.from(u||{}),o.constructRequest(t,"submitJob",u,n??{},s).then((n=>{const e=r.fromJSON(n.data);return e.sourceUrl=t,e}))}))).apply(this,arguments)}t.submitJob=u,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

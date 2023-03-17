@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports"],(function(n){"use strict";function e(n,e){return{near:n,far:e}}function r(n){return n?t(n,1/0,-1/0):e(1/0,-1/0)}function t(n,e,r){return n.near=e,n.far=r,n}function a(n,e,r=n){return r.near=Math.min(n.near,e.near),r.far=Math.max(n.far,e.far),r}function u(n,e){return n.near<=e&&e<=n.far}const f={near:0,far:0};n.ZERO=f,n.create=e,n.empty=r,n.set=t,n.union=a,n.within=u,Object.defineProperties(n,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports"],(function(n){"use strict";let r=function(){this.near=Number.MAX_VALUE,this.far=-Number.MAX_VALUE};function e(n,r){return{near:n,far:r}}function t(n){return n?a(n,1/0,-1/0):e(1/0,-1/0)}function a(n,r,e){return n.near=r,n.far=e,n}function u(n,r,e=n){return null!=r&&(e.near=Math.min(n.near,r.near),e.far=Math.max(n.far,r.far)),e}function f(n,r){return n.near<=r&&r<=n.far}const i={near:0,far:0};n.DepthRange=r,n.ZERO=i,n.create=e,n.empty=t,n.set=a,n.union=u,n.within=f,Object.defineProperty(n,Symbol.toStringTag,{value:"Module"})}));

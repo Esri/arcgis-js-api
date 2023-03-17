@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","./vec4f64","../views/3d/webgl-engine/core/shaderLibrary/ScreenSizeScaling.glsl","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutput","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl","../views/3d/webgl-engine/core/shaderModules/Float3PassUniform","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/TransparencyPassType","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,r,o,i,l,a,d,n,s,t,g,c,u,v,h,w){"use strict";function b(e){const r=new v.ShaderBuilder,b=e.hasMultipassTerrain&&(e.output===i.ShaderOutput.Color||e.output===i.ShaderOutput.Alpha);r.include(a.Transform,e),r.include(o.ScreenSizeScaling,e),r.include(l.SliceDraw,e);const{vertex:f,fragment:m}=r;return m.include(s.ColorConversion),t.addProjViewLocalOrigin(f,e),m.uniforms.add(new c.Float4PassUniform("uColor",(e=>e.color))),r.attributes.add(w.VertexAttribute.POSITION,"vec3"),r.varyings.add("vWorldPosition","vec3"),b&&r.varyings.add("depth","float"),e.screenSizeEnabled&&r.attributes.add(w.VertexAttribute.OFFSET,"vec3"),e.shadingEnabled&&(t.addViewNormal(f),r.attributes.add(w.VertexAttribute.NORMAL,"vec3"),r.varyings.add("vViewNormal","vec3")),f.code.add(u.glsl`
     void main(void) {
@@ -17,6 +17,7 @@ vViewNormal = (viewNormal * vec4(worldNormal, 1)).xyz;`),f.code.add(u.glsl`
     `),e.shadingEnabled?(m.uniforms.add(new g.Float3PassUniform("shadingDirection",(e=>e.shadingDirection))),m.uniforms.add(new c.Float4PassUniform("shadedColor",(e=>p(e.shadingTint,e.color)))),m.code.add(u.glsl`vec3 viewNormalNorm = normalize(vViewNormal);
 float shadingFactor = 1.0 - clamp(-dot(viewNormalNorm, shadingDirection), 0.0, 1.0);
 vec4 finalColor = mix(uColor, shadedColor, shadingFactor);`)):m.code.add(u.glsl`vec4 finalColor = uColor;`),m.code.add(u.glsl`
+      ${e.output===i.ShaderOutput.ObjectAndLayerIdColor?u.glsl`finalColor.a = 1.0;`:""}
       if (finalColor.a < ${u.glsl.float(n.symbolAlphaCutoff)}) {
         discard;
       }

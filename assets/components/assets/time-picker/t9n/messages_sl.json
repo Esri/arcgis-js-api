@@ -1,0 +1,14 @@
+{
+  "hour": "Ura",
+  "hourDown": "Zmanjšaj uro",
+  "hourUp": "Povečaj uro",
+  "meridiem": "AM/PM",
+  "meridiemDown": "Zmanjšaj AM/PM",
+  "meridiemUp": "Povečaj AM/PM",
+  "minute": "Minuta",
+  "minuteDown": "Zmanjšaj minuto",
+  "minuteUp": "Povečaj minuto",
+  "second": "Sekunda",
+  "secondDown": "Zmanjšaj sekundo",
+  "secondUp": "Povečaj sekundo"
+}

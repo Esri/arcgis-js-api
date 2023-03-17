@@ -83,6 +83,30 @@ $base-scrim-z-index: 50;
         }
       }
     }
+
+    .esri-grid,
+    .esri-feature-table__menu,
+    .esri-column__menu-container,
+    .esri-button-menu,
+    .esri-button-menu__button {
+      background-color: transparent;
+    }
+
+    vaadin-grid {
+      font-family: $font-family;
+      font-size: $font-size;
+      background-color: inherit;
+      color: inherit;
+
+      ::part(body-cell) {
+        background-color: transparent;
+        font-size: $font-size;
+      }
+
+      ::part(row):hover {
+        background-color: var(--lumo-row-background-hover);
+      }
+    }
   }
 
   .esri-feature-table__menu {
@@ -137,6 +161,7 @@ $base-scrim-z-index: 50;
   .esri-field-column__header-content {
     align-items: center;
     display: flex;
+    font-weight: $font-weight;
     flex-grow: 1;
     overflow: visible;
   }

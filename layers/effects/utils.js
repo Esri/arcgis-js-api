@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","./effects"],(function(e,t){"use strict";function n(e,t){const n=e.length>t.length?e:t;return(e.length>t.length?t:e).every(((e,t)=>e.type===n[t].type))}function l(e,n){const l=e.length>n.length?e:n,c=e.length>n.length?n:e;for(let f=c.length;f<l.length;f++)c.push(t.createEffectWithInitialValues(l[f]))}function c(e){const t=e[0];return!!t&&"type"in t}e.canInterpolateEffects=n,e.isEffectFunctions=c,e.normalizeEffects=l,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","./effects"],(function(t,e){"use strict";function n(t,e){const n=t.length>e.length?t:e;return(t.length>e.length?e:t).every(((t,e)=>t.type===n[e].type))}function l(t,n){const l=t.length>n.length?t:n,c=t.length>n.length?n:t;for(let f=c.length;f<l.length;f++)c.push(e.createEffectWithInitialValues(l[f]))}function c(t){const e=t[0];return!!e&&"type"in e}t.canInterpolateEffects=n,t.isEffectFunctions=c,t.normalizeEffects=l,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

@@ -1,0 +1,22 @@
+{
+  "b": "B",
+  "blue": "蓝色",
+  "deleteColor": "删除颜色",
+  "g": "G",
+  "green": "绿色",
+  "h": "H",
+  "hsv": "HSV",
+  "hex": "十六进制",
+  "hue": "色调",
+  "noColor": "无颜色",
+  "opacity": "透明度",
+  "r": "R",
+  "red": "红色",
+  "rgb": "RGB",
+  "s": "S",
+  "saturation": "饱和度",
+  "saveColor": "保存颜色",
+  "saved": "已保存",
+  "v": "V",
+  "value": "值"
+}

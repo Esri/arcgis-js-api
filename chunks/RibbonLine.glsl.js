@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../core/maybe","../views/3d/webgl-engine/core/shaderLibrary/ForwardLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutput","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/ObjectAndLayerIdColor.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/RibbonVertexPosition.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/LineStipple.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MarkerSizing.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/PiUtils.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/TransparencyPassType","../views/3d/webgl-engine/lib/VertexAttribute","../views/3d/webgl-engine/shaders/LineMarkerTechniqueConfiguration","../views/3d/webgl-engine/shaders/RibbonLineTechniqueConfiguration"],(function(e,t,i,n,o,r,a,s,l,d,p,c,g,v,f,h,m,u,S,D,b,x,L,w,y){"use strict";const C=1;function P(e){const P=new b.ShaderBuilder,{vertex:A,fragment:F}=P,R=e.hasMultipassTerrain&&(e.output===n.ShaderOutput.Color||e.output===n.ShaderOutput.Alpha);P.include(c.PiUtils),P.include(a.RibbonVertexPosition,e),P.include(l.LineStipple,e);const O=e.applyMarkerOffset&&!e.draped;O&&(A.uniforms.add(new u.FloatPassUniform("markerScale",(e=>e.markerScale))),P.include(d.MarkerSizing,{space:w.LineMarkerSpace.World})),e.output===n.ShaderOutput.Depth&&P.include(s.OutputDepth,e),P.include(r.ObjectAndLayerIdColor,e),f.addProjViewLocalOrigin(A,e),A.uniforms.add([new D.Matrix4PassUniform("inverseProjectionMatrix",((e,t)=>t.camera.inverseProjectionMatrix)),new h.Float2PassUniform("nearFar",((e,t)=>t.camera.nearFar)),new u.FloatPassUniform("miterLimit",(e=>"miter"!==e.join?0:e.miterLimit)),new m.Float4PassUniform("viewport",((e,t)=>t.camera.fullViewport))]),A.constants.add("LARGE_HALF_FLOAT","float",65500),P.attributes.add(L.VertexAttribute.POSITION,"vec3"),P.attributes.add(L.VertexAttribute.SUBDIVISIONFACTOR,"float"),P.attributes.add(L.VertexAttribute.UV0,"vec2"),P.attributes.add(L.VertexAttribute.AUXPOS1,"vec3"),P.attributes.add(L.VertexAttribute.AUXPOS2,"vec3"),P.varyings.add("vColor","vec4"),P.varyings.add("vpos","vec3"),i.addLinearDepth(P),R&&P.varyings.add("depth","float");const T=e.capType===y.CapType.ROUND,j=e.stippleEnabled&&e.stippleScaleWithLineWidth||T;j&&P.varyings.add("vLineWidth","float");const z=e.stippleEnabled&&e.stippleScaleWithLineWidth;z&&P.varyings.add("vLineSizeInv","float");const V=e.innerColorEnabled||T;V&&P.varyings.add("vLineDistance","float");const E=e.stippleEnabled&&T,U=e.falloffEnabled||E;U&&P.varyings.add("vLineDistanceNorm","float"),T&&(P.varyings.add("vSegmentSDF","float"),P.varyings.add("vReverseSegmentSDF","float")),A.code.add(S.glsl`#define PERPENDICULAR(v) vec2(v.y, -v.x);
+define(["exports","../core/maybe","../views/3d/webgl-engine/core/shaderLibrary/ForwardLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutput","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/ObjectAndLayerIdColor.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/RibbonVertexPosition.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/LineStipple.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MarkerSizing.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/PiUtils.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/Matrix4PassUniform","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/TransparencyPassType","../views/3d/webgl-engine/lib/VertexAttribute","../views/3d/webgl-engine/shaders/LineMarkerTechniqueConfiguration","../views/3d/webgl-engine/shaders/RibbonLineTechniqueConfiguration"],(function(e,t,i,n,o,r,a,l,s,d,p,c,g,v,f,u,h,m,S,b,D,x,L,w,y){"use strict";const C=1;function P(e){const P=new D.ShaderBuilder,{vertex:A,fragment:F}=P,R=e.hasMultipassTerrain&&(e.output===n.ShaderOutput.Color||e.output===n.ShaderOutput.Alpha);P.include(c.PiUtils),P.include(a.RibbonVertexPosition,e),P.include(s.LineStipple,e);const O=e.applyMarkerOffset&&!e.draped;O&&(A.uniforms.add(new m.FloatPassUniform("markerScale",(e=>e.markerScale))),P.include(d.MarkerSizing,{space:w.LineMarkerSpace.World})),e.output===n.ShaderOutput.Depth&&P.include(l.OutputDepth,e),P.include(r.ObjectAndLayerIdColor,e),f.addProjViewLocalOrigin(A,e),A.uniforms.add([new b.Matrix4PassUniform("inverseProjectionMatrix",((e,t)=>t.camera.inverseProjectionMatrix)),new u.Float2PassUniform("nearFar",((e,t)=>t.camera.nearFar)),new m.FloatPassUniform("miterLimit",(e=>"miter"!==e.join?0:e.miterLimit)),new h.Float4PassUniform("viewport",((e,t)=>t.camera.fullViewport))]),A.constants.add("LARGE_HALF_FLOAT","float",65500),P.attributes.add(L.VertexAttribute.POSITION,"vec3"),P.attributes.add(L.VertexAttribute.SUBDIVISIONFACTOR,"float"),P.attributes.add(L.VertexAttribute.UV0,"vec2"),P.attributes.add(L.VertexAttribute.AUXPOS1,"vec3"),P.attributes.add(L.VertexAttribute.AUXPOS2,"vec3"),P.varyings.add("vColor","vec4"),P.varyings.add("vpos","vec3"),i.addLinearDepth(P),R&&P.varyings.add("depth","float");const T=e.capType===y.CapType.ROUND,j=e.stippleEnabled&&e.stippleScaleWithLineWidth||T;j&&P.varyings.add("vLineWidth","float");const z=e.stippleEnabled&&e.stippleScaleWithLineWidth;z&&P.varyings.add("vLineSizeInv","float");const E=e.innerColorEnabled||T;E&&P.varyings.add("vLineDistance","float");const V=e.stippleEnabled&&T,U=e.falloffEnabled||V;U&&P.varyings.add("vLineDistanceNorm","float"),T&&(P.varyings.add("vSegmentSDF","float"),P.varyings.add("vReverseSegmentSDF","float")),A.code.add(S.glsl`#define PERPENDICULAR(v) vec2(v.y, -v.x);
 float interp(float ncp, vec4 a, vec4 b) {
 return (-ncp - a.z) / (b.z - a.z);
 }
@@ -57,7 +57,7 @@ return posNdc;
       next = projectAndScale(next);
       prev = projectAndScale(prev);
     }
-  `),A.uniforms.add(new u.FloatPassUniform("pixelRatio",((e,t)=>t.camera.pixelRatio))),A.code.add(S.glsl`
+  `),A.uniforms.add(new m.FloatPassUniform("pixelRatio",((e,t)=>t.camera.pixelRatio))),A.code.add(S.glsl`
   void main(void) {
     // unpack values from uv0.y
     bool isStartVertex = abs(abs(uv0.y)-3.0) == 1.0;
@@ -157,22 +157,22 @@ joinDisplacementDir = PERPENDICULAR(joinDisplacementDir);`);const W=e.capType!==
     // Displacement (in pixels) caused by join/or cap
     vec2 dpos = joinDisplacementDir * sign(uv0.y) * displacementLen + capDisplacementDir * displacementLen;
 
-    ${U||V?S.glsl`float lineDistNorm = sign(uv0.y) * pos.w;`:""}
+    ${U||E?S.glsl`float lineDistNorm = sign(uv0.y) * pos.w;`:""}
 
-    ${V?S.glsl`vLineDistance = lineWidth * lineDistNorm;`:""}
+    ${E?S.glsl`vLineDistance = lineWidth * lineDistNorm;`:""}
     ${U?S.glsl`vLineDistanceNorm = lineDistNorm;`:""}
 
     pos.xy += dpos;
   `),T&&A.code.add(S.glsl`vec2 segmentDir = normalize(segment);
 vSegmentSDF = (isJoin && isStartVertex) ? LARGE_HALF_FLOAT : (dot(pos.xy - segmentOrigin, segmentDir) * pos.w) ;
-vReverseSegmentSDF = (isJoin && !isStartVertex) ? LARGE_HALF_FLOAT : (dot(pos.xy - segmentEnd, -segmentDir) * pos.w);`),e.stippleEnabled&&(e.draped?A.uniforms.add(new u.FloatPassUniform("worldToScreenRatio",((e,t)=>1/t.screenToPCSRatio))):A.code.add(S.glsl`vec3 segmentCenter = mix((auxpos2 + position) * 0.5, (position + auxpos1) * 0.5, isEndVertex);
+vReverseSegmentSDF = (isJoin && !isStartVertex) ? LARGE_HALF_FLOAT : (dot(pos.xy - segmentEnd, -segmentDir) * pos.w);`),e.stippleEnabled&&(e.draped?A.uniforms.add(new m.FloatPassUniform("worldToScreenRatio",((e,t)=>1/t.screenToPCSRatio))):A.code.add(S.glsl`vec3 segmentCenter = mix((auxpos2 + position) * 0.5, (position + auxpos1) * 0.5, isEndVertex);
 float worldToScreenRatio = computeWorldToScreenRatio(segmentCenter);`),A.code.add(S.glsl`float segmentLengthScreenDouble = length(segment);
 float segmentLengthScreen = segmentLengthScreenDouble * 0.5;
 float discreteWorldToScreenRatio = discretizeWorldToScreenRatio(worldToScreenRatio);
 float segmentLengthRender = length(mix(auxpos2 - position, position - auxpos1, isEndVertex));
 vStipplePatternStretch = worldToScreenRatio / discreteWorldToScreenRatio;`),e.draped?A.code.add(S.glsl`float segmentLengthPseudoScreen = segmentLengthScreen / pixelRatio * discreteWorldToScreenRatio / worldToScreenRatio;
 float startPseudoScreen = uv0.x * discreteWorldToScreenRatio - mix(0.0, segmentLengthPseudoScreen, isEndVertex);`):A.code.add(S.glsl`float startPseudoScreen = mix(uv0.x, uv0.x - segmentLengthRender, isEndVertex) * discreteWorldToScreenRatio;
-float segmentLengthPseudoScreen = segmentLengthRender * discreteWorldToScreenRatio;`),A.uniforms.add(new u.FloatPassUniform("stipplePatternPixelSize",(e=>l.computePixelSize(e)))),A.code.add(S.glsl`
+float segmentLengthPseudoScreen = segmentLengthRender * discreteWorldToScreenRatio;`),A.uniforms.add(new m.FloatPassUniform("stipplePatternPixelSize",(e=>s.computePixelSize(e)))),A.code.add(S.glsl`
       float patternLength = ${e.stippleScaleWithLineWidth?"lineSize * ":""} stipplePatternPixelSize;
 
       // Compute the coordinates at both start and end of the line segment, because we need both to clamp to in the fragment shader
@@ -234,7 +234,7 @@ float segmentLengthPseudoScreen = segmentLengthRender * discreteWorldToScreenRat
       if (capCoverage < ${S.glsl.float(g.symbolAlphaCutoff)}) {
         discard;
       }
-    `),E?F.code.add(S.glsl`
+    `),V?F.code.add(S.glsl`
       vec2 stipplePosition = vec2(
         min(getStippleSDF() * 2.0 - 1.0, 0.0),
         vLineDistanceNorm * gl_FragCoord.w
@@ -243,11 +243,12 @@ float segmentLengthPseudoScreen = segmentLengthRender * discreteWorldToScreenRat
       float stippleCapSDF = (stippleRadius - vLineWidth) * 0.5; // Divide by 2 to transform from double pixel scale
       float stippleCoverage = clamp(0.5 - stippleCapSDF, 0.0, 1.0);
       float stippleAlpha = step(${S.glsl.float(g.symbolAlphaCutoff)}, stippleCoverage);
-      `):F.code.add(S.glsl`float stippleAlpha = getStippleAlpha();`),F.uniforms.add(new m.Float4PassUniform("intrinsicColor",(e=>e.color))),F.code.add(S.glsl`discardByStippleAlpha(stippleAlpha, stippleAlphaColorDiscard);
-vec4 color = intrinsicColor * vColor;`),e.innerColorEnabled&&(F.uniforms.add(new m.Float4PassUniform("innerColor",(e=>t.unwrapOr(e.innerColor,e.color)))),F.uniforms.add(new u.FloatPassUniform("innerWidth",((e,t)=>e.innerWidth*t.camera.pixelRatio))),F.code.add(S.glsl`float distToInner = abs(vLineDistance * gl_FragCoord.w) - innerWidth;
+      `):F.code.add(S.glsl`float stippleAlpha = getStippleAlpha();`),F.uniforms.add(new h.Float4PassUniform("intrinsicColor",(e=>e.color))),e.output!==n.ShaderOutput.ObjectAndLayerIdColor&&F.code.add(S.glsl`discardByStippleAlpha(stippleAlpha, stippleAlphaColorDiscard);`),F.code.add(S.glsl`vec4 color = intrinsicColor * vColor;`),e.innerColorEnabled&&(F.uniforms.add(new h.Float4PassUniform("innerColor",(e=>t.unwrapOr(e.innerColor,e.color)))),F.uniforms.add(new m.FloatPassUniform("innerWidth",((e,t)=>e.innerWidth*t.camera.pixelRatio))),F.code.add(S.glsl`float distToInner = abs(vLineDistance * gl_FragCoord.w) - innerWidth;
 float innerAA = clamp(0.5 - distToInner, 0.0, 1.0);
 float innerAlpha = innerColor.a + color.a * (1.0 - innerColor.a);
-color = mix(color, vec4(innerColor.rgb, innerAlpha), innerAA);`)),F.code.add(S.glsl`vec4 finalColor = blendStipple(color, stippleAlpha);`),e.falloffEnabled&&(F.uniforms.add(new u.FloatPassUniform("falloff",(e=>e.falloff))),F.code.add(S.glsl`finalColor.a *= pow(max(0.0, 1.0 - abs(vLineDistanceNorm * gl_FragCoord.w)), falloff);`))),F.code.add(S.glsl`
+color = mix(color, vec4(innerColor.rgb, innerAlpha), innerAA);`)),F.code.add(S.glsl`vec4 finalColor = blendStipple(color, stippleAlpha);`),e.falloffEnabled&&(F.uniforms.add(new m.FloatPassUniform("falloff",(e=>e.falloff))),F.code.add(S.glsl`finalColor.a *= pow(max(0.0, 1.0 - abs(vLineDistanceNorm * gl_FragCoord.w)), falloff);`))),F.code.add(S.glsl`
+    ${e.output===n.ShaderOutput.ObjectAndLayerIdColor?S.glsl`finalColor.a = 1.0;`:""}
+
     if (finalColor.a < ${S.glsl.float(g.symbolAlphaCutoff)}) {
       discard;
     }
@@ -259,4 +260,4 @@ color = mix(color, vec4(innerColor.rgb, innerAlpha), innerAA);`)),F.code.add(S.g
     ${e.output===n.ShaderOutput.Depth?S.glsl`outputDepth(linearDepth);`:""}
     ${e.output===n.ShaderOutput.ObjectAndLayerIdColor?S.glsl`outputObjectAndLayerIdColor();`:""}
   }
-  `),P}const A=Object.freeze(Object.defineProperty({__proto__:null,NUM_ROUND_JOIN_SUBDIVISIONS:C,build:P},Symbol.toStringTag,{value:"Module"}));e.NUM_ROUND_JOIN_SUBDIVISIONS=C,e.RibbonLine=A,e.build=P}));
+  `),P}const A=Object.freeze(Object.defineProperty({__proto__:null,RIBBONLINE_NUM_ROUND_JOIN_SUBDIVISIONS:C,build:P},Symbol.toStringTag,{value:"Module"}));e.RIBBONLINE_NUM_ROUND_JOIN_SUBDIVISIONS=C,e.RibbonLine=A,e.build=P}));

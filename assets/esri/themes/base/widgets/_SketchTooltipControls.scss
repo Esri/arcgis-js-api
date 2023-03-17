@@ -1,0 +1,10 @@
+@mixin sketchTooltipControls() {
+  .esri-sketch-tooltip-controls {
+    display: flex;
+    flex-flow: column wrap;
+  }
+}
+
+@if $include_SketchTooltipControls == true {
+  @include sketchTooltipControls();
+}

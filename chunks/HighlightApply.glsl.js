@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","./vec4","./vec4f64","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,i,t,o,l,r,n,a){"use strict";const s=8.6,u=.4;function d(){const e=new r.ShaderBuilder,{vertex:t,fragment:d}=e,g=t.code,f=d.code;return e.attributes.add(a.VertexAttribute.POSITION,"vec2"),e.varyings.add("uv","vec2"),e.attributes.add(a.VertexAttribute.UV0,"vec2"),t.uniforms.add(new n.Texture2DPassUniform("coverageTex",(e=>e.coverageTexture))),g.add(l.glsl`void main() {
 vec4 cov = texture2D(coverageTex, uv0);

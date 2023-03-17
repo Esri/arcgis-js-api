@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../core/maybe","./vec2","./vec2f64","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform"],(function(e,r,a,t,n,o,s,i,c,l,u,d){"use strict";const f=16,v=.5;function p(){const e=new u.ShaderBuilder,t=e.fragment;return e.include(n.ScreenSpacePass),t.include(o.ReadLinearDepth),e.include(s.CameraSpace),t.uniforms.add(new c.FloatPassUniform("radius",((e,r)=>m(r)))),t.code.add(l.glsl`vec3 sphere[16];
+define(["exports","../core/maybe","./vec2","./vec2f64","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderModules/Texture2DPassUniform"],(function(e,r,a,t,n,o,s,i,c,l,u,d){"use strict";const f=16;function v(){const e=new u.ShaderBuilder,t=e.fragment;return e.include(n.ScreenSpacePass),t.include(o.ReadLinearDepth),e.include(s.CameraSpace),t.uniforms.add(new c.FloatPassUniform("radius",((e,r)=>p(r.camera)))),t.code.add(l.glsl`vec3 sphere[16];
 void fillSphere() {
 sphere[0] = vec3(0.186937, 0.0, 0.0);
 sphere[1] = vec3(0.700542, 0.0, 0.0);
@@ -29,7 +29,7 @@ vec3 v = Q - C;
 float vv = dot(v, v);
 float vn = dot(normalize(v), n_C);
 return fallOffFunction(vv, vn, 0.1);
-}`),t.uniforms.add([new i.Float2PassUniform("nearFar",((e,r)=>r.camera.nearFar)),new d.Texture2DPassUniform("normalMap",(e=>e.normalTexture)),new d.Texture2DPassUniform("depthMap",(e=>e.depthTexture)),new i.Float2PassUniform("zScale",((e,r)=>s.getZScale(r))),new c.FloatPassUniform("projScale",(e=>e.projScale)),new d.Texture2DPassUniform("rnm",(e=>e.noiseTexture)),new i.Float2PassUniform("rnmScale",((e,t)=>a.set(h,t.camera.fullWidth/r.unwrap(e.noiseTexture).descriptor.width,t.camera.fullHeight/r.unwrap(e.noiseTexture).descriptor.height))),new c.FloatPassUniform("intensity",((e,r)=>4*v/m(r)**6)),new i.Float2PassUniform("screenSize",((e,r)=>a.set(h,r.camera.fullWidth,r.camera.fullHeight)))]),t.code.add(l.glsl`
+}`),t.uniforms.add([new i.Float2PassUniform("nearFar",((e,r)=>r.camera.nearFar)),new d.Texture2DPassUniform("normalMap",(e=>e.normalTexture)),new d.Texture2DPassUniform("depthMap",(e=>e.depthTexture)),new i.Float2PassUniform("zScale",((e,r)=>s.getZScale(r))),new c.FloatPassUniform("projScale",(e=>e.projScale)),new d.Texture2DPassUniform("rnm",(e=>e.noiseTexture)),new i.Float2PassUniform("rnmScale",((e,t)=>a.set(m,t.camera.fullWidth/r.unwrap(e.noiseTexture).descriptor.width,t.camera.fullHeight/r.unwrap(e.noiseTexture).descriptor.height))),new c.FloatPassUniform("intensity",(e=>e.intensity)),new i.Float2PassUniform("screenSize",((e,r)=>a.set(m,r.camera.fullWidth,r.camera.fullHeight)))]),t.code.add(l.glsl`
     void main(void) {
       fillSphere();
       vec3 fres = normalize((texture2D(rnm, uv * rnmScale).xyz * 2.0) - vec3(1.0));
@@ -85,4 +85,4 @@ return fallOffFunction(vv, vn, 0.1);
       A = (pow(A, 0.2) + 1.2 * A*A*A*A) / 2.2;
       gl_FragColor = vec4(A);
     }
-  `),e}function m(e){return Math.max(10,20*e.camera.computeRenderPixelSizeAtDist(Math.abs(4*e.camera.relativeElevation)))}const h=t.create(),g=Object.freeze(Object.defineProperty({__proto__:null,build:p},Symbol.toStringTag,{value:"Module"}));e.SSAO=g,e.build=p}));
+  `),e}function p(e){return Math.max(10,20*e.computeRenderPixelSizeAtDist(Math.abs(4*e.relativeElevation)))}const m=t.create(),h=Object.freeze(Object.defineProperty({__proto__:null,build:v,getRadius:p},Symbol.toStringTag,{value:"Module"}));e.SSAO=h,e.build=v,e.getRadius=p}));

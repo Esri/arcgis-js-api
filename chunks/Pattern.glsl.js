@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ForwardLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/ShaderOutput","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexColor.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaCutoff","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/TransparencyPassType","../views/3d/webgl-engine/lib/VertexAttribute","../views/3d/webgl-engine/materials/PatternStyle"],(function(e,t,a,o,r,l,i,n,s,d,c,g,u,p,v,h,f,m,w){"use strict";const S=.70710678118,y=S,b=.08715574274;function x(e){const x=new h.ShaderBuilder,T=e.hasMultipassTerrain&&(e.output===a.ShaderOutput.Color||e.output===a.ShaderOutput.Alpha);e.draped||x.extensions.add("GL_OES_standard_derivatives");const{vertex:C,fragment:D}=x;g.addProjViewLocalOrigin(C,e),x.include(r.Transform,e),x.include(l.VertexColor,e),e.draped?C.uniforms.add(new p.FloatPassUniform("worldToScreenRatio",((e,t)=>1/t.screenToPCSRatio))):x.attributes.add(m.VertexAttribute.BOUNDINGRECT,"mat3"),x.attributes.add(m.VertexAttribute.POSITION,"vec3"),x.attributes.add(m.VertexAttribute.UVMAPSPACE,"vec4"),x.varyings.add("vpos","vec3"),x.varyings.add("vuv","vec2"),T&&x.varyings.add("depth","float");const O=e.style===w.Style.ForwardDiagonal||e.style===w.Style.BackwardDiagonal||e.style===w.Style.DiagonalCross;O&&C.code.add(v.glsl`
       const mat2 rotate45 = mat2(${v.glsl.float(S)}, ${v.glsl.float(-y)},
@@ -117,6 +117,8 @@ return accumulator;
       color = highlightSlice(color, vpos);
 
       ${e.output!==a.ShaderOutput.Highlight?v.glsl`color.a *= ${P(e)};`:""}
+
+      ${e.output===a.ShaderOutput.ObjectAndLayerIdColor?v.glsl`color.a = 1.0;`:""}
 
       if (color.a < ${v.glsl.float(d.symbolAlphaCutoff)}) {
         discard;

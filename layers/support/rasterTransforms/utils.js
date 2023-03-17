@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","./GCSShiftTransform","./IdentityTransform","./PolynomialTransform"],(function(n,e,t,r){"use strict";const o={GCSShiftXform:e,IdentityXform:t,PolynomialXform:r},i=Object.keys(o);function s(n){const e=n?.type;return!n||i.includes(e)}function f(n){const e=n?.type;if(!e)return null;const t=o[n?.type];if(t){const e=new t;return e.read(n),e}return null}n.isTransformSupported=s,n.readTransform=f,Object.defineProperties(n,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","./GCSShiftTransform","./IdentityTransform","./PolynomialTransform"],(function(n,t,r,e){"use strict";const o={GCSShiftXform:t,IdentityXform:r,PolynomialXform:e},f=Object.keys(o);function i(n){const t=n?.type;return!n||f.includes(t)}function s(n){const t=n?.type;if(!t)return null;const r=o[n?.type];if(r){const t=new r;return t.read(n),t}return null}n.isTransformSupported=i,n.readTransform=s,Object.defineProperty(n,Symbol.toStringTag,{value:"Module"})}));

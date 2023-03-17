@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../../chunks/quat"],(function(e,t){"use strict";e.quat=t.quat,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../../chunks/quat"],(function(t,e){"use strict";t.quat=e.quat,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

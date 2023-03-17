@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../../../core/maybe","../../webgl-engine/lib/lodRendering/LodResources"],(function(e,s,t){"use strict";function o(e){const t=[];return e.stageResources.geometries.forEach(((s,o)=>{const n=e.stageResources.materials[o],r=e.stageResources.textures;t.push({material:n,geometry:s,textures:r})})),{components:t,minScreenSpaceRadius:s.isSome(e.lodThreshold)?e.lodThreshold:0,pivotOffset:e.pivotOffset}}function n(e){return{levels:e.map((e=>o(e)))}}function r(e,s=i){const o=t.computeFaceCount(e);return Math.sqrt(o/(s*Math.PI))}function c(e){e.levels.forEach((e=>{e.minScreenSpaceRadius||(e.minScreenSpaceRadius=r(e))}))}const i=.05;e.estimateMinScreenSpaceRadius=r,e.fillEstimatedMinScreenSpaceRadius=c,e.makeLodLevelResources=o,e.makeLodResources=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../../../core/maybe","../../webgl-engine/lib/lodRendering/LodResources"],(function(e,o,n){"use strict";function s(e){const s=new Array;return e.stageResources.geometries.forEach((o=>{const r=e.stageResources.textures;s.push(new n.LodComponentResources(o,r))})),{components:s,minScreenSpaceRadius:o.unwrapOr(e.lodThreshold,0),pivotOffset:e.pivotOffset}}function r(e){return{levels:e.map((e=>s(e)))}}e.makeLodResources=r,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

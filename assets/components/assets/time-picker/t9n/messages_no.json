@@ -1,0 +1,14 @@
+{
+  "hour": "Time",
+  "hourDown": "Reduser time",
+  "hourUp": "Øk time",
+  "meridiem": "AM/PM",
+  "meridiemDown": "Reduser AM/PM",
+  "meridiemUp": "Øk AM/PM",
+  "minute": "Minutt",
+  "minuteDown": "Reduser minutt",
+  "minuteUp": "Øk minutt",
+  "second": "Sekund",
+  "secondDown": "Reduser sekund",
+  "secondUp": "Øk sekund"
+}

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../chunks/_rollupPluginBabelHelpers","../core/Version"],(function(e,n,s){"use strict";let t=function(e){function s(n,s){return e.call(this,n,s,"webscene")||this}return n._inheritsLoose(s,e),n._createClass(s,[{key:"supportsGround",get:function(){return this.since(1,8)}},{key:"supportsVisibleElevationLayersInSlides",get:function(){return this.lessThan(1,8)}}]),s}(s.Version);e.Version=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../chunks/_rollupPluginBabelHelpers","../core/Version"],(function(e,n,t){"use strict";let s=function(e){function t(n,t){return e.call(this,n,t,"webscene")||this}return n._inheritsLoose(t,e),n._createClass(t,[{key:"supportsGround",get:function(){return this.since(1,8)}},{key:"supportsVisibleElevationLayersInSlides",get:function(){return this.lessThan(1,8)}}]),t}(t.Version);e.Version=s,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

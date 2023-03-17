@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "Перевпорядкування ${itemLabel}, поточне положення ${position} з ${total}.",
+  "dragHandleChange": "${itemLabel}, нове положення ${position} з ${total}. Натисніть пробіл для підтвердження.",
+  "dragHandleCommit": "${itemLabel}, поточне положення ${position} з ${total}.",
+  "dragHandleIdle": "${itemLabel}, натисніть пробіл і використовуйте клавіші зі стрілками, щоб змінити порядок змісту. Поточне положення ${position} з ${total}."
+}

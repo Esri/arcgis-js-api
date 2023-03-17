@@ -1,0 +1,22 @@
+{
+  "b": "B",
+  "blue": "Mėlyna",
+  "deleteColor": "Pašalinti spalvą",
+  "g": "G",
+  "green": "Žalia",
+  "h": "A",
+  "hsv": "HSV",
+  "hex": "Šešioliktainė",
+  "hue": "Atspalvis",
+  "noColor": "Be spalvos",
+  "opacity": "Dengiamumas",
+  "r": "R",
+  "red": "Raudona",
+  "rgb": "RGB",
+  "s": "P",
+  "saturation": "Sodrumas",
+  "saveColor": "Įrašyti spalvą",
+  "saved": "Išsaugota",
+  "v": "R",
+  "value": "Vertė"
+}

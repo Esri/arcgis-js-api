@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl","../views/3d/webgl-engine/core/shaderModules/Float2PassUniform","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/TransparencyPassType","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,r,i,a,s,o,l,d,t,n){"use strict";function c(e){const c=new d.ShaderBuilder;c.extensions.add("GL_OES_standard_derivatives");const{vertex:u,fragment:v}=c;return a.addProjViewLocalOrigin(u,e),c.attributes.add(n.VertexAttribute.POSITION,"vec3"),c.attributes.add(n.VertexAttribute.UV0,"vec2"),c.varyings.add("vUV","vec2"),e.hasMultipassTerrain&&c.varyings.add("depth","float"),u.code.add(l.glsl`
     void main(void) {

@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../attributes/VerticalOffset.glsl","./HUDUniforms","../util/ScreenSizePerspective.glsl","../util/View.glsl","../../shaderModules/Float4PassUniform","../../shaderModules/FloatPassUniform","../../shaderModules/interfaces","../../shaderModules/Texture2DPassUniform","../../../lib/VertexAttribute"],(function(e,t,o,a,i,s,r,n,l,c){"use strict";var f;function d(f,d){f.include(a.ScreenSizePerspective),f.attributes.add(c.VertexAttribute.POSITION,"vec3"),f.attributes.add(c.VertexAttribute.NORMAL,"vec3"),f.attributes.add(c.VertexAttribute.AUXPOS1,"vec4");const p=f.vertex;i.addProjViewLocalOrigin(p,d),i.addCameraPosition(p,d),p.uniforms.add([new s.Float4PassUniform("viewport",((e,t)=>t.camera.fullViewport)),new r.FloatPassUniform("polygonOffset",(e=>e.shaderPolygonOffset)),new r.FloatPassUniform("cameraGroundRelative",((e,t)=>t.camera.aboveGround?1:-1)),new r.FloatPassUniform("renderTransparentlyOccludedHUD",((e,t)=>t.renderTransparentlyOccludedHUD===o.HUDTransparentRenderStyle.Occluded?1:t.renderTransparentlyOccludedHUD===o.HUDTransparentRenderStyle.NotOccluded?0:.75)),new l.Texture2DPassUniform("hudVisibilityTexture",((e,t)=>t.hudVisibilityTexture))]),d.hasVerticalOffset&&t.addVerticalOffset(p),p.constants.add("smallOffsetAngle","float",.984807753012208),p.code.add(n.glsl`struct ProjectHUDAux {
 vec3 posModel;
@@ -106,4 +106,4 @@ if (renderTransparentlyOccludedHUD > 0.5) {
 return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g * renderTransparentlyOccludedHUD < 1.0;
 }
 return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g == 1.0;
-}`)}e.HUDSpace=void 0,(f=e.HUDSpace||(e.HUDSpace={}))[f.World=0]="World",f[f.Screen=1]="Screen",f[f.COUNT=2]="COUNT",e.HUD=d,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}e.HUDSpace=void 0,(f=e.HUDSpace||(e.HUDSpace={}))[f.World=0]="World",f[f.Screen=1]="Screen",f[f.COUNT=2]="COUNT",e.HUD=d,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

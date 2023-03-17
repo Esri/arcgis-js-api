@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "${itemLabel} yeniden sıralanıyor, geçerli konum ${position} / ${total}.",
+  "dragHandleChange": "${itemLabel}, yeni konum ${position} / ${total}. Onaylamak için boşluk tuşuna basın.",
+  "dragHandleCommit": "${itemLabel}, geçerli konum ${position} / ${total}.",
+  "dragHandleIdle": "${itemLabel}, içeriği yeniden sıralamak için boşluk tuşuna basın ve ok tuşlarını kullanın. Geçerli konum ${position} / ${total}."
+}

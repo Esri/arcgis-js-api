@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../core/Collection","./ElevationProfileLine","./ElevationProfileLineGround","./ElevationProfileLineInput","./ElevationProfileLineQuery","./ElevationProfileLineView"],(function(e,i,o,n,l,t,r){"use strict";const a={base:o,key:"type",typeMap:{ground:n,input:l,query:t,view:r},errorContext:"elevation-profile-line"},f=i.ofType(a);e.ElevationProfileLineCollection=f,e.elevationProfileLineTypes=a,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../core/Collection","./ElevationProfileLine","./ElevationProfileLineGround","./ElevationProfileLineInput","./ElevationProfileLineQuery","./ElevationProfileLineView"],(function(e,i,o,n,t,l,r){"use strict";const a={base:o,key:"type",typeMap:{ground:n,input:t,query:l,view:r},errorContext:"elevation-profile-line"},f=i.ofType(a);e.ElevationProfileLineCollection=f,e.elevationProfileLineTypes=a,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../chunks/_rollupPluginBabelHelpers","../request"],(function(e,n,r){"use strict";function t(e){return u.apply(this,arguments)}function u(){return(u=n._asyncToGenerator((function*(e){const{data:n}=yield r(e,{responseType:"json",query:{f:"json"}});return n}))).apply(this,arguments)}e.requestArcGISServiceJSON=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../chunks/_rollupPluginBabelHelpers","../request"],(function(e,t,n){"use strict";function r(e,t){return o.apply(this,arguments)}function o(){return(o=t._asyncToGenerator((function*(e,t){const{data:r}=yield n(e,{responseType:"json",query:{f:"json",...t?.customParameters,token:t?.apiKey}});return r}))).apply(this,arguments)}e.fetchArcGISServiceJSON=r,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
+*/
+define(["./utils","../../../../webgl/context-util"],(function(t,e){"use strict";const n={vsPath:"raster/rfx/vs",fsPath:"raster/rfx/local",attributes:new Map([["a_position",0],["a_texcoord",1]])},a=new Set(["sinh","cosh","tanh","asinh","acosh","atanh"]);function s(t){const{painter:s,rasterFunction:o}=t,{imageCount:r,operationName:i,rasters:u,isOutputRounded:c}=o.parameters;let p=i.toLowerCase();t.context.type===e.ContextType.WEBGL1&&a.has(p)&&(p=`polyfill${p}`);const h=[p];2===r&&h.push("twoImages");const l=u.filter((t=>"Constant"===t.name));return l.length&&(h.push("oneConstant"),2===l.length&&h.push("twoConstant")),c&&h.push("roundOutput"),s.materialManager.getProgram(n,h)}function o(e,n,a){t.setMultipleImageTextures(e,n,a),t.setCoordsAndTransforms(n);const{domainRange:s}=e.rasterFunction.parameters;n.setUniform2fv("u_domainRange",s)}return{createProgram:s,bindTextureAndUniforms:o}}));

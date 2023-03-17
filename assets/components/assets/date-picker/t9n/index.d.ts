@@ -1,4 +1,4 @@
-export type Messages = {
+export type DatePickerMessages = {
   nextMonth: string;
   prevMonth: string;
   year: string;

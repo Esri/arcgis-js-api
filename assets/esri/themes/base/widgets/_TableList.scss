@@ -4,7 +4,7 @@
   .esri-table-list {
     color: $font-color;
     background-color: $background-color--offset;
-    padding: calc(var(--esri-widget-padding-v) * 0.5) calc(var(--esri-widget-padding-h) * 0.5);
+    padding: calc(var(--esri-widget-padding-y) * 0.5) calc(var(--esri-widget-padding-x) * 0.5);
     overflow-y: auto;
     display: flex;
     flex-flow: column;

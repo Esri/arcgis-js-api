@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../attributes/TextureCoordinateAttribute.glsl","../attributes/VertexTextureCoordinates.glsl","./Normals.glsl","../util/WebGL2Utils","../../shaderModules/interfaces","../../shaderModules/Texture2DDrawUniform","../../shaderModules/Texture2DPassUniform","../../shaderModules/TextureSizeUniformType","../../shaderTechnique/BindType","../../../lib/VertexAttribute"],(function(e,t,n,r,a,o,s,d,i,u,l){"use strict";function T(e,T){const c=e.fragment;if(T.hasVertexTangents?(e.attributes.add(l.VertexAttribute.TANGENT,"vec4"),e.varyings.add("vTangent","vec4"),T.doubleSidedMode===r.NormalsDoubleSidedMode.WindingOrder?c.code.add(o.glsl`mat3 computeTangentSpace(vec3 normal) {
 float tangentHeadedness = gl_FrontFacing ? vTangent.w : -vTangent.w;
@@ -30,4 +30,4 @@ return mat3(T, B, normal);
       vec3 rawNormal = textureLookup(normalTexture, vtc).rgb * 2.0 - 1.0;
       return tangentSpace * rawNormal;
     }
-  `)}}e.ComputeNormalTexture=T,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+  `)}}e.ComputeNormalTexture=T,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

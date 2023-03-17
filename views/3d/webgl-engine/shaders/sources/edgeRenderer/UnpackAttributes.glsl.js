@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../../../../../../core/compilerUtils","../../../core/shaderModules/interfaces","../../../lib/VertexAttribute","./EdgeUtil.glsl"],(function(e,t,n,s,i){"use strict";function o(e,o){const d=e.vertex;switch(e.attributes.add(s.VertexAttribute.SIDENESS,"vec2"),o.mode===i.EdgeUtilMode.MIXED?d.code.add(n.glsl`struct UnpackedAttributes {
 vec2 sideness;
@@ -36,4 +36,4 @@ vec2 sideness = sidenessNorm * 2.0 - 1.0;
 float extensionLengthPixels = component.extensionLength;
 float lineWidth = component.lineWidth;
 return UnpackedAttributes(sideness, sidenessNorm, lineWidth, extensionLengthPixels);
-}`);break;case i.EdgeUtilMode.COUNT:break;default:t.neverReached(o.mode)}}e.UnpackAttributes=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`);break;case i.EdgeUtilMode.COUNT:break;default:t.neverReached(o.mode)}}e.UnpackAttributes=o,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

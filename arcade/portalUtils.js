@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
+*/
+define(["exports","../chunks/_rollupPluginBabelHelpers","../kernel","../request","../portal/Portal"],(function(e,r,n,t,u){"use strict";function s(e,r){if(null===e)return r;return new u({url:e.field("url")})}function l(e,r,n){return o.apply(this,arguments)}function o(){return(o=r._asyncToGenerator((function*(e,r,u){const s=n.id?.findCredential(e.restUrl);if(!s)return null;if("loaded"===e.loadStatus&&""===r&&e.user&&e.user.sourceJSON&&!1===u)return e.user.sourceJSON;if(""===r){const r=yield t(e.restUrl+"/community/self",{responseType:"json",query:{f:"json",...!1===u?{}:{returnUserLicenseTypeExtensions:!0}}});if(r.data){const e=r.data;if(e&&e.username)return e}return null}const l=yield t(e.restUrl+"/community/users/"+r,{responseType:"json",query:{f:"json"}});if(l.data){const e=l.data;return e.error?null:e}return null}))).apply(this,arguments)}e.getPortal=s,e.lookupUser=l,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

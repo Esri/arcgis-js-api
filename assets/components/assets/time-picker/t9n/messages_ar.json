@@ -1,0 +1,14 @@
+{
+  "hour": "ساعة",
+  "hourDown": "تقليل ساعة",
+  "hourUp": "زيادة ساعة",
+  "meridiem": "ص/م",
+  "meridiemDown": "تقليل صباحًا/مساءً",
+  "meridiemUp": "زيادة صباحًا/مساءً",
+  "minute": "دقيقة",
+  "minuteDown": "تقليل دقيقة",
+  "minuteUp": "زيادة دقيقة",
+  "second": "الثاني",
+  "secondDown": "تقليل ثانية",
+  "secondUp": "زيادة ثانية"
+}

@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../../../../../../core/compilerUtils","../attributes/NormalAttribute.glsl","../attributes/VertexNormal.glsl","../attributes/VertexPosition.glsl","./Normals.glsl","../../shaderModules/interfaces"],(function(e,r,o,d,a,l,i){"use strict";function t(e,t){const s=e.fragment;switch(t.doubleSidedMode){case l.NormalsDoubleSidedMode.None:s.code.add(i.glsl`vec3 _adjustDoublesided(vec3 normal) {
 return normal;
@@ -28,4 +28,4 @@ return normalize(positionWorld());
 return vec3(0.0, 0.0, 1.0);
 }`),e.extensions.add("GL_OES_standard_derivatives"),s.code.add(i.glsl`vec3 shadingNormal_view() {
 return normalize(cross(dFdx(vPosition_view),dFdy(vPosition_view))).xyz;
-}`);break;default:r.neverReached(t.normalType);case o.NormalAttributeType.COUNT:}}e.ComputeShadingNormal=t,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`);break;default:r.neverReached(t.normalType);case o.NormalAttributeType.COUNT:}}e.ComputeShadingNormal=t,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

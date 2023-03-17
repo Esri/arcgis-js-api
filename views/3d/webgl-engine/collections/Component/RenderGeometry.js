@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../chunks/tslib.es6","../../lib/AutoDisposable"],(function(e,t,o,i){"use strict";let s=function(e){function o(t,o,i,s){var r;return(r=e.call(this)||this).primitiveType=o,r.parameters=i,r.indexed=s,r.vao=t,r}return t._inheritsLoose(o,e),o}(i.AutoDisposable);o.__decorate([i.autoDispose()],s.prototype,"vao",void 0),e.RenderGeometry=s,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports"],(function(e){"use strict";let t=function(){function e(e,t,i,o){this.vao=e,this.primitiveType=t,this.parameters=i,this.indexed=o}return e.prototype.dispose=function(){this.vao.dispose()},e}();e.RenderGeometry=t,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

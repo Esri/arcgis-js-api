@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
+*/
+define(["./utils"],(function(t){"use strict";const r={vsPath:"raster/rfx/vs",fsPath:"raster/rfx/stretch",attributes:new Map([["a_position",0],["a_texcoord",1]])};function e(t,e){const{useGamma:a,bandCount:n,isOutputRounded:u}=t.rasterFunction.parameters,s=[];return a&&s.push("useGamma"),n>1&&s.push("multiBand"),u&&s.push("roundOutput"),t.painter.materialManager.getProgram(r,s)}function a(r,e,a){t.setSingleImageTextures(r,e,a),t.setCoordsAndTransforms(e);const{width:n,height:u}=a,s=r.rasterFunction.parameters;e.setUniform2fv("u_srcImageSize",[n,u]),e.setUniform1f("u_minOutput",s.outMin),e.setUniform1f("u_maxOutput",s.outMax),e.setUniform1fv("u_factor",s.factor),e.setUniform1fv("u_minCutOff",s.minCutOff),e.setUniform1fv("u_maxCutOff",s.maxCutOff),e.setUniform1fv("u_gamma",s.gamma),e.setUniform1fv("u_gammaCorrection",s.gammaCorrection)}return{createProgram:e,bindTextureAndUniforms:a}}));

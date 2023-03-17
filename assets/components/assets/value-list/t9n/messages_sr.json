@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "Promena redosleda ${itemLabel}, trenutna pozicija ${position} od ${total}.",
+  "dragHandleChange": "${itemLabel}, nova pozicija ${position} od ${total}. Pritisnite razmak da potvrdite.",
+  "dragHandleCommit": "${itemLabel}, trenutna pozicija ${position} od ${total}.",
+  "dragHandleIdle": "${itemLabel}, pritisnite razmak i koristite tastere sa strelicama kako bi reorganizovali sadržaj. Trenutna pozicija ${position} od ${total}."
+}

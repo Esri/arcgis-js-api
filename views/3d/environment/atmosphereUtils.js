@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function t(e){const t=1e5,n=1e6;return Math.min(1,Math.max(0,(e-t)/(n-t)))}const n=1e4,i=.085,o=1e5;e.atmosphereHeight=o,e.computeInnerAltitudeFade=t,e.innerAtmosphereDepth=n,e.rayLeighScaleHeight=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../../core/mathUtils"],(function(e,t){"use strict";function n(e){const n=1e5,o=1e6;return t.clamp((e-n)/(o-n),0,1)}const o=1e4,r=.085,i=1e5;e.atmosphereHeight=i,e.computeInnerAltitudeFade=n,e.innerAtmosphereDepth=o,e.rayLeighScaleHeight=r,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

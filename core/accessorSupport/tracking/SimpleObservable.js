@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","./ObservationHandle"],(function(e,t){"use strict";let s=function(){function e(){this._observers=[]}var s=e.prototype;return s.observe=function(e){return this._observers.includes(e)||this._observers.push(e),new t.ObservationHandle(this._observers,e)},s.notify=function(){const e=this._observers.slice();for(let t=0;t<e.length;++t){const s=e[t];s.onInvalidated(),s.onCommitted()}},e}();e.SimpleObservable=s,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../ObservableBase"],(function(e,t,n){"use strict";let o=function(e){function n(){return e.apply(this,arguments)||this}return t._inheritsLoose(n,e),n.prototype.notify=function(){const e=this._observers;if(e&&e.length>0){const t=e.slice();for(const e of t)e.onInvalidated(),e.onCommitted()}},n}(n.ObservableBase);e.SimpleObservable=o,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

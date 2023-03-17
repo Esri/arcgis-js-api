@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "Ändrar ordning på ${itemLabel}, aktuell position ${position} för ${total}.",
+  "dragHandleChange": "${itemLabel}, ny position ${position} för ${total}. Tryck på blanksteg för att bekräfta.",
+  "dragHandleCommit": "${itemLabel}, aktuell position ${position} för ${total}.",
+  "dragHandleIdle": "${itemLabel}, tryck på blanksteg och använd piltangenterna för att ändra ordning på innehållet. Den aktuella positionen ${position} för ${total}."
+}

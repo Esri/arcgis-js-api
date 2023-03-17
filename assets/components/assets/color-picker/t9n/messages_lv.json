@@ -1,0 +1,22 @@
+{
+  "b": "B",
+  "blue": "Zils",
+  "deleteColor": "Dzēst krāsu",
+  "g": "G",
+  "green": "Zaļš",
+  "h": "H",
+  "hsv": "HSV",
+  "hex": "Hex",
+  "hue": "Krāsa",
+  "noColor": "Bez krāsas",
+  "opacity": "Necaurspīdība",
+  "r": "R",
+  "red": "Sarkans",
+  "rgb": "RGB",
+  "s": "S",
+  "saturation": "Piesātinājums",
+  "saveColor": "Saglabāt krāsu",
+  "saved": "Saglabāts",
+  "v": "V",
+  "value": "Vērtība"
+}

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","./BidiEngine"],(function(e,i){"use strict";const t=new i;function n(e){if(!t.hasBidiChar(e))return[e,!1];let i;return i="rtl"===t.checkContextual(e)?"IDNNN":"ICNNN",[t.bidiTransform(e,i,"VLYSN"),!0]}e.bidiText=n,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","./BidiEngine"],(function(e,t){"use strict";const i=new t;function n(e){if(null==e)return["",!1];if(!i.hasBidiChar(e))return[e,!1];let t;return t="rtl"===i.checkContextual(e)?"IDNNN":"ICNNN",[i.bidiTransform(e,t,"VLYSN"),!0]}e.bidiText=n,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

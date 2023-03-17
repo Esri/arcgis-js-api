@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../../../../layers/support/symbolColorUtils","./ColorConversion.glsl","../../shaderModules/interfaces"],(function(e,t,i,r){"use strict";function o(e){e.include(i.ColorConversion),e.code.add(r.glsl`
     vec3 mixExternalColor(vec3 internalColor, vec3 textureColor, vec3 externalColor, int mode) {
@@ -42,4 +42,4 @@ define(["exports","../../../../layers/support/symbolColorUtils","./ColorConversi
       // multiply or tint (or something invalid)
       return allMixed;
     }
-  `)}e.MixExternalColor=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+  `)}e.MixExternalColor=o,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../Color","../config","../views/support/colorUtils"],(function(e,o,t,n){"use strict";function r(e,t){const r=e.a*t;return n.getColorLuminance(e)>225?new o([0,0,0,r]):new o([255,255,255,r])}function u(e,t){const n=new o(e);return n.a*=t,n}function c(e=1){return u(t.analysisTheme.accentColor,e)}function i(e=1){return r(c(),e)}function l(e=1){return u(t.analysisTheme.textColor,e)}function s(e=1){return r(l(),e)}e.getAccentColor=c,e.getContrastColor=i,e.getTextColor=l,e.getTextHaloColor=s,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../Color","../config","../views/support/colorUtils"],(function(t,n,o,e){"use strict";function r(t,o){const r=t.a*o;return e.getColorLuminance(t)>225?new n([0,0,0,r]):new n([255,255,255,r])}function c(t,o){const e=new n(t);return e.a*=o,e}function u(t=1){return c(o.analysisTheme.accentColor,t)}function i(t=1){return r(u(),t)}function l(t=1){return c(o.analysisTheme.textColor,t)}function s(t=1){return r(l(),t)}t.getAccentColor=u,t.getContrastColor=i,t.getTextColor=l,t.getTextHaloColor=s,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

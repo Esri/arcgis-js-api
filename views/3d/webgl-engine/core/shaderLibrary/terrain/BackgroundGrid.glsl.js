@@ -1,11 +1,11 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(o,e){"use strict";function t(o){const t=257;o.code.add(e.glsl`
+define(["exports","../../shaderModules/interfaces"],(function(o,t){"use strict";function e(o){const e=257;o.code.add(t.glsl`
     float lineFactorAtPosition(float value) {
-      float pos = value * ${e.glsl.float(t)};
-      if(pos < 0.5 || pos > ${e.glsl.float(t-.5)}) {
+      float pos = value * ${t.glsl.float(e)};
+      if(pos < 0.5 || pos > ${t.glsl.float(e-.5)}) {
         return 1.0;
       }
 
@@ -26,7 +26,7 @@ define(["exports","../../shaderModules/interfaces"],(function(o,e){"use strict";
               lineFactorAtUV(vec2(uv.x - offset.x, uv.y - offset.y))) / 4.0;
     }
 
-    vec4 gridColor(vec2 uv) {
+    vec3 gridColor(vec2 uv) {
       float line = lineFactor(uv) * 0.1 + 0.9;
-      return vec4(vec3(1.0, 0.972, 0.918) * line, 1.0);
-    }`)}o.BackgroundGrid=t,Object.defineProperties(o,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+      return vec3(1.0, 0.972, 0.918) * line;
+    }`)}o.BackgroundGrid=e,Object.defineProperty(o,Symbol.toStringTag,{value:"Module"})}));

@@ -1,0 +1,14 @@
+{
+  "hour": "Time",
+  "hourDown": "Reducer time",
+  "hourUp": "Forøg time",
+  "meridiem": "AM/PM",
+  "meridiemDown": "Reducer AM/PM",
+  "meridiemUp": "Forøg AM/PM",
+  "minute": "Minut",
+  "minuteDown": "Reducer minut",
+  "minuteUp": "Forøg minut",
+  "second": "Sekund",
+  "secondDown": "Reducer sekund",
+  "secondUp": "Forøg sekund"
+}

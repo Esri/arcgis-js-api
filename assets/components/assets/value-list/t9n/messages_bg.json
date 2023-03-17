@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "Пренареждане ${itemLabel}, текущата позиция е ${position} от ${total}.",
+  "dragHandleChange": "${itemLabel}, новата позиция е${position} от ${total}. Натиснете интервала за потвърждаване.",
+  "dragHandleCommit": "${itemLabel}, текущата позиция е ${position} от ${total}.",
+  "dragHandleIdle": "${itemLabel}, натиснете интервал и използвайте клавишите със стрелки, за да промените реда на съдържанието. Текущата позиция е ${position} от ${total}."
+}

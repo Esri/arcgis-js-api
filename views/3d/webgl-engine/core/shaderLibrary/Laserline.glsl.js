@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../../../../../core/maybe","./output/ReadLinearDepth.glsl","./util/CameraSpace.glsl","../shaderModules/Float2PassUniform","../shaderModules/Float3PassUniform","../shaderModules/FloatPassUniform","../shaderModules/interfaces","../shaderModules/Texture2DPassUniform"],(function(e,o,l,a,r,t,n,s,i){"use strict";function d(e,d){e.extensions.add("GL_OES_standard_derivatives");const u=e.fragment;u.include(l.ReadLinearDepth),e.include(a.CameraSpace),u.uniforms.add([new n.FloatPassUniform("globalAlpha",(e=>e.globalAlpha)),new t.Float3PassUniform("glowColor",(e=>e.glowColor)),new n.FloatPassUniform("glowWidth",((e,o)=>e.glowWidth*o.camera.pixelRatio)),new n.FloatPassUniform("glowFalloff",(e=>e.glowFalloff)),new t.Float3PassUniform("innerColor",(e=>e.innerColor)),new n.FloatPassUniform("innerWidth",((e,o)=>e.innerWidth*o.camera.pixelRatio)),new i.Texture2DPassUniform("depthMap",((e,o)=>o.linearDepthTexture)),new r.Float2PassUniform("nearFar",((e,o)=>o.camera.nearFar)),new i.Texture2DPassUniform("frameColor",((e,o)=>o.mainColorTexture))]),u.code.add(s.glsl`vec4 blendPremultiplied(vec4 source, vec4 dest) {
 float oneMinusSourceAlpha = 1.0 - source.a;
@@ -39,4 +39,4 @@ float alpha = clamp(globalAlpha * max(backgroundLuminance * globalAlphaContrastB
 return color * alpha;
 }`)):u.code.add(s.glsl`vec4 laserlineOutput(vec4 color) {
 return color * globalAlpha;
-}`)}e.Laserline=d,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+}`)}e.Laserline=d,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

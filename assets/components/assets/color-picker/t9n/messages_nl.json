@@ -1,0 +1,22 @@
+{
+  "b": "B",
+  "blue": "Blauw",
+  "deleteColor": "Kleur verwijderen",
+  "g": "G",
+  "green": "Groen",
+  "h": "H",
+  "hsv": "HSV",
+  "hex": "Hexadecimaal",
+  "hue": "Tint",
+  "noColor": "Geen kleur",
+  "opacity": "Opaciteit",
+  "r": "R",
+  "red": "Rood",
+  "rgb": "RGB",
+  "s": "Z",
+  "saturation": "Verzadiging",
+  "saveColor": "Kleur opslaan",
+  "saved": "Opgeslagen",
+  "v": "V",
+  "value": "Waarde"
+}

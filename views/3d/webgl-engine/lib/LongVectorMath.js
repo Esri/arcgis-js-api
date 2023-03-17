@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function t(e,t){let n=0;for(let l=0;l<e.length;l++)n+=e[l]*t[l];return n}function n(e,t,n){(n=n||e).length=e.length;for(let l=0;l<e.length;l++)n[l]=e[l]*t[l];return n}function l(e,t,n){(n=n||e).length=e.length;for(let l=0;l<e.length;l++)n[l]=e[l]*t;return n}function r(e,t,n){(n=n||e).length=e.length;for(let l=0;l<e.length;l++)n[l]=e[l]+t[l];return n}e.add=r,e.dotProduct=t,e.elementwiseProduct=n,e.scalarProduct=l,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports"],(function(t){"use strict";function e(t,e){let n=0;for(let r=0;r<t.length;r++)n+=t[r]*e[r];return n}function n(t,e,n){(n=n||t).length=t.length;for(let r=0;r<t.length;r++)n[r]=t[r]*e[r];return n}function r(t,e,n){(n=n||t).length=t.length;for(let r=0;r<t.length;r++)n[r]=t[r]*e;return n}function l(t,e,n){(n=n||t).length=t.length;for(let r=0;r<t.length;r++)n[r]=t[r]+e[r];return n}t.add=l,t.dotProduct=e,t.elementwiseProduct=n,t.scalarProduct=r,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

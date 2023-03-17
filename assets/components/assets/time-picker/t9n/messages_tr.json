@@ -1,0 +1,14 @@
+{
+  "hour": "Saat",
+  "hourDown": "Saati azalt",
+  "hourUp": "Saati artır",
+  "meridiem": "AM/PM",
+  "meridiemDown": "AM/PM'i azalt",
+  "meridiemUp": "AM/PM'i artır",
+  "minute": "Dakika",
+  "minuteDown": "Dakikayı azalt",
+  "minuteUp": "Dakikayı artır",
+  "second": "Saniye",
+  "secondDown": "Saniyeyi azalt",
+  "secondUp": "Saniyeyi artır"
+}

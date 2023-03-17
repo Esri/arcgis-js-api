@@ -1,0 +1,14 @@
+{
+  "hour": "Timme",
+  "hourDown": "Minska timme",
+  "hourUp": "Höj timme",
+  "meridiem": "FM/EM",
+  "meridiemDown": "Minska FM/EM",
+  "meridiemUp": "Öka FM/EM",
+  "minute": "Minut",
+  "minuteDown": "Minska minut",
+  "minuteUp": "Höj minut",
+  "second": "Andra",
+  "secondDown": "Minska sekund",
+  "secondUp": "Höj sekund"
+}

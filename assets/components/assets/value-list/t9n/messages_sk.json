@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "Zmena poradia ${itemLabel}, aktuálna pozícia ${position} z ${total}.",
+  "dragHandleChange": "${itemLabel}, nová pozícia ${position} z ${total}. Stlačte medzerník na potvrdenie.",
+  "dragHandleCommit": "${itemLabel}, aktuálna pozícia ${position} z ${total}.",
+  "dragHandleIdle": "${itemLabel}, stlačte medzerník a pomocou klávesov so šípkami zmeňte poradie obsahu. Aktuálna pozícia: ${position} z ${total}."
+}

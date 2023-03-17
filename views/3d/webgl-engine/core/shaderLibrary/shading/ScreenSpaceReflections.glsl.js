@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../../../../../chunks/mat4f64","../output/ReadLinearDepth.glsl","../../shaderModules/Float2PassUniform","../../shaderModules/FloatPassUniform","../../shaderModules/interfaces","../../shaderModules/Matrix4PassUniform","../../shaderModules/Texture2DPassUniform"],(function(e,o,t,r,a,i,n,d){"use strict";function c(e,o){const c=e.fragment;c.include(t.ReadLinearDepth),c.uniforms.add(new r.Float2PassUniform("nearFar",((e,o)=>o.camera.nearFar))),c.uniforms.add(new d.Texture2DPassUniform("depthMap",((e,o)=>o.linearDepthTexture))),c.uniforms.add(new n.Matrix4PassUniform("proj",((e,o)=>o.ssr.camera.projectionMatrix))),c.uniforms.add(new a.FloatPassUniform("invResolutionHeight",((e,o)=>1/o.ssr.camera.height))),c.uniforms.add(new n.Matrix4PassUniform("reprojectionMatrix",((e,o)=>o.ssr.reprojectionMatrix))),c.code.add(i.glsl`
+define(["exports","../../../../../../chunks/mat4f64","../output/ReadLinearDepth.glsl","../../shaderModules/Float2PassUniform","../../shaderModules/FloatPassUniform","../../shaderModules/interfaces","../../shaderModules/Matrix4PassUniform","../../shaderModules/Texture2DPassUniform"],(function(e,t,o,r,a,i,n,d){"use strict";function c(e,t){const c=e.fragment;c.include(o.ReadLinearDepth),c.uniforms.add(new r.Float2PassUniform("nearFar",((e,t)=>t.camera.nearFar))),c.uniforms.add(new d.Texture2DPassUniform("depthMap",((e,t)=>t.linearDepthTexture))),c.uniforms.add(new n.Matrix4PassUniform("proj",((e,t)=>t.ssr.camera.projectionMatrix))),c.uniforms.add(new a.FloatPassUniform("invResolutionHeight",((e,t)=>1/t.ssr.camera.height))),c.uniforms.add(new n.Matrix4PassUniform("reprojectionMatrix",((e,t)=>t.ssr.reprojectionMatrix))),c.code.add(i.glsl`
   vec2 reprojectionCoordinate(vec3 projectionCoordinate)
   {
     vec4 zw = proj * vec4(0.0, 0.0, -projectionCoordinate.z, 1.0);
@@ -11,7 +11,7 @@ define(["exports","../../../../../../chunks/mat4f64","../output/ReadLinearDepth.
     return reprojectedCoord.xy * 0.5 + 0.5;
   }
 
-  const int maxSteps = ${o.highStepCount?"150":"75"};
+  const int maxSteps = ${t.highStepCount?"150":"75"};
 
   vec4 applyProjectionMat(mat4 projectionMat, vec3 x)
   {
@@ -109,4 +109,4 @@ define(["exports","../../../../../../chunks/mat4f64","../output/ReadLinearDepth.
     }
     return vec3(P, 0.0);
   }
-  `)}let s=function(){this.reprojectionMatrix=o.create()};e.SSRUniforms=s,e.ScreenSpaceReflections=c,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+  `)}let s=function(){this.enabled=!1,this.fadeFactor=1,this.reprojectionMatrix=t.create()};e.SSRUniforms=s,e.ScreenSpaceReflections=c,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

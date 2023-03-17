@@ -1,0 +1,14 @@
+{
+  "hour": "Sat",
+  "hourDown": "Smanji sat",
+  "hourUp": "Povećaj sat",
+  "meridiem": "AM/PM",
+  "meridiemDown": "Smanji AM/PM",
+  "meridiemUp": "Povećaj AM/PM",
+  "minute": "Minuta",
+  "minuteDown": "Smanji minutu",
+  "minuteUp": "Povećaj minutu",
+  "second": "Sekunda",
+  "secondDown": "Smanji sekundu",
+  "secondUp": "Povećaj sekundu"
+}

@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "${itemLabel} újrarendezése, aktuális helyzet: ${position} / ${total}.",
+  "dragHandleChange": "${itemLabel}, új helyzet: ${position} / ${total}. A megerősítéshez nyomja le a szóközbillentyűt.",
+  "dragHandleCommit": "${itemLabel}, aktuális helyzet: ${position} / ${total}",
+  "dragHandleIdle": "${itemLabel} a tartalmat a szóközbillentyűvel és a nyílbillentyűkkel rendezheti át. Aktuális pozíció: ${position}/${total}."
+}

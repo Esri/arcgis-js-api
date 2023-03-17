@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "Sắp xếp lại ${itemLabel}, vị trí hiện tại ${position} trên ${total}.",
+  "dragHandleChange": "${itemLabel}, vị trí mới ${position} trên ${total}. Nhấn dấu cách để xác nhận.",
+  "dragHandleCommit": "${itemLabel}, vị trí hiện tại ${position} trên ${total}.",
+  "dragHandleIdle": "${itemLabel}, nhấn dấu cách và sử dụng các phím mũi tên để sắp xếp lại nội dung. Vị trí hiện tại ${position} trên ${total}."
+}

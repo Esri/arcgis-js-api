@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../output/BlendOptions","../../shaderModules/interfaces"],(function(l,o,e){"use strict";function c(l,c){const b=c.blendMode;b!==o.LayerBlendMode.Normal&&(b===o.LayerBlendMode.Reflect&&l.code.add(e.glsl`float reflectBlend(in float cb, in float cl) {
 return (cl == 1.0) ? cl : min(cb * cb / (1.0 - cl), 1.0);
@@ -82,4 +82,4 @@ return setLum(sbase > 0.0 ? (cbase - minbase) * ssat / sbase : vec3(0.0), clum);
           vec3 f = vec3(vividLight(cb.r, cl.r), vividLight(cb.g, cl.g), vividLight(cb.b, cl.b));
           return vec4(f * ol * ob + cl * ol * (1.0 - ob) + cb * ob * (1.0 - ol), mix(ob, 1.0, ol));`:e.glsl``}
     }
-  `))}l.BlendModes=c,Object.defineProperties(l,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+  `))}l.BlendModes=c,Object.defineProperty(l,Symbol.toStringTag,{value:"Module"})}));

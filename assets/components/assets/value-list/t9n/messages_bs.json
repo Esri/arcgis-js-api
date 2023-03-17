@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "Promjena redoslijeda ${itemLabel}, trenutačni položaj ${position} od ${total}.",
+  "dragHandleChange": "${itemLabel}, novi položaj ${position} od ${total}. Pritisnite razmaknicu za potvrdu.",
+  "dragHandleCommit": "${itemLabel}, trenutačni položaj ${position} od ${total}.",
+  "dragHandleIdle": "${itemLabel}, pritisnite razmaknicu i upotrijebite tipke sa strelicama za promjenu redoslijeda sadržaja. Trenutačni položaj ${position} od ${total}."
+}

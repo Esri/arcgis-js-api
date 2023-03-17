@@ -173,7 +173,7 @@
 
   .esri-directions__stop-handle {
     flex: 0 0 auto;
-    padding-left: $side-spacing--half;
+    padding-inline-start: $side-spacing--half;
   }
 
   .esri-search__sources-button {
@@ -302,7 +302,7 @@
     display: flex;
     padding: $cap-spacing $side-spacing--half;
     border: none;
-    border-left: $border-size--active solid transparent;
+    border-inline-start: $border-size--active solid transparent;
     cursor: pointer;
   }
 

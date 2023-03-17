@@ -1,0 +1,6 @@
+{
+  "dragHandleActive": "Endrer rekkefølgen på ${itemLabel}, gjeldende posisjon ${position} av ${total}.",
+  "dragHandleChange": "${itemLabel}, ny posisjon ${position} av ${total}. Trykk på mellomromstasten for å bekrefte.",
+  "dragHandleCommit": "${itemLabel}, gjeldende posisjon ${position} av ${total}.",
+  "dragHandleIdle": "${itemLabel}, trykk på mellomromstasten, og bruk piltastene for å endre innholdsrekkefølgen. Gjeldende posisjon ${position} av ${total}."
+}

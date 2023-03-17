@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
-*/
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/lang","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/subclass","./BaseFunctionArguments"],(function(t,s,r,e,o,i,c){"use strict";var n;let a=n=function(s){function e(){var t;return(t=s.apply(this,arguments)||this).statistics=null,t.histograms=null,t}return t._inheritsLoose(e,s),e.prototype.clone=function(){return new n({statistics:r.clone(this.statistics),histograms:r.clone(this.histograms)})},e}(c);s.__decorate([e.property({json:{write:!0}})],a.prototype,"statistics",void 0),s.__decorate([e.property({json:{write:!0}})],a.prototype,"histograms",void 0),a=n=s.__decorate([i.subclass("esri.layers.support.rasterFunctions.StatisticsHistogramsFunctionArguments")],a);return a}));

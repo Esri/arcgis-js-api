@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
-define(["exports","../../chunks/_rollupPluginBabelHelpers","../utils","./operations/queryAttachments","../support/AttachmentQuery"],(function(t,e,n,r,u){"use strict";function a(t,e,n){return o.apply(this,arguments)}function o(){return(o=e._asyncToGenerator((function*(t,e,a){const o=n.parseUrl(t);return r.executeAttachmentQuery(o,u.from(e),{...a}).then((t=>r.processAttachmentQueryResult(t.data.attachmentGroups,o.path)))}))).apply(this,arguments)}t.executeAttachmentQuery=a,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../utils","./operations/queryAttachments","../support/AttachmentQuery"],(function(t,e,n,r,u){"use strict";function o(t,e,n){return c.apply(this,arguments)}function c(){return(c=e._asyncToGenerator((function*(t,e,o){const c=n.parseUrl(t);return r.executeAttachmentQuery(c,u.from(e),{...o}).then((t=>r.processAttachmentQueryResult(c,t)))}))).apply(this,arguments)}t.executeAttachmentQuery=o,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

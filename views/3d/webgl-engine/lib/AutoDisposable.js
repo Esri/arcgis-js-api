@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
-*/
-define(["exports","../../../../chunks/_rollupPluginBabelHelpers"],(function(s,e){"use strict";const i=s=>{let i=function(s){function i(){var e;return(e=s.apply(this,arguments)||this)._isDisposed=!1,e}return e._inheritsLoose(i,s),i.prototype.dispose=function(){for(const s of this._managedDisposables??[]){const e=this[s];this[s]=null,e&&"function"==typeof e.dispose&&e.dispose()}this._isDisposed=!0},e._createClass(i,[{key:"isDisposed",get:function(){return this._isDisposed}}]),i}(s);return i};let t=function(s){function i(){return s.apply(this,arguments)||this}return e._inheritsLoose(i,s),i}(i(function(){function s(){}return s}()));function n(){return(s,e)=>{s.hasOwnProperty("_managedDisposables")||(s._managedDisposables=s._managedDisposables?.slice()??[]),s._managedDisposables?.unshift(e)}}s.AutoDisposable=t,s.AutoDisposableMixin=i,s.autoDispose=n,Object.defineProperties(s,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

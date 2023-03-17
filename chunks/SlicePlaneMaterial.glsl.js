@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/util/View.glsl","../views/3d/webgl-engine/core/shaderModules/Float4PassUniform","../views/3d/webgl-engine/core/shaderModules/FloatPassUniform","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/lib/VertexAttribute"],(function(e,d,r,i,o,a,t){"use strict";function l(e){const l=new a.ShaderBuilder;l.extensions.add("GL_OES_standard_derivatives");const{vertex:g,fragment:n,attributes:s,varyings:c}=l;return d.addProjViewLocalOrigin(g,e),s.add(t.VertexAttribute.POSITION,"vec3"),s.add(t.VertexAttribute.UV0,"vec2"),c.add("vUV","vec2"),g.code.add(o.glsl`void main(void) {
 vUV = uv0;

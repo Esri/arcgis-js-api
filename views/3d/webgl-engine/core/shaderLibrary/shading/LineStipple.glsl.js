@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.25/esri/copyright.txt for details.
+See https://js.arcgis.com/4.26/esri/copyright.txt for details.
 */
 define(["exports","../../../../../../core/maybe","../util/RgbaFloatEncoding.glsl","../util/View.glsl","../util/WebGL2Utils","../../shaderModules/Float4PassUniform","../../shaderModules/FloatPassUniform","../../shaderModules/interfaces","../../shaderModules/Texture2DPassUniform","../../shaderModules/TextureSizeUniformType","../../../materials/StippleTextureRepository","../../../shaders/ensureColor4"],(function(e,t,i,l,o,a,r,s,p,n,d,c){"use strict";function u(e,t){e.constants.add("stippleAlphaColorDiscard","float",.001),e.constants.add("stippleAlphaHighlightDiscard","float",.5),t.stippleEnabled?f(e,t):S(e)}function f(e,t){const u=!(t.draped&&t.stipplePreferContinuous),{vertex:f,fragment:S}=e;S.include(i.RgbaFloatEncoding),t.draped||(l.addCameraPosition(f,t),f.uniforms.add(new r.FloatPassUniform("worldToScreenPerDistanceRatio",((e,t)=>1/t.camera.perScreenPixelRatio))),f.code.add(s.glsl`float computeWorldToScreenRatio(vec3 segmentCenter) {
 float segmentDistanceToCamera = length(segmentCenter - cameraPosition);
@@ -76,4 +76,4 @@ return worldToScreenPerDistanceRatio / segmentDistanceToCamera;
 #define blendStipple(color, stippleAlpha) mix(color, stippleOffColor, stippleAlpha)`)):S.code.add(s.glsl`#define discardByStippleAlpha(stippleAlpha, threshold) if (stippleAlpha < threshold) { discard; }
 #define blendStipple(color, stippleAlpha) vec4(color.rgb, color.a * stippleAlpha)`)}function S(e){e.fragment.code.add(s.glsl`float getStippleAlpha() { return 1.0; }
 #define discardByStippleAlpha(_stippleAlpha_, _threshold_) {}
-#define blendStipple(color, _stippleAlpha_) color`)}function g(e){return t.isSome(e)?(Math.floor(.5*(d.computeLongestPattern(e)-1))+.5)/e.pixelRatio:1}function m(e){const i=e.stipplePattern;return t.isSome(i)?d.computeTextureSize(e.stipplePattern)/i.pixelRatio:1}const h=s.glsl.float(.4);e.LineStipple=u,e.computePixelSize=m,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+#define blendStipple(color, _stippleAlpha_) color`)}function g(e){return t.isSome(e)?(Math.floor(.5*(d.computeLongestPattern(e)-1))+.5)/e.pixelRatio:1}function m(e){const i=e.stipplePattern;return t.isSome(i)?d.computeTextureSize(e.stipplePattern)/i.pixelRatio:1}const h=s.glsl.float(.4);e.LineStipple=u,e.computePixelSize=m,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));
