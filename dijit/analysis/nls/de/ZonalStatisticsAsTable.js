@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Zonen-Raster oder -Features auswählen",outputTableName:"Name der Ergebnistabelle",zoneField:"Zonenfeld",inputValueRaster:"Werte-Raster auswählen",ignoreNodata:"NoData-Werte in Berechnungen ignorieren (optional)",ignore:"Ignorieren",statisticType:"Statistiktyp (optional)",percentileValues:"Perzentilwerte (optional)",percentileInterpolationType:"Perzentil-Interpolationstyp (optional)",processAsMultidimensional:"Als mehrdimensional verarbeiten (optional)",allSlices:"Alle Ausschnitte",outputZonalStatsName:"Zonale Statistiken für ${valuelayername} in ${layername}",itemDescription:'Über "Zonale Statistiken als Tabelle" erstellte Analyse-Feature-Tabelle',itemTags:"Raster-Analyseergebnis, Zonale Statistiken als Tabelle, ${layername}, ${valuelayername}",autoDetect:"Automatisch erkennen",nearest:"Nächster",linear:"Linear"});

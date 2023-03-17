@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define([],(function(){var r="https://laci2.esri.com/jenkins/job/report-player-jsapi-pr/lastSuccessfulBuild/artifact/release";return{logData:!0,showAreaDataUtilUndefinedData:!1,createPlayerCommand:{saveDataJsonAsTextFile:!1,useTestBuild:!1,configUrl:r+"/reportPlayer/config.js",baseUrl:r,mainUrl:r+"/dojo/dojo.js",esriDijitCssUrl:"https://js.arcgis.com/3.31/dijit/themes/claro/claro.css",esriCssUrl:r+"/reportPlayer/reportPlayer.css"},createPDFCommand:{removeUnicodeChars:!1},preview:{bigValues:!1},charts:{enableEffects:!1},table:{printGridRefresh:!1},emulateErrors:{playerError:!1,contentErrors:!1,themeParseError:!1,metadataParseError:!1,layoutParseError:0,reportContainerRenderError:!1,createReportError:!1,createReportNaN:!1,createReportNull:!1,getMapItemError:!1,emptyDataProviderResponse:!1,emptyTemplateJson:!1}}}));

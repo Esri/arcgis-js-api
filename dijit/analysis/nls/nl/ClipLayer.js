@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Kies objecten om te clippen",filterSelectLabel:"Alle objecten clippen of definieer een subset (optioneel)",targetArea:"Kies een gebied om naar te clippen",outputLayerName:"Clip ${inputLayerName} naar ${clipLayerName}",itemDescription:"Objectlaag die is gegenereerd door uitvoering van de clip-oplossingen. Objecten van ${inputLayerName} zijn geclipt naar ${clipLayerName}.",itemTags:"Analyseresultaat, Cliplaag, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Objectlaag gegenereerd van cliplaag"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Alegeți setul de date pentru a descrie",describeDataLabel:"Înțelegeți-vă datele creând un (opțional)",sampleLayer:"Strat tematic eșantion",extentLayer:"Strat tematic de extindere",noOfFeaturesLabel:"Numărul de obiecte spaţiale de inclus",outputLayerName:"Nume strat tematic rezultat",resultName:"Descrieți datele ${layerName}",itemDescription:"Strat tematic de obiecte spaţiale generat de rularea Descriere set de date pe ${layerName}. ",itemTags:"Rezultat analiză, Descriere set de date, ${layerName}",itemSnippet:"Strat tematic de obiecte spaţiale generat de Descriere set de date."});

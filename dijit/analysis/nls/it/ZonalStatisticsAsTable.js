@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Scegliere raster di zona o feature",outputTableName:"Risultato nome tabella",zoneField:"Campo Zona",inputValueRaster:"Scegliere value raster",ignoreNodata:"Ignora valore NoData nei calcoli (facoltativo)",ignore:"Ignora",statisticType:"Tipo statistiche (facoltativo)",percentileValues:"Valori percentili (facoltativo)",percentileInterpolationType:"Tipo di interpolazione percentile (facoltativo)",processAsMultidimensional:"Elabora come multidimensionale (facoltativo)",allSlices:"Tutte le sezioni",outputZonalStatsName:"Statistiche zonali per ${valuelayername}all'interno di ${layername}",itemDescription:"Tabella delle caratteristiche di analisi generata da statistiche zonali come tabella",itemTags:"Risultato analisi raster, statistiche zonali come tabella, ${layername}, ${valuelayername}",autoDetect:"Rilevamento automatico",nearest:"Più vicino",linear:"Lineare"});

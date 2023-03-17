@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../lang","./LayerInfo","./LayerMapSource","./LayerDataSource"],(function(e,r,a,o,n,s,t,c){var i=e(s,{declaredClass:"esri.layers.DynamicLayerInfo",defaultVisibility:!0,parentLayerId:-1,maxScale:0,minScale:0,constructor:function(e){var r;e&&(e.source?r="mapLayer"===e.source.type?new t(e.source):new c(e.source):(r=new t).mapLayerId=this.id,this.source=r)},toJson:function(){var e=this.inherited(arguments);return e.source=this.source&&this.source.toJson(),n.fixJson(e)}});return a("extend-esri")&&r.setObject("layers.DynamicLayerInfo",i,o),i}));

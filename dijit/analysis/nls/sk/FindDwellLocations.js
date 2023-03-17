@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vyberte vrstvu pre nájdenie sídiel z",selectTracksLabel:"Vyberte jedno alebo viac polí pre identifikáciu dráh",defineDistanceLabel:"Definujte geografickú vzdialenosť vyhľadávania",distMethodLabel:"Vyberte metódu pre vypočítanie vzdialenosti",temporalSearchLabel:"Definujte rozsah časového vyhľadávania",outputDwellLabel:"Výstup sídelných lokalít ako",outputLayerName:"Nájsť sídelné lokality pre ${inputLayerName}",meanCenters:"Geografický priemerný stred prvkov",convexHulls:"Konvexné obálky",dwellFeatures:"Prvky reprezentujúce sídla",allFeatures:"Všetky prvky",itemDescription:"Vrstvy prvkov generované nástrojom pre riešenie úlohy Nájsť sídelné lokality pre ${inputLayerName}.",itemTags:"Výsledok analýzy, Nájsť sídelné lokality, ${inputLayerName}",itemSnippet:"Vrstvy prvkov generované nástrojom Nájsť sídelné lokality",timeIntervalSplit:"Analyzovať údaje s časovými intervalmi (voliteľné)",timeBoundaryValidationMsg:"Časový interval musí byť väčší než prehľadávaný časový rozsah."});

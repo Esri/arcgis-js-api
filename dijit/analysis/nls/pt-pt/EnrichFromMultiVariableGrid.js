@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Escolher os elementos de pontos a melhorar",chooseMVgridLyrLabel:"Escolher a grelha de múltiplas variáveis a partir da qual melhorar",chooseVariables:"Escolher as variáveis a adicionar",outputLayerName:"${inputFeatures} melhorados de ${gridLayer}",itemDescription:"Camada de elementos gerada através da execução da solução Melhorar a partir de uma Grelha Multivariável para ${inputFeatures}.",itemTags:"Resultado da Análise, Melhorar a partir de uma Grelha Multivariável, ${inputFeatures}, ${gridLayer}",itemSnippet:"Camada de elementos gerada a partir de Melhorar a partir de uma Grelha Multivariável."});

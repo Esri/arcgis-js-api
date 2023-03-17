@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({distToNearest:"Distancia hasta Más cercana",attrOfInterest:"Atributo de Más cercana",summaryNearby:"Resumen de Vecina",summaryIntersecting:"Resumen de De intersección",distToNearestLabel:"La distancia entre el centro de bin y la entidad más cercana en la capa de entrada",attrOfInterestLabel:"El valor de un campo especificado de la entidad más cercana de la capa de entrada",summaryNearbyLabel:"Estadística calculada de todas las entidades que se encuentran dentro de la distancia especificada respecto del centro de bin",summaryIntersectingLabel:"Estadística calculada en todas las entidades que intersecan el bin",maxDistancefromCtr:"Distancia máxima desde el centro de bin",fieldToIncude:"Campo a incluir",statstoCalculate:"Estadística a calcular",summFeatuesWithin:"Resumir entidades dentro de",smallMaxDistErrorMsg:"La distancia máxima desde el centro de bin debe ser mayor que el tamaño de bin.",smallSumFeaturesErrorMsg:"La distancia máxima desde el centro de bin debe ser mayor que el tamaño de bin."});

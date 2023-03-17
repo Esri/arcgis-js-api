@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","dojo/has","../../../../../kernel","./EnterpriseBrowseItem","../../../ItemTypes"],(function(e,s,n,i,t){var o={getConfig:function(e){var s=i.getConfig(e);return s.baseSections.push("all"),s.baseSections.push("subscription"),(e.allowedItemTypes.indexOf(t.RFT)>-1||e.allowedItemTypes.indexOf(t.DLPK)>-1)&&s.baseSections.push("livingAtlas"),s}};return s("extend-esri")&&e.setObject("dijit.analysis.mixins.browselayers.configs.AGOLBrowseItem",o,n),o}));

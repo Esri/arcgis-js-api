@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["dojo/dom-class","dojo/dom-construct","esri/dijit/geoenrichment/utils/ColorUtil","esri/dijit/geoenrichment/utils/ShapeUtil","./ChartLegendSymbols"],(function(e,o,r,t,i){var l={renderSymbol:function(l){var d=o.create("div",{class:"dijitInline esriGEReportPlayerChartLegendSymbol"}),a=l.stroke&&r.toCSSColor(l.stroke),n=l.fill&&r.toCSSColor(l.fill);if(l.marker&&!l.customSymbol){e.add(d,"isSVGSymbol");var s=t.createSVGNode({xmin:0,ymin:0,width:6,height:6},{width:(l.width||8)+"px",height:(l.height||8)+"px",overflow:"visible"});s.appendChild(t.createPathNode(l.marker,{borderColor:a||"transparent",borderWidth:2,fillColor:n||"transparent"})),o.place(s,d)}else{var h=l.customSymbol||l.defaultSymbol||i.SQUARE;e.add(d,h.toLowerCase()),n&&(d.style.backgroundColor=n),a&&(d.style.border=("line"===h.toLowerCase()?1:2)+"px solid "+a)}return d}};return l}));

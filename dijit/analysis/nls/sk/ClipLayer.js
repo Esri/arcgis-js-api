@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vybrať prvky pre orezanie",filterSelectLabel:"Orezať všetky prvky alebo definovať podmnožinu (voliteľné)",targetArea:"Vybrať oblasť na orezanie",outputLayerName:"Orezať ${inputLayerName} podľa ${clipLayerName}",itemDescription:"Vrstvy prvkov generované z riešenia nástroja Orezať. Prvky z ${inputLayerName} boli orezané podľa ${clipLayerName}.",itemTags:"Výsledok analýzy, Orezať vrstvu, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Vrstvy prvkov generované nástrojom Orezať vrstvu"});

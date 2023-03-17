@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"目的地ラスターまたはフィーチャの選択",destinationField:"Destination フィールド (オプション)",inputDistanceAccumulationRaster:"距離累積ラスターの選択",inputBackDirectionRaster:"逆方向または流向ラスターの選択",pathType:"パスの種類 (オプション)",bestSingle:"最適な単一パス",eachCell:"各セル",eachZone:"各ゾーン",outputRasterName:"結果ラスター レイヤー名",outputLayerName:"${layername} のラスターとしての最適パス",drawSourcePointLayerName:"ソース ポイント",itemDescription:"${layername} 上のラスターとして最適パスを実行して生成されたフィーチャ レイヤー。 ",itemTags:"解析結果、ラスターとしての最適パス、${layername} ${fieldname}",itemSnippet:"ラスターとして最適パスから生成されたフィーチャ レイヤー。"});

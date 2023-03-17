@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../form/InputDate"],(function(t,e,i,n,a){var s=t([a],{_serializationValue:null,postCreate:function(){this.inherited(arguments)},connectXNode:function(t,e){this.inherited(arguments),e||"/metadata/Esri/CreaDate"===t.gxePath&&this.setInputValue(this.formatDate(t.gxeDocument.datestamp))},getXmlValue:function(){return"/metadata/Esri/ModDate"===this.parentXNode.gxePath?(this.parentXNode.gxeDocument.datestamp=new Date,this.formatDate(this.parentXNode.gxeDocument.datestamp)):this.inherited(arguments)},importValue:function(t,i){var n,a=null,s=[];"string"!=typeof i||null===i?this.inherited(arguments):-1!==i.indexOf("T")?this.inherited(arguments):-1!==i.indexOf("Z")?this.inherited(arguments):-1!==i.indexOf("-")?this.inherited(arguments):8===(a=e.trim(i)).length?(s[0]=a.substring(0,4),s[1]=a.substring(4,6),s[2]=a.substring(6,8),n=s[0]+"-"+s[1]+"-"+s[2],this.setInputValue(n)):6===a.length?(s[0]=a.substring(0,4),s[1]=a.substring(4,6),n=s[0]+"-"+s[1],this.setInputValue(n)):this.inherited(arguments)}});return i("extend-esri")&&e.setObject("dijit.metadata.types.arcgis.form.InputDate",s,n),s}));

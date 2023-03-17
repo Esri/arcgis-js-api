@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({toolDefine:"トレンド ラスターを使用した予測",outputLayerName:"${layername}_predict",variablesLabel:"予測する変数の選択",variablesListLabel:"変数 [ディメンション情報] (説明)",dimensionDefinitionLabel:"予測ディメンション値の提供に使用する方法を選択",dimensionValuesLabel:"予測のディメンション値を指定",dimensionIntervalLabel:"予測のディメンション間隔を指定",intervalValueLabel:"開始値と終了値間のステップ数を指定",intervalUnitLabel:"時間値の間隔に使用する単位を選択",startLabel:"開始値",endLabel:"終了値",byValueLabel:"値で",byIntervalLabel:"間隔で",hours:"時間",days:"日",weeks:"週",months:"月",years:"年",custom:"カスタム",itemDescription:"[トレンド ラスターを使用した予測] から生成された分析イメージ サービス",itemTags:"ラスター解析結果、トレンド ラスターを使用した予測、${layername}",itemSnippet:"[トレンド ラスターを使用した予測] から生成された分析イメージ サービス"});

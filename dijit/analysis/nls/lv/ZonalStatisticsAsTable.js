@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Izvēlieties zonas rastru vai elementus",outputTableName:"Rezultātu tabulas nosaukums",zoneField:"Zonas lauks",inputValueRaster:"Izvēlieties vērtību rastru",ignoreNodata:"Aprēķinos ignorēt NoData (papildiespēja)",ignore:"Ignorēt",statisticType:"Statistikas veids (papildiespēja)",percentileValues:"Procentiles vērtības (papildiespēja)",percentileInterpolationType:"Procentiles interpolācijas veids (papildiespēja)",processAsMultidimensional:"Apstrādāt kā multidimensionālu (papildiespēja)",allSlices:"Visi sektori",outputZonalStatsName:"${valuelayername} zonas statistika atbilstoši ${layername}",itemDescription:"Analīzes elementu tabula, kas ģenerēta no risinājuma Zonas statistika tabulā",itemTags:"Rastra analīzes rezultāts, Zonas statistika tabulā, ${layername}, ${valuelayername}",autoDetect:"Noteikt automātiski",nearest:"Tuvākais",linear:"Lineārs"});

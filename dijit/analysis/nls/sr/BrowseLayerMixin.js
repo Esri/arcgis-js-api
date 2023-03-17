@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Odaberite Living Atlas sloj za analizu",customAnalysisLayerTitle:"Izaberi sloj za analizu",searchPlaceholderText:"Pretražite Living Atlas slojeve za analizu",searchCustomPlaceholderText:"Pretraži slojeve za analizu",mainActionTitle:"Selektujte",customActionName:"Selektujte i dodajte mapi",customeSectionName:"Living Atlas slojevi za analizu",Categories:"Kategorije",boundaries:"Granice",places:"Mesta",boundariesAndPlaces:"Svetske granice i mesta",hexbins:"Heksagonalno grupisani podaci",transportation:"Transport",point:"Tačkasti slojevi",line:"Slojevi polilinija",polygon:"Slojevi poligona",pointFilterName:"Tačka",lineFilterName:"Poligon",polygonFilterName:"Polilinija",multiPointFilterName:"Više tačaka",geometryFilterName:"Geometrija",featureLayerName:"Sloj geoobjekata",tableLayerName:"Tabela",itemTypeFilterName:"Tip stavke",instantFilterName:"Trenutno",intervalFilterName:"Interval",timeFilterName:"Vreme",edit:"Izmeni",boundaryLayers:"Esri slojevi granica",customAnalysisGroupName:"Grupa za analiziranje organizacije"});

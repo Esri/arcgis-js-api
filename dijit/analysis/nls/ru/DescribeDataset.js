@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Выберите набор данных для описания",describeDataLabel:"Изучите данные, создав (дополнительно)",sampleLayer:"Образец слоя",extentLayer:"Экстент слоя",noOfFeaturesLabel:"Используемое количество объектов",outputLayerName:"Имя слоя результата",resultName:"Описание данных ${layerName}",itemDescription:"Векторный слой, созданный инструментом Описание набора данных по ${layerName}. ",itemTags:"Результат анализа, DescribeDataset , ${layerName}",itemSnippet:"Векторный слой, полученный в результате работы Описание набора данных."});

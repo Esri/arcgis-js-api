@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["./GridDataUtil"],(function(e){var t={fitContentInsideCell:function(t,i){var n=e.getFieldInfo(t);if(n&&t.content){var r=t.content,a=t.parentGrid,s=t[a.hasRealBorders||a.isMultiDataTable()?"getContentWidth":"getWidth"](),o=t[a.hasRealBorders||a.isMultiDataTable()?"getContentHeight":"getHeight"]();n.isReportSection?(r.setHeight(o,{resizeContentProportionally:!0}),r.setWidth(s,{resizeContentProportionally:!0})):n.isChart?r.resize(s,o):n.isInfographic?r.resize(s,o,{sync:i&&i.sync}):n.isMap?r.resize({w:s,h:o}):(n.isImage||n.isShape)&&r.resize({w:s,h:o},t.getFullStyle())}}};return t}));

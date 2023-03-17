@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["require","exports","../polyfill/tsSupport/extends"],(function(e,i,r){"use strict";Object.defineProperty(i,"__esModule",{value:!0}),i.DiagnosticSeverity=void 0,function(e){e.Error="Error",e.Warning="Warning"}(i.DiagnosticSeverity||(i.DiagnosticSeverity={}))}));

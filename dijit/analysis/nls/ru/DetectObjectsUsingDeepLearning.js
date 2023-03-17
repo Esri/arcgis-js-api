@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({toolDefine:"Определить объекты при помощи глубокого обучения",outputLayerName:"${layername}_detected",modelLabel:"Выберите модель глубокого обучения для определения объектов",modelArgsLabel:"Введите аргументы модели глубокого обучения",nameLabel:"Имя",valueLabel:"Значение",removeDuplicatesLable:"Удалить дублирующиеся объекты из выходных данных (дополнительно)",queryModelArgsMsg:"Запрос аргументов модели...",queryModelArgsErrMsg:"Не удалось запросить аргументы модели.",nonMaxSuppressionLabel:"Не максимальное подавление",options:"Опции",confidenceLabel:"Поле балла достоверности",classValueLabel:"Поле значений класса",maxOverlapLabel:"Максимальный коэффициент перекрытия",numberOnlyMsg:"Допускаются только числовые значения.",processingModeLabel:"Режим обработки",processAsMosaicLabel:"Обработка как мозаики изображений",processAsItemsLabel:"Обработка всех растровых элементов отдельно",analysisLayerLabel:"Выберите изображение для определения объектов",itemDescription:"Сервис анализа изображений, созданный инструментом Определить объекты при помощи глубокого обучения",itemTags:"Результат анализа растра, Определить объекты при помощи глубокого обучения, ${layername}",itemSnippet:"Сервис анализа изображений, созданный инструментом Определить объекты при помощи глубокого обучения"});

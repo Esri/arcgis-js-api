@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({modifiedTitle:"フォレストベースの分類と回帰分析 (Forest-based Classification and Regression) - ${goal}",train:"トレーニングの実行",trainAndPredict:"トレーニングおよび予測",selectGoal:"操作を選択してください。",trainGoal:"モデルをトレーニングしてモデルのパフォーマンスを評価する",trainAndPredictGoal:"モデルをトレーニングして値を予測する",inFeaturesLabel:"トレーニング レイヤーを選択する",variablePredictLabel:"予測するフィールドを選択する",categorical:"カテゴリ",chooseExplanatoryField:"1 つ以上の説明フィールドを選択する",chooseFeaturesToPredict:"値を予測するレイヤーを選択する",chooseExplainMatch:"説明フィールドの照合方法を選択する",options:"オプション",advancedForestOptions:"高度なフォレスト オプション",numberOfTrees:"ツリー数",minimumLeafSize:"最小リーフ サイズ",maximumTreeDepth:"最大ツリー階層",sampleSize:"ツリーあたりの利用可能なデータ (%)",randomVariables:"ランダムにサンプリングされた変数の数",variableConstraintMsg:"1 から説明変数の数の範囲内である必要があります。",validationOptions:"整合チェック オプション",percentageForValidation:"検証のために除外するトレーニング データ (%)",outputLayerName:"FBCR ${inFeaturesName}",itemDescription:"フォレストベースの分類と回帰分析 (Forest-based Classification and Regression) ${goal} ソリューションの実行から生成されるフィーチャ レイヤー。",itemTags:"解析結果、フォレストベースの分類と回帰分析 (Forest-based Classification and Regression)、${inFeaturesName}、${goal}",itemSnippet:"フォレストベースの分類と回帰分析 (Forest-based Classification and Regression) (${goal}) から生成されるフィーチャ レイヤー"});

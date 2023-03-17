@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","./pixelShaders","./RasterFunctionX","./RasterFunctionWebGLMixin"],(function(t,e,r,n,i){return t([n,i],{declaredClass:"esri.layers.rasterLib.function.IdentityFunction",functionName:"Identity",supportWebGL:!0,support2D:!0,constructor:function(t){this.functionArguments={raster:null}},bind:function(t){var r=this.getSourceRasterInfo(t);return r.raster?(this.rasterInfo=e.mixin(r.raster,{}),!0):new Error("The raster input to identity function is invalid.")},read2D:function(t){return t.raster},readGL:function(t){this._initializeProgram({fragment:r.identity,fragmentName:"identity"});var e=this._setupTextureData(t.raster),n=this.bindFrameBuffer();return this._bindTexture(e.texture,"u_image"),this._drawGL(),{extent:e.extent,texture:n.texture}}})}));

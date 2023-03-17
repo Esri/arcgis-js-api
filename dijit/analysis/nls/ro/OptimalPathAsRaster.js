@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Alegeți rasterul sau obiectele spațiale de destinație",destinationField:"Câmp destinație (opțional)",inputDistanceAccumulationRaster:"Alegeți rasterul acumulării distanței",inputBackDirectionRaster:"Alegeți direcția înapoi sau rasterul direcției fluxului",pathType:"Tipul traseului (opțional)",bestSingle:"Cel mai bun element unic",eachCell:"Fiecare celulă",eachZone:"Fiecare zonă",outputRasterName:"Nume strat tematic raster rezultat",outputLayerName:"Traseul optim ca raster al ${layername}",drawSourcePointLayerName:"Puncte sursă",itemDescription:"Strat tematic de obiecte spaţiale generat din rularea traseului optim ca raster pe ${layername}. ",itemTags:"Rezultatul analizei, traseul optim ca raster, ${layername} ${fieldname}",itemSnippet:"Strat tematic de obiecte spaţiale generat din traseul optim ca raster."});

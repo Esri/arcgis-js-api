@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/CacheUtil"],(function(e){var a,t={};function n(){return e.get("ImageDataHolder.imageData")}function r(){return e.get("ImageDataHolder.fileNameToOriginal")}return t.setImageDataHolder4x=function(e){a=e;var t=n();for(var r in t)a.putImageData(r,t[r])},t.putImageData=function(e,t){if(a)a.putImageData(e,t);else if("string"==typeof e&&t){var i=e.toLowerCase();r()[i]=e,n()[i]=t}else console.error("Invalid image filename or data!")},t.getImageData=function(e){return a?a.getImageData(e):"string"!=typeof e?null:n()[e.toLowerCase()]},t.findFileNameByData=function(e){if(a)return a.findFileNameByData(e);var t=n();for(var i in t)if(e===t[i])return r()[i];return null},t}));

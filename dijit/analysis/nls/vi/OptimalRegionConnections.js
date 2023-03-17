@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Chọn raster khu vực hoặc đối tượng",inputCostRaster:"Chọn raster chi phí (tùy chọn)",inputBarrierRasterOrFeatures:"Chọn đối tượng hoặc raster rào cản (tùy chọn)",distanceMethod:"Phương pháp khoảng cách (tùy chọn)",connectionsWithinRegions:"Kết nối trong khu vực (tùy chọn)",generateConnections:"Tạo Kết nối",noConnections:"Không có Kết nối",planar:"Phẳng",geoDesic:"Trắc địa",outputOptimalLinesName:"Cho kết quả tên lớp đối tượng dòng kết nối tối ưu",outputNeighborConnectionsName:"Cho kết quả là tên lớp đối tượng kết nối lân cận (tùy chọn)",outputLayerName:"Kết nối vùng tối ưu ${layername}",drawSourcePointLayerName:"Các điểm nguồn",itemDescription:"Lớp đối tượng được tạo ra từ việc chạy Kết nối Vùng Tối ưu trên ${layername}. ",itemTags:"Kết quả Phân tích, Kết nối Vùng Tối ưu, ${layername} ${fieldname}",itemSnippet:"Lớp đối tượng được tạo ra từ Kết nối Vùng Tối ưu.",noValueMessage:"Giá trị này là bắt buộc."});

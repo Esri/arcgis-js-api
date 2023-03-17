@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Pasirinkite sluoksnį, kuriame ieškoti gyvenamųjų vietų",selectTracksLabel:"Pasirinkite vieną arba kelis laukus, kad galėtumėte nustatyti trajektorijas",defineDistanceLabel:"Nurodykite erdvinį paieškos atstumą",distMethodLabel:"Pasirinkite atstumo skaičiavimo metodą",temporalSearchLabel:"Nurodykite laikinį paieškos intervalą",outputDwellLabel:"Pateikti gyvenamąsias vietas kaip",outputLayerName:"Rasti gyvenamąsias vietas ${inputLayerName}",meanCenters:"Vidutiniai centrai",convexHulls:"Iškiliosios aprėptys",dwellFeatures:"Gyvenamųjų vietų elementai",allFeatures:"Visi elementai",itemDescription:"Elementų sluoksnis, sukurtas naudojant sprendimą Ieškoti gyvenamųjų vietų, skirtą ${inputLayerName}.",itemTags:"Analizės rezultatas, Rasti gyvenamąsias vietas, ${inputLayerName}",itemSnippet:"Elementų sluoksnis sukurtas naudojant Rasti gyvenamąsias vietas",timeIntervalSplit:"Analizuoti duomenis su laiko intervalais (pasirinktinai)",timeBoundaryValidationMsg:"Laiko intervalas turi būti didesnis negu laikinas paieškos intervalas."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayer:"Изберете слоя, от който да намерите близки събития",entityField:"Изберете поле за идентифициране на събития",entityLayer:"Изберете слоя, за да посочите обекти, които Ви интересуват",defineDistanceLabel:"Определете разстояние за пространствено търсене.",distMethodLabel:"Изберете метода за изчисляване на разстояние",temporalSearchLabel:"Определете диапазона от време за търсене на разстояние",optionsLabel:"Разширени опции",maxTraceDepth:"Максимална дълбочина на следите",attributeMatchLabel:"Изберете един или повече атрибути на обекта, които да съвпадат",includeTracksLayer:"Включете слой за проследяване",itemDescription:"Обектен слой, генериран от изпълнението на решението за Проследяване на близки събития ${inputLayername}.",itemTags:"Резултат от анализ, Проследяване на близки събития , ${inputLayername}",itemSnippet:"Обектен слой, генериран от Проследяване на близки събития.",outputLayerName:"Проследяване на близки събития за ${inputLayername}",noEntityFieldMsg:"Слоят на събитията за близост и слоевете на интереси нямат общи полета."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vælg objekter, der skal klippes",filterSelectLabel:"Klip alle objekter, eller definér et undersæt (valgfrit)",targetArea:"Vælg et område, der skal klippes til",outputLayerName:"Klip ${inputLayerName} til ${clipLayerName}",itemDescription:"Vektorlag genereret ud fra kørsel af Klip-løsninger. Objekter fra ${inputLayerName} blev klippet til ${clipLayerName}.",itemTags:"Analyseresultat, Kliplag, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Vektorlag genereret ud fra kliplag"});

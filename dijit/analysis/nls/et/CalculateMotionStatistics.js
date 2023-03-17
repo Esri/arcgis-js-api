@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayer:"Valige kiht statistika arvutamiseks",trackField:"Valige radade tuvastamiseks üks või mitu välja",trackHistoryWindow:"Valige arvutustes kasutatavate punktide arv",distanceMethodLabel:"Valige arvutamisel kasutatav kauguse meetod",idleToleranceLabel:"Määratlege jõudeoleku kriteeriumid (valikuline)",chooseMotionStatsLabel:"Valige üks või mitu liikumisstatistikat",distance:"Vahemaa",speed:"Kiirus",acceleration:"Kiirendus",duration:"Kestus",elevation:"Kõrgusandmed",slope:"Kalle",idle:"Jõude",bearing:"Kurss",selectAll:"Vali kõik",deselectAll:"Tühista kõik valikud",trackSplitting:"Raja tükeldamine",optionsLabel:"Valikud",metersPerSecond:"Meetrit sekundis",kilometersPerHour:"Kilomeetrit tunnis",feetPerSecond:"Jalga sekundis",milesPerHour:"Miili tunnis",nauticalMilesPerHour:"Meremiili tunnis",metersPerSecondSquared:"Meters per second squared",feetPerSecondSquared:"Jalga ruutsekundi kohta",itemDescription:"Kihi ${inputLayername} kohta liikumisstatistika arvutamise lahenduse abil loodud objektikiht.",itemTags:"Analüüsi tulemus, liikumistatistika arvutamine, ${inputLayername}",itemSnippet:"Liikumisstatistika arvutamise abil loodud objektikiht ",outputLayerName:"Arvutage kihi ${inputLayername} liikumisstatistika",splitTracksLabel:"Tükeldatud rajad (valikuline)",timeSplit:"Põhineb sisendite vahelisel ajal",timeIntervalSplit:"Määratud ajaintervalliga"});

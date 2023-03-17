@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Выбрать входной слой",addAVar:"Добавить переменную",distToNearest:"Расстояние до ближайшего",attrOfInterest:"Атрибут ближайшего",summaryNearby:"Информация о близлежащих",summaryIntersecting:"Информация о пересекающих",distToNearestLabel:"Расстояние от центра бина до ближайшего объекта входного слоя",attrOfInterestLabel:"Значение заданного поля от ближайшего объекта входного слоя",summaryNearbyLabel:"Статистика вычисляется для всех объектов, найденных в пределах заданного расстояния от центра бина",summaryIntersectingLabel:"Вычисляется статистика для всех объектов, пересекающих бин",maxDistancefromCtr:"Максимальное расстояние от центра бина",fieldToIncude:"Включаемое поле",statstoCalculate:"Вычисляемая статистика",summFeatuesWithin:"Суммировать объекты пределах",layerChangeWarnMsg:"Добавленные для входного слоя переменные будут удалены, если входной слой будет изменен",validationErrorMsg:"Перед добавлением новой переменной исправьте ошибки проверки",atleastOneVarMsg:"Добавьте к выбранному слою хотя бы одну переменную"});

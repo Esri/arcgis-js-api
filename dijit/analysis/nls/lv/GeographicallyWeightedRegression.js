@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({chooseLayer:"Izvēlēties analizējamo slāni",chooseField:"Izvēlieties modelējamo lauku",chooseExplanatoryField:"Izvēlēties skaidrojošos laukus",chooseNeighborhood:"Izvēlēties, kā tiks noteikta tuvākā apkārtne",distanceBand:"Attāluma diapazons",numNeighbors:"Kaimiņu skaits",chooseWeighted:"Izvēlēties, kā tiks izvērtētas tuvākās apkārtnes funkcijas",bisquare:"Bikvadrāts",gaussian:"Gausa metode",resultLayerName:"Rezultātu slāņa nosaukums",outputLayerName:"GWR ${inputLayerName}",distanceBandWarning:"Attāluma diapazona vērtībai jābūt robežās no ${min} līdz ${max}",numNeighborsWarning:"Kaimiņu skaitam jābūt robežās no ${min} līdz ${max}",explanatoryFieldsWarning:"Izvēlieties vismaz vienu skaidrojošo lauku",explanatoryLayerWarning:"Atlasītajā laukā nav neviena derīga skaidrojošā lauka; lūdzu, izvēlieties citu slāni",inputLayerWarning:"Atlasītajā laukā nav neviena modelēšanai paredzēta skaitļu lauka; lūdzu, izvēlieties citu slāni",itemDescription:"Elementu slānis ir ģenerēts, izmantojot ģeogrāfiski svērtas regresijas risinājumus",itemTags:"Analīzes rezultāts, ģeogrāfiski svērta regresija, ${inputLayerName}, piemērota",itemSnippet:"Elementu slānis ir ģenerēts, izmantojot rīku Ģeogrāfiski svērta regresija"});

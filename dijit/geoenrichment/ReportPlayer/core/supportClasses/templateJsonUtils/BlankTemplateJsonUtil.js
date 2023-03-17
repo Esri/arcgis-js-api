@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/ReportPlayer/core/supportClasses/DocumentOptions","./TemplateJsonModificationUtil"],(function(e,t){var o={createBlankTemplate:function(o){var n={},i=o.documentOptions||e.getDefaultDocumentOptionsGraphicReport(),s=i.left+i.right+o.layout.numColumns*o.elementWidth,l=i.top+i.bottom+o.layout.numRows*o.elementHeight;i.pagesize=e.combineCustomSizeString(s,l,"px"),n.documentOptions=i;for(var u={style:{width:o.layout.numColumns*o.elementWidth},columns:[],rows:[]},m=0;m<o.layout.numColumns;m++)u.columns.push({field:"field"+m,style:{width:o.elementWidth}});for(var r=0;r<o.layout.numRows;r++)u.rows.push({style:{height:o.elementHeight},fieldInfos:{}});return n.sectionsTables=[u],t.adjustDocumentOptions(n),n}};return o}));

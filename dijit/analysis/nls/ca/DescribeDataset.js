@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Trieu el dataset que s'ha de descriure",describeDataLabel:"Per entendre les dades, creeu (de manera opcional) una",sampleLayer:"Capa de mostra",extentLayer:"Capa d'extensió",noOfFeaturesLabel:"Nombre d'entitats que s'inclouran",outputLayerName:"Nom de la capa de resultats",resultName:"Descriu les dades de ${layerName}",itemDescription:"Capa d'entitats generada en executar Descriu el dataset a ${layerName}. ",itemTags:"Resultat de l'anàlisi, Descriu el dataset, ${layerName}",itemSnippet:"Capa d'entitats generada a partir de Descriu el dataset."});

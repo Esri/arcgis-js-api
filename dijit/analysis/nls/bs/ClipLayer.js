@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Izaberite geoobjekte za izrezivanje",filterSelectLabel:"Skratite sve geoobjekte ili definirajte podskup (neobavezno)",targetArea:"Izaberite odredište za izrezivanje",outputLayerName:"Izreži ${inputLayerName} u ${clipLayerName}",itemDescription:"Sloj geoobjekata koji je generiran pokretanjem rješenja Izreži. Geoobjekti od ${inputLayerName} izrezani su u ${clipLayerName}.",itemTags:"Rezultat analize, izrezani sloj, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Sloj geoobjekata koji je generiran funkcijom Izreži sloj"});

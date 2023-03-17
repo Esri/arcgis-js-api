@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Velg datasett som skal beskrives",describeDataLabel:"Forstå dataene dine ved å opprette et (valgfritt)",sampleLayer:"Eksempellag",extentLayer:"Utstrekningslag",noOfFeaturesLabel:"Antall geoobjekter som skal inkluderes",outputLayerName:"Navn på resultatlag",resultName:"Beskriv data i ${layerName}",itemDescription:"Geoobjektlag generert ved kjøring av Beskriv datasett i ${layerName}. ",itemTags:"Analyseresultat, DescribeDataset , ${layerName}",itemSnippet:"Geoobjektlag generert fra Beskriv datasett"});

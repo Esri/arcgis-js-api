@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({chooseShape:"Valitse muoto",defineExtent:"Määritä laajuus",defineBin:"Määritä lokeron koko määrittämällä",area:"Alue",distance:"Etäisyys",resultLayerName:"Tulostason nimi",hexagon:"Kuusikulmio",transverseHexagon:"Poikittainen kuusikulmio",square:"Neliö",triangle:"Kolmio",diamond:"Vinoneliö",sameAsDisplay:"Sama kuin näyttö",emptyBinSize:"Lokeron koko ei voi olla tyhjä",currentExtent:"nykyinen laajuus",intersectExtent:"Säilytä vain leikkaavat tesseloinnit",outputLayerName:"Luo tesseloinnit karttatasoon ${extentLayerName}",itemDescription:"Karttatason ${extentLayerName} laajuutta on käytetty.",itemTags:"Analyysin tulos, Luo tesseloinnit, ${extentLayerName}",itemSnippet:"Luo tesseloinnit -toiminnon perusteella luotu kohdekarttataso."});

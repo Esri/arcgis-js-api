@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Choisir des entités ou un raster de zones",outputTableName:"Nom de la table de résultat",zoneField:"Champ de zone",inputValueRaster:"Choisir un raster de valeurs",ignoreNodata:"Ignorer les valeurs NoData dans les calculs (facultatif)",ignore:"Ignorer",statisticType:"Type de statistiques (facultatif)",percentileValues:"Valeurs de centile (facultatif)",percentileInterpolationType:"Type d’interpolation en centile (facultatif)",processAsMultidimensional:"Traiter comme multidimensionnel (facultatif)",allSlices:"Toutes les tranches",outputZonalStatsName:"Statistiques zonales pour ${valuelayername} dans ${layername}",itemDescription:"Table d’entités d’analyse générée avec Statistiques zonales (table)",itemTags:"Résultat d’analyse raster, Statistiques zonales (table), ${layername}, ${valuelayername}",autoDetect:"Détection automatique",nearest:"Le plus proche",linear:"Linéaire"});

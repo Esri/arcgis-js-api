@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({clustersLabel:"Đối với lớp ${inputLayerName}, tìm các cụm.",chooseLayerLabel:"Chọn lớp cần tìm các cụm cho nó",minClusterPtsLabel:"Số điểm tối thiểu cần xem xét một cụm",minClustersPtsGAXLbl:"Số điểm tối thiểu để gom một cụm",limitSearchLabel:"Giới hạn phạm vi tìm kiếm đến (tùy chọn)",limitSearchReqLabel:"Giới hạn phạm vi tìm kiếm đến",outputLayerName:"Tìm các cụm cho ${inputLayerName}",itemDescription:"Lớp đối tượng được tạo ra từ việc chạy giải pháp Tìm Cụm điểm cho ${inputLayerName}.",itemTags:"Kết quả Phân tích, Tìm Cụm điểm, ${inputLayerName}",itemSnippet:"Lớp đối tượng được tạo ra từ công cụ Tìm Cụm điểm",chooseClusteringMethod:"Chọn phương pháp tạo cụm để sử dụng",dbscanLabel:"Khoảng cách xác định (DBSCAN)",hdbscanLabel:"Tự điều chỉnh (HDBSCAN)",useTimeToFindCLusters:"Sử dụng thời gian để tìm cụm",limitSearchDurLabel:"Giới hạn thời gian tìm kiếm đến"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Scegli layer da aggiungere a",inputWarningLabel:"Avvertenza: Il layer su cui si aggiunge verrà modificato.",inputHostedLayerWarning:"Il layer selezionato non è un Hosted Feature Layer. Si prega di selezionare un Hosted Feature Layer da aggiungere.",appendLayerLabel:"Scegli layer da aggiungere",filterLabel:"Aggiungi tutte le feature definisci un sottoinsieme (opzionale)",fieldMappingLabel:"Scegli come aggiungere campi (opzionale)",inputField:"Campo di input",appendValue:"Aggiungi valore",expression:"Espressione"});

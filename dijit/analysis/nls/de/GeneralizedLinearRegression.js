@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({modifiedTitle:"Generalisierte lineare Regression – ${goal}",fit:"Anpassen",fitAndPredict:"Anpassen und vorhersagen",selectGoal:"Was möchten Sie tun?",fitGoal:"Ein Modell anpassen, um die Modell-Performance zu bewerten",fitAndPredictGoal:"Ein Modell anpassen und Werte vorhersagen",inputLayerLabel:"Wählen Sie einen Layer aus, aus dem ein Modell generiert werden soll",chooseDependentField:"Wählen Sie das zu modellierende Feld aus",chooseDataType:"Wählen Sie den für die Modellierung verwendeten Datentyp aus",continuousData:"Kontinuierlich",binaryData:"Binär",countData:"Anzahl",chooseExplanatoryField:"Wählen Sie die erklärenden Felder aus",chooseFeaturesToPredict:"Wählen Sie einen Layer aus, für den Werte vorhergesagt werden sollen",chooseExplainMatch:"Wählen Sie aus, wie erklärende Felder zugeordnet werden",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Durch Ausführung der Lösungen für 'Generalisierte lineare Regression' (${goal}) generierter Feature-Layer.",itemTags:"Analyseergebnis, Generalisierte lineare Regression, ${inputLayerName}, ${goal}",itemSnippet:"Über 'Generalisierte lineare Regression' (${goal}) generierter Feature-Layer"});

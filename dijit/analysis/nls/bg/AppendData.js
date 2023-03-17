@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Изберете слой, към който да добавите",inputWarningLabel:"Предупреждение: Слоят, към който добавяте, ще бъде променен.",inputHostedLayerWarning:"Избраният слой не е хостван обектен слой. Моля, изберете хостван обектен слой, към който добавите.",appendLayerLabel:"Изберете слой за добавяне",filterLabel:"Добавете всички обекти или определете подмножество (по избор)",fieldMappingLabel:"Изберете как да добавяте полета (по избор)",inputField:"Входно поле",appendValue:"Добавяне на стойност",expression:"Израз"});

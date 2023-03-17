@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["../labelsRendering/LabelsUtil"],(function(e){return{getValueLabelInfo:function(o,l,t){var a,i=l.series.waffleValueFont||l.series.dataLabelsFont;a=l.series.waffleValueFontColorFromConditionalStyling?o.fill:l.series.waffleValueFontColor||l.series.dataLabelsColor;var n=l.series.waffleValueFontSize||(t.isSingle?50:13),r=e.getSimpleLabelInfo({text:void 0!==t.progress?o.tooltip.formatFunc(o.tooltip.value*t.progress):o.tooltip.valueLabel,font:i,fontSize:n,fontColor:a,textDecoration:l.series.waffleValueTextDecoration});return r.isValue=!0,r},getPointLabelInfo:function(o,l,t){var a,i=l.series.waffleLabelFont||l.series.dataLabelsFont;a=l.series.waffleLabelFontColorFromConditionalStyling?o.fill:l.series.waffleLabelFontColor||l.series.dataLabelsColor;var n=l.series.waffleLabelFontSize||(t.isSingle?30:13),r=e.getSimpleLabelInfo({text:o.tooltip.label,font:i,fontSize:n,fontColor:a,textDecoration:l.series.waffleLabelTextDecoration});return r.isLabel=!0,r}}}));

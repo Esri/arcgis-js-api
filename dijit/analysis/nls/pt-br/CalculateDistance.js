@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Escolha camada de localização de feição ou raster para calcular a distância até",inputRaster:"Escolher camada de feição ou raster para representar barreiras (opcional)",maxDistanceLabel:"Distância máxima para calcular (opcional)",outputCellSize:"Tamanho da célula de saída (opcional)",distanceMethod:"Método de distância",resultDistLayerName:"Nome da camada de distância resultante",resultDirectionLayerName:"Nome da camada de direção resultante (opcional)",resultAllocationLayerName:"Nome da camada de alocação resultante (opcional)",outputBackDirectionName:"Nome da camada de direção resultante (opcional)",outputLayerName:"Distância Calculada de ${layername}",allocationFieldLabel:"Escolher campo de alocação (opcional)",itemDescription:"Camada de feição gerada a partir da execução de Calcular Distância em ${layerName}. ",itemTags:"Resultado da Análise, Calcular Distância, ${layername}, ${fieldname}",itemSnippet:"Camada de feição gerada de Calcular Distância.",planar:"Planar",geodesic:"Geodésica",selectDistance:"-- selecionar --"});

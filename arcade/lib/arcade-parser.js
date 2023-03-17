@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["require","exports","../polyfill/tsSupport/exportstar","./parser","./tokenizer","./types"],(function(e,r,t,o,n,i){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.tokenize=r.parse=void 0,t(i,r),r.parse=function(e,r,t){return new o.Parser(e,r,t).parseScript()},r.tokenize=function(e,r,t){var o=new n.Tokenizer(e,r),i=[],s=void 0;try{for(var a=void 0;a=o.getNextToken();)t&&(a=t(a)),i.push(a)}catch(e){o.errorHandler.tolerate(e)}return o.errorHandler.tolerant&&(s=o.errors()),{tokens:i,errors:s}}}));

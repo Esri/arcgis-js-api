@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["require","exports","./polyfill/tsSupport/extends","./ImmutableArray","./ImmutablePointArray"],(function(t,e,i,s,n){"use strict";return function(t){function e(e,i,s,n,a){var h=t.call(this,e)||this;return h._lazyPath=[],h._hasZ=!1,h._hasM=!1,h._hasZ=s,h._hasM=n,h._spRef=i,h._cacheId=a,h}return i(e,t),e.prototype.get=function(t){if(void 0===this._lazyPath[t]){var e=this._elements[t];if(void 0===e)return;this._lazyPath[t]=new n(e,this._spRef,this._hasZ,this._hasM,this._cacheId,t)}return this._lazyPath[t]},e.prototype.equalityTest=function(t){return t===this||null!==t&&(t instanceof e!=!1&&t.getUniqueHash()===this.getUniqueHash())},e.prototype.getUniqueHash=function(){return this._cacheId.toString()},e}(s)}));

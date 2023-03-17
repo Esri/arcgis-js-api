@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["require","exports","esri/config"],(function(e,r,t){return Object.defineProperty(t,"workers",{get:function(){return t.defaults.workers},set:function(e){return t.defaults.workers=e}}),t}));

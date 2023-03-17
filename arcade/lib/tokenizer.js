@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["require","exports","./error-handler","./scanner","./types"],(function(e,n,r,t,s){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.Tokenizer=void 0;var o=function(){function e(e,n){this.errorHandler=new r.ErrorHandler,this.errorHandler.tolerant=!!n&&("boolean"==typeof n.tolerant&&n.tolerant),this.scanner=new t.Scanner(e,this.errorHandler),this.trackComments=!!n&&("boolean"==typeof n.comment&&n.comment),this.buffer=[]}return e.prototype.errors=function(){return this.errorHandler.errors},e.prototype.getNextToken=function(){var e=this;if(0===this.buffer.length){var n=this.scanner.scanComments();if(this.trackComments&&n&&n.forEach((function(n){var r=e.scanner.source.slice(n.start,n.end),t={type:n.multiLine?"BlockComment":"LineComment",value:r,range:n.range,loc:n.loc};e.buffer.push(t)})),!this.scanner.eof()){var r={line:this.scanner.lineNumber,column:this.scanner.index-this.scanner.lineStart},t=this.scanner.lex(),o={line:this.scanner.lineNumber,column:this.scanner.index-this.scanner.lineStart},i={type:s.TokenNames[t.type],value:this.scanner.source.slice(t.start,t.end),range:[t.start,t.end],loc:{start:r,end:o}};this.buffer.push(i)}}return this.buffer.shift()},e}();n.Tokenizer=o}));

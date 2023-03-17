@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({toolDefine:"Визначити обʼєкти, використовуючи глибоке навчання",outputLayerName:"${layername}_виявлено",modelLabel:"Вибрати модель глибокого навчання, використовувану для виявлення обʼєктів",modelArgsLabel:"Вказати аргументи моделі глибокого навчання",nameLabel:"Імʼя",valueLabel:"Значення",removeDuplicatesLable:"Видалити обʼєкти-дублікати з вихідних даних (опціонально)",queryModelArgsMsg:"Запит аргументів моделі...",queryModelArgsErrMsg:"Не вдалося запитати аргументи моделі",nonMaxSuppressionLabel:"Ігнорування не максимальних",options:"Опції",confidenceLabel:"Поле ступеня довіри",classValueLabel:"Поле значення класу",maxOverlapLabel:"Максимальний коефіцієнт накладення",numberOnlyMsg:"Припускаються тільки числові значення.",processingModeLabel:"Режим обробки",processAsMosaicLabel:"Обробити як мозаїчне зображення",processAsItemsLabel:"Обробити всі елементи растру окремо",analysisLayerLabel:"Вибрати зображення, використовуване для виявлення обʼєктів",itemDescription:"Аналітичний сервіс зображень, згенерований з «Виявити обʼєкти, використовуючи глибоке навчання»",itemTags:"Результат аналізу растру, Виявити обʼєкти, використовуючи глибоке навчання, ${layername}",itemSnippet:"Аналітичний сервіс зображень, згенерований з «Виявити обʼєкти, використовуючи глибоке навчання»"});

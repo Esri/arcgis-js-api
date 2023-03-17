@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayer:"Valitse karttataso, jolta läheisyystapahtumat etsitään",entityField:"Valitse tapahtumien löytämiseen käytettävä kenttä",entityLayer:"Valitse karttataso kiinnostuksen kohteena olevien yksiköiden määrittämistä varten",defineDistanceLabel:"Määritä spatiaalinen hakuetäisyys",distMethodLabel:"Valitse etäisyyden laskentatapa",temporalSearchLabel:"Määritä aikaan perustuva hakuetäisyys",optionsLabel:"Lisäasetukset",maxTraceDepth:"Enimmäisjäljityssyvyys",attributeMatchLabel:"Valitse vähintään yksi täsmäytettävä yksikön ominaisuus",includeTracksLayer:"Sisällytä jäljityksen karttataso",itemDescription:"Kohdekarttataso, joka on luotu suorittamalla Jäljitä läheisyystapahtumat -toiminto karttatasolle ${inputLayername}.",itemTags:"Analyysin tulos, Jäljitä läheisyystapahtumat, ${inputLayername}",itemSnippet:"Kohdekarttataso, joka on luotu suorittamalla Jäljitä läheisyystapahtumat -toiminto.",outputLayerName:"Jäljitä läheisyystapahtumat -toiminto karttatasolle ${inputLayername}",noEntityFieldMsg:"Läheisyystapahtumien karttatasolla ja kiinnostuksen kohteena olevien yksiköiden karttatasolla ei ole yhteisiä kenttiä."});

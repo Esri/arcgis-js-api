@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Välj flödesriktningslager",pourPointLayerLabel:"Välj hällpunktsraster eller geoobjektlager",pourPointField:"Välj hällpunktsfält",resultLayerName:"Resultatlagrets namn",outputLayerName:"Avrinningsområde i ${layername}",itemDescription:"Geoobjektlager som genererats genom körning av Summera mitt och spridning på ${layerName}. ",itemTags:"Analysresultat, Avrinningsområde, ${layername}, ${fieldname}",itemSnippet:"Geoobjektlager som genererats av Avrinningsområde"});

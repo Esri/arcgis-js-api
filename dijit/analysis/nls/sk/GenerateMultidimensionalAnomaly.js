@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({toolDefine:"Generovať viacrozmernú anomáliu",outputLayerName:"${layername}_anomália",variablesLabel:"Vyberte premenné, pre ktoré budú generované anomálie",variablesListLabel:"Premenné [rozmerové informácie] (Opis)",methodLabel:"Vyberte metódu generovania anomálie",calculationIntervalLabel:"Vyberte časový interval pre výpočet priemeru",differenceFromMean:"Rozdiel od priemeru",percentDifferenceFromMean:"Percentuálny rozdiel od priemeru",percentOfMean:"Percent z priemeru",zScore:"Z Skóre",differenceFromMedian:"Rozdiel od mediánu",percentDifferenceFromMedian:"Percentuálny rozdiel od mediánu",percentOfMedian:"Percent z mediánu",all:"Všetky",yearly:"Ročný",recurringMonthly:"Opakujúce sa mesačne",recurringWeekly:"Opakujúce sa týždenne",recurringDaily:"Opakujúce sa denne",hourly:"Hodinový",externalRaster:"Externý raster",meanRaster:"Vyberte vrstvu obrazov priemeru ako referenciu",ignoreNodataLabel:"Ignorovať vo výpočte chýbajúce hodnoty",ignore:"Ignorovať",analysisLayerLabel:"Vyberte viacrozmernú vrstvu obrazov pre generovanie anomálie",itemDescription:"Analýza obrazovej služby generovaná nástrojom Generovať viacrozmernú anomáliu",itemTags:"Výsledok rastrovej analýzy, Generovať viacrozmernú anomáliu, ${layername}",itemSnippet:"Analýza obrazovej služby generovaná nástrojom Generovať viacrozmernú anomáliu"});

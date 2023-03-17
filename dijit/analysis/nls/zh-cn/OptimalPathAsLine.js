@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"选择目标栅格或要素",destinationField:"目标字段（可选）",inputDistanceAccumulationRaster:"选择距离累积栅格",inputBackDirectionRaster:"选择反向或流向栅格",pathType:"路径类型(可选)",bestSingle:"最佳单条",eachCell:"每个像元",eachZone:"每个区域",outputFeatureName:"结果要素图层名称",outputLayerName:"${layername} 的最佳路径为线",drawSourcePointLayerName:"源点",itemDescription:"通过在 ${layername} 上运行最佳路径为线生成的要素图层。 ",itemTags:"分析结果、最佳路径为线、${layername} ${fieldname}",itemSnippet:"通过最佳路径为线生成的要素图层。"});

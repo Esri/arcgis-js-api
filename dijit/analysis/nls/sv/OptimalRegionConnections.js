@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Välj regionraster eller geoobjekt",inputCostRaster:"Välj kostnadraster (valfritt)",inputBarrierRasterOrFeatures:"Välj hinderraster eller geoobjekt (valfritt)",distanceMethod:"Avståndsmetod (valfritt)",connectionsWithinRegions:"Anslutningar inom regioner (valfritt)",generateConnections:"Generera anslutningar",noConnections:"Inga anslutningar",planar:"Plan",geoDesic:"Geodetisk",outputOptimalLinesName:"Resultat för geoobjektlagernamnet Optimala anslutningslinjer",outputNeighborConnectionsName:"Resultat för geoobjektlagernamnet Angränsande anslutningar (valfritt)",outputLayerName:"Optimala regionanslutningar för ${layername}",drawSourcePointLayerName:"Källpunkter",itemDescription:"Geoobjektlager som genererats genom att köra Optimala regionanslutningar på ${layername}. ",itemTags:"Analysresultat, Optimala regionanslutningar, ${layername} ${fieldname}",itemSnippet:"Ett geoobjektlager har genererats från Optimala regionanslutningar.",noValueMessage:"Detta värde är obligatoriskt"});

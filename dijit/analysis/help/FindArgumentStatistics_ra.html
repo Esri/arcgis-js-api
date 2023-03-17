@@ -97,6 +97,8 @@ to be analyzed. If the input raster is not multidimensional, the pixel values of
                 </li>
                 <li> <b>Argument of duration</b>&mdash;The longest dimension duration for which the variable values fall between the minimum and maximum values.
                 </li>
+                <li> <b>Argument of the value</b>&mdash;The dimension value at which the specified variable value is reached will be extracted.
+                </li>
             </ul>
             
         </div>
@@ -106,6 +108,15 @@ to be analyzed. If the input raster is not multidimensional, the pixel values of
         <hr/>
         <div>
             <p>The pixel value to use to indicate that a given argument statistic was reached more than once in the input raster dataset. If not specified, the pixel value will be the value of the dimension the first time the argument statistic is reached.
+            </p>
+        </div>
+    </div>
+    <div id="argumentValue">
+        <div><h2>Argument value</h2></div>
+        <hr/>
+        <div>
+            <p>The dimension value at which the specified variable value is reached will be extracted.
+
             </p>
         </div>
     </div>
@@ -141,6 +152,24 @@ to be analyzed. If the input raster is not multidimensional, the pixel values of
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="comparison">
+        <div><h2>Comparison</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies the comparison type that will be used to extract the dimension value.
+
+            </p>
+        </div>
+    </div>
+    <div id="occurrence">
+        <div><h2>Occurrence</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies whether the value of the dimension will be returned the first or last time the argument is reached. The default is the first occurrence.
+
             </p>
         </div>
     </div>

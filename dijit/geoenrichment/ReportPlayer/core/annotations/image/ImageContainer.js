@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","../../grid/valueField/ValueField","./_ImageContainerMixin"],(function(e,i,n){return e([i,n])}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Вибрати растр або шар місця розташування обʼєкту, відстань до якого треба обчислити",inputRaster:"Виберіть растр або векторний шар для відображення барʼєрів (опціонально)",maxDistanceLabel:"Максимальна відстань, яку треба обчислити (опціонально)",outputCellSize:"Розмір вихідного осередку (опціонально)",distanceMethod:"Метод відстані",resultDistLayerName:"Імʼя результуючого шару відстані",resultDirectionLayerName:"Імʼя результуючого шару відстані (опціонально)",resultAllocationLayerName:"Імʼя результуючого шару розподілу (опціонально)",outputBackDirectionName:"Імʼя результуючого шару зворотного напрямку (опціонально)",outputLayerName:"Обчислена відстань ${layername}",allocationFieldLabel:"Вибрати поле розподілу (опціонально)",itemDescription:"Векторний шар, згенерований в результаті виконання обчислення відстані для ${layerName}. ",itemTags:"Результат аналізу, Обчислити відстань, ${layername} ${fieldname}",itemSnippet:"Векторний шар, згенерований в результаті обчислення відстані.",planar:"Планарний",geodesic:"Геодезичний",selectDistance:"-- вибрати --"});

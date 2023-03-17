@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({_widgetLabel:"المعالجة الجغرافية",_featureAction_ReceiveFeatureSet:"تعيين كمُدخَلات لـ ",requiredInfo:"مطلوب.",drawnOnMap:"النتيجة مرسومة على الخريطة.",noToolConfig:"لا تتوفر مهمة المعالجة الجغرافية مُعرفة مُسبقًا.",useUrlForGPInput:"عنوان URL",useUploadForGPInput:"تحميل الملف",useImageServiceLayer:"طبقة خدمة الصورة",useBrowseLayerPortal:"استعراض / تحديد من البوابة",selectFileToUpload:"حدد ملف...",rasterFormat:"تنسيق البيانات النقطية",noFileSelected:"لم يتم تحديد أي ملف!",uploadSuccess:"تم تحميل الملف بنجاح!",showLayerContent:"عرض محتوى الطبقة",invalidUrl:"عنوان url لخدمة معالم غير صحيحة",urlPlaceholder:"عنوان URL لمجموعة المعالم",addShapefile:"أضف ملف شكل",generateShapefileError:"إنشاء خطأ في ملف الشكل، يرجى التأشير على: ",cleared:"تم مسح النتيجة.",enlargeView:"تكبير العرض",exportOutput:"تصدير",emptyResult:"النتيجة فارغة.",useSelectedFeatureset:"استخدم المعالم الناتجة.",closeSelectedFeatureset:"امسح واستخدم خيار المُدخَل المكون."});

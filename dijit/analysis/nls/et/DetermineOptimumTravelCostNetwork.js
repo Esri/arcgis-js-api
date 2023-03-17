@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Valige rasterkiht või vektorkiht, et määratleda reisiteekond vahemikus",inputCostRasterLabel:"Valige reisikulu rasterkiht",outputOptimumNetworkName:"Optimaalsete teede murdjoone tulemkihi nimi",outputNeighborNetworkName:"Naaberteede murdjoone tulemkihi nimi (valikuline)",outputLayerName:"Määratle kihi ${layername} optimaalne reisikulu",itemDescription:"Objektikiht loodi kihi ${layerName} optimaalse reisikulu võrgu määratlemise kaudu. ",itemTags:"Analüüsi tulemus, Määratle optimaalse reisikulu võrk, ${layername} ${fieldname}",itemSnippet:"Objektikiht loodi optimaalse reisikulu võrgu määratlemise kaudu."});

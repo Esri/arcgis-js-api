@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","./IsoDocumentType","./GmiRoot","dojo/i18n!../../../nls/i18nIso","../../../../../kernel"],(function(t,e,a,i,s,o,d){var n=t(i,{caption:o.documentTypes.gmi.caption,description:o.documentTypes.gmi.description,key:"iso-19115-2",isService:!1,isGmi:!0,metadataStandardName:"ISO 19115-2 Geographic Information - Metadata Part 2 Extensions for imagery and gridded data",metadataStandardVersion:"ISO 19115-2:2009(E)",initializeNamespaces:function(){this.addNamespace("gmi","http://www.isotc211.org/2005/gmi"),this.addNamespace("gmd","http://www.isotc211.org/2005/gmd"),this.addNamespace("gco","http://www.isotc211.org/2005/gco"),this.addNamespace("srv","http://www.isotc211.org/2005/srv"),this.addNamespace("gss","http://www.isotc211.org/2005/gss"),this.addNamespace("gml","http://www.opengis.net/gml/3.2"),this.addNamespace("xlink","http://www.w3.org/1999/xlink")},newRootDescriptor:function(){return new s}});return a("extend-esri")&&e.setObject("dijit.metadata.types.iso.base.GmiDocumentType",n,d),n}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Επιλογή στοιχείων ή χαρακτηριστικών προορισμού",destinationField:"Πεδίο προορισμού (προαιρετικό)",inputDistanceAccumulationRaster:"Επιλογή συγκεντρωτικής απόστασης",inputBackDirectionRaster:"Επιλογή επιστροφής ή κατεύθυνσης ροής",pathType:"Τύπος διαδρομής (προαιρετικό)",bestSingle:"Καλύτερο μονό",eachCell:"Κάθε πεδίο",eachZone:"Κάθε ζώνη",outputFeatureName:"Όνομα επιπέδου χαρακτηριστικού αποτελέσματος",outputLayerName:"Βέλτιστο μονοπάτι ως γραμμή${layername}",drawSourcePointLayerName:"Σημεία προέλευσης",itemDescription:"Feature layer που προκύπτει από την εκτέλεση του εργαλείου βέλτιστη διαδρομή ως γραμμή ${layername}. ",itemTags:"Αποτέλεσμα Ανάλυσης, Βέλτιστη διαδρομή ως γραμμή, ${layername} ${fieldname}",itemSnippet:"Feature layer που προκύπτει από την εκτέλεση του εργαλείου βέλτιστης διαδρομής ως γραμμή"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"בחר בשכבה למציאת מגורים ממנה",selectTracksLabel:"בחר שדה אחד או יותר כדי לזהות מסלולים",defineDistanceLabel:"הגדר את מרחק החיפוש המרחבי",distMethodLabel:"בחר בשיטה לחישוב מרחק",temporalSearchLabel:"הגדר את טווח החיפוש בממד זמן",outputDwellLabel:"פלט מיקומי מגורים בתור",outputLayerName:"מצא מיקומי מגורים עבור ${inputLayerName}",meanCenters:"מרכזים ממוצעים",convexHulls:"Convex hulls",dwellFeatures:"ישויות מגורים",allFeatures:"כל הישויות",itemDescription:"שכבת הישויות נוצרה מהרצת פתרון איתור מיקומי מגורים עבור ‎${inputLayerName}‎.",itemTags:"תוצאת ניתוח, איתור מיקומי מגורים, ‎${inputLayerName}‎",itemSnippet:"שכבת ישויות נוצרה מהרצת איתור מיקומי מגורים",timeIntervalSplit:"ניתוח נתונים עם מרווחי זמן (אופציונלי)",timeBoundaryValidationMsg:"מרווח הזמן חייב להיות גדול מטווח החיפוש בממד הזמן."});

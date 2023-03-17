@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["dojo/dom-construct","./_BuilderUtil","dojo/i18n!esri/nls/jsapi"],(function(e,a,i){return i=i.geoenrichment.dijit.ReportPlayer.ChartTooltip,{buildLineChartTooltip:function(l,r){var d=[];l.showTitle&&a.addTitle(r,l.label),l.richTextFieldInfo&&a.buildRichText(l,r);var t,n=e.create("div",{class:"chartTooltip_row esriGERowHigh"},r);a.addColor(l,n),d.push(a.addLabel(a.buildSeriesLabel(l),n)),l.isBenchmarked?a.addBenchmarkValue(l,n):a.addValue(l.valueLabel,n),n.style.display=l.showValue?"":"none",l.isMultiFeature?t=a.buildStatLabels(l,r,i.weightInAreas,i.minValueInAreas,i.maxValueInAreas,i.avgValueInAreas):l.isBenchmarked||(t=a.buildStatLabels(l,r,i.weightInSeries,i.minValueInSeries,i.maxValueInSeries,i.avgValueInSeries,i.weightInStack)),t&&(d=d.concat(t)),l.showValue&&l.getGroup().forEach((function(t){if(l.id!==t.id){var n=e.create("div",{class:"chartTooltip_row esriGERowHigh"},r);a.addColor(t,n),d.push(a.addLabel(a.buildSeriesLabel(t),n)),t.isUnavailableData?a.addValue(i.unavailableData,n):t.isBenchmarked?a.addBenchmarkValue(t,n):a.addValue(t.valueLabel,n)}})),a.formatTable(d)}}}));

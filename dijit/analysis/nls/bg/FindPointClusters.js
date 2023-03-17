@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({clustersLabel:"За слоят ${inputLayerName} намерете клъстерите.",chooseLayerLabel:"Изберете слоя, за който ще бъдат намерени клъстери",minClusterPtsLabel:"Минимален брой точки, които да се считат за клъстер",minClustersPtsGAXLbl:"Минимален брой точки за създаване на клъстер",limitSearchLabel:"Ограничете диапазона на търсене до (по избор)",limitSearchReqLabel:"Ограничете диапазона на търсене до",outputLayerName:"Намерете клъстери за ${inputLayerName}",itemDescription:"Обектен слой, генериран от изпълнението на решението за Намирането на точкови клъстери ${inputLayerName}.",itemTags:"Резултат от анализа, Намиране на точкови клъстери, ${inputLayerName}",itemSnippet:"Обектен слой, генериран от Намиране на точкови клъстери",chooseClusteringMethod:"Изберете метод за групиране по общ признак за използване",dbscanLabel:"Определено разстояние (DBSCAN)",hdbscanLabel:"Саморегулиране (HDBSCAN)",useTimeToFindCLusters:"Използвайте време, за да намерите клъстери",limitSearchDurLabel:"Ограничете продължителността на търсене до"});

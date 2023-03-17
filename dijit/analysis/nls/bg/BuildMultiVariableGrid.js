@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({binsLabel:"Изберете типа контейнери, които ще се използват за изграждане на мрежа с множество променливи",layersAttrLabel:"Изберете входни слоеве и променливи, които искате да включите в мрежата",itemDescription:"Обектен слой, генериран от стартирането на Изграждане на мрежа с много променливи.",itemTags:"Резултат от анализа, Изграждане на мрежа с много променливи.",itemSnippet:"Обектен слой, генериран от Изграждане на мрежа с много променливи.",addVariables:"Добавяне на променливи"});

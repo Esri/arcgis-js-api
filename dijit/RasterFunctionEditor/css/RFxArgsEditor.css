@@ -230,6 +230,7 @@
 
 .esriRFxJsonFileUploader #fileInput {
   margin: .5em 0;
+  color: transparent;
 }
 
 .esri-rfx-custom-extent {

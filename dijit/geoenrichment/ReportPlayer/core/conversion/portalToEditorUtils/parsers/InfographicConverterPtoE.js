@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/ReportPlayer/core/infographics/InfographicTypes","./infographic/SimpleInfographicParser","./infographic/DynamicInfographicParser","./infographic/AreaDetailsInfographicParser","./infographic/AttachmentsInfographicParser","./infographic/LocatorTableInfographicParser","./infographic/ComparisonTableInfographicParser"],(function(r,o,i,a,e,n,p){var t={},c={};return c[r.STATIC]=o,c[r.ATTACHMENTS]=e,c[r.AREA_DETAILS]=a,c[r.LOCATOR_TABLE]=n,c[r.COMPARISON_TABLE]=p,c[r.AGE_PYRAMID]=i,c[r.TAPESTRY]=i,c[r.PRIZM5]=i,c[r.RELATED_VARS]=i,c[r.ONE_VAR]=i,t.portalToEditor=function(o,i,a){var e=r.fixTapestryNameToWidget(o.attributes.type);if(!r.isSupported(e))throw new Error("Infographic type is not supported.");var n=c[e].portalToEditor(o,a);return n&&a.postProcessInfographicJson&&a.postProcessInfographicJson(o,n),n},t}));

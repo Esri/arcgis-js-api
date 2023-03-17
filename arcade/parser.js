@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["require","exports","./treeAnalysis","./lib/arcade-parser","./lib/arcade-parser"],(function(r,e,i,n,o){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.parseScript=void 0,e.parseScript=function(r,e){void 0===e&&(e=[]);var d=n.parse(r);if(null===d.body||void 0===d.body)throw new o.ParsingError({index:0,line:0,column:0,data:null,description:"",code:o.ParsingErrorCodes.InvalidExpression});if(0===d.body.length)throw new o.ParsingError({index:0,line:0,column:0,data:null,description:"",code:o.ParsingErrorCodes.InvalidExpression});if(0===d.body.length)throw new o.ParsingError({index:0,line:0,column:0,data:null,description:"",code:o.ParsingErrorCodes.InvalidExpression});return d.loadedModules={},i.findScriptDependencies(d,e),d}}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Konaklama yeri bulunacak katmanı seçin",selectTracksLabel:"İzleri tanımlamak için bir veya birkaç alan seçin",defineDistanceLabel:"Mekansal arama mesafesini tanımlayın",distMethodLabel:"Mesafeyi hesaplamak için yöntemi seçin",temporalSearchLabel:"Geçici arama aralığını tanımlayın",outputDwellLabel:"Çıktı konaklama yeri konumları",outputLayerName:"${inputLayerName} için Konaklama Yeri Konumları Bul",meanCenters:"Ortalama merkez",convexHulls:"Dışbükey yüzey",dwellFeatures:"Konaklama yeri detayları",allFeatures:"Tüm detaylar",itemDescription:"Detay katmanı, ${inputLayerName} için Konaklama Yeri Konumu Bul çözümü çalıştırılarak oluşturuldu.",itemTags:"Analiz Sonucu, Konaklama Yeri Konumu Bul, ${inputLayerName}",itemSnippet:"Detay katmanı, Konaklama Yeri Konumu Bul ile oluşturuldu",timeIntervalSplit:"Zaman aralıkları arasında verileri analiz edin (isteğe bağlı)",timeBoundaryValidationMsg:"Zaman aralığı zamansal arama aralığından büyük olmalıdır."});

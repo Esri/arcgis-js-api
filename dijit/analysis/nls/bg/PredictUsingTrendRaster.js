@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({toolDefine:"Прогнозиране с помощта на тенденционнен растер",outputLayerName:"${layername}_предсказване",variablesLabel:"Изберете променлива(и), които ще бъдат предвидени",variablesListLabel:"Променливи [Информация за размерите] (Описание)",dimensionDefinitionLabel:"Изберете метода, използван за предоставяне на стойности на размери за прогнозиране",dimensionValuesLabel:"Посочете стойност(и) на размерите за прогнозиране",dimensionIntervalLabel:"Посочете интервал на размери за прогнозиране",intervalValueLabel:"Посочете броя на стъпките между началните и крайните стойности",intervalUnitLabel:"Изберете единицата, която ще се използва за интервала от времеви стойности",startLabel:"Начална стойност",endLabel:"Крайна стойност",byValueLabel:"По стойност",byIntervalLabel:"По интервал",hours:"Часове",days:"Дни",weeks:"Седмици",months:"Месеци",years:"Години",custom:"Персонализиран",itemDescription:"Услуга за анализ на изображения, генерирана от Прогнозиране с помощта на тенденционен растер",itemTags:"Резултат от растерния анализ, Прогнозиране с помощта тенденционен растер, ${layername}",itemSnippet:"Услуга за анализ на изображения, генерирана от Прогнозиране с помощта на тенденционен растер"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({chooseShape:"Velg form",defineExtent:"Definere utstrekning",defineBin:"Definer beholderstørrelse ved å angi",area:"Areal",distance:"Avstand",resultLayerName:"Navn på resultatlag",hexagon:"Heksagon",transverseHexagon:"Tverrstilt heksagon",square:"Kvadrat",triangle:"Trekant",diamond:"Rombe",sameAsDisplay:"Samme som visning",emptyBinSize:"Beholderstørrelse kan ikke være tom",currentExtent:"gjeldende utstrekning",intersectExtent:"Behold kun kryssende tesselleringer",outputLayerName:"Generer tesselleringer på ${extentLayerName}",itemDescription:"Utstrekning fra ${extentLayerName} ble brukt.",itemTags:"Analyseresultat, Generer tesselleringer, ${extentLayerName}",itemSnippet:"Geoobjektlag generert fra Generer tesselleringer."});

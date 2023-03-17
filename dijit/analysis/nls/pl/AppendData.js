@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Wybierz warstwę, do której należy dołączyć",inputWarningLabel:"Ostrzeżenie: warstwa, do której realizowane jest dołączanie, zostanie zmodyfikowana.",inputHostedLayerWarning:"Wybrana warstwa nie jest hostowaną warstwą obiektową. Wybierz hostowaną warstwę obiektową, do której chcesz dodać element.",appendLayerLabel:"Wybierz warstwę do dołączenia",filterLabel:"Dołącz wszystkie obiekty lub zdefiniuj podzbiór (opcjonalnie)",fieldMappingLabel:"Wybierz sposób dołączania pól (opcjonalnie)",inputField:"Pole wejściowe",appendValue:"Dołącz wartość",expression:"Wyrażenie"});

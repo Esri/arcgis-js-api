@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({modifiedTitle:"Обобщена Линейна регресия - ${goal}",fit:"Подходящо",fitAndPredict:"Подходящ и предсказан",selectGoal:"Какво бихте искали да направите?",fitGoal:"Поставете модел, за да оцените производителността на модела",fitAndPredictGoal:"Поставете модел и прогнозирайте стойностите",inputLayerLabel:"Изберете слой, от който да генерирате модел",chooseDependentField:"Изберете полето за моделиране",chooseDataType:"Изберете типа данни, които моделирате",continuousData:"Непрекъснатост",binaryData:"Бинарност",countData:"Брой",chooseExplanatoryField:"Изберете полета за обяснение",chooseFeaturesToPredict:"Изберете слой, за да прогозирате стойности за",chooseExplainMatch:"Изберете как да се съвместяват обяснителните полета",outputLayerName:"Общ поземлен регистър(GLR ) ${inputLayerName}",itemDescription:"Обектен слой, генериран от старатиране на решенията за Обобщена линейна регресия. ${goal}",itemTags:"Резултат от анализа, Обобщена линейна регресия, ${inputLayerName}, ${goal}",itemSnippet:"Обектен слой, генериран от Обобщена линейна регресия (${goal})"});

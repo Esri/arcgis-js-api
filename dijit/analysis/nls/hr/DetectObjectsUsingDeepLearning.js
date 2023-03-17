@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({toolDefine:"Definirajte objekte upotrebom dubokog učenja",outputLayerName:"${layername}_detected",modelLabel:"Odaberite model dubokog učenja za upotrebu u prepoznavanju objekata",modelArgsLabel:"Odredite argumente za model dubokog učenja",nameLabel:"Naziv",valueLabel:"Vrijednost",removeDuplicatesLable:"Uklonite duplicirane geoobjekte iz sloja (neobavezno)",queryModelArgsMsg:"Ispitivanje argumenata za model...",queryModelArgsErrMsg:"Neuspjelo ispitivanje argumenata za model.",nonMaxSuppressionLabel:"Ne-maksimalno suzbijanje",options:"Opcije",confidenceLabel:"Polje s rezultatima pouzdanosti",classValueLabel:"Polje s vrijednosti klase",maxOverlapLabel:"Maksimalan omjer preklapanja",numberOnlyMsg:"Dopuštene su samo brojčane vrijednosti.",processingModeLabel:"Način obrade",processAsMosaicLabel:"Obrađeno kao mozaična slika",processAsItemsLabel:"Obradi sve rastere objekata odvojeno",analysisLayerLabel:"Odaberite sliku za upotrebu u prepoznavanju objekata",itemDescription:"Usluga analize slike generirana alatom Prepoznaj objekte upotrebom dubokog učenja",itemTags:"Rezultat analize rastera, Prepoznaj objekte upotrebom dubokog učenja, ${layername}",itemSnippet:"Usluga analize slike generirana alatom Prepoznaj objekte upotrebom dubokog učenja"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Etsi asuinpaikkoja seuraavasta kohteesta valitsemalla karttataso",selectTracksLabel:"Valitse vähintään yksi kenttä reittien tunnistamista varten",defineDistanceLabel:"Määritä spatiaalinen hakuetäisyys",distMethodLabel:"Valitse etäisyyden laskentatapa",temporalSearchLabel:"Määritä temporaalinen hakualue",outputDwellLabel:"Tulosta asuinpaikkojen sijainnit muodossa",outputLayerName:"Etsi asuinpaikkojen sijainteja karttatasolle ${inputLayerName}",meanCenters:"Keskimääräiset keskipisteet",convexHulls:"Konveksi peite",dwellFeatures:"Asuinpaikkakohteet",allFeatures:"Kaikki kohteet",itemDescription:"Kohdekarttataso, joka on luotu suorittamalla Etsi asuinpaikkojen sijainteja -ratkaisu karttatasolle ${inputLayerName}.",itemTags:"Analyysin tulos, Etsi asuinpaikkojen sijainteja, ${inputLayerName}",itemSnippet:"Etsi asuinpaikkojen sijainteja -toiminnon perusteella luotu kohdekarttataso",timeIntervalSplit:"Analysoi aikavälejä sisältävät tiedot (valinnainen)",timeBoundaryValidationMsg:"Aikavälin on oltava suurempi kuin temporaalinen hakualue."});

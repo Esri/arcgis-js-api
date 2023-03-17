@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Valitse rikastettava pistekarttataso",chooseMVgridLyrLabel:"Valitse useita muuttujia sisältävä ruudukko, josta rikastus tapahtuu",chooseVariables:"Valitse lisättävät muuttujat",outputLayerName:"Rikastettu kohteet ${inputFeatures} karttatasosta ${gridLayer}",itemDescription:"Kohdekarttataso, joka on luotu suorittamalla Rikasta useita muuttujia sisältävästä ruudukosta -ratkaisu kohteille ${inputFeatures}.",itemTags:"Analyysin tulos, Rikasta useita muuttujia sisältävästä ruudukosta, ${inputFeatures}, ${gridLayer}",itemSnippet:"Kohdekarttataso, joka on luotu Rikasta useita muuttujia sisältävästä ruudukosta -toiminnolla."});

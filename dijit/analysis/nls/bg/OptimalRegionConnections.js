@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Изберете растер за район или обект",inputCostRaster:"Изберете растер за разходи (по избор)",inputBarrierRasterOrFeatures:"Изберете бариерен растер или обект (по избор)",distanceMethod:"Метод за разстояние (по избор)",connectionsWithinRegions:"Връзки в рамките на региони (по избор)",generateConnections:"Генериране на връзки",noConnections:"Няма връзки",planar:"Планарно",geoDesic:"Геодезично",outputOptimalLinesName:"Име на обектен слой с линии на свързаност за оптимален резултат",outputNeighborConnectionsName:"Име на обектен слой с резултатни съседни връзки (по избор)",outputLayerName:"Оптимални регионални връзки на ${layername}",drawSourcePointLayerName:"Точки-източник",itemDescription:"Обектен слой, генериран от стартиране на Оптимални регионални връзки на ${layername}. ",itemTags:"Резултат от анализа, Оптимални регионални връзки, ${layername} ${fieldname}",itemSnippet:"Обектен слой, генериран от оптимални регионални връзки",noValueMessage:"Тази стойност е задължителна"});

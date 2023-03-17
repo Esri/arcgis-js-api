@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({toolDefine:"Definiuj obiekty metodą Deep Learning",outputLayerName:"${layername}_wykryta",modelLabel:"Wybierz model Deep Learning używany do wykrywania obiektów",modelArgsLabel:"Podaj argumenty modelu Deep Learning",nameLabel:"Nazwa",valueLabel:"Wartość",removeDuplicatesLable:"Usuń zduplikowane obiekty w danych wynikowych (opcjonalne)",queryModelArgsMsg:"Wysyłanie zapytania o argumenty modelu...",queryModelArgsErrMsg:"Zapytanie o argumenty modelu zakończyło się niepowodzeniem.",nonMaxSuppressionLabel:"Tłumienie inne niż maksymalne",options:"Opcje",confidenceLabel:"Pole wskaźnika ufności",classValueLabel:"Pole wartości klasy",maxOverlapLabel:"Maksymalny współczynnik nakładania",numberOnlyMsg:"Dozwolone są tylko wartości numeryczne.",processingModeLabel:"Tryb przetwarzania",processAsMosaicLabel:"Przetwarzaj jako obraz mozaikowy",processAsItemsLabel:"Przetwarzaj wszystkie elementy rastrowe osobno",analysisLayerLabel:"Wybierz obraz używany do wykrywania obiektów",itemDescription:"Usługa rastrowa analizy wygenerowana w wyniku użycia narzędzia Wykrywaj obiekty metodą Deep Learning",itemTags:"Wynik analizy rastrowej, Wykrywaj obiekty metodą Deep Learning, ${layername}",itemSnippet:"Usługa rastrowa analizy wygenerowana w wyniku użycia narzędzia Wykrywaj obiekty metodą Deep Learning"});

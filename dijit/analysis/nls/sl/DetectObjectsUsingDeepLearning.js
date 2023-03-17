@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({toolDefine:"Objekte opredeli s pomočjo globokega učenja",outputLayerName:"${layername}_zaznano",modelLabel:"Za zaznavanje objektov izberi globoko učenje",modelArgsLabel:"Opredeli argumente modela globokega učenja",nameLabel:"Ime",valueLabel:"Vrednost",removeDuplicatesLable:"Podvojene geoobjekte odstrani iz rezultata (izbirno)",queryModelArgsMsg:"Poizvedovanje po argumentih modela ...",queryModelArgsErrMsg:"Poizvedovanje po argumentih modela neuspešno.",nonMaxSuppressionLabel:"Metoda zatiranja ne-maksimalnih elementov",options:"Možnosti",confidenceLabel:"Polje s točkami za zaupanje",classValueLabel:"Polje z vrednostjo razreda",maxOverlapLabel:"Maksimalno razmerje prekrivanja",numberOnlyMsg:"Dovoljene so samo številske vrednosti.",processingModeLabel:"Način obdelovanja",processAsMosaicLabel:"Obdelaj kot mozaično sliko",processAsItemsLabel:"Obdelaj vse rastrske elemente ločeno",analysisLayerLabel:"Izberite sliko za zaznavanje objektov",itemDescription:"Storitev analize slike, ki je ustvarjena s pomočjo orodja Zaznavanje objektov s pomočjo globokega učenja",itemTags:"Rezultati rastrske analize, Zaznavanje objektov s pomočjo globokega učenja, ${layername}",itemSnippet:"Storitev analize slike, ki je ustvarjena s pomočjo orodja Zaznavanje objektov s pomočjo globokega učenja"});

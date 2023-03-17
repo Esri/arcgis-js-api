@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Vyberte zdrojovú rastrovú alebo prvkovú vrstvu pre určenie trás",inputCostRasterLabel:"Vyberte trasovaciu vrstvu rastra nákladov",inputDestinationLayerLabel:"Vyberte rastrovú alebo prvkovú cieľovú vrstvu pre určenie trás do",pathTypeLabel:"Vyberte typ trás pre určenie (voliteľné)",bestSingle:"Najlepšia jediná",eachCell:"Do každej bunky",eachZone:"Do každej zóny",destinationField:"Vyberte pole pre získanie hodnôt pre cieľ",outputPolylineName:"Názov výslednej čiarovej vrstvy",outputLayerName:"Optimálne cestovné náklady ako čiarová vrstva z ${layername}",drawDestinationPointLayerName:"Cieľové body",drawSourcePointLayerName:"Zdrojové body",itemDescription:"Vrstvy prvkov generované nástrojom Určiť trasu cestovných nákladov ako čiarová vrstva na ${layername}. ",itemTags:"Výsledok analýzy, Určiť trasu cestovných nákladov ako čiarová vrstva, ${layername}${fieldname}",itemSnippet:"Vrstva prvkov generovaná nástrojom Určiť trasu cestovných nákladov ako čiarovú vrstvu.",missingMessage:"Cieľová vrstva by mala byť odlišná od zdrojovej",noValueMessage:"Vyžaduje sa táto hodnota",placeHolder:"-Vybrať vrstvu-"});

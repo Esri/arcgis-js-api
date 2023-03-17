@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["require","exports","../request"],(function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.serviceRequest=void 0,n.serviceRequest=function(e,n,o,a,r){if(void 0===r&&(r=null),null!==r)return r.getToken().then((function(r){if(e=e+="?token="+r,"get"===a.toLowerCase())return t({url:e,disableIdentityLookup:!0,handleAs:"json",callbackParamName:"callback",content:n}).then((function(e){return{data:e}}));if(n)for(var c in n)e.indexOf("?")>-1?e+="&":e+="?",e+=encodeURIComponent(c)+"="+encodeURIComponent(n[c]);return t({url:e,disableIdentityLookup:!0,callbackParamName:"callback",content:o,handleAs:"json"},{usePost:!0}).then((function(e){return{data:e}}))}));if("get"===a.toLowerCase())return t({url:e,disableIdentityLookup:!0,callbackParamName:"callback",handleAs:"json",content:n}).then((function(e){return{data:e}}));if(n)for(var c in n)e.indexOf("?")>-1?e+="&":e+="?",e+=encodeURIComponent(c)+"="+encodeURIComponent(n[c]);return t({url:e,disableIdentityLookup:!0,callbackParamName:"callback",handleAs:"json",content:o},{usePost:!0}).then((function(e){return{data:e}}))}}));

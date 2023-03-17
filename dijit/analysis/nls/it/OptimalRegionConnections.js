@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Scegliere il raster ci regione o feature",inputCostRaster:"Scegliere il raster di costo (opzionale)",inputBarrierRasterOrFeatures:"Scegliere il raster barriera o feature (opzionale)",distanceMethod:"Metodo di distanza (opzionale)",connectionsWithinRegions:"Connessioni con le reioni (opzionale)",generateConnections:"Genera connessioni",noConnections:"No connessioni",planar:"Planare",geoDesic:"Geodetico",outputOptimalLinesName:"Risultato: layer di connettività ottimali hanno un nome di livello",outputNeighborConnectionsName:"Risultato delle connessioni vicine con il nome del layer (opzionale)",outputLayerName:"Collegamenti regionali ottimali di ${layername}",drawSourcePointLayerName:"Punti di origine",itemDescription:"Feature layer generato dall'esecuzione di Connessioni ottimali di regione su ${layername}. ",itemTags:"Risultato di analisi, connessioni di regione ottimali, ${layername}${fieldname}",itemSnippet:"Feature layer generato da connessioni di regione ottimali.",noValueMessage:"Valore obbligatorio."});

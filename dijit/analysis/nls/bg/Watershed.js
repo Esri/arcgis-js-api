@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Изберете слой за посока на поток",pourPointLayerLabel:"Изберете растер с точка на изливане или обектен слой",pourPointField:"Изберете поле с точка на изливане",resultLayerName:"Име на резултатен слой",outputLayerName:"Вододел на ${layername}",itemDescription:"Обектен слой, генериран от стартиране на центъра за обобщение и дисперсия на ${layerName}. ",itemTags:"Резултат от анализа, Вододел, ${layername} ${fieldname}",itemSnippet:"Обектен слой, генериран от вододел."});

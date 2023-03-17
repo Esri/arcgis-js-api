@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Вибрати растр або шар місця розташування обʼєкту, між якими треба визначити шляхи подорожування",inputCostRasterLabel:"Вибрати растровий шар вартості подорожі",outputOptimumNetworkName:"Імʼя шару поліліній оптимальних шляхів результатів",outputNeighborNetworkName:"Імʼя шару поліліній сусідніх шляхів результатів (опціонально)",outputLayerName:"Визначити оптимальну вартість подорожі ${layername}",itemDescription:"Векторний шар, згенерований в результаті виконання визначення мережі оптимальної вартості подорожі для ${layerName}. ",itemTags:"Результат аналізу, Визначити мережу оптимальної вартості подорожі, ${layername} ${fieldname}",itemSnippet:"Векторний шар, згенерований в результаті визначення мережі оптимальної вартості подорожі."});

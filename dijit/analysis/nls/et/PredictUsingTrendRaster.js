@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({toolDefine:"Trendi rastriga prognoosimine",outputLayerName:"${layername}_predict",variablesLabel:"Valige prognoositav(ad) muutuja(d)",variablesListLabel:"Muutujad [Mõõtmeteave] (Kirjeldus)",dimensionDefinitionLabel:"Valige meetod, mida kasutatakse prognoosi mõõtmeväärtuste esitamiseks",dimensionValuesLabel:"Määrake prognoosi mõõtmeväärtus(ed)",dimensionIntervalLabel:"Määrake mõõtme vahemik prognoosimiseks",intervalValueLabel:"Määrake alg-ja lõppväärtuste vaheliste sammude arv",intervalUnitLabel:"Valige ajavahemiku väärtusena kasutatav ühik",startLabel:"Algväärtus",endLabel:"Lõppväärtus",byValueLabel:"Väärtuse järgi",byIntervalLabel:"Ajavahemiku järgi",hours:"Tundi",days:"Päeva",weeks:"Nädalat",months:"Kuud",years:"Aastat",custom:"Kohandatud",itemDescription:"Analüüsipõhine pilditeenus loodi trendirastri abil prognoosimise kaudu",itemTags:"Rasteranalüüsi tulemus, trendirastri abil prognoosimine, ${layername}",itemSnippet:"Analüüsipõhine pilditeenus loodi trendirastri abil prognoosimise kaudu"});

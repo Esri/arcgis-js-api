@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["dojo/on","esri/dijit/geoenrichment/utils/MouseUtil","esri/dijit/geoenrichment/utils/mobile/GesturesUtil"],(function(e,t,n){var o={};return o.enableMobileGestures=function(t){var r,i,c;function a(){r&&r.remove(),i&&i.remove(),c&&c.remove()}e(t.domNode,"touchstart",(function(n){a();var l=n.targetTouches[0].clientX,u=n.targetTouches[0].clientY;o._isOverActiveMap(t,n)||(r=e(t.domNode,"touchmove",(function(e){e.preventDefault();var r=o._getOverPanelWithScroll(t,n);if(r){var i=e.targetTouches[0].clientX,c=e.targetTouches[0].clientY;r.changeScroll(l-i,u-c),l=i,u=c}})),i=e(t.domNode,"touchend",(function(e){a();var o=e.clientX-n.clientX;o<-100?t.showNextSlide():o>100&&t.showPreviousSlide()})),c=e(t.domNode,"touchcancel",a))})),n.preventDoubleTapZoom(t.domNode)},o._isOverActiveMap=function(e,n){var r=o._getOverSection(e,n),i=r&&r.getMapImages()[0],c=i&&i.getCurrentMap();return c&&c.isMapNavigation&&t.isMouseOver(i.domNode,{event:n})},o._getOverPanelWithScroll=function(e,t){var n=o._getOverSection(e,t),r=n&&n.getInfographic();return r&&r.getInnerInfographic()&&r.getInnerInfographic().hasScroll&&r.getInnerInfographic().hasScroll()?r.getInnerInfographic():null},o._getOverSection=function(e,t){var n=e.infographicPage.getCurrentSection();return n&&!n.isEmpty()?n:null},o}));

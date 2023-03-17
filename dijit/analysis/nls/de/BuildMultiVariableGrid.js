@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({binsLabel:"Bin-Typ zum Erstellen des Gitters mit mehreren Variablen auswählen",layersAttrLabel:"Eingabe-Layer und Variablen auswählen, die in das Gitter einbezogen werden sollen",itemDescription:"Über 'Gitter mit mehreren Variablen erstellen' erstellter Feature-Layer.",itemTags:"Analyseergebnis, Gitter mit mehreren Variablen erstellen",itemSnippet:"Über 'Gitter mit mehreren Variablen erstellen' erstellter Feature-Layer",addVariables:"Variablen hinzufügen"});

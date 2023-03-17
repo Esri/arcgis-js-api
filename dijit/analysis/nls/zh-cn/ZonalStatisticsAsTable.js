@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"选择区域栅格或要素",outputTableName:"结果表名称",zoneField:"区域字段",inputValueRaster:"选择值栅格",ignoreNodata:"在计算中忽略 NoData (可选)",ignore:"忽略",statisticType:"统计数据类型(可选)",percentileValues:"百分比值(可选)",percentileInterpolationType:"百分位数插值类型(可选)",processAsMultidimensional:"以多维方式处理(可选)",allSlices:"所有剖切",outputZonalStatsName:"${layername} 中 ${valuelayername} 的分区统计数据",itemDescription:"从以表格显示的分区统计数据生成的分析要素表",itemTags:"栅格分析结果、以表格显示分区统计、${layername}、${valuelayername}",autoDetect:"自动检测",nearest:"最邻近",linear:"线性函数"});

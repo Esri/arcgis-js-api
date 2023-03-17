@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Izaberite rasterski sloj ili sloj izvora geoobjekata da biste utvrdili putanje od",inputCostRasterLabel:"Izaberite rasterski sloj troškova putovanja",inputDestinationLayerLabel:"Izaberite raster sloja odredišta geoobjekata da biste utvrdili putanje do",pathTypeLabel:"Izaberite vrstu putanja da biste utvrdili (neobavezno)",bestSingle:"Najbolja jedna",eachCell:"Do svake ćelije",eachZone:"Do svake zone",destinationField:"Odaberite polje za dobivanje vrijednosti odredišta",outputPolylineName:"Naziv polilinije rezultata",outputLayerName:"Optimalni putni troškovi kao polilinija sloja ${layername}",drawDestinationPointLayerName:"Točke odredišta",drawSourcePointLayerName:"Točke izvora",itemDescription:"Sloj geoobjekata koji je generiran pokretanjem opcije Utvrdi putanju putnih troškova kao poliliniju na sloju ${layername}. ",itemTags:"Rezultat analize, Utvrdi putanju putnih troškova kao poliliniju, ${layername} ${fieldname}",itemSnippet:"Sloj geoobjekata koji je generiran pomoću opcije Utvrdi putanju putnih troškova kao poliliniju.",missingMessage:"Odredišni sloj treba biti različit od izvornog sloja",noValueMessage:"Ova je vrijednost obvezna",placeHolder:"--Odaberi sloj--"});

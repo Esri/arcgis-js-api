@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"A Living Atlas eredményréteg kiválasztása",customAnalysisLayerTitle:"Eredményréteg kiválasztása",searchPlaceholderText:"Living Atlas eredményrétegek keresése",searchCustomPlaceholderText:"Eredményrétegek keresése",mainActionTitle:"Kiválasztás",customActionName:"Kiválasztás és hozzáadás a térképhez",customeSectionName:"Living Atlas eredményrétegek",Categories:"Kategóriák",boundaries:"Határok",places:"Helyek",boundariesAndPlaces:"Adminisztratív területek és helyek",hexbins:"Hexbinek",transportation:"Szállítás",point:"Pontrétegek",line:"Polyline-rétegek",polygon:"Polygonrétegek",pointFilterName:"Pont",lineFilterName:"Polyline",polygonFilterName:"Polygon",multiPointFilterName:"Többszörös pontok",geometryFilterName:"Geometria",featureLayerName:"Vektoros réteg",tableLayerName:"Táblázat",itemTypeFilterName:"Elem típusa",instantFilterName:"Azonnali",intervalFilterName:"Időköz",timeFilterName:"Idő",edit:"Szerkesztés",boundaryLayers:"Esri határoló rétegek",customAnalysisGroupName:"Szervezeti eredménycsoport"});

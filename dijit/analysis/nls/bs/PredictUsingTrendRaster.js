@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({toolDefine:"Predvidi pomoću rastera trenda",outputLayerName:"${layername}_predict",variablesLabel:"Odaberi varijablu(e) koje će biti predviđene",variablesListLabel:"Varijable [opis dimenzije] (Opis)",dimensionDefinitionLabel:"Odaberi metodu koja će se koristiti za predviđanje vrijednosti dimenzije",dimensionValuesLabel:"Odredi vrijednosti dimenzije za predviđanje",dimensionIntervalLabel:"Odredi interval dimenzije za predviđanje",intervalValueLabel:"Odredi broj koraka između početnih i krajnjih vrijednosti",intervalUnitLabel:"Odaberi jedinicu koja će biti korištena za interval vremenske vrijednosti",startLabel:"Početna vrijednost",endLabel:"Krajnja vrijednost",byValueLabel:"Među-vrijednost",byIntervalLabel:"Među-interval",hours:"Sati",days:"Dani",weeks:"Tjedni",months:"Mjeseci",years:"Godine",custom:"Prilagođeno",itemDescription:"Analiza usluge slike generirana iz rastera Predvidi koristeći trend",itemTags:"Raster analize rezultata, Raster predvidi koristeći trend, ${layername}",itemSnippet:"Analiza usluge slike generirana iz rastera Predvidi koristeći trend"});

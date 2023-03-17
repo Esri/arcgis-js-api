@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayer:"Выберите слой для поиска событий близости",entityField:"Выберите поле для идентификации событий",entityLayer:"Выберите слой, чтобы задать объекты интереса",defineDistanceLabel:"Задайте расстояние пространственного поиска",distMethodLabel:"Выберите метод вычисления расстояния",temporalSearchLabel:"Задайте временное расстояние поиска",optionsLabel:"Дополнительные опции",maxTraceDepth:"Максимальная глубина трассировки",attributeMatchLabel:"Выберите один или несколько атрибутов объекта для сопоставления",includeTracksLayer:"Включить слой треков",itemDescription:"Векторный слой, созданный с помощью решения Трассировка событий близости для ${inputLayername}.",itemTags:"Результаты анализа, Трассировка событий близости, ${inputLayername}",itemSnippet:"Векторный слой, созданный с помощью Трассировки событий близости.",outputLayerName:"Трассировка событий близости для ${inputLayername}",noEntityFieldMsg:"Слой событий близости и слой объектов интереса не имеют общих полей."});

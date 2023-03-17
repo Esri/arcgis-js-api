@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["../core/declare","../core/lang","./FillSymbol","./SimpleLineSymbol"],(function(i,o,e,l){var r={style:"solid",outline:new l,color:[0,0,0,.25]},s=i(e,{declaredClass:"esri.symbols.SimpleFillSymbol",properties:{color:{},type:"simple-fill",style:{value:"solid",type:String,json:{read:function(i){return o.valueOf(this._styles,i)||void 0},write:function(i,o){o.style=this._styles[i]}}}},_styles:{solid:"esriSFSSolid",none:"esriSFSNull",horizontal:"esriSFSHorizontal",vertical:"esriSFSVertical","forward-diagonal":"esriSFSForwardDiagonal","backward-diagonal":"esriSFSBackwardDiagonal",cross:"esriSFSCross","diagonal-cross":"esriSFSDiagonalCross"},getDefaults:function(){return o.mixin(this.inherited(arguments),r)},normalizeCtorArgs:function(i,o,e){if(i&&"string"!=typeof i)return i;var l={};return i&&(l.style=i),o&&(l.outline=o),e&&(l.color=e),l},clone:function(){return new s({color:o.clone(this.color),outline:this.outline&&this.outline.clone(),style:this.style})}});return o.mixin(s,{STYLE_SOLID:"solid",STYLE_NULL:"none",STYLE_HORIZONTAL:"horizontal",STYLE_VERTICAL:"vertical",STYLE_FORWARD_DIAGONAL:"forward-diagonal",STYLE_BACKWARD_DIAGONAL:"backward-diagonal",STYLE_CROSS:"cross",STYLE_DIAGONAL_CROSS:"diagonal-cross"}),s.defaultProps=r,s}));

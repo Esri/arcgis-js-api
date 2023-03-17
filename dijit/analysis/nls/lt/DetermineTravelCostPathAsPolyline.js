@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Pasirinkite rastrą arba elementų sluoksnį, nuo kurio norite nustatyti maršrutus",inputCostRasterLabel:"Pasirinkite kelionės sąnaudų rastrinį sluoksnį",inputDestinationLayerLabel:"Pasirinkite rastrą arba elementų paskirties sluoksnį, iki kurio norite nustatyti maršrutus",pathTypeLabel:"Pasirinkite nustatytinų maršrutų tipą (neprivaloma)",bestSingle:"Geriausias atskiras",eachCell:"Į kiekvieną gardelę",eachZone:"Į kiekvieną zoną",destinationField:"Pasirinkite lauką, kad gautumėte paskirties vietos reikšmes",outputPolylineName:"Rezultatų polilinijos pavadinimas",outputLayerName:"Optimalių kelionės sąnaudų kaip sluoksnio ${layername} polilinija",drawDestinationPointLayerName:"Paskirties taškai",drawSourcePointLayerName:"Šaltinio taškai",itemDescription:"Elementų sluoksnis ${layername} sugeneruotas paleidus Nustatyti kelionės sąnaudų maršrutą kaip poliliniją. ",itemTags:"Analizės rezultatas, Nustatyti kelionės sąnaudų maršrutą kaip poliliniją, ${layername} ${fieldname}",itemSnippet:"Elementų sluoksnis sugeneruotas naudojant Nustatyti kelionės sąnaudų maršrutą kaip poliliniją.",missingMessage:"Paskirties sluoksnis turi būti kitas nei šaltinio sluoksnis",noValueMessage:"Ši reikšmė privaloma",placeHolder:"--Pasirinkite sluoksnį--"});

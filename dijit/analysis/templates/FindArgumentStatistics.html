@@ -145,6 +145,19 @@
             <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="longInput esriLeadingMargin1" data-dojo-props="trim:true" data-dojo-attach-point="_maxValue" value=""></input>
           </td>
         </tr>
+        <tr data-dojo-attach-point="_valueLabelRow">
+          <td colspan="2">
+            <label class="esriLeadingMargin1">${i18n.valueLabel}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="argumentValue"></a>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_valueRow">
+          <td colspan="3">
+            <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="longInput esriLeadingMargin1" data-dojo-props="trim:true" data-dojo-attach-point="_value" value=""></input>
+          </td>
+        </tr>
         <tr class="multidim">
           <td colspan="2">
             <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_dimensionDefinitionNumberLabel">${i18n.fourLabel}</label>
@@ -195,9 +208,43 @@
         <tr>
           <td colspan="3" class="clear"></td>
         </tr>
+        <tr class="comparison">
+          <td colspan="2">
+            <label class="esriFloatLeading esriTrailingMargin025" data-dojo-attach-point="_comparisonNumberLabel"></label>
+            <label class="esriAnalysisStepsLabel" data-dojo-attach-point="_comparisonLabel">${i18n.comparisonLabel}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="comparison"></a>
+          </td>
+        </tr>
+        <tr class="comparison">
+          <td colspan="3">
+            <select class="longInput esriLeadingMargin1" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_comparisonSelect"></select>
+          </td>
+        </tr>
+        <tr class="occurence">
+          <td colspan="3" class="clear"></td>
+        </tr>
+        <tr class="occurence">
+          <td colspan="2">
+            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_occurenceNumberLabel">${i18n.sixLabel}</label>
+            <label class="esriAnalysisStepsLabel" data-dojo-attach-point="_occurenceLabel">${i18n.occurenceLabel}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="occurrence"></a>
+          </td>
+        </tr>
+        <tr class="occurence">
+          <td colspan="3">
+            <select class="longInput esriLeadingMargin1" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_occurenceSelect"></select>
+          </td>
+        </tr>
+        <tr class="occurence">
+          <td colspan="3" class="clear"></td>
+        </tr>
         <tr>
           <td colspan="2">
-            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_outputNumberLabel">${i18n.fiveLabel}</label>
+            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_outputNumberLabel">${i18n.sevenLabel}</label>
             <label class="esriAnalysisStepsLabel">${i18n.outputLayerLabel}</label>
           </td>
           <td class="shortTextInput">

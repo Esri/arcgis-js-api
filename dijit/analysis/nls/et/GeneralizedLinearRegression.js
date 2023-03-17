@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({modifiedTitle:"Üldistatud lineaarregressioon - ${goal}",fit:"Sobita",fitAndPredict:"Sobita ja ennusta",selectGoal:"Mida soovite teha?",fitGoal:"Sobitage mudel, et hinnata selle toimivust",fitAndPredictGoal:"Sobitage mudel ja ennustage väärtused",inputLayerLabel:"Valige kiht, et genereerida mudel",chooseDependentField:"Vali modelleeritav väli",chooseDataType:"Vali modelleeritavate andmete tüüp",continuousData:"Pidev",binaryData:"Kahendandmed",countData:"Koguarv",chooseExplanatoryField:"Vali selgitavad väljad",chooseFeaturesToPredict:"Vali väli, millele tuleb väärtusi ennustada",chooseExplainMatch:"Valige selgitavate väljade sobitamise viis",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Objektikiht, mis on genereeritud üldistatud lineaarregressiooni ${goal} lahenduste käitamisel.",itemTags:"Analüüsi tulemus, üldistatud lineaarregressioon, ${inputLayerName}, ${goal}",itemSnippet:"Objektikiht, mis on genereeritud üldistatud lineaarregressioonist (${goal})."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({binsLabel:"เลือกชนิดของถังที่จะใช้ในการสร้างตารางหลายตัวแปร",layersAttrLabel:"เลือกชั้นข้อมูลของข้อมูลเข้าและตัวแปรที่คุณต้องการรวมไว้ในตาราง",itemDescription:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากการเรียกใช้สร้างตารางหลายตัวแปร",itemTags:"ผลการวิเคราะห์ สร้างตารางหลายตัวแปร",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากสร้างตารางหลายตัวแปร",addVariables:"เพิ่มตัวแปร"});

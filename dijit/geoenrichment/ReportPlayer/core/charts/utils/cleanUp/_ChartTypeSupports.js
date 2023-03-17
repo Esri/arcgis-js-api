@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/ObjectUtil","esri/dijit/geoenrichment/ReportPlayer/core/charts/utils/ChartTypes","./chartTypes/classic/_ColumnBarLike","./chartTypes/classic/_LineLike","./chartTypes/classic/_Pie","./chartTypes/graphic/_ColumnBarLike","./chartTypes/graphic/_ColumnBarPictureLike","./chartTypes/graphic/_LineLike","./chartTypes/graphic/_Pie","./chartTypes/graphic/_Donut","./chartTypes/graphic/_Ring","./chartTypes/graphic/_Gauge","./chartTypes/graphic/_Waffle"],(function(r,e,i,t,a,c,p,s,n,h,o,y,T){var u={},L={};L[e.COLUMN]=L[e.BAR]=i,L[e.LINE]=t,L[e.PIE]=a;var l={};return l[e.COLUMN]=l[e.BAR]=c,l[e.PICTURE_COLUMN]=l[e.PICTURE_BAR]=p,l[e.LINE]=l[e.VERTICAL_LINE]=s,l[e.PIE]=n,l[e.DONUT]=h,l[e.RING]=o,l[e.GAUGE]=y,l[e.WAFFLE]=T,u.cleanUpJsonForChartType=function(e,i){return r.filterByPattern(e,(i?l:L)[e.type])},u.supportsProperty=function(r,e,i){var t=e.split("."),a=(i?l:L)[r];return t.forEach((function(r){a=a&&a[r]})),!!a},u}));

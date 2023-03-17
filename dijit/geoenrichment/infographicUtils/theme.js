@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["require","dojo/_base/declare","dojo/_base/lang","dojo/Evented","dojo/dom-class","esri/dijit/geoenrichment/Deferred","esri/extend"],(function(e,n,o,r,t,i,c){var u="common";function a(e){return!e||"common"==e}var m=new(n([r],{set:function(e,n){this.change(e,u,n),u=n,this.emit("change")},get:function(){return u},load:function(n){var r=new i,t=null,c=e.on("error",m);function m(){c&&c.remove(),r.resolve(t)}return e(["../themes/common/"+n],(function(r){t=o.clone(r),a(u)?m():e(["../themes/"+u+"/"+n],(function(e){!function e(n,o){for(var r in o)if(o.hasOwnProperty(r))try{n[r]=o[r].constructor==Object?e(n[r],o[r]):o[r]}catch(e){n[r]=o[r]}return n}(t,e),m()}))})),r.promise},change:function(e,n,o){a(n)||t.remove(e,n),a(o)||t.add(e,o)}}));return c("esri.dijit.geoenrichment.theme",m),m}));

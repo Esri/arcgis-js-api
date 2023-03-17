@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Изберете растер или обектен слой с местоположение, за да определите пътища за пътуване между",inputCostRasterLabel:"Изберете растерния слой за пътни разходи",outputOptimumNetworkName:"Име на резултатния полилинеен слой за оптимални пътища",outputNeighborNetworkName:"Име на резултатния полилинеен слой за съседни пътища (по избор)",outputLayerName:"Определяне на оптималните разходи за пътуване на ${layername}",itemDescription:"Обектен слой, генериран от пускане в мрежата за Определяне на оптимални разходи за пътуване на ${layerName}. ",itemTags:"Резултат на анализа, Мрежа за определяне на оптимални пътни разходи, ${layername} ${fieldname}",itemSnippet:"Обектен слой, генериран от Мрежа за определяне на оптимални пътни разходи."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Изберете растер за дестинация или характеристики",destinationField:"Поле за дестинация (по избор)",inputDistanceAccumulationRaster:"Изберете растер за натрупване на разстояние",inputBackDirectionRaster:"Изберете растер за обратна посока или посока на потока",pathType:"Тип път (по избор)",bestSingle:"Най-добри единични",eachCell:"Всяка клетка",eachZone:"Всяка зона",outputFeatureName:"Име на резултатен обектен слой",outputLayerName:"Оптимален път като линия на ${layername}",drawSourcePointLayerName:"Точки-източник",itemDescription:"Обектен слой, генериран от стартирането на Оптималният път като линия на ${layername}. ",itemTags:"Резултат от анализа, Оптимален път като линия, ${layername} ${fieldname}",itemSnippet:"Обектен слой, генериран от оптимален път като линия."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define(["require","exports","./tsSupport/generatorHelper","./tsSupport/awaiterHelper","./promiseUtils"],(function(e,n,r,t,u){Object.defineProperty(n,"__esModule",{value:!0}),n.forEach=function(e,n,o){return t(this,void 0,void 0,(function(){return r(this,(function(r){switch(r.label){case 0:return[4,u.eachAlways(e.map((function(e,r){return n.apply(o,[e,r])})))];case 1:return r.sent(),[2]}}))}))},n.map=function(e,n,o){return t(this,void 0,void 0,(function(){return r(this,(function(r){switch(r.label){case 0:return[4,u.eachAlways(e.map((function(e,r){return n.apply(o,[e,r])})))];case 1:return[2,r.sent().map((function(e){return e.value}))]}}))}))},n.maybe=function(e){return e.then((function(e){return{ok:!0,value:e}})).catch((function(e){return{ok:!1,error:e}}))},n.assertMaybe=function(e){if(!0===e.ok)return e.value;throw e.error},n.cancellable=function(e){var n,r=function(e){return n=e,e};return u.create((function(n,t){e(r).then(n,t)}),(function(e){return n&&n.cancel(e)}))}}));

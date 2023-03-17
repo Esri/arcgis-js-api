@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vybrať vrstvu na opis",summaryTypes:"Typy zhrnutia",centralFeature:"Centrálny prvok",meanCenter:"Geografický priemerný stred prvkov",medianCenter:"Geografický mediánový stred prvkov",ellipse:"Elipsa",weightBy:"Váha podľa (voliteľné)",groupBy:"Zoskupiť podľa (voliteľné)",resultLayerName:"Názov výslednej vrstvy",outputLayerName:"Opísať rozdelenie ${layerName}",none:"Žiadne",itemDescription:"Vrstvy prvkov generované nástrojom Zhrnúť stred a rozptyl na vrstve${layerName}. ",itemTags:"Výsledok analýzy, Zhrnúť stred a rozptyl, ${layerName}",itemSnippet:"Vrstvy prvkov generované nástrojom Zhrnúť stred a rozptyl"});

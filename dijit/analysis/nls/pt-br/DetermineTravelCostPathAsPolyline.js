@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Escolher camada de origem da feição ou raster para determinar caminhos de",inputCostRasterLabel:"Escolher camada de raster de custo da viagem",inputDestinationLayerLabel:"Escolher camada de destino da feição ou raster para determinar caminhos para",pathTypeLabel:"Escolher tipo de caminhos para determinar (opcional)",bestSingle:"Mais Simples",eachCell:"Para Cada Célula",eachZone:"Para Cada Zona",destinationField:"Escolher campo para obter valores para destino",outputPolylineName:"Nome de polilinha rsultante",outputLayerName:"Custo de viagem favorável como polilinha de ${layername}",drawDestinationPointLayerName:"Pontos de destino",drawSourcePointLayerName:"Ponto de origem",itemDescription:"Camada de feição gerada a partir da execução de Determinar Caminho de Custo de Viagem como Polilinha em ${layername}. ",itemTags:"Resultado da Análise, Determinar Caminho de Custo de Viagem como Polilinha, ${layername} ${fieldname}",itemSnippet:"Camada de feição gerada a partir de Determinar Caminho de Custo de Viagem como Polilinha.",missingMessage:"A camada de destino deve ser diferente da camada de origem",noValueMessage:"Este valor é exigido",placeHolder:"--Selecionar uma camada--"});

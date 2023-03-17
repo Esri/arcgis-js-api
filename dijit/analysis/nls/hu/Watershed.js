@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.42/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.43/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Áramlási irány réteg kiválasztása",pourPointLayerLabel:"Kifolyási pont raszter vagy vektoros elem réteg kiválasztása",pourPointField:"Kifolyási pont mező kiválasztása",resultLayerName:"Eredmény réteg neve",outputLayerName:"${layername} vízgyűjtő területe",itemDescription:"A Középpont és szóródás összefoglalása ${layerName} rétegen történő futtatásából létrehozott vektoros réteg. ",itemTags:"Elemzés végeredménye, Vízgyűjtő terület, ${layername}, ${fieldname}",itemSnippet:"A vízgyűjtő terület alapján létrehozott vektoros réteg."});
