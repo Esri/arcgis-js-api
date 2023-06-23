@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/ensureType","../../../core/arrayUtils","../../../core/accessorSupport/decorators/enumeration","../../../core/accessorSupport/decorators/subclass","./PointSizeAlgorithm"],(function(e,r,o,t,s,c,a,p){"use strict";var n;let i=n=function(r){function o(){var e;return(e=r.apply(this,arguments)||this).type="splat",e.scaleFactor=1,e}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new n({scaleFactor:this.scaleFactor})},o}(p);r.__decorate([c.enumeration({pointCloudSplatAlgorithm:"splat"})],i.prototype,"type",void 0),r.__decorate([o.property({type:Number,value:1,nonNullable:!0,json:{write:!0}})],i.prototype,"scaleFactor",void 0),i=n=r.__decorate([a.subclass("esri.renderers.support.pointCloud.PointSizeSplatAlgorithm")],i);return i}));

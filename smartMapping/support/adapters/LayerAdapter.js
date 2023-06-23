@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/Loadable","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/ensureType","../../../core/arrayUtils","../../../core/accessorSupport/decorators/subclass"],(function(e,r,o,t,p,s,c){"use strict";let a=function(r){function o(e){return r.call(this,e)||this}return e._inheritsLoose(o,r),o}(o);r.__decorate([t.property({constructOnly:!0})],a.prototype,"layer",void 0),r.__decorate([t.property()],a.prototype,"geometryType",void 0),r.__decorate([t.property()],a.prototype,"objectIdField",void 0),r.__decorate([t.property()],a.prototype,"supportsSQLExpression",void 0),r.__decorate([t.property()],a.prototype,"hasQueryEngine",void 0),r.__decorate([t.property()],a.prototype,"minScale",void 0),r.__decorate([t.property()],a.prototype,"maxScale",void 0),r.__decorate([t.property()],a.prototype,"fullExtent",void 0),a=r.__decorate([c.subclass("esri.smartMapping.support.adapters.LayerAdapter")],a);return a}));

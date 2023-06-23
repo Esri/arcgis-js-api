@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/JSONSupport","../core/Logger","../core/accessorSupport/ensureType","../core/arrayUtils","../core/Error","../core/has","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass"],(function(o,e,r,t,n,a,s,i,c,u,p){"use strict";var l;o.NavigationConstraint=l=function(o){function r(e){var r;return(r=o.call(this,e)||this).type="none",r}return e._inheritsLoose(r,o),r.prototype.clone=function(){return new l({type:this.type})},r}(t.JSONSupport),r.__decorate([u.enumeration({none:"none",stayAbove:"stay-above"})],o.NavigationConstraint.prototype,"type",void 0),o.NavigationConstraint=l=r.__decorate([p.subclass("esri.ground.NavigationConstraint")],o.NavigationConstraint),Object.defineProperty(o,Symbol.toStringTag,{value:"Module"})}));

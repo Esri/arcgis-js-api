@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../chunks/_rollupPluginBabelHelpers","../../core/asyncUtils","../../core/maybe","../../core/promiseUtils","../../core/reactiveUtils"],(function(e,o,n,t,i,l){"use strict";function a(e,a){e.interactive=!0;const{tool:c,view:r}=e;r.activeTool=c;let s=i.onAbort(a,(()=>{r.activeTool===c&&(r.activeTool=null)}));return n.createTask(function(){var e=o._asyncToGenerator((function*(e){yield l.whenOnce((()=>t.isNone(c)||!c.active),e),s=t.removeMaybe(s)}));return function(o){return e.apply(this,arguments)}}(),a)}function c(e,o){return l.watch((()=>e.interactive),(()=>r(e,o)),l.syncAndInitial)}function r(e,o){e.interactive?s(e,o):u(e)}function s(e,o){u(e);const{view:n,analysis:t}=e,i=new o({view:n,analysis:t,analysisViewData:e});return e.tool=i,n.tools.add(i),i}function u(e){const{view:o,tool:n}=e;t.isNone(n)||(o.tools.remove(n),e.tool=null)}e.activateAnalysisViewTool=a,e.connectAnalysisViewToTool=c,e.removeAnalysisViewTool=u,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../core/mathUtils","../../../geometry/support/aaBoundingRect","./TilingScheme"],(function(e,t,o,_){"use strict";const O=!1,n=64,E=512,i=2.5,a=t.clampFloat32(t.NUMBER_MAX_FLOAT32/10),l=2,r=o.create();_.TilingScheme.WebMercatorAuxiliarySphere.getExtent(0,0,0,r);const s=o.create([-180,-90,180,90]),T="Cannot extend surface to encompass all layers because it would result in too many root tiles.",R="Surface extent is too large for tile resolution at level 0.",A=3;let c=A;function L(e){return e<4?3:c}const u={setElevationDesiredMaxUpscalingDistance(e){c=e??A}};e.ELEVATION_NODATA_VALUE=a,e.GEOGRAPHIC_WORLD_EXTENT=s,e.MAX_MEMORY_LOD_BIAS=i,e.MAX_PATCH_TESSELATION=E,e.MAX_ROOT_TILES=n,e.PROGRESSIVE_LOADING_MODULO=l,e.TILE_LOADING_DEBUGLOG=O,e.TOO_MANY_ROOT_TILES_AFTER_CHANGE_ERROR=T,e.TOO_MANY_ROOT_TILES_FOR_LAYER_ERROR=R,e.WEBMERCATOR_WORLD_EXTENT=r,e.getElevationDesiredResolutionLevel=L,e.test=u,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

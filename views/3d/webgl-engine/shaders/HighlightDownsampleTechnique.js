@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["require","exports","../../../../chunks/_rollupPluginBabelHelpers","../core/shaderTechnique/ReloadableShaderModule","../core/shaderTechnique/ShaderTechnique","../lib/DefaultVertexAttributeLocations","../lib/Program","../../../../chunks/HighlightDownsample.glsl","../../../webgl/renderState"],(function(e,i,r,t,l,n,a,o,u){"use strict";let h=function(e){function i(){return e.apply(this,arguments)||this}r._inheritsLoose(i,e);var t=i.prototype;return t.initializeProgram=function(e){return new a.Program(e.rctx,i.shader.get().build(),n.Default3D)},t.initializePipeline=function(){return u.makePipelineState({colorWrite:u.defaultColorWriteParams})},i}(l.ShaderTechnique);h.shader=new t.ReloadableShaderModule(o.HighlightDownsample,(()=>new Promise(((i,r)=>e(["./HighlightDownsample.glsl"],i,r))))),i.HighlightDownsampleTechnique=h,Object.defineProperty(i,Symbol.toStringTag,{value:"Module"})}));

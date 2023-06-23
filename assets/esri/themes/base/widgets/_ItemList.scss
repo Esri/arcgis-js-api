@@ -5,59 +5,27 @@
     width: 100%;
   }
 
-  .esri-item-list__filter-container {
-    background: transparent;
-    position: relative;
-    display: flex;
-    padding: $cap-spacing--half $side-spacing--half;
-    margin: 0 0 $cap-spacing--half;
-    overflow: hidden;
-    flex-grow: 1;
-  }
-
   .esri-item-list__filter-container--sticky {
     position: sticky;
     top: 0;
-  }
-
-  .esri-item-list__filter-input {
-    width: 100%;
-    border: none;
-    border-bottom: 2px solid $border-color;
-    background-color: transparent;
-    padding: $cap-spacing--half 0;
-    transition: border 250ms ease-in-out;
-    &:focus {
-      outline: none;
-      border-color: $border-color--active;
-    }
-  }
-
-  .esri-item-list__filter-placeholder {
-    position: absolute;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    color: $interactive-font-color;
-    margin: $cap-spacing--half $side-spacing--half;
-    padding: 0 $side-spacing--half;
-    pointer-events: none;
-  }
-
-  .esri-item-list__filter-placeholder-text {
-    margin: 0 $side-spacing--quarter;
+    z-index: 1;
   }
 
   .esri-item-list__group {
-    margin-top: 20px;
+    margin-top: $cap-spacing;
   }
 
   .esri-item-list__scroller {
     overflow-y: auto;
+  }
+
+  .esri-ui .esri-item-list__scroller {
+    position: relative;
+    z-index: 0;
+
+    &--enabled {
+      max-height: $panel-max-height--small;
+    }
   }
 
   .esri-item-list__group__header {
@@ -65,44 +33,17 @@
     font-weight: var(--calcite-font-weight-medium);
   }
 
-  .esri-item-list__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .esri-item-list__list-item-container {
-    display: flex;
-    margin: 0 $cap-spacing--eighth;
-    width: 100%;
-    .esri-item-list__list-item-label {
-      margin: 0 $side-spacing--half;
-    }
-  }
-
   .esri-item-list__list-item {
     cursor: pointer;
-    margin-bottom: $cap-spacing--half;
     min-height: $list-item-height;
-    transition: border 250ms ease-in-out;
-    display: flex;
-    justify-content: space-between;
 
     @include icomoonIconSelector("&") {
-      padding-right: $font-size * 0.2;
+      padding-inline-end: $font-size * 0.2;
     }
   }
 
   .esri-item-list__list-item-icon {
-    padding: 0 12px;
-  }
-
-  .esri-item-list__list-item-label {
-    flex: 1;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    word-break: break-word;
+    margin-inline: 0.75rem; // Matches default spacing used by Calcite
   }
 
   .esri-item-list__no-matches-message {
@@ -110,16 +51,6 @@
     justify-content: center;
     align-items: center;
     height: $panel-min-height--small;
-  }
-
-  .esri-item-list__no-items-message {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: $list-item-height;
-  }
-  .esri-ui .esri-item-list__scroller {
-    max-height: $panel-max-height--small;
   }
 }
 

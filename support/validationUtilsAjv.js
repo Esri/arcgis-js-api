@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports"],(function(t){"use strict";function e(t,e=10){const n={};let r=t.map(a).map(((t,e)=>({e:t,i:e}))).sort((({e:t,i:e},{e:a,i:n})=>{const r=t.dataPath?t.dataPath.split(".").length:0,o=a.dataPath?a.dataPath.split(".").length:0;return r===o?e-n:o-r})).map((({e:t})=>`${t.dataPath?t.dataPath+": ":""}${t.message}`)).filter((t=>{const e=!n[t];return n[t]=!0,e}));if(r.length>e){const t="("+(r.length-e)+" more...)";r=r.slice(0,e),r.push(t)}return r}function a(t,e=5){if(n(t.params)){let a=t.params.allowedValues;if(a){if(a=a.map((t=>JSON.stringify(t))),a.length>e){const t="("+(a.length-e)+" more...)";a=a.slice(0,e),a.push(t)}t.message="should be equal to one of: "+a.join(", ")}}else r(t.params)&&(t.message="should NOT have additional property: "+t.params.additionalProperty);return t}function n(t){return null!=(t&&t.allowedValues)}function r(t){return null!=(t&&t.additionalProperty)}t.convertAjvErrors=e,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

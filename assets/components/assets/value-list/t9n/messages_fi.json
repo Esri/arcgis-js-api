@@ -1,6 +1,0 @@
-{
-  "dragHandleActive": "Järjestetään uudelleen kohdetta ${itemLabel}, nykyinen sijainti ${position}/${total}.",
-  "dragHandleChange": "${itemLabel}, uusi sijainti ${position}/${total}. Vahvista painamalla välilyöntinäppäintä.",
-  "dragHandleCommit": "${itemLabel}, nykyinen sijainti ${position}/${total}.",
-  "dragHandleIdle": "${itemLabel}, paina välilyöntinäppäintä ja järjestä sisältö uudelleen käyttämällä nuolinäppäimiä. Nykyinen sijainti ${total}/${position}."
-}

@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/ensureType","../../../core/arrayUtils","../../../core/accessorSupport/decorators/subclass","./BaseFunctionArguments"],(function(e,r,t,o,i,n,s){"use strict";var c;let p=c=function(r){function t(){var e;return(e=r.apply(this,arguments)||this).visibleBandID=0,e.infraredBandID=1,e.scientificOutput=!1,e}return e._inheritsLoose(t,r),t.prototype.clone=function(){const{visibleBandID:e,infraredBandID:r,scientificOutput:t}=this;return new c({visibleBandID:e,infraredBandID:r,scientificOutput:t})},t}(s);r.__decorate([t.property({json:{write:!0}})],p.prototype,"visibleBandID",void 0),r.__decorate([t.property({json:{write:!0}})],p.prototype,"infraredBandID",void 0),r.__decorate([t.property({json:{write:!0}})],p.prototype,"scientificOutput",void 0),p=c=r.__decorate([n.subclass("esri.layers.support.rasterFunctions.NDVIFunctionArguments")],p);return p}));

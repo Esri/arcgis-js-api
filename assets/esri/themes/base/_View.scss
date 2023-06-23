@@ -28,6 +28,7 @@
     height: 100%;
     overflow: hidden;
     user-select: none;
+    outline: 0;
 
     /*
      * TODO
@@ -45,11 +46,7 @@
     }
   }
 
-  .esri-view-surface--inset-outline {
-    outline: 0;
-  }
-
-  .esri-view-surface--inset-outline:focus::after {
+  .esri-view-surface:focus::after {
     content: "";
     box-sizing: border-box;
     position: absolute;
@@ -65,7 +62,7 @@
     overflow: hidden;
   }
 
-  .esri-view-surface[data-interacting="true"] {
+  .esri-view-surface[data-navigating="true"] {
     cursor: move;
     cursor: grabbing;
     cursor: -moz-grabbing;

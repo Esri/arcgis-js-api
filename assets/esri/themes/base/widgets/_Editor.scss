@@ -20,6 +20,8 @@
     display: flex;
     margin-bottom: $cap-spacing;
     flex: 0 0 auto;
+    align-items: center;
+    gap: $side-spacing--half;
 
     &__heading {
       color: $heading-color;
@@ -91,6 +93,25 @@
         margin-bottom: 12px;
       }
     }
+
+    $template-item-content-end-margin: 0.75rem; // Matches default spacing used by Calcite
+
+    &__template-item-content-end {
+      display: block;
+      margin-inline: $template-item-content-end-margin;
+
+      &--success {
+        --calcite-ui-icon-color: var(--calcite-ui-success);
+      }
+      &--error {
+        --calcite-ui-icon-color: var(--calcite-ui-danger);
+      }
+    }
+
+    &__template-item-loader {
+      margin-inline: $template-item-content-end-margin;
+      color: $border-color--active;
+    }
   }
 
   .esri-editor__content {
@@ -112,15 +133,6 @@
     display: flex;
     flex-direction: column;
     flex: 1 0 100%;
-  }
-
-  .esri-editor__message {
-    display: flex;
-    align-items: center;
-    align-self: stretch;
-    font-size: $font-size__h2;
-    margin-left: $side-spacing;
-    margin-right: $side-spacing;
   }
 
   .esri-editor__scroller {
@@ -234,7 +246,7 @@
     }
   }
 
-  .esri-editor__owner-admin-notice {
+  .esri-editor__notice {
     margin-bottom: $cap-spacing;
   }
 }

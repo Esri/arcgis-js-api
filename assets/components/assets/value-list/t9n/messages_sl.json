@@ -1,6 +1,0 @@
-{
-  "dragHandleActive": "Preurejanje ${itemLabel}, trenutni položaj ${position} od ${total}.",
-  "dragHandleChange": "${itemLabel}, nov položaj ${position} od ${total}. Za potrditev pritisnite presledek.",
-  "dragHandleCommit": "${itemLabel}, trenutni položaj ${position} od ${total}.",
-  "dragHandleIdle": "${itemLabel}, za preureditev vsebine pritisnite presledek in puščične tipke. Trenutni položaj ${position} od ${total}."
-}

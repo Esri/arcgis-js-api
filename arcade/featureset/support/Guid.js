@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define((function(){"use strict";const t=new RegExp("^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$","i");function n(t){let n="";for(let e=0;e<t;e++)n+=(65536*(1+Math.random())|0).toString(16).substring(1);return n}let e=function(){function e(t){if(this._value="",!t)throw new TypeError("Invalid argument; `value` has no value.");this._value=e.EMPTY,t&&t instanceof e?this._value=t.toString():t&&"[object String]"===Object.prototype.toString.call(t)&&e.isGuid(t)&&(this._value=t)}var i=e.prototype;return i.equals=function(t){return e.isGuid(t)&&this._value===t},i.isEmpty=function(){return this._value===e.EMPTY},i.toString=function(){return this._value},i.toJSON=function(){return this._value},e.isGuid=function(n){return n&&(n instanceof e||t.test(n.toString()))},e.create=function(){return new e([n(2),n(1),n(1),n(1),n(3)].join("-"))},e.raw=function(){return[n(2),n(1),n(1),n(1),n(3)].join("-")},e}();return e.EMPTY="00000000-0000-0000-0000-000000000000",e}));

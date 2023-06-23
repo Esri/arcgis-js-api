@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/reactiveUtils","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/arrayUtils","../../core/accessorSupport/decorators/subclass","../Widget"],(function(e,t,o,r,i,s,n,c){"use strict";let p=function(t){function r(e,o){var r;return(r=t.call(this,e,o)||this).type=null,r.viewModel=null,r}return e._inheritsLoose(r,t),r.prototype.initialize=function(){this.addHandles([o.on((()=>this.viewModel),"animate",(()=>{this.animate()})),o.on((()=>this.viewModel),"next",(()=>{this.next()})),o.on((()=>this.viewModel),"previous",(()=>{this.previous()}))])},r}(c);t.__decorate([r.property()],p.prototype,"type",void 0),t.__decorate([r.property()],p.prototype,"viewModel",void 0),p=t.__decorate([n.subclass("esri.widgets.ValuePicker.BaseComponent")],p);return p}));

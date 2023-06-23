@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","./lang"],(function(r,e){"use strict";function t(r,e,t=!1){return u(r,e,t)}function n(r,e){if(null!=e)return e[r]||i(r.split("."),!1,e)}function o(r,e,t){const n=r.split("."),o=n.pop(),u=i(n,!0,t);u&&o&&(u[o]=e)}function i(r,e,t){let n=t;for(const o of r){if(null==n)return;if(!(o in n)){if(!e)return;n[o]={}}n=n[o]}return n}function u(r,t,n){return t?Object.keys(t).reduce(((r,o)=>{let i=r[o],c=t[o];return i===c?r:void 0===i?(r[o]=e.clone(c),r):(Array.isArray(c)||Array.isArray(r)?(i=i?Array.isArray(i)?r[o]=i.concat():r[o]=[i]:r[o]=[],c&&(Array.isArray(c)||(c=[c]),n?c.forEach((r=>{i.includes(r)||i.push(r)})):r[o]=c.concat())):c&&"object"==typeof c?r[o]=u(i,c,n):r.hasOwnProperty(o)&&!t.hasOwnProperty(o)||(r[o]=c),r)}),r||{}):r}r.deepMerge=t,r.getDeepValue=n,r.setDeepValue=o,Object.defineProperty(r,Symbol.toStringTag,{value:"Module"})}));

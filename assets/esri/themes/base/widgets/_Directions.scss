@@ -465,6 +465,12 @@
       width: 100%;
     }
   }
+
+  .esri-directions__message_heading {
+    padding: 12px 7px;
+    margin: 0;
+    text-align: center;
+  }
 }
 
 @if $include_Directions == true {

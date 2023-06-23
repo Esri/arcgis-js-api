@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../../core/shaderModules/interfaces"],(function(e,r){"use strict";var a;function d(a,d){const t=a.vertex;switch(t.code.add(r.glsl`#define VERTEX_DISCARD_CUTOFF (1.0 - 1.0 / 255.0)`),d.vertexDiscardMode){case e.VertexDiscardMode.None:t.code.add(r.glsl`#define vertexDiscardByOpacity(_opacity_) {}`);break;case e.VertexDiscardMode.Opaque:t.code.add(r.glsl`#define vertexDiscardByOpacity(_opacity_) { if (_opacity_ >  VERTEX_DISCARD_CUTOFF) {  gl_Position = vec4(1e38, 1e38, 1e38, 1.0); return; } }`);break;case e.VertexDiscardMode.Transparent:t.code.add(r.glsl`#define vertexDiscardByOpacity(_opacity_) { if (_opacity_ <= VERTEX_DISCARD_CUTOFF) {  gl_Position = vec4(1e38, 1e38, 1e38, 1.0); return; } }`)}}e.VertexDiscardMode=void 0,(a=e.VertexDiscardMode||(e.VertexDiscardMode={}))[a.None=0]="None",a[a.Transparent=1]="Transparent",a[a.Opaque=2]="Opaque",a[a.COUNT=3]="COUNT",e.VertexDiscardByOpacity=d,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

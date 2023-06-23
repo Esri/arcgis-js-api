@@ -1,1 +1,0 @@
-{"widgetLabel":"直線の計測","hint":"シーンで始点となる位置をクリックし、計測を開始します。","unsupported":"SceneView では 3D の直線計測のみがサポートされています。","distance":"距離","direct":"直線","horizontal":"水平","vertical":"鉛直","unit":"単位","newMeasurement":"新しい計測","snappingDisablePrompt":"Ctrl キーを押したままにすると、スナップが一時的に無効になります。","snappingDisablePromptAlternate":"Ctrl キーを押したままにすると、スナップが一時的に無効になります。"}

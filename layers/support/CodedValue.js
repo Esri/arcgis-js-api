@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/arrayUtils","../../core/accessorSupport/decorators/subclass"],(function(e,o,r,t,s,c,u,n){"use strict";var p;e.CodedValue=p=function(e){function r(o){var r;return(r=e.call(this,o)||this).name=null,r.code=null,r}return o._inheritsLoose(r,e),r.prototype.clone=function(){return new p({name:this.name,code:this.code})},r}(t.JSONSupport),r.__decorate([s.property({type:String,json:{write:!0}})],e.CodedValue.prototype,"name",void 0),r.__decorate([s.property({type:[String,Number],json:{write:!0}})],e.CodedValue.prototype,"code",void 0),e.CodedValue=p=r.__decorate([n.subclass("esri.layers.support.CodedValue")],e.CodedValue),Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

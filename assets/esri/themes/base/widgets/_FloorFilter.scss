@@ -371,6 +371,12 @@ $floor-filter-scrollbar-track--color: #fafafa;
     }
   }
 
+  .esri-expand__content {
+    .esri-floor-filter {
+      width: max-content;
+    }
+  }
+
   .esri-view-height-less-than-small .esri-floor-filter,
   .esri-view-width-less-than-small .esri-floor-filter {
     .esri-floor-filter__zoom-button,

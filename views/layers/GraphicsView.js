@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Identifiable","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/arrayUtils","../../core/accessorSupport/decorators/subclass"],(function(e,r,o,t,p,s,i,c){"use strict";const a=e=>{let s=function(e){function o(){var r;return(r=e.apply(this,arguments)||this).graphics=null,r.renderer=null,r}return r._inheritsLoose(o,e),o}(t.IdentifiableMixin(e));return o.__decorate([p.property()],s.prototype,"graphics",void 0),o.__decorate([p.property()],s.prototype,"renderer",void 0),o.__decorate([p.property()],s.prototype,"updating",void 0),o.__decorate([p.property()],s.prototype,"view",void 0),s=o.__decorate([c.subclass("esri.views.layers.GraphicsView")],s),s};e.GraphicsView=a,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

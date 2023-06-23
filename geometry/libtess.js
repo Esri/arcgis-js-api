@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["require","exports","../chunks/_rollupPluginBabelHelpers","../assets","../core/has"],(function(e,t,n,s,i){"use strict";const r=128e3;let l=null,o=null;function u(){return a.apply(this,arguments)}function a(){return(a=n._asyncToGenerator((function*(){return l||(l=c()),l}))).apply(this,arguments)}function c(){return p.apply(this,arguments)}function p(){return(p=n._asyncToGenerator((function*(){const t=i("esri-csp-restrictions")?yield new Promise(((t,n)=>e(["../chunks/libtess-asm"],t,n))).then((e=>e.libtessAsm)):yield new Promise(((t,n)=>e(["../chunks/libtess"],t,n))).then((e=>e.libtess));o=yield t.load({locateFile:e=>s.getAssetUrl(`esri/core/libs/libtess/${e}`)})}))).apply(this,arguments)}function h(e,t){const n=Math.max(e.length,r);return o.triangulate(e,t,n)}t.loadLibtess=u,t.triangulate=h,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

@@ -27,6 +27,7 @@
     touch-action: none; // needed for touch actions to work correctly
     pointer-events: auto;
     overflow: hidden; // needed to hide tracers in iOS
+    outline: 0;
   }
 
   .esri-swipe--horizontal .esri-swipe__container {
@@ -97,6 +98,16 @@
 
   .esri-swipe--vertical .esri-swipe__handle {
     left: calc(50% - #{$button-height--half});
+  }
+
+  .esri-swipe__container:focus .esri-swipe__handle,
+  .esri-swipe__container:focus .esri-swipe__divider {
+    outline: inset 2px Highlight;
+    outline: inset 2px -webkit-focus-ring-color;
+  }
+
+  .esri-swipe__container:focus .esri-swipe__handle {
+    outline-offset: -3px;
   }
 }
 

@@ -17,16 +17,20 @@
       margin-bottom: 10px;
     }
 
+    &__button {
+      margin-bottom: 6px;
+    }
+
     &__item {
-      padding-top: 8px;
-
-      &__checkbox,
-      &__label {
-        padding-left: 12px;
-
-        calcite-checkbox {
-          display: block;
+      calcite-accordion-item,
+      calcite-action {
+        calcite-icon {
+          margin-inline-start: 0;
         }
+      }
+      calcite-icon {
+        color: var(--calcite-ui-brand);
+        margin-inline-start: var(--calcite-list-item-spacing-indent);
       }
     }
   }

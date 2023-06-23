@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56" height="56" fill="none" version="2.0" xmlns="http://www.w3.org/2000/svg">
+ <style id="theme-style">.contrast-fill { fill:#fff; }
+.contrast-stroke { stroke:#ffffff;  }
+.accent-fill { fill:#FF7F00;    fill-opacity:0.5; }
+.accent-stroke { stroke:#FF7F00;    stroke-opacity:0.5; }</style>
+ <circle class="accent-fill" transform="rotate(40.542)" cx="39.478" cy="3.078" r="28"/>
+ <path class="contrast-stroke" d="m7.074 30.053 29.397 11.985-3.6731-33.493" fill="none" stroke-width="5"/>
+ <path class="contrast-stroke  contrast-fill" d="m24.504 23.207a11.982 11.982 0 0 0-9.8003 7.507" fill="none" stroke-width="2.9962"/>
+ <path class="contrast-fill" d="m29.818 22.808-6.1843 4.5994-0.54071-8.3632z"/>
+</svg>

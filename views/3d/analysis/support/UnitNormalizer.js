@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/unitUtils"],(function(e,t,i){"use strict";let r=function(){function e(e=null){this.spatialReference=e}var r=e.prototype;return r.normalizeDistance=function(e){return e*this._metersPerDistanceUnit},r.normalizeElevation=function(e){return e*this._metersPerElevationUnit},r.normalizeArea=function(e){return e*this._squareMetersPerAreaUnit},r._updateNormalizationFactors=function(){this._metersPerDistanceUnit=i.getMetersPerUnitForSR(this._spatialReference,1),this._metersPerElevationUnit=i.getMetersPerUnitForSR(this._spatialReference,1),this._squareMetersPerAreaUnit=this._metersPerDistanceUnit*this._metersPerDistanceUnit},t._createClass(e,[{key:"spatialReference",get:function(){return this._spatialReference},set:function(e){e!==this._spatialReference&&(this._spatialReference=e,this._updateNormalizationFactors())}}]),e}();e.UnitNormalizer=r,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

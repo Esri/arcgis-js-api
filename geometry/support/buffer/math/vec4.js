@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","./common","../../../../chunks/vec42"],(function(t,e,r){"use strict";t.normalize=r.normalize,t.scale=r.scale,t.shiftRight=r.shiftRight,t.transformMat3=r.transformMat3,t.transformMat4=r.transformMat4,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

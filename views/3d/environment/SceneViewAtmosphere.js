@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/Accessor","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/ensureType","../../../core/arrayUtils","../../../core/accessorSupport/decorators/subclass"],(function(e,r,t,o,s,c,i,n){"use strict";var u;e.SceneViewAtmosphere=u=function(e){function t(){return e.apply(this,arguments)||this}return r._inheritsLoose(t,e),t.prototype.clone=function(){return new u({quality:this.quality})},r._createClass(t,[{key:"quality",set:function(e){["low","high"].includes(e)&&this._set("quality",e)}}]),t}(o),t.__decorate([s.property({type:["low","high"],value:"low"})],e.SceneViewAtmosphere.prototype,"quality",null),e.SceneViewAtmosphere=u=t.__decorate([n.subclass("esri.views.3d.environment.SceneViewAtmosphere")],e.SceneViewAtmosphere),Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

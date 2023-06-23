@@ -1,6 +1,0 @@
-{
-  "dragHandleActive": "${itemLabel}의 순서를 바꾸는 중입니다. 현재 위치는 ${total}개 중 ${position}번째입니다.",
-  "dragHandleChange": "${itemLabel}, 새 위치는 ${total}개 중 ${position}번째입니다. 확인하려면 스페이스바를 누르세요.",
-  "dragHandleCommit": "${itemLabel}, 현재 위치는 ${total}개 중 ${position}번째입니다.",
-  "dragHandleIdle": "${itemLabel}, 콘텐츠 순서를 변경하려면 스페이스바를 누르고 화살표 키를 사용하세요. 현재 위치는 ${total}개 중 ${position}번째입니다."
-}

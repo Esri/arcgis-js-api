@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../chunks/mat3","../chunks/mat3f64","../chunks/vec2","../chunks/vec3","../chunks/vec3f64"],(function(t,e,n,r,s,c){"use strict";const o=c.create(),a=n.create(),u=n.create(),i=n.create();function f(t,n,c){return s.set(o,n[0],n[1],1),s.transformMat3(o,o,e.transpose(a,c)),0===o[2]?r.set(t,o[0],o[1]):r.set(t,o[0]/o[2],o[1]/o[2])}function m(t,n,r){return l(u,n[0],n[1],n[2],n[3],n[4],n[5],n[6],n[7]),l(i,r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7]),e.multiply(t,e.adjoint(u,u),i),0!==t[8]&&(t[0]/=t[8],t[1]/=t[8],t[2]/=t[8],t[3]/=t[8],t[4]/=t[8],t[5]/=t[8],t[6]/=t[8],t[7]/=t[8],t[8]/=t[8]),t}function l(t,n,r,c,u,i,f,m,l){e.set(t,n,c,i,r,u,f,1,1,1),s.set(o,m,l,1),e.adjoint(a,t);const[p,v,d]=s.transformMat3(o,o,e.transpose(a,a));return e.set(a,p,0,0,0,v,0,0,0,d),e.multiply(t,a,t)}t.getProjectiveTransform=m,t.transformProjective=f,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../chunks/mat4f64","../../../../../chunks/vec3","../../../../../chunks/sphere","../../../support/mathUtils","../Octree"],(function(e,t,n,r,i,a,s){"use strict";let h=function(e){function s(t,r){var a;return(a=e.call(this,(e=>i.wrap(a._instanceData.view.boundingSphere.getVec(e,a._tmpSphere))),{maximumDepth:25})||this)._tmpSphere=i.create(),a._tmpMat4=n.create(),a._instanceData=t,a._boundingSphere=r,a}t._inheritsLoose(s,e);var h=s.prototype;return h.addInstance=function(e){const t=this._instanceData.view.boundingSphere,n=this._instanceData.getCombinedModelTransform(e,this._tmpMat4);r.transformMat4(this._tmpSphere,this._boundingSphere.center,n),this._tmpSphere[3]=this._boundingSphere.radius*a.maxScale(n),t.setVec(e,this._tmpSphere),this.add([e])},h.removeInstance=function(e){this.remove([e])},s}(s);e.InstanceOctree=h,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

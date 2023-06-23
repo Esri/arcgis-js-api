@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/accessorSupport/decorators/property","../core/accessorSupport/ensureType","../core/arrayUtils","../core/accessorSupport/decorators/subclass","./SimpleLineSymbol","./Symbol"],(function(e,t,r,l,o,s,i,p){"use strict";let n=function(t){function r(e){var r;return(r=t.call(this,e)||this).outline=null,r.type=null,r}return e._inheritsLoose(r,t),r.prototype.hash=function(){return`${this.type}.${this.outline&&this.outline.hash()}`},r}(p);t.__decorate([r.property({types:{key:"type",base:null,defaultKeyValue:"simple-line",typeMap:{"simple-line":i}},json:{default:null,write:!0}})],n.prototype,"outline",void 0),t.__decorate([r.property({type:["simple-fill","picture-fill"],readOnly:!0})],n.prototype,"type",void 0),n=t.__decorate([s.subclass("esri.symbols.FillSymbol")],n);return n}));

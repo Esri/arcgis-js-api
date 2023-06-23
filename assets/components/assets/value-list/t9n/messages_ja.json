@@ -1,6 +1,0 @@
-{
-  "dragHandleActive": "${itemLabel} を順序変更しています、現在位置は ${position}/${total} です。",
-  "dragHandleChange": "${itemLabel}、新しい位置は ${position}/${total} です。 Space キーを押して確定してください。",
-  "dragHandleCommit": "${itemLabel}、現在位置は ${position}/${total} です。",
-  "dragHandleIdle": "${itemLabel}、Space キーを押し、矢印キーを使用してコンテンツの順序を変更します。 現在位置は ${position}/${total} です。"
-}

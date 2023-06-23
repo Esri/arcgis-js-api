@@ -273,12 +273,20 @@
       width: calc(100% - #{$bookmarks-thumbnail-size}); // Firefox fix
     }
   }
+  .esri-bookmarks__authoring-form--adding {
+    .esri-bookmarks__authoring-label {
+      padding-inline: $side-spacing;
+    }
+  }
 
   .esri-bookmarks__authoring-label {
     display: flex;
     flex-flow: column;
     flex: 1 0 auto;
     padding-block: $cap-spacing;
+  }
+
+  .esri-bookmarks__authoring-label--start-padding {
     padding-inline-start: $side-spacing;
   }
 

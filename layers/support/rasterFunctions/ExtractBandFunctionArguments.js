@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/ensureType","../../../core/arrayUtils","../../../core/accessorSupport/decorators/subclass","./BaseFunctionArguments","./pixelUtils"],(function(s,t,r,e,n,o,i,c){"use strict";var a;let p=a=function(t){function r(){var s;return(s=t.apply(this,arguments)||this).bandIds=[],s.missingBandAction=c.MissingBandAction.bestMatch,s}return s._inheritsLoose(r,t),r.prototype.clone=function(){return new a({bandIds:[...this.bandIds],missingBandAction:this.missingBandAction})},r}(i);t.__decorate([r.property({json:{write:!0}})],p.prototype,"bandIds",void 0),t.__decorate([r.property({json:{write:!0}})],p.prototype,"missingBandAction",void 0),p=a=t.__decorate([o.subclass("esri.layers.support.rasterFunctions.ExtractBandFunctionArguments")],p);return p}));

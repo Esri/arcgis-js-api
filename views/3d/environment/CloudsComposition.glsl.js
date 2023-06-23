@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../chunks/mat4","../../../chunks/mat4f64","../webgl-engine/core/shaderLibrary/shading/EvaluateAmbientLighting.glsl","../webgl-engine/core/shaderLibrary/shading/Gamma.glsl","../webgl-engine/core/shaderLibrary/shading/MainLighting.glsl","../webgl-engine/core/shaderLibrary/shading/PhysicallyBasedRenderingParameters.glsl","../webgl-engine/core/shaderLibrary/shading/PiUtils.glsl","../webgl-engine/core/shaderLibrary/util/CloudsParallaxShading.glsl","../webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../webgl-engine/core/shaderModules/Float3PassUniform","../webgl-engine/core/shaderModules/interfaces","../webgl-engine/core/shaderModules/Matrix4PassUniform","../webgl-engine/core/shaderModules/ShaderBuilder","../webgl-engine/lib/VertexAttribute","../../../chunks/CloudsComposition.glsl"],(function(e,r,i,l,n,a,g,s,o,d,b,t,h,c,u,w,y){"use strict";e.build=y.build,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

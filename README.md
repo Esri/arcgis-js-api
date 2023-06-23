@@ -1,12 +1,8 @@
 # arcgis-js-api
 
-A minified, unbuilt version of the [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/) AMD modules.
+This repository is used as a reference for the [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/) documentation.
 
-| :warning:  Repository Archive Notice   |
-| :-----------------------------------------|
-| This repository will be archived at 4.26 (Early 2023) and then removed in a future release. All versions will continue to be available for install on NPM: https://www.npmjs.com/package/arcgis-js-api |
-
-If you are starting a new project, we recommend using [@arcgis/core](https://developers.arcgis.com/javascript/latest/es-modules/) ES modules. 
+If you are starting a new project, we recommend using [@arcgis/core](https://developers.arcgis.com/javascript/latest/es-modules/) ES modules.
 
 ## Features
 
@@ -16,15 +12,17 @@ You can install these modules with [npm](https://npmjs.org/) and create your own
 
 Additional instructions and examples are available in the SDK's [Build with AMD modules](https://developers.arcgis.com/javascript/latest/amd-build/) Guide page.
 
+This package is available for install on NPM: https://www.npmjs.com/package/arcgis-js-api.
+
 ```
 npm install arcgis-js-api
 ```
 
 ## TypeScript Typings
 
-The TypeScript type definitions are included with the install and there are two ways to include them. The first way is to include a `///` directive in your main TypeScript file:
+The TypeScript type definitions are included with the npm installation and there are two ways to include them. The first way is to include a `///` directive in your main TypeScript file:
 
-*main.ts*
+_main.ts_
 
 ```ts
 /// <reference types="arcgis-js-api" />
@@ -32,7 +30,7 @@ The TypeScript type definitions are included with the install and there are two 
 
 Or, add a reference to the declaration file in the `include` of your `tsconfig.json`:
 
-*tsconfig.json*
+_tsconfig.json_
 
 ```json
 {
@@ -48,11 +46,10 @@ Or, add a reference to the declaration file in the `include` of your `tsconfig.j
 
 Use of the ArcGIS Maps SDK for JavaScript is subject to the terms described in the product-specific [terms of use.](https://www.esri.com/en-us/legal/terms/product-specific-scope-of-use) Learn more about licensing [here](https://developers.arcgis.com/javascript/latest/licensing/).
 
-
 ## Resources
 
-* [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/)
-* [http://blogs.esri.com/esri/arcgis/tag/javascript/](https://blogs.esri.com/esri/arcgis/tag/javascript/)
+- [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/)
+- [http://blogs.esri.com/esri/arcgis/tag/javascript/](https://blogs.esri.com/esri/arcgis/tag/javascript/)
 
 ## Issues
 

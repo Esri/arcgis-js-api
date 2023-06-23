@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../core/maybe","../../../core/unitUtils","../../../geometry/support/spatialReferenceUtils"],(function(e,t,n,i){"use strict";function o(e,t,n){if(null==e.hasM||e.hasZ)for(const i of t)for(const e of i)e.length>2&&(e[2]*=n)}function s(e,t,i){if(!e&&!t||!i)return;const o=n.getMetersPerVerticalUnitForSR(i);r(e,i,o),r(t,i,o)}function r(e,t,n){if(e)for(const i of e)f(i.geometry,t,n)}function f(e,s,r){if(t.isNone(e)||!e.spatialReference||i.equals(e.spatialReference,s))return;const f=n.getMetersPerVerticalUnitForSR(e.spatialReference)/r;if(1!==f)if("x"in e)null!=e.z&&(e.z*=f);else if("rings"in e)o(e,e.rings,f);else if("paths"in e)o(e,e.paths,f);else if("points"in e&&(null==e.hasM||e.hasZ))for(const t of e.points)t.length>2&&(t[2]*=f)}e.unapplyEditsZUnitScaling=s,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

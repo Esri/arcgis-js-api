@@ -1,6 +1,0 @@
-{
-  "dragHandleActive": "正在重新排序 ${itemLabel}，目前位置 ${position}/${total}。",
-  "dragHandleChange": "${itemLabel}，新位置 ${position}/${total}。 按空格鍵確認。",
-  "dragHandleCommit": "${itemLabel}，目前位置 ${position}/${total}。",
-  "dragHandleIdle": "${itemLabel}，按空格鍵，然後使用方向鍵重新排序內容。 目前位置 ${position}/${total}。"
-}

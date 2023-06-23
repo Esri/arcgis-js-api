@@ -5,11 +5,43 @@
   .esri-feature-form {
     background-color: $panel-background-color;
     padding: var(--esri-widget-padding);
-  }
 
-  .esri-feature-form__form {
-    display: flex;
-    flex-direction: column;
+    &__form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__centered-button {
+      align-self: center;
+    }
+
+    &__description-text {
+      margin: $cap-spacing--quarter 0 0 0;
+      font-size: $font-size--small;
+      color: $interactive-font-color;
+    }
+
+    &__list-observer {
+      position: relative;
+      z-index: 2;
+      bottom: 20px;
+      text-align: center;
+    }
+
+    &__related-records {
+      &_header {
+        display: flex;
+
+        span {
+          flex-grow: 1;
+        }
+      }
+
+      &_list {
+        margin-bottom: $cap-spacing;
+        min-height: 40px;
+      }
+    }
   }
 
   .esri-feature-form__label {
@@ -23,6 +55,12 @@
     transition: opacity 250ms, margin 250ms;
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+
+  .esri-feature-form__relationship-label {
+    calcite-notice {
+      margin-bottom: $cap-spacing;
     }
   }
 
@@ -55,13 +93,15 @@
   .esri-feature-form__input {
     margin-top: $cap-spacing--third;
     width: 100%;
-    // for textarea
-    resize: horizontal;
 
     &:focus {
       outline: 2px solid var(--calcite-ui-brand);
       outline-offset: -2px;
     }
+  }
+
+  textarea.esri-feature-form__input {
+    resize: vertical;
   }
 
   .esri-feature-form__input--date,
@@ -198,12 +238,6 @@
       margin: 0;
       transition: none;
     }
-  }
-
-  .esri-feature-form__description-text {
-    margin: $cap-spacing--quarter 0 0 0;
-    font-size: $font-size--small;
-    color: $interactive-font-color;
   }
 
   [dir="rtl"] {

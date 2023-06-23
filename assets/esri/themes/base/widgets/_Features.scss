@@ -1,0 +1,55 @@
+@mixin features() {
+  .esri-features {
+    display: flex;
+
+    calcite-pagination {
+      flex: 1;
+      align-self: center;
+    }
+
+    calcite-flow {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .esri-features__container {
+    padding: $cap-spacing;
+    background-color: var(--calcite-ui-background);
+  }
+
+  .esri-features .esri-feature,
+  .esri-features .esri-feature-relationship {
+    background-color: transparent;
+  }
+
+  .esri-features__footer {
+    display: flex;
+    background-color: var(--calcite-ui-foreground-1);
+    justify-content: flex-end;
+    flex: 1;
+
+    calcite-action-group {
+      border-inline-start: 1px solid var(--calcite-ui-border-3);
+    }
+  }
+
+  .esri-features__content-feature {
+    --calcite-flow-item-footer-padding: 0;
+  }
+
+  .esri-features__feature-menu-observer {
+    position: relative;
+    z-index: 2;
+    bottom: 20px;
+    text-align: center;
+  }
+
+  .esri-features__action--exit {
+    transform: scaleX(-1);
+  }
+}
+
+@if $include_Features==true {
+  @include features();
+}

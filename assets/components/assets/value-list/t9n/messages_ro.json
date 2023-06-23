@@ -1,6 +1,0 @@
-{
-  "dragHandleActive": "Se reordonează ${itemLabel}, poziția actuală ${position} din ${total}.",
-  "dragHandleChange": "${itemLabel}, poziția nouă ${position} din ${total}. Apăsați pe tasta spațiu pentru a confirma.",
-  "dragHandleCommit": "${itemLabel}, poziția actuală ${position} din ${total}.",
-  "dragHandleIdle": "${itemLabel}, apăsați pe tasta spațiu și folosiți tastele cu săgeți pentru a reordona conținutul. Poziția actuală ${position} din ${total}."
-}

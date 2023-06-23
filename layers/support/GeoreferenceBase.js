@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Clonable","../../core/Logger","../../core/maybe","../../core/accessorSupport/ensureType","../../core/arrayUtils","../../core/Error","../../core/has","../../core/accessorSupport/decorators/subclass","../../geometry/projection"],(function(e,r,o,t,s,c,n,a,l,i,u){"use strict";let p=function(r){function o(){return r.apply(this,arguments)||this}return e._inheritsLoose(o,r),o.prototype.projectOrWarn=function(e,r){if(s.isNone(e))return e;const{geometry:o,pending:c}=u.projectOrLoad(e,r);return c?null:c||o?o:(t.getLogger(this.declaredClass).warn("geometry could not be projected to the spatial reference",{georeference:this,geometry:e,sourceSpatialReference:e.spatialReference,targetSpatialReference:r}),null)},o}(o.Clonable);p=r.__decorate([i.subclass("esri.layers.support.GeoreferenceBase")],p);return p}));
