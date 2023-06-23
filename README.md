@@ -1,6 +1,6 @@
 # arcgis-js-api
 
-This repository is used as a reference for the [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/) documentation.
+This repository is used as a reference for the [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/) widget styles documentation.
 
 If you are starting a new project, we recommend using [@arcgis/core](https://developers.arcgis.com/javascript/latest/es-modules/) ES modules.
 
