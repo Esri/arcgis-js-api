@@ -1,6 +1,0 @@
-{
-  "dragHandleActive": "Mengurutkan ulang ${itemLabel}, posisi terkini ${position} dari ${total}.",
-  "dragHandleChange": "${itemLabel}, posisi baru ${position} dari ${total}. Tekan spasi untuk mengonfirmasi.",
-  "dragHandleCommit": "${itemLabel}, posisi terkini ${position} dari ${total}.",
-  "dragHandleIdle": "${itemLabel}, tekan spasi dan gunakan tombol panah untuk mengurutkan ulang konten. Posisi terkini ${position} dari ${total}."
-}

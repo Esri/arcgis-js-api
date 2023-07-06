@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/JSONSupport","../core/accessorSupport/decorators/property","../core/accessorSupport/ensureType","../core/arrayUtils","../core/accessorSupport/decorators/subclass","../core/accessorSupport/decorators/writer"],(function(e,r,t,o,s,c,p,a){"use strict";let n=function(r){function t(e){var t;return(t=r.call(this,e)||this).enabled=!0,t.type=null,t}return e._inheritsLoose(t,r),t.prototype.writeEnabled=function(e,r,t){e||(r[t]=e)},t}(t.JSONSupport);r.__decorate([o.property({type:Boolean,json:{read:{source:"enable"},write:{target:"enable"}}})],n.prototype,"enabled",void 0),r.__decorate([a.writer("enabled")],n.prototype,"writeEnabled",null),r.__decorate([o.property({type:["icon","object","line","path","fill","water","extrude","text"],readOnly:!0})],n.prototype,"type",void 0),n=r.__decorate([p.subclass("esri.symbols.Symbol3DLayer")],n);return n}));

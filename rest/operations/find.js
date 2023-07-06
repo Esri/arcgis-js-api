@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../layers/support/layerUtils"],(function(e,i){"use strict";function n(e){const{contains:n,dynamicLayers:s,geometryPrecision:t,layerDefinitions:r,layerIds:o,maxAllowableOffset:l,outSR:a,returnGeometry:c,searchFields:f,searchText:d}=e.toJSON(),y={contains:n,returnGeometry:c,geometryPrecision:t,maxAllowableOffset:l,searchText:d};if(o&&(y.layers=o.join(",")),f&&(y.searchFields=f.join(",")),a&&(y.sr=a.wkid||JSON.stringify(a)),r){const e=[];for(let i=0;i<r.length;i++){const n=r[i];e[n.id]=n.definitionExpression}y.layerDefs=i.serializeLayerDefinitions(e)}if(s&&s.length){const e=[];for(let n=0;n<s.length;n++){const i=s[n],t=i.id;if(!i.subLayerIds&&o&&o.includes(t)){const n={id:t};n.source=i.source;let s=null;if(r&&r.length){const e=r.find((e=>e.id===t));s=e&&e.definitionExpression}s&&(n.definitionExpression=s),e.push(n)}}let i=JSON.stringify(e);"[]"===i&&(i="[{}]"),y.dynamicLayers=i}return y}e.findToFindRESTParameters=n,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

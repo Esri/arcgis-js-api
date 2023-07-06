@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/arrayUtils","../../core/Error","../../core/has","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","./Symbol3DMaterial"],(function(o,e,r,l,t,i,c,s,a,n,u,p){"use strict";var y;o.Symbol3DFillMaterial=y=function(o){function r(e){var r;return(r=o.call(this,e)||this).colorMixMode=null,r}return e._inheritsLoose(r,o),r.prototype.clone=function(){const o={color:l.isSome(this.color)?this.color.clone():null,colorMixMode:this.colorMixMode};return new y(o)},r}(p.Symbol3DMaterial),r.__decorate([n.enumeration({multiply:"multiply",replace:"replace",tint:"tint"})],o.Symbol3DFillMaterial.prototype,"colorMixMode",void 0),o.Symbol3DFillMaterial=y=r.__decorate([u.subclass("esri.symbols.support.Symbol3DFillMaterial")],o.Symbol3DFillMaterial),Object.defineProperty(o,Symbol.toStringTag,{value:"Module"})}));

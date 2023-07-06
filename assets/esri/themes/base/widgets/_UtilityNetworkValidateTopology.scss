@@ -1,0 +1,40 @@
+@mixin utilityNetworkValidateTopology() {
+  .esri-un-validate-topology {
+    &__container {
+      width: 330px;
+    }
+
+    &__content {
+      border-bottom: none;
+      margin: 0px;
+    }
+
+    &__controls-container {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    &__status-icon {
+      &-container {
+        width: 48px;
+        height: 48px;
+      }
+
+      &-error {
+        padding-left: 16px;
+        padding-top: 16px;
+        --calcite-ui-icon-color: #edd317;
+      }
+
+      &-success {
+        padding-left: 16px;
+        padding-top: 16px;
+        --calcite-ui-icon-color: #35ac46;
+      }
+    }
+  }
+}
+
+@if $include_UtilityNetworkValidateTopology == true {
+  @include utilityNetworkValidateTopology();
+}

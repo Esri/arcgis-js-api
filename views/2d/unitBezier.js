@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports"],(function(e){"use strict";function n(e,n,t,r){const i=3*e,u=3*(t-e)-i,a=1-i-u,o=3*n,s=3*(r-n)-o,f=1-o-s;function c(e){return((a*e+u)*e+i)*e}function l(e){return((f*e+s)*e+o)*e}function b(e){return(3*a*e+2*u)*e+i}function p(e,n){let t,r,i,u,a,o;for(i=e,o=0;o<8;o++){if(u=c(i)-e,Math.abs(u)<n)return i;if(a=b(i),Math.abs(a)<1e-6)break;i-=u/a}if(t=0,r=1,i=e,i<t)return t;if(i>r)return r;for(;t<r;){if(u=c(i),Math.abs(u-e)<n)return i;e>u?t=i:r=i,i=.5*(r-t)+t}return i}return function(e,n=1e-6){return l(p(e,n))}}const t=/^cubic-bezier\((.*)\)/,r={};function i(e){let i=r[e]||null;if(!i){const r=t.exec(e);if(r){const e=r[1].split(",").map((e=>parseFloat(e.trim())));4!==e.length||e.some((e=>isNaN(e)))||(i=n.apply(n,e))}}return i}r.ease=n(.25,.1,.25,1),r.linear=n(0,0,1,1),r.easeIn=r["ease-in"]=n(.42,0,1,1),r.easeOut=r["ease-out"]=n(0,0,.58,1),r.easeInOut=r["ease-in-out"]=n(.42,0,.58,1),e.easingFunctions=r,e.parse=i,e.unitBezier=n,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

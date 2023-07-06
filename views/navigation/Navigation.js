@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Accessor","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/arrayUtils","../../core/accessorSupport/decorators/subclass","./gamepad/GamepadSettings"],(function(e,o,r,t,a,s,n,p){"use strict";let c=function(o){function r(e){var r;return(r=o.call(this,e)||this).browserTouchPanEnabled=!0,r.gamepad=new p,r.momentumEnabled=!0,r.mouseWheelZoomEnabled=!0,r}return e._inheritsLoose(r,o),r}(r);o.__decorate([t.property({type:Boolean})],c.prototype,"browserTouchPanEnabled",void 0),o.__decorate([t.property({type:p,nonNullable:!0})],c.prototype,"gamepad",void 0),o.__decorate([t.property({type:Boolean})],c.prototype,"momentumEnabled",void 0),o.__decorate([t.property({type:Boolean})],c.prototype,"mouseWheelZoomEnabled",void 0),c=o.__decorate([n.subclass("esri.views.navigation.Navigation")],c);return c}));

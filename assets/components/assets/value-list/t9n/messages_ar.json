@@ -1,6 +1,0 @@
-{
-  "dragHandleActive": "إعادة ترتيب ${itemLabel}، الموضع الحالي ${position} من ${total}.",
-  "dragHandleChange": "${itemLabel}، الموضع الجديد ${position} من ${total} اضغط على مفتاح المسافة للتأكيد.",
-  "dragHandleCommit": "${itemLabel}، الموضع الحالي ${position} من ${total}.",
-  "dragHandleIdle": "${itemLabel}، اضغط على مفتاح المسافة واستخدام مفاتيح الأسهم لإعادة ترتيب المحتوى. الموضع الحالي ${position} من ${total}."
-}

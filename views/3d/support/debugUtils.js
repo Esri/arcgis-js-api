@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../geometry","../../../Graphic","../../../symbols","../../../core/maybe","../../../geometry/Point","../../../symbols/PointSymbol3D","../../../symbols/IconSymbol3DLayer","../../../symbols/TextSymbol3DLayer"],(function(e,i,o,t,r,s,n,c,l){"use strict";let h=function(){function e(e,i,o=""){this.graphics=e,this._symbol=new n({symbolLayers:[new c({material:{color:i},outline:{color:[255,255,255],size:1},resource:{primitive:"circle"}}),new l({text:o,halo:{color:"white",size:1/.75},material:{color:i},size:12})]})}var i=e.prototype;return i.show=function(e,i){if(r.isNone(i))return;this.hide();const t=new s({x:e[0],y:e[1],z:e[2],spatialReference:i});this._graphic=new o({geometry:t,symbol:this._symbol}),this.graphics.add(this._graphic)},i.hide=function(){r.isSome(this._graphic)&&(this.graphics.remove(this._graphic),this._graphic=null)},e}();e.PointGraphics=h,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

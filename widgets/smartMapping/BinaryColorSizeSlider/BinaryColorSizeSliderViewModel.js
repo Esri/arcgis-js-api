@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/ensureType","../../../core/arrayUtils","../../../core/accessorSupport/decorators/subclass","../SizeSlider/SizeSliderViewModel"],(function(e,r,o,t,s,i,n){"use strict";let a=function(r){function o(e){var o;return(o=r.call(this,e)||this).primaryHandleEnabled=!0,o}return e._inheritsLoose(o,r),o.prototype.getGradientStopInfo=function(e,r){if(!this.stops?.length)return[];const{min:o,max:t,stops:s}=this,i=[r,r,r,e,e],n=[],a=t-o;return s.forEach(((e,r)=>{const o=i[r],c=(t-e.value)/a,l=0===r?c:(t-s[r-1].value)/a;n.push({offset:l,color:o},{offset:c,color:o})})),n},o}(n);r.__decorate([o.property({readOnly:!0})],a.prototype,"primaryHandleEnabled",void 0),a=r.__decorate([i.subclass("esri.widgets.smartMapping.SizeSlider.BinaryColorSizeSliderViewModel")],a);return a}));

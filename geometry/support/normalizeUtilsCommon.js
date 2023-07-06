@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../Polyline","../SpatialReference","./jsonUtils"],(function(e,n,t,a){"use strict";const i={102100:{maxX:20037508.342788905,minX:-20037508.342788905,plus180Line:new n({paths:[[[20037508.342788905,-20037508.342788905],[20037508.342788905,20037508.342788905]]],spatialReference:t.WebMercator}),minus180Line:new n({paths:[[[-20037508.342788905,-20037508.342788905],[-20037508.342788905,20037508.342788905]]],spatialReference:t.WebMercator})},4326:{maxX:180,minX:-180,plus180Line:new n({paths:[[[180,-180],[180,180]]],spatialReference:t.WGS84}),minus180Line:new n({paths:[[[-180,-180],[-180,180]]],spatialReference:t.WGS84})}};function o(e,n){return Math.ceil((e-n)/(2*n))}function r(e,n){const t=s(e);for(const a of t)for(const e of a)e[0]+=n;return e}function s(e){return a.isPolygon(e)?e.rings:e.paths}e.cutParams=i,e.getGeometryParts=s,e.offsetMagnitude=o,e.updatePolyGeometry=r,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

@@ -1,6 +1,0 @@
-{
-  "dragHandleActive": "Üksuse ${itemLabel} ümberjärjestamine, praegune asukoht ${position}/${total}.",
-  "dragHandleChange": "${itemLabel}, uus asukoht ${position}/${total}. Kinnitamiseks vajutage tühikuklahvi.",
-  "dragHandleCommit": "${itemLabel}, praegune asukoht ${position}/${total}.",
-  "dragHandleIdle": "${itemLabel}, sisu ümberjärjestamiseks vajutage tühikuklahvi ja kasutage nooleklahve. Praegune asukoht ${position}/${total}."
-}

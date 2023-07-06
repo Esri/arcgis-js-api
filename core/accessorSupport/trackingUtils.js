@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","./tracking","./tracking/SimpleTrackingTarget"],(function(n,e,r){"use strict";let t=!1;const u=[];function c(n,u){let c=new r.SimpleTrackingTarget(f),i=null,l=!1;function f(){if(!c||l)return;if(t)return void o(f);const r=i;c.clear(),t=!0,l=!0,i=e.runTracked(c,n),l=!1,t=!1,u(i,r),a()}function d(){c&&(c.destroy(),c=null,i=null)}return l=!0,i=e.runTracked(c,n),l=!1,{remove:d}}function i(n,t){let u=new r.SimpleTrackingTarget(i),c=null;function i(){t(c,o)}function l(){u&&(u.destroy(),u=null),c=null}function o(){return u?(u.clear(),c=e.runTracked(u,n),c):null}return o(),{remove:l}}function l(n){let u=new r.SimpleTrackingTarget(i),c=!1;function i(){u&&!c&&(t?o(i):(u.clear(),t=!0,c=!0,e.runTracked(u,n),c=!1,t=!1,a()))}function l(){u&&(u.destroy(),u=null)}return c=!0,e.runTracked(u,n),c=!1,{remove:l}}function o(n){u.includes(n)||u.unshift(n)}function a(){for(;u.length;)u.pop()()}n.autorun=l,n.reaction=c,n.reactionDeferred=i,Object.defineProperty(n,Symbol.toStringTag,{value:"Module"})}));

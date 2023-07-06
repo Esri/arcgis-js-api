@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Accessor","../../core/Identifiable","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/arrayUtils","../../core/accessorSupport/decorators/subclass"],(function(e,t,r,o,s,i,c,l){"use strict";let p=function(t){function r(e){var r;return(r=t.call(this,e)||this).items=null,r.label=null,r}return e._inheritsLoose(r,t),r.prototype.findByTemplate=function(e){return this.items.find((t=>t.template===e))},e._createClass(r,[{key:"id",get:function(){return this.label}}]),r}(o.IdentifiableMixin(r));t.__decorate([s.property()],p.prototype,"items",void 0),t.__decorate([s.property()],p.prototype,"label",void 0),t.__decorate([s.property()],p.prototype,"id",null),p=t.__decorate([l.subclass("esri.widgets.FeatureTemplates.TemplateItemGroup")],p);return p}));

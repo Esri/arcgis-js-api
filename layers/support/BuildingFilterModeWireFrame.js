@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/lang","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","./BuildingFilterMode","../../symbols/edges/utils"],(function(e,r,o,s,t,c,i,n,p){"use strict";var u;let a=u=function(r){function s(){var e;return(e=r.apply(this,arguments)||this).type="wire-frame",e.edges=null,e}return e._inheritsLoose(s,r),s.prototype.clone=function(){return new u({edges:o.clone(this.edges)})},s}(n);r.__decorate([c.enumeration({wireFrame:"wire-frame"})],a.prototype,"type",void 0),r.__decorate([s.property(p.symbol3dEdgesProperty)],a.prototype,"edges",void 0),a=u=r.__decorate([i.subclass("esri.layers.support.BuildingFilterModeWireFrame")],a);return a}));

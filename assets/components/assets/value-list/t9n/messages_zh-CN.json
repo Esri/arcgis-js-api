@@ -1,6 +1,0 @@
-{
-  "dragHandleActive": "重新排序 ${itemLabel}，当前位置 ${position}，共 ${total} 个。",
-  "dragHandleChange": "${itemLabel}，新位置 ${position}，共 ${total} 个。 按空格键确认。",
-  "dragHandleCommit": "${itemLabel}，当前位置 ${position}，共 ${total} 个。",
-  "dragHandleIdle": "${itemLabel}，按空格键并使用方向键重新排序内容。 ${total} 的当前位置 ${position}。"
-}

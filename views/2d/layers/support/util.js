@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../../core/jsonMap"],(function(t,e){"use strict";const o=new e.JSONMap({esriGeometryPoint:"point",esriGeometryMultipoint:"multipoint",esriGeometryPolyline:"polyline",esriGeometryPolygon:"polygon",esriGeometryMultiPatch:"multipatch",mesh:"mesh"});function n(t){return o.toJSON(t)}function r(t,e,o){const n=[],r=[];let i=0,l=0;for(const s of t){const t=l;let u=s[0][0],a=s[0][1];n[l++]=u,n[l++]=a;let c=0;for(let e=1;e<s.length;++e){const t=u,o=a;u=s[e][0],a=s[e][1],c+=a*t-u*o,n[l++]=u,n[l++]=a}e(c/2),c>0?(t-i>0&&(o(i,t,n,r),i=t),r.length=0):c<0&&t-i>0?r.push(.5*(t-i)):l=t}l-i>0&&o(i,l,n,r)}function i(t){const{bandCount:e,attributeTable:o,colormap:n,pixelType:r}=t.raster.rasterInfo;return 1===e&&(null!=o||null!=n||"u8"===r||"s8"===r)}t.analyzeRings=r,t.canUseMajorityInterpolationOnDataSource=i,t.toJSONGeometryType=n,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

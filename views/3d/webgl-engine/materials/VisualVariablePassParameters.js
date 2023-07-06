@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/mat3f64","../../../../chunks/vec3f64","../lib/Material"],(function(e,a,r,i,l){"use strict";let o=function(e){function l(){var a;return(a=e.apply(this,arguments)||this).vvSizeEnabled=!1,a.vvSizeMinSize=i.fromValues(1,1,1),a.vvSizeMaxSize=i.fromValues(100,100,100),a.vvSizeOffset=i.fromValues(0,0,0),a.vvSizeFactor=i.fromValues(1,1,1),a.vvSizeValue=i.fromValues(1,1,1),a.vvColorEnabled=!1,a.vvColorValues=[0,0,0,0,0,0,0,0],a.vvColorColors=[1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0],a.vvOpacityEnabled=!1,a.vvOpacityValues=[0,0,0,0,0,0,0,0],a.vvOpacityOpacities=[1,1,1,1,1,1,1,1],a.vvSymbolAnchor=[0,0,0],a.vvSymbolRotationMatrix=r.create(),a}return a._inheritsLoose(l,e),l}(l.MaterialParameters);const v=8;e.VisualVariablePassParameters=o,e.vvColorNumber=v,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Accessor","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/arrayUtils","../../core/accessorSupport/decorators/subclass"],(function(e,r,o,t,p,s,c){"use strict";let l=function(r){function o(e){var o;return(o=r.call(this,e)||this).name=null,o.alias=null,o.role=null,o.strict=null,o.properties=null,o.fieldIndexes=null,o}return e._inheritsLoose(o,r),o}(o);r.__decorate([t.property()],l.prototype,"name",void 0),r.__decorate([t.property()],l.prototype,"alias",void 0),r.__decorate([t.property()],l.prototype,"role",void 0),r.__decorate([t.property()],l.prototype,"strict",void 0),r.__decorate([t.property()],l.prototype,"properties",void 0),r.__decorate([t.property()],l.prototype,"fieldIndexes",void 0),l=r.__decorate([c.subclass("esri.rest.knowledgeGraph.GraphObjectType")],l);return l}));

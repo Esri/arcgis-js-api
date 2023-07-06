@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/ensureType","../../../core/arrayUtils","../../../core/accessorSupport/decorators/subclass","./Input"],(function(o,e,t,r,n,s,p){"use strict";var i;let a=i=function(e){function t(o){var t;return(t=e.call(this,o)||this).noValueOptionLabel=null,t.showNoValueOption=!0,t.type="radio-buttons",t}return o._inheritsLoose(t,e),t.prototype.clone=function(){return new i({noValueOptionLabel:this.noValueOptionLabel,showNoValueOption:this.showNoValueOption})},t}(p);e.__decorate([t.property({type:String,json:{write:!0}})],a.prototype,"noValueOptionLabel",void 0),e.__decorate([t.property({type:Boolean,json:{write:!0}})],a.prototype,"showNoValueOption",void 0),e.__decorate([t.property({type:["radio-buttons"],json:{read:!1,write:!0}})],a.prototype,"type",void 0),a=i=e.__decorate([s.subclass("esri.form.elements.inputs.RadioButtonsInput")],a);return a}));

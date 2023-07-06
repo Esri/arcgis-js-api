@@ -1,6 +1,0 @@
-{
-  "dragHandleActive": "Genbestiller ${itemLabel}, aktuel position ${position} for ${total}.",
-  "dragHandleChange": "${itemLabel}, ny position ${position} for ${total}. Tryk på mellemrumstasten for at bekræfte.",
-  "dragHandleCommit": "${itemLabel}, aktuel position ${position} for ${total}.",
-  "dragHandleIdle": "${itemLabel}, tryk på mellemrumstasten og brug piletasterne for at bestille indholdet igen. Aktuel position ${position} for ${total}."
-}

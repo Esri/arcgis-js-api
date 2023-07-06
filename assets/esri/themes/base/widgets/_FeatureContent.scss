@@ -57,8 +57,10 @@ $content-height--loading: 150px !default;
   }
   .esri-feature-content p {
     font-size: $font-size;
-    line-height: normal;
     margin: 0 0 1.2em;
+    &:last-child {
+      margin-block-end: 0;
+    }
   }
   .esri-feature-content img {
     max-width: 100%;
@@ -80,8 +82,12 @@ $content-height--loading: 150px !default;
     margin: 0.2em 0 0;
     display: block;
   }
-  .esri-feature-content ul {
-    margin-bottom: 1rem;
+  .esri-feature-content ul,
+  .esri-feature-content ol {
+    margin-block: 1rem;
+    &:first-child {
+      margin-block-start: 0;
+    }
   }
   .esri-feature-content a {
     color: $interactive-font-color;

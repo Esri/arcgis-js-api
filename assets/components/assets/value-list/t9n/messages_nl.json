@@ -1,6 +1,0 @@
-{
-  "dragHandleActive": "${itemLabel} opnieuw rangschikken, huidige positie ${position} van ${total}.",
-  "dragHandleChange": "${itemLabel}, nieuwe positie ${position} van ${total}. Druk op de spatiebalk om te bevestigen.",
-  "dragHandleCommit": "${itemLabel}, huidige positie ${position} van ${total}.",
-  "dragHandleIdle": "${itemLabel}, druk op spatiebalk en gebruik pijltjestoetsen om content opnieuw te rangschikken. Huidige positie ${position} van ${total}."
-}

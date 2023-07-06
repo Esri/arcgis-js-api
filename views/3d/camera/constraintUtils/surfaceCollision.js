@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../../chunks/vec3","../../../../chunks/vec3f64","../intersectionUtils"],(function(e,t,n,o){"use strict";function r(n,r,E=e.Mode.EYE){const s=n.state.constraints;if(!s.collision.enabled)return!1;const l=o.surfaceElevationBelowRenderLocation(n,r.eye),d=n.renderCoordsHelper.getAltitude(r.eye),a=l+s.collision.elevationMargin;if(d>=a)return!1;const u=t.length(r.eye);if(t.subtract(c,r.center,r.eye),r.eye=n.renderCoordsHelper.setAltitude(i,a,r.eye),E===e.Mode.EYE_AND_CENTER)r.center=t.add(c,r.eye,c);else if(E===e.Mode.EYE_AND_CENTER_SCALE){const e=(u-d+a)/u;r.center=t.scale(c,r.center,e)}return!0}var E;e.Mode=void 0,(E=e.Mode||(e.Mode={}))[E.EYE=0]="EYE",E[E.EYE_AND_CENTER=1]="EYE_AND_CENTER",E[E.EYE_AND_CENTER_SCALE=2]="EYE_AND_CENTER_SCALE";const c=n.create(),i=n.create();e.applySurfaceCollisionConstraint=r,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

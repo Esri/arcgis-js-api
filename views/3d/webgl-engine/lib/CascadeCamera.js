@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/tslib.es6","../../../../core/accessorSupport/decorators/property","../../../../core/accessorSupport/ensureType","../../../../core/arrayUtils","../../../../core/accessorSupport/decorators/subclass","../../../../chunks/mat4f64","./Camera"],(function(e,r,a,t,o,s,c,i,n){"use strict";e.CascadeCamera=function(e){function a(){var r;return(r=e.apply(this,arguments)||this)._projectionMatrix=i.create(),r}return r._inheritsLoose(a,e),r._createClass(a,[{key:"projectionMatrix",get:function(){return this._projectionMatrix}}]),a}(n.Camera),a.__decorate([t.property()],e.CascadeCamera.prototype,"_projectionMatrix",void 0),a.__decorate([t.property({readOnly:!0})],e.CascadeCamera.prototype,"projectionMatrix",null),e.CascadeCamera=a.__decorate([c.subclass("esri.views.3d.webgl-engine.lib.CascadeCamera")],e.CascadeCamera),Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

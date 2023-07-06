@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../core/ObjectStack","../../chunks/vec3","./ray"],(function(r,c,t,e){"use strict";function n(r){return r?{ray:e.create(r.ray),c0:r.c0,c1:r.c1}:{ray:e.create(),c0:0,c1:Number.MAX_VALUE}}function o(r,c,t){const e=d.get();return e.ray=r,e.c0=c,e.c1=t,e}function u(r,c=n()){return a(r.ray,r.c0,r.c1,c)}function a(r,c,t,o=n()){return e.copy(r,o.ray),o.c0=c,o.c1=t,o}function i(r,c=n()){return e.copy(r,c.ray),c.c0=0,c.c1=Number.MAX_VALUE,c}function y(r,c,o=n()){const u=t.length(r.vector);return e.fromValues(r.origin,c,o.ray),o.c0=0,o.c1=u,o}function f(r,c){return s(r,r.c0,c)}function g(r,c){return s(r,r.c1,c)}function s(r,c,e){return t.add(e,r.ray.origin,t.scale(e,r.ray.direction,c))}const d=new c.ObjectStack((()=>n()));r.copy=u,r.create=n,r.fromLineSegmentAndDirection=y,r.fromRay=i,r.fromValues=a,r.getAt=s,r.getEnd=g,r.getStart=f,r.wrap=o,Object.defineProperty(r,Symbol.toStringTag,{value:"Module"})}));

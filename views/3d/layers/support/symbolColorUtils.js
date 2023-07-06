@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../../core/mathUtils","../../../../core/maybe"],(function(o,e,n){"use strict";var r;function l(e){switch(e){case"multiply":default:return o.ColorMixModeEnum.Multiply;case"ignore":return o.ColorMixModeEnum.Ignore;case"replace":return o.ColorMixModeEnum.Replace;case"tint":return o.ColorMixModeEnum.Tint}}function t(r,l,t){if(n.isNone(r)||l===o.ColorMixModeEnum.Ignore)return t[0]=255,t[1]=255,t[2]=255,void(t[3]=255);const c=e.clamp(Math.round(r[3]*u),0,u),d=0===c||l===o.ColorMixModeEnum.Tint?0:l===o.ColorMixModeEnum.Replace?M:a;t[0]=e.clamp(Math.round(r[0]*i),0,i),t[1]=e.clamp(Math.round(r[1]*i),0,i),t[2]=e.clamp(Math.round(r[2]*i),0,i),t[3]=c+d}o.ColorMixModeEnum=void 0,(r=o.ColorMixModeEnum||(o.ColorMixModeEnum={}))[r.Multiply=1]="Multiply",r[r.Ignore=2]="Ignore",r[r.Replace=3]="Replace",r[r.Tint=4]="Tint";const i=255,u=85,M=u,a=2*u;o.encodeSymbolColor=t,o.parseColorMixMode=l,Object.defineProperty(o,Symbol.toStringTag,{value:"Module"})}));

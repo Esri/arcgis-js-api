@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports"],(function(t){"use strict";let e=function(t){function e(){this._store=new Map,this._byteSize=0}var i=e.prototype;return i.set=function(t,e){this.delete(t),this._store.set(t,e),this._byteSize+=e.byteSize},i.delete=function(t){const e=this._store.get(t);return!!this._store.delete(t)&&(null!=e&&(this._byteSize-=e.byteSize),!0)},i.get=function(t){return this._used(t),this._store.get(t)},i.has=function(t){return this._used(t),this._store.has(t)},i.clear=function(){this._store.clear()},i.applyByteSizeLimit=function(t,e){for(const[i,s]of this._store){if(this._byteSize<=t)break;this.delete(i),e(s)}},i.values=function(){return this._store.values()},i[t]=function(){return this._store[Symbol.iterator]()},i._used=function(t){const e=this._store.get(t);e&&(this._store.delete(t),this._store.set(t,e))},e}(Symbol.iterator);t.FeatureServiceTileCache=e,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../utils","./utils","../support/AddressCandidate","../support/AddressToLocationsParameters"],(function(e,t,n,r,s,a,o){"use strict";function i(e,t,n){return d.apply(this,arguments)}function d(){return(d=t._asyncToGenerator((function*(e,t,s){t=o.from(t);const a=r.parseUrl(e),{address:i,...d}=t.toJSON(),c={...i,...d,f:"json"},l=r.encode({...a.query,...c}),p=r.asValidOptions(l,s),f=`${a.path}/findAddressCandidates`;return n(f,p).then(u)}))).apply(this,arguments)}function u({data:e}){if(!e)return[];const{candidates:t,spatialReference:n}=e;return t?t.map((e=>{if(!e)return;const{extent:t,location:r}=e,o=!t||s.isValidExtent(t);return s.isValidLocation(r)&&o?(t&&(t.spatialReference=n),r&&(r.spatialReference=n),a.fromJSON(e)):void 0})):[]}e.addressToLocations=i,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

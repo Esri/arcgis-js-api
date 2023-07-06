@@ -24,6 +24,14 @@
     position: relative;
   }
 
+  .esri-feature-relationship__list {
+    min-height: $list-item-height;
+  }
+
+  .esri-feature-relationship__list-item--hidden {
+    display: none;
+  }
+
   .esri-feature__feature-observer {
     position: relative;
     z-index: 2;
@@ -32,12 +40,16 @@
   }
 
   .esri-feature__sticky-loading-container {
-    position: sticky;
-    z-index: 2;
-    padding: 6px;
-    bottom: 10px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $list-item-height;
+    padding: 0;
+    margin: 0;
     pointer-events: none;
+    position: sticky;
+    bottom: 10px;
+    z-index: 2;
   }
 
   .esri-icon-loading-indicator {
@@ -48,9 +60,6 @@
     width: 100%;
     --calcite-ui-background: $background-color;
   }
-  .esri-feature__main-container {
-    line-height: normal;
-  }
 
   .esri-feature__content-element {
     padding: 0 $side-spacing--half;
@@ -58,12 +67,15 @@
   }
 
   .esri-feature__content-element:last-child {
-    margin-bottom: 0;
+    margin-bottom: $cap-spacing;
   }
 
   .esri-feature__content-node {
     display: flex;
     flex-direction: column;
+  }
+  .esri-feature__text {
+    line-height: 1.3;
   }
 
   // ATTACHMENTS

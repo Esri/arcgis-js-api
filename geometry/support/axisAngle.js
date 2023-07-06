@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../chunks/quat","../../chunks/quatf64","../../chunks/vec3","./vector","./vectorStacks"],(function(n,t,e,r,u,o){"use strict";function c(n=d){return[n[0],n[1],n[2],n[3]]}function i(n,t,e,r){return a(n,t,e,r,o.sv4d.get())}function s(n,t){return a(n[0],n[1],n[2],t,o.sv4d.get())}function f(n,t=c()){return a(n[0],n[1],n[2],n[3],t)}function a(n,t,e,r,u=c()){return u[0]=n,u[1]=t,u[2]=e,u[3]=r,u}function l(n,t){const e=c();return r.copy(p(e),n),e[3]=t,e}function g(n,t,e){return r.cross(p(e),n,t),r.normalize(p(e),p(e)),e[3]=u.angle(n,t),e}function A(n,e,r){return t.setAxisAngle(v,p(n),m(n)),t.setAxisAngle(y,p(e),m(e)),t.multiply(v,y,v),x(r,t.getAxisAngle(p(r),v))}function p(n){return n}function m(n){return n[3]}function x(n,t){return n[3]=t,n}const d=[0,0,1,0],v=e.create(),y=e.create();n.UP=d,n.angle=m,n.axis=p,n.compose=A,n.copy=f,n.create=c,n.fromAxisAndAngle=l,n.fromPoints=g,n.fromValues=a,n.setAngle=x,n.wrap=i,n.wrapAxisAngle=s,Object.defineProperty(n,Symbol.toStringTag,{value:"Module"})}));

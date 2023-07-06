@@ -1,0 +1,169 @@
+@mixin orientedImageryViewerBase() {
+  align-items: flex-start;
+  background: var(--calcite-ui-foreground-2);
+  border: 1px solid var(--calcite-ui-border-1);
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1;
+}
+
+@mixin orientedImageryViewer() {
+  .esri-oriented-imagery-viewer {
+    &--floating {
+      @include orientedImageryViewerBase();
+      max-height: 78vh;
+      max-width: 80vw;
+      min-height: 400px;
+      min-width: 386px;
+    }
+
+    &--docked {
+      @include orientedImageryViewerBase();
+      bottom: 0;
+      height: 100%;
+      top: 0;
+      width: 100%;
+    }
+
+    div {
+      overflow: hidden;
+    }
+
+    &__header {
+      align-items: flex-start;
+      align-self: stretch;
+      background: var(--calcite-ui-foreground-1);
+      box-shadow: inset 0px -1px 0px var(--calcite-ui-border-1);
+      display: flex;
+      flex-direction: row;
+      min-width: max-content;
+      order: 0;
+      padding: 0 10px;
+      width: 100%;
+    }
+
+    &__body {
+      align-self: stretch;
+      background: var(--calcite-ui-foreground-1);
+      display: flex;
+      flex: none;
+      flex-direction: column;
+      flex-grow: 1;
+      height: 100%;
+      order: 1;
+
+      &-current-coverage {
+        --calcite-ui-icon-color: var(--calcite-ui-danger);
+      }
+
+      &-additional {
+        &-camera-locations {
+          --calcite-ui-icon-color: var(--calcite-ui-brand);
+        }
+
+        &-coverage {
+          --calcite-ui-icon-color: var(--calcite-ui-info);
+        }
+      }
+      &-footprint {
+        --calcite-ui-icon-color: var(--calcite-ui-success);
+      }
+    }
+
+    &__title {
+      color: var(--calcite-ui-text-1);
+      flex: none;
+      flex-grow: 1;
+      font-family: "Avenir Next";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
+      order: 0;
+
+      &-container {
+        align-items: center;
+        align-self: stretch;
+        display: flex;
+        flex: none;
+        flex-direction: row;
+        flex-grow: 1;
+        height: 59px;
+        justify-content: center;
+        order: 2;
+      }
+    }
+
+    &__close {
+      align-items: center;
+      background: var(--calcite-ui-foreground-1);
+      display: flex;
+      flex-direction: row;
+      flex-grow: 0;
+      height: 59px;
+      justify-content: center;
+      order: 7;
+      width: 48px;
+    }
+
+    &__viewer {
+      cursor: url("data:text/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2226%22%20width%3D%2226%22%3E%0A%3Cpath%20stroke%3D%22%23000%22%20stroke-width%3D%221px%22%20fill%3D%22%23fff%22%20d%3D%22m15.3%2020.5s6.38-6.73%204.64-8.24-3.47%201.01-3.47%201.01%203.61-5.72%201.41-6.49c-2.2-0.769-3.33%204.36-3.33%204.36s0.873-5.76-1.06-5.76-1.58%205.39-1.58%205.39-0.574-4.59-2.18-4.12c-1.61%200.468-0.572%205.51-0.572%205.51s-1.58-4.89-2.93-3.79c-1.35%201.11%200.258%205.25%200.572%206.62%200.836%202.43%202.03%202.94%202.17%205.55%22%2F%3E%0A%3C%2Fsvg%3E%0A");
+      display: flex;
+      flex-grow: 1;
+      height: 100%;
+      margin: 0;
+      width: 100%;
+
+      &--hide {
+        display: none;
+      }
+
+      &-container {
+        align-self: stretch;
+        background: var(--calcite-ui-foreground-1);
+        border-radius: 0px 0px 3px 3px;
+        border-top: 1px solid var(--calcite-ui-border-3);
+        display: flex;
+        flex: none;
+        flex-grow: 1;
+        height: calc(100% - 49px);
+        order: 1;
+        width: 100%;
+      }
+    }
+
+    &__pro {
+      .esri-oriented-imagery-viewer {
+        height: 100%;
+        max-height: unset;
+        max-width: unset;
+        position: static;
+        width: 100%;
+      }
+
+      &__message-box {
+        display: block;
+        font-size: $font-size__body;
+
+        &--error {
+          background-color: $font-color--error;
+        }
+
+        &--warn {
+          background-color: $Calcite_Orange_150;
+        }
+
+        &--info {
+          background-color: $Calcite_Blue_150;
+        }
+      }
+    }
+  }
+}
+
+@if $include_OrientedImageryViewer == true {
+  @include orientedImageryViewer();
+}

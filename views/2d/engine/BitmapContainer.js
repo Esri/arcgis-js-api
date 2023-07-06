@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../chunks/_rollupPluginBabelHelpers","./brushes","./webgl/enums","./webgl/WGLContainer"],(function(e,r,s,t,n){"use strict";let a=function(e){function n(){var r;return(r=e.apply(this,arguments)||this)._hasCrossfade=!1,r}r._inheritsLoose(n,e);var a=n.prototype;return a.beforeRender=function(r){e.prototype.beforeRender.call(this,r),this._manageFade()},a.prepareRenderPasses=function(r){const n=r.registerRenderPass({name:"bitmap",brushes:[s.brushes.bitmap],target:()=>this.children,drawPhase:t.WGLDrawPhase.MAP});return[...e.prototype.prepareRenderPasses.call(this,r),n]},a._manageFade=function(){this.children.reduce(((e,r)=>e+(r.inFadeTransition?1:0)),0)>=2?(this.children.forEach((e=>e.blendFunction="additive")),this._hasCrossfade=!0):(this.children.forEach((e=>e.blendFunction="standard")),this._hasCrossfade=!1)},r._createClass(n,[{key:"requiresDedicatedFBO",get:function(){return this._hasCrossfade}}]),n}(n);e.BitmapContainer=a,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

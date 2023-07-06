@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","./BlendModeTechniqueConfiguration","../webgl-engine/core/shaderLibrary/terrain/TileBackground.glsl","../webgl-engine/core/shaderTechnique/ShaderTechniqueConfiguration"],(function(e,t,o,r,i,n){"use strict";let a=function(e){function o(){var t;return(t=e.apply(this,arguments)||this).output=i.BlendLayersOutput.Composite,t.baseOpacityMode=i.BaseOpacityMode.NotRequired,t.premultipliedSource=i.PremultipliedAlphaSource.Off,t.hasWebGL2Context=!1,t}return t._inheritsLoose(o,e),o}(r.BlendModeTechniqueConfiguration);o.__decorate([n.parameter({count:i.BlendLayersOutput.COUNT})],a.prototype,"output",void 0),o.__decorate([n.parameter({count:i.BaseOpacityMode.COUNT})],a.prototype,"baseOpacityMode",void 0),o.__decorate([n.parameter()],a.prototype,"premultipliedSource",void 0),o.__decorate([n.parameter()],a.prototype,"hasWebGL2Context",void 0),e.TileBlendTechniqueConfiguration=a,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

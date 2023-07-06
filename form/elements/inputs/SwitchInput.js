@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/ensureType","../../../core/arrayUtils","../../../core/accessorSupport/decorators/subclass","./Input"],(function(e,r,t,o,s,n,u){"use strict";var p;let c=p=function(r){function t(e){var t;return(t=r.call(this,e)||this).offValue=null,t.onValue=null,t.type="switch",t}return e._inheritsLoose(t,r),t.prototype.clone=function(){return new p({offValue:this.offValue,onValue:this.onValue})},t}(u);r.__decorate([t.property({type:[String,Number],json:{write:!0}})],c.prototype,"offValue",void 0),r.__decorate([t.property({type:[String,Number],json:{write:!0}})],c.prototype,"onValue",void 0),r.__decorate([t.property({type:["switch"],json:{read:!1,write:!0}})],c.prototype,"type",void 0),c=p=r.__decorate([n.subclass("esri.form.elements.inputs.SwitchInput")],c);return c}));

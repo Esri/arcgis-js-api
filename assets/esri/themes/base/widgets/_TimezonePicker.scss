@@ -1,0 +1,20 @@
+@mixin timezonePicker() {
+  .esri-timezone-picker {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &__item-title {
+      font-size: $font-size--small;
+      font-weight: $font-weight--bold;
+    }
+
+    &__item-description {
+      font-size: $font-size--tiny;
+    }
+  }
+}
+
+@if $include_TimezonePicker==true {
+  @include timezonePicker();
+}

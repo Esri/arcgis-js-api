@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../../chunks/common","../../../../chunks/mat3"],(function(t,a,r){"use strict";t.add=r.add,t.adjoint=r.adjoint,t.copy=r.copy,t.determinant=r.determinant,t.equals=r.equals,t.exactEquals=r.exactEquals,t.frob=r.frob,t.fromMat2d=r.fromMat2d,t.fromMat4=r.fromMat4,t.fromQuat=r.fromQuat,t.fromRotation=r.fromRotation,t.fromScaling=r.fromScaling,t.fromTranslation=r.fromTranslation,t.identity=r.identity,t.invert=r.invert,t.isOrthoNormal=r.isOrthoNormal,t.mul=r.mul,t.multiply=r.multiply,t.multiplyScalar=r.multiplyScalar,t.multiplyScalarAndAdd=r.multiplyScalarAndAdd,t.normalFromMat4=r.normalFromMat4,t.normalFromMat4Legacy=r.normalFromMat4Legacy,t.projection=r.projection,t.rotate=r.rotate,t.scale=r.scale,t.scaleByVec2=r.scaleByVec2,t.set=r.set,t.str=r.str,t.sub=r.sub,t.subtract=r.subtract,t.translate=r.translate,t.transpose=r.transpose,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

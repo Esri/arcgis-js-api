@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../geometry","../../core/quantityUtils","../../geometry/geometryEngine","../../geometry/projection","../../geometry/support/geodesicUtils","./geodesicMeasurementUtils","../../geometry/SpatialReference"],(function(e,r,t,s,a,o,n,c){"use strict";function i(e){const{spatialReference:r}=e;return n.geodesicMeasure(r,u,g,l,e)}function u(e){return t.createArea(Math.abs(o.geodesicAreas([e],"square-meters")[0]),"square-meters")}function g(e){try{return t.createArea(Math.abs(s.geodesicArea(e,"square-meters")),"square-meters")}catch(r){return null}}function l(e){const r=[];return a.projectPolygonToWGS84ComparableLonLat(e,r)?t.createArea(Math.abs(o.geodesicAreas([{type:"polygon",rings:r,spatialReference:c.WGS84}],"square-meters")[0]),"square-meters"):null}e.geodesicArea=i,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

@@ -1,1 +1,0 @@
-{"title":"日光","shadowsToggle":{"label":"阴影","tooltip":"显示直接阴影"},"sunLightingToggle":{"label":"按日期和时间确定太阳位置","tooltip":"使用日期和时间确定太阳位置（否则将相对于照相机进行确定）"},"unsupported":"仅 SceneView 支持日光工具。","playDay":"动画化一天中的阳光和阴影","playYear":"动画化一年中的阳光和阴影","pause":"暂停","season":"季节","spring":"春季","summer":"夏季","winter":"冬季","fall":"秋季"}

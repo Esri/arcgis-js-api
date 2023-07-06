@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../../../core/compilerUtils","../../../webgl/enums"],(function(e,t,r){"use strict";const o={baseColorFactor:[1,1,1,1],metallicFactor:1,roughnessFactor:1},a={pbrMetallicRoughness:o,emissiveFactor:[0,0,0],alphaMode:"OPAQUE",alphaCutoff:.5,doubleSided:!1},l={ESRI_externalColorMixMode:"tint"},i=(e={})=>{const t={...o,...e.pbrMetallicRoughness},r=n({...l,...e.extras});return{...a,...e,pbrMetallicRoughness:t,extras:r}};function n(e){switch(e.ESRI_externalColorMixMode){case"multiply":case"tint":case"ignore":case"replace":break;default:t.neverReached(e.ESRI_externalColorMixMode),e.ESRI_externalColorMixMode="tint"}return e}const s={magFilter:r.TextureSamplingMode.LINEAR,minFilter:r.TextureSamplingMode.LINEAR_MIPMAP_LINEAR,wrapS:r.TextureWrapMode.REPEAT,wrapT:r.TextureWrapMode.REPEAT},c=e=>({...s,...e});e.material=i,e.textureSampler=c,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}));

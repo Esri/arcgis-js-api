@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.26/esri/copyright.txt for details.
-*/
-define(["exports","../../chunks/_rollupPluginBabelHelpers","../../core/maybe","./ElevationSamplerData"],(function(t,e,a,n){"use strict";let i=function(){function t(t,e=null){if(this.tile=t,a.isSome(e)&&a.isSome(t)){const a=t.extent;this._samplerData=new n.ElevationSamplerData(e,a)}}return t.prototype.sample=function(t,e){if(a.isNone(this._samplerData))return;const{safeWidth:n,data:i,dx:r,dy:s,y1:o,x0:u}=this._samplerData,{width:m,values:p,noDataValue:c}=i,f=l(s*(o-e),0,n),h=l(r*(t-u),0,n),d=Math.floor(f),D=Math.floor(h),_=d*m+D,y=_+m,S=p[_],x=p[y],g=p[_+1],v=p[y+1];if(S!==c&&x!==c&&g!==c&&v!==c){const t=h-D,e=S+(g-S)*t;return e+(x+(v-x)*t-e)*(f-d)}},e._createClass(t,[{key:"zmin",get:function(){return a.isSome(this._samplerData)?this._samplerData.data.minValue:0}},{key:"zmax",get:function(){return a.isSome(this._samplerData)?this._samplerData.data.maxValue:0}}]),t}();function l(t,e,a){return t<e?e:t>a?a:t}t.ElevationTile=i,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})}));

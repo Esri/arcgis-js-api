@@ -19,6 +19,10 @@
 
       @include timeSlider();
 
+      .esri-slider__segment-1 {
+        background: $border-color--active;
+      }
+
       .esri-slider.esri-slider--horizontal {
         padding-top: $slider-thumb-size;
         padding-bottom: 42px;
@@ -28,48 +32,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: $side-spacing--half;
-        margin-bottom: $cap-spacing--half;
-      }
-    }
-
-    &__tz-picker {
-      position: relative;
-      display: flex;
-      align-items: center;
-
-      &__select {
-        display: flex;
-        align-items: center;
-        flex-shrink: 0;
-        z-index: 0;
-        font-size: $font-size--tiny;
-        font-weight: $font-weight--medium;
         gap: $side-spacing--eighth;
-        padding: $cap-spacing--eighth $side-spacing--eighth;
-        padding-inline-start: $cap-spacing--half; // More padding at the start because at the end we already have the chevron icon
-        border: solid 1px var(--calcite-ui-border-1);
-
-        calcite-icon {
-          vertical-align: text-top;
-        }
-      }
-
-      &__hidden-select:focus ~ &__select {
-        outline: 2px solid var(--calcite-ui-brand);
-        outline-offset: -2px;
-      }
-
-      // Hidden and focusable select above the one where we display the short
-      // timezone name.
-      // TBD: should be replaced once we can use the a calcite-dropdown
-      &__hidden-select {
-        position: absolute;
-        opacity: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        cursor: pointer;
+        margin-bottom: $cap-spacing--half;
       }
     }
 
@@ -143,7 +107,7 @@
 
         // Mark slider area above the threshold
         .esri-slider__segment-1 {
-          background: $button-color;
+          background: $border-color--active;
         }
       }
     }

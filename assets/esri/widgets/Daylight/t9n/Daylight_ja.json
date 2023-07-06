@@ -1,1 +1,0 @@
-{"title":"日光","shadowsToggle":{"label":"影","tooltip":"直接的な影の表示"},"sunLightingToggle":{"label":"日付と時刻による太陽の位置","tooltip":"日付と時刻を使用して、太陽の位置 (または、カメラへの相対位置) を特定します。"},"unsupported":"[日光] ツールは、SceneView でのみサポートされています。","playDay":"1 日間の陰影と影をアニメーション化","playYear":"1 年間の陰影と影をアニメーション化","pause":"一時中断","season":"季節","spring":"春","summer":"夏","winter":"冬","fall":"秋"}
