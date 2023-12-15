@@ -1,5 +1,7 @@
+@use "sass:math";
+
 $floor-filter-item-width--normal: 220px;
-$floor-filter-item-width--compact: floor($floor-filter-item-width--normal * 3 * 0.25);
+$floor-filter-item-width--compact: math.floor($floor-filter-item-width--normal * 3 * 0.25);
 $floor-filter-scrollbar-thumb--color: #c1c1c1;
 $floor-filter-scrollbar-track--color: #fafafa;
 
@@ -7,9 +9,9 @@ $floor-filter-scrollbar-track--color: #fafafa;
   .esri-floor-filter {
     display: flex;
     flex-direction: row;
-    background: transparent;
     border: none;
     box-shadow: none !important;
+    background: transparent;
 
     &__position {
       &--top {
@@ -20,9 +22,10 @@ $floor-filter-scrollbar-track--color: #fafafa;
         .esri-floor-filter__zoom-button,
         .esri-floor-filter__zoom-button--levels,
         .esri-floor-filter__minimize-toggle-button {
-          border-width: 1px 0 0 0;
+          border-width: 1px 0 0;
         }
       }
+
       &--bottom {
         align-items: flex-end;
 
@@ -31,7 +34,7 @@ $floor-filter-scrollbar-track--color: #fafafa;
         .esri-floor-filter__zoom-button,
         .esri-floor-filter__zoom-button--levels,
         .esri-floor-filter__minimize-toggle-button {
-          border-width: 0 0 1px 0;
+          border-width: 0 0 1px;
         }
       }
     }
@@ -49,37 +52,38 @@ $floor-filter-scrollbar-track--color: #fafafa;
           }
 
           .esri-floor-filter__browse-button {
+            border: none;
+            padding: 12px;
             width: $button-width--plus-half;
             height: $button-height--plus-half;
-            padding: 12px;
-            border: none;
           }
 
           .esri-floor-filter__zoom-button {
-            width: $button-width--plus-half;
-            height: $button-height--plus-half;
-            padding: 12px;
             border-style: solid;
             border-color: $border-color;
+            padding: 12px;
+            width: $button-width--plus-half;
+            height: $button-height--plus-half;
           }
 
           .esri-floor-filter__zoom-button--levels {
-            width: $button-width--plus-half;
-            height: $button-height;
-            padding: 8px 12px 8px 12px;
             border-style: solid;
             border-color: $border-color;
+            padding: 8px 12px;
+            width: $button-width--plus-half;
+            height: $button-height;
           }
 
           .esri-floor-filter__minimize-toggle-button {
-            width: $button-width--plus-half;
-            height: $button-height;
-            padding: 4px 12px 4px 12px;
             border-style: solid;
             border-color: $border-color;
+            padding: 4px 12px;
+            width: $button-width--plus-half;
+            height: $button-height;
           }
         }
       }
+
       &--expanded {
         .esri-floor-filter__button-container {
           display: flex;
@@ -96,40 +100,40 @@ $floor-filter-scrollbar-track--color: #fafafa;
           }
 
           .esri-floor-filter__browse-button {
+            border: none;
+            padding: 12px;
             width: auto;
             height: $button-height--plus-half;
-            padding: 12px;
-            border: none;
           }
 
           .esri-floor-filter__level-button {
-            text-align: left;
             justify-content: flex-start;
             padding: 16px;
+            text-align: left;
           }
 
           .esri-floor-filter__zoom-button {
-            width: auto;
-            height: $button-height--plus-half;
-            padding: 12px;
             border-style: solid;
             border-color: $border-color;
+            padding: 12px;
+            width: auto;
+            height: $button-height--plus-half;
           }
 
           .esri-floor-filter__zoom-button--levels {
-            width: auto;
-            height: $button-height;
-            padding: 8px 12px 8px 12px;
             border-style: solid;
             border-color: $border-color;
+            padding: 8px 12px;
+            width: auto;
+            height: $button-height;
           }
 
           .esri-floor-filter__minimize-toggle-button {
-            width: auto;
-            height: $button-height;
-            padding: 4px 12px 4px 12px;
             border-style: solid;
             border-color: $border-color;
+            padding: 4px 12px;
+            width: auto;
+            height: $button-height;
           }
 
           .esri-floor-filter__button-label {
@@ -140,10 +144,10 @@ $floor-filter-scrollbar-track--color: #fafafa;
     }
 
     .esri-floor-filter__level-button {
-      width: 100%;
       border: none;
-      font-family: $font-family;
+      width: 100%;
       height: $button-height--plus-half;
+      font-family: $font-family;
     }
 
     .esri-floor-filter__level-button:focus {
@@ -155,14 +159,14 @@ $floor-filter-scrollbar-track--color: #fafafa;
     }
 
     .esri-floor-filter__levels-container {
-      list-style-type: none;
-      overflow: auto;
-      max-height: $panel-max-height--small;
       margin: unset;
-      padding: unset;
-      width: 100%;
       border-style: solid;
       border-color: $border-color;
+      padding: unset;
+      width: 100%;
+      max-height: $panel-max-height--small;
+      overflow: auto;
+      list-style-type: none;
       scrollbar-width: thin;
 
       .esri-widget--button-active {
@@ -179,9 +183,9 @@ $floor-filter-scrollbar-track--color: #fafafa;
     }
 
     .esri-floor-filter__levels-container::-webkit-scrollbar-thumb {
-      background-color: $floor-filter-scrollbar-thumb--color;
-      border-radius: 20px;
       border: 3px solid $floor-filter-scrollbar-thumb--color;
+      border-radius: 20px;
+      background-color: $floor-filter-scrollbar-thumb--color;
     }
 
     .esri-widget--button-active {
@@ -194,34 +198,35 @@ $floor-filter-scrollbar-track--color: #fafafa;
     }
 
     .esri-floor-filter__filter-menu {
-      width: $panel-width;
-      max-height: $panel-max-height--small;
-      background: $background-color;
+      @include defaultBoxShadow();
+
       display: flex;
       flex-direction: column;
       align-items: stretch;
-      @include defaultBoxShadow();
+      background: $background-color;
+      width: $panel-width;
+      max-height: $panel-max-height--small;
 
       .esri-floor-filter__filter-menu-header {
-        align-items: stretch;
         display: flex;
         flex-direction: row;
-        line-height: $line-height;
-        box-shadow: 0px 0.5px 0px $Calcite_Gray_300;
-        color: $font-color;
+        align-items: stretch;
+        box-shadow: 0 0.5px 0 $Calcite_Gray_300;
         height: auto;
+        line-height: $line-height;
+        color: $font-color;
       }
 
       .esri-floor-filter__filter-menu-header-back {
-        padding: 26px 0px;
-        min-width: 28px;
-        border: none;
-        border-right: 1px solid $border-color;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: $background-color;
         margin: unset;
+        border: none;
+        border-right: 1px solid $border-color;
+        background-color: $background-color;
+        padding: 26px 0;
+        min-width: 28px;
       }
 
       .esri-floor-filter__filter-menu-header-back:hover {
@@ -231,43 +236,43 @@ $floor-filter-scrollbar-track--color: #fafafa;
 
       .esri-floor-filter__filter-menu-header-text-group {
         display: flex;
-        justify-content: center;
         flex-direction: column;
+        justify-content: center;
         padding: 12px;
         max-width: calc(#{$panel-width} - 28px - 40px);
       }
 
       .esri-floor-filter__filter-menu-header-text {
-        font-style: normal;
-        font-weight: $font-weight--bold;
-        font-size: $font-size__header-text;
+        display: -webkit-box;
         margin: unset;
         overflow: hidden;
         text-overflow: ellipsis;
-        display: -webkit-box;
+        font-size: $font-size__header-text;
+        font-weight: $font-weight--bold;
+        font-style: normal;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
 
       .esri-floor-filter__filter-menu-header-subtext {
-        font-style: normal;
-        font-weight: $font-weight--regular;
-        margin: 4px 0 0 0;
-        font-size: $font-size;
+        display: -webkit-box;
+        margin: 4px 0 0;
         overflow: hidden;
         text-overflow: ellipsis;
-        display: -webkit-box;
+        font-size: $font-size;
+        font-weight: $font-weight--regular;
+        font-style: normal;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
 
       .esri-icon-close {
-        padding: 26px 12px;
         display: flex;
         align-items: center;
-        background-color: $background-color;
-        border: none;
         margin: 0 0 0 auto;
+        border: none;
+        background-color: $background-color;
+        padding: 26px 12px;
       }
 
       .esri-icon-close:hover {
@@ -276,34 +281,34 @@ $floor-filter-scrollbar-track--color: #fafafa;
       }
 
       .esri-floor-filter__filter-menu-search {
-        padding: 10px;
-        align-items: center;
         display: flex;
-        background: $background-color--hover;
-        box-shadow: 0px 0.5px 0px $Calcite_Gray_300;
+        align-items: center;
         margin-top: 0.5px;
         margin-bottom: 1px;
+        box-shadow: 0 0.5px 0 $Calcite_Gray_300;
+        background: $background-color--hover;
+        padding: 10px;
 
         .esri-floor-filter__filter-menu-search-input {
           margin-left: 6px;
-          width: 100%;
-          background: transparent;
-          border: none;
           outline: none;
-          font-family: $font-family;
+          border: none;
+          background: transparent;
+          width: 100%;
           color: $font-color;
+          font-family: $font-family;
           font-size: $font-size;
         }
       }
 
       .esri-floor-filter__filter-menu-items {
-        list-style-type: none;
-        overflow-y: auto;
-        color: $font-color;
         margin: unset;
         padding: unset;
         width: 100%;
         max-height: 300px;
+        overflow-y: auto;
+        list-style-type: none;
+        color: $font-color;
 
         .esri-floor-filter__filter-menu-site:hover,
         .esri-floor-filter__filter-menu-site:focus,
@@ -321,12 +326,12 @@ $floor-filter-scrollbar-track--color: #fafafa;
 
         .esri-floor-filter__filter-menu-site,
         .esri-floor-filter__filter-menu-facility {
-          padding: 18px;
           display: flex;
           flex-direction: row;
           align-items: center;
-          background: $background-color;
           border: none;
+          background: $background-color;
+          padding: 18px;
           width: 100%;
 
           .esri-floor-filter__filter-menu-item-name {
@@ -335,16 +340,16 @@ $floor-filter-scrollbar-track--color: #fafafa;
           }
 
           .esri-floor-filter__filter-menu-item-name--selected {
-            font-weight: $font-weight--bold;
-            font-size: $font-size;
             font-family: $font-family;
+            font-size: $font-size;
+            font-weight: $font-weight--bold;
           }
 
           .esri-floor-filter__filter-menu-item-name,
           .esri-floor-filter__filter-menu-item-name--selected {
-            text-align: left;
             margin-right: 10px;
             max-width: $floor-filter-item-width--normal;
+            text-align: left;
           }
 
           .esri-icon-right {
@@ -353,21 +358,21 @@ $floor-filter-scrollbar-track--color: #fafafa;
         }
 
         .esri-floor-filter__selected-item-circle {
-          margin-left: -10px;
           margin-right: 6px;
-          width: 4px;
-          height: 4px;
+          margin-left: -10px;
           border-radius: 50%;
           background: $Brand_Blue_200;
+          width: 4px;
+          height: 4px;
         }
       }
     }
 
     .esri-floor-filter__separator {
-      width: $view-ui-spacing;
-      background: transparent;
       border: none;
       box-shadow: none;
+      background: transparent;
+      width: $view-ui-spacing;
     }
   }
 
@@ -393,12 +398,12 @@ $floor-filter-scrollbar-track--color: #fafafa;
     }
 
     .esri-floor-filter__close-levels-button {
-      width: $button-width--plus-half;
-      height: $button-height--plus-half;
-      padding: 12px;
       border-style: solid;
       border-color: $border-color;
       background: $Calcite_Gray_250;
+      padding: 12px;
+      width: $button-width--plus-half;
+      height: $button-height--plus-half;
     }
 
     .esri-floor-filter__filter-menu-header-text-group {
@@ -434,8 +439,8 @@ $floor-filter-scrollbar-track--color: #fafafa;
   [dir="rtl"] .esri-floor-filter {
     &__layout--expanded {
       .esri-floor-filter__button-info {
-        margin-left: auto;
         margin-right: unset;
+        margin-left: auto;
       }
 
       .esri-floor-filter__button-label {
@@ -449,8 +454,8 @@ $floor-filter-scrollbar-track--color: #fafafa;
     }
 
     .esri-floor-filter__filter-menu .esri-floor-filter__filter-menu-header-back {
-      border-left: 1px solid $border-color;
       border-right: none;
+      border-left: 1px solid $border-color;
     }
 
     .esri-floor-filter__filter-menu-search .esri-floor-filter__filter-menu-search-input {
@@ -468,9 +473,9 @@ $floor-filter-scrollbar-track--color: #fafafa;
 
       .esri-floor-filter__filter-menu-item-name,
       .esri-floor-filter__filter-menu-item-name--selected {
-        text-align: right !important;
         margin-right: unset !important;
         margin-left: 10px !important;
+        text-align: right !important;
       }
 
       .esri-floor-filter__selected-item-circle {

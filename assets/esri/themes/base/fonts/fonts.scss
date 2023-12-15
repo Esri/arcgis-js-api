@@ -1,0 +1,527 @@
+/*!
+ * Use of any font is restricted as follows:
+ * - Font files may be used for Esri-business purposes only.
+ * - Fonts files may also be used by Esri Authorized Distributors for Esri business purposes only as they pertain to Esri, Inc. and its products or marketing materials.
+ * - Font files may be used in Esri software only.
+ * - Font files may not be distributed or used by third parties.
+ * - Font files may be embedded in documents as long as the font files are not provided in a separate file that allows them to be exported.
+*/
+$calcite-fonts-path: "./fonts/" !default;
+$calcite-fonts-display: auto !default;
+
+/*
+ ┌─────────────┐
+ │ Basic Latin │
+ └─────────────┘
+  Basic Latin, Latin-1 Supplement, Combining Diacritical Marks, General Punctuation
+  Note: Diacritics unfortunately must be included with the basic latin subset for NFD to work across browsers.
+ */
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b8b15cdf-85d1-4120-8daa-48863d803939.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}09ab0626-bb45-4650-acc8-0182d693df02.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b9c5b839-db56-4419-8fcb-6ab661babb1d.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}12f4c786-0bef-4a48-b7c0-eebaa7591688.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}0c8a5d21-8a14-4451-8145-695071809cb7.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: $calcite-fonts-display;
+}
+
+/*
+ ┌──────┐
+ │ Math │
+ └──────┘
+  Superscripts and Subscripts, Currency Symbols, Letterlike Symbols, Number Forms, Mathematical Operators
+ */
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b8b15cdf-85d1-4120-8daa-48863d803939-math.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: $calcite-fonts-display;
+  unicode-range: U+2070-209F, U+20A0-20CF, U+2100-214F, U+2200-22FF;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}09ab0626-bb45-4650-acc8-0182d693df02-math.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: $calcite-fonts-display;
+  unicode-range: U+2070-209F, U+20A0-20CF, U+2100-214F, U+2200-22FF;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b9c5b839-db56-4419-8fcb-6ab661babb1d-math.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: $calcite-fonts-display;
+  unicode-range: U+2070-209F, U+20A0-20CF, U+2100-214F, U+2200-22FF;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}12f4c786-0bef-4a48-b7c0-eebaa7591688-math.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: $calcite-fonts-display;
+  unicode-range: U+2070-209F, U+20A0-20CF, U+2100-214F, U+2200-22FF;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}0c8a5d21-8a14-4451-8145-695071809cb7-math.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: $calcite-fonts-display;
+  unicode-range: U+2070-209F, U+20A0-20CF, U+2100-214F, U+2200-22FF;
+}
+
+/*
+ ┌──────────────────┐
+ │ Latin Extended   │
+ └──────────────────┘
+ Latin Extended A, Latin Extended B, IPA Extensions
+ */
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b8b15cdf-85d1-4120-8daa-48863d803939-ext.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  unicode-range: U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}09ab0626-bb45-4650-acc8-0182d693df02-ext.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b9c5b839-db56-4419-8fcb-6ab661babb1d-ext.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  unicode-range: U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}12f4c786-0bef-4a48-b7c0-eebaa7591688-ext.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  unicode-range: U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}0c8a5d21-8a14-4451-8145-695071809cb7-ext.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range: U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F;
+  font-display: $calcite-fonts-display;
+}
+
+/*
+ ┌───────┐
+ │ Greek │
+ └───────┘
+ Greek and Coptic
+ */
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b8b15cdf-85d1-4120-8daa-48863d803939-greek.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  unicode-range: U+0370-03FF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}09ab0626-bb45-4650-acc8-0182d693df02-greek.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+0370-03FF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b9c5b839-db56-4419-8fcb-6ab661babb1d-greek.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  unicode-range: U+0370-03FF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}12f4c786-0bef-4a48-b7c0-eebaa7591688-greek.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  unicode-range: U+0370-03FF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}0c8a5d21-8a14-4451-8145-695071809cb7-greek.woff2") format("woff2");
+   font-weight: 700;
+  font-style: normal;
+  unicode-range: U+0370-03FF;
+  font-display: $calcite-fonts-display;
+}
+
+/*
+ ┌──────────┐
+ │ Cyrillic │
+ └──────────┘
+ Cyrillic
+ */
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b8b15cdf-85d1-4120-8daa-48863d803939-cyrillic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  unicode-range: U+0400-04FF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}09ab0626-bb45-4650-acc8-0182d693df02-cyrillic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+0400-04FF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b9c5b839-db56-4419-8fcb-6ab661babb1d-cyrillic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  unicode-range: U+0400-04FF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}12f4c786-0bef-4a48-b7c0-eebaa7591688-cyrillic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  unicode-range: U+0400-04FF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}0c8a5d21-8a14-4451-8145-695071809cb7-cyrillic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range: U+0400-04FF;
+  font-display: $calcite-fonts-display;
+}
+
+/*
+ ┌──────────┐
+ │ Georgian │
+ └──────────┘
+ Georgian
+ */
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b8b15cdf-85d1-4120-8daa-48863d803939-georgian.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  unicode-range: U+10A0-10FF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}09ab0626-bb45-4650-acc8-0182d693df02-georgian.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+10A0-10FF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}12f4c786-0bef-4a48-b7c0-eebaa7591688-georgian.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  unicode-range: U+10A0-10FF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}0c8a5d21-8a14-4451-8145-695071809cb7-georgian.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range: U+10A0-10FF;
+  font-display: $calcite-fonts-display;
+}
+
+/*
+ ┌────────┐
+ │ Arabic │
+ └────────┘
+ Arabic, Arabic Presentation Forms A, Arabic Presentation Forms B
+ */
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b8b15cdf-85d1-4120-8daa-48863d803939-arabic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  unicode-range: U+0600-06FF, U+FB50-FDFF, U+FE70-FEFF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}09ab0626-bb45-4650-acc8-0182d693df02-arabic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+0600-06FF, U+FB50-FDFF, U+FE70-FEFF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}12f4c786-0bef-4a48-b7c0-eebaa7591688-arabic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  unicode-range: U+0600-06FF, U+FB50-FDFF, U+FE70-FEFF;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}0c8a5d21-8a14-4451-8145-695071809cb7-arabic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range: U+0600-06FF, U+FB50-FDFF, U+FE70-FEFF;
+  font-display: $calcite-fonts-display;
+}
+
+/*
+ ┌────────┐
+ │ Hebrew │
+ └────────┘
+ Hebrew, Alphabetic Presentation Forms
+ */
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b8b15cdf-85d1-4120-8daa-48863d803939-hebrew.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  unicode-range: U+0590-05FF, U+FB00-FB4F;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}09ab0626-bb45-4650-acc8-0182d693df02-hebrew.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+0590-05FF, U+FB00-FB4F;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b9c5b839-db56-4419-8fcb-6ab661babb1d-hebrew.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  unicode-range: U+0590-05FF, U+FB00-FB4F;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}12f4c786-0bef-4a48-b7c0-eebaa7591688-hebrew.woff2") format("woff2");
+  font-weight: 500; /* Helvetica Hebrew doesn't have 500 so use 700 weight files */
+  font-style: normal;
+  unicode-range: U+0590-05FF, U+FB00-FB4F;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}0c8a5d21-8a14-4451-8145-695071809cb7-hebrew.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range: U+0590-05FF, U+FB00-FB4F;
+  font-display: $calcite-fonts-display;
+}
+
+/*
+ ┌───────┐
+ │ Hindi │
+ └───────┘
+ Devanagari (subset from Saral Devanagari)
+ */
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}94aa531e-7746-4df0-bb6e-349891f2eda5.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  unicode-range: U+0900-097F;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}3ae1e25e-3aa6-4061-a016-a079159f9d65.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+0900-097F;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}41331c3c-3759-4462-8695-33c9a21b6a5b.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  unicode-range: U+0900-097F;
+  font-display: $calcite-fonts-display;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}41331c3c-3759-4462-8695-33c9a21b6a5b.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range: U+0900-097F;
+  font-display: $calcite-fonts-display;
+}
+
+/*
+ ┌───────┐
+ │ Thai  │
+ └───────┘
+ Thai
+ */
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b8b15cdf-85d1-4120-8daa-48863d803939-thai.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  unicode-range: U+0E00-0E7F;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+   src: url("#{$calcite-fonts-path}09ab0626-bb45-4650-acc8-0182d693df02-thai.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+0E00-0E7F;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}12f4c786-0bef-4a48-b7c0-eebaa7591688-thai.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  unicode-range: U+0E00-0E7F;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}0c8a5d21-8a14-4451-8145-695071809cb7-thai.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range: U+0E00-0E7F;
+}
+
+/*
+ ┌────────────┐
+ │ Vietnamese │
+ └────────────┘
+ Latin Extended Additional
+*/
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b8b15cdf-85d1-4120-8daa-48863d803939-vietnamese.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: $calcite-fonts-display;
+  unicode-range: U+1E00-1EFF;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}09ab0626-bb45-4650-acc8-0182d693df02-vietnamese.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: $calcite-fonts-display;
+  unicode-range: U+1E00-1EFF;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}b9c5b839-db56-4419-8fcb-6ab661babb1d-vietnamese.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: $calcite-fonts-display;
+  unicode-range: U+1E00-1EFF;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}12f4c786-0bef-4a48-b7c0-eebaa7591688-vietnamese.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: $calcite-fonts-display;
+  unicode-range: U+1E00-1EFF;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("#{$calcite-fonts-path}0c8a5d21-8a14-4451-8145-695071809cb7-vietnamese.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: $calcite-fonts-display;
+  unicode-range: U+1E00-1EFF;
+}

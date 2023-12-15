@@ -5,9 +5,10 @@
   $invalid-color: #d83020;
 
   .esri-time-slider {
+    @include defaultBoxShadow();
+
     cursor: default;
     min-width: $widget-min-width;
-    @include defaultBoxShadow();
 
     &__layout {
       &--wide {
@@ -18,9 +19,9 @@
           }
 
           &__playback-controls {
-            direction: ltr;
             display: flex;
             flex: auto;
+            direction: ltr;
           }
 
           &__animation {
@@ -28,9 +29,9 @@
           }
 
           &__time-extent {
-            align-items: center;
             display: flex;
             flex-flow: column nowrap;
+            align-items: center;
             justify-content: center;
             width: 110px;
           }
@@ -60,8 +61,8 @@
           }
 
           &__warning {
-            font-size: $font-size__h1;
             margin-bottom: 4px;
+            font-size: $font-size__h1;
 
             &-text {
               margin-inline: 3px;
@@ -94,6 +95,7 @@
             &:nth-child(3) {
               height: 36px;
             }
+
             &:nth-child(2) {
               height: 88px;
               overflow: hidden;
@@ -105,10 +107,10 @@
           }
 
           &__time-extent {
-            align-items: center;
             display: flex;
             flex: auto;
             flex-flow: row nowrap;
+            align-items: center;
             justify-content: center;
 
             &-separator {
@@ -124,10 +126,12 @@
           &__max {
             flex: auto;
           }
+
           &__min {
             align-items: flex-start;
             margin-inline-start: 35px;
           }
+
           &__max {
             align-items: flex-end;
             margin-inline-end: 35px;
@@ -139,12 +143,13 @@
           }
 
           &__warning {
-            line-height: $font-size__body;
             margin-inline-end: 4px;
+            line-height: $font-size__body;
           }
 
           &__actions {
             align-items: flex-end;
+
             &-button {
               height: 36px;
             }
@@ -170,10 +175,11 @@
       &--time-window {
         .esri-slider {
           &__segment-1 {
+            margin-top: -1px;
             background-color: $highlight-color;
             height: 6px;
-            margin-top: -1px;
           }
+
           &__segment-0,
           &__segment-2 {
             background-color: $primary-color;
@@ -194,10 +200,11 @@
       &--cumulative-from-start {
         .esri-slider {
           &__segment-0 {
+            margin-top: -1px;
             background-color: $highlight-color;
             height: 6px;
-            margin-top: -1px;
           }
+
           &__segment-1 {
             background-color: $primary-color;
           }
@@ -219,10 +226,11 @@
           &__segment-0 {
             background-color: $primary-color;
           }
+
           &__segment-1 {
+            margin-top: -1px;
             background-color: $highlight-color;
             height: 6px;
-            margin-top: -1px;
           }
         }
 
@@ -239,9 +247,9 @@
     }
 
     &__time-extent {
-      font-size: $font-size__body;
       line-height: $font-size__body;
       color: $highlight-color;
+      font-size: $font-size__body;
 
       &-group {
         display: flex;
@@ -259,9 +267,9 @@
     &__max {
       display: flex;
       flex-flow: column nowrap;
-      font-size: $font-size__body;
       justify-content: center;
       line-height: $font-size__body;
+      font-size: $font-size__body;
 
       &-date {
         font-weight: $font-weight--bold;
@@ -270,7 +278,7 @@
 
     &__slider {
       background-color: $background-color--offset;
-      padding: 0 40px 0 40px;
+      padding: 0 40px;
 
       .esri-slider {
         margin-top: -19px;
@@ -282,14 +290,14 @@
         }
 
         &__thumb {
-          border-width: 3px;
           top: -6px;
+          border-width: 3px;
         }
 
         &__tick-label {
-          font-size: $font-size__body;
           margin-top: 23px;
           white-space: nowrap;
+          font-size: $font-size__body;
         }
 
         &__tick {
@@ -299,6 +307,7 @@
           &.minorTick {
             height: 4px;
           }
+
           &.majorTick {
             height: 8px;
           }
@@ -319,8 +328,8 @@
     &__next {
       &-button {
         border: none;
-        height: 100%;
         width: 100%;
+        height: 100%;
       }
     }
 
@@ -355,6 +364,7 @@
               direction: ltr;
             }
           }
+
           &__min,
           &__max {
             &-date,
@@ -364,11 +374,13 @@
           }
         }
       }
+
       &--wide {
         .esri-time-slider {
           &__playback-controls {
             direction: ltr;
           }
+
           &__min,
           &__max,
           &__time-extent {
@@ -378,6 +390,7 @@
             }
           }
         }
+
         &.esri-time-slider {
           &--has-actions {
             .esri-time-slider {
@@ -386,6 +399,7 @@
                   left: none;
                 }
               }
+
               &__animation {
                 border: {
                   left: 1px solid $border-color;

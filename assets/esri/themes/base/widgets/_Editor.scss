@@ -1,144 +1,309 @@
 @mixin esri-editor__prompt($contextColor) {
-  background-color: var(--calcite-ui-background);
-  border-top: solid 3px $contextColor;
-  color: $font-color;
   @include defaultBoxShadow();
-  padding: $cap-spacing $side-spacing;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  max-height: 85%;
 
   display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
   flex-flow: column nowrap;
-
+  border-top: solid 3px $contextColor;
+  background-color: var(--calcite-ui-background);
+  padding-block: $cap-spacing;
+  padding-inline: $side-spacing;
+  max-height: 85%;
   animation: esri-fade-in-up 250ms ease-in-out;
+  color: $font-color;
 
-  .esri-editor__prompt__header {
-    color: $contextColor;
-    display: flex;
-    margin-bottom: $cap-spacing;
-    flex: 0 0 auto;
-    align-items: center;
-    gap: $side-spacing--half;
+  .esri-editor__prompt {
+    &__header {
+      display: flex;
+      flex: 0 0 auto;
+      gap: $side-spacing--half;
+      align-items: center;
+      margin-bottom: $cap-spacing;
+      color: $contextColor;
 
-    &__heading {
-      color: $heading-color;
-      margin: 0 $side-spacing--quarter;
+      &__heading {
+        margin: 0 $side-spacing--quarter;
+        color: $heading-color;
+      }
     }
-  }
 
-  .esri-editor__prompt__message {
-    color: inherit;
-    font-weight: $font-weight;
-    word-break: break-word;
-    flex: 1 1 auto;
-    overflow: auto;
-    overflow-x: hidden;
-    padding: 0 0 $cap-spacing 0;
-  }
+    &__message {
+      flex: 1 1 auto;
+      padding: 0 0 $cap-spacing 0;
+      overflow: auto;
+      overflow-x: hidden;
+      word-break: break-word;
+      color: inherit;
+      font-weight: $font-weight;
+    }
 
-  .esri-editor__prompt__divider {
-    color: inherit;
-    margin: 0 0 $cap-spacing 0;
-    border-bottom: $border;
-    border-color: $border-color--subtle;
-    flex: 0 0 auto;
-  }
+    &__divider {
+      flex: 0 0 auto;
+      margin: 0 0 $cap-spacing 0;
+      border-bottom: $border;
+      border-color: $border-color--subtle;
+      color: inherit;
+    }
 
-  .esri-editor__prompt__actions {
-    display: flex;
-    flex-direction: row;
+    &__actions {
+      display: flex;
+      flex-direction: row;
+    }
   }
 }
 
 @mixin editor() {
-  $headerOrFooterHeight: 56px;
   $border: 1px solid $border-color;
   $panel-background-color: var(--calcite-ui-background);
 
+  $panel-min-height: 200px;
+  $panel-padding-inline: $side-spacing;
+  $panel-padding-block: $cap-spacing--plus-half;
+
+  $loader-size: 2rem; // Same as --calcite-loader-size
+
   .esri-editor {
-    background-color: $panel-background-color;
+    $template-item-content-end-margin: 0.75rem; // Matches default spacing used by Calcite
+
+    --calcite-app-z-index-header: 1;
+
     display: flex;
-    flex-direction: column;
-    height: 100%;
     position: relative;
+    flex-direction: column;
+    background-color: $panel-background-color;
+    height: 100%;
 
-    .esri-item-list {
-      background-color: transparent;
-    }
+    &__actions {
+      display: flex;
+      row-gap: $cap-spacing--half;
+      width: 100%;
 
-    .esri-item-list__group {
-      margin-left: 0;
-      margin-right: 0;
-
-      &:first-of-type {
-        margin-top: 0;
+      calcite-button {
+        flex-grow: 1;
       }
     }
 
-    .esri-item-list__filter-container,
-    .esri-item-list__filter-container--sticky {
-      background-color: var(--calcite-ui-background);
-      margin-bottom: 10px;
-      padding: 10px 0;
+    &__update-actions-list {
+      margin-inline: -$panel-padding-inline; // Make the actions fill the whole panel
+    }
+
+    &__help-message {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-inline: calc(#{$panel-padding-inline} - 0.5rem); // Align with the editor content
+      width: 100%;
     }
 
     .esri-feature-form {
-      width: 100%;
       padding: 0;
+      width: 100%;
 
-      .esri-feature-form__label:last-child {
-        margin-bottom: 12px;
+      &__label:last-child {
+        margin-bottom: $cap-spacing;
       }
     }
 
-    $template-item-content-end-margin: 0.75rem; // Matches default spacing used by Calcite
+    // ---------------------------------------------------------------------------------------------
+    // Template list
+    // ---------------------------------------------------------------------------------------------
+
+    .esri-item-list {
+      background-color: transparent;
+
+      &__scroller {
+        margin-inline: -$panel-padding-inline; // Make the list items fill the whole width
+      }
+
+      &__group {
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+
+        &:first-of-type {
+          margin-top: 0;
+        }
+
+        &__header {
+          padding-inline: $panel-padding-inline; // Add back the padding removed in the scroller above
+        }
+      }
+
+      &__filter-container,
+      &__filter-container--sticky {
+        margin-block-start: -$cap-spacing; // Cancel top margin from the filter
+        margin-block-end: $cap-spacing;
+        margin-inline: -$panel-padding-inline; // Fill the whole width
+        background-color: var(--calcite-ui-background);
+        padding-block: $cap-spacing;
+        padding-inline: $panel-padding-inline; // ...but add the padding back in
+      }
+    }
 
     &__template-item-content-end {
       display: block;
       margin-inline: $template-item-content-end-margin;
+    }
 
-      &--success {
-        --calcite-ui-icon-color: var(--calcite-ui-success);
+    // ---------------------------------------------------------------------------------------------
+    // Panel toolbar / Settings
+    // ---------------------------------------------------------------------------------------------
+
+    &__panel-toolbar {
+      --divider-border: 1px solid var(--calcite-ui-border-2);
+
+      display: flex;
+      flex-direction: row;
+      border-bottom: var(--divider-border);
+      background-color: var(--calcite-ui-foreground-1);
+    }
+
+    &__settings {
+      border: 0;
+      width: 100%;
+    }
+
+    &__feature-templates-container {
+      .esri-feature-templates {
+        width: 100%;
       }
-      &--error {
-        --calcite-ui-icon-color: var(--calcite-ui-danger);
+    }
+
+    &__notice {
+      margin-bottom: $cap-spacing;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    // Panel Content
+    // ---------------------------------------------------------------------------------------------
+
+    &__panel-content {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      gap: $cap-spacing--double;
+      padding-block: $panel-padding-block;
+      padding-inline: $panel-padding-inline;
+      height: auto;
+      min-height: $panel-min-height;
+
+      &__section {
+        position: relative;
+
+        &__group {
+          display: flex;
+          flex: 1 0 100%;
+          flex-direction: column;
+        }
+      }
+
+      &__message {
+        display: flex;
+        flex-basis: 100%;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: center;
+        padding-inline: $panel-padding-inline;
+        text-align: center;
+        font-size: var(--calcite-font-size-0);
       }
     }
 
-    &__template-item-loader {
-      margin-inline: $template-item-content-end-margin;
-      color: $border-color--active;
+    &__panel-content__scrim-container {
+      overflow: hidden;
     }
-  }
 
-  .esri-editor__content {
-    justify-content: center;
-    align-items: flex-start;
-    flex: 1 1 auto;
-    min-height: 20vh;
-    display: flex;
-    flex-direction: row;
+    // ---------------------------------------------------------------------------------------------
+    // Upload details
+    // ---------------------------------------------------------------------------------------------
 
-    animation: esri-fade-in 250ms ease-in-out;
-    transition: min-height 250ms ease-in-out;
-    &:empty {
-      min-height: 0;
+    &__upload-details {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing--double;
+      min-width: 0;
+      text-align: start;
+
+      &__status {
+        display: flex;
+        flex-direction: row;
+        gap: $side-spacing;
+        align-items: flex-start;
+      }
+
+      &__title-wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__title {
+        line-height: $loader-size;
+        font-size: var(--calcite-font-size-0);
+        font-weight: var(--calcite-font-weight-medium);
+      }
+
+      &__description {
+        font-size: var(--calcite-font-size--1);
+      }
+
+      &__loader {
+        flex-shrink: 0;
+        margin-inline: 0;
+        padding-block: 0;
+        width: $loader-size;
+        height: $loader-size;
+      }
+
+      &__icon {
+        &--success {
+          color: var(--calcite-ui-success);
+        }
+
+        &--error {
+          color: var(--calcite-ui-danger);
+        }
+      }
+
+      &__file-list {
+        display: flex;
+        flex-direction: column;
+        gap: $cap-spacing--third;
+      }
+
+      &__file {
+        display: flex;
+        gap: $side-spacing--half;
+        align-items: center;
+        width: 100%;
+        overflow: hidden;
+        line-height: 1em;
+        white-space: break-spaces;
+        word-break: break-all;
+      }
+
+      &__file-name {
+        word-break: break-all;
+        font-size: var(--calcite-font-size--3);
+      }
     }
-  }
 
-  .esri-editor__content-group {
-    display: flex;
-    flex-direction: column;
-    flex: 1 0 100%;
-  }
+    // ---------------------------------------------------------------------------------------------
+    // Prompts
+    // ---------------------------------------------------------------------------------------------
 
-  .esri-editor__scroller {
-    overflow-y: auto;
-    padding-top: $cap-spacing--half;
-    padding-bottom: $cap-spacing;
+    &__prompt--info {
+      @include esri-editor__prompt(var(--calcite-ui-info));
+    }
+
+    &__prompt--warning {
+      @include esri-editor__prompt(var(--calcite-ui-warning));
+    }
+
+    &__prompt--danger {
+      @include esri-editor__prompt(var(--calcite-ui-danger));
+    }
   }
 
   .esri-expand__content {
@@ -148,106 +313,6 @@
         overflow-y: visible;
       }
     }
-  }
-
-  .esri-editor__actions {
-    display: flex;
-    width: 100%;
-    row-gap: $cap-spacing--half;
-
-    calcite-button {
-      flex-grow: 1;
-    }
-  }
-
-  .esri-editor__help-message {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    padding-inline: calc(#{$side-spacing} - 0.5rem); // Align with the editor content
-  }
-
-  .esri-editor__prompt--info {
-    @include esri-editor__prompt(var(--calcite-ui-info));
-  }
-
-  .esri-editor__prompt--warning {
-    @include esri-editor__prompt(var(--calcite-ui-warning));
-  }
-
-  .esri-editor__prompt--danger {
-    @include esri-editor__prompt(var(--calcite-ui-danger));
-  }
-
-  .esri-editor__overlay {
-    position: absolute;
-    overflow: hidden;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    background-color: $background-color--overlay;
-  }
-
-  .esri-editor__panel-toolbar {
-    --divider-border: 1px solid var(--calcite-ui-border-2);
-
-    background-color: var(--calcite-ui-foreground-1);
-    border-bottom: var(--divider-border);
-    display: flex;
-    flex-direction: row;
-  }
-
-  .esri-editor__panel-content {
-    position: relative;
-    height: auto;
-    min-height: 20vh;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    padding-bottom: 0;
-
-    &__section {
-      padding: $cap-spacing $side-spacing;
-      position: relative;
-
-      &__group {
-        display: flex;
-        flex-direction: column;
-        flex: 1 0 100%;
-      }
-    }
-
-    &__message {
-      display: flex;
-      flex-basis: 100%;
-      flex-grow: 1;
-      justify-content: center;
-      align-items: center;
-      font-size: var(--calcite-font-size-0);
-      padding: 0 15px;
-      text-align: center;
-    }
-  }
-
-  .esri-editor__panel-content__scrim-container {
-    overflow: hidden;
-  }
-
-  .esri-editor__settings {
-    width: 100%;
-    border: 0;
-  }
-
-  .esri-editor__feature-templates-container {
-    .esri-feature-templates {
-      width: 100%;
-    }
-  }
-
-  .esri-editor__notice {
-    margin-bottom: $cap-spacing;
   }
 }
 

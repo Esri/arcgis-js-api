@@ -1,9 +1,9 @@
 @mixin feature() {
   .esri-feature__title {
-    font-size: $font-size;
     display: block;
     word-break: break-word;
     word-wrap: break-word;
+    font-size: $font-size;
   }
 
   .esri-feature calcite-icon {
@@ -13,11 +13,12 @@
   .esri-feature__attachments {
     display: flex;
   }
+
   .esri-feature__loading-container {
-    width: 100%;
-    justify-content: center;
     display: flex;
+    justify-content: center;
     padding: $cap-spacing 0;
+    width: 100%;
   }
 
   .esri-feature-relationship {
@@ -34,22 +35,22 @@
 
   .esri-feature__feature-observer {
     position: relative;
-    z-index: 2;
     bottom: 20px;
+    z-index: 2;
     text-align: center;
   }
 
   .esri-feature__sticky-loading-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: $list-item-height;
-    padding: 0;
-    margin: 0;
-    pointer-events: none;
     position: sticky;
     bottom: 10px;
+    align-items: center;
+    justify-content: center;
     z-index: 2;
+    margin: 0;
+    padding: 0;
+    height: $list-item-height;
+    pointer-events: none;
   }
 
   .esri-icon-loading-indicator {
@@ -57,23 +58,26 @@
   }
 
   .esri-feature {
-    width: 100%;
     --calcite-ui-background: $background-color;
+
+    width: 100%;
   }
 
   .esri-feature__content-element {
-    padding: 0 $side-spacing--half;
     margin-bottom: $cap-spacing--double;
+    padding: 0 $side-spacing--half;
   }
 
-  .esri-feature__content-element:last-child {
-    margin-bottom: $cap-spacing;
+  .esri-feature__content-element:only-child,
+  .esri-feature__content-node--text {
+    margin-bottom: $cap-spacing--quarter;
   }
 
   .esri-feature__content-node {
     display: flex;
     flex-direction: column;
   }
+
   .esri-feature__text {
     line-height: 1.3;
   }
@@ -85,8 +89,8 @@
   }
 
   .esri-feature__last-edited-info {
-    font-size: $font-size--small;
     padding-top: $cap-spacing--half;
+    font-size: $font-size--small;
   }
 
   //  RTL
@@ -94,6 +98,7 @@
     .esri-feature__attachments-title {
       margin: 0 0 0 auto;
     }
+
     .esri-feature__attachments--list .esri-feature__attachment-item-mask {
       margin-right: 0;
       margin-left: $side-spacing--half;
@@ -101,6 +106,6 @@
   }
 }
 
-@if $include_Feature==true {
+@if $include_Feature == true {
   @include feature();
 }

@@ -1,0 +1,25 @@
+@use "sass:math";
+
+// Font
+$font-family: "Avenir Next", "Helvetica Neue", helvetica, arial, sans-serif !default;
+
+// Text
+$line-height: 1.3em !default;
+$base-font-size: 14px !default;
+$font-size: $base-font-size !default;
+$font-size__h1: math.round($base-font-size * 1.428) !default; // 1.428em
+$font-size__h2: math.round($base-font-size * 1.142) !default; // 1.142em
+$font-size__lt-h2: $base-font-size !default;
+$font-size__body: math.round($base-font-size * 0.857) !default; // 0.857em
+$font-size--small: math.round($base-font-size * 0.857) !default;
+$font-size--tiny: math.round($base-font-size * 0.71) !default;
+$font-size__header-text: math.round($base-font-size * 1.143) !default; // 1.142em
+
+$font-size--tiny-time-slider: math.round($font-size--small * 0.857) !default;
+$font-weight--light: 300 !default;
+$font-weight--regular: 400 !default;
+$font-weight--medium: 500 !default;
+$font-weight--bold: 600 !default;
+$font-weight--bolder: 700 !default;
+$font-weight: 400 !default;
+$font-weight__heading: $font-weight--bold !default;

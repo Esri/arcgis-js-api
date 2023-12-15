@@ -2,6 +2,16 @@
   .esri-sketch-tooltip-controls {
     display: flex;
     flex-flow: column wrap;
+
+    &__block {
+      margin: 0;
+    }
+
+    &__block-content {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing--half;
+    }
   }
 }
 

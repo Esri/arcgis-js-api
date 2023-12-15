@@ -1,0 +1,55 @@
+@mixin measurementWidgetContent() {
+  .esri-measurement-widget-content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: $cap-spacing--double;
+    padding: var(--esri-widget-padding);
+    overflow-y: auto;
+
+    &__error {
+      color: $font-color--error;
+    }
+
+    &__error,
+    &__hint {
+      overflow: hidden;
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    &__hint,
+    &__error,
+    &__measurement,
+    &__measurement-item {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing;
+      animation: esri-fade-in 250ms ease-in-out;
+    }
+
+    &__measurement-item {
+      &--disabled {
+        color: rgba($font-color, $opacity--disabled);
+      }
+
+      &__value {
+        font-weight: $font-weight--bold;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing--half;
+      justify-content: center;
+    }
+  }
+}
+
+@if $include_MeasurementWidgetContent == true {
+  @include measurementWidgetContent();
+}

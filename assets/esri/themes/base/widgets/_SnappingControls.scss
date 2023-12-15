@@ -2,7 +2,7 @@
   $border: 1px solid $border-color;
 
   .esri-snapping-controls__toggle-block {
-    margin-top: 0;
+    margin: 0;
   }
 
   .esri-snapping-controls__layer-list-block {
@@ -10,8 +10,8 @@
   }
 
   .esri-snapping-controls__layer-list {
-    overflow: auto;
     max-height: 220px;
+    overflow: auto;
 
     &__filter {
       margin-bottom: 10px;
@@ -28,9 +28,10 @@
           margin-inline-start: 0;
         }
       }
+
       calcite-icon {
-        color: var(--calcite-ui-brand);
         margin-inline-start: var(--calcite-list-item-spacing-indent);
+        color: var(--calcite-ui-brand);
       }
     }
   }
@@ -52,92 +53,107 @@
 
   .esri-snapping-controls__item {
     @include cardBoxShadow();
-    padding: 3px;
-    background-color: $background-color;
-    cursor: pointer;
-    margin: 3px 0;
-    border: $border;
-    border-color: transparent;
-    border-radius: 2px;
+
     display: flex;
     justify-content: space-between;
     transition: border-color 125ms ease-in-out;
+    margin: 3px 0;
+    border: $border;
+    border-radius: 2px;
+    border-color: transparent;
+    background-color: $background-color;
+    cursor: pointer;
+    padding: 3px;
   }
 
   .esri-snapping-controls__item-action-icon {
-    flex: 0 0 $icon-size;
-    font-size: $icon-size;
     display: inline-block;
+    flex: 0 0 $icon-size;
+    margin-top: 0.1em;
     width: $icon-size;
     height: $icon-size;
-    margin-top: 0.1em;
+    font-size: $icon-size;
   }
 
   .esri-snapping-controls__action-toggle {
-    align-items: flex-start;
-    border: 1px solid transparent;
-    cursor: pointer;
     display: flex;
     flex-flow: row-reverse;
-    font-size: $font-size--small;
+    align-items: flex-start;
     justify-content: space-between;
-    margin: 0;
+    transition:
+      opacity 250ms ease-in-out 250ms,
+      background-color 250ms ease-in-out;
     opacity: 1;
+    margin: 0;
+    border: 1px solid transparent;
+    cursor: pointer;
     padding: $cap-spacing--half $side-spacing;
-    transition: opacity 250ms ease-in-out 250ms, background-color 250ms ease-in-out;
     width: 100%;
+    font-size: $font-size--small;
 
     .esri-snapping-controls__item-action-title {
       margin-left: 0;
     }
+
     .esri-snapping-controls__item-action-icon {
-      background-color: $background-color--hover;
+      position: relative;
+      flex: 0 0 $toggle-width;
+      transition: background-color 125ms ease-in-out;
       border-radius: $toggle-height;
       box-shadow: 0 0 0 1px $interactive-font-color;
-      flex: 0 0 $toggle-width;
+      background-color: $background-color--hover;
+      padding: 0;
+      width: $icon-size;
       height: $toggle-height;
       overflow: hidden;
-      padding: 0;
-      position: relative;
-      transition: background-color 125ms ease-in-out;
-      width: $icon-size;
 
-      &:before {
-        // Toggle handle. Overrides any icon class
-        background-color: $interactive-font-color;
-        box-shadow: 0 0 0 1px $interactive-font-color--inverse;
-        border-radius: 100%;
-        content: "";
+      &::before {
         display: block;
-        height: $toggle-handle-size;
-        left: 0;
-        margin: 2px;
         position: absolute;
         top: 0;
-        transition: background-color 125ms ease-in-out, left 125ms ease-in-out;
+        left: 0;
+        transition:
+          background-color 125ms ease-in-out,
+          left 125ms ease-in-out;
+        margin: 2px;
+        border-radius: 100%;
+        box-shadow: 0 0 0 1px $interactive-font-color--inverse;
+
+        // Toggle handle. Overrides any icon class
+        background-color: $interactive-font-color;
         width: $toggle-handle-size;
+        height: $toggle-handle-size;
+        content: "";
       }
     }
+
     &.esri-disabled-element {
-      pointer-events: none;
       opacity: $opacity--disabled;
+      pointer-events: none;
     }
   }
 
   .esri-snapping-controls__action-toggle--on .esri-snapping-controls__item-action-icon {
-    // Toggle on
-    background-color: $button-color;
     box-shadow: 0 0 0 1px $button-color;
 
-    &:before {
-      background-color: $interactive-font-color--inverse;
+    // Toggle on
+    background-color: $button-color;
+
+    &::before {
       left: $toggle-handle-size;
+      background-color: $interactive-font-color--inverse;
     }
   }
 
   .esri-snapping-controls__nested-container {
-    padding: 0;
-    padding-inline-start: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: $cap-spacing--half;
+
+    &:not(:empty) {
+      padding-top: $cap-spacing--half;
+      padding-inline-start: 1em;
+    }
   }
 }
 

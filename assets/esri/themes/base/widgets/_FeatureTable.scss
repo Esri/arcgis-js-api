@@ -1,44 +1,45 @@
 $base-scrim-z-index: 50;
 
 @mixin esri-feature-table__prompt($contextColor) {
-  animation: esri-fade-in-up 250ms ease-in-out;
-  background-color: var(--calcite-ui-background);
-  border: solid 3px $contextColor;
-  color: $font-color;
   @include defaultBoxShadow();
+
   display: flex;
   flex-flow: column nowrap;
-  max-height: 85%;
+  border: solid 3px $contextColor;
+  background-color: var(--calcite-ui-background);
   padding: $cap-spacing $side-spacing;
+  max-height: 85%;
+  animation: esri-fade-in-up 250ms ease-in-out;
+  color: $font-color;
 
   .esri-feature-table__prompt__header {
-    color: $contextColor;
     display: flex;
     flex: 0 0 auto;
     margin-bottom: $cap-spacing;
+    color: $contextColor;
 
     &__heading {
-      color: $heading-color;
       margin: 0 $side-spacing--quarter;
+      color: $heading-color;
     }
   }
 
   .esri-feature-table__prompt__message {
-    color: inherit;
-    font-weight: $font-weight;
     flex: 1 1 auto;
+    padding: 0 0 $cap-spacing 0;
     overflow: auto;
     overflow-x: hidden;
-    padding: 0 0 $cap-spacing 0;
     word-break: break-word;
+    color: inherit;
+    font-weight: $font-weight;
   }
 
   .esri-feature-table__prompt__divider {
+    flex: 0 0 auto;
+    margin: 0 0 $cap-spacing 0;
     border-bottom: $border;
     border-color: $border-color--subtle;
     color: inherit;
-    flex: 0 0 auto;
-    margin: 0 0 $cap-spacing 0;
   }
 
   .esri-feature-table__prompt__actions {
@@ -51,15 +52,15 @@ $base-scrim-z-index: 50;
   .esri-feature-table {
     display: flex;
     flex-direction: column;
-    height: 100%;
     width: 100%;
+    height: 100%;
 
     .esri-feature-table__content {
       flex: 1 1 0;
       flex-grow: 1;
-      min-height: 0;
       margin: 0;
       padding: 0;
+      min-height: 0;
     }
 
     .esri-grid--no-column-menu {
@@ -69,18 +70,11 @@ $base-scrim-z-index: 50;
     }
 
     .esri-grid__grid {
-      height: 100%;
       width: 100%;
+      height: 100%;
 
       .esri-column__menu-container.esri-button-menu {
-        height: 28px;
-        width: 28px;
         position: inherit;
-
-        .esri-button-menu__button {
-          height: 26px;
-          width: 16px;
-        }
       }
     }
 
@@ -93,10 +87,10 @@ $base-scrim-z-index: 50;
     }
 
     vaadin-grid {
-      font-family: $font-family;
-      font-size: $font-size;
       background-color: inherit;
       color: inherit;
+      font-family: $font-family;
+      font-size: $font-size;
 
       ::part(body-cell) {
         background-color: transparent;
@@ -110,25 +104,25 @@ $base-scrim-z-index: 50;
   }
 
   .esri-feature-table__menu {
-    height: 40px;
     order: 3;
     padding: 4px;
     width: 40px;
+    height: 40px;
 
     .esri-button-menu {
-      bottom: auto;
       position: relative;
+      bottom: auto;
     }
   }
 
   .esri-feature-table__header {
     display: flex;
     flex-direction: row;
-    font-weight: $font-weight;
-    height: 40px;
-    line-height: 40px;
     margin: 0;
     width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-weight: $font-weight;
   }
 
   .esri-feature-table__title {
@@ -137,33 +131,33 @@ $base-scrim-z-index: 50;
   }
 
   .esri-feature-table__loader-container {
-    height: 40px;
-    margin: 0 8px;
     order: 1;
+    margin: 0 8px;
     width: 32px;
+    height: 40px;
   }
 
   .esri-feature-table__loader {
-    height: 40px;
+    background: url("../base/images/loading-throb.gif") no-repeat center;
     width: 32px;
-    background: url(../base/images/loading-throb.gif) no-repeat center;
+    height: 40px;
   }
 
   .esri-field-column__header-label {
-    align-items: center;
     display: flex;
     flex-grow: 1;
+    align-items: center;
     margin: 0 5px;
     min-height: 28px;
     overflow: auto;
   }
 
   .esri-field-column__header-content {
-    align-items: center;
     display: flex;
-    font-weight: $font-weight;
     flex-grow: 1;
+    align-items: center;
     overflow: visible;
+    font-weight: $font-weight;
   }
 
   .esri-field-column__cell-content {
@@ -172,14 +166,14 @@ $base-scrim-z-index: 50;
 
   .esri-field-column__cell__date-input-container {
     display: flex;
-    height: 100%;
     width: 100%;
+    height: 100%;
 
     .esri-field-column__cell__date-input-wrapper {
       display: flex;
       flex-direction: column;
-      height: 100%;
       width: 100%;
+      height: 100%;
     }
 
     .esri-date-picker {
@@ -205,17 +199,17 @@ $base-scrim-z-index: 50;
   }
 
   .esri-field-column__button {
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    color: $button-color;
     display: flex;
-    font-size: $icon-size;
-    height: auto;
+    align-items: center;
     justify-content: center;
-    text-align: center;
     transition: background-color 125ms ease-in-out;
+    border: none;
+    background-color: transparent;
     width: 26px;
+    height: auto;
+    text-align: center;
+    color: $button-color;
+    font-size: $icon-size;
 
     &:disabled {
       cursor: default;
@@ -225,26 +219,26 @@ $base-scrim-z-index: 50;
     &:hover,
     &:focus {
       background-color: $background-color--hover;
-      color: $interactive-font-color--hover;
       cursor: pointer;
+      color: $interactive-font-color--hover;
     }
   }
 
   .esri-field-column__cell__input-container {
     display: flex;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    position: absolute;
   }
 
   .esri-field-column__cell-input {
-    height: 100%;
-    width: 100%;
+    flex: 1 1 0;
     border: none;
     padding: 0 5px;
-    flex: 1 1 0;
+    width: 100%;
+    height: 100%;
   }
 
   .esri-feature-table__prompt--info {
@@ -261,8 +255,8 @@ $base-scrim-z-index: 50;
 
   [dir="rtl"] {
     .esri-feature-table__menu-content {
-      left: 2px;
       right: auto;
+      left: 2px;
     }
   }
 }

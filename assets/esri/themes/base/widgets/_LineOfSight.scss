@@ -1,38 +1,41 @@
 @mixin lineOfSight() {
-  .esri-line-of-sight__container {
-    position: relative;
-    padding: $cap-spacing 0;
-    overflow-y: auto;
-    a {
-      text-decoration: none;
+  .esri-line-of-sight {
+    &__container {
+      display: flex;
+      position: relative;
+      flex-flow: column;
+      gap: $cap-spacing;
+      padding: var(--esri-widget-padding);
+      overflow-y: auto;
     }
-  }
 
-  .esri-line-of-sight__hint {
-    padding: 0 $side-spacing;
-    animation: esri-fade-in 250ms ease-in-out;
-  }
+    &__error {
+      color: $font-color--error;
+    }
 
-  .esri-line-of-sight__hint-text {
-    margin: $cap-spacing 0;
-    padding: 0;
-  }
+    &__hint {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing;
+    }
 
-  .esri-line-of-sight__panel--error {
-    color: $font-color--error;
-    padding: 0 $side-spacing;
-    animation: esri-fade-in 250ms ease-in-out;
-  }
+    &__error,
+    &__hint {
+      overflow: hidden;
+      animation: esri-fade-in 250ms ease-in-out;
 
-  .esri-line-of-sight__actions {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    padding: 0 $side-spacing;
-  }
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
 
-  .esri-line-of-sight__secondary-button {
-    margin-bottom: 10px;
+    &__actions {
+      display: flex;
+      flex-flow: column;
+      gap: $cap-spacing--half;
+      justify-content: center;
+    }
   }
 }
 

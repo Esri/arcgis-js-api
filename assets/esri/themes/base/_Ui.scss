@@ -1,0 +1,137 @@
+.esri-ui {
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  z-index: 0; // creates root stacking context
+  overflow: hidden;
+  font-size: $font-size;
+  pointer-events: none;
+
+  .esri-component {
+    pointer-events: auto;
+  }
+
+  /* attribution's position is a special case */
+  .esri-attribution {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.esri-ui-corner {
+  display: flex;
+  position: absolute;
+}
+
+.esri-ui-inner-container {
+  position: absolute;
+  inset: 0;
+}
+
+.esri-ui-manual-container {
+  > .esri-component {
+    position: absolute;
+  }
+
+  /* swipe needs to be placed behind all UI components */
+  .esri-swipe {
+    z-index: -1;
+  }
+}
+
+// Top Corners
+.esri-ui-top-left,
+.esri-ui-top-right {
+  flex-flow: column;
+}
+
+.esri-ui-top-left {
+  top: 0;
+  left: 0;
+  align-items: flex-start;
+}
+
+.esri-ui-top-right {
+  top: 0;
+  right: 0;
+  align-items: flex-end;
+}
+
+//  Bottom Corners
+.esri-ui-bottom-left,
+.esri-ui-bottom-right {
+  flex-flow: row;
+  align-items: flex-end;
+}
+
+.esri-ui-bottom-right {
+  right: 0;
+  bottom: 0;
+  flex-flow: row-reverse;
+
+  .esri-component {
+    margin-left: $view-ui-spacing;
+  }
+}
+
+.esri-ui-top-right .esri-component,
+.esri-ui-top-left .esri-component {
+  margin-bottom: $view-ui-spacing;
+}
+
+.esri-ui-bottom-left {
+  bottom: 0;
+  left: 0;
+
+  .esri-component {
+    margin-right: $view-ui-spacing;
+  }
+}
+
+[dir="rtl"] {
+  .esri-ui-top-left {
+    align-items: flex-end;
+  }
+
+  .esri-ui-top-right {
+    align-items: flex-start;
+  }
+
+  .esri-ui-bottom-left {
+    flex-direction: row-reverse;
+  }
+
+  .esri-ui-bottom-right {
+    flex-direction: row;
+  }
+}
+
+/* ZoomBox */
+
+.esri-zoom-box__container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.esri-zoom-box__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: crosshair;
+  width: 100%;
+  height: 100%;
+}
+
+.esri-zoom-box__overlay-background {
+  fill: rgb(0 0 0 / 10%);
+}
+
+.esri-zoom-box__outline {
+  fill: transparent;
+  stroke: dodgerblue;
+  stroke-dasharray: 1, 1;
+  stroke-width: 2px;
+}

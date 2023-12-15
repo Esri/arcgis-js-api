@@ -1,8 +1,11 @@
 @mixin expand() {
+  @include expandPanelOpen("esri-expand--drawer");
+  @include expandPanelClosed("esri-expand--floating");
+
   .esri-expand {
-    overflow: visible;
-    min-height: $button-height;
     min-width: $button-width;
+    min-height: $button-height;
+    overflow: visible;
   }
 
   .esri-expand__container {
@@ -11,15 +14,18 @@
   }
 
   .esri-expand__content {
+    @include defaultBoxShadow();
+
+    transition:
+      opacity 250ms ease-in-out,
+      margin 250ms ease-in-out;
+    visibility: hidden;
     opacity: 0;
-    width: 0;
-    height: 0;
     z-index: 1;
     margin: 0 $side-spacing--quarter;
-    @include defaultBoxShadow();
-    transition: opacity 250ms ease-in-out, margin 250ms ease-in-out;
+    width: 0;
+    height: 0;
     overflow: hidden;
-    visibility: hidden;
   }
 
   .esri-ui-top-left .esri-expand__content,
@@ -50,13 +56,13 @@
   }
 
   .esri-expand__content--expanded {
+    visibility: visible;
     opacity: 1;
+    margin-right: $side-spacing--half;
+    margin-left: $side-spacing--half;
     width: auto;
     height: auto;
     overflow: visible;
-    margin-left: $side-spacing--half;
-    margin-right: $side-spacing--half;
-    visibility: visible;
   }
 
   .esri-expand__content .esri-widget {
@@ -64,20 +70,20 @@
   }
 
   .esri-expand__icon-number {
+    display: flex;
     position: absolute;
     top: $button-height--fifth * -1;
-    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: $font-size--small;
-    line-height: 1em;
-    padding: 0.125em 0.333em;
-    height: $button-height--half;
+    transform-origin: 50%;
     border-radius: $button-height--half;
     background-color: $interactive-font-color;
-    color: $background-color;
-    transform-origin: 50%;
+    padding: 0.125em 0.333em;
+    height: $button-height--half;
     animation: expand-number-intro-ani 1000ms ease-in-out;
+    line-height: 1em;
+    color: $background-color;
+    font-size: $font-size--small;
   }
 
   .esri-ui-top-left .esri-expand__icon-number,
@@ -96,8 +102,8 @@
   .esri-ui-top-left .esri-expand__icon-number--expanded {
     position: static;
     top: auto;
-    left: auto;
     right: auto;
+    left: auto;
   }
 
   .esri-expand__icon-number--expanded {
@@ -110,29 +116,28 @@
       max-height: $view-height--gt-medium__component-max-height;
     }
   }
+
   .esri-view-height-medium {
     .esri-ui-corner .esri-component .esri-expand__content {
       max-height: $view-height--medium__component-max-height;
     }
   }
+
   .esri-view-height-small {
     .esri-ui-corner .esri-component .esri-expand__content {
       max-height: $view-height--small__component-max-height;
     }
   }
+
   .esri-view-height-xsmall {
     .esri-ui-corner .esri-component .esri-expand__content {
       max-height: $view-height--xsmall__component-max-height;
     }
   }
 
-  @include expandPanelOpen("esri-expand--drawer");
-
   .esri-view-width-xsmall {
     @include expandPanelOpen("esri-expand--auto");
   }
-
-  @include expandPanelClosed("esri-expand--floating");
 
   .esri-view-width-greater-than-xsmall {
     @include expandPanelClosed("esri-expand--auto");
@@ -142,6 +147,7 @@
     from {
       right: -600px;
     }
+
     to {
       right: 0;
     }
@@ -151,6 +157,7 @@
     from {
       left: -600px;
     }
+
     to {
       left: 0;
     }
@@ -160,12 +167,15 @@
     0% {
       transform: scale(1);
     }
+
     50% {
       transform: scale(1);
     }
+
     75% {
       transform: scale(1.25);
     }
+
     100% {
       transform: scale(1);
     }
@@ -175,25 +185,25 @@
 @mixin expandPanelOpen($modeClass) {
   .#{$modeClass} {
     .esri-widget {
-      max-width: 100%;
       width: 100%;
+      max-width: 100%;
     }
 
     .esri-expand__container--expanded {
       position: fixed;
       top: 0;
       bottom: 0;
-      margin: 0;
-      height: 100%;
-      background: $background-color;
       z-index: 1;
+      margin: 0;
+      background: $background-color;
+      height: 100%;
       overflow: auto;
 
       .esri-expand__panel {
         display: flex;
+        align-items: center;
         justify-content: space-between;
         padding: 1.023rem;
-        align-items: center;
 
         .esri-expand__icon-number--expanded {
           display: block;
@@ -202,16 +212,13 @@
     }
 
     .esri-expand__mask--expanded {
-      background-color: #000;
       position: fixed;
-      right: 0;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      bottom: 0;
+      inset: 0;
       opacity: 0.8;
       z-index: 1;
+      background-color: #000;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -259,6 +266,6 @@
   }
 }
 
-@if $include_Expand==true {
+@if $include_Expand == true {
   @include expand();
 }

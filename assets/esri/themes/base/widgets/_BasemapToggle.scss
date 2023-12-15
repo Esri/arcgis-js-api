@@ -3,17 +3,19 @@ $basemap_toggle_size: $button-width--double !default;
 
 @mixin basemapToggle() {
   .esri-basemap-toggle {
-    cursor: pointer;
+    @include boxShadow("none");
+
+    display: flex;
     position: relative;
-    overflow: visible;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    cursor: pointer;
     width: $basemap_toggle_size + $basemap_toggle_offset;
     height: $basemap_toggle_size + $basemap_toggle_offset;
-    background-color: transparent;
-    @include boxShadow("none");
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
+    overflow: visible;
+
     &:hover {
       background-color: transparent;
     }
@@ -21,11 +23,11 @@ $basemap_toggle_size: $button-width--double !default;
 
   .esri-basemap-toggle__container,
   .esri-basemap-toggle__image {
-    width: $basemap_toggle_size;
-    height: $basemap_toggle_size;
     position: absolute;
     top: 0;
     left: 0;
+    width: $basemap_toggle_size;
+    height: $basemap_toggle_size;
     overflow: hidden;
   }
 
@@ -35,40 +37,43 @@ $basemap_toggle_size: $button-width--double !default;
 
   .esri-basemap-toggle__image {
     background-color: $background-color;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-image: url("../base/images/basemap-toggle-64.svg");
     background-position: 50% 50%;
-    background-image: url(../base/images/basemap-toggle-64.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .esri-basemap-toggle__image--loading {
-    background-image: unset;
-    align-items: center;
     display: flex;
+    align-items: center;
     justify-content: center;
+    background-image: unset;
   }
 
   .esri-basemap-toggle__image--secondary {
+    @include defaultBoxShadow();
+
     margin-top: $basemap_toggle_offset;
     margin-left: $basemap_toggle_offset;
-    @include defaultBoxShadow();
     animation: esri-basemap-slide 2000ms ease-in-out;
   }
 
   .esri-basemap-thumbnail__overlay-scrim {
-    --calcite-scrim-background: rgba(0, 0, 0, 0.5);
+    --calcite-scrim-background: rgb(0 0 0 / 50%);
+
     color: var(--calcite-ui-text-inverse);
   }
 
   .esri-basemap-toggle__image-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transition: background-color 125ms ease-in-out;
-    background-color: rgba(255, 255, 255, 0);
     display: flex;
+    position: absolute;
     align-items: flex-end;
     justify-content: center;
+    transition: background-color 125ms ease-in-out;
+    background-color: rgb(255 255 255 / 0%);
+    width: 100%;
+    height: 100%;
+
     .esri-basemap-toggle:hover {
       background-color: rgba($interactive-font-color--hover, 0.4);
     }
@@ -76,13 +81,13 @@ $basemap_toggle_size: $button-width--double !default;
 
   .esri-basemap-toggle__title {
     flex: 1 0 100%;
+    background-color: rgb(255 255 255 / 70%);
+    padding: 0.5em;
     height: auto;
+    text-align: center;
+    line-height: $line-height;
     font-size: 9px;
     font-weight: $font-weight--medium;
-    line-height: $line-height;
-    padding: 0.5em;
-    background-color: rgba(255, 255, 255, 0.7);
-    text-align: center;
   }
 
   .esri-basemap-toggle.esri-disabled {
@@ -92,8 +97,9 @@ $basemap_toggle_size: $button-width--double !default;
   .esri-widget.esri-basemap-toggle,
   .esri-ui-corner {
     .esri-widget.esri-basemap-toggle {
-      background-color: transparent;
       @include boxShadow("none");
+
+      background-color: transparent;
     }
   }
 }
@@ -102,19 +108,21 @@ $basemap_toggle_size: $button-width--double !default;
 //  ANIMATIONS
 @keyframes esri-basemap-slide {
   0% {
+    opacity: 0;
     margin-top: 0;
     margin-left: 0;
-    opacity: 0;
   }
+
   75% {
+    opacity: 0;
     margin-top: 0;
     margin-left: 0;
-    opacity: 0;
   }
+
   100% {
+    opacity: 1;
     margin-top: $basemap_toggle_offset;
     margin-left: $basemap_toggle_offset;
-    opacity: 1;
   }
 }
 

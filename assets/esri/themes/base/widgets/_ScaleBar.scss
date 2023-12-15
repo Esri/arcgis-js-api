@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @mixin scaleBar() {
   $dark_color: $font-color;
   $light_color: $background-color;
@@ -13,13 +15,13 @@
   $border_style: $line_thickness solid $dark_color;
 
   .esri-scale-bar.esri-widget {
-    background: transparent;
     box-shadow: none;
+    background: transparent;
   }
 
   .esri-scale-bar__bar-container {
-    position: relative;
     display: flex;
+    position: relative;
     align-items: flex-end;
     transition: width 250ms ease-in-out;
     font-size: $font-size--small;
@@ -36,15 +38,17 @@
   .esri-scale-bar__ruler {
     display: flex;
     flex-wrap: wrap;
-    height: 6px;
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 33%),
+      0 1px 2px rgb(0 0 0 / 30%);
     background-color: $light_color;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.33), 0 1px 2px rgba(0, 0, 0, 0.3);
+    height: 6px;
   }
 
   .esri-scale-bar__ruler-block {
-    height: $block_height;
-    width: $block_width;
     background-color: $dark_color;
+    width: $block_width;
+    height: $block_height;
   }
 
   // top row
@@ -59,10 +63,10 @@
 
   .esri-scale-bar__line {
     position: relative;
-    height: $tic_height;
-    background-color: rgba($background-color, 0.33);
     left: 0;
     z-index: 1;
+    background-color: rgba($background-color, 0.33);
+    height: $tic_height;
   }
 
   .esri-scale-bar__line--top {
@@ -71,43 +75,43 @@
   }
 
   .esri-scale-bar__line--bottom {
-    top: floor($line_thickness * 0.5) * -1;
+    top: math.floor($line_thickness * 0.5) * -1;
     border-top: $border_style;
   }
 
   // tics
-  .esri-scale-bar__line--top:before,
-  .esri-scale-bar__line--top:after,
-  .esri-scale-bar__line--bottom:before,
-  .esri-scale-bar__line--bottom:after {
-    content: "";
+  .esri-scale-bar__line--top::before,
+  .esri-scale-bar__line--top::after,
+  .esri-scale-bar__line--bottom::before,
+  .esri-scale-bar__line--bottom::after {
     display: block;
-    width: $line_thickness;
-    height: $tic_height;
-    background-color: $dark_color;
     position: absolute;
     border-right: $border_style;
-  }
-
-  .esri-scale-bar__line--top:before {
-    bottom: -$line_thickness;
-    left: 0;
-  }
-
-  .esri-scale-bar__line--top:after {
-    bottom: -$line_thickness;
-    right: 0;
-  }
-
-  .esri-scale-bar__line--bottom:before {
-    top: -$line_thickness;
-    left: 0;
-  }
-
-  .esri-scale-bar__line--bottom:after {
+    background-color: $dark_color;
+    width: $line_thickness;
     height: $tic_height;
+    content: "";
+  }
+
+  .esri-scale-bar__line--top::before {
+    bottom: -$line_thickness;
+    left: 0;
+  }
+
+  .esri-scale-bar__line--top::after {
+    right: 0;
+    bottom: -$line_thickness;
+  }
+
+  .esri-scale-bar__line--bottom::before {
+    top: -$line_thickness;
+    left: 0;
+  }
+
+  .esri-scale-bar__line--bottom::after {
     top: -$line_thickness;
     right: 0;
+    height: $tic_height;
   }
 
   .esri-scale-bar__label-container--line {
@@ -118,12 +122,16 @@
 
   .esri-scale-bar__label-container--ruler {
     display: flex;
-    width: 100%;
-    justify-content: space-between;
     position: relative;
+    justify-content: space-between;
+    width: 100%;
+
     .esri-scale-bar__label {
       padding: $cap-spacing--half 0 0;
-      text-shadow: 0 0 1px $light_color, 0 0 1px $light_color, 0 0 1px $light_color;
+      text-shadow:
+        0 0 1px $light_color,
+        0 0 1px $light_color,
+        0 0 1px $light_color;
     }
   }
 
@@ -132,14 +140,14 @@
   }
 
   .esri-scale-bar__label-container--bottom {
-    top: floor($line_thickness * 0.5);
+    top: math.floor($line_thickness * 0.5);
   }
 
   .esri-scale-bar__label {
-    font-size: inherit;
-    color: $dark_color;
-    white-space: nowrap;
     padding: 0 $side-spacing--half;
+    white-space: nowrap;
+    color: $dark_color;
+    font-size: inherit;
     font-weight: $font-weight--bold;
   }
 
@@ -149,8 +157,8 @@
     }
 
     .esri-scale-bar__label-container--line {
-      left: auto;
       right: 0;
+      left: auto;
     }
   }
 }

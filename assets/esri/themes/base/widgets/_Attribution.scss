@@ -1,17 +1,17 @@
 @mixin attribution() {
   .esri-attribution {
-    font-size: $font-size--small;
-    line-height: 16px; // TODO: refactor to let Attribution inherit line-height.
-    background-color: rgba($background-color, 0.8);
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    background-color: rgba($background-color, 0.8);
+    line-height: 16px; // TODO: refactor to let Attribution inherit line-height.
+    font-size: $font-size--small;
   }
 
   .esri-attribution__link {
-    color: currentColor;
     text-decoration: none;
+    color: currentColor;
 
     &:hover,
     &:active,
@@ -22,13 +22,13 @@
   }
 
   .esri-attribution__sources {
-    font-weight: $font-weight--light;
-    white-space: nowrap;
+    flex: 1 0;
+    align-self: flex-start;
+    padding: 0 5px;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 0 5px;
-    align-self: flex-start;
-    flex: 1 0;
+    white-space: nowrap;
+    font-weight: $font-weight--light;
   }
 
   .esri-attribution__sources[role="button"] {
@@ -36,11 +36,11 @@
   }
 
   .esri-attribution__powered-by {
-    font-weight: $font-weight;
+    align-self: flex-end;
     padding: 0 5px;
     text-align: right;
     white-space: nowrap;
-    align-self: flex-end;
+    font-weight: $font-weight;
   }
 
   .esri-attribution--open {
