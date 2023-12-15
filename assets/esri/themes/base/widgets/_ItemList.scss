@@ -34,11 +34,15 @@
   }
 
   .esri-item-list__list-item {
+    @include icomoonIconSelector("&") {
+      padding-inline-end: $font-size * 0.2;
+    }
+
     cursor: pointer;
     min-height: $list-item-height;
 
-    @include icomoonIconSelector("&") {
-      padding-inline-end: $font-size * 0.2;
+    &--disabled {
+      cursor: default;
     }
   }
 
@@ -48,8 +52,8 @@
 
   .esri-item-list__no-matches-message {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: $panel-min-height--small;
   }
 }

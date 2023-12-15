@@ -3,17 +3,19 @@
   $slider-bounds-offset: 9px;
   $scale-indicator-half-size: 4px;
   $slider-dash-size: 5px;
-  $slider-dash-color: rgba(255, 255, 255, 0.75);
+  $slider-dash-color: rgb(255 255 255 / 75%);
 
   .esri-scale-range-slider {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: $cap-spacing;
     background-color: transparent;
     min-width: 310px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
 
     .esri-slider {
       background-color: transparent;
+
       // account for thumbs in wrapper
       padding: $slider-bounds-offset ($slider-bounds-offset + 2) $slider-bounds-offset $slider-bounds-offset;
 
@@ -26,9 +28,7 @@
       // out-of-bounds range segments
       .esri-slider__effective-min-segment,
       .esri-slider__effective-max-segment {
-        height: 100%;
         display: block;
-        content: " ";
         background: repeating-linear-gradient(
           to right,
           $slider-dash-color 0,
@@ -36,6 +36,8 @@
           transparent $slider-dash-size,
           transparent ($slider-dash-size * 2)
         );
+        height: 100%;
+        content: " ";
       }
     }
 
@@ -50,75 +52,41 @@
     }
   }
 
+  .esri-scale-range-slider__scale-indicator-wrapper {
+    display: contents;
+  }
+
   .esri-scale-range-slider__scale-indicator-container {
     position: absolute;
-    left: $slider-bounds-offset;
     right: $slider-bounds-offset + 2;
+    left: $slider-bounds-offset;
   }
 
   .esri-scale-range-slider__scale-indicator {
+    position: relative;
     top: $slider-track-thickness + $slider-bounds-offset;
+    transition-duration: 0.2s;
+    transition-property: left;
     margin-left: -$scale-indicator-half-size;
     width: 1px;
-    position: relative;
-    transition-property: left;
-    transition-duration: 0.2s;
   }
 
   .esri-scale-range-slider__scale-indicator-icon {
-    fill: #323232;
-  }
-
-  .esri-scale-range-slider__scale-menu-container {
-    margin-top: $cap-spacing;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .esri-scale-range-slider__scale-menu-toggle {
-    color: $button-color;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    font-size: $font-size;
-    white-space: nowrap;
-    max-width: 48%;
-    display: flex;
-
-    &[data-type="min"] {
-      margin-inline-end: auto;
-    }
-    &[data-type="max"] {
-      margin-inline-start: auto;
-    }
-  }
-
-  .esri-scale-range-slider__scale-menu-toggle--active {
-    font-weight: $font-weight--bold;
-  }
-
-  .esri-scale-range-slider__scale-menu-toggle-text {
-    text-overflow: ellipsis;
-    overflow-x: hidden;
-  }
-
-  .esri-scale-range-slider__scale-menu-toggle-icon {
-    font-size: $font-size--small;
-    margin: 0 $side-spacing--half;
+    transform: scale(0.8, 1.7);
   }
 
   .esri-scale-range-slider__scale-preview {
+    @include defaultBoxShadow();
+
     display: inline-flex;
     flex-direction: column;
     background-color: $background-color;
     padding: $cap-spacing--half $side-spacing--half;
-    @include defaultBoxShadow();
   }
 
   .esri-scale-range-slider__scale-preview-thumbnail {
-    display: block;
     box-sizing: border-box;
+    display: block;
 
     /*
       workaround to prevent webkit from adding a border
@@ -135,79 +103,32 @@
     padding: 64px;
   }
 
-  .esri-scale-range-slider__scale-menu {
-    @include defaultBoxShadow();
-    font-family: $font-family;
-    font-size: $font-size;
-    border-radius: $border-radius;
-    background-color: $background-color;
-    color: $font-color;
-  }
-
-  .esri-scale-range-slider__scale-menu-list {
-    min-width: 200px;
-    padding: $cap-spacing--half 0;
-    margin: 0;
+  .esri-scale-range-slider__scale-menu-container {
     display: flex;
-    flex-direction: column;
-    list-style-type: none;
-  }
+    gap: 0.5rem;
+    width: 100%;
 
-  .esri-scale-range-slider__scale-menu-item {
-    align-items: center;
-    display: flex;
-    padding: $cap-spacing--half $side-spacing--half;
-    margin: 0;
-    cursor: pointer;
-  }
-
-  .esri-scale-range-slider__scale-menu-item-content {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    flex: 0 1 auto;
-  }
-
-  .esri-scale-range-slider__scale-menu-item:hover,
-  .esri-scale-range-slider__scale-menu-item:focus {
-    background-color: $background-color--hover;
-  }
-
-  .esri-scale-range-slider__scale-menu-scroller {
-    max-height: 450px;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  .esri-scale-range-slider__scale-item-label {
-    margin: 0;
-    padding-bottom: $cap-spacing--third;
-    padding-inline-end: $side-spacing;
-    word-break: break-all;
-    cursor: inherit;
-  }
-
-  .esri-scale-range-slider__scale-menu-item-icon {
-    color: transparent;
-  }
-
-  .esri-scale-range-slider__scale-menu-item--active {
-    .esri-scale-range-slider__scale-menu-item-icon {
-      color: $button-color;
+    calcite-label span {
+      color: var(--calcite-ui-text-3);
     }
   }
 
-  .esri-scale-range-slider__scale-menu-item:hover {
-    .esri-scale-range-slider__scale-menu-item-icon {
-      color: $interactive-font-color--disabled;
-    }
+  [dir="rtl"] .esri-scale-range-slider__scale-menu-container {
+    flex-direction: row-reverse;
   }
 
-  .esri-scale-range-slider__scale-item-value {
-    color: $interactive-font-color;
-    font-size: $font-size--small;
-    margin-block-start: $cap-spacing--eighth;
-    word-break: break-all;
+  .esri-scale-range-slider__scale-menu-separator {
+    flex: 1;
+    margin-left: -0.5rem;
+  }
+
+  .esri-scale-range-slider__scale-menu-toggle {
+    max-width: 9rem;
+  }
+
+  .esri-scale-range-slider__scale-menu-sublabel {
+    color: var(--calcite-ui-text-3);
+    font-size: var(--calcite-font-size--2);
   }
 }
 

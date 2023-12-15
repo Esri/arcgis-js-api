@@ -20,37 +20,32 @@
   .#{$phases-container} {
     display: flex;
     flex-direction: row;
-
     align-items: center;
   }
 
   .#{$phases-container} {
     flex-grow: 0;
     flex-shrink: 1;
-    overflow: hidden;
     padding: 5px;
+    overflow: hidden;
   }
 
   .#{$phase} {
-    width: $phase-size;
-    height: $phase-size;
-
-    font-weight: $font-weight;
-
-    cursor: pointer;
+    appearance: none;
+    flex-shrink: 0;
     transition: all 250ms;
-
-    color: $font-color;
     border: solid $border-width $border-color;
     border-radius: 100%;
     background: $background-color;
-
-    appearance: none;
-    flex-shrink: 0;
+    cursor: pointer;
+    width: $phase-size;
+    height: $phase-size;
+    color: $font-color;
+    font-weight: $font-weight;
 
     &:hover {
-      box-shadow: 0 0 2px 1px $border-color--active;
       transform: scale(1.1); // Make it slightly bigger w/o affecting layout
+      box-shadow: 0 0 2px 1px $border-color--active;
     }
 
     &.#{$phase-active} {
@@ -59,18 +54,16 @@
     }
 
     &.#{$phase-current} {
-      color: $interactive-font-color--inverse;
       background-color: $border-color--active;
+      color: $interactive-font-color--inverse;
     }
   }
 
   .#{$divider} {
-    height: $border-width;
-    min-width: $divider-min-width;
-
-    background: $border-color;
-
     flex-grow: 0;
+    background: $border-color;
+    min-width: $divider-min-width;
+    height: $border-width;
 
     &.#{$divider-active} {
       background-color: $border-color--active;

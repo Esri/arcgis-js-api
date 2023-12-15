@@ -1,43 +1,139 @@
 @mixin utilityNetworkAssociations() {
-  .esri-un-associations__controls-label {
-    height: 1rem;
-  }
+  .esri-un-associations {
+    &__action {
+      height: 48px;
 
-  .esri-un-associations__controls-label-and-slider {
-    display: flex;
-    flex-direction: column;
-  }
+      &-refresh {
+        --calcite-ui-icon-color: #077ac2;
+      }
+    }
 
-  .esri-un-associations__controls-label-and-toggle {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: inherit;
-  }
+    &__block {
+      &-content {
+        margin: 0;
+        border: {
+          bottom: none;
+        }
+      }
 
-  .esri-un-associations__controls-slider {
-    padding: 0rem 0.5rem;
-  }
+      &-section-settings {
+        padding: 0;
+        border: {
+          style: none;
+        }
+      }
+    }
 
-  .esri-un-associations__widget-block-actions {
-    align-self: center;
-  }
+    &__div-controls {
+      &-main {
+        display: grid;
+        gap: 0.5rem;
+        background: var(--calcite-ui-foreground-1) /* color */;
+        padding: 0.5rem 0;
+      }
 
-  .esri-un-associations__widget-block-actions-switch {
-    align-self: center;
-    padding: 0.5rem;
-  }
+      &-symbol-picker {
+        margin: {
+          top: 0.75rem;
+        }
+      }
+    }
 
-  .esri-un-associations__widget-block-content {
-    width: 330px;
-    border-bottom: none;
-    margin: 0px;
-  }
+    &__dropdown {
+      border: 1px solid var(--calcite-ui-border-input);
 
-  .esri-un-associations__widget-settings-container {
-    display: grid;
-    padding-top: 0.5rem;
-    gap: 0.5rem;
+      &-item {
+        &-line-cap {
+          height: 10px;
+          background: {
+            position: center;
+            repeat: no-repeat;
+          }
+        }
+
+        &-line-pattern {
+          height: 3px;
+        }
+      }
+
+      &-selected-item {
+        &-line-cap {
+          width: 100%;
+          height: 10px;
+          background: {
+            position: center;
+            repeat: no-repeat;
+            size: 275px 10px;
+          }
+        }
+
+        &-line-pattern {
+          width: 100%;
+          height: 3px;
+        }
+      }
+
+      &-trigger {
+        display: flex;
+        align-items: center;
+        margin: 0 6px;
+        width: 100%;
+        height: 24px;
+      }
+    }
+
+    &__label {
+      height: 1rem;
+
+      &-and-slider {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-and-toggle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: inherit;
+        padding: {
+          right: 0.25rem;
+        }
+      }
+    }
+
+    &__slider {
+      padding: 0 0.5rem;
+    }
+
+    &__status-icon {
+      &-container {
+        width: 48px;
+        height: 48px;
+      }
+
+      &-warning {
+        --calcite-ui-icon-color: #edd317;
+
+        padding: 16px;
+      }
+    }
+
+    &__switch {
+      align-self: center;
+      padding: 0.5rem;
+
+      &-container {
+        display: grid;
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    &__widget-container {
+      margin: 0;
+      border-bottom: none;
+      width: 330px;
+    }
   }
 }
 

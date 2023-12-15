@@ -1,7 +1,7 @@
 @mixin timezonePicker() {
   .esri-timezone-picker {
-    position: relative;
     display: flex;
+    position: relative;
     align-items: center;
 
     &__item-title {
@@ -15,6 +15,6 @@
   }
 }
 
-@if $include_TimezonePicker==true {
+@if $include_TimezonePicker == true {
   @include timezonePicker();
 }

@@ -1,15 +1,12 @@
 @mixin grid() {
   .esri-grid {
-    width: 100%;
-    height: 100%;
+    // Uses shade of primary theme color for highlight
+    $row-selected-color: rgba($button-color, 0.2);
 
     // Sets 'primary' color that other properties inherit from
     --lumo-base-color: #{$background-color};
     --lumo-primary-color: #{$button-color};
     --lumo-primary-text-color: var(--lumo-primary-color);
-
-    // Uses shade of primary theme color for highlight
-    $row-selected-color: rgba($button-color, 0.2);
     --lumo-primary-color-10pct: #{$row-selected-color};
 
     // grid and checkbox background color(s) default and hover
@@ -22,15 +19,18 @@
     // row hover
     --lumo-row-background-hover: #{$background-color--hover};
 
+    width: 100%;
+    height: 100%;
+
     .esri-grid__content {
+      background-color: inherit;
       width: 100%;
       height: 100%;
-      background-color: inherit;
     }
 
     .esri-grid__grid {
-      height: 100%;
       width: 100%;
+      height: 100%;
 
       a {
         color: $interactive-font-color;
@@ -44,9 +44,9 @@
 
     .esri-column__sorter,
     .esri-column__header-label {
-      align-items: center;
       display: flex;
       flex-grow: 1;
+      align-items: center;
       margin: 0 5px;
       min-height: 28px;
       overflow: auto;
@@ -58,9 +58,9 @@
     }
 
     .esri-column__header-content {
-      align-items: center;
       display: flex;
       flex-grow: 1;
+      align-items: center;
       overflow: visible;
     }
   }

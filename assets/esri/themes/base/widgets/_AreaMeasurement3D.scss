@@ -1,12 +1,5 @@
+/* stylelint-disable-next-line block-no-empty */
 @mixin areaMeasurement3D() {
-  .esri-area-measurement-3d__measurement {
-    padding: $cap-spacing $side-spacing;
-    margin: $cap-spacing 0;
-    background-color: $background-color--offset;
-    animation: esri-fade-in 250ms ease-in-out;
-  }
-
-  @include measurementWidgetStyles("esri-area-measurement-3d");
 }
 
 @if $include_AreaMeasurement3D == true {

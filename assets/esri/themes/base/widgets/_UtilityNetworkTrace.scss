@@ -14,8 +14,8 @@
 
     calcite-tab {
       background-color: $background-color--offset;
-      padding-bottom: 0;
       padding-top: 0;
+      padding-bottom: 0;
 
       &:not([selected]) {
         flex: 0;
@@ -23,7 +23,7 @@
     }
 
     calcite-block {
-      margin-bottom: 0rem;
+      margin-bottom: 0;
     }
 
     &__add-button-container {
@@ -52,9 +52,44 @@
     &__number-input {
       width: 150px;
     }
+
+    &__reset-prompt {
+      @include defaultBoxShadow();
+
+      display: flex;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      flex-flow: column nowrap;
+      border-top: solid 3px $border-color--subtle;
+      background-color: var(--calcite-ui-background);
+      padding: $cap-spacing $side-spacing;
+      max-height: 85%;
+      animation: esri-fade-in-up 100ms ease-in-out;
+      color: $font-color;
+    }
+
+    &__divider {
+      flex: 0 0 auto;
+      margin: 0 0 $cap-spacing 0;
+      border-bottom: $border;
+      border-color: $border-color--subtle;
+      color: inherit;
+    }
+
+    &__padTop {
+      padding-top: 5px;
+    }
   }
 }
 
-@if $include_UtilityNetworkTrace ==true {
+@media (prefers-reduced-motion) {
+  .esri-utility-trace-network__reset-prompt {
+    animation: none;
+  }
+}
+
+@if $include_UtilityNetworkTrace == true {
   @include UtilityNetworkTrace();
 }

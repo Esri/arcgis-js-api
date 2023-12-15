@@ -1,14 +1,19 @@
-$compass_size: 20px !default;
-
 @mixin compass() {
   .esri-compass {
-    border-radius: 50%;
-  }
+    --calcite-ui-foreground-3: $background-color;
 
-  .esri-compass .esri-compass__icon {
-    font-size: $compass_size;
+    border-radius: 50%;
+
+    calcite-button {
+      /* Prevent Calcite focus outline from being cut-off */
+      overflow: visible;
+    }
+
+    &__icon-container {
+      display: flex;
+      justify-content: center;
+    }
   }
-  // TODO: update with correctly sized compass SVG.
 }
 
 @if $include_Compass == true {

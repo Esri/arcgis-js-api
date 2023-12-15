@@ -1,21 +1,31 @@
 @mixin features() {
-  .esri-features {
-    display: flex;
+  // actions
+  $action-size: $button-width--half !default;
+  $action-size--image: $button-width--half !default;
 
-    calcite-pagination {
-      flex: 1;
-      align-self: center;
-    }
+  .esri-features {
+    --calcite-ui-background: $background-color;
+
+    display: flex;
+    flex-direction: column;
 
     calcite-flow {
       position: relative;
       z-index: 1;
     }
+
+    img {
+      image-orientation: from-image;
+    }
+  }
+
+  .esri-features__flow-item--collapsed {
+    --calcite-flow-item-header-border-block-end: none;
   }
 
   .esri-features__container {
-    padding: $cap-spacing;
     background-color: var(--calcite-ui-background);
+    padding: $cap-spacing;
   }
 
   .esri-features .esri-feature,
@@ -23,15 +33,45 @@
     background-color: transparent;
   }
 
+  .esri-features__header,
   .esri-features__footer {
     display: flex;
-    background-color: var(--calcite-ui-foreground-1);
     justify-content: flex-end;
-    flex: 1;
+    background-color: var(--calcite-ui-foreground-1);
+  }
 
-    calcite-action-group {
-      border-inline-start: 1px solid var(--calcite-ui-border-3);
-    }
+  .esri-features__loader {
+    align-self: center;
+    padding-inline: 1rem;
+  }
+
+  .esri-features__pagination-action-bar {
+    flex: 1;
+    border-inline-end: 1px solid var(--calcite-ui-border-3);
+  }
+
+  .esri-features__icon {
+    display: inline-block;
+    flex: 0 0 $action-size--image;
+    width: $action-size;
+    height: $action-size;
+  }
+
+  .esri-features__action-image {
+    flex: 0 0 $action-size--image;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: $action-size--image;
+    height: $action-size--image;
+  }
+
+  .esri-features__footer {
+    flex: 1;
+  }
+
+  .esri-features__header {
+    border-block-end: 1px solid var(--calcite-ui-border-3);
   }
 
   .esri-features__content-feature {
@@ -40,8 +80,8 @@
 
   .esri-features__feature-menu-observer {
     position: relative;
-    z-index: 2;
     bottom: 20px;
+    z-index: 2;
     text-align: center;
   }
 
@@ -50,6 +90,6 @@
   }
 }
 
-@if $include_Features==true {
+@if $include_Features == true {
   @include features();
 }

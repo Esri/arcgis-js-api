@@ -5,8 +5,8 @@
     }
 
     &__content {
+      margin: 0;
       border-bottom: none;
-      margin: 0px;
     }
 
     &__controls-container {
@@ -21,15 +21,17 @@
       }
 
       &-error {
-        padding-left: 16px;
-        padding-top: 16px;
         --calcite-ui-icon-color: #edd317;
+
+        padding-top: 16px;
+        padding-left: 16px;
       }
 
       &-success {
-        padding-left: 16px;
-        padding-top: 16px;
         --calcite-ui-icon-color: #35ac46;
+
+        padding-top: 16px;
+        padding-left: 16px;
       }
     }
   }

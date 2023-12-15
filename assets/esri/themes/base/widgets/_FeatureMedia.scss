@@ -3,82 +3,95 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-  }
-  .esri-feature-media__item-title {
-    font-size: $font-size__h2;
-    margin: 0;
-  }
-  .esri-feature-media__item-caption {
-    font-size: $font-size__body;
-    padding-block-start: $cap-spacing--quarter;
-  }
-  .esri-feature-media__container {
+    margin-top: $cap-spacing--half;
     width: 100%;
     min-height: 150px;
-    margin-top: $cap-spacing--half;
-  }
-  .esri-feature-media__container .esri-feature-media__pagination-button {
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    border: none;
-    color: $interactive-font-color;
-    cursor: pointer;
-    display: flex;
-    padding-inline: $side-spacing--half;
-    padding-block: $cap-spacing--half;
-    &:hover,
-    &:focus {
-      background-color: $background-color--hover;
-      color: $interactive-font-color--hover;
-      fill: $interactive-font-color--hover;
+
+    .esri-feature-media__pagination-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding-block: $cap-spacing--half;
+      padding-inline: $side-spacing--half;
+      color: $interactive-font-color;
+
+      &:hover,
+      &:focus {
+        background-color: $background-color--hover;
+        color: $interactive-font-color--hover;
+        fill: $interactive-font-color--hover;
+      }
     }
   }
+
+  .esri-feature-media__item-title {
+    margin: 0;
+    font-size: $font-size__h2;
+  }
+
+  .esri-feature-media__item-caption {
+    padding-block-start: $cap-spacing--quarter;
+    font-size: $font-size__body;
+  }
+
   .esri-feature-media__item {
-    width: 100%;
-    height: auto;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     margin-block: $cap-spacing--half;
+    width: 100%;
+    height: auto;
   }
+
   .esri-feature-media__item-navigation {
     display: flex;
-    align-items: flex-start;
     flex: 0 1 100%;
+    align-items: flex-start;
     justify-content: space-between;
     margin-block-end: $cap-spacing--half;
   }
+
   .esri-feature-media__item-text {
     margin-inline-end: $side-spacing--half;
   }
+
   .esri-feature-media__pagination {
-    align-items: center;
     display: flex;
     flex: 0 0 auto;
+    align-items: center;
     overflow: hidden;
+
     &:only-child {
       margin-inline-start: auto;
     }
   }
+
   .esri-feature-media__pagination-text {
-    font-size: $font-size--small;
-    color: $interactive-font-color;
     padding-inline: $side-spacing--quarter;
+    color: $interactive-font-color;
+    font-size: $font-size--small;
   }
+
   .esri-feature-media__item-container {
     flex: 0 1 auto;
     width: 100%;
+
     img {
       max-width: 100%;
     }
+
     img[src$=".SVG"],
     img[src$=".svg"] {
       width: 100%;
     }
   }
+
   .esri-feature-media__chart {
     background-color: $background-color;
+
     //  Dimensions on containing div are required
     //  for Chart library to know how big to make the chart.
     width: 100%;
@@ -90,6 +103,7 @@
     .esri-feature-media__image-summary {
       margin: 0 0.5em 0 0;
     }
+
     .esri-feature-media__pagination-icon {
       transform: rotate(180deg);
     }
