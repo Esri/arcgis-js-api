@@ -1,56 +1,161 @@
 @use "sass:color";
 
 @mixin tooltip() {
-  $item-cap-padding: $cap-spacing--eighth;
-
   .esri-tooltip {
+    --field-height: 14px;
+    --field-height--input: 22px;
+    --field-row-gap: 1px;
+    --field-column-gap: #{$side-spacing};
+    --font-family: #{$font-family};
+    --font-size: var(--calcite-font-size--3);
+    --header-height: 24px;
+    --content-padding-inline: #{$side-spacing--half};
+    --content-padding-block: #{$cap-spacing--half};
+    --content-gap: var(--content-padding-block);
+    --help-message-border-spacing: #{$cap-spacing--half};
+    --suffix-width: 10px;
+
     position: absolute;
-    overflow: visible;
-    width: fit-content;
     top: 0;
     left: 0;
     z-index: 1;
+    width: fit-content;
+    overflow: visible;
 
     &-content {
+      display: flex;
       position: relative;
-      padding: $cap-spacing--half $side-spacing--half;
-      background: color.change($background-color, $alpha: 0.8);
-      backdrop-filter: blur(3px);
-      box-shadow: 0 1px 2px rgb(0, 0, 0, 0.1);
-      font-family: $font-family;
-      font-size: $font-size--small;
+      flex-direction: column;
+      gap: var(--content-gap);
+      border: solid 1 var(--calcite-ui-border-3);
+      border-radius: 3px;
+      box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+      background: var(--calcite-ui-foreground-1);
+      padding-block: var(--content-padding-block);
+      padding-inline: var(--content-padding-inline);
+      width: min-content;
       line-height: 1.1em;
       color: $font-color;
+      font-family: var(--font-family);
+      font-size: var(--font-size);
 
       // Hide the content altogether when there is nothing inside. Otherwise we'd
       // see a small empty square due to the tooltip padding.
       &:empty {
         opacity: 0;
       }
+
+      &__header {
+        display: flex;
+        justify-content: flex-start;
+        margin-block-start: calc(var(--content-padding-block) * -1);
+        margin-inline: calc(var(--content-padding-inline) * -1); // Fill the whole width
+        border-block-end: solid 1px var(--calcite-ui-border-3);
+        padding-block-end: 0;
+        height: var(--header-height);
+      }
+
+      // In input mode we activate pointer events which are disabled by default on the overlay surface.
+      &--input {
+        --field-height: var(--field-height--input);
+
+        pointer-events: all;
+      }
     }
 
     &-table {
-      display: table;
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      grid-gap: var(--field-row-gap) var(--field-column-gap);
       width: 100%;
     }
 
-    &-field {
-      display: table-row;
+    &-field,
+    &-editable-field {
+      display: contents;
 
       &__title,
       &__value {
-        display: table-cell;
-        padding: $item-cap-padding 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        block-size: var(--field-height);
         white-space: nowrap;
+
+        &__content {
+          display: flex;
+          gap: $side-spacing--eighth;
+          align-items: center;
+        }
       }
 
       &__title {
-        padding-inline-end: $side-spacing;
+        // Shrink icon to keep tooltip more compact in feedback mode
+        --icon-size: 10px;
+
+        calcite-icon {
+          width: var(--icon-size);
+          min-width: var(--icon-size);
+          height: var(--icon-size);
+          min-height: var(--icon-size);
+        }
       }
 
       &__value {
         // Make numbers look nice as they change. See https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric
         font-variant-numeric: tabular-nums;
+      }
+
+      // In input mode we keep all the values with the same height
+      &--input {
+        padding: 0;
+      }
+
+      &__input {
+        appearance: none;
+        box-sizing: border-box;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 0;
+        border-color: var(--calcite-ui-border-input);
+        background-color: var(--calcite-ui-foreground-1);
+        padding-inline: 0.5em;
+        width: 70px;
+        block-size: var(--field-height);
+        line-height: var(--field-height);
+        color: var(--calcite-ui-text-1);
+        font-family: inherit;
+        font-size: var(--font-size);
+        font-weight: var(--calcite-font-weight-normal);
+
+        // Match Calcite styles
+        &:focus {
+          outline: 2px solid var(--calcite-ui-focus-color, var(--calcite-ui-brand));
+          outline-offset: calc(-2px * calc(1 - 2 * clamp(0, var(--calcite-ui-focus-offset-invert), 1)));
+        }
+
+        &--disabled {
+          opacity: var(--calcite-ui-opacity-disabled);
+          outline: none;
+        }
+
+        &--readonly {
+          background-color: var(--calcite-ui-background);
+          font-weight: var(--calcite-font-weight-medium);
+        }
+      }
+
+      &__input-suffix {
+        min-width: var(--suffix-width);
+      }
+
+      &__button {
+        // Centers the button with the field, even if the field is larger.
+        --button-size: 24px;
+        --button-margin: calc(calc(var(--button-size) * -1) + var(--field-size));
+
+        width: var(--button-margin);
+        height: var(--button-margin);
       }
     }
 
@@ -62,28 +167,25 @@
     }
 
     &-help-message {
-      $help-message-border-spacing: $cap-spacing--half;
-
-      width: min-content;
-      min-width: 200px;
-      margin-top: $help-message-border-spacing;
-      padding-top: $help-message-border-spacing + $item-cap-padding;
-      padding-bottom: $item-cap-padding;
-      border-top: solid 1px $border-color;
-      font-family: $font-family;
-      font-size: $font-size--small;
+      margin-inline: calc(var(--content-padding-inline) * -1); // Fill the whole
+      border-block-start: solid 1px var(--calcite-ui-border-3);
+      padding-block-start: calc(var(--help-message-border-spacing) + var(--field-row-gap));
+      padding-inline: var(--content-padding-inline); // Add back the content padding, because we apply a negative margin
+      width: auto;
       text-align: center;
       white-space: break-spaces;
+      font-family: var(--font-family);
+      font-family: $font-family;
+      font-size: var(--font-size);
 
       &:only-child {
-        margin-top: 0;
-        padding-top: $item-cap-padding;
-        border-top: none;
+        border-block-start: none;
+        padding-block-start: var(--field-row-gap);
       }
     }
   }
 }
 
-@if $include_Tooltip==true {
+@if $include_Tooltip == true {
   @include tooltip();
 }

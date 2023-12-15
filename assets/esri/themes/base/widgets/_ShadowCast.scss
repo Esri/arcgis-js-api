@@ -4,20 +4,20 @@
   $tooltip-arrow-size: 8px;
 
   .esri-shadow-cast {
-    position: relative;
-    overflow: hidden;
     display: flex;
+    position: relative;
     flex-direction: column;
-    width: $width;
-    padding: $cap-spacing $side-spacing;
     gap: $cap-spacing;
+    padding: $cap-spacing $side-spacing;
+    width: $width;
+    overflow: hidden;
 
     &__time-range {
+      @include timeSlider();
+
       display: flex;
       flex-direction: column;
       font-size: $font-size--tiny-time-slider;
-
-      @include timeSlider();
 
       .esri-slider__segment-1 {
         background: $border-color--active;
@@ -30,9 +30,9 @@
 
       &__indicator {
         display: flex;
-        justify-content: center;
-        align-items: center;
         gap: $side-spacing--eighth;
+        align-items: center;
+        justify-content: center;
         margin-bottom: $cap-spacing--half;
       }
     }
@@ -68,10 +68,11 @@
       gap: $cap-spacing;
 
       calcite-label {
+        display: block;
+
         // Don't make the labels full width so that one can't click in white space to focus elements.
         width: max-content;
         max-width: 100%;
-        display: block;
 
         // Labels shouldn't really be focusable, but we had to make the color
         // picker label focusable with tabindex=-1 (not tabbable). Without it,
@@ -89,8 +90,8 @@
       .esri-slider {
         // Fit slider content since default API slider doesn't do it for us.
         padding-top: $slider-thumb-size;
-        padding-inline: $slider-thumb-size;
         padding-bottom: 25px;
+        padding-inline: $slider-thumb-size;
 
         .esri-slider__label,
         .esri-slider__tick-label {
@@ -101,6 +102,7 @@
         .esri-slider__tick-label {
           margin-top: 12px;
         }
+
         .esri-slider__tick {
           top: -4px;
         }
@@ -125,42 +127,41 @@
     }
 
     &__tooltip {
-      font-size: $font-size--small;
       color: $font-color;
+      font-size: $font-size--small;
 
       &__content {
         position: absolute;
-        width: max-content;
-        padding: $cap-spacing--half $side-spacing--half;
-        background: $background-color;
 
         // center horizontally and place it above the mouse pointer
         transform: translate(-50%, -100%);
         margin-top: -$tooltip-arrow-size - $cap-spacing--third;
+        background: $background-color;
+        padding: $cap-spacing--half $side-spacing--half;
+        width: max-content;
 
         // Tooltip arrow
-        &:after {
-          position: absolute;
-          content: "";
+        &::after {
           display: block;
-          width: 0;
-          height: 0;
-
-          border-top: $tooltip-arrow-size solid $background-color;
-          border-bottom: $tooltip-arrow-size solid transparent;
-          border-right: $tooltip-arrow-size solid transparent;
-          border-left: $tooltip-arrow-size solid transparent;
+          position: absolute;
 
           // Place arrow below the tooltip
           bottom: 1px; // make the arrow overlap so the "seam" isn't noticeable
           left: 50%;
           transform: translate(-50%, 100%);
+          border-top: $tooltip-arrow-size solid $background-color;
+          border-right: $tooltip-arrow-size solid transparent;
+          border-bottom: $tooltip-arrow-size solid transparent;
+          border-left: $tooltip-arrow-size solid transparent;
+          width: 0;
+          height: 0;
+          content: "";
         }
       }
     }
   }
 }
 
-@if $include_ShadowCast==true {
+@if $include_ShadowCast == true {
   @include shadowCast();
 }

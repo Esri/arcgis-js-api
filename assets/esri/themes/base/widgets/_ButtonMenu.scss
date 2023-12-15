@@ -2,59 +2,18 @@
   .esri-button-menu {
     width: $button-width;
     height: $button-height;
-
-    .esri-button-menu__button {
-      align-items: center;
-      background-color: transparent;
-      border: none;
-      color: $interactive-font-color;
-      display: flex;
-      font-size: $icon-size;
-      height: $button-height;
-      justify-content: center;
-      text-align: center;
-      transition: background-color 125ms ease-in-out;
-      width: $button-width;
-
-      &:disabled {
-        cursor: default;
-        color: $interactive-font-color--disabled;
-      }
-
-      &:hover,
-      &:focus {
-        background-color: $background-color--hover;
-        color: $interactive-font-color--hover;
-        cursor: pointer;
-      }
-
-      &.esri-button-menu__button--selected,
-      &.esri-button-menu__button--selected:hover {
-        background: $background-color--inverse;
-        color: $interactive-font-color--inverse;
-      }
-    }
-
-    .esri-button-menu__content-wrapper {
-      position: relative;
-      display: inline-block;
-    }
   }
 
   .esri-button-menu__content {
-    border-radius: $border-radius;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.33);
-    background-color: $background-color;
-    max-height: 250px;
     min-width: 200px;
+    max-height: 250px;
     overflow: auto;
-    z-index: 1;
 
     .esri-button-menu__item-wrapper,
     .esri-button-menu__embedded-content-wrapper {
-      list-style: none;
       margin: 0;
       padding: 0;
+      list-style: none;
     }
   }
 
@@ -63,27 +22,27 @@
     padding: 0;
 
     .esri-button-menu__item-label {
-      align-items: center;
-      color: $font-color;
-      cursor: pointer;
       display: flex;
-      font-family: $font-family;
-      font-weight: $font-weight;
-      font-size: $font-size;
+      position: relative;
+      align-items: center;
       justify-content: flex-start;
       margin: 0;
+      cursor: pointer;
       padding: $cap-spacing $side-spacing;
-      position: relative;
       text-decoration: none;
-
-      .esri-button-menu__item-label-content {
-        padding: 0 $side-spacing--half;
-        width: auto;
-      }
+      color: $font-color;
+      font-family: $font-family;
+      font-size: $font-size;
+      font-weight: $font-weight;
 
       &:hover {
         background-color: $background-color--hover;
         color: $interactive-font-color--hover;
+      }
+
+      .esri-button-menu__item-label-content {
+        padding: 0 $side-spacing--half;
+        width: auto;
       }
     }
 
@@ -96,7 +55,7 @@
       opacity: 0;
 
       &:checked {
-        & ~ .esri-button-menu__embedded-content-wrapper {
+        ~ .esri-button-menu__embedded-content-wrapper {
           display: block;
         }
       }
@@ -107,7 +66,7 @@
 
       .esri-button-menu__checkbox {
         &:checked {
-          & ~ .esri-button-menu__item-label {
+          ~ .esri-button-menu__item-label {
             .esri-button-menu__icon {
               display: block;
             }

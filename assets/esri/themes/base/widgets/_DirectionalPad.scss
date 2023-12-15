@@ -1,0 +1,91 @@
+@mixin directionalPad() {
+  .esri-directional-pad {
+    display: flex;
+    flex-direction: column;
+    gap: $side-spacing--half;
+    outline: none;
+
+    /* Two calcite-pads provide their own background and shadow */
+    box-shadow: none !important;
+    background: transparent;
+
+    /* Prevent selecting the SVGs (ios webkit) */
+    user-select: none;
+
+    calcite-action-pad {
+      display: contents;
+    }
+
+    calcite-action-group {
+      /* Prevent browser's zoom/pan gestures (ios/android) */
+      touch-action: none;
+    }
+
+    calcite-action {
+      /* Fix Calcite's padding inline not matching padding block */
+      aspect-ratio: 1;
+    }
+
+    &__buttons-container {
+      --calcite-ui-background: transparent;
+      --calcite-action-group-gap: 0;
+      --calcite-action-group-padding: 0;
+
+      calcite-action {
+        /* Make focus outline not visible if using mouse */
+        --calcite-ui-focus-color: var(--calcite-ui-foreground-3);
+      }
+
+      calcite-action:not([active]) {
+        /* Fix active styles remaining on initial button in Firefox */
+        --calcite-ui-foreground-3: var(--calcite-ui-foreground-1);
+      }
+
+      calcite-action[active] {
+        /* Fix button:active not having a background */
+        --calcite-ui-foreground-1: var(--calcite-ui-foreground-3);
+      }
+
+      calcite-icon {
+        transform: var(--rotation, unset);
+      }
+
+      /* Fix sticky hover effect on touchscreen devices */
+      @media (hover: none) {
+        calcite-action {
+          --calcite-ui-foreground-2: var(--calcite-ui-foreground-1);
+          --calcite-ui-text-1: var(--calcite-ui-text-3);
+        }
+      }
+    }
+
+    &__rotation-container {
+      display: block;
+      width: 100%;
+
+      calcite-action {
+        flex: 0.3;
+      }
+    }
+
+    &__rotation-slider-container {
+      display: flex;
+      flex: 1;
+      align-items: center;
+
+      calcite-slider {
+        flex: 1;
+
+        /*
+         * Fix the slider label overflowing the slider bounds when slider value
+         * is at either edge
+         */
+        padding-inline: $side-spacing--third;
+      }
+    }
+  }
+}
+
+@if $include_DirectionalPad == true {
+  @include directionalPad();
+}

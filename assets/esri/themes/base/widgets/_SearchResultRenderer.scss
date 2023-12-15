@@ -1,34 +1,39 @@
 @mixin searchResultRenderer() {
   .esri-search-result-renderer {
     .esri-search-result-renderer__more-results-header {
-      font-weight: $font-weight--bold;
       margin-bottom: 2px;
+      font-weight: $font-weight--bold;
     }
+
     .esri-search-result-renderer__more-results-item {
       margin-bottom: 10px;
     }
+
     .esri-search-result-renderer__more-results-list {
       display: none;
+
       ul {
-        list-style: none;
-        margin: 0 0 10px 0;
+        margin: 0 0 10px;
         padding: 0;
+        list-style: none;
       }
+
       li {
         padding: 2px 0;
       }
     }
+
     .esri-search-result-renderer__more-results--show-more-results {
       .esri-search-result-renderer__more-results-list {
         display: block;
         margin-top: 10px;
-        padding-top: 10px;
         border-top: 1px solid #ccc;
+        padding-top: 10px;
       }
     }
   }
 }
 
-@if $include_Search==true {
+@if $include_Search == true {
   @include searchResultRenderer();
 }

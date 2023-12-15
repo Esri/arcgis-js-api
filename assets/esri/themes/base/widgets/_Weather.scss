@@ -14,31 +14,35 @@
       // space. This way the widget maintains a constant width without us having
       // to specify a fixed value.
       &--has-error {
-        pointer-events: none;
         visibility: hidden;
-        overflow: hidden;
         height: 0;
+        overflow: hidden;
+        pointer-events: none;
       }
     }
 
     &__selector {
       display: flex;
-      align-items: center;
       flex-direction: row;
       gap: $side-spacing--half;
+      align-items: center;
     }
 
     &__options {
       display: flex;
       flex-direction: column;
       gap: $cap-spacing;
+
+      &--hidden {
+        display: none;
+      }
     }
 
     &__warning {
       display: flex;
       flex-direction: row;
-      align-items: center;
       gap: $side-spacing--half;
+      align-items: center;
       font-size: $font-size--small;
 
       calcite-icon {
@@ -54,6 +58,6 @@
   }
 }
 
-@if $include_Weather==true {
+@if $include_Weather == true {
   @include weather();
 }

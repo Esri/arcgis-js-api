@@ -35,36 +35,27 @@
   .#{$label} {
     display: flex;
     flex-direction: row;
-
-    font-size: $font-size;
-    font-weight: $font-weight--light;
-
+    align-items: center;
+    cursor: pointer;
     padding-top: $side-spacing--quarter;
     padding-bottom: $side-spacing--quarter;
-
-    cursor: pointer;
-
-    align-items: center;
+    font-size: $font-size;
+    font-weight: $font-weight--light;
   }
 
   .#{$collapse-toggle} {
-    font-size: $collapse-toggle-icon-size;
-    line-height: $collapse-toggle-icon-size;
-
+    appearance: none;
     display: inline-block;
-
-    width: $collapse-toggle-size;
-    height: $collapse-toggle-size;
-    margin: 0;
-    padding: ($collapse-toggle-size - $collapse-toggle-icon-size) * 0.5;
-
+    flex-shrink: 0;
     transition: transform 0.1s ease-in-out;
-
+    margin: 0;
     border: none;
     background: none;
-
-    flex-shrink: 0;
-    appearance: none;
+    padding: ($collapse-toggle-size - $collapse-toggle-icon-size) * 0.5;
+    width: $collapse-toggle-size;
+    height: $collapse-toggle-size;
+    line-height: $collapse-toggle-icon-size;
+    font-size: $collapse-toggle-icon-size;
 
     &:not(.#{$collapse-toggle--collapsed}) {
       transform: rotate(90deg);
@@ -72,41 +63,36 @@
   }
 
   .#{$checkbox} {
-    font-size: $checkbox-icon-size;
-    line-height: $checkbox-icon-size;
-
+    appearance: none;
     display: inline-block;
-
-    width: $checkbox-size;
-    height: $checkbox-size;
+    flex-shrink: 0;
+    transition: all 0.1s ease-in-out;
     margin: 0;
     margin-right: $side-spacing--half;
-    padding: ($checkbox-size - $checkbox-icon-size - $checkbox-border-size * 2) * 0.5;
-
-    transition: all 0.1s ease-in-out;
-
     border: solid 1px $border-color;
     background: none;
+    padding: ($checkbox-size - $checkbox-icon-size - $checkbox-border-size * 2) * 0.5;
+    width: $checkbox-size;
+    height: $checkbox-size;
+    line-height: $checkbox-icon-size;
+    font-size: $checkbox-icon-size;
 
-    flex-shrink: 0;
-    appearance: none;
-
-    &:before {
+    &::before {
       color: $interactive-font-color--inverse;
     }
   }
 
   .#{$checkbox--indeterminate} {
-    &:before {
+    &::before {
       color: $interactive-font-color;
     }
   }
 
   .#{$checkbox--checked} {
-    background: $border-color--active;
     border-color: $border-color--active;
+    background: $border-color--active;
 
-    &:before {
+    &::before {
       color: $interactive-font-color--inverse;
     }
   }
@@ -129,12 +115,12 @@
       .#{$base}--level-#{$level} {
         $padding: $indent-size * ($level - 1);
 
-        padding-left: 0;
         padding-right: $padding;
+        padding-left: 0;
 
         &.#{$leaf} {
-          padding-left: 0;
           padding-right: $padding + $collapse-toggle-size;
+          padding-left: 0;
         }
       }
     }

@@ -10,14 +10,12 @@
 
   .#{$base} {
     position: relative;
-
-    overflow-y: auto;
-    overflow-x: hidden;
-
+    padding: $side-spacing;
     width: $panel-width;
     max-width: 100%;
     max-height: calc(100vh - #{$side-spacing--double});
-    padding: $side-spacing;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     .esri-widget__heading {
       font-weight: $font-weight;
@@ -37,13 +35,13 @@
   }
 
   .#{$panel--error} {
-    color: $font-color--error;
     margin: 0;
     animation: esri-fade-in 250ms ease-in-out;
+    color: $font-color--error;
   }
 }
 
-@if $include_BuildingExplorer==true {
+@if $include_BuildingExplorer == true {
   @include buildingLevelPicker();
   @include buildingPhasePicker();
   @include buildingDisciplinesTree();

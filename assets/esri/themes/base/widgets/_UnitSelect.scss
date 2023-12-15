@@ -1,0 +1,15 @@
+@mixin unitSelect() {
+  .esri-unit-select {
+    width: 100%;
+
+    &__label {
+      --calcite-label-margin-bottom: 0;
+
+      width: 100%;
+    }
+  }
+}
+
+@if $include_UnitSelect == true {
+  @include unitSelect();
+}

@@ -2,13 +2,6 @@
   $width: 550px;
   $chart-height: 180px;
 
-  $header-height: 30px;
-  $header-icon-height: 16px;
-  $header-button-width: 34px;
-
-  $loading-spinner-size: 30px;
-  $loading-spinner-size-small: $header-icon-height;
-
   $actions-spacing-h: $side-spacing--half;
   $actions-spacing-v: $cap-spacing--half;
 
@@ -16,83 +9,17 @@
   $statistics-slope-values-spacing: $side-spacing--half;
 
   $popover-padding: $cap-spacing $side-spacing;
-  $popover-border: 1px solid $border-color;
-  $popover-background-color: $background-color;
 
-  $legend-font-size: $font-size--small;
-  $legend-label-spacing: $side-spacing--plus-half;
-
-  $checkbox-size: 14px;
-  $checkbox-border-size: 1px;
-  $checkbox-icon-size: 10px;
-
-  $color-indicator-width: 8px;
-  $color-indicator-height: 8px;
-  $color-indicator-spacing: $side-spacing--half;
-
-  //----------------------------------------------------------------------------
-  // Checkbox
-  //----------------------------------------------------------------------------
-
-  .esri-elevation-profile,
-  .esri-elevation-profile-settings__popover-content {
-    input[type="checkbox"] {
-      font-size: $checkbox-icon-size;
-      line-height: $checkbox-icon-size;
-      display: inline-block;
-      width: $checkbox-size;
-      height: $checkbox-size;
-      margin: 0;
-      margin-inline-end: $side-spacing--half;
-      padding: ($checkbox-size - $checkbox-icon-size - $checkbox-border-size * 2) * 0.5;
-      transition: all 0.1s ease-in-out;
-      border: solid 1px $border-color;
-      background: none;
-      flex-shrink: 0;
-      appearance: none;
-
-      &:before {
-        // Copied from esri/themes/base/icons/style.scss
-        font-family: "#{$icomoon-font-family}" !important;
-        font-style: normal;
-        font-weight: normal;
-        font-variant: normal;
-        text-transform: none;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-
-        color: $interactive-font-color--inverse;
-      }
-
-      &:checked {
-        background: $border-color--active;
-        border-color: $border-color--active;
-
-        &:before {
-          @extend .esri-icon-check-mark;
-          color: $interactive-font-color--inverse;
-        }
-      }
-
-      // Only change the cursor when the checkbox is not disabled
-      &:not(:disabled) {
-        cursor: pointer;
-      }
-
-      &:focus:not(:focus-visible) {
-        outline: none;
-      }
-    }
-  }
-
-  //----------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------
   // Widget
-  //----------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------
 
   .esri-elevation-profile {
+    --calcite-label-margin-bottom: 0;
+
     position: relative;
-    padding: var(--esri-widget-padding);
     isolation: isolate;
+    padding: var(--esri-widget-padding);
 
     &.esri-component.esri-widget--panel {
       width: $width;
@@ -102,24 +29,8 @@
     &__header {
       display: flex;
       flex-direction: row;
-      height: $header-height;
       align-items: center;
       justify-content: flex-end;
-
-      button {
-        @extend .esri-button;
-        @extend .esri-button--tertiary;
-
-        width: $header-button-width;
-        flex-shrink: 0;
-        flex-grow: 0;
-        z-index: 1; // Above chart.
-
-        &:focus:not(:focus-visible) {
-          outline: none;
-          border: none;
-        }
-      }
     }
 
     &__footer {
@@ -128,16 +39,15 @@
       align-items: center;
       justify-content: flex-end;
       margin-top: $cap-spacing;
+
+      calcite-button {
+        min-height: 32px;
+      }
     }
 
     &__action-button {
-      width: auto;
       margin-inline-start: $actions-spacing-h;
-
-      &:focus:not(:focus-visible) {
-        outline: none;
-        border: none;
-      }
+      width: auto;
     }
 
     &__main-container {
@@ -150,30 +60,18 @@
       position: relative;
       width: 100%;
       height: 100%;
-
-      // Fix for situations where apps (cough cough... SV) set `pointer-events: all`
-      // breaking the tooltips and zooming in the chart.
-      .amcharts-ValueAxis-group,
-      .amcharts-axis-tooltip,
-      .amcharts-Tooltip-group,
-      .amcharts-series-tooltip {
-        &,
-        * {
-          pointer-events: none !important;
-        }
-      }
     }
 
     &__prompt-container {
       display: flex;
-      width: 100%;
-      height: 100%;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 0;
       padding: $cap-spacing $side-spacing;
       padding-top: $cap-spacing--double + $cap-spacing;
+      width: 100%;
+      height: 100%;
       text-align: center;
-      align-items: center;
-      justify-content: center;
 
       > p {
         margin: 0;
@@ -182,20 +80,13 @@
     }
 
     &__chart-spinner {
-      font-size: $loading-spinner-size;
-      color: $border-color--active;
-      opacity: 0;
-      transition: opacity 150ms ease-in-out;
-      pointer-events: none;
-
       // Position it in the middle of the container
       position: absolute;
-      left: 50%;
       top: 50%;
-
-      // center
-      margin-top: -$loading-spinner-size * 0.5;
-      margin-left: -$loading-spinner-size * 0.5;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: opacity 150ms ease-in-out;
+      opacity: 0;
 
       // We show a spinner with a delay so that it is only visible if a preview
       // takes too long to be generated.
@@ -205,11 +96,11 @@
       }
 
       &--small {
-        font-size: $loading-spinner-size-small;
-        top: -$loading-spinner-size-small - $header-icon-height * 0.5; // Align top of the chart with icon of header buttons;
-        left: 0;
-        margin-top: 0;
-        margin-left: 0;
+        top: -22px; // Align top of the chart with icon of header buttons;
+        left: unset;
+        inset-inline-start: 0;
+        transform: none;
+        color: var(--calcite-ui-brand);
       }
     }
 
@@ -235,52 +126,34 @@
     }
   }
 
-  //----------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------
   // Settings
-  //----------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------
 
   .esri-elevation-profile-settings {
     &__popover-content {
-      font-family: $font-family;
-      font-size: $font-size__body;
       display: flex;
       flex-direction: column;
-      padding: $popover-padding;
-      color: $font-color;
-      border: $popover-border;
-      background-color: $popover-background-color;
       gap: $cap-spacing;
-      cursor: pointer;
-    }
-
-    &__select {
-      min-width: 150px; // Give some space for our labels to render properly
+      padding: $popover-padding;
+      min-width: 180px; // Give some space for our labels to render properly
+      color: $font-color;
+      font-family: $font-family;
       font-size: $font-size__body;
-    }
-
-    &__select-label {
-      display: block;
-      margin-bottom: $cap-spacing--eighth;
-    }
-
-    &__checkbox-label {
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
     }
   }
 
-  //----------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------
   // Legend
-  //----------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------
 
   .esri-elevation-profile-legend {
     margin-top: $cap-spacing--half;
   }
 
-  //----------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------
   // Legend Item
-  //----------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------
 
   .esri-elevation-profile-legend-item {
     position: relative;
@@ -298,7 +171,7 @@
     &__color-indicator {
       position: absolute;
       top: 0;
-      left: 0;
+      inset-inline-start: 0;
       width: 3px;
       height: 100%;
     }
@@ -317,50 +190,24 @@
     }
 
     &__collapse-toggle {
-      width: auto;
-      color: $interactive-font-color;
       flex-shrink: 0;
 
-      &:focus:not(:focus-visible) {
-        outline: none;
-        border: none;
-      }
-    }
-
-    &__collapse-toggle__icon {
-      margin: 0 $side-spacing--quarter;
-      transform: rotate(0);
-      transition: transform 0.1s ease-in-out;
-    }
-
-    &--expanded &__collapse-toggle__icon {
-      transform: rotate(180deg);
+      // Make sure the element has a size, to avoid popping due to Calcite Components loading async
+      width: 32px;
+      height: 32px;
     }
 
     &__label {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      flex-shrink: 1;
       flex-grow: 1;
-      min-width: 0; // allow the legend to shrink as much as needed.
+      flex-shrink: 1;
       padding-inline-start: $side-spacing;
-
-      // Only change the cursor when the checkbox is not disabled
-      &:not(&--disabled) {
-        cursor: pointer;
-      }
-
-      > span {
-        text-overflow: ellipsis;
-        overflow: hidden;
-      }
+      min-width: 0; // allow the legend to shrink as much as needed.
     }
   }
 
-  //----------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------
   // Statistics
-  //----------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------
 
   .esri-elevation-profile-statistics {
     --max-width: 1px;
@@ -374,8 +221,8 @@
     &__statistic {
       display: block;
       width: max-content;
-      white-space: nowrap;
       text-align: start;
+      white-space: nowrap;
 
       &__label {
         font-size: $font-size--tiny;
@@ -383,21 +230,20 @@
       }
 
       &__value {
+        margin-top: -0.15em; // condense things slightly
         font-size: $font-size--tiny;
         font-weight: $font-weight--bold;
-        margin-top: -0.15em; // condense things slightly
       }
     }
 
     &__slope-value {
-      > {
-        @include icomoonIconSelector() {
-          font-size: $statistics-font-size; // Keep the icon small.
+      display: flex;
+      align-items: center;
 
-          &:not(:first-child) {
-            margin-inline-start: $statistics-slope-values-spacing;
-          }
-        }
+      // Ensure we have a size, because icons don't remember immediately.
+      calcite-icon {
+        width: 16px;
+        height: 16px;
       }
     }
   }
@@ -410,26 +256,6 @@
 
     .esri-elevation-profile-statistics__statistic__value {
       margin-top: 2px;
-    }
-  }
-
-  //----------------------------------------------------------------------------
-  // RTL
-  //----------------------------------------------------------------------------
-
-  [dir="rtl"] {
-    .esri-elevation-profile-legend-item {
-      &__color-indicator {
-        left: auto;
-        right: 0;
-      }
-    }
-
-    .esri-elevation-profile {
-      &__chart-spinner--small {
-        left: auto;
-        right: 0;
-      }
     }
   }
 }

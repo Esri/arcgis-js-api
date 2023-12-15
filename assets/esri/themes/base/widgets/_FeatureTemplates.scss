@@ -7,12 +7,12 @@
   }
 
   .esri-feature-templates__list-item-icon {
-    flex: 0;
-    width: $icon_size;
-    min-width: $icon_size;
     display: flex;
+    flex: 0;
     align-items: center;
     justify-content: center;
+    width: $icon_size;
+    min-width: $icon_size;
   }
 
   .esri-feature-templates__list-item-icon > div {
@@ -22,18 +22,18 @@
 
   .esri-feature-templates__loader {
     margin: 0 auto;
-    height: $icon_size;
+    background: url("../base/images/loading-throb.gif") no-repeat center;
     width: 32px;
-    background: url(../base/images/loading-throb.gif) no-repeat center;
+    height: $icon_size;
   }
 
   .esri-ui {
-    & .esri-feature-templates {
+    .esri-feature-templates {
       width: $panel-width;
     }
 
     // If FeatureTemplates is used _inside_ another widget, then .esri-feature-templates should fit inside it
-    & .esri-widget .esri-feature-templates {
+    .esri-widget .esri-feature-templates {
       width: 100%;
     }
   }

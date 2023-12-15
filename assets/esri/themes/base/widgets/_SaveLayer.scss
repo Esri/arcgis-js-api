@@ -4,20 +4,20 @@
     height: 250px;
 
     &__error {
-      align-items: center;
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
 
     &__error-icon {
-      color: var(--calcite-ui-danger);
-      margin-bottom: 0.3rem;
       margin-top: 3rem;
+      margin-bottom: 0.3rem;
+      color: var(--calcite-ui-danger);
     }
 
     &__process-loader {
-      padding-bottom: 2rem;
       padding-top: 3rem;
+      padding-bottom: 2rem;
     }
 
     &__process-label,
@@ -26,15 +26,15 @@
     }
 
     &__layer-name-label {
-      margin: 0.5rem 0.5rem 0rem 0.5rem;
+      margin: 0.5rem 0.5rem 0;
     }
 
     &__portal-folder-label {
-      margin: 0.5rem 0.5rem 0.25rem 0.5rem;
+      margin: 0.5rem 0.5rem 0.25rem;
     }
   }
 }
 
-@if $include_SaveLayer==true {
+@if $include_SaveLayer == true {
   @include saveLayer();
 }

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @mixin basemapGallery() {
   $transition-duration: 250ms;
   $animation-duration: 500ms;
@@ -7,18 +9,13 @@
   $item-content-height: 40px;
 
   .esri-basemap-gallery {
-    color: $font-color;
-    background-color: $background-color;
-    overflow-y: auto;
-    position: relative;
-    width: auto;
+    @include loopingProgressBar(".esri-basemap-gallery__loader");
 
-    &.no-animations * {
-      animation: none !important;
-      transition: none !important;
-      transition-duration: 0 !important;
-      outline: none !important;
-    }
+    position: relative;
+    background-color: $background-color;
+    width: auto;
+    overflow-y: auto;
+    color: $font-color;
 
     &:focus-within {
       @include outlineStyle();
@@ -26,30 +23,30 @@
 
     &__item-container {
       display: flex;
-      flex-flow: column nowrap;
       position: relative;
-      transition: opacity $transition-duration ease-in-out;
-      list-style: none;
-      margin: 0;
-      padding-inline: $side-spacing--quarter;
-      padding-block: $cap-spacing--quarter;
+      flex-flow: column nowrap;
       gap: $cap-spacing--quarter;
+      transition: opacity $transition-duration ease-in-out;
+      margin: 0;
+      padding-block: $cap-spacing--quarter;
+      padding-inline: $side-spacing--quarter;
+      list-style: none;
     }
 
     &--grid &__item-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax($thumbnail-width, 1fr));
-      padding-inline: $side-spacing;
-      padding-block: $cap-spacing;
-      column-gap: $side-spacing;
       row-gap: $cap-spacing;
+      column-gap: $side-spacing;
+      padding-block: $cap-spacing;
+      padding-inline: $side-spacing;
     }
 
     &--source-refreshing &__item-container,
     &.esri-disabled &__item {
       opacity: $opacity--disabled;
-      pointer-events: none;
       animation: none;
+      pointer-events: none;
     }
 
     &__empty-message {
@@ -58,82 +55,22 @@
     }
 
     &__item {
-      $transition: background-color $transition-duration ease-in-out, border-color $transition-duration ease-in-out;
+      $transition:
+        background-color $transition-duration ease-in-out,
+        border-color $transition-duration ease-in-out;
 
-      position: relative;
+      box-sizing: border-box;
       display: flex;
+      position: relative;
       flex-direction: row;
       align-items: center;
-      width: 100%;
-      cursor: pointer;
-      border: $item-border-size solid transparent;
-      box-sizing: border-box;
-      animation: esri-fade-in $animation-duration ease-in-out;
       transition: $transition;
+      border: $item-border-size solid transparent;
+      cursor: pointer;
+      width: 100%;
+      animation: esri-fade-in $animation-duration ease-in-out;
 
-      &--error {
-        cursor: auto;
-        opacity: $opacity--disabled;
-      }
-
-      &-thumbnail {
-        flex-shrink: 0;
-        min-width: $thumbnail-width;
-        width: $thumbnail-width;
-        aspect-ratio: 1.5;
-        border-inline-end: $item-border-size solid $border-color--subtle;
-        transition: $transition;
-      }
-
-      @supports (object-fit: cover) {
-        &-thumbnail {
-          object-fit: cover;
-        }
-      }
-
-      &-title {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        width: 100%;
-        height: 100%;
-        padding: $cap-spacing--third $side-spacing--half;
-        font-size: $font-size--small;
-        color: $interactive-font-color;
-        transition: color $transition-duration ease-in-out, font-weight $transition-duration ease-in-out;
-
-        span {
-          width: 100%;
-          text-align: start;
-
-          // Used for truncating after two lines
-          // https://css-tricks.com/line-clampin/#aa-the-standardized-way
-          // https://drafts.csswg.org/css-overflow-3/#webkit-line-clamp
-          overflow: hidden;
-          text-overflow: ellipsis;
-          overflow-wrap: break-word; // Force long words to break
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-        }
-      }
-
-      &--selected,
-      &.esri-basemap-gallery__item--selected:hover,
-      &.esri-basemap-gallery__item--selected:focus {
-        cursor: auto;
-        border-color: $border-color--active;
-        background-color: $background-color--active;
-
-        .esri-basemap-gallery__item-title {
-          color: $font-color;
-          font-weight: $font-weight--medium;
-        }
-      }
-
-      &:hover,
-      &:focus {
-        outline: none;
+      &:hover {
         border-color: $interactive-font-color;
         background-color: $background-color--hover;
 
@@ -142,18 +79,71 @@
         }
       }
 
-      &.esri-basemap-gallery__item--error:hover,
-      &.esri-basemap-gallery__item--error:focus {
-        background-color: $background-color;
-        border-color: transparent;
+      &:focus {
+        outline: none;
+      }
+
+      &--error {
+        opacity: $opacity--disabled;
+        cursor: auto;
+      }
+
+      &-thumbnail {
+        flex-shrink: 0;
+        transition: $transition;
+        border-inline-end: $item-border-size solid $border-color--subtle;
+        width: $thumbnail-width;
+        min-width: $thumbnail-width;
+        aspect-ratio: 1.5;
+      }
+
+      &-title {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        transition:
+          color $transition-duration ease-in-out,
+          font-weight $transition-duration ease-in-out;
+        width: 100%;
+        height: 100%;
+        color: $interactive-font-color;
+        font-size: $font-size--small;
+
+        span {
+          display: -webkit-box;
+          width: 100%;
+
+          // Used for truncating after two lines
+          // https://css-tricks.com/line-clampin/#aa-the-standardized-way
+          // https://drafts.csswg.org/css-overflow-3/#webkit-line-clamp
+          overflow: hidden;
+          text-align: start;
+          text-overflow: ellipsis;
+          overflow-wrap: break-word; // Force long words to break
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+      }
+
+      &--selected,
+      &.esri-basemap-gallery__item--selected:hover,
+      &.esri-basemap-gallery__item--selected:focus {
+        border-color: $border-color--active;
+        background-color: $background-color--active;
+        cursor: auto;
+
+        .esri-basemap-gallery__item-title {
+          color: $font-color;
+          font-weight: $font-weight--medium;
+        }
       }
 
       &-content {
         display: flex;
         flex-direction: column;
         gap: $cap-spacing;
-        padding-inline: $side-spacing--half;
         padding-block: $cap-spacing--eighth;
+        padding-inline: $side-spacing--three-quarters;
         min-width: 0;
       }
 
@@ -165,9 +155,16 @@
         calcite-chip {
           --calcite-font-size--2: var(--calcite-font-size--3);
           --calcite-chip-spacing-s-internal: 0.15rem;
+
           cursor: inherit;
-          height: 16px;
           max-width: 60px;
+          height: 16px;
+        }
+      }
+
+      @supports (object-fit: cover) {
+        &-thumbnail {
+          object-fit: cover;
         }
       }
     }
@@ -176,35 +173,39 @@
     // See https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/52202
     &--narrow-items &__item {
       &-thumbnail {
-        min-width: $thumbnail-width--narrow;
         width: $thumbnail-width--narrow;
+        min-width: $thumbnail-width--narrow;
         aspect-ratio: 1;
       }
     }
 
     // When displayed as a grid, the title of each item is placed below the thumbnail.
     &--grid &__item {
-      flex-direction: column;
       flex-flow: column wrap;
       text-align: center;
-      border: $item-border-size solid $border-color--subtle;
+
+      &:not(&--selected, :hover) {
+        border-color: $border-color--subtle;
+      }
 
       &-thumbnail {
-        // Thumbnail is above, to move the border to the bottom.
-        border-inline-end: none;
         border-block-end: $item-border-size solid $border-color--subtle;
 
+        // Thumbnail is above, to move the border to the bottom.
+        border-inline-end: none;
+
         // Thumbnail should fill the whole item instead of having a specific width.
-        min-width: 0;
         width: 100%;
+        min-width: 0;
         height: auto;
       }
 
       &-content {
+        position: relative;
+        padding-block: $cap-spacing--third;
+        padding-inline: $side-spacing--half;
         width: 100%;
         height: $item-content-height;
-        position: relative;
-        padding: 0;
       }
 
       &-tags-container {
@@ -213,7 +214,7 @@
         inset-inline-end: $side-spacing--third;
 
         calcite-chip {
-          max-width: floor(($thumbnail-width - 2 * $side-spacing--third - $side-spacing--quarter) * 0.5);
+          max-width: math.floor(($thumbnail-width - 2 * $side-spacing--third - $side-spacing--quarter) * 0.5);
         }
       }
     }
@@ -221,14 +222,12 @@
     &__loader {
       position: absolute;
       top: 0;
-      left: 0;
       right: 0;
-      height: 2px;
+      left: 0;
       width: 100%;
+      height: 2px;
       animation: esri-fade-in $animation-duration ease-in-out;
     }
-
-    @include loopingProgressBar(".esri-basemap-gallery__loader");
   }
 
   .esri-view .esri-basemap-gallery {
