@@ -7,7 +7,7 @@
 This `master` branch of the repository is for information purposes, only. It should not be used to build new applications.
 
 ## Licensing
-COPYRIGHT © 2022 Esri
+COPYRIGHT © 2024 Esri
 
 All rights reserved under the copyright laws of the United States
 and applicable international laws, treaties, and conventions.
