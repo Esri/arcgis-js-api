@@ -4,7 +4,7 @@
 
 **Deprecation Notice:** The ArcGIS API 3.x for JavaScript will be retired on July 1, 2024. Additional information is available in the [retirement blog post](https://www.esri.com/arcgis-blog/products/js-api-arcgis/developers/arcgis-api-for-javascript-version-3-x-retirement/).
 
-This repository is for information purposes only. It should not be used to build new applications.
+This `master` branch of the repository is for information purposes, only. It should not be used to build new applications.
 
 ## Licensing
 COPYRIGHT © 2022 Esri
