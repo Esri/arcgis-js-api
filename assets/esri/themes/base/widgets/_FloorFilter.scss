@@ -147,7 +147,6 @@ $floor-filter-scrollbar-track--color: #fafafa;
       border: none;
       width: 100%;
       height: $button-height--plus-half;
-      font-family: $font-family;
     }
 
     .esri-floor-filter__level-button:focus {
@@ -227,11 +226,13 @@ $floor-filter-scrollbar-track--color: #fafafa;
         background-color: $background-color;
         padding: 26px 0;
         min-width: 28px;
+        color: $interactive-font-color;
       }
 
       .esri-floor-filter__filter-menu-header-back:hover {
         background: $background-color--hover;
         cursor: pointer;
+        color: $interactive-font-color--hover;
       }
 
       .esri-floor-filter__filter-menu-header-text-group {
@@ -273,11 +274,13 @@ $floor-filter-scrollbar-track--color: #fafafa;
         border: none;
         background-color: $background-color;
         padding: 26px 12px;
+        color: $interactive-font-color;
       }
 
       .esri-icon-close:hover {
         background: $background-color--hover;
         cursor: pointer;
+        color: $interactive-font-color--hover;
       }
 
       .esri-floor-filter__filter-menu-search {
@@ -296,7 +299,6 @@ $floor-filter-scrollbar-track--color: #fafafa;
           background: transparent;
           width: 100%;
           color: $font-color;
-          font-family: $font-family;
           font-size: $font-size;
         }
       }
@@ -333,14 +335,14 @@ $floor-filter-scrollbar-track--color: #fafafa;
           background: $background-color;
           padding: 18px;
           width: 100%;
+          color: $interactive-font-color;
 
           .esri-floor-filter__filter-menu-item-name {
-            font-family: $font-family;
             font-size: $font-size;
           }
 
           .esri-floor-filter__filter-menu-item-name--selected {
-            font-family: $font-family;
+            color: $font-color;
             font-size: $font-size;
             font-weight: $font-weight--bold;
           }

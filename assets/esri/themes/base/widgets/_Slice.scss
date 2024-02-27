@@ -1,6 +1,6 @@
 @mixin slice() {
   .esri-slice {
-    --layer-item-background: var(--calcite-ui-foreground-2);
+    --layer-item-background: var(--calcite-color-foreground-2);
 
     &__container {
       display: flex;
@@ -31,8 +31,8 @@
     }
 
     &__layer-item {
-      --calcite-ui-foreground-2: var(--layer-item-background);
-      --calcite-ui-foreground-1: var(--layer-item-background);
+      --calcite-color-foreground-2: var(--layer-item-background);
+      --calcite-color-foreground-1: var(--layer-item-background);
     }
 
     &__actions {

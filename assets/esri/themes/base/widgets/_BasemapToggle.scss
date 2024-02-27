@@ -5,19 +5,15 @@ $basemap_toggle_size: $button-width--double !default;
   .esri-basemap-toggle {
     @include boxShadow("none");
 
-    display: flex;
-    position: relative;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    cursor: pointer;
-    width: $basemap_toggle_size + $basemap_toggle_offset;
-    height: $basemap_toggle_size + $basemap_toggle_offset;
-    overflow: visible;
-
-    &:hover {
-      background-color: transparent;
+    calcite-button {
+      display: flex;
+      position: relative;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: $basemap_toggle_size + $basemap_toggle_offset;
+      height: $basemap_toggle_size + $basemap_toggle_offset;
+      overflow: visible;
     }
   }
 
@@ -61,7 +57,7 @@ $basemap_toggle_size: $button-width--double !default;
   .esri-basemap-thumbnail__overlay-scrim {
     --calcite-scrim-background: rgb(0 0 0 / 50%);
 
-    color: var(--calcite-ui-text-inverse);
+    color: var(--calcite-color-text-inverse);
   }
 
   .esri-basemap-toggle__image-overlay {
@@ -88,10 +84,6 @@ $basemap_toggle_size: $button-width--double !default;
     line-height: $line-height;
     font-size: 9px;
     font-weight: $font-weight--medium;
-  }
-
-  .esri-basemap-toggle.esri-disabled {
-    cursor: auto;
   }
 
   .esri-widget.esri-basemap-toggle,

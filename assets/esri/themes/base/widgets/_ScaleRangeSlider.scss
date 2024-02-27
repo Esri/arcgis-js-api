@@ -13,17 +13,17 @@
     background-color: transparent;
     min-width: 310px;
 
+    &__segment-active {
+      // active scale range segment
+      background-color: $button-color;
+      height: 4px;
+    }
+
     .esri-slider {
       background-color: transparent;
 
       // account for thumbs in wrapper
       padding: $slider-bounds-offset ($slider-bounds-offset + 2) $slider-bounds-offset $slider-bounds-offset;
-
-      &__segment-1 {
-        // active scale range segment
-        background-color: $button-color;
-        height: 4px;
-      }
 
       // out-of-bounds range segments
       .esri-slider__effective-min-segment,
@@ -109,7 +109,7 @@
     width: 100%;
 
     calcite-label span {
-      color: var(--calcite-ui-text-3);
+      color: var(--calcite-color-text-3);
     }
   }
 
@@ -127,7 +127,7 @@
   }
 
   .esri-scale-range-slider__scale-menu-sublabel {
-    color: var(--calcite-ui-text-3);
+    color: var(--calcite-color-text-3);
     font-size: var(--calcite-font-size--2);
   }
 }

@@ -28,30 +28,31 @@
     overflow: hidden;
   }
 
-  .esri-ui-top-left .esri-expand__content,
-  .esri-ui-bottom-left .esri-expand__content {
+  :is(.esri-ui-top-left, .esri-ui-bottom-left) .esri-expand__content {
     left: 100%;
   }
 
-  .esri-ui-top-right .esri-expand__content,
-  .esri-ui-bottom-right .esri-expand__content {
+  :is(.esri-ui-top-right, .esri-ui-bottom-right) .esri-expand__content {
     right: 100%;
   }
 
-  .esri-ui-top-left .esri-expand__content,
-  .esri-ui-top-right .esri-expand__content {
+  :is(.esri-ui-top-left, .esri-ui-top-right) .esri-expand__content {
     top: 0;
   }
 
-  .esri-ui-bottom-left .esri-expand__content,
-  .esri-ui-bottom-right .esri-expand__content {
+  :is(.esri-ui-bottom-left, .esri-ui-bottom-right) .esri-expand__content {
     bottom: 0;
   }
 
-  .esri-ui-top-left .esri-icon-expand,
-  .esri-ui-bottom-left .esri-icon-expand,
-  .esri-ui-top-left .esri-icon-collapse,
-  .esri-ui-bottom-left .esri-icon-collapse {
+  .esri-collapse__icon {
+    display: flex;
+
+    calcite-button:not(:hover) &:not(calcite-icon) {
+      color: var(--calcite-color-text-3);
+    }
+  }
+
+  :is(.esri-ui-top-left, .esri-ui-bottom-left) .esri-collapse__icon-flip {
     transform: rotate(180deg);
   }
 
@@ -84,22 +85,19 @@
     line-height: 1em;
     color: $background-color;
     font-size: $font-size--small;
+    pointer-events: none;
   }
 
-  .esri-ui-top-left .esri-expand__icon-number,
-  .esri-ui-bottom-left .esri-expand__icon-number {
+  :is(.esri-ui-top-left, .esri-ui-bottom-left) .esri-expand__icon-number {
     right: $button-width--fifth * -1;
   }
 
-  .esri-ui-top-right .esri-expand__icon-number,
-  .esri-ui-bottom-right .esri-expand__icon-number {
+  :is(.esri-ui-top-right, .esri-ui-bottom-right) .esri-expand__icon-number {
     left: $button-width--fifth * -1;
   }
 
-  .esri-ui-bottom-right .esri-expand__icon-number--expanded,
-  .esri-ui-top-right .esri-expand__icon-number--expanded,
-  .esri-ui-bottom-left .esri-expand__icon-number--expanded,
-  .esri-ui-top-left .esri-expand__icon-number--expanded {
+  :is(.esri-ui-bottom-right, .esri-ui-top-right, .esri-ui-bottom-left, .esri-ui-top-left)
+    .esri-expand__icon-number--expanded {
     position: static;
     top: auto;
     right: auto;

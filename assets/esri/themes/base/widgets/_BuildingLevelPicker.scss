@@ -180,7 +180,7 @@
     level-border-color--active: $border-color--active,
     level-background-color: rgba(#fff, 0.7),
     level-background-color--hover: rgba(#fff, 0.7),
-    level-background-color--active: $border-color--active
+    level-background-color--active: $border-color--active,
   );
 
   @include _buildingLevelPickerLabel($container, $theme);

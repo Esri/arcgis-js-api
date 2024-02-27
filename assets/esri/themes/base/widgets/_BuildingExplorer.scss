@@ -14,8 +14,7 @@
     width: $panel-width;
     max-width: 100%;
     max-height: calc(100vh - #{$side-spacing--double});
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden auto;
 
     .esri-widget__heading {
       font-weight: $font-weight;

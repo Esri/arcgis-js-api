@@ -11,7 +11,7 @@
     &__toggle-button {
       position: relative;
       z-index: 1;
-      border: solid 1px var(--calcite-ui-border-1);
+      border: solid 1px var(--calcite-color-border-1);
       background: var(--esri-color-picker-value);
     }
 
@@ -51,11 +51,10 @@
     &__popover {
       @include defaultBoxShadow();
 
-      background: var(--calcite-ui-foreground-1); //  match color picker background
+      background: var(--calcite-color-foreground-1); //  match color picker background
       width: 272px; // calcite-color-picker may not render immediately, so we make sure we have the right width right away.
       max-height: 70vh;
-      overflow-x: hidden;
-      overflow-y: auto;
+      overflow: hidden auto;
     }
 
     &__opacity-slider-container {
@@ -67,7 +66,7 @@
     }
 
     &__calcite-color-picker {
-      --calcite-ui-border-1: transparent;
+      --calcite-color-border-1: transparent;
     }
   }
 }

@@ -1,374 +1,107 @@
 @mixin bookmarks() {
   $bookmarks-height--loading: 150px !default;
-  $bookmarks-thumbnail-size: 64px !default;
-
-  @include loopingProgressBar(".esri-bookmarks__bookmark--active");
+  $bookmark-thumbnail-size: 64px !default;
+  $bookmark-thumbnail-min-size: 16px !default;
+  $bookmark-edit-thumbnail-size: 128px !default;
 
   .esri-bookmarks {
+    display: flex;
     background-color: transparent;
 
     .esri-widget__content--empty {
       background-color: $background-color--offset;
     }
 
-    .esri-button-menu {
-      position: absolute;
-      right: 2px;
-      bottom: 2px;
-      z-index: 1;
+    calcite-flow-item[loading] {
+      min-height: $bookmarks-height--loading;
     }
-  }
-
-  .esri-bookmarks__loader-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    height: $bookmarks-height--loading;
   }
 
   .esri-bookmarks__loader {
-    background: url("../base/images/loading-throb.gif") no-repeat center center;
-    width: 100%;
-    height: 64px;
+    margin-inline-end: 0;
   }
 
-  .esri-bookmarks__list {
-    display: block;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .esri-bookmarks__bookmark {
-    display: flex;
-    position: relative;
-    align-items: center;
-    transition:
-      background-color 250ms ease-in-out,
-      color 250ms ease-in-out;
-    border-bottom: 1px solid $border-color--subtle;
-    background-color: $background-color;
-    overflow: hidden;
-  }
-
-  .esri-bookmarks__bookmark.sortable-chosen {
-    transition: background-color 250ms ease-in-out;
-    background-color: $background-color--active;
-  }
-
-  .esri-bookmarks__bookmark-button {
-    display: flex;
-    flex: 1 1 auto;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: flex-start;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    padding: 0;
-    padding-inline-start: $side-spacing--half;
-    overflow: hidden;
-    text-align: initial;
-    color: $interactive-font-color;
-    font-family: $font-family;
-    font-weight: $font-weight--regular;
-
-    &:hover {
-      background-color: $background-color--hover;
-      color: $interactive-font-color--hover;
-    }
-
-    &:hover:active {
-      background-color: transparent;
-      color: $interactive-font-color;
-    }
-  }
-
-  .esri-bookmarks__list--sortable .esri-bookmarks__bookmark-button {
-    padding-inline-start: 0;
-  }
-
-  .esri-bookmarks_bookmark-drag-handle {
-    display: flex;
-    flex: 0 0 auto;
-    align-items: center;
-    align-self: stretch;
-    justify-content: center;
-    transition: background-color 250ms ease-in-out;
-    margin: 0;
-    border: none;
-    background-color: transparent;
-    cursor: move;
-    padding: 0 $side-spacing--quarter;
-    color: $font-color--placeholder;
-
-    &:focus,
-    &:hover {
-      background-color: $background-color--hover;
-      color: $interactive-font-color--hover;
-    }
-  }
-
-  .esri-bookmarks_bookmark-drag-handle[aria-pressed="true"] {
-    background-color: $background-color--active;
-    color: $interactive-font-color--hover;
-  }
-
-  .esri-bookmarks__bookmark--active {
-    background-color: $background-color--active;
-    cursor: default;
-    color: $font-color;
-
-    &:hover,
-    &:focus {
-      background-color: $background-color--active;
-      cursor: default;
-      color: $font-color;
-    }
-  }
-
-  .esri-bookmarks__bookmark-label {
-    display: flex;
-    flex: 1 1 auto;
-    flex-flow: column;
-    padding: $cap-spacing $side-spacing--three-quarters;
-  }
-
-  .esri-bookmarks__bookmark-name {
-    flex: 1;
-    padding: 0;
-    overflow: hidden;
-    word-break: break-word;
-    color: $font-color;
-    font-size: $font-size--small;
-    overflow-wrap: break-word; /* Firefox */
-  }
-
-  .esri-bookmarks__bookmark-time-extent {
-    flex: 1;
-    padding: 0;
-    overflow: hidden;
-    word-break: break-word;
-    font-size: $font-size--small;
-    overflow-wrap: break-word; /* Firefox */
-  }
-
-  .esri-bookmarks__time-extent {
-    display: grid;
-    grid-template-columns: auto auto;
-    column-gap: $side-spacing--half;
-    margin-top: $cap-spacing--quarter;
+  .esri-bookmarks__filter-no-results {
+    @include layerListFilterNoResults();
   }
 
   .esri-bookmarks__bookmark-image-container {
     display: flex;
     position: relative;
-    flex: 0 0 auto;
-    align-items: center;
-    justify-content: center;
-    max-width: $button-width--double;
-  }
-
-  .esri-bookmarks__bookmark-image-container--has-image {
-    overflow: hidden;
-  }
-
-  .esri-bookmarks__image {
     margin: $cap-spacing--half 0;
-    background-color: $background-color--offset;
-    width: $bookmarks-thumbnail-size;
-  }
-
-  .esri-bookmarks__bookmark-edit-button-container {
-    display: flex;
-    flex: 0 0 auto;
-    align-items: stretch;
-    align-self: stretch;
-  }
-
-  .esri-bookmarks__bookmark-edit-button {
-    display: flex;
-    align-items: center;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    padding: 0 $side-spacing;
-    color: $interactive-font-color;
-
-    &:hover {
-      background-color: $background-color--hover;
-      color: $interactive-font-color--hover;
-    }
-  }
-
-  .esri-bookmarks__time-extent-container {
-    --calcite-label-margin-bottom: 0;
-
-    padding: $cap-spacing--half $side-spacing $cap-spacing;
-  }
-
-  .esri-bookmarks__time-extent-group {
-    display: grid;
-    grid-template-rows: auto auto;
-    color: $interactive-font-color;
-    font-size: $font-size--small;
-  }
-
-  .esri-bookmarks__add-bookmark {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $background-color--offset;
-    padding: $cap-spacing--half $side-spacing--half $cap-spacing;
-  }
-
-  .esri-bookmarks__add-bookmark-button {
-    flex: 0 1 auto;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 250ms ease-in-out;
-    border-radius: $button-height;
-    background-color: $background-color;
-    padding: $cap-spacing--three-quarters $side-spacing--half;
-    width: auto;
-    font-size: $font-size--small;
-
-    &:hover {
-      @include defaultBoxShadow();
-
-      text-decoration: none;
-    }
-  }
-
-  .esri-bookmarks__add-bookmark-icon {
-    padding-inline-start: $side-spacing--quarter;
-    padding-inline-end: $side-spacing--half;
-    font-size: $font-size;
-  }
-
-  .esri-bookmarks__authoring-card {
-    background-color: $background-color--offset;
-    padding: $cap-spacing--half $side-spacing--half;
-    animation: esri-fade-in-down 250ms ease-in-out;
-  }
-
-  .esri-bookmarks__authoring-card .esri-bookmarks__bookmark-image-container {
-    border: 1px solid $border-color;
-    background-image: url("../base/images/transparent-bg.png");
-    width: $bookmarks-thumbnail-size;
-    height: $bookmarks-thumbnail-size;
+    margin-inline-start: $cap-spacing--half;
+    min-width: $bookmark-thumbnail-min-size;
+    min-height: $bookmark-thumbnail-min-size;
 
     .esri-bookmarks__image {
-      margin-top: 0;
-      margin-bottom: 0;
+      max-width: $bookmark-thumbnail-size;
+      overflow: hidden;
     }
   }
 
-  .esri-bookmarks__authoring-form {
-    @include defaultBoxShadow();
+  .esri-bookmarks--drag-enabled .esri-bookmarks__bookmark-image-container {
+    margin-inline-start: 0;
+  }
 
+  .esri-bookmarks__no-bookmarks-heading {
+    margin: 0;
+    margin-block-start: $cap-spacing;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .esri-bookmarks__authoring {
     display: flex;
-    flex-flow: column;
-    border-radius: $border-radius;
-    background-color: $background-color;
+    flex-direction: column;
   }
 
-  .esri-bookmarks__authoring-container {
+  .esri-bookmarks__authoring-image-container {
     display: flex;
-    flex-flow: row;
-    align-items: center;
-    padding: $cap-spacing $side-spacing;
-
-    .esri-bookmarks__authoring-label {
-      padding-top: 0;
-      padding-bottom: 0;
-      width: calc(100% - #{$bookmarks-thumbnail-size}); // Firefox fix
-    }
-  }
-
-  .esri-bookmarks__authoring-form--adding {
-    .esri-bookmarks__authoring-label {
-      padding-inline: $side-spacing;
-    }
-  }
-
-  .esri-bookmarks__authoring-label {
-    display: flex;
-    flex: 1 0 auto;
-    flex-flow: column;
-    padding-block: $cap-spacing;
-  }
-
-  .esri-bookmarks__authoring-label--start-padding {
-    padding-inline-start: $side-spacing;
-  }
-
-  .esri-bookmarks__authoring-actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: $cap-spacing--half;
-    border-top: solid 1px $border-color;
-    padding: $cap-spacing--half $side-spacing;
-
-    .esri-button {
-      width: 33%;
-      min-height: $button-height--half;
-      font-size: $font-size--small;
-    }
-
-    .esri-bookmarks__authoring-delete-button {
-      margin-right: auto;
-      padding-right: 0;
-      padding-left: 0;
-      width: auto;
-      color: $font-color--error;
-    }
-  }
-
-  .esri-widget__no-bookmark-icon {
-    display: inline-block;
-    width: $button-height--double;
-    height: $button-height--double;
+    align-items: middle;
+    justify-content: center;
+    margin-block-end: $cap-spacing;
+    margin-inline-end: $side-spacing;
+    background-image: url("../base/images/transparent-bg.png");
+    width: $bookmark-edit-thumbnail-size;
+    height: $bookmark-edit-thumbnail-size;
     text-align: center;
-    line-height: $button-height--double;
-    font-size: $button-height;
+
+    .esri-bookmarks__image {
+      max-width: $bookmark-edit-thumbnail-size;
+      max-height: $bookmark-edit-thumbnail-size;
+    }
   }
 
-  .esri-bookmarks--fade-in {
-    transition: opacity 375ms ease-out;
-    opacity: 0;
+  .esri-bookmarks__form {
+    display: flex;
+    height: 100%;
   }
 
-  .esri-bookmarks--fade-in-active {
-    opacity: 1;
+  .esri-bookmarks__form-content {
+    padding-block: $cap-spacing;
+    padding-inline: $side-spacing;
   }
 
-  [dir="rtl"] .esri-bookmarks {
-    .esri-bookmarks__bookmark {
-      &--active::after {
-        animation: looping-progresss-bar-ani $looping-progress-bar-params reverse;
-      }
-    }
+  .esri-bookmarks__authoring-refresh-thumbnail-button {
+    margin-block-end: $cap-spacing;
+  }
 
-    .esri-bookmarks__bookmark-container {
-      margin-right: 0;
-      margin-left: $side-spacing--half;
-    }
+  .esri-bookmarks__bookmark-content-label {
+    color: var(--calcite-color-text-1);
+    font-size: var(--calcite-font-size--2);
+  }
 
-    .esri-bookmarks__authoring-actions .esri-bookmarks__authoring-delete-button {
-      margin-right: 0;
-      margin-left: auto;
-    }
+  .esri-bookmarks__bookmark-content calcite-table {
+    margin-inline-start: -0.25rem;
+  }
 
-    .esri-bookmarks__bookmark-button {
-      text-align: initial;
-    }
+  .esri-bookmarks__bookmark-content calcite-table,
+  .esri-bookmarks__bookmark-content calcite-table-row {
+    --calcite-color-border-3: transparent;
+    --calcite-color-text-1: var(--calcite-color-text-3);
+    --calcite-internal-table-row-background: transparent;
 
-    .esri-bookmarks__bookmark-image-container .esri-button-menu {
-      right: unset;
-      left: 2px;
-    }
+    pointer-events: none;
   }
 }
 

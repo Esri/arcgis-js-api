@@ -272,7 +272,6 @@
     border: 1px solid $border-color--input;
     background-color: $background-color;
     color: $font-color;
-    font-family: $font-family;
     font-size: $font-size;
 
     &::-ms-clear {
@@ -282,6 +281,10 @@
     &::placeholder {
       opacity: 1;
       color: $font-color--placeholder;
+    }
+
+    &:placeholder-shown {
+      text-overflow: ellipsis;
     }
 
     &[type="text"],
@@ -387,7 +390,6 @@
     }
 
     &__title {
-      font-family: $font-family;
       font-size: $font-size;
     }
   }
@@ -507,6 +509,13 @@
     color: $interactive-font-color;
     font-size: $font-size;
 
+    // Make Calcite widget button's default background match all other widget
+    // buttons, unless a custom appearance was specified
+    &:not([appearance]),
+    &[appearance="solid"] {
+      --calcite-color-foreground-3: $background-color;
+    }
+
     &:hover {
       background-color: $background-color--hover;
       color: $interactive-font-color--hover;
@@ -514,6 +523,16 @@
 
     &:active {
       background-color: $background-color--active;
+    }
+
+    &:is(calcite-button) {
+      // Put outline inside the button
+      --calcite-offset-invert-focus: 1;
+
+      // Make calcite-button's icon color match calcite-action's
+      &:not(:hover) {
+        --calcite-ui-icon-color: var(--calcite-color-text-3);
+      }
     }
 
     // Align Calcite loader horizontally

@@ -214,11 +214,18 @@
     .esri-popup__main-container {
       position: absolute;
       right: 0;
-      bottom: 0;
       left: 0;
       width: 100%;
       max-height: 75%;
     }
+  }
+
+  .esri-view-width-xsmall .esri-popup--is-docked-bottom-center .esri-popup__main-container {
+    bottom: 0;
+  }
+
+  .esri-view-width-xsmall .esri-popup--is-docked-top-center .esri-popup__main-container {
+    top: 0;
   }
 
   //  HEIGHTS

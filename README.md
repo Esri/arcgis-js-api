@@ -4,43 +4,6 @@ This repository is used as a reference for the [ArcGIS Maps SDK for JavaScript](
 
 If you are starting a new project, we recommend using [@arcgis/core](https://developers.arcgis.com/javascript/latest/es-modules/) ES modules.
 
-## Features
-
-You can install these modules with [npm](https://npmjs.org/) and create your own custom builds, for example you can use [RequireJS](https://requirejs.org/) or the [Dojo Toolkit](https://dojotoolkit.org/).
-
-## Instructions
-
-Additional instructions and examples are available in the SDK's [Build with AMD modules](https://developers.arcgis.com/javascript/latest/amd-build/) Guide page.
-
-This package is available for install on NPM: https://www.npmjs.com/package/arcgis-js-api.
-
-```
-npm install arcgis-js-api
-```
-
-## TypeScript Typings
-
-The TypeScript type definitions are included with the npm installation and there are two ways to include them. The first way is to include a `///` directive in your main TypeScript file:
-
-_main.ts_
-
-```ts
-/// <reference types="arcgis-js-api" />
-```
-
-Or, add a reference to the declaration file in the `include` of your `tsconfig.json`:
-
-_tsconfig.json_
-
-```json
-{
-  "include": [
-    "node_modules/arcgis-js-api/index.d.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ]
-}
-```
 
 ## Requirements
 
@@ -58,7 +21,7 @@ Use of the ArcGIS Maps SDK for JavaScript is subject to the terms described in t
 
 ## Licensing
 
-COPYRIGHT © 2023 Esri
+COPYRIGHT © 2024 Esri
 
 All rights reserved under the copyright laws of the United States
 and applicable international laws, treaties, and conventions.

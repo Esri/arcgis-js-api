@@ -3,11 +3,11 @@
 @mixin tooltip() {
   .esri-tooltip {
     --field-height: 14px;
-    --field-height--input: 22px;
+    --field-height--input: 24px;
     --field-row-gap: 1px;
     --field-column-gap: #{$side-spacing};
-    --font-family: #{$font-family};
     --font-size: var(--calcite-font-size--3);
+    --font-size--input: var(--calcite-font-size--2);
     --header-height: 24px;
     --content-padding-inline: #{$side-spacing--half};
     --content-padding-block: #{$cap-spacing--half};
@@ -23,20 +23,20 @@
     overflow: visible;
 
     &-content {
+      view-transition-name: tooltip-content;
       display: flex;
       position: relative;
       flex-direction: column;
       gap: var(--content-gap);
-      border: solid 1 var(--calcite-ui-border-3);
+      border: solid 1 var(--calcite-color-border-3);
       border-radius: 3px;
       box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
-      background: var(--calcite-ui-foreground-1);
+      background: var(--calcite-color-foreground-1);
       padding-block: var(--content-padding-block);
       padding-inline: var(--content-padding-inline);
       width: min-content;
       line-height: 1.1em;
       color: $font-color;
-      font-family: var(--font-family);
       font-size: var(--font-size);
 
       // Hide the content altogether when there is nothing inside. Otherwise we'd
@@ -50,9 +50,19 @@
         justify-content: flex-start;
         margin-block-start: calc(var(--content-padding-block) * -1);
         margin-inline: calc(var(--content-padding-inline) * -1); // Fill the whole width
-        border-block-end: solid 1px var(--calcite-ui-border-3);
+        border-block-end: solid 1px var(--calcite-color-border-3);
         padding-block-end: 0;
         height: var(--header-height);
+
+        &__spacer {
+          flex-grow: 1;
+          flex-shrink: 1;
+        }
+
+        &__actions {
+          flex-grow: 0;
+          flex-shrink: 0;
+        }
       }
 
       // In input mode we activate pointer events which are disabled by default on the overlay surface.
@@ -86,6 +96,14 @@
           display: flex;
           gap: $side-spacing--eighth;
           align-items: center;
+
+          &--read-only {
+            // Match calcite-input's internal spacing
+            padding-inline: 0.5rem;
+            block-size: 1.5rem;
+            line-height: 1.5rem;
+            font-size: var(--calcite-font-size--2);
+          }
         }
       }
 
@@ -97,7 +115,6 @@
           width: var(--icon-size);
           min-width: var(--icon-size);
           height: var(--icon-size);
-          min-height: var(--icon-size);
         }
       }
 
@@ -106,43 +123,16 @@
         font-variant-numeric: tabular-nums;
       }
 
-      // In input mode we keep all the values with the same height
       &--input {
         padding: 0;
       }
 
+      &--input &__title {
+        font-size: var(--font-size--input);
+      }
+
       &__input {
-        appearance: none;
-        box-sizing: border-box;
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 0;
-        border-color: var(--calcite-ui-border-input);
-        background-color: var(--calcite-ui-foreground-1);
-        padding-inline: 0.5em;
-        width: 70px;
-        block-size: var(--field-height);
-        line-height: var(--field-height);
-        color: var(--calcite-ui-text-1);
-        font-family: inherit;
-        font-size: var(--font-size);
-        font-weight: var(--calcite-font-weight-normal);
-
-        // Match Calcite styles
-        &:focus {
-          outline: 2px solid var(--calcite-ui-focus-color, var(--calcite-ui-brand));
-          outline-offset: calc(-2px * calc(1 - 2 * clamp(0, var(--calcite-ui-focus-offset-invert), 1)));
-        }
-
-        &--disabled {
-          opacity: var(--calcite-ui-opacity-disabled);
-          outline: none;
-        }
-
-        &--readonly {
-          background-color: var(--calcite-ui-background);
-          font-weight: var(--calcite-font-weight-medium);
-        }
+        inline-size: 70px;
       }
 
       &__input-suffix {
@@ -150,12 +140,7 @@
       }
 
       &__button {
-        // Centers the button with the field, even if the field is larger.
-        --button-size: 24px;
-        --button-margin: calc(calc(var(--button-size) * -1) + var(--field-size));
-
-        width: var(--button-margin);
-        height: var(--button-margin);
+        width: var(--field-height--input);
       }
     }
 
@@ -168,14 +153,13 @@
 
     &-help-message {
       margin-inline: calc(var(--content-padding-inline) * -1); // Fill the whole
-      border-block-start: solid 1px var(--calcite-ui-border-3);
+      border-block-start: solid 1px var(--calcite-color-border-3);
       padding-block-start: calc(var(--help-message-border-spacing) + var(--field-row-gap));
       padding-inline: var(--content-padding-inline); // Add back the content padding, because we apply a negative margin
       width: auto;
+      min-width: 60px;
       text-align: center;
       white-space: break-spaces;
-      font-family: var(--font-family);
-      font-family: $font-family;
       font-size: var(--font-size);
 
       &:only-child {
@@ -183,6 +167,11 @@
         padding-block-start: var(--field-row-gap);
       }
     }
+  }
+
+  ::view-transition-old(tooltip-content),
+  ::view-transition-new(tooltip-content) {
+    animation-duration: 0.1s;
   }
 }
 

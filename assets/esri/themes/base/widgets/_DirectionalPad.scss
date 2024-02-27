@@ -27,23 +27,23 @@
     }
 
     &__buttons-container {
-      --calcite-ui-background: transparent;
+      --calcite-color-background: transparent;
       --calcite-action-group-gap: 0;
       --calcite-action-group-padding: 0;
 
       calcite-action {
         /* Make focus outline not visible if using mouse */
-        --calcite-ui-focus-color: var(--calcite-ui-foreground-3);
+        --calcite-color-focus-color: var(--calcite-color-foreground-3);
       }
 
       calcite-action:not([active]) {
         /* Fix active styles remaining on initial button in Firefox */
-        --calcite-ui-foreground-3: var(--calcite-ui-foreground-1);
+        --calcite-color-foreground-3: var(--calcite-color-foreground-1);
       }
 
       calcite-action[active] {
         /* Fix button:active not having a background */
-        --calcite-ui-foreground-1: var(--calcite-ui-foreground-3);
+        --calcite-color-foreground-1: var(--calcite-color-foreground-3);
       }
 
       calcite-icon {
@@ -53,8 +53,8 @@
       /* Fix sticky hover effect on touchscreen devices */
       @media (hover: none) {
         calcite-action {
-          --calcite-ui-foreground-2: var(--calcite-ui-foreground-1);
-          --calcite-ui-text-1: var(--calcite-ui-text-3);
+          --calcite-color-foreground-2: var(--calcite-color-foreground-1);
+          --calcite-color-text-1: var(--calcite-color-text-3);
         }
       }
     }

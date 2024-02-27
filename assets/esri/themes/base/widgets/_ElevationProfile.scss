@@ -86,12 +86,13 @@
       left: 50%;
       transform: translate(-50%, -50%);
       transition: opacity 150ms ease-in-out;
+      transition-delay: 0;
       opacity: 0;
 
-      // We show a spinner with a delay so that it is only visible if a preview
-      // takes too long to be generated.
+      // We show a spinner with a delay so that it is only visible if a profile takes a longer
+      // time to refine.
       &--visible {
-        transition-delay: 500ms;
+        transition-delay: 50ms;
         opacity: 1;
       }
 
@@ -100,7 +101,7 @@
         left: unset;
         inset-inline-start: 0;
         transform: none;
-        color: var(--calcite-ui-brand);
+        color: var(--calcite-color-brand);
       }
     }
 
@@ -138,7 +139,6 @@
       padding: $popover-padding;
       min-width: 180px; // Give some space for our labels to render properly
       color: $font-color;
-      font-family: $font-family;
       font-size: $font-size__body;
     }
   }

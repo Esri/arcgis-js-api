@@ -4,7 +4,7 @@
       height: 48px;
 
       &-refresh {
-        --calcite-ui-icon-color: #077ac2;
+        --calcite-color-icon-color: #077ac2;
       }
     }
 
@@ -28,7 +28,7 @@
       &-main {
         display: grid;
         gap: 0.5rem;
-        background: var(--calcite-ui-foreground-1) /* color */;
+        background: var(--calcite-color-foreground-1) /* color */;
         padding: 0.5rem 0;
       }
 
@@ -40,7 +40,7 @@
     }
 
     &__dropdown {
-      border: 1px solid var(--calcite-ui-border-input);
+      border: 1px solid var(--calcite-color-border-input);
 
       &-item {
         &-line-cap {
@@ -112,7 +112,7 @@
       }
 
       &-warning {
-        --calcite-ui-icon-color: #edd317;
+        --calcite-color-icon-color: #edd317;
 
         padding: 16px;
       }

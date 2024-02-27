@@ -4,7 +4,7 @@
   $action-size--image: $button-width--half !default;
 
   .esri-features {
-    --calcite-ui-background: $background-color;
+    --calcite-color-background: $background-color;
 
     display: flex;
     flex-direction: column;
@@ -24,7 +24,10 @@
   }
 
   .esri-features__container {
-    background-color: var(--calcite-ui-background);
+    background-color: var(--calcite-color-background);
+  }
+
+  .esri-features__container:not(:empty) {
     padding: $cap-spacing;
   }
 
@@ -33,11 +36,16 @@
     background-color: transparent;
   }
 
+  .esri-features__heading {
+    word-break: break-word;
+    word-wrap: break-word;
+  }
+
   .esri-features__header,
   .esri-features__footer {
     display: flex;
     justify-content: flex-end;
-    background-color: var(--calcite-ui-foreground-1);
+    background-color: var(--calcite-color-foreground-1);
   }
 
   .esri-features__loader {
@@ -47,7 +55,7 @@
 
   .esri-features__pagination-action-bar {
     flex: 1;
-    border-inline-end: 1px solid var(--calcite-ui-border-3);
+    border-inline-end: 1px solid var(--calcite-color-border-3);
   }
 
   .esri-features__icon {
@@ -71,7 +79,7 @@
   }
 
   .esri-features__header {
-    border-block-end: 1px solid var(--calcite-ui-border-3);
+    border-block-end: 1px solid var(--calcite-color-border-3);
   }
 
   .esri-features__content-feature {

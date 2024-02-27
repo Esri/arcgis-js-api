@@ -1,379 +1,40 @@
-@use "sass:math";
-
 @mixin tableList() {
-  $indicator-size: 6px;
-  $message-warning-border-color: $Calcite_Yellow_a150;
-
   .esri-table-list {
     display: flex;
-    flex-flow: column;
-    background-color: $background-color--offset;
-    padding: calc(var(--esri-widget-padding-y) * 0.5) calc(var(--esri-widget-padding-x) * 0.5);
-    overflow-y: auto;
-    color: $font-color;
   }
 
-  .esri-table-list__list {
-    margin: 0 0 0 $side-spacing;
-    padding: 0;
-    list-style: none;
+  .esri-table-list__filter-no-results {
+    @include layerListFilterNoResults();
   }
 
-  .esri-table-list__list[hidden] {
-    display: none;
-  }
-
-  .esri-table-list__list--root {
-    margin: 0;
-  }
-
-  .esri-table-list__item--selectable .esri-table-list__item-container {
-    cursor: pointer;
-
-    &:hover {
-      border-left-color: $border-color;
-    }
-  }
-
-  .esri-table-list__item[aria-selected="true"] > .esri-table-list__item-container {
-    border-left-color: $border-color--active;
-
-    &:hover {
-      border-left-color: $border-color--active;
-    }
-  }
-
-  .esri-table-list__item-container ~ .esri-table-list__list .esri-table-list__item {
-    border-bottom-width: 0;
-  }
-
-  .esri-table-list__item {
-    @include sortableChosen("esri-table-list__item--chosen");
-
-    position: relative;
-    margin: $cap-spacing--quarter 0;
-    border-bottom: 1px solid $border-color;
-    background-color: $background-color;
-    padding: 0;
-    overflow: hidden;
-    list-style: none;
-  }
-
-  .esri-table-list__item-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    transition: border-color 250ms ease-in-out;
-    border-left: $border-size--active solid transparent;
-    padding: $cap-spacing $side-spacing--half $cap-spacing ($side-spacing + 5);
-  }
-
-  .esri-table-list__item-title {
-    flex: 1;
-    transition: color 125ms ease-in-out;
-    padding-right: $side-spacing--third;
-    padding-left: $side-spacing--third;
-    line-height: $line-height;
-    word-break: break-word;
-    overflow-wrap: break-word;
+  .esri-table-list__status-indicator {
+    @include layerListStatusIndicator();
   }
 
   .esri-table-list__publishing {
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-block: 0;
-    margin-inline: $cap-spacing; // vertically aligns with updating indicator
-    border: 1px solid $interactive-font-color;
-    width: $indicator-size;
-    height: $indicator-size;
-    animation: publishing 2s normal infinite;
+    @include layerListPublishingIndicator();
+
+    animation: esri-table-layer-list__publishing-anim 2s normal infinite;
+  }
+
+  .esri-table-list__item-content {
+    @include layerListItemContent();
+  }
+
+  .esri-table-list__item-content-bottom {
+    @include layerListContentBottom();
+  }
+
+  .esri-table-list__item-content-bottom .esri-legend__service {
+    @include layerListLegend();
   }
 
   .esri-table-list__item-message {
-    @include icomoonIconSelector() {
-      margin-right: 0.3rem;
-    }
-
-    display: flex;
-    align-items: center;
-    transform: scale(1, 0);
-    transform-origin: center top;
-    transition: transform 250ms ease-in-out;
-    visibility: hidden;
-    margin-top: -1px;
-    margin-block-end: 0.25rem;
-    margin-inline-start: 3rem;
-    margin-inline-end: 0.25rem;
-    border-inline-start: $border-size--active solid $message-warning-border-color;
-    background-color: $background-color--offset-subtle;
-    padding: $cap-spacing--half $side-spacing--half;
-    height: 0;
-    overflow: hidden;
-    animation: esri-fade-in-down 250ms ease-in-out;
-    font-size: $font-size--small;
+    @include layerListContentBottom();
   }
 
-  .esri-table-list__item--has-message {
-    .esri-table-list__item-message {
-      transform: scale(1, 1);
-      visibility: visible;
-      height: auto;
-    }
-  }
-
-  .esri-table-list__item-toggle {
-    cursor: pointer;
-    padding: 0 $side-spacing--quarter;
-    color: $interactive-font-color;
-  }
-
-  .esri-table-list__item-actions-menu {
-    display: flex;
-    align-self: center;
-  }
-
-  .esri-table-list__item-actions-menu-item {
-    display: flex;
-    flex: 1 0 math.floor($font-size * 1.5);
-    align-items: center;
-    justify-content: center;
-    transition: border-color 250ms ease-in-out;
-    cursor: pointer;
-    padding: 0 $side-spacing--quarter;
-    color: $interactive-font-color;
-  }
-
-  .esri-table-list__item-actions-menu-item:first-of-type {
-    margin: 0 2px;
-  }
-
-  .esri-table-list__item-actions-menu-item:hover {
-    background-color: $background-color--hover;
-  }
-
-  .esri-table-list__item-actions-menu-item--active,
-  .esri-table-list__item-actions-menu-item--active:hover {
-    background-color: $background-color--active;
-  }
-
-  .esri-table-list__item-actions {
-    position: relative;
-    margin: -1px $side-spacing--half $cap-spacing--half;
-    background-color: $background-color--offset;
-    height: auto;
-    color: $interactive-font-color;
-  }
-
-  .esri-table-list__item-actions[aria-expanded="true"] {
-    animation: esri-fade-in 250ms ease-in-out;
-  }
-
-  .esri-table-list__item-actions-section {
-    animation: esri-fade-in 375ms ease-in-out;
-  }
-
-  .esri-table-list__item-actions[hidden] {
-    display: none;
-  }
-
-  .esri-table-list__item-actions-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    cursor: pointer;
-    padding: 5px;
-    color: $interactive-font-color;
-  }
-
-  .esri-table-list__item-actions-list {
-    display: flex;
-    flex-flow: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    border-top: 2px solid $background-color;
-    padding: $cap-spacing--half 0;
-    list-style: none;
-  }
-
-  .esri-table-list__item-actions-list:first-of-type {
-    border-top: 0;
-  }
-
-  .esri-table-list__item-action,
-  .esri-table-list__action-toggle {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    transition:
-      opacity 250ms ease-in-out 250ms,
-      background-color 250ms ease-in-out;
-    opacity: 1;
-    margin: 0;
-    border: 1px solid transparent;
-    cursor: pointer;
-    padding: $cap-spacing--half $side-spacing;
-    width: 100%;
-    font-size: $font-size--small;
-  }
-
-  .esri-table-list__item-action {
-    flex-flow: row;
-    justify-content: flex-start;
-  }
-
-  .esri-table-list__action-toggle {
-    flex-flow: row-reverse;
-    justify-content: space-between;
-
-    .esri-table-list__item-action-title {
-      margin-left: 0;
-    }
-
-    .esri-table-list__item-action-icon {
-      position: relative;
-      flex: 0 0 $toggle-width;
-      transition: background-color 125ms ease-in-out;
-      border-radius: $toggle-height;
-      box-shadow: 0 0 0 1px $interactive-font-color--inverse;
-      background-color: $background-color--inverse;
-      padding: 0;
-      width: $icon-size;
-      height: $toggle-height;
-      overflow: hidden;
-
-      &::before {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transition:
-          background-color 125ms ease-in-out,
-          left 125ms ease-in-out;
-        margin: 2px;
-        border-radius: 100%;
-
-        // Toggle handle. Overrides any icon class
-        background-color: $interactive-font-color--inverse;
-        width: $toggle-handle-size;
-        height: $toggle-handle-size;
-        content: "";
-      }
-    }
-  }
-
-  .esri-table-list__action-toggle--on .esri-table-list__item-action-icon {
-    // Toggle on
-    background-color: $interactive-font-color--inverse;
-
-    &::before {
-      left: $toggle-handle-size;
-      box-shadow: 0 0 0 1px $background-color--inverse;
-      background-color: $background-color--inverse;
-    }
-  }
-
-  .esri-table-list__item-action:hover,
-  .esri-table-list__action-toggle:hover {
-    background-color: $background-color--hover;
-  }
-
-  .esri-table-list__item-actions[hidden] .esri-table-list__item-action {
-    opacity: 0;
-  }
-
-  .esri-table-list__item-action-icon {
-    display: inline-block;
-    flex: 0 0 $icon-size;
-    margin-top: 0.1em;
-    width: $icon-size;
-    height: $icon-size;
-    font-size: $icon-size;
-  }
-
-  .esri-table-list__item-action-image {
-    flex: 0 0 $icon-size;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: $icon-size;
-    height: $icon-size;
-    text-align: center;
-    font-size: $font-size;
-  }
-
-  .esri-table-list__item-action-title {
-    margin-left: 5px;
-  }
-
-  .esri-table-list-panel {
-    margin: $cap-spacing $side-spacing;
-  }
-
-  // Legend as content
-  .esri-table-list-panel__content--legend .esri-legend__service {
-    padding: 0 0 $cap-spacing 0;
-  }
-
-  [dir="rtl"] .esri-table-list {
-    .esri-table-list__list {
-      margin: 0 $side-spacing 0 0;
-    }
-
-    .esri-table-list__list--root {
-      margin: 0;
-    }
-
-    .esri-table-list__item-action-title {
-      margin-right: 5px;
-      margin-left: 0;
-    }
-
-    .esri-table-list__action-toggle .esri-table-list__action-toggle {
-      margin-right: 0;
-    }
-
-    .esri-table-list__item::after {
-      animation: looping-progresss-bar-ani $looping-progress-bar-params reverse;
-    }
-
-    .esri-table-list__item-message {
-      @include icomoonIconSelector() {
-        margin-right: 0;
-        margin-left: 0.3rem;
-      }
-    }
-
-    .esri-table-list__item--selectable .esri-table-list__item-container {
-      border-right: $border-size--active solid transparent;
-      border-left: none;
-
-      &:hover {
-        border-right-color: $border-color;
-      }
-    }
-
-    .esri-table-list__item[aria-selected="true"] > .esri-table-list__item-container {
-      border-right-color: $border-color--active;
-
-      &:hover {
-        border-right-color: $border-color--active;
-      }
-    }
-  }
-
-  @keyframes publishing {
-    0%,
-    20% {
-      transform: rotate(45deg);
-    }
-
-    80%,
-    100% {
-      transform: rotate(135deg);
-    }
+  @keyframes esri-table-layer-list__publishing-anim {
+    @include layerListPublishing();
   }
 }
 
