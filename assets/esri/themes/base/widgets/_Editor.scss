@@ -8,7 +8,7 @@
   left: 0;
   flex-flow: column nowrap;
   border-top: solid 3px $contextColor;
-  background-color: var(--calcite-ui-background);
+  background-color: var(--calcite-color-background);
   padding-block: $cap-spacing;
   padding-inline: $side-spacing;
   max-height: 85%;
@@ -57,7 +57,7 @@
 
 @mixin editor() {
   $border: 1px solid $border-color;
-  $panel-background-color: var(--calcite-ui-background);
+  $panel-background-color: var(--calcite-color-background);
 
   $panel-min-height: 200px;
   $panel-padding-inline: $side-spacing;
@@ -68,7 +68,7 @@
   .esri-editor {
     $template-item-content-end-margin: 0.75rem; // Matches default spacing used by Calcite
 
-    --calcite-app-z-index-header: 1;
+    --calcite-z-index-header: 1;
 
     display: flex;
     position: relative;
@@ -119,8 +119,7 @@
       }
 
       &__group {
-        margin-inline-start: 0;
-        margin-inline-end: 0;
+        margin-inline: 0 0;
 
         &:first-of-type {
           margin-top: 0;
@@ -133,10 +132,9 @@
 
       &__filter-container,
       &__filter-container--sticky {
-        margin-block-start: -$cap-spacing; // Cancel top margin from the filter
-        margin-block-end: $cap-spacing;
+        margin-block: -$cap-spacing $cap-spacing; // Cancel top margin from the filter
         margin-inline: -$panel-padding-inline; // Fill the whole width
-        background-color: var(--calcite-ui-background);
+        background-color: var(--calcite-color-background);
         padding-block: $cap-spacing;
         padding-inline: $panel-padding-inline; // ...but add the padding back in
       }
@@ -152,12 +150,12 @@
     // ---------------------------------------------------------------------------------------------
 
     &__panel-toolbar {
-      --divider-border: 1px solid var(--calcite-ui-border-2);
+      --divider-border: 1px solid var(--calcite-color-border-2);
 
       display: flex;
       flex-direction: row;
       border-bottom: var(--divider-border);
-      background-color: var(--calcite-ui-foreground-1);
+      background-color: var(--calcite-color-foreground-1);
     }
 
     &__settings {
@@ -258,11 +256,11 @@
 
       &__icon {
         &--success {
-          color: var(--calcite-ui-success);
+          color: var(--calcite-color-status-success);
         }
 
         &--error {
-          color: var(--calcite-ui-danger);
+          color: var(--calcite-color-status-danger);
         }
       }
 
@@ -294,15 +292,15 @@
     // ---------------------------------------------------------------------------------------------
 
     &__prompt--info {
-      @include esri-editor__prompt(var(--calcite-ui-info));
+      @include esri-editor__prompt(var(--calcite-color-status-info));
     }
 
     &__prompt--warning {
-      @include esri-editor__prompt(var(--calcite-ui-warning));
+      @include esri-editor__prompt(var(--calcite-color-status-warning));
     }
 
     &__prompt--danger {
-      @include esri-editor__prompt(var(--calcite-ui-danger));
+      @include esri-editor__prompt(var(--calcite-color-status-danger));
     }
   }
 

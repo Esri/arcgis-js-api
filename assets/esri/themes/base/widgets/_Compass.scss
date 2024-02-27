@@ -1,17 +1,18 @@
 @mixin compass() {
   .esri-compass {
-    --calcite-ui-foreground-3: $background-color;
+    --calcite-color-foreground-3: $background-color;
 
     border-radius: 50%;
 
-    calcite-button {
-      /* Prevent Calcite focus outline from being cut-off */
-      overflow: visible;
-    }
-
     &__icon-container {
       display: flex;
+      position: absolute;
       justify-content: center;
+      transform: translate(-50%, -50%);
+
+      [dir="rtl"] & {
+        transform: translate(50%, -50%);
+      }
     }
   }
 }

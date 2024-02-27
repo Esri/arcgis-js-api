@@ -3,16 +3,16 @@
     @include defaultBoxShadow();
 
     display: inline-flex;
-    background-color: var(--calcite-ui-foreground-1);
+    background-color: var(--calcite-color-foreground-1);
 
     &__badge {
       display: flex;
-      padding-block: var(--calcite-app-spacing-3);
-      padding-inline: var(--calcite-app-spacing-3);
-      color: var(--calcite-ui-text-1);
+      padding-block: var(--calcite-spacing-sm);
+      padding-inline: var(--calcite-spacing-sm);
+      color: var(--calcite-color-text-1);
 
       &--disabled {
-        opacity: var(--calcite-ui-opacity-disabled);
+        opacity: var(--calcite-color-opacity-disabled);
       }
 
       &--hidden {
@@ -26,12 +26,12 @@
 
     &__name {
       align-self: center;
-      padding-inline: var(--calcite-app-spacing-3);
-      color: var(--calcite-ui-text-1);
+      padding-inline: var(--calcite-spacing-sm);
+      color: var(--calcite-color-text-1);
       font-size: var(--calcite-font-size--2);
 
       &--disabled {
-        opacity: var(--calcite-ui-opacity-disabled);
+        opacity: var(--calcite-color-opacity-disabled);
       }
 
       &--hidden {

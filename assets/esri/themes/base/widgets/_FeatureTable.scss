@@ -1,12 +1,10 @@
-$base-scrim-z-index: 50;
-
 @mixin esri-feature-table__prompt($contextColor) {
   @include defaultBoxShadow();
 
   display: flex;
   flex-flow: column nowrap;
   border: solid 3px $contextColor;
-  background-color: var(--calcite-ui-background);
+  background-color: var(--calcite-color-background);
   padding: $cap-spacing $side-spacing;
   max-height: 85%;
   animation: esri-fade-in-up 250ms ease-in-out;
@@ -83,23 +81,56 @@ $base-scrim-z-index: 50;
     .esri-column__menu-container,
     .esri-button-menu,
     .esri-button-menu__button {
-      background-color: transparent;
+      background-color: inherit;
     }
 
     vaadin-grid {
       background-color: inherit;
       color: inherit;
-      font-family: $font-family;
+      font-family: inherit;
+      font-size: $font-size;
+    }
+
+    // Explicit value required to avoid transparent body cells behind frozen columns.
+    vaadin-grid::part(row) {
+      background-color: $background-color;
+    }
+
+    // #58067 - Workaround to support changing background color of the entire row on hover.
+    // Does not apply to the selection column due to transparency issues but hovering
+    // over a selection cell will highlight the entire row. Applies to any 'frozen' columns.
+    vaadin-grid::part(row):hover {
+      --row-background-color: var(--calcite-color-background);
+    }
+
+    vaadin-grid::part(body-cell) {
+      background-color: var(--row-background-color);
       font-size: $font-size;
 
-      ::part(body-cell) {
-        background-color: transparent;
-        font-size: $font-size;
+      &:hover {
+        background-color: var(--row-background-color);
       }
+    }
 
-      ::part(row):hover {
-        background-color: var(--lumo-row-background-hover);
-      }
+    // Required to avoid transparent body cells behind frozen columns.
+    // Must be defined *after* body-cell has a background-color applied.
+    vaadin-grid::part(body-cell frozen-cell),
+    vaadin-grid::part(body-cell frozen-to-end-cell) {
+      background-color: inherit;
+    }
+
+    vaadin-grid::part(header-cell) {
+      font-weight: $font-weight;
+    }
+
+    vaadin-grid::part(header-cell invalid) {
+      background-color: var(--calcite-color-background);
+      font-weight: var(--calcite-font-weight-bold);
+    }
+
+    vaadin-grid::part(body-cell invalid) {
+      color: var(--calcite-color-border-3);
+      font-style: italic;
     }
   }
 
@@ -112,6 +143,10 @@ $base-scrim-z-index: 50;
     .esri-button-menu {
       position: relative;
       bottom: auto;
+    }
+
+    .esri-button-menu__content {
+      max-width: 600px;
     }
   }
 
@@ -143,59 +178,48 @@ $base-scrim-z-index: 50;
     height: 40px;
   }
 
-  .esri-field-column__header-label {
+  .esri-field-column__header-root {
     display: flex;
     flex-grow: 1;
     align-items: center;
-    margin: 0 5px;
-    min-height: 28px;
-    overflow: auto;
+
+    &--editable {
+      .esri-field-column__header-content {
+        .esri-icon-locked {
+          display: flex;
+        }
+      }
+    }
+
+    .esri-icon-locked {
+      display: none;
+    }
+
+    &--menu-enabled {
+      .esri-column__menu-container.esri-button-menu {
+        display: flex;
+      }
+    }
+
+    .esri-column__menu-container {
+      display: none;
+    }
   }
 
   .esri-field-column__header-content {
+    align-items: center;
+    min-height: 28px;
+  }
+
+  .esri-field-column__header-content,
+  .esri-field-column__header-label {
     display: flex;
     flex-grow: 1;
-    align-items: center;
-    overflow: visible;
-    font-weight: $font-weight;
+    overflow: hidden;
   }
 
   .esri-field-column__cell-content {
     font-size: 0.9em;
-  }
-
-  .esri-field-column__cell__date-input-container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-
-    .esri-field-column__cell__date-input-wrapper {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: 100%;
-    }
-
-    .esri-date-picker {
-      flex: 1 1 0;
-
-      .esri-date-picker__text-input.esri-input {
-        width: 100%;
-      }
-
-      .esri-date-picker__calendar-toggle {
-        height: 26px;
-      }
-    }
-
-    .esri-time-picker {
-      display: inline-flex;
-      flex: 1 1 0;
-
-      input {
-        width: 100%;
-      }
-    }
   }
 
   .esri-field-column__button {
@@ -226,31 +250,57 @@ $base-scrim-z-index: 50;
 
   .esri-field-column__cell__input-container {
     display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    height: 100%;
+
+    input,
+    select {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+    }
+
+    div,
+    input,
+    select {
+      display: flex;
+      width: 100%;
+    }
+
+    calcite-action-bar {
+      background-color: transparent;
+    }
+
+    div:first-child {
+      flex-direction: column;
+    }
+
+    calcite-input-time-picker:last-child,
+    calcite-input-time-picker:nth-child(2),
+    calcite-input-time-zone {
+      margin-top: -1px;
+    }
   }
 
   .esri-field-column__cell-input {
     flex: 1 1 0;
     border: none;
-    padding: 0 5px;
     width: 100%;
     height: 100%;
   }
 
   .esri-feature-table__prompt--info {
-    @include esri-feature-table__prompt(var(--calcite-ui-info));
+    @include esri-feature-table__prompt(var(--calcite-color-status-info));
   }
 
   .esri-feature-table__prompt--warning {
-    @include esri-feature-table__prompt(var(--calcite-ui-warning));
+    @include esri-feature-table__prompt(var(--calcite-color-status-warning));
   }
 
   .esri-feature-table__prompt--danger {
-    @include esri-feature-table__prompt(var(--calcite-ui-danger));
+    @include esri-feature-table__prompt(var(--calcite-color-status-danger));
   }
 
   [dir="rtl"] {

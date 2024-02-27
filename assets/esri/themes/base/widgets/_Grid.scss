@@ -33,6 +33,7 @@
       height: 100%;
 
       a {
+        text-decoration: underline;
         color: $interactive-font-color;
 
         &:hover,
@@ -49,19 +50,19 @@
       align-items: center;
       margin: 0 5px;
       min-height: 28px;
-      overflow: auto;
+      overflow: hidden;
     }
 
-    .esri-column__menu-container {
-      display: inline-block;
-      margin: 0 5px;
+    .esri-column__header-label span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .esri-column__header-content {
       display: flex;
       flex-grow: 1;
       align-items: center;
-      overflow: visible;
     }
   }
 }

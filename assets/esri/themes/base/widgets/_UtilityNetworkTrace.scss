@@ -1,8 +1,6 @@
 @mixin UtilityNetworkTrace {
   .esri-utility-trace-network {
-    display: flex;
     flex: 1 1 auto;
-    flex-direction: row;
 
     &.esri-component.esri-widget--panel {
       min-height: $panel-min-height--medium;
@@ -63,7 +61,7 @@
       left: 0;
       flex-flow: column nowrap;
       border-top: solid 3px $border-color--subtle;
-      background-color: var(--calcite-ui-background);
+      background-color: var(--calcite-color-background);
       padding: $cap-spacing $side-spacing;
       max-height: 85%;
       animation: esri-fade-in-up 100ms ease-in-out;

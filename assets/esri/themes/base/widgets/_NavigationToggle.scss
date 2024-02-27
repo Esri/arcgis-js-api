@@ -3,103 +3,16 @@ $earmark_size: 6px !default;
 @mixin navigationToggle() {
   .esri-navigation-toggle {
     display: flex;
-    flex-flow: column nowrap;
 
-    &:hover,
-    &:focus {
-      background-color: $background-color--hover;
-
-      .esri-navigation-toggle__button {
-        color: $interactive-font-color--hover;
-      }
-    }
-  }
-
-  .esri-navigation-toggle--horizontal {
-    flex-flow: row nowrap;
-
-    .esri-navigation-toggle__button--rotate {
-      border-top: none;
-      border-left: solid 1px $border-color;
-    }
-  }
-
-  .esri-navigation-toggle__button {
-    position: relative;
-    box-shadow: none;
-    background-color: transparent;
-
-    &::before {
-      @include earmarkStem();
-
-      opacity: 0;
-      border-width: 0 $earmark_size $earmark_size 0;
-      border-color: transparent $interactive-font-color--hover transparent transparent;
+    &:not(.esri-navigation-toggle--horizontal) {
+      flex-direction: column;
     }
 
-    &:hover,
-    &:focus {
-      background-color: transparent;
+    calcite-button[appearance="outline-fill"] {
+      --calcite-color-foreground-1: var(--calcite-color-foreground-3);
+      --calcite-ui-icon-color: var(--calcite-color-text-1);
     }
   }
-
-  .esri-navigation-toggle__button--rotate {
-    border-top: solid 1px $border-color;
-  }
-
-  .esri-navigation-toggle__button--pan {
-    margin-bottom: 0;
-  }
-
-  .esri-navigation-toggle__button--active {
-    color: $interactive-font-color--hover;
-
-    &::before {
-      opacity: 1;
-    }
-  }
-
-  .esri-navigation-toggle.esri-disabled {
-    .esri-navigation-toggle__button {
-      background-color: $background-color;
-      cursor: auto;
-      color: $interactive-font-color--disabled;
-
-      &::before {
-        opacity: 0;
-      }
-    }
-  }
-
-  [dir="rtl"] {
-    .esri-navigation-toggle--horizontal {
-      .esri-navigation-toggle__button--rotate {
-        border-right: solid 1px $border-color;
-        border-left: none;
-      }
-    }
-
-    .esri-navigation-toggle__button {
-      &::before {
-        right: auto;
-        left: 1px;
-        border-width: $earmark_size $earmark_size 0 0;
-        border-color: $interactive-font-color--hover transparent transparent transparent;
-      }
-    }
-  }
-}
-
-@mixin earmarkStem() {
-  position: absolute;
-  top: 1px;
-  right: 1px;
-  transition: opacity 125ms ease-in-out;
-  z-index: 0;
-  border-style: solid;
-  width: 0;
-  height: 0;
-  content: "";
 }
 
 @if $include_NavigationToggle == true {

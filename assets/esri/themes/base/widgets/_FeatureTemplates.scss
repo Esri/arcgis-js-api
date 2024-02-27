@@ -3,7 +3,7 @@
   $border: 1px solid $border-color;
 
   .esri-feature-templates {
-    background: var(--calcite-ui-background);
+    background: var(--calcite-color-background);
   }
 
   .esri-feature-templates__list-item-icon {
@@ -18,13 +18,6 @@
   .esri-feature-templates__list-item-icon > div {
     // TemplateItem thumbnail uses plain div as wrapper
     display: flex;
-  }
-
-  .esri-feature-templates__loader {
-    margin: 0 auto;
-    background: url("../base/images/loading-throb.gif") no-repeat center;
-    width: 32px;
-    height: $icon_size;
   }
 
   .esri-ui {

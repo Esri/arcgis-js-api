@@ -17,7 +17,12 @@
     }
 
     &__icon {
-      color: var(--calcite-ui-info);
+      margin-top: -1px; // Align the icon visually with the switch.
+      color: var(--calcite-color-status-info);
+    }
+
+    &__tooltip {
+      text-wrap: wrap;
     }
   }
 }

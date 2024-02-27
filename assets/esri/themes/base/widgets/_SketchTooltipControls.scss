@@ -12,6 +12,16 @@
       flex-direction: column;
       gap: $cap-spacing--half;
     }
+
+    &__radio-button-label-wrapper {
+      display: flex;
+      gap: $side-spacing--eighth;
+      align-items: center;
+    }
+
+    calcite-label:last-child {
+      --calcite-label-margin-bottom: 0;
+    }
   }
 }
 

@@ -5,6 +5,7 @@
   $directions-height--max: 420px !default;
 
   .esri-directions {
+    overflow-x: hidden;
     color: $font-color;
   }
 
@@ -31,8 +32,11 @@
 
   .esri-directions__travel-modes,
   .esri-directions__departure-time {
-    margin: 0 $side-spacing $cap-spacing--half;
-    width: calc(100% - #{$side-spacing--double});
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: $side-spacing;
+    width: 100%;
   }
 
   .esri-directions__panel-content--sign-in,
@@ -79,37 +83,15 @@
   }
 
   .esri-directions__departure-time-controls {
+    --calcite-font-size--1: var(--calcite-font-size--2);
+
     display: flex;
+    flex-direction: column;
     width: 100%;
   }
 
-  .esri-directions__departure-time-controls .esri-date-picker,
-  .esri-directions__departure-time-controls .esri-time-picker {
-    flex: 1 1 0;
-    border: 1px solid $border-color--input;
-    border-top: 0;
-  }
-
-  .esri-directions__departure-time-controls .esri-widget:first-child {
-    border-right: 0;
-  }
-
-  .esri-directions__departure-time-controls .esri-time-picker {
+  .esri-directions__departure-date-time-pickers {
     display: flex;
-    justify-content: center;
-    padding: 0;
-  }
-
-  .esri-directions__departure-time-controls .esri-time-picker__input {
-    margin: 0;
-    padding: 0 0.5em;
-    width: 100%;
-    height: auto;
-  }
-
-  .esri-directions__departure-time-controls .esri-date-picker__calendar-toggle {
-    justify-content: flex-start;
-    padding: 0 0.5em;
   }
 
   .esri-directions__directions-section {
@@ -390,6 +372,10 @@
     width: 100%;
   }
 
+  .esri-directions__maneuver-place-name {
+    font-weight: var(--calcite-font-weight-medium);
+  }
+
   .esri-directions__scroller {
     overflow-y: auto;
   }
@@ -440,16 +426,6 @@
     }
   }
 
-  [dir="rtl"] {
-    .esri-directions__departure-time-controls .esri-time-picker {
-      border-right: none;
-    }
-
-    .esri-directions__departure-time-controls .esri-date-picker__calendar-toggle {
-      border-right: solid 1px $border-color;
-    }
-  }
-
   /* stylelint-disable-next-line no-duplicate-selectors */
   .esri-directions {
     &__save-section,
@@ -478,6 +454,10 @@
 
     &__save-as-button-with-popover {
       width: 100%;
+    }
+
+    &__save-popover {
+      z-index: var(--calcite-z-index-overlay);
     }
   }
 

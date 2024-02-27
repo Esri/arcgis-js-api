@@ -36,8 +36,7 @@
     &--grid &__item-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax($thumbnail-width, 1fr));
-      row-gap: $cap-spacing;
-      column-gap: $side-spacing;
+      gap: $cap-spacing $side-spacing;
       padding-block: $cap-spacing;
       padding-inline: $side-spacing;
     }

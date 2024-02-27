@@ -21,7 +21,7 @@
 
       &__tick,
       &__track {
-        background: var(--calcite-ui-border-input);
+        background: var(--calcite-color-border-input);
       }
 
       &__tick {
@@ -37,7 +37,7 @@
     }
 
     &__action-bar {
-      background-color: var(--calcite-ui-foreground-1);
+      background-color: var(--calcite-color-foreground-1);
     }
 
     &__caption,
@@ -45,19 +45,19 @@
       &-border {
         display: flex;
         align-items: center;
-        border: solid 1px var(--calcite-ui-border-3);
+        border: solid 1px var(--calcite-color-border-3);
       }
 
       &-text {
         overflow: hidden;
         white-space: nowrap;
-        font-family: var(--calcite-sans-family);
+        font-family: inherit;
         font-weight: var(--calcite-font-weight-medium);
       }
     }
 
     &__label-text {
-      color: var(--calcite-ui-text-1);
+      color: var(--calcite-color-text-1);
     }
 
     &__slider {
@@ -113,7 +113,7 @@
           }
 
           &__combobox {
-            --calcite-ui-border-input: var(--calcite-ui-border-3);
+            --calcite-color-border-input: var(--calcite-color-border-3);
 
             display: flex;
             flex: auto;
@@ -147,7 +147,7 @@
 
           &__separator {
             margin-inline-start: 0.25rem;
-            border-right: solid 1px var(--calcite-ui-border-3);
+            border-right: solid 1px var(--calcite-color-border-3);
             width: 1px;
           }
 
@@ -219,7 +219,7 @@
 
           &__separator {
             margin-top: 0.25rem;
-            border-bottom: solid 1px var(--calcite-ui-border-3);
+            border-bottom: solid 1px var(--calcite-color-border-3);
             height: 1px;
           }
 
